@@ -49,3 +49,8 @@ results/
 *.hdf5
 *.parquet
 build_external/
+
+# Large installer files
+Mambaforge-Darwin-arm64.sh
+mambaforge.sh
+miniconda.sh

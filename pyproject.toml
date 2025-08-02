@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "three-body-integrability-wp1"
+version = "0.1.0"
+description = "High-precision three-body problem integrability research"
+authors = ["Jacob Sullivan <jacobrsullivan@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^2.3.2"
+scipy = "^1.16.1"
+matplotlib = "^3.10.5"
+jupyterlab = "^4.4.5"
+pytest = "^8.4.1"
+h5py = "^3.14.0"
+pyarrow = "^21.0.0"
+rebound = "^4.4.10"
+
+[tool.poetry.group.dev.dependencies]
+black = "^25.1.0"
+flake8 = "^7.3.0"
+pre-commit = "^4.2.0"
+mypy = "^1.17.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

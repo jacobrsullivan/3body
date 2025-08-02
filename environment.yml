@@ -1,0 +1,17 @@
+name: wp1_env
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - poetry
+  # Crucial: Ensures consistent C/C++/Fortran compilers across systems
+  - compilers
+  # Build tools required for C++ libraries
+  - cmake
+  - make
+  # Required for bridging Python and C++
+  - pybind11
+  # Additional useful tools
+  - git
+  - curl
+  - wget
