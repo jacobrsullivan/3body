@@ -19,11 +19,21 @@ def check_python_version():
 
 def check_packages():
     """Verify core packages can be imported."""
-    packages = ["numpy", "scipy", "matplotlib", "rebound", "pytest"]
+    packages = [
+        "numpy",
+        "scipy",
+        "matplotlib",
+        "rebound",
+        "pytest",
+        "numba",
+        "h5py",
+        "pyarrow",
+    ]
     for package in packages:
         try:
-            importlib.import_module(package)
-            print(f"✓ {package} imported successfully")
+            module = importlib.import_module(package)
+            version = getattr(module, "__version__", "unknown")
+            print(f"✓ {package} {version} imported successfully")
         except ImportError:
             print(f"✗ Failed to import {package}")
             raise

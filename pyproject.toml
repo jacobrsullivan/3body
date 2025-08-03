@@ -8,7 +8,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-numpy = "^2.3.2"
+numpy = ">=1.24,<2.3"
 scipy = "^1.16.1"
 matplotlib = "^3.10.5"
 jupyterlab = "^4.4.5"
@@ -16,6 +16,7 @@ pytest = "^8.4.1"
 h5py = "^3.14.0"
 pyarrow = "^21.0.0"
 rebound = "^4.4.10"
+numba = ">=0.59"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
