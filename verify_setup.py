@@ -93,10 +93,58 @@ def check_git_repo():
         print(f"✗ Git check failed: {e}")
 
 
+def check_qd_library():
+    """Verify QD library is installed and functional."""
+    try:
+        conda_prefix = os.environ.get("CONDA_PREFIX")
+        if not conda_prefix:
+            print("⚠ CONDA_PREFIX not set - QD library check skipped")
+            return
+
+        # Check for QD library files
+        qd_lib_path = os.path.join(conda_prefix, "lib", "libqd.dylib")
+        qd_lib_alt = os.path.join(conda_prefix, "lib", "libqd.so")
+        qd_lib_static = os.path.join(conda_prefix, "lib", "libqd.a")
+
+        qd_header = os.path.join(conda_prefix, "include", "qd", "dd_real.h")
+
+        lib_exists = (
+            os.path.exists(qd_lib_path)
+            or os.path.exists(qd_lib_alt)
+            or os.path.exists(qd_lib_static)
+        )
+
+        if lib_exists:
+            print("✓ QD library found")
+        else:
+            print("✗ QD library not found in $CONDA_PREFIX/lib")
+
+        if os.path.exists(qd_header):
+            print("✓ QD headers found")
+        else:
+            print("✗ QD headers not found")
+
+        # Test if verify_qd executable exists and runs
+        if os.path.exists("verify_qd"):
+            print("✓ QD verification executable found")
+            result = subprocess.run(
+                ["./verify_qd"], capture_output=True, text=True, timeout=5
+            )
+            if result.returncode == 0 and "3.14159" in result.stdout:
+                print("✓ QD library verification passed")
+            else:
+                print("✗ QD library verification failed")
+        else:
+            print("⚠ QD verification executable not found")
+
+    except Exception as e:
+        print(f"⚠ QD library check warning: {e}")
+
+
 def main():
     """Run all verification checks."""
-    print("Day 1 Setup Verification")
-    print("=" * 30)
+    print("Setup Verification (Days 1-3)")
+    print("=" * 40)
 
     try:
         check_python_version()
@@ -105,7 +153,12 @@ def main():
         check_poetry()
         check_git_repo()
 
-        print("\n🎉 All checks passed! Day 1 setup complete.")
+        print("\n" + "=" * 40)
+        print("Day 3: QD Library Verification")
+        print("=" * 40)
+        check_qd_library()
+
+        print("\n🎉 All checks passed! Environment setup complete.")
 
     except Exception as e:
         print(f"\n❌ Setup verification failed: {e}")
