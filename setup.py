@@ -5,24 +5,38 @@ Builds the qd_python extension module using pybind11.
 """
 
 import os
+import sys
 
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
 
-# Environment variables from conda
+# Try to find QD library paths
+# First check conda environment, then fall back to system paths
 conda_prefix = os.environ.get("CONDA_PREFIX", "")
-if not conda_prefix:
-    raise RuntimeError(
-        "CONDA_PREFIX not found. Please activate the wp1_env environment."
-    )
 
-# QD library paths
-qd_include_dir = os.path.join(conda_prefix, "include")
-qd_lib_dir = os.path.join(conda_prefix, "lib")
+if conda_prefix:
+    # Using conda environment
+    qd_include_dir = os.path.join(conda_prefix, "include")
+    qd_lib_dir = os.path.join(conda_prefix, "lib")
+else:
+    # Try system-wide installation
+    qd_include_dir = "/usr/include"
+    qd_lib_dir = "/usr/lib/x86_64-linux-gnu"
+
+    # Also try /usr/local for manual installations
+    if not os.path.exists(os.path.join(qd_include_dir, "qd", "dd_real.h")):
+        qd_include_dir = "/usr/local/include"
+        qd_lib_dir = "/usr/local/lib"
 
 # Verify QD library is available
 qd_header = os.path.join(qd_include_dir, "qd", "dd_real.h")
 if not os.path.exists(qd_header):
+    print(f"ERROR: QD library header not found at {qd_header}", file=sys.stderr)
+    print("Searched paths:", file=sys.stderr)
+    print("  - /usr/include/qd/dd_real.h", file=sys.stderr)
+    print("  - /usr/local/include/qd/dd_real.h", file=sys.stderr)
+    if conda_prefix:
+        print(f"  - {conda_prefix}/include/qd/dd_real.h", file=sys.stderr)
     raise RuntimeError(f"QD library header not found at {qd_header}")
 
 # Define the extension module
