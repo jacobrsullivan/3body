@@ -1,0 +1,54 @@
+# CR3BP Smoke Test Benchmark Specification
+# Earth-Moon system, L4 Lagrange point orbit
+
+# System parameters
+system:
+  name: "Earth-Moon CR3BP"
+  mu: 0.0121505856  # Mass parameter m2/(m1+m2)
+  description: "Earth-Moon circular restricted three-body problem"
+
+# Initial conditions (co-rotating frame)
+initial_conditions:
+  # L4 Lagrange point with small perturbation for stable orbit
+  position: [0.4878, 0.8660, 0.0]  # Near L4 equilateral point
+  velocity: [0.0, 0.0, 0.0]  # Stationary in rotating frame
+  frame: "corotating"
+
+# Integration parameters
+integration:
+  duration: 6283.185307179586  # 1000 orbital periods (1000 * 2π)
+  output_interval: 6.283185307179586  # Output every 1 period (2π)
+  tolerance: 1.0e-14  # Integration tolerance
+
+# Validation criteria
+validation:
+  jacobi_drift:
+    max_relative: 1.0e-14  # Maximum relative Jacobi constant drift
+    description: "Jacobi constant conservation"
+
+  energy_error:
+    max_relative: 1.0e-13  # Maximum relative energy error
+    description: "Energy conservation metric"
+
+  integration_success:
+    required: true
+    description: "Integration must complete without errors"
+
+# Performance limits
+performance:
+  max_wall_time: 300.0  # seconds (5 minutes)
+  max_memory: 1024.0  # MB (1 GB)
+
+# Output configuration
+output:
+  save_trajectory: true
+  save_inertial_frame: true
+  save_corotating_frame: true
+  formats: ["json", "hdf5"]
+
+# Metadata
+metadata:
+  test_type: "smoke"
+  difficulty: "easy"
+  purpose: "Basic integrator validation and performance baseline"
+  expected_behavior: "Stable quasi-periodic orbit around L4"
