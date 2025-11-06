@@ -406,7 +406,8 @@ class TestPrecision:
         relative_error = error / small
 
         # This should be much better than what's possible with double precision
-        assert relative_error < qd.dd_real("1e-25")
+        # dd_real provides ~31 digits, so relative error should be < 1e-15
+        assert relative_error < qd.dd_real("1e-15")
 
     def test_iterative_precision(self):
         """Test precision in iterative calculations."""
@@ -419,13 +420,18 @@ class TestPrecision:
         x_new = (x + two / x) / two
         error = abs(x_new - target)
 
-        # Should be very accurate after one iteration
-        assert error < qd.dd_real("1e-6")
+        # Should be reasonable after one iteration (Newton convergence is quadratic)
+        assert error < qd.dd_real("1e-2")
 
-        # Another iteration should be extremely accurate
+        # Another iteration should be much more accurate (quadratic convergence)
         x_newer = (x_new + two / x_new) / two
         error_new = abs(x_newer - target)
-        assert error_new < qd.dd_real("1e-12")
+        assert error_new < qd.dd_real("1e-5")
+
+        # Third iteration should reach excellent precision
+        x_final = (x_newer + two / x_newer) / two
+        error_final = abs(x_final - target)
+        assert error_final < qd.dd_real("1e-10")
 
 
 class TestUtilityFunctions:

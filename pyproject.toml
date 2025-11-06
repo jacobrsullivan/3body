@@ -17,6 +17,7 @@ h5py = "^3.14.0"
 pyarrow = "^21.0.0"
 rebound = "^4.4.10"
 numba = ">=0.59"
+pybind11 = "^2.13.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
