@@ -1,0 +1,43 @@
+initial_conditions:
+  frame: corotating
+  position:
+  - 0.4878
+  - 0.866
+  - 0.0
+  velocity:
+  - 0.0
+  - 0.0
+  - 0.0
+integration:
+  duration: 62.83
+  output_interval: 6.283185307179586
+  tolerance: 1.0e-14
+metadata:
+  difficulty: easy
+  expected_behavior: Stable quasi-periodic orbit around L4
+  purpose: Basic integrator validation and performance baseline
+  test_type: smoke
+output:
+  formats:
+  - json
+  - hdf5
+  save_corotating_frame: true
+  save_inertial_frame: true
+  save_trajectory: true
+performance:
+  max_memory: 1024.0
+  max_wall_time: 300.0
+system:
+  description: Earth-Moon circular restricted three-body problem
+  mu: 0.0121505856
+  name: Earth-Moon CR3BP
+validation:
+  energy_error:
+    description: Energy conservation metric
+    max_relative: 1.0e-13
+  integration_success:
+    description: Integration must complete without errors
+    required: true
+  jacobi_drift:
+    description: Jacobi constant conservation
+    max_relative: 1.0e-14
