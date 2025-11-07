@@ -141,9 +141,60 @@ def check_qd_library():
         print(f"⚠ QD library check warning: {e}")
 
 
+def check_qd_python_bindings():
+    """Verify QD Python bindings are working (Day 5)."""
+    try:
+        import qd_python as qd
+
+        # Test basic import
+        print("✓ qd_python module imported successfully")
+
+        # Check version
+        version = qd.__version__
+        print(f"✓ qd_python version: {version}")
+
+        # Test basic functionality - verify pi constant
+        pi = qd.pi
+        pi_str = str(pi)
+        if "3.14159" in pi_str:
+            print(f"✓ QD constants working: π = {pi_str[:20]}...")
+        else:
+            print(f"✗ QD constants failed: π = {pi_str}")
+            return False
+
+        # Test arithmetic
+        a = qd.dd_real("1.5")
+        b = qd.dd_real("2.5")
+        result = a + b
+        if abs(float(result) - 4.0) < 1e-10:
+            print("✓ QD arithmetic operations working")
+        else:
+            print(f"✗ QD arithmetic failed: 1.5 + 2.5 = {result}")
+            return False
+
+        # Test mathematical functions
+        half_pi = qd.pi / qd.dd_real("2.0")
+        sin_result = qd.sin(half_pi)
+        if abs(float(sin_result) - 1.0) < 1e-10:
+            print("✓ QD mathematical functions working")
+        else:
+            print(f"✗ QD functions failed: sin(π/2) = {sin_result}")
+            return False
+
+        return True
+
+    except ImportError as e:
+        print(f"✗ qd_python module not found: {e}")
+        print("  Run: poetry run python setup.py build_ext --inplace")
+        return False
+    except Exception as e:
+        print(f"✗ QD Python bindings check failed: {e}")
+        return False
+
+
 def main():
     """Run all verification checks."""
-    print("Setup Verification (Days 1-3)")
+    print("Setup Verification (Days 1-5)")
     print("=" * 40)
 
     try:
@@ -158,7 +209,15 @@ def main():
         print("=" * 40)
         check_qd_library()
 
-        print("\n🎉 All checks passed! Environment setup complete.")
+        print("\n" + "=" * 40)
+        print("Day 5: QD Python Bindings Verification")
+        print("=" * 40)
+        qd_python_ok = check_qd_python_bindings()
+
+        if qd_python_ok:
+            print("\n🎉 All checks passed! Environment setup complete.")
+        else:
+            print("\n⚠ Some checks failed. See details above.")
 
     except Exception as e:
         print(f"\n❌ Setup verification failed: {e}")
