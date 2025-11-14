@@ -103,19 +103,42 @@ def inverse_levi_civita_map(
         return np.zeros(4)
 
     if method == "geometric":
-        # Geometric construction (Stiefel-Scheifele)
-        # Choose u₀ based on first component
-        if x >= 0:
+        # Improved Levi-Civita inversion
+        # The bilinear relation is: r = L(u)·u where
+        # x = u0² - u1² - u2² + u3²
+        # y = 2(u0·u1 + u2·u3)
+        # z = 2(u0·u2 - u1·u3)
+
+        # Choose largest component to avoid numerical issues
+        max_idx = np.argmax(np.abs(r))
+
+        if max_idx == 0 or x >= 0:
+            # Use u0 as free parameter
             u0 = np.sqrt((r_mag + x) / 2)
-            u1 = sign * y / (2 * u0) if abs(u0) > 1e-14 else 0
-            u2 = sign * z / (2 * u0) if abs(u0) > 1e-14 else 0
-            u3 = 0.0
-        else:
-            # Use different parametrization when x < 0
+            if abs(u0) > 1e-14:
+                u1 = y / (2 * u0)
+                u2 = z / (2 * u0)
+                u3 = 0.0
+            else:
+                u0, u1, u2, u3 = 0.0, 0.0, 0.0, 0.0
+        elif max_idx == 1:
+            # Use u1 as free parameter (when |y| is largest)
             u1 = np.sqrt((r_mag - x) / 2)
-            u0 = sign * y / (2 * u1) if abs(u1) > 1e-14 else 0
-            u2 = 0.0
-            u3 = sign * z / (2 * u1) if abs(u1) > 1e-14 else 0
+            if abs(u1) > 1e-14:
+                u0 = y / (2 * u1)
+                u2 = 0.0
+                u3 = sign * z / (2 * u1)
+            else:
+                u0, u1, u2, u3 = 0.0, 0.0, 0.0, 0.0
+        else:  # max_idx == 2
+            # Use u2 as free parameter (when |z| is largest)
+            u2 = np.sqrt((r_mag - x) / 2)
+            if abs(u2) > 1e-14:
+                u0 = z / (2 * u2)
+                u1 = 0.0
+                u3 = sign * y / (2 * u2)
+            else:
+                u0, u1, u2, u3 = 0.0, 0.0, 0.0, 0.0
 
         u = np.array([u0, u1, u2, u3])
 

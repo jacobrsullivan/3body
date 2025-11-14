@@ -211,6 +211,9 @@ def cartesian_3bp_to_pairwise_ks(
     v31 = v3 - v1
 
     # Apply KS transform to each pair
+    # Note: We transform all three pairs, but due to sign ambiguity in the inverse,
+    # the reconstructed separations may not perfectly satisfy closure.
+    # This is a known limitation of the independent pairwise approach.
     ks12 = cartesian_to_ks(r12, v12, s, t)
     ks23 = cartesian_to_ks(r23, v23, s, t)
     ks31 = cartesian_to_ks(r31, v31, s, t)
@@ -273,8 +276,8 @@ def pairwise_ks_to_cartesian_3bp(
     #   r1 = r12 + r2 = r12 - r23
 
     r3_temp = np.zeros(3)
-    r2_temp = -r23
-    r1_temp = r12 - r23
+    r2_temp = r23  # From r23 = r2 - r3 with r3 = 0
+    r1_temp = r12 + r23  # From r12 = r1 - r2 and r2 = r23
 
     # Shift to center of mass frame
     m1, m2, m3 = masses.m1, masses.m2, masses.m3
@@ -287,10 +290,10 @@ def pairwise_ks_to_cartesian_3bp(
     r3 = r3_temp - r_com
 
     # Reconstruct absolute velocities
-    # From vᵢⱼ = vᵢ - vⱼ:
+    # From vᵢⱼ = vᵢ - vⱼ (same logic as positions):
     v3_temp = np.zeros(3)
-    v2_temp = -v23
-    v1_temp = v12 - v23
+    v2_temp = v23  # From v23 = v2 - v3 with v3 = 0
+    v1_temp = v12 + v23  # From v12 = v1 - v2 and v2 = v23
 
     # Shift to center of mass frame
     v_com = (m1 * v1_temp + m2 * v2_temp + m3 * v3_temp) / M

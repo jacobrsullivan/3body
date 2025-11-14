@@ -341,9 +341,9 @@ def verify_collision_regularization(
     min_r31 = float('inf')
 
     for cart_state in cartesian_states:
-        r12 = np.linalg.norm(cart_state.r1 - cart_state.r2)
-        r23 = np.linalg.norm(cart_state.r2 - cart_state.r3)
-        r31 = np.linalg.norm(cart_state.r3 - cart_state.r1)
+        r12 = np.linalg.norm(cart_state.positions[0] - cart_state.positions[1])
+        r23 = np.linalg.norm(cart_state.positions[1] - cart_state.positions[2])
+        r31 = np.linalg.norm(cart_state.positions[2] - cart_state.positions[0])
 
         min_r12 = min(min_r12, r12)
         min_r23 = min(min_r23, r23)
