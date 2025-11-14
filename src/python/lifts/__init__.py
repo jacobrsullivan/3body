@@ -35,7 +35,7 @@ from .lifted_hamiltonian import (
 )
 from .integrability import (
     verify_basic_integrals,
-    test_functional_independence,
+    check_functional_independence,
     verify_involution,
 )
 
@@ -56,6 +56,6 @@ __all__ = [
     "BundleTrajectory",
     # Integrability tests
     "verify_basic_integrals",
-    "test_functional_independence",
+    "check_functional_independence",
     "verify_involution",
 ]

@@ -80,14 +80,14 @@ def verify_basic_integrals(
     return results
 
 
-def test_functional_independence(
+def check_functional_independence(
     integrals: List[Callable[[BundleState], float]],
     state: BundleState,
     epsilon: float = 1e-7,
     tolerance: float = 1e-10
 ) -> dict:
     """
-    Test if integrals are functionally independent.
+    Check if integrals are functionally independent.
 
     Criterion: Gradients dF₁, dF₂, dF₃ are linearly independent.
 
@@ -281,7 +281,7 @@ def classify_integrability(
     conservation = verify_basic_integrals(trajectory, lifted_hamiltonian)
 
     # Test independence
-    independence = test_functional_independence(integrals, test_state)
+    independence = check_functional_independence(integrals, test_state)
 
     # Test involution
     involution = verify_involution(integrals, test_state, extended_form)

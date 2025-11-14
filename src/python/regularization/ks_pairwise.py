@@ -20,7 +20,8 @@ import numpy as np
 from .spinor_vector import SpinorVector
 from .ks_transform import KSState, cartesian_to_ks, ks_to_cartesian
 from .levi_civita import levi_civita_map, validate_bilinear_relation
-from ..coordinates.base import CartesianState, Masses
+from ..coordinates.cartesian import CartesianState
+from ..coordinates.base import Masses
 
 
 @dataclass(frozen=True)
@@ -210,6 +211,9 @@ def cartesian_3bp_to_pairwise_ks(
     v31 = v3 - v1
 
     # Apply KS transform to each pair
+    # Note: We transform all three pairs, but due to sign ambiguity in the inverse,
+    # the reconstructed separations may not perfectly satisfy closure.
+    # This is a known limitation of the independent pairwise approach.
     ks12 = cartesian_to_ks(r12, v12, s, t)
     ks23 = cartesian_to_ks(r23, v23, s, t)
     ks31 = cartesian_to_ks(r31, v31, s, t)
@@ -272,8 +276,8 @@ def pairwise_ks_to_cartesian_3bp(
     #   r1 = r12 + r2 = r12 - r23
 
     r3_temp = np.zeros(3)
-    r2_temp = -r23
-    r1_temp = r12 - r23
+    r2_temp = r23  # From r23 = r2 - r3 with r3 = 0
+    r1_temp = r12 + r23  # From r12 = r1 - r2 and r2 = r23
 
     # Shift to center of mass frame
     m1, m2, m3 = masses.m1, masses.m2, masses.m3
@@ -286,10 +290,10 @@ def pairwise_ks_to_cartesian_3bp(
     r3 = r3_temp - r_com
 
     # Reconstruct absolute velocities
-    # From vᵢⱼ = vᵢ - vⱼ:
+    # From vᵢⱼ = vᵢ - vⱼ (same logic as positions):
     v3_temp = np.zeros(3)
-    v2_temp = -v23
-    v1_temp = v12 - v23
+    v2_temp = v23  # From v23 = v2 - v3 with v3 = 0
+    v1_temp = v12 + v23  # From v12 = v1 - v2 and v2 = v23
 
     # Shift to center of mass frame
     v_com = (m1 * v1_temp + m2 * v2_temp + m3 * v3_temp) / M
@@ -334,14 +338,14 @@ def validate_pairwise_roundtrip(
     reconstructed_state = pairwise_ks_to_cartesian_3bp(pairwise_state, masses)
 
     # Compare positions
-    r1_error = np.linalg.norm(cartesian_state.r1 - reconstructed_state.r1)
-    r2_error = np.linalg.norm(cartesian_state.r2 - reconstructed_state.r2)
-    r3_error = np.linalg.norm(cartesian_state.r3 - reconstructed_state.r3)
+    r1_error = np.linalg.norm(cartesian_state.positions[0] - reconstructed_state.positions[0])
+    r2_error = np.linalg.norm(cartesian_state.positions[1] - reconstructed_state.positions[1])
+    r3_error = np.linalg.norm(cartesian_state.positions[2] - reconstructed_state.positions[2])
 
     # Compare velocities
-    v1_error = np.linalg.norm(cartesian_state.v1 - reconstructed_state.v1)
-    v2_error = np.linalg.norm(cartesian_state.v2 - reconstructed_state.v2)
-    v3_error = np.linalg.norm(cartesian_state.v3 - reconstructed_state.v3)
+    v1_error = np.linalg.norm(cartesian_state.velocities[0] - reconstructed_state.velocities[0])
+    v2_error = np.linalg.norm(cartesian_state.velocities[1] - reconstructed_state.velocities[1])
+    v3_error = np.linalg.norm(cartesian_state.velocities[2] - reconstructed_state.velocities[2])
 
     max_position_error = max(r1_error, r2_error, r3_error)
     max_velocity_error = max(v1_error, v2_error, v3_error)
