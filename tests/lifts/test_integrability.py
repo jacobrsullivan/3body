@@ -8,7 +8,7 @@ from src.python.lifts.lifted_hamiltonian import LiftedHamiltonian, BundleTraject
 from src.python.lifts.extended_symplectic import compute_extended_symplectic_form
 from src.python.lifts.integrability import (
     verify_basic_integrals,
-    test_functional_independence,
+    check_functional_independence,
     verify_involution,
     classify_integrability,
 )
@@ -81,7 +81,7 @@ def test_three_integrals_existence():
     integrals = [F1, F2, F3]
 
     # Test functional independence
-    results = test_functional_independence(integrals, state)
+    results = check_functional_independence(integrals, state)
 
     # Should have rank 3 (three independent integrals)
     # Note: May be rank 2 for some special configurations

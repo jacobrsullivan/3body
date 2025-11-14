@@ -20,7 +20,8 @@ import numpy as np
 from .spinor_vector import SpinorVector
 from .ks_transform import KSState, cartesian_to_ks, ks_to_cartesian
 from .levi_civita import levi_civita_map, validate_bilinear_relation
-from ..coordinates.base import CartesianState, Masses
+from ..coordinates.cartesian import CartesianState
+from ..coordinates.base import Masses
 
 
 @dataclass(frozen=True)
@@ -334,14 +335,14 @@ def validate_pairwise_roundtrip(
     reconstructed_state = pairwise_ks_to_cartesian_3bp(pairwise_state, masses)
 
     # Compare positions
-    r1_error = np.linalg.norm(cartesian_state.r1 - reconstructed_state.r1)
-    r2_error = np.linalg.norm(cartesian_state.r2 - reconstructed_state.r2)
-    r3_error = np.linalg.norm(cartesian_state.r3 - reconstructed_state.r3)
+    r1_error = np.linalg.norm(cartesian_state.positions[0] - reconstructed_state.positions[0])
+    r2_error = np.linalg.norm(cartesian_state.positions[1] - reconstructed_state.positions[1])
+    r3_error = np.linalg.norm(cartesian_state.positions[2] - reconstructed_state.positions[2])
 
     # Compare velocities
-    v1_error = np.linalg.norm(cartesian_state.v1 - reconstructed_state.v1)
-    v2_error = np.linalg.norm(cartesian_state.v2 - reconstructed_state.v2)
-    v3_error = np.linalg.norm(cartesian_state.v3 - reconstructed_state.v3)
+    v1_error = np.linalg.norm(cartesian_state.velocities[0] - reconstructed_state.velocities[0])
+    v2_error = np.linalg.norm(cartesian_state.velocities[1] - reconstructed_state.velocities[1])
+    v3_error = np.linalg.norm(cartesian_state.velocities[2] - reconstructed_state.velocities[2])
 
     max_position_error = max(r1_error, r2_error, r3_error)
     max_velocity_error = max(v1_error, v2_error, v3_error)

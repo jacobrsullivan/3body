@@ -11,7 +11,8 @@ Tests:
 import pytest
 import numpy as np
 
-from src.python.coordinates.base import CartesianState, Masses
+from src.python.coordinates.cartesian import CartesianState
+from src.python.coordinates.base import Masses
 from src.python.regularization import (
     PairwiseSpinorState,
     cartesian_3bp_to_pairwise_ks,
@@ -39,7 +40,10 @@ def simple_cartesian_state():
     v2 = np.array([0.0, -0.05, 0.0])
     v3 = np.array([0.0, -0.05, 0.0])
 
-    return CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    positions = np.array([r1, r2, r3])
+    velocities = np.array([v1, v2, v3])
+
+    return CartesianState(positions=positions, velocities=velocities)
 
 
 def test_pairwise_spinor_state_creation():
@@ -126,18 +130,18 @@ def test_pairwise_ks_to_cartesian(simple_cartesian_state, equal_masses):
 
     # Positions should match (up to numerical error)
     np.testing.assert_allclose(
-        cart_reconstructed.r1,
-        simple_cartesian_state.r1,
+        cart_reconstructed.positions[0],
+        simple_cartesian_state.positions[0],
         atol=1e-8
     )
     np.testing.assert_allclose(
-        cart_reconstructed.r2,
-        simple_cartesian_state.r2,
+        cart_reconstructed.positions[1],
+        simple_cartesian_state.positions[1],
         atol=1e-8
     )
     np.testing.assert_allclose(
-        cart_reconstructed.r3,
-        simple_cartesian_state.r3,
+        cart_reconstructed.positions[2],
+        simple_cartesian_state.positions[2],
         atol=1e-8
     )
 
@@ -184,7 +188,7 @@ def test_closure_constraint_explicit():
 
     v1 = v2 = v3 = np.zeros(3)
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
 
     # Transform
     pairwise_state = cartesian_3bp_to_pairwise_ks(cart_state)
@@ -221,7 +225,7 @@ def test_pairwise_roundtrip_collinear():
     v2 = np.array([0.0, 0.0, 0.0])
     v3 = np.array([0.0, -0.1, 0.0])
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
     masses = Masses(m1=1.0, m2=1.0, m3=1.0)
 
     # Roundtrip
@@ -239,7 +243,7 @@ def test_pairwise_zero_velocity():
 
     v1 = v2 = v3 = np.zeros(3)
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
 
     # Transform
     pairwise_state = cartesian_3bp_to_pairwise_ks(cart_state)
@@ -260,7 +264,7 @@ def test_bilinear_relations_preserved():
     v2 = np.array([-0.1, 0.1, 0.0])
     v3 = np.array([0.0, -0.3, -0.3])
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
 
     # Transform
     pairwise_state = cartesian_3bp_to_pairwise_ks(cart_state)

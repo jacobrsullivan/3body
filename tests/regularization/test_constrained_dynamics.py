@@ -11,7 +11,8 @@ Tests:
 import pytest
 import numpy as np
 
-from src.python.coordinates.base import CartesianState, Masses
+from src.python.coordinates.cartesian import CartesianState
+from src.python.coordinates.base import Masses
 from src.python.regularization import (
     PairwiseSpinorState,
     cartesian_3bp_to_pairwise_ks,
@@ -39,7 +40,7 @@ def simple_initial_state():
     v2 = np.array([0.0, -0.05, 0.0])
     v3 = np.array([0.0, -0.05, 0.0])
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
     return cartesian_3bp_to_pairwise_ks(cart_state)
 
 
@@ -206,7 +207,7 @@ def test_collision_regularization_stable():
     v2 = np.array([0.0, 0.0, 0.0])
     v3 = np.array([0.0, -0.05, 0.0])
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
     initial_state = cartesian_3bp_to_pairwise_ks(cart_state)
 
     masses = Masses(m1=1.0, m2=1.0, m3=1.0)
@@ -247,7 +248,7 @@ def test_verify_collision_regularization():
 
     v1 = v2 = v3 = np.zeros(3)
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
     initial_state = cartesian_3bp_to_pairwise_ks(cart_state)
 
     masses = Masses(m1=1.0, m2=1.0, m3=1.0)
@@ -285,7 +286,7 @@ def test_integration_different_masses():
     v2 = np.array([0.0, -0.3, 0.0])
     v3 = np.array([-0.5, 0.0, 0.0])
 
-    cart_state = CartesianState(r1=r1, r2=r2, r3=r3, v1=v1, v2=v2, v3=v3)
+    cart_state = CartesianState(positions=np.array([r1, r2, r3]), velocities=np.array([v1, v2, v3]))
     initial_state = cartesian_3bp_to_pairwise_ks(cart_state)
 
     hamiltonian = ConstrainedHamiltonian(masses=masses, G=1.0)
