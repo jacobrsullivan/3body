@@ -179,7 +179,7 @@ def _compute_connection_numerical(
             # Connection coefficient (simplified formula)
             # Full formula: solve I·ω = dL/dq, then A = L·ω
             # Here we use a simpler estimate
-            coefficients[i] = dL_dq_z if I_locked.determinant() > 1e-14 else 0.0
+            coefficients[i] = dL_dq_z if I_locked.determinant > 1e-14 else 0.0
 
     return ConnectionForm(
         coefficients=coefficients,

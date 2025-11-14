@@ -33,7 +33,7 @@ def test_locked_inertia_tensor():
 
     # Check properties
     assert I.is_positive_definite(), "Inertia tensor should be positive definite"
-    assert I.determinant() > 0, "Determinant should be positive"
+    assert I.determinant > 0, "Determinant should be positive"
     assert abs(I.tensor - I.tensor.T).max() < 1e-14, "Should be symmetric"
 
 

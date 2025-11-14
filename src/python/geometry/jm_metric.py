@@ -138,7 +138,7 @@ def compute_effective_potential(
         # For 3D, use full inertia tensor
         from .locked_inertia import compute_locked_inertia_tensor
         I_tensor = compute_locked_inertia_tensor(cart_state, masses)
-        I = I_tensor.trace() / 2  # Average moment of inertia
+        I = I_tensor.trace / 2  # Average moment of inertia
 
     if I < 1e-14:
         raise ValueError("Degenerate configuration: I ≈ 0 (collision)")
@@ -318,7 +318,7 @@ def compute_jm_metric(
         >>> shape = ShapeSpaceState(r12=1.0, r23=1.0, r31=1.0,
         ...                          dr12_dt=0, dr23_dt=0, dr31_dt=0, L=1.0)
         >>> g_JM = compute_jm_metric(shape, masses, energy=-1.0, L_magnitude=1.0)
-        >>> print(g_JM.determinant())
+        >>> print(g_JM.determinant)
     """
     # Compute shape space metric
     g_shape = compute_shape_space_metric(shape_state, masses)
