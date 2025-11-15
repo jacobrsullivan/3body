@@ -13,7 +13,7 @@ Task 3.2.1: Data Generation
     - dataset_builder: HDF5 dataset assembly
     - dataset_validation: Dataset quality control
 
-Task 3.2.2: HNN Architecture (To be implemented)
+Task 3.2.2: HNN Architecture (Available)
     - jax_utils: JAX utility functions
     - hnn_architecture: Hamiltonian Neural Network models
     - hnn_training: Training loops and optimization
@@ -68,6 +68,47 @@ from .dataset_validation import (
     generate_validation_plots
 )
 
+# Task 3.2.2: HNN Architecture (Available)
+from .jax_utils import (
+    symplectic_matrix,
+    split_state,
+    join_state,
+    hamiltonian_vector_field,
+    poisson_bracket,
+    batch_hamiltonian_dynamics,
+    batch_poisson_bracket,
+    check_symplectic_form
+)
+
+from .hnn_architecture import (
+    HamiltonianNN,
+    SeparableHNN,
+    ConstrainedHNN,
+    create_hnn_model,
+    count_parameters as count_hnn_parameters
+)
+
+from .hnn_training import (
+    TrainState,
+    create_train_state,
+    trajectory_loss_fn,
+    train_step,
+    train_epoch,
+    evaluate,
+    train_hnn
+)
+
+from .model_utils import (
+    count_parameters,
+    save_checkpoint,
+    load_checkpoint,
+    integrate_trajectory_learned,
+    verify_energy_conservation,
+    compare_dynamics,
+    benchmark_model,
+    visualize_phase_portrait
+)
+
 __all__ = [
     # Parameter sampling
     'ParameterRanges',
@@ -100,7 +141,43 @@ __all__ = [
     'check_quality_thresholds',
     'print_validation_summary',
     'generate_validation_plots',
+
+    # JAX utils
+    'symplectic_matrix',
+    'split_state',
+    'join_state',
+    'hamiltonian_vector_field',
+    'poisson_bracket',
+    'batch_hamiltonian_dynamics',
+    'batch_poisson_bracket',
+    'check_symplectic_form',
+
+    # HNN architecture
+    'HamiltonianNN',
+    'SeparableHNN',
+    'ConstrainedHNN',
+    'create_hnn_model',
+    'count_hnn_parameters',
+
+    # HNN training
+    'TrainState',
+    'create_train_state',
+    'trajectory_loss_fn',
+    'train_step',
+    'train_epoch',
+    'evaluate',
+    'train_hnn',
+
+    # Model utilities
+    'count_parameters',
+    'save_checkpoint',
+    'load_checkpoint',
+    'integrate_trajectory_learned',
+    'verify_energy_conservation',
+    'compare_dynamics',
+    'benchmark_model',
+    'visualize_phase_portrait',
 ]
 
-__version__ = '0.1.0'
+__version__ = '0.2.0'  # Updated for Task 3.2.2
 __author__ = 'WP 3.2 Implementation'
