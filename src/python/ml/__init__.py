@@ -19,9 +19,10 @@ Task 3.2.2: HNN Architecture (Available)
     - hnn_training: Training loops and optimization
     - model_utils: Model utilities
 
-Task 3.2.3: Conservation Training (To be implemented)
+Task 3.2.3: Conservation Training (Available)
     - conservation_hnn: Dual-head HNN with invariant prediction
     - conservation_loss: Physics-informed loss functions
+    - symmetry_transforms: Noether regularization via symmetries
     - conservation_training: Two-stage training pipeline
 
 Task 3.2.4: Validation (To be implemented)
@@ -109,6 +110,43 @@ from .model_utils import (
     visualize_phase_portrait
 )
 
+# Task 3.2.3: Conservation Training (Available)
+from .conservation_hnn import (
+    ConservationHNN,
+    MultiInvariantHNN,
+    create_conservation_hnn
+)
+
+from .conservation_loss import (
+    trajectory_loss as conservation_trajectory_loss,
+    conservation_loss,
+    noether_regularizer,
+    involution_loss,
+    regularization_loss,
+    combined_loss,
+    compute_conservation_violation
+)
+
+from .symmetry_transforms import (
+    time_reversal_transform,
+    permutation_transform_s1,
+    rotation_transform,
+    virial_scaling_transform,
+    compose_transforms,
+    get_symmetry_transforms_3body,
+    test_symmetry_preservation
+)
+
+from .conservation_training import (
+    ConservationTrainState,
+    create_conservation_train_state,
+    train_step_stage1,
+    train_step_stage2,
+    evaluate_conservation,
+    train_epoch as conservation_train_epoch,
+    two_stage_training
+)
+
 __all__ = [
     # Parameter sampling
     'ParameterRanges',
@@ -177,7 +215,39 @@ __all__ = [
     'compare_dynamics',
     'benchmark_model',
     'visualize_phase_portrait',
+
+    # Conservation HNN
+    'ConservationHNN',
+    'MultiInvariantHNN',
+    'create_conservation_hnn',
+
+    # Conservation losses
+    'conservation_trajectory_loss',
+    'conservation_loss',
+    'noether_regularizer',
+    'involution_loss',
+    'regularization_loss',
+    'combined_loss',
+    'compute_conservation_violation',
+
+    # Symmetry transforms
+    'time_reversal_transform',
+    'permutation_transform_s1',
+    'rotation_transform',
+    'virial_scaling_transform',
+    'compose_transforms',
+    'get_symmetry_transforms_3body',
+    'test_symmetry_preservation',
+
+    # Conservation training
+    'ConservationTrainState',
+    'create_conservation_train_state',
+    'train_step_stage1',
+    'train_step_stage2',
+    'evaluate_conservation',
+    'conservation_train_epoch',
+    'two_stage_training',
 ]
 
-__version__ = '0.2.0'  # Updated for Task 3.2.2
+__version__ = '0.3.0'  # Updated for Task 3.2.3
 __author__ = 'WP 3.2 Implementation'
