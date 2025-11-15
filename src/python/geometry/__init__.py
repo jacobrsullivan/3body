@@ -6,6 +6,7 @@ This module implements:
     - Curvature two-form (Task 2.1.2)
     - Jacobi-Maupertuis metric (Task 2.1.3)
     - Riemann curvature tensors (Task 2.1.3)
+    - Lifted JM metrics on S¹ bundle and KS-Spinor manifold (Task 3.1.1)
 
 Mathematical Background:
     When we reduce the 3-body problem by translations and rotations,
@@ -16,6 +17,10 @@ Mathematical Background:
     2. Curvature F = dA: measures obstruction to integrability
     3. JM metric: Riemannian metric at fixed energy
     4. Scalar curvature R: diagnostic for chaos (R < 0 ⟺ chaos)
+
+    For WP3 (invariant discovery), we extend this to lifted spaces:
+    5. S¹ bundle metric: 4D metric on shape space × S¹
+    6. KS-Spinor metric: 9D metric on regularized spinor manifold
 """
 
 from .locked_inertia import compute_locked_inertia_tensor, LockedInertiaTensor
@@ -44,6 +49,18 @@ from .riemann_curvature import (
     compute_scalar_curvature,
     compute_ricci_tensor,
 )
+from .lifted_jm_metric import (
+    BundleMetric,
+    KSMetric,
+    KSSpinorCoords,
+    compute_s1_bundle_metric,
+    compute_s1_jm_metric,
+    compute_ks_mass_matrix,
+    compute_ks_potential,
+    compute_ks_jm_metric,
+    validate_s1_metric_properties,
+    compare_s1_vs_base_metric,
+)
 
 __all__ = [
     # Locked inertia
@@ -69,4 +86,15 @@ __all__ = [
     "CurvatureTensors",
     "compute_scalar_curvature",
     "compute_ricci_tensor",
+    # Lifted JM metrics (WP 3.1)
+    "BundleMetric",
+    "KSMetric",
+    "KSSpinorCoords",
+    "compute_s1_bundle_metric",
+    "compute_s1_jm_metric",
+    "compute_ks_mass_matrix",
+    "compute_ks_potential",
+    "compute_ks_jm_metric",
+    "validate_s1_metric_properties",
+    "compare_s1_vs_base_metric",
 ]

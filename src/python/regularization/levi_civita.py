@@ -226,3 +226,73 @@ def spinor_norm(u: np.ndarray) -> float:
         Norm
     """
     return np.sqrt(spinor_product(u, u))
+
+
+def levi_civita_transform(u: np.ndarray) -> np.ndarray:
+    """
+    Standard KS transformation: r = L(u) · u.
+
+    This is the main transformation from 4D spinor to 3D position vector.
+
+    Args:
+        u: 4D spinor vector
+
+    Returns:
+        r: 3D position vector
+
+    Properties:
+        - |r| = |u|² (bilinear relation)
+        - Regularizes collisions (r → 0 when u → 0 smoothly)
+
+    Example:
+        >>> u = np.array([1.0, 1.0, 0.0, 0.0])
+        >>> r = levi_civita_transform(u)
+        >>> print(r)  # [0, 2, 0]
+        >>> print(np.linalg.norm(r))  # 2.0
+        >>> print(np.dot(u, u))  # 2.0 (so |r| = |u|²)
+    """
+    return levi_civita_map(u, u)
+
+
+def levi_civita_jacobian(u: np.ndarray) -> np.ndarray:
+    """
+    Compute Jacobian of KS transformation: ∂r/∂u.
+
+    For r = L(u) · u, we have:
+        ∂r/∂u = L(u) + (∂L/∂u) · u
+
+    Since L(u) is linear in u components, the full Jacobian is:
+        J_ij = ∂r_i/∂u_j = L_ij(u) + Σ_k (∂L_ik/∂u_j) u_k
+
+    Args:
+        u: 4D spinor (u₀, u₁, u₂, u₃)
+
+    Returns:
+        J: Jacobian matrix (3×4)
+
+    Derivation:
+        r = L(u)·u where L(u) is the Levi-Civita matrix:
+            x = u₀² - u₁² - u₂² + u₃²
+            y = 2(u₀u₁ + u₂u₃)
+            z = 2(u₀u₂ - u₁u₃)
+
+        Taking derivatives:
+            ∂x/∂u = [2u₀, -2u₁, -2u₂, 2u₃]
+            ∂y/∂u = [2u₁, 2u₀, 2u₃, 2u₂]
+            ∂z/∂u = [2u₂, -2u₃, 2u₀, -2u₁]
+
+    Example:
+        >>> u = np.array([1.0, 0.0, 0.0, 0.0])
+        >>> J = levi_civita_jacobian(u)
+        >>> print(J.shape)  # (3, 4)
+    """
+    u0, u1, u2, u3 = u
+
+    # Direct computation of Jacobian from explicit formulas
+    J = np.array([
+        [2*u0, -2*u1, -2*u2,  2*u3],  # ∂x/∂u
+        [2*u1,  2*u0,  2*u3,  2*u2],  # ∂y/∂u
+        [2*u2, -2*u3,  2*u0, -2*u1]   # ∂z/∂u
+    ])
+
+    return J
