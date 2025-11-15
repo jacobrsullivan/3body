@@ -25,10 +25,12 @@ Task 3.2.3: Conservation Training (Available)
     - symmetry_transforms: Noether regularization via symmetries
     - conservation_training: Two-stage training pipeline
 
-Task 3.2.4: Validation (To be implemented)
-    - validation: Conservation verification
-    - ood_tests: Out-of-distribution testing
+Task 3.2.4: Validation (Available)
+    - validation: Conservation verification on trajectories
+    - ood_tests: Out-of-distribution generalization testing
     - independence_test: Functional independence analysis
+    - wp31_comparison: Comparison with WP 3.1 geometric methods
+    - validation_report: Automated comprehensive reporting
 """
 
 # Task 3.2.1: Data Generation (Available)
@@ -147,6 +149,56 @@ from .conservation_training import (
     two_stage_training
 )
 
+# Task 3.2.4: Validation (Available)
+from .validation import (
+    TrajectoryValidation,
+    verify_conservation_single_trajectory,
+    verify_conservation_batch,
+    compare_with_known_invariant,
+    long_term_conservation_test,
+    energy_surface_validation,
+    phase_space_coverage_validation
+)
+
+from .ood_tests import (
+    OODTestResult,
+    test_parameter_extrapolation,
+    test_temporal_extrapolation,
+    test_extreme_mass_ratios,
+    test_high_eccentricity,
+    test_near_collisions,
+    compute_ood_degradation,
+    ood_test_suite
+)
+
+from .independence_test import (
+    IndependenceTestResult,
+    gradient_rank_test,
+    correlation_test,
+    involution_test,
+    jacobian_determinant_test,
+    mutual_information_test,
+    test_functional_independence,
+    test_liouville_integrability
+)
+
+from .wp31_comparison import (
+    ComparisonResult,
+    compare_invariants,
+    detect_functional_relationship,
+    compare_with_energy,
+    compare_with_angular_momentum,
+    cross_method_validation,
+    method_comparison_summary
+)
+
+from .validation_report import (
+    ValidationReport,
+    generate_validation_report,
+    print_report,
+    save_report
+)
+
 __all__ = [
     # Parameter sampling
     'ParameterRanges',
@@ -247,7 +299,51 @@ __all__ = [
     'evaluate_conservation',
     'conservation_train_epoch',
     'two_stage_training',
+
+    # Validation
+    'TrajectoryValidation',
+    'verify_conservation_single_trajectory',
+    'verify_conservation_batch',
+    'compare_with_known_invariant',
+    'long_term_conservation_test',
+    'energy_surface_validation',
+    'phase_space_coverage_validation',
+
+    # OOD tests
+    'OODTestResult',
+    'test_parameter_extrapolation',
+    'test_temporal_extrapolation',
+    'test_extreme_mass_ratios',
+    'test_high_eccentricity',
+    'test_near_collisions',
+    'compute_ood_degradation',
+    'ood_test_suite',
+
+    # Independence tests
+    'IndependenceTestResult',
+    'gradient_rank_test',
+    'correlation_test',
+    'involution_test',
+    'jacobian_determinant_test',
+    'mutual_information_test',
+    'test_functional_independence',
+    'test_liouville_integrability',
+
+    # WP31 comparison
+    'ComparisonResult',
+    'compare_invariants',
+    'detect_functional_relationship',
+    'compare_with_energy',
+    'compare_with_angular_momentum',
+    'cross_method_validation',
+    'method_comparison_summary',
+
+    # Validation reporting
+    'ValidationReport',
+    'generate_validation_report',
+    'print_report',
+    'save_report',
 ]
 
-__version__ = '0.3.0'  # Updated for Task 3.2.3
+__version__ = '1.0.0'  # Updated for Task 3.2.4 (complete WP 3.2)
 __author__ = 'WP 3.2 Implementation'
