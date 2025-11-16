@@ -9,7 +9,7 @@ Methods:
 - Randomized SVD (scalable approximation)
 """
 
-from typing import Optional, Tuple
+from typing import Optional, Tuple, List
 import numpy as np
 import scipy.sparse as sp
 import scipy.sparse.linalg as spla
