@@ -1,9 +1,9 @@
 # Work Package 3: Discovery of Candidate Invariants ($\widetilde{I}$)
 ## Documentation Index and Quick Start Guide
 
-**Version**: 1.0
-**Last Updated**: 2025-11-14
-**Status**: Complete Design Documentation - Ready for Implementation
+**Version**: 1.1
+**Last Updated**: 2025-11-16
+**Status**: Complete Design Documentation - Ready for Implementation (WP3.3 Enhanced)
 
 ---
 
@@ -25,12 +25,25 @@ While the three-body problem is provably non-integrable in the standard phase sp
 WP3/
 ├── README.md (this file)
 ├── WP3-Complete-Overview.md          # Executive summary and architecture
+│
 ├── WP3.1-Geometric-Search-Summary.md # Deterministic PDE methods
-├── WP3.2-ML-Discovery-Summary.md     # Machine learning approach
-├── WP3.3-Symbolic-Regression-Summary.md  # Symbolic consolidation
+├── WP3.1-IMPLEMENTATION-COMPLETE.md  # WP3.1 completion status
 ├── Task-3.1.1-Implementation-Plan.md # Lifted JM Metric (detailed)
 ├── Task-3.1.2-Implementation-Plan.md # Killing PDE Formulation (detailed)
-└── [Additional task plans as needed]
+├── Task-3.1.3-Implementation-Plan.md # Numerical PDE Solution (detailed)
+├── Task-3.1.4-Implementation-Plan.md # Integral Conversion & Filtering (detailed)
+│
+├── WP3.2-ML-Discovery-Summary.md     # Machine learning approach
+├── WP3.2-Implementation-Roadmap.md   # ML implementation roadmap
+├── Task-3.2.1-Implementation-Plan.md # Data Generation (detailed)
+├── Task-3.2.2-Implementation-Plan.md # HNN/SympNet Architecture (detailed)
+├── Task-3.2.3-Implementation-Plan.md # Conservation Training (detailed)
+├── Task-3.2.4-Implementation-Plan.md # Validation & Testing (detailed)
+│
+├── WP3.3-Symbolic-Regression-Summary.md   # Symbolic consolidation
+├── Task-3.3.1-Implementation-Plan.md # Symbolic Regression Pipeline (NEW)
+├── Task-3.3.2-Implementation-Plan.md # Basis Function Optimization (NEW)
+└── Task-3.3.3-Implementation-Plan.md # Candidate Ranking & Consolidation (NEW)
 ```
 
 ---
@@ -89,11 +102,13 @@ This document provides:
 **What**: Convert numerical candidates to analytical expressions
 **Duration**: 10-12 days
 **Key Tasks**:
-- 3.3.1: Implement SINDy and PySR pipelines
-- 3.3.2: Optimize physics-informed basis functions
-- 3.3.3: Consolidate and rank all candidates
+- 3.3.1: Implement SINDy and PySR pipelines ([Task-3.3.1-Implementation-Plan.md](Task-3.3.1-Implementation-Plan.md))
+- 3.3.2: Optimize physics-informed basis functions ([Task-3.3.2-Implementation-Plan.md](Task-3.3.2-Implementation-Plan.md))
+- 3.3.3: Consolidate and rank all candidates ([Task-3.3.3-Implementation-Plan.md](Task-3.3.3-Implementation-Plan.md))
 
 **Dependencies**: Requires outputs from WP 3.1 and/or 3.2
+
+**Start With**: [`Task-3.3.1-Implementation-Plan.md`](Task-3.3.1-Implementation-Plan.md) for symbolic regression pipeline.
 
 ---
 
@@ -446,6 +461,13 @@ See individual summary documents for detailed references:
 ---
 
 ## Version History
+
+- **v1.1** (2025-11-16): WP3.3 Complete Documentation
+  - Added Task-3.3.1-Implementation-Plan.md (Symbolic Regression Pipeline)
+  - Added Task-3.3.2-Implementation-Plan.md (Basis Function Optimization)
+  - Added Task-3.3.3-Implementation-Plan.md (Candidate Ranking & Consolidation)
+  - WP3.3 now has complete task-level documentation matching WP3.1/3.2
+  - Total: 3 new detailed implementation plans (~5,600 lines)
 
 - **v1.0** (2025-11-14): Initial complete documentation release
   - All three track summaries complete
