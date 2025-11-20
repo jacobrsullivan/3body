@@ -788,11 +788,6 @@ def evaluate_time_energy_constraint(
     return g_time_energy
 ```
 
----
-
-I'll continue creating the rest of the AMENDED_WP2.3 document. Due to length, let me complete it:
-
----
 
 ## Part C: Time-Regularized Constrained Dynamics
 
