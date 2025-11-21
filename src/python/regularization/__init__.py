@@ -1,21 +1,25 @@
 """
 Kustaanheimo-Stiefel (KS) Regularization for the Three-Body Problem.
 
-This module implements the KS spinor transformation, which:
-1. Embeds 3D space into 4D spinor space
-2. Regularizes collisions (singularities become regular)
-3. Reveals hidden symmetries through spinor algebra
+This module implements the KS spinor transformation with time regularization:
+1. Spatial Lift: Embeds 3D space into 4D spinor space
+2. Temporal Lift: Sundman time transformation (dt/ds = r)
+3. Combined: (4+1)-dimensional regularization eliminating singularities
 
 Mathematical Framework:
-    3D position r ∈ ℝ³ → 4D spinor u ∈ ℝ⁴
+    Spatial: 3D position r ∈ ℝ³ → 4D spinor u ∈ ℝ⁴
     Bilinear relation: r = L(u)·u where L is the Levi-Civita matrix
     Key property: |r|² = |u|⁴, so r = |u|²
 
+    Temporal: dt/ds = Ω(u) = |u|² (time reparametrization)
+    Extended phase space: (u, p_u, s, K, t, E) ∈ R^10
+
 For three-body problem:
     Apply pairwise to all three relative vectors (r12, r23, r31)
-    Result: 12D spinor space, constrained to effective 9D
+    Result: 12D spatial + 2D temporal = 14D extended space
 
-Task: WP 2.3 - KS Spinor "Pairwise" Lift
+Task: WP 2.3 - KS Spinor "Pairwise" Lift with Time Regularization
+References: AMENDED_WP2.3-KS-Spinor-Lift-Implementation-Plan.md
 """
 
 from .levi_civita import (
@@ -51,6 +55,31 @@ from .constrained_dynamics import (
     verify_collision_regularization,
     compare_with_s1_lift,
 )
+# Time regularization (NEW - AMENDED documents)
+from .extended_phase_space import (
+    ExtendedKSState,
+    create_extended_ks_state,
+    compute_time_dilation_history,
+    compute_energy_drift,
+    validate_extended_trajectory,
+)
+from .sundman import (
+    TimeTransformationStrategy,
+    TimeDilationResult,
+    SundmanTransformation,
+    compute_time_dilation_single,
+    compute_time_dilation_threebody,
+    compute_time_dilation_from_spinors,
+    integrate_physical_time,
+    compute_effective_timestep,
+)
+from .time_synchronizer import (
+    DualTimeTrajectory,
+    TimeSynchronizer,
+    validate_time_consistency,
+    resample_to_physical_time,
+    compute_time_dilation_profile,
+)
 
 __all__ = [
     # Levi-Civita operations
@@ -81,4 +110,25 @@ __all__ = [
     "project_onto_constraints",
     "verify_collision_regularization",
     "compare_with_s1_lift",
+    # Extended phase space with time (NEW)
+    "ExtendedKSState",
+    "create_extended_ks_state",
+    "compute_time_dilation_history",
+    "compute_energy_drift",
+    "validate_extended_trajectory",
+    # Sundman time transformations (NEW)
+    "TimeTransformationStrategy",
+    "TimeDilationResult",
+    "SundmanTransformation",
+    "compute_time_dilation_single",
+    "compute_time_dilation_threebody",
+    "compute_time_dilation_from_spinors",
+    "integrate_physical_time",
+    "compute_effective_timestep",
+    # Time synchronization (NEW)
+    "DualTimeTrajectory",
+    "TimeSynchronizer",
+    "validate_time_consistency",
+    "resample_to_physical_time",
+    "compute_time_dilation_profile",
 ]
