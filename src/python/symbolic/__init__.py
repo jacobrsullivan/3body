@@ -152,6 +152,34 @@ from .candidate_ranking import (
     generate_candidate_report
 )
 
+# Spinor basis (AMENDED WP3.3)
+from .spinor_basis import (
+    position_to_spinor,
+    spinor_to_position,
+    compute_spinor_norm,
+    quaternion_product,
+    construct_spinor_basis,
+    test_ks_transformation
+)
+
+# Enhanced validation (AMENDED WP3.3)
+from .enhanced_validation import (
+    MultiScaleResult,
+    multi_scale_conservation_test,
+    detect_quasi_periodic_structure,
+    long_time_stability_test
+)
+
+# Interpretability and function classification (AMENDED WP3.3)
+from .interpretability import (
+    FunctionType,
+    InterpretabilityScore,
+    classify_function_type,
+    compute_interpretability_score,
+    detect_physical_symmetries,
+    generate_physical_hints
+)
+
 __all__ = [
     # Basis functions
     'BasisFunction',
@@ -214,6 +242,28 @@ __all__ = [
     'create_candidate_from_wp31_killing',
     'create_candidate_from_wp32_ml',
     'generate_candidate_report',
+
+    # Spinor basis (AMENDED WP3.3)
+    'position_to_spinor',
+    'spinor_to_position',
+    'compute_spinor_norm',
+    'quaternion_product',
+    'construct_spinor_basis',
+    'test_ks_transformation',
+
+    # Enhanced validation (AMENDED WP3.3)
+    'MultiScaleResult',
+    'multi_scale_conservation_test',
+    'detect_quasi_periodic_structure',
+    'long_time_stability_test',
+
+    # Interpretability (AMENDED WP3.3)
+    'FunctionType',
+    'InterpretabilityScore',
+    'classify_function_type',
+    'compute_interpretability_score',
+    'detect_physical_symmetries',
+    'generate_physical_hints',
 ]
 
 __version__ = '1.0.0'
