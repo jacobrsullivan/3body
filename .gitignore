@@ -13,6 +13,10 @@ pip-delete-this-directory.txt
 *.egg-info/
 dist/
 build/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
 
 # C++
 *.o
