@@ -1,0 +1,47 @@
+"""
+Symbolic Lift Hamiltonians for WP 4.2 Phase II (Upstairs Analysis).
+
+This module provides symbolic (SymPy-based) implementations of extended
+Hamiltonians for the S¹ bundle and KS-Spinor lifts constructed in WP2.
+
+The symbolic approach enables:
+- Exact computation of Hessians ∇²H̃
+- Derivation of upstairs variational equations
+- Application of Kovacic algorithm to upstairs NVEs
+- Verification of abelian Galois structure in lifted space
+
+Submodules:
+- s1_symbolic: S¹ bundle extended Hamiltonian
+- ks_symbolic: KS-Spinor extended Hamiltonian (TODO)
+- common: Shared symbolic utilities
+"""
+
+from . import s1_symbolic
+from . import common
+
+# Import main classes
+from .s1_symbolic import (
+    S1BundleHamiltonian,
+    create_s1_hamiltonian_cr3bp,
+    create_s1_hamiltonian_general_3bp
+)
+
+from .common import (
+    SymbolicHamiltonianSystem,
+    compute_symplectic_gradient,
+    compute_hessian
+)
+
+__all__ = [
+    # Modules
+    's1_symbolic',
+    'common',
+    # S¹ bundle
+    'S1BundleHamiltonian',
+    'create_s1_hamiltonian_cr3bp',
+    'create_s1_hamiltonian_general_3bp',
+    # Common utilities
+    'SymbolicHamiltonianSystem',
+    'compute_symplectic_gradient',
+    'compute_hessian',
+]
