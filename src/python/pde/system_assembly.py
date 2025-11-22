@@ -309,8 +309,7 @@ def assemble_killing_tensor_system(
     if m_total * n_total > 1e10:  # > 10 billion entries if dense
         print(f"  WARNING: Potential memory issues. Estimated sparse: {m_total * n * 8 / 1024**3:.2f} GB")
 
-    # TODO: Implement full assembly (similar structure to vector case)
-    # For now, create placeholder
+    # Build in COO format, convert at end
     rows = []
     cols = []
     data = []
@@ -331,10 +330,11 @@ def assemble_killing_tensor_system(
             q,
             epsilon=epsilon
         )
-        Gamma = christoffel.components
+        Gamma = christoffel.components  # (n, n, n)
 
         neighbors = mesh.neighbor_indices[pt_idx]
         if len(neighbors) < 2 * n:
+            # Not enough neighbors for finite differences
             continue
 
         neighbor_points = mesh.points[neighbors]
@@ -347,22 +347,101 @@ def assemble_killing_tensor_system(
                     row_idx = pt_idx * m_per_point + eq_idx_local
                     eq_idx_local += 1
 
-                    # Equation: ∇_k K_ij + ∇_i K_jk + ∇_j K_ki - (Christoffel terms) = 0
+                    # Killing tensor equation (symmetrized):
+                    # ∇_k K_ij + ∇_i K_jk + ∇_j K_ki = 0
+                    #
+                    # Expanded:
+                    # ∂_k K_ij + ∂_i K_jk + ∂_j K_ki - (Christoffel terms) = 0
 
-                    # This involves:
-                    # 1. ∂_k K_ij
-                    # 2. Christoffel contractions: -Γ^ℓ_ki K_ℓj - Γ^ℓ_kj K_iℓ
-                    # Plus cyclic permutations
+                    # Term 1: ∂_k K_ij (derivative of K_ij in direction k)
+                    comp_ij = _symmetric_index(i, j, n)
+                    for offset, coeff in zip(offsets, coeffs):
+                        target_point = q.copy()
+                        target_point[k] += offset * epsilon
 
-                    # Implementation details omitted for brevity
-                    # Would follow similar pattern to vector case but with tensor indices
+                        distances = np.linalg.norm(neighbor_points - target_point, axis=1)
+                        closest_idx = neighbors[np.argmin(distances)]
 
-                    # Placeholder: add small diagonal entry
-                    comp_idx = _symmetric_index(i, j, n)
-                    col_idx = pt_idx * n_components + comp_idx
-                    rows.append(row_idx)
-                    cols.append(col_idx)
-                    data.append(1e-10)  # Placeholder
+                        col_idx = closest_idx * n_components + comp_ij
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(coeff / epsilon)
+
+                    # Term 2: ∂_i K_jk (derivative of K_jk in direction i)
+                    comp_jk = _symmetric_index(j, k, n)
+                    for offset, coeff in zip(offsets, coeffs):
+                        target_point = q.copy()
+                        target_point[i] += offset * epsilon
+
+                        distances = np.linalg.norm(neighbor_points - target_point, axis=1)
+                        closest_idx = neighbors[np.argmin(distances)]
+
+                        col_idx = closest_idx * n_components + comp_jk
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(coeff / epsilon)
+
+                    # Term 3: ∂_j K_ki (derivative of K_ki in direction j)
+                    comp_ki = _symmetric_index(k, i, n)
+                    for offset, coeff in zip(offsets, coeffs):
+                        target_point = q.copy()
+                        target_point[j] += offset * epsilon
+
+                        distances = np.linalg.norm(neighbor_points - target_point, axis=1)
+                        closest_idx = neighbors[np.argmin(distances)]
+
+                        col_idx = closest_idx * n_components + comp_ki
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(coeff / epsilon)
+
+                    # Christoffel terms: -Γ^ℓ_ki K_ℓj - Γ^ℓ_kj K_iℓ (for ∇_k K_ij)
+                    for ell in range(n):
+                        # -Γ^ℓ_ki K_ℓj
+                        comp_ellj = _symmetric_index(ell, j, n)
+                        col_idx = pt_idx * n_components + comp_ellj
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, k, i])
+
+                        # -Γ^ℓ_kj K_iℓ
+                        comp_iell = _symmetric_index(i, ell, n)
+                        col_idx = pt_idx * n_components + comp_iell
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, k, j])
+
+                    # Christoffel terms for ∇_i K_jk
+                    for ell in range(n):
+                        # -Γ^ℓ_ij K_ℓk
+                        comp_ellk = _symmetric_index(ell, k, n)
+                        col_idx = pt_idx * n_components + comp_ellk
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, i, j])
+
+                        # -Γ^ℓ_ik K_jℓ
+                        comp_jell = _symmetric_index(j, ell, n)
+                        col_idx = pt_idx * n_components + comp_jell
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, i, k])
+
+                    # Christoffel terms for ∇_j K_ki
+                    for ell in range(n):
+                        # -Γ^ℓ_jk K_ℓi
+                        comp_elli = _symmetric_index(ell, i, n)
+                        col_idx = pt_idx * n_components + comp_elli
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, j, k])
+
+                        # -Γ^ℓ_ji K_kℓ
+                        comp_kell = _symmetric_index(k, ell, n)
+                        col_idx = pt_idx * n_components + comp_kell
+                        rows.append(row_idx)
+                        cols.append(col_idx)
+                        data.append(-Gamma[ell, j, i])
 
     A_coo = sp.coo_matrix((data, (rows, cols)), shape=(m_total, n_total))
 
@@ -376,8 +455,10 @@ def assemble_killing_tensor_system(
         raise ValueError(f"Unknown sparse format: {sparse_format}")
 
     if verbose:
-        print(f"Assembly complete (PLACEHOLDER - not fully implemented):")
+        print(f"Assembly complete:")
         print(f"  Non-zeros: {A.nnz:,}")
+        print(f"  Sparsity: {100 * (1 - A.nnz / (m_total * n_total)):.2f}%")
+        print(f"  Memory: {A.data.nbytes / 1024**2:.2f} MB")
 
     return A
 

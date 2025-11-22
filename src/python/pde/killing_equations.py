@@ -248,8 +248,29 @@ class DiscretizedKillingSystem:
         Returns:
             Basis for null space (Killing fields)
         """
-        # To be implemented in Task 3.1.3
-        raise NotImplementedError("PDE solution in Task 3.1.3")
+        from .null_space import (
+            compute_null_space_svd,
+            compute_null_space_iterative
+        )
+
+        # Solve for null space based on method
+        if method == 'svd':
+            null_space_basis = compute_null_space_svd(
+                self.A_matrix,
+                tolerance=kwargs.get('tolerance', 1e-8),
+                verbose=kwargs.get('verbose', False)
+            )
+        elif method == 'iterative':
+            null_space_basis = compute_null_space_iterative(
+                self.A_matrix,
+                max_rank=kwargs.get('max_rank', None),
+                tolerance=kwargs.get('tolerance', 1e-8),
+                verbose=kwargs.get('verbose', False)
+            )
+        else:
+            raise ValueError(f"Unknown method: {method}. Use 'svd' or 'iterative'")
+
+        return null_space_basis
 
 
 def discretize_killing_vector_pde(
