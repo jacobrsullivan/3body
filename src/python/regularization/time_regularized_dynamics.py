@@ -144,8 +144,8 @@ def integrate_time_regularized_ks(
         # Reconstruct ExtendedKSState
         from .spinor_vector import SpinorVector
         state = ExtendedKSState(
-            u=SpinorVector(*u_vec),
-            p_u=SpinorVector(*p_u_vec),
+            u=SpinorVector(u_vec),
+            p_u=SpinorVector(p_u_vec),
             s=s,
             K=K,
             t=t,
@@ -163,9 +163,12 @@ def integrate_time_regularized_ks(
         Omega = state.time_dilation_factor  # Ω = ‖u‖²
         dt_ds = Omega
 
-        # Energy evolution (both conserved)
-        dK_ds = 0.0
-        dE_ds = 0.0
+        # Energy evolution
+        dE_ds = 0.0  # E is conserved
+
+        # K is not independent - recompute from K = E · Ω
+        # So dK/ds = E · dΩ/ds = E · d(‖u‖²)/ds = E · 2u·(du/ds) = E · 2u·p_u
+        dK_ds = E * 2.0 * np.dot(u_vec, p_u_vec)
 
         dz_ds = np.concatenate([
             du_ds,
@@ -177,8 +180,15 @@ def integrate_time_regularized_ks(
 
         return dz_ds
 
-    # Initial condition vector
-    z0 = initial_state.to_vector()
+    # Initial condition vector (without s, which is the independent variable)
+    # z = [u (4), p_u (4), t (1), K (1), E (1)] = 10 elements
+    z0 = np.concatenate([
+        initial_state.u.to_array(),
+        initial_state.p_u.to_array(),
+        [initial_state.t],
+        [initial_state.K],
+        [initial_state.E]
+    ])
 
     # Time points for output
     s_eval = np.linspace(s_span[0], s_span[1], n_points)
@@ -204,8 +214,8 @@ def integrate_time_regularized_ks(
         s = solution.t[i]
 
         state = ExtendedKSState(
-            u=SpinorVector(*z[0:4]),
-            p_u=SpinorVector(*z[4:8]),
+            u=SpinorVector(z[0:4]),
+            p_u=SpinorVector(z[4:8]),
             s=s,
             K=z[9],
             t=z[8],
@@ -301,12 +311,12 @@ def create_kepler_initial_state(
     # Physical energy
     E = 0.5 * v0**2 - mu / r0
 
-    # Create extended state
+    # Create extended state (K computed automatically from E and Ω)
+    # Convert SpinorVector to array
     state = create_extended_ks_state(
-        u=ks_state.u,
-        p_u=ks_state.u_prime,
+        u=ks_state.u.to_array(),
+        p_u=ks_state.u_prime.to_array(),
         s=0.0,
-        K=E * r0,  # K = E · Ω, Ω = r at start
         t=0.0,
         E=E
     )
