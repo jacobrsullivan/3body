@@ -80,6 +80,13 @@ from .time_synchronizer import (
     resample_to_physical_time,
     compute_time_dilation_profile,
 )
+from .time_regularized_dynamics import (
+    TimeRegularizedHamiltonian,
+    TimeRegularizedTrajectory,
+    integrate_time_regularized_ks,
+    validate_kepler_orbit,
+    create_kepler_initial_state,
+)
 
 __all__ = [
     # Levi-Civita operations
@@ -131,4 +138,10 @@ __all__ = [
     "validate_time_consistency",
     "resample_to_physical_time",
     "compute_time_dilation_profile",
+    # Time-regularized dynamics (NEW - Phase 2)
+    "TimeRegularizedHamiltonian",
+    "TimeRegularizedTrajectory",
+    "integrate_time_regularized_ks",
+    "validate_kepler_orbit",
+    "create_kepler_initial_state",
 ]
