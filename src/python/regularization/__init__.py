@@ -93,6 +93,31 @@ from .threebody_time_regularized import (
     ThreeBodyTrajectory,
     integrate_threebody_time_regularized,
 )
+from .integrability_analysis import (
+    ConservationAnalysis,
+    analyze_energy_conservation,
+    analyze_temporal_structure,
+    verify_symplectic_structure,
+    comprehensive_integrability_analysis,
+    generate_integrability_report,
+)
+from .validation_studies import (
+    ValidationResult,
+    validate_collision_passage,
+    validate_energy_conservation_long_term,
+    validate_time_transformation_accuracy,
+    validate_k_e_omega_relation,
+    run_comprehensive_validation_suite,
+    generate_validation_report,
+)
+from .comparative_analysis import (
+    PerformanceBenchmark,
+    benchmark_time_regularized_integration,
+    compare_regularization_approaches,
+    analyze_accuracy_vs_efficiency,
+    run_comprehensive_benchmarks,
+    generate_comparative_report,
+)
 
 __all__ = [
     # Levi-Civita operations
@@ -155,4 +180,26 @@ __all__ = [
     "ThreeBodyTimeRegularizedHamiltonian",
     "ThreeBodyTrajectory",
     "integrate_threebody_time_regularized",
+    # Integrability analysis (NEW - Phase 4)
+    "ConservationAnalysis",
+    "analyze_energy_conservation",
+    "analyze_temporal_structure",
+    "verify_symplectic_structure",
+    "comprehensive_integrability_analysis",
+    "generate_integrability_report",
+    # Validation studies (NEW - Phase 5)
+    "ValidationResult",
+    "validate_collision_passage",
+    "validate_energy_conservation_long_term",
+    "validate_time_transformation_accuracy",
+    "validate_k_e_omega_relation",
+    "run_comprehensive_validation_suite",
+    "generate_validation_report",
+    # Comparative analysis (NEW - Phase 6)
+    "PerformanceBenchmark",
+    "benchmark_time_regularized_integration",
+    "compare_regularization_approaches",
+    "analyze_accuracy_vs_efficiency",
+    "run_comprehensive_benchmarks",
+    "generate_comparative_report",
 ]
