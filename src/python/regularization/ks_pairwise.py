@@ -75,6 +75,17 @@ class PairwiseSpinorState:
             self.u31_prime.to_array()
         ])
 
+    @property
+    def spinor_momenta(self) -> np.ndarray:
+        """
+        Stack all spinor momenta: shape (12,).
+
+        Note: In KS formulation, momenta = velocities in fictitious time.
+        This is an alias for spinor_velocities for compatibility with
+        RATTLE integrator terminology.
+        """
+        return self.spinor_velocities
+
     def to_vector(self) -> np.ndarray:
         """Convert to state vector [u, u']: shape (24,)"""
         return np.concatenate([
@@ -123,6 +134,35 @@ class PairwiseSpinorState:
             fictitious_time=s,
             real_time=t
         )
+
+    @classmethod
+    def from_coordinates_and_momenta(
+        cls,
+        u: np.ndarray,
+        p: np.ndarray,
+        s: float = 0.0,
+        t: Optional[float] = None
+    ) -> "PairwiseSpinorState":
+        """
+        Construct from coordinate and momentum arrays.
+
+        Args:
+            u: Spinor coordinates (12,) = [u12, u23, u31]
+            p: Spinor momenta (12,) = [p12, p23, p31]
+            s: Fictitious time
+            t: Real time
+
+        Returns:
+            PairwiseSpinorState
+        """
+        if len(u) != 12:
+            raise ValueError(f"Expected u of length 12, got {len(u)}")
+        if len(p) != 12:
+            raise ValueError(f"Expected p of length 12, got {len(p)}")
+
+        # Combine into single vector
+        vec = np.concatenate([u, p])
+        return cls.from_vector(vec, s, t)
 
     def to_cartesian(self) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
