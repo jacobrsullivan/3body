@@ -180,6 +180,54 @@ from .interpretability import (
     generate_physical_hints
 )
 
+# Elliptic basis (AMENDED WP3.3 Phase 2)
+from .elliptic_basis import (
+    jacobi_sn,
+    jacobi_cn,
+    jacobi_dn,
+    complete_elliptic_K,
+    complete_elliptic_E,
+    estimate_elliptic_parameter,
+    construct_elliptic_basis,
+    test_jacobi_identities
+)
+
+# Theta basis (AMENDED WP3.3 Phase 4)
+from .theta_basis import (
+    jacobi_theta1,
+    jacobi_theta2,
+    jacobi_theta3,
+    jacobi_theta4,
+    estimate_modular_parameter,
+    construct_theta_basis,
+    test_theta_identities
+)
+
+# Specialized search methods (AMENDED WP3.3)
+from .elliptic_search import (
+    EllipticSearchResult,
+    detect_elliptic_signature,
+    elliptic_pattern_match,
+    elliptic_sindy_hybrid,
+    search_elliptic_integral
+)
+
+from .spinor_search import (
+    SpinorSearchResult,
+    detect_regularization_benefit,
+    spinor_pattern_recognition,
+    spinor_sindy_search,
+    search_spinor_integral
+)
+
+# Multi-stage pipeline (AMENDED WP3.3)
+from .multi_stage_pipeline import (
+    SearchStage,
+    MultiStageResult,
+    analyze_trajectory_characteristics,
+    run_multi_stage_pipeline
+)
+
 __all__ = [
     # Basis functions
     'BasisFunction',
@@ -264,6 +312,43 @@ __all__ = [
     'compute_interpretability_score',
     'detect_physical_symmetries',
     'generate_physical_hints',
+
+    # Elliptic basis (AMENDED WP3.3 Phase 2)
+    'jacobi_sn',
+    'jacobi_cn',
+    'jacobi_dn',
+    'complete_elliptic_K',
+    'complete_elliptic_E',
+    'estimate_elliptic_parameter',
+    'construct_elliptic_basis',
+    'test_jacobi_identities',
+
+    # Theta basis (AMENDED WP3.3 Phase 4)
+    'jacobi_theta1',
+    'jacobi_theta2',
+    'jacobi_theta3',
+    'jacobi_theta4',
+    'estimate_modular_parameter',
+    'construct_theta_basis',
+    'test_theta_identities',
+
+    # Specialized search (AMENDED WP3.3)
+    'EllipticSearchResult',
+    'detect_elliptic_signature',
+    'elliptic_pattern_match',
+    'elliptic_sindy_hybrid',
+    'search_elliptic_integral',
+    'SpinorSearchResult',
+    'detect_regularization_benefit',
+    'spinor_pattern_recognition',
+    'spinor_sindy_search',
+    'search_spinor_integral',
+
+    # Multi-stage pipeline (AMENDED WP3.3)
+    'SearchStage',
+    'MultiStageResult',
+    'analyze_trajectory_characteristics',
+    'run_multi_stage_pipeline',
 ]
 
 __version__ = '1.0.0'
