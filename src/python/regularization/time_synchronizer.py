@@ -54,8 +54,13 @@ class DualTimeTrajectory:
         if self.states is not None and len(self.states) != len(self.s_values):
             raise ValueError("States length must match s_values")
 
-        if self.Omega_values is not None and len(self.Omega_values) != len(self.s_values):
-            raise ValueError("Omega_values length must match s_values")
+        if self.Omega_values is not None:
+            # Omega_values can be same length (value at each point) or one shorter (value during each step)
+            if len(self.Omega_values) not in [len(self.s_values), len(self.s_values) - 1]:
+                raise ValueError(
+                    f"Omega_values length must be {len(self.s_values)} or {len(self.s_values)-1}, "
+                    f"got {len(self.Omega_values)}"
+                )
 
     @property
     def length(self) -> int:
