@@ -90,19 +90,87 @@ def extract_positions_velocities_3body(
             raise ValueError(f"Unexpected dimension for cartesian: {n}")
 
     elif coordinate_type == "jacobi":
-        # Jacobi coordinates: Need to invert transformation
-        # Simplified - full implementation depends on exact Jacobi definition
-        # This is a placeholder
-        positions = np.zeros((3, 3))
-        velocities = np.zeros((3, 3))
-        # TODO: Implement Jacobi → Cartesian transformation
+        # Jacobi coordinates: Transform to Cartesian
+        # Standard definition:
+        #   rho1 = r2 - r1 (relative position of body 2 w.r.t. body 1)
+        #   rho2 = r3 - R_12 (position of body 3 w.r.t. CoM of 1,2)
+        #   R_CM = (m1*r1 + m2*r2 + m3*r3) / M_total
+
+        m1, m2, m3 = masses
+        M_total = m1 + m2 + m3
+        M12 = m1 + m2
+
+        if n == 9:  # 3D Jacobi
+            rho1 = q[:3]  # r2 - r1
+            rho2 = q[3:6]  # r3 - CoM(1,2)
+            R_CM = q[6:9]  # Center of mass
+
+            v_rho1 = v[:3]
+            v_rho2 = v[3:6]
+            v_CM = v[6:9]
+
+        elif n == 6:  # Planar Jacobi
+            rho1 = np.append(q[:2], 0)
+            rho2 = np.append(q[2:4], 0)
+            R_CM = np.append(q[4:6], 0)
+
+            v_rho1 = np.append(v[:2], 0)
+            v_rho2 = np.append(v[2:4], 0)
+            v_CM = np.append(v[4:6], 0)
+        else:
+            raise ValueError(f"Unexpected dimension for jacobi: {n}")
+
+        # Inverse transformation:
+        # r1 = R_CM - (m2/M12) * rho1 - (m3/M_total) * rho2
+        # r2 = R_CM + (m1/M12) * rho1 - (m3/M_total) * rho2
+        # r3 = R_CM + (M12/M_total) * rho2
+
+        r1 = R_CM - (m2/M12) * rho1 - (m3/M_total) * rho2
+        r2 = R_CM + (m1/M12) * rho1 - (m3/M_total) * rho2
+        r3 = R_CM + (M12/M_total) * rho2
+
+        positions = np.array([r1, r2, r3])
+
+        # Same transformation for velocities
+        v1 = v_CM - (m2/M12) * v_rho1 - (m3/M_total) * v_rho2
+        v2 = v_CM + (m1/M12) * v_rho1 - (m3/M_total) * v_rho2
+        v3 = v_CM + (M12/M_total) * v_rho2
+
+        velocities = np.array([v1, v2, v3])
 
     elif coordinate_type == "relative":
-        # Relative coordinates: r1 = 0 (COM), r2, r3 given
-        # Simplified placeholder
-        positions = np.zeros((3, 3))
-        velocities = np.zeros((3, 3))
-        # TODO: Implement proper reconstruction
+        # Relative coordinates: r1 at origin (COM frame), r2, r3 given
+        # This assumes center of mass frame: m1*r1 + m2*r2 + m3*r3 = 0
+
+        m1, m2, m3 = masses
+        M_total = m1 + m2 + m3
+
+        if n == 6:  # 3D relative (r2, r3 as 3-vectors)
+            r2 = q[:3]
+            r3 = q[3:6]
+            # Solve for r1 from COM constraint
+            r1 = -(m2*r2 + m3*r3) / m1
+
+            v2 = v[:3]
+            v3 = v[3:6]
+            v1 = -(m2*v2 + m3*v3) / m1
+
+            positions = np.array([r1, r2, r3])
+            velocities = np.array([v1, v2, v3])
+
+        elif n == 4:  # Planar relative
+            r2 = np.append(q[:2], 0)
+            r3 = np.append(q[2:4], 0)
+            r1 = -(m2*r2 + m3*r3) / m1
+
+            v2 = np.append(v[:2], 0)
+            v3 = np.append(v[2:4], 0)
+            v1 = -(m2*v2 + m3*v3) / m1
+
+            positions = np.array([r1, r2, r3])
+            velocities = np.array([v1, v2, v3])
+        else:
+            raise ValueError(f"Unexpected dimension for relative: {n}")
 
     else:
         raise ValueError(f"Unknown coordinate type: {coordinate_type}")

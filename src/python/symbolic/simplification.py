@@ -105,12 +105,100 @@ def round_coefficients(
     return expr.subs(substitutions)
 
 
+def verify_numerical_equivalence(
+    expr1: sp.Expr,
+    expr2: sp.Expr,
+    n_test_points: int = 1000,
+    tolerance: float = 1e-10,
+    domain_bounds: Tuple[float, float] = (-10.0, 10.0)
+) -> Tuple[bool, float]:
+    """
+    Verify two expressions are numerically equivalent.
+
+    Tests equivalence by evaluating at random points in the domain.
+
+    Args:
+        expr1: First expression
+        expr2: Second expression
+        n_test_points: Number of random test points
+        tolerance: Relative error tolerance
+        domain_bounds: (min, max) bounds for random sampling
+
+    Returns:
+        (is_equivalent, max_error): Whether equivalent and maximum relative error
+    """
+    # Get all free symbols
+    symbols = list(expr1.free_symbols | expr2.free_symbols)
+
+    if not symbols:
+        # Constant expressions - compare directly
+        try:
+            val1 = float(expr1)
+            val2 = float(expr2)
+            error = abs(val1 - val2)
+            return error < tolerance, error
+        except:
+            return False, float('inf')
+
+    # Lambdify for fast numerical evaluation
+    try:
+        f1 = sp.lambdify(symbols, expr1, 'numpy')
+        f2 = sp.lambdify(symbols, expr2, 'numpy')
+    except:
+        # Lambdification failed
+        return False, float('inf')
+
+    # Generate random test points
+    low, high = domain_bounds
+    errors = []
+
+    for _ in range(n_test_points):
+        # Random values for each symbol
+        args = [np.random.uniform(low, high) for _ in symbols]
+
+        try:
+            val1 = f1(*args)
+            val2 = f2(*args)
+
+            # Handle complex numbers
+            if np.iscomplexobj(val1) or np.iscomplexobj(val2):
+                val1 = complex(val1)
+                val2 = complex(val2)
+                error = abs(val1 - val2)
+            else:
+                val1 = float(val1)
+                val2 = float(val2)
+                error = abs(val1 - val2)
+
+            # Relative error
+            if abs(val1) > tolerance:
+                rel_error = error / abs(val1)
+            else:
+                rel_error = error
+
+            errors.append(rel_error)
+
+        except (ValueError, ZeroDivisionError, OverflowError, TypeError):
+            # Skip problematic points
+            continue
+
+    if not errors:
+        # No successful evaluations
+        return False, float('inf')
+
+    max_error = max(errors)
+    is_equivalent = max_error < tolerance
+
+    return is_equivalent, max_error
+
+
 def simplify_expression(
     expr: sp.Expr,
     method: str = 'auto',
     rational_coeffs: bool = True,
     trig_simplify: bool = True,
-    factor: bool = True
+    factor: bool = True,
+    verify_numerically: bool = True
 ) -> SimplificationResult:
     """
     Apply comprehensive simplification to expression.
@@ -121,9 +209,10 @@ def simplify_expression(
         rational_coeffs: Try to convert floats to rationals
         trig_simplify: Apply trigonometric simplifications
         factor: Attempt factorization
+        verify_numerically: Verify simplified expression is numerically equivalent
 
     Returns:
-        result: SimplificationResult with steps
+        result: SimplificationResult with steps and verification
 
     Example:
         >>> x, y = sp.symbols('x y')
@@ -177,12 +266,29 @@ def simplify_expression(
     simp_ops = count_operations(expr)
     reduction = simp_ops / orig_ops if orig_ops > 0 else 1.0
 
+    # Verify numerical equivalence
+    if verify_numerically:
+        is_equivalent, max_error = verify_numerical_equivalence(original, expr)
+        if not is_equivalent:
+            # Warn if simplification changed numerical behavior
+            import warnings
+            warnings.warn(
+                f"Simplification may have changed numerical behavior. "
+                f"Max error: {max_error:.2e}. Returning original expression.",
+                UserWarning
+            )
+            # Return original if verification fails
+            expr = original
+            steps = [("Original", original), ("Verification failed - returning original", original)]
+    else:
+        is_equivalent = True
+
     return SimplificationResult(
         original=original,
         simplified=expr,
         simplification_steps=steps,
         reduction_factor=reduction,
-        numerical_equivalence=True  # TODO: Verify numerically
+        numerical_equivalence=is_equivalent
     )
 
 
