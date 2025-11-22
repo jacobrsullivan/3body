@@ -152,6 +152,82 @@ from .candidate_ranking import (
     generate_candidate_report
 )
 
+# Spinor basis (AMENDED WP3.3)
+from .spinor_basis import (
+    position_to_spinor,
+    spinor_to_position,
+    compute_spinor_norm,
+    quaternion_product,
+    construct_spinor_basis,
+    test_ks_transformation
+)
+
+# Enhanced validation (AMENDED WP3.3)
+from .enhanced_validation import (
+    MultiScaleResult,
+    multi_scale_conservation_test,
+    detect_quasi_periodic_structure,
+    long_time_stability_test
+)
+
+# Interpretability and function classification (AMENDED WP3.3)
+from .interpretability import (
+    FunctionType,
+    InterpretabilityScore,
+    classify_function_type,
+    compute_interpretability_score,
+    detect_physical_symmetries,
+    generate_physical_hints
+)
+
+# Elliptic basis (AMENDED WP3.3 Phase 2)
+from .elliptic_basis import (
+    jacobi_sn,
+    jacobi_cn,
+    jacobi_dn,
+    complete_elliptic_K,
+    complete_elliptic_E,
+    estimate_elliptic_parameter,
+    construct_elliptic_basis,
+    test_jacobi_identities
+)
+
+# Theta basis (AMENDED WP3.3 Phase 4)
+from .theta_basis import (
+    jacobi_theta1,
+    jacobi_theta2,
+    jacobi_theta3,
+    jacobi_theta4,
+    estimate_modular_parameter,
+    construct_theta_basis,
+    test_theta_identities
+)
+
+# Specialized search methods (AMENDED WP3.3)
+from .elliptic_search import (
+    EllipticSearchResult,
+    detect_elliptic_signature,
+    elliptic_pattern_match,
+    elliptic_sindy_hybrid,
+    search_elliptic_integral
+)
+
+from .spinor_search import (
+    SpinorSearchResult,
+    detect_regularization_benefit,
+    spinor_pattern_recognition,
+    spinor_sindy_search,
+    search_spinor_integral
+)
+
+# Multi-stage pipeline (AMENDED WP3.3)
+from .multi_stage_pipeline import (
+    SearchStage,
+    MultiStageResult,
+    analyze_trajectory_characteristics,
+    run_multi_stage_pipeline
+)
+
 __all__ = [
     # Basis functions
     'BasisFunction',
@@ -214,6 +290,65 @@ __all__ = [
     'create_candidate_from_wp31_killing',
     'create_candidate_from_wp32_ml',
     'generate_candidate_report',
+
+    # Spinor basis (AMENDED WP3.3)
+    'position_to_spinor',
+    'spinor_to_position',
+    'compute_spinor_norm',
+    'quaternion_product',
+    'construct_spinor_basis',
+    'test_ks_transformation',
+
+    # Enhanced validation (AMENDED WP3.3)
+    'MultiScaleResult',
+    'multi_scale_conservation_test',
+    'detect_quasi_periodic_structure',
+    'long_time_stability_test',
+
+    # Interpretability (AMENDED WP3.3)
+    'FunctionType',
+    'InterpretabilityScore',
+    'classify_function_type',
+    'compute_interpretability_score',
+    'detect_physical_symmetries',
+    'generate_physical_hints',
+
+    # Elliptic basis (AMENDED WP3.3 Phase 2)
+    'jacobi_sn',
+    'jacobi_cn',
+    'jacobi_dn',
+    'complete_elliptic_K',
+    'complete_elliptic_E',
+    'estimate_elliptic_parameter',
+    'construct_elliptic_basis',
+    'test_jacobi_identities',
+
+    # Theta basis (AMENDED WP3.3 Phase 4)
+    'jacobi_theta1',
+    'jacobi_theta2',
+    'jacobi_theta3',
+    'jacobi_theta4',
+    'estimate_modular_parameter',
+    'construct_theta_basis',
+    'test_theta_identities',
+
+    # Specialized search (AMENDED WP3.3)
+    'EllipticSearchResult',
+    'detect_elliptic_signature',
+    'elliptic_pattern_match',
+    'elliptic_sindy_hybrid',
+    'search_elliptic_integral',
+    'SpinorSearchResult',
+    'detect_regularization_benefit',
+    'spinor_pattern_recognition',
+    'spinor_sindy_search',
+    'search_spinor_integral',
+
+    # Multi-stage pipeline (AMENDED WP3.3)
+    'SearchStage',
+    'MultiStageResult',
+    'analyze_trajectory_characteristics',
+    'run_multi_stage_pipeline',
 ]
 
 __version__ = '1.0.0'
