@@ -1,11 +1,16 @@
 """
-Validation module for WP 4.2: Complete Morales-Ramis Test.
+Validation module for WP 4: Complete Rigorous Validation and Falsification.
 
-This module implements the complete two-phase Morales-Ramis compatibility test:
-- Phase I: Downstairs (proving non-integrability in original coordinates)
-- Phase II: Upstairs (proving abelian Galois structure in lifted coordinates)
+This module implements the complete three-stage validation gauntlet:
 
-All phases (1-6) are now COMPLETE:
+WP 4.1 - ANALYTICAL VETTING (Liouville Criteria):
+✅ Poisson bracket computation (symbolic + numerical)
+✅ Conservation testing: {I, H} = 0
+✅ Involution testing: {I_i, I_j} = 0
+✅ Functional independence testing (Jacobian rank)
+✅ Complete analytical vetting pipeline
+
+WP 4.2 - MORALES-RAMIS TEST (Differential Galois Theory):
 ✅ Phase 1: Periodic orbit library
 ✅ Phase 2: Variational equations (downstairs)
 ✅ Phase 3: Kovacic algorithm and Morales-Ramis validator
@@ -13,24 +18,50 @@ All phases (1-6) are now COMPLETE:
 ✅ Phase 5: Upstairs variational equations
 ✅ Phase 6: Complete compatibility test
 
+WP 4.3 - NUMERICAL ROBUSTNESS (Statistical Validation):
+✅ Monte Carlo parameter sweep (10⁵-10⁶ trajectories)
+✅ Stress testing (collisions, chaos, high eccentricity)
+✅ Long-time validation (shadow Hamiltonian analysis)
+✅ Statistical reporting (plots, tables, LaTeX)
+
 Submodules:
+- poisson_brackets: Unified Poisson bracket computation
+- conservation_validator: Batch conservation testing
+- involution_tester: Pairwise involution testing
+- independence_tester: Functional independence via Jacobian rank
+- analytical_vetting: Complete WP 4.1 pipeline
 - periodic_orbits: Library of known periodic solutions
 - variational_equations: Downstairs Normal Variational Equations
 - kovacic: Kovacic algorithm for differential Galois groups
 - morales_ramis_validator: Downstairs Morales-Ramis test orchestration
 - upstairs_variational: Upstairs variational equations in lifted space
 - compatibility_test: Complete two-phase validation framework
+- monte_carlo_validator: Large-scale Monte Carlo validation
+- stress_tester: Extreme scenario testing
+- long_time_validator: Long-time integration and shadow Hamiltonian
+- statistical_reporter: Publication-quality reports and plots
 """
 
-# Phase 1-3 modules (IMPLEMENTED)
+# WP 4.1 - Analytical Vetting modules
+from . import poisson_brackets
+from . import conservation_validator
+from . import involution_tester
+from . import independence_tester
+from . import analytical_vetting
+
+# WP 4.2 - Morales-Ramis Test modules
 from . import periodic_orbits
 from . import variational_equations
 from . import kovacic
 from . import morales_ramis_validator
-
-# Phase 5-6 modules (IMPLEMENTED)
 from . import upstairs_variational
 from . import compatibility_test
+
+# WP 4.3 - Numerical Robustness modules
+from . import monte_carlo_validator
+from . import stress_tester
+from . import long_time_validator
+from . import statistical_reporter
 
 # Commonly used classes and functions
 from .periodic_orbits import (
@@ -80,13 +111,24 @@ from .compatibility_test import (
 )
 
 __all__ = [
-    # Modules
+    # WP 4.1 modules
+    'poisson_brackets',
+    'conservation_validator',
+    'involution_tester',
+    'independence_tester',
+    'analytical_vetting',
+    # WP 4.2 modules
     'periodic_orbits',
     'variational_equations',
     'kovacic',
     'morales_ramis_validator',
     'upstairs_variational',
     'compatibility_test',
+    # WP 4.3 modules
+    'monte_carlo_validator',
+    'stress_tester',
+    'long_time_validator',
+    'statistical_reporter',
     # Periodic orbits
     'PeriodicOrbit',
     'get_orbit_catalog',
