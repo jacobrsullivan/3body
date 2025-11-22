@@ -87,6 +87,12 @@ from .time_regularized_dynamics import (
     validate_kepler_orbit,
     create_kepler_initial_state,
 )
+from .threebody_time_regularized import (
+    PairwiseSpinorStateWithTime,
+    ThreeBodyTimeRegularizedHamiltonian,
+    ThreeBodyTrajectory,
+    integrate_threebody_time_regularized,
+)
 
 __all__ = [
     # Levi-Civita operations
@@ -144,4 +150,9 @@ __all__ = [
     "integrate_time_regularized_ks",
     "validate_kepler_orbit",
     "create_kepler_initial_state",
+    # Three-body time-regularized dynamics (NEW - Phase 3)
+    "PairwiseSpinorStateWithTime",
+    "ThreeBodyTimeRegularizedHamiltonian",
+    "ThreeBodyTrajectory",
+    "integrate_threebody_time_regularized",
 ]
