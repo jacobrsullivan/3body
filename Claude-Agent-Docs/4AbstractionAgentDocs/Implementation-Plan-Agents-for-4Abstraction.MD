@@ -20,6 +20,13 @@ This document provides a comprehensive implementation plan for integrating the *
 6. [Validation Strategy](#6-validation-strategy)
 7. [Integration with Existing WP System](#7-integration-with-existing-wp-system)
 8. [Success Criteria](#8-success-criteria)
+9. [Quick Start Guide for Users](#9-quick-start-guide-for-users)
+10. [Troubleshooting Guide](#10-troubleshooting-guide)
+11. [Appendices](#appendices)
+    - A. Reference to Source Documentation
+    - B. Example Diagrams for 3body Project
+    - C. Glossary
+    - D. Next Steps
 
 ---
 
@@ -1318,6 +1325,16 @@ Main Context (has access to all skills):
 
 ## 8. Success Criteria
 
+### Current Status Update (2025-11-23)
+
+**Phase 0: COMPLETE ✓**
+- All infrastructure files created
+- Agent definitions operational
+- 5 skills with references and templates deployed
+- Flight Recorder initialized
+
+**Next Phase**: Phase 1 (Manual-Forensic Mode) - Ready to begin
+
 ### Phase 0 (Setup)
 - [x] Directory structure created
 - [x] Agent definitions written and validated
@@ -1357,6 +1374,226 @@ Main Context (has access to all skills):
 
 ---
 
+## 9. Quick Start Guide for Users
+
+### 9.1 How to Request a Diagram
+
+Once Phase 1 is complete, users can request architectural diagrams using natural language:
+
+**Example Requests**:
+
+```
+"Show me the system context for the 3body project"
+→ Triggers: Project Navigator → C4 Context Skill → Architect Agent
+
+"How does the validation gauntlet workflow execute?"
+→ Triggers: Project Navigator → Sequence Skill → Architect Agent
+
+"What's the relationship between trajectories and validation reports?"
+→ Triggers: Project Navigator → ERD Skill → Architect Agent
+
+"What are the lifecycle states of a candidate integral?"
+→ Triggers: Project Navigator → State Machine Skill → Architect Agent
+```
+
+### 9.2 Understanding the Response
+
+The system will:
+1. **Classify** your question (Scope/Time/Data/Logic)
+2. **Extract** information from codebase artifacts
+3. **Generate** Mermaid diagram
+4. **Validate** against abstraction rules
+5. **Return** diagram file location + inline preview
+
+**Response Format**:
+```markdown
+Classification: [Abstraction Type]
+Diagram Location: diagrams/[type]/[filename].mmd
+Status: ✓ VALIDATED
+
+[Mermaid diagram preview]
+
+Summary: [Brief explanation of what the diagram shows]
+```
+
+### 9.3 Viewing Generated Diagrams
+
+**Option 1: GitHub/GitLab Preview**
+- Push to repository
+- View .mmd files directly in web UI (auto-renders)
+
+**Option 2: Local Rendering**
+```bash
+# Install Mermaid CLI
+npm install -g @mermaid-js/mermaid-cli
+
+# Render to SVG
+mmdc -i diagrams/context/3body_system.mmd -o diagrams/context/3body_system.svg
+
+# Render to PNG
+mmdc -i diagrams/context/3body_system.mmd -o diagrams/context/3body_system.png
+```
+
+**Option 3: Live Editor**
+- Copy diagram content
+- Paste into https://mermaid.live
+- Edit and export
+
+### 9.4 Updating Diagrams
+
+Diagrams should be regenerated when:
+- Major architectural changes occur (new WP components)
+- External dependencies added/removed
+- Validation workflow changes
+- Data model evolves
+
+**Best Practice**: Run diagram generation before creating PRs for architectural changes.
+
+---
+
+## 10. Troubleshooting Guide
+
+### 10.1 Common Issues
+
+#### Issue: "Diagram syntax validation failed"
+
+**Symptoms**: Analyst rejects diagram with Mermaid syntax errors
+
+**Causes**:
+- Invalid relationship syntax
+- Unclosed quotes in labels
+- Wrong diagram type declaration
+
+**Solutions**:
+1. Copy diagram to https://mermaid.live to identify syntax error
+2. Check template files for correct syntax examples
+3. Review Mermaid documentation for diagram type
+4. Ensure special characters are escaped in labels
+
+#### Issue: "Extraction script not found"
+
+**Symptoms**: Architect agent reports missing script in Phase 2
+
+**Causes**:
+- Scripts not yet implemented (Phase 2 incomplete)
+- Script permissions incorrect
+- Python dependencies missing
+
+**Solutions**:
+```bash
+# Check if script exists
+ls -la .claude/skills/diagram-*/scripts/
+
+# Fix permissions
+chmod +x .claude/skills/*/scripts/*.py
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+#### Issue: "Diagram violates abstraction rules"
+
+**Symptoms**: Analyst provides "REVISIONS NEEDED" feedback
+
+**Causes**:
+- Mixed abstraction levels (e.g., technical details in C4)
+- Missing required elements (e.g., no error paths in sequence)
+- Wrong diagram type for question
+
+**Solutions**:
+1. Read abstraction-specific rules in `.claude/skills/diagram-[type]/references/rules.md`
+2. Review examples in templates
+3. Consider if different abstraction type is more appropriate
+4. Apply de-noising techniques (remove technical details)
+
+#### Issue: "Flight Recorder log is empty"
+
+**Symptoms**: No extraction documentation in `diagrams/session_log.md`
+
+**Causes**:
+- Architect agent not following protocol
+- Write permissions issue
+- Log file deleted
+
+**Solutions**:
+```bash
+# Recreate log file
+touch diagrams/session_log.md
+chmod 644 diagrams/session_log.md
+
+# Verify Architect agent includes Flight Recorder step in workflow
+```
+
+### 10.2 Debugging Extraction Scripts
+
+#### Enable Verbose Mode
+
+```python
+# Add to extraction scripts
+import logging
+logging.basicConfig(level=logging.DEBUG)
+
+# Run script manually
+python .claude/skills/diagram-c4/scripts/extract_dependencies.py --verbose
+```
+
+#### Test Scripts Independently
+
+```bash
+# Test dependency extraction
+python .claude/skills/diagram-c4/scripts/extract_dependencies.py > /tmp/deps.json
+cat /tmp/deps.json
+
+# Test HDF5 schema inspection
+python .claude/skills/diagram-erd/scripts/inspect_hdf5_schema.py data/tier2/hdf5/orbit_0042.h5
+```
+
+### 10.3 Validation Troubleshooting
+
+#### Mermaid CLI Issues
+
+```bash
+# Check installation
+mmdc --version
+
+# Reinstall if needed
+npm uninstall -g @mermaid-js/mermaid-cli
+npm install -g @mermaid-js/mermaid-cli
+
+# Test on simple diagram
+echo 'graph TD; A-->B;' > /tmp/test.mmd
+mmdc -i /tmp/test.mmd -o /tmp/test.svg
+```
+
+#### Agent Communication Issues
+
+If Architect and Analyst agents aren't communicating:
+1. Check that both agent files exist in `.claude/agents/`
+2. Verify agent prompts include review request protocol
+3. Ensure main context can spawn both agent types
+4. Check for errors in agent execution logs
+
+### 10.4 Performance Optimization
+
+#### Slow Extraction
+
+If extraction takes >30 seconds:
+- **For C4**: Cache dependency parsing results
+- **For Sequence**: Limit trace depth to major components
+- **For ERD**: Parse only primary domain models, skip audit tables
+- **For State**: Use AST analysis instead of regex
+
+#### Large Diagrams
+
+If diagrams become unreadable (>20 entities):
+- **Solution**: Create focused sub-diagrams
+- **C4**: Separate diagram per major subsystem
+- **Sequence**: One diagram per workflow
+- **ERD**: Group related entities into domain-specific ERDs
+- **State**: One diagram per entity (already required)
+
+---
+
 ## Appendices
 
 ### A. Reference to Source Documentation
@@ -1373,7 +1610,234 @@ Skill creation patterns from:
 
 ---
 
-### B. Glossary
+### B. Example Diagrams for 3body Project
+
+These examples serve as targets for Phase 1 implementation:
+
+#### Example 1: C4 Context Diagram
+
+```mermaid
+C4Context
+    title System Context - 3body Lift-Integrability Research Project
+
+    Person(researcher, "Research Scientist", "Designs experiments and analyzes results")
+    Person(validator, "Validation Engineer", "Reviews and validates discovered integrals")
+
+    System_Boundary(threebody, "3body Project") {
+        System(integrator, "Integration Engine", "Generates high-precision trajectories using symplectic integrators")
+        System(validator_sys, "Validation Gauntlet", "Three-stage validation pipeline for candidate integrals")
+        System(discovery, "Discovery System", "Symbolic regression and neural network based integral discovery")
+        System(geometry, "Geometric Tools", "Coordinate transformations and lift constructions")
+    }
+
+    System_Ext(hdf5_store, "HDF5 Data Store", "Persistent trajectory and validation result storage")
+    System_Ext(pysr, "PySR (Julia)", "Symbolic regression engine")
+    System_Ext(rebound_lib, "REBOUND Library", "Adaptive IAS15 integrator")
+    System_Ext(qd_lib, "QD Library", "Double-double precision arithmetic")
+
+    Rel(researcher, integrator, "Configures mass ratios and initial conditions")
+    Rel(integrator, hdf5_store, "Stores trajectories in HDF5 format")
+    Rel(integrator, rebound_lib, "Uses for Tier 1 integration")
+    Rel(integrator, qd_lib, "Uses for Tier 2 high-precision integration")
+    Rel(discovery, hdf5_store, "Reads trajectories for pattern analysis")
+    Rel(discovery, pysr, "Submits regression tasks")
+    Rel(validator_sys, hdf5_store, "Reads trajectories for validation")
+    Rel(validator, validator_sys, "Reviews validation reports")
+    Rel(geometry, integrator, "Provides coordinate transforms")
+```
+
+**Extraction Sources**:
+- `pyproject.toml` (dependencies: h5py, rebound, pysr)
+- `environment.yml` (QD library system dependency)
+- `src/python/` module structure
+- `CLAUDE.md` WP definitions
+
+#### Example 2: Sequence Diagram - Validation Gauntlet
+
+```mermaid
+sequenceDiagram
+    participant User as Research Scientist
+    participant Pipeline as Multi-Stage Pipeline
+    participant Store as HDF5 Store
+    participant AV as Analytical Vetting
+    participant MR as Morales-Ramis Validator
+    participant MC as Monte Carlo Validator
+
+    User->>Pipeline: validate_candidate(integral, tier=2)
+    Pipeline->>Store: load_trajectories(tier=2, count=100)
+    Store-->>Pipeline: trajectories[100]
+
+    Note over Pipeline: Stage 1: Analytical Vetting
+    Pipeline->>AV: validate(integral, trajectories)
+    AV->>AV: Check {I, H} = 0 (conservation)
+    AV->>AV: Check {I, J} = 0 (involution)
+    AV->>AV: Check rank(Jacobian) = n (independence)
+
+    alt Conservation fails
+        AV-->>Pipeline: {passed: false, reason: "conservation_violation"}
+        Pipeline-->>User: REJECTED (Stage 1 failed)
+    else Conservation passes
+        AV-->>Pipeline: {passed: true, error: 1.2e-14}
+
+        Note over Pipeline: Stage 2: Morales-Ramis Test
+        Pipeline->>MR: test_integrability(integral, periodic_orbit)
+        MR->>MR: Compute variational equations
+        MR->>MR: Apply Kovacic algorithm
+        MR->>MR: Determine Galois group
+
+        alt Galois group non-abelian
+            MR-->>Pipeline: {passed: false, group: "S4"}
+            Pipeline-->>User: REJECTED (Non-integrable)
+        else Galois group abelian
+            MR-->>Pipeline: {passed: true, group: "Z/2Z"}
+
+            Note over Pipeline: Stage 3: Monte Carlo Validation
+            Pipeline->>MC: statistical_validation(integral, samples=10000)
+            MC->>Store: load_random_trajectories(10000)
+            Store-->>MC: diverse_trajectories[10000]
+            MC->>MC: Compute conservation across parameter space
+
+            alt Robustness < 95%
+                MC-->>Pipeline: {passed: false, robustness: 87.3%}
+                Pipeline-->>User: REJECTED (Not robust)
+            else Robustness ≥ 95%
+                MC-->>Pipeline: {passed: true, robustness: 99.2%}
+                Pipeline-->>User: VALIDATED ✓
+            end
+        end
+    end
+```
+
+**Extraction Sources**:
+- `tests/validation/test_analytical_vetting.py`
+- `src/python/validation/multi_stage_pipeline.py`
+- `User-Guides/User-Guide-WP4.md`
+
+#### Example 3: Conceptual ERD - Trajectory Validation Domain
+
+```mermaid
+erDiagram
+    TRAJECTORY ||--o{ VALIDATION_REPORT : "tested_with"
+    CANDIDATE_INTEGRAL ||--o{ VALIDATION_REPORT : "evaluated_on"
+    TRAJECTORY ||--|| CHAOS_INDICATOR : "classified_by"
+    PERIODIC_ORBIT ||--|| MORALES_RAMIS_RESULT : "generates"
+    CANDIDATE_INTEGRAL ||--o| MORALES_RAMIS_RESULT : "validated_via"
+    CANDIDATE_INTEGRAL }o--|| DISCOVERY_METHOD : "discovered_by"
+
+    TRAJECTORY {
+        string orbit_id
+        float mass_ratio
+        float jacobi_constant
+        int tier
+        string coordinate_system
+    }
+
+    CANDIDATE_INTEGRAL {
+        string integral_id
+        string symbolic_form
+        string basis_type
+        float discovery_confidence
+    }
+
+    VALIDATION_REPORT {
+        string report_id
+        float conservation_error
+        bool rank_test_passed
+        bool involution_test_passed
+        bool overall_passed
+    }
+
+    CHAOS_INDICATOR {
+        float megno_value
+        string classification
+        float lyapunov_estimate
+    }
+
+    PERIODIC_ORBIT {
+        string family_name
+        float period
+        string symmetry_group
+    }
+
+    MORALES_RAMIS_RESULT {
+        string galois_group
+        bool integrable_upstairs
+        string variational_equation
+    }
+
+    DISCOVERY_METHOD {
+        string method_name
+        string basis_family
+    }
+```
+
+**Extraction Sources**:
+- `src/python/validation/analytical_vetting.py` (ValidationReport class)
+- `data/tier2/hdf5/` schema inspection
+- `src/python/symbolic/` (discovery method classes)
+
+**De-noising Applied**:
+- Removed: created_at, updated_at, deleted_at, version
+- Collapsed: Hypothetical join tables (none in current design)
+- Simplified: Technical types to conceptual types (float, string, bool)
+
+#### Example 4: State Machine - Candidate Integral Lifecycle
+
+```mermaid
+stateDiagram-v2
+    [*] --> Discovered : Symbolic regression/HNN discovers pattern
+
+    Discovered --> AnalyticalVetting : Enter validation gauntlet
+
+    AnalyticalVetting --> Rejected : Conservation test fails<br/>{I,H} ≠ 0
+    AnalyticalVetting --> MoralesRamisTest : Conservation test passes<br/>|ΔI/I| < 10⁻¹⁴
+
+    MoralesRamisTest --> Rejected : Galois group non-abelian<br/>Classical non-integrability confirmed
+    MoralesRamisTest --> MonteCarloValidation : Galois group abelian<br/>Potential lift-integrability
+
+    MonteCarloValidation --> Rejected : Statistical robustness < 95%<br/>Not universal across parameter space
+    MonteCarloValidation --> Validated : Statistical robustness ≥ 95%<br/>Robust across 10⁴+ samples
+
+    Rejected --> [*]
+    Validated --> Published : Manuscript submission
+    Published --> [*]
+
+    note right of AnalyticalVetting
+        Tests:
+        - {I, H} = 0 (conservation)
+        - {I_i, I_j} = 0 (involution)
+        - rank(∇I) = n (independence)
+    end note
+
+    note right of MoralesRamisTest
+        Differential Galois Theory:
+        - Variational equations
+        - Kovacic algorithm
+        - Identity component test
+    end note
+
+    note right of MonteCarloValidation
+        Statistical validation:
+        - 10⁴ trajectories
+        - Parameter space sweep
+        - Chaos/regular stratification
+    end note
+```
+
+**Extraction Sources**:
+- `src/python/validation/analytical_vetting.py` (ValidationStage enum)
+- `src/python/validation/multi_stage_pipeline.py` (transition logic)
+- `tests/validation/test_multi_stage_pipeline.py` (legal transitions)
+
+**State Verification**:
+- ✓ All states reachable from initial state
+- ✓ Terminal states: Rejected, Published
+- ✓ No dead states (except terminals)
+- ✓ All transitions backed by code in multi_stage_pipeline.py
+
+---
+
+### C. Glossary
 
 - **4 Abstractions**: Scope, Time, Data, Logic (the four diagram types)
 - **Architect**: Builder agent responsible for diagram generation
@@ -1386,17 +1850,50 @@ Skill creation patterns from:
 
 ---
 
-### C. Next Steps
+### D. Next Steps
 
-1. **Review this plan** with stakeholders
-2. **Prioritize phases** based on immediate needs
-3. **Assign implementation** to team members or agents
-4. **Set milestones** for each phase completion
-5. **Iterate** based on real-world usage feedback
+**Immediate Actions** (Post-Phase 0):
+
+1. **Begin Phase 1** - Manual-Forensic Mode implementation
+   - Generate 4 example diagrams using existing skills
+   - Test Project Navigator routing with sample questions
+   - Validate all diagrams through Analyst agent
+   - Document extraction process in Flight Recorder
+
+2. **Prioritize Phase 2** scripts based on extraction complexity:
+   - Priority 1: `extract_dependencies.py` (already exists - enhance)
+   - Priority 2: `inspect_hdf5_schema.py` (ERD critical)
+   - Priority 3: `extract_state_transitions.py` (AST analysis)
+   - Priority 4: `trace_workflow.py` (complex, may defer)
+
+3. **Establish quality gates**:
+   - All Phase 1 diagrams must pass Analyst review
+   - Mermaid syntax validation required before PR merge
+   - Flight Recorder documentation required for all extractions
+
+4. **Set milestones**:
+   - Phase 1 complete: 1 week (4 validated diagrams)
+   - Phase 2 complete: 2 weeks (all scripts operational)
+   - Phase 3 complete: 1 week (automation hooks deployed)
+   - Phase 4 complete: 1 week (CI integration)
+   - **Total timeline**: 5 weeks to full deployment
+
+5. **Iterate based on feedback**:
+   - Collect user feedback during Phase 1 testing
+   - Refine abstraction rules based on real-world usage
+   - Adjust extraction scripts for 3body-specific patterns
+
+**Long-term Vision**:
+- Extend to additional abstraction types (deployment, monitoring)
+- Integrate with documentation generation pipeline
+- Create interactive diagram exploration UI
+- Enable real-time drift detection on commits
 
 ---
 
-**Document Version**: 1.0
+**Document Version**: 2.0
 **Created**: 2025-11-23
-**Status**: Draft for Review
+**Last Updated**: 2025-11-23
+**Status**: Complete - Ready for Phase 1 Implementation
 **Owner**: 3body Project Team
+**Phase 0 Completion**: ✓ Confirmed (2025-11-23)
