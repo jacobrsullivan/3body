@@ -1,0 +1,23 @@
+%% ERD: [Data Model Name]
+%% Generated: [YYYY-MM-DD HH:MM]
+%% Sources: [list of examined files]
+%% Architect: abstraction-architect
+
+erDiagram
+    ENTITY1 ||--o{ ENTITY2 : "relationship_name"
+    ENTITY2 ||--|| ENTITY3 : "relationship_name"
+
+    ENTITY1 {
+        string attribute1
+        int attribute2
+        float attribute3
+    }
+
+    ENTITY2 {
+        string attribute1
+        bool attribute2
+    }
+
+    ENTITY3 {
+        string attribute1
+    }

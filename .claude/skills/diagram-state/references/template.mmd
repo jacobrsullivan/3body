@@ -1,0 +1,21 @@
+%% State Machine: [Entity Name] Lifecycle
+%% Generated: [YYYY-MM-DD HH:MM]
+%% Sources: [list of examined files]
+%% Architect: abstraction-architect
+
+stateDiagram-v2
+    [*] --> InitialState : Initial event
+
+    InitialState --> State2 : Event/condition
+
+    State2 --> State3 : Event/condition
+    State2 --> TerminalState : Failure condition
+
+    State3 --> TerminalState : Success condition
+
+    TerminalState --> [*]
+
+    note right of State2
+        Additional context
+        or validation logic
+    end note
