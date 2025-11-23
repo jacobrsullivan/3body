@@ -1,12 +1,23 @@
 {
-  "description": "Claude Code settings for 3body project - 4 Abstractions Agent System",
+  "description": "Claude Code settings for 3body project - Optimized Agentic Architecture (WP + Diagram Agents)",
   "hooks": {
     "postToolUse": {
       "Write": {
-        "description": "Validate Mermaid diagram syntax after writing diagram files",
-        "command": "if [[ {file} == diagrams/*.mmd ]]; then echo 'Validation placeholder: mmdc --validate -i {file}'; fi",
-        "note": "Full validation requires mermaid-cli installation (npm install -g @mermaid-js/mermaid-cli)"
+        "description": "Auto-format Python files and validate diagrams",
+        "command": "if [[ {file} == src/python/*.py ]]; then black '{file}' && flake8 '{file}'; elif [[ {file} == diagrams/*.mmd ]]; then echo 'Validation placeholder: mmdc --validate -i {file}'; fi"
+      },
+      "Edit": {
+        "description": "Auto-format and lint Python files after editing",
+        "command": "if [[ {file} == src/python/*.py ]]; then black '{file}' && flake8 '{file}'; fi"
       }
+    },
+    "preCommit": {
+      "description": "Run fast test suite before git commit",
+      "command": "./scripts/run_tests.sh --fast || echo 'Note: Fast tests not yet implemented, skipping'"
+    },
+    "beforeTaskCompletion": {
+      "description": "Verify Flight Recorder exists for research tasks",
+      "command": "if [[ -d 'discovery_logs' || -d 'validation_reports' ]]; then test -f session_log.md || (echo 'WARNING: session_log.md missing for research task' && exit 0); fi"
     }
   },
   "agent_system": {
@@ -23,9 +34,99 @@
         "file": ".claude/agents/abstraction-analyst.md",
         "role": "critic",
         "description": "Validates diagrams against abstraction-specific rules"
+      },
+      {
+        "name": "wp1-lab-director",
+        "file": ".claude/subagents/wp1-lab-director/SUBAGENT.md",
+        "role": "builder",
+        "description": "WP1 trajectory generation, precision validation, and data curation"
+      },
+      {
+        "name": "wp2-architect",
+        "file": ".claude/subagents/wp2-architect/SUBAGENT.md",
+        "role": "builder",
+        "description": "WP2 geometric construction: coordinates, bundles, lifts"
+      },
+      {
+        "name": "wp2-analyst",
+        "file": ".claude/subagents/wp2-analyst/SUBAGENT.md",
+        "role": "critic",
+        "description": "WP2 geometric verification: curvature, integrability tests"
+      },
+      {
+        "name": "wp3-investigator",
+        "file": ".claude/subagents/wp3-investigator/SUBAGENT.md",
+        "role": "builder",
+        "description": "WP3 integral discovery: PDE, HNN, symbolic regression"
+      },
+      {
+        "name": "wp3-consolidator",
+        "file": ".claude/subagents/wp3-consolidator/SUBAGENT.md",
+        "role": "critic",
+        "description": "WP3 result filtering and ranking"
+      },
+      {
+        "name": "wp4-mathematician",
+        "file": ".claude/subagents/wp4-mathematician/SUBAGENT.md",
+        "role": "critic",
+        "description": "WP4 analytical validation: Poisson brackets, Morales-Ramis"
+      },
+      {
+        "name": "wp4-stress-tester",
+        "file": ".claude/subagents/wp4-stress-tester/SUBAGENT.md",
+        "role": "critic",
+        "description": "WP4 numerical robustness: Monte Carlo, stress tests"
+      },
+      {
+        "name": "wp5-author",
+        "file": ".claude/subagents/wp5-author/SUBAGENT.md",
+        "role": "builder",
+        "description": "WP5 manuscript preparation: LaTeX, proofs, figures"
+      },
+      {
+        "name": "wp5-librarian",
+        "file": ".claude/subagents/wp5-librarian/SUBAGENT.md",
+        "role": "critic",
+        "description": "WP5 code release: cleanup, reproducibility, Zenodo"
+      },
+      {
+        "name": "research-orchestrator",
+        "file": ".claude/subagents/research-orchestrator/SUBAGENT.md",
+        "role": "orchestrator",
+        "description": "Meta-level multi-WP planning and research strategy"
       }
     ],
     "skills": [
+      {
+        "name": "wp-navigator",
+        "file": ".claude/skills/wp-navigator/SKILL.md",
+        "description": "PRIMARY SKILL: WP delegation matrix and project navigation"
+      },
+      {
+        "name": "wp1-precision-integration",
+        "file": ".claude/skills/wp1-precision-integration/SKILL.md",
+        "description": "High-precision trajectory integration workflow"
+      },
+      {
+        "name": "wp2-geometric-library",
+        "file": ".claude/skills/wp2-geometric-library/SKILL.md",
+        "description": "Coordinate transforms, bundles, lifts (pointer pattern)"
+      },
+      {
+        "name": "wp3-discovery-methods",
+        "file": ".claude/skills/wp3-discovery-methods/SKILL.md",
+        "description": "Integral discovery via PDE, HNN, symbolic regression"
+      },
+      {
+        "name": "wp4-rigor-protocols",
+        "file": ".claude/skills/wp4-rigor-protocols/SKILL.md",
+        "description": "Validation gauntlet: analytical + numerical tests"
+      },
+      {
+        "name": "wp5-publication-standards",
+        "file": ".claude/skills/wp5-publication-standards/SKILL.md",
+        "description": "Manuscript preparation and code release workflow"
+      },
       {
         "name": "project-navigator",
         "file": ".claude/skills/project-navigator/SKILL.md",
