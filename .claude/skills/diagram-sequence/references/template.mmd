@@ -1,0 +1,19 @@
+%% Sequence: [Workflow Name]
+%% Generated: [YYYY-MM-DD HH:MM]
+%% Sources: [list of examined files]
+%% Architect: abstraction-architect
+
+sequenceDiagram
+    participant User
+    participant System1 as System Name
+    participant System2 as System Name
+
+    User->>System1: request_action(parameters)
+    System1->>System2: process_data(data)
+    System2-->>System1: result
+
+    alt Success condition
+        System1-->>User: SUCCESS
+    else Failure condition
+        System1-->>User: ERROR (details)
+    end

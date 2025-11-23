@@ -1,0 +1,21 @@
+%% C4 Context: [Title]
+%% Generated: [YYYY-MM-DD HH:MM]
+%% Sources: [list of examined files/artifacts]
+%% Architect: abstraction-architect
+
+C4Context
+    title System Context - [Project Name]
+
+    Person(user_id, "User Role", "User description")
+
+    System_Boundary(boundary_id, "Project Name") {
+        System(system1_id, "System Name", "System description")
+        System(system2_id, "System Name", "System description")
+    }
+
+    System_Ext(external1_id, "External System Name", "External system description")
+    System_Ext(external2_id, "External System Name", "External system description")
+
+    Rel(user_id, system1_id, "Interaction description")
+    Rel(system1_id, external1_id, "Interaction description")
+    Rel(system2_id, external2_id, "Interaction description")

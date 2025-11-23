@@ -1,0 +1,71 @@
+{
+  "description": "Claude Code settings for 3body project - 4 Abstractions Agent System",
+  "hooks": {
+    "postToolUse": {
+      "Write": {
+        "description": "Validate Mermaid diagram syntax after writing diagram files",
+        "command": "if [[ {file} == diagrams/*.mmd ]]; then echo 'Validation placeholder: mmdc --validate -i {file}'; fi",
+        "note": "Full validation requires mermaid-cli installation (npm install -g @mermaid-js/mermaid-cli)"
+      }
+    }
+  },
+  "agent_system": {
+    "enabled": true,
+    "agents": [
+      {
+        "name": "abstraction-architect",
+        "file": ".claude/agents/abstraction-architect.md",
+        "role": "builder",
+        "description": "Extracts architectural information and generates Mermaid diagrams"
+      },
+      {
+        "name": "abstraction-analyst",
+        "file": ".claude/agents/abstraction-analyst.md",
+        "role": "critic",
+        "description": "Validates diagrams against abstraction-specific rules"
+      }
+    ],
+    "skills": [
+      {
+        "name": "project-navigator",
+        "file": ".claude/skills/project-navigator/SKILL.md",
+        "description": "Routes architectural questions to appropriate abstraction"
+      },
+      {
+        "name": "diagram-c4",
+        "file": ".claude/skills/diagram-c4/SKILL.md",
+        "description": "Generates C4 Context diagrams (Scope)"
+      },
+      {
+        "name": "diagram-sequence",
+        "file": ".claude/skills/diagram-sequence/SKILL.md",
+        "description": "Generates Sequence diagrams (Time)"
+      },
+      {
+        "name": "diagram-erd",
+        "file": ".claude/skills/diagram-erd/SKILL.md",
+        "description": "Generates Conceptual ERDs (Data)"
+      },
+      {
+        "name": "diagram-state",
+        "file": ".claude/skills/diagram-state/SKILL.md",
+        "description": "Generates State Machine diagrams (Logic)"
+      }
+    ]
+  },
+  "diagram_output": {
+    "base_directory": "diagrams/",
+    "subdirectories": {
+      "context": "C4 Context diagrams",
+      "sequence": "Sequence diagrams",
+      "erd": "Conceptual ERDs",
+      "state": "State machines"
+    },
+    "flight_recorder": "diagrams/session_log.md"
+  },
+  "validation": {
+    "syntax_check": "mmdc --validate",
+    "rule_check": "Manual review by Analyst agent",
+    "drift_detection": "Compare against golden masters in diagrams/golden/"
+  }
+}
