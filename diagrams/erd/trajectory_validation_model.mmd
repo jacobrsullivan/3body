@@ -1,0 +1,93 @@
+%% ERD: Trajectory Validation Domain Model
+%% Generated: 2025-11-23
+%% Sources: src/python/validation/, User-Guides/User-Guide-WP4.md
+%% Architect: abstraction-architect
+%%
+%% Extraction Method:
+%% - Read validation module classes (AnalyticalVettingReport, ConservationValidationResult)
+%% - Identified business entities from domain model
+%% - Stripped technical columns (created_at, updated_at, version)
+%% - Used business language for naming
+
+erDiagram
+    TRAJECTORY ||--o{ VALIDATION_REPORT : "tested_with"
+    CANDIDATE_INTEGRAL ||--o{ VALIDATION_REPORT : "evaluated_on"
+    TRAJECTORY ||--|| CHAOS_INDICATOR : "classified_by"
+    PERIODIC_ORBIT ||--|| MORALES_RAMIS_RESULT : "generates"
+    CANDIDATE_INTEGRAL ||--o| MORALES_RAMIS_RESULT : "validated_via"
+    CANDIDATE_INTEGRAL }o--|| DISCOVERY_METHOD : "discovered_by"
+    VALIDATION_REPORT ||--o| CONSERVATION_TEST : "includes"
+    VALIDATION_REPORT ||--o| INVOLUTION_TEST : "includes"
+    VALIDATION_REPORT ||--o| INDEPENDENCE_TEST : "includes"
+
+    TRAJECTORY {
+        string orbit_id
+        float mass_ratio
+        float jacobi_constant
+        int tier
+        string coordinate_system
+        int integration_steps
+    }
+
+    CANDIDATE_INTEGRAL {
+        string integral_id
+        string symbolic_form
+        string basis_type
+        float discovery_confidence
+        string coordinate_space
+    }
+
+    VALIDATION_REPORT {
+        string report_id
+        string verdict
+        int candidates_tested
+        int candidates_passed
+        float success_rate
+    }
+
+    CONSERVATION_TEST {
+        string candidate_name
+        float poisson_bracket_error
+        float trajectory_drift
+        bool passed
+    }
+
+    INVOLUTION_TEST {
+        float max_commutator_error
+        bool all_pairs_commute
+        bool passed
+    }
+
+    INDEPENDENCE_TEST {
+        int jacobian_rank
+        int expected_rank
+        float pass_rate_percentage
+        bool passed
+    }
+
+    CHAOS_INDICATOR {
+        float megno_value
+        string classification
+        float lyapunov_estimate
+        int computation_orbits
+    }
+
+    PERIODIC_ORBIT {
+        string family_name
+        float period
+        string symmetry_group
+        float stability_index
+    }
+
+    MORALES_RAMIS_RESULT {
+        string downstairs_galois_group
+        string upstairs_galois_group
+        bool integrable_upstairs
+        string variational_equation_type
+    }
+
+    DISCOVERY_METHOD {
+        string method_name
+        string basis_family
+        string algorithm_type
+    }
