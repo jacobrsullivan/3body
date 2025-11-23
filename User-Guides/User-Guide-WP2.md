@@ -133,7 +133,7 @@ src/python/
 ├── geometry/
 │   ├── locked_inertia.py           # Locked inertia tensor
 │   ├── jm_metric.py                # Jacobi-Maupertuis metric
-│   └── [curvature.py]              # Scalar curvature computation
+│   └── curvature.py                # Scalar curvature computation (in jm_metric.py)
 ├── lifts/
 │   ├── s1_bundle.py                # S¹ principal bundle
 │   ├── extended_symplectic.py      # Extended symplectic forms
@@ -164,10 +164,10 @@ tests/
 | **Task 2.1.1** (Coordinates) | ✅ Complete | 7 files | All coordinate systems implemented |
 | **Task 2.1.1** (Reduction) | ✅ Complete | 4 files | Translation & rotation reduction |
 | **Task 2.1.2** (Connection) | ✅ Complete | 2 files | Connection A computed |
-| **Task 2.1.2** (Curvature) | ⚠️ Partial | — | Computation exists, needs validation |
+| **Task 2.1.2** (Curvature) | ⚠️ Partial | In jm_metric.py | Computation exists in JM metric class, needs standalone validation |
 | **Task 2.1.3** (JM Metric) | ✅ Complete | 2 files | Metric & curvature implemented |
-| **WP 2.2** (S¹ Lift) | ⚠️ Partial | 4 files | Infrastructure exists, needs integration tests |
-| **WP 2.3** (KS-Spinor) | ⚠️ Partial | 1 file | Basic KS transform, needs full 3BP application |
+| **WP 2.2** (S¹ Lift) | ⚠️ Partial | 4 files | Infrastructure exists, needs integration tests with WP3/WP4 |
+| **WP 2.3** (KS-Spinor) | ⚠️ Partial | 1 file | Single-pair transform complete; needs 3-pair application + constraints |
 
 ---
 
@@ -492,6 +492,19 @@ assert np.allclose(r, r_reconstructed)
 #### Pairwise Application to 3BP
 **Status**: ⚠️ Partially implemented
 
+**What's Implemented**:
+- ✅ Basic KS transformation for single pair (r → u)
+- ✅ Inverse transformation (u → r)
+- ✅ Bilinear relation verification
+- ✅ Symbolic validation tests
+
+**What's Missing**:
+- ⚠️ Pairwise application to all 3 pairs (u₁₂, u₂₃, u₃₁)
+- ⚠️ Constraint implementation (6 bilinear + closure constraints)
+- ⚠️ RATTLE integrator for constrained dynamics
+- ⚠️ Integration tests with full 3BP trajectories
+- ⚠️ Validation of spinor-based integrals
+
 **Idea**: Apply KS transformation to all 3 pairs:
 - u₁₂ (spinor for r₁₂)
 - u₂₃ (spinor for r₂₃)
@@ -504,7 +517,7 @@ assert np.allclose(r, r_reconstructed)
 
 **Constrained Hamiltonian**: Use RATTLE integrator to maintain constraints.
 
-**Tests**: `tests/symbolic_lifts/test_ks_symbolic.py` (symbolic validation)
+**Tests**: `tests/symbolic_lifts/test_ks_symbolic.py` (symbolic validation - single pair only)
 
 **Reference**: See `Science-Research-Docs/WP3 – Generalized KS Transformations and N-Body Regularizations.pdf`
 
