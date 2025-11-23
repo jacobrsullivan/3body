@@ -12,18 +12,6 @@ The primary driver of this new capability is the integration of the Sonnet 4.5 m
 
 However, the most profound change enabled by Sonnet 4.5 is the capacity for long-duration coherence. Reports indicate the model can maintain coherent reasoning and task focus for "30+ hours" on complex tasks.4 This capability is the core enabler for the tool's shift in purpose. Previously, AI coding assistants were largely "pair programmers," effective for short-term, interactive, and human-supervised tasks. The extended coherence of Sonnet 4.5 enables a new paradigm: the "autonomous delegate." This allows a developer to assign complex, multi-day tasks—such as a large-scale refactor or new feature implementation—and trust the agent to manage its own state and reasoning over that extended period. The advanced features detailed in this guide, particularly Subagents, Hooks, and Checkpoints, are the control and safety mechanisms built to harness this new, long-running reasoning capability.
 
-### **Section 1.2: The VS Code Extension: The GUI for the Agentic Engine**
-
-In parallel with the v2.0 TUI, Anthropic has released a native VS Code extension (beta).1 This is a critical development for broadening the tool's accessibility beyond terminal-centric power users. It is important to understand that this extension is not a simple wrapper for the CLI 8 but a distinct, rich graphical interface that provides unique features.7
-
-Key features of the VS Code extension include:
-
-* **Native IDE Experience:** A dedicated sidebar panel for interacting with the agent.7
-* **Inline Diffs:** The ability to see Claude's proposed code changes in real-time, directly within the editor, which is a significant workflow improvement over the TUI's diff view.1
-* **File Management:** Support for @-mentions to add files to context, as well as a system file picker for attachments.7
-* **Plan Mode:** A specialized mode that allows the developer to review, edit, and approve Claude's proposed plan of action before execution begins.7
-
-The VS Code extension and the claude-code CLI exist in a symbiotic relationship. The extension serves as the "command center," but the CLI and its associated file-based configuration (\~/.claude/, .claude/) remain the "engine." The agent running inside the VS Code extension consumes and is empowered by the advanced configurations set up via the CLI.7 Custom Subagents, Model Context Protocol (MCP) server connections, and custom Slash Commands (all configured in the file system) become available to the agent within the VS Code UI.9 Therefore, to fully exploit the capabilities of the VS Code extension, a developer must first master the CLI's configuration file-system, which this guide details.
 
 ### **Section 1.3: The Checkpoint System: The Safety Net for Autonomy**
 
