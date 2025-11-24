@@ -117,7 +117,7 @@ def integrate_trajectory(
             # Progress
             if (i+1) % (n_outputs // 10) == 0:
                 dE = abs((E - E0) / E0)
-                print(f"  t = {t:8.3f} | |ΔE/E0| = {dE:.3e}")
+                print(f"  t = {t:8.3f} | |ΔE/E0| = {dE:.3e}", flush=True)
 
     except Exception as e:
         print(f"\n❌ Integration failed: {e}")
@@ -204,8 +204,8 @@ if __name__ == "__main__":
 
     # Test configuration
     mu = 0.5  # Equal masses
-    t_final = 100.0  # Integration time (units of orbital period)
-    n_outputs = 1000
+    t_final = 10.0  # Integration time (reduced for quick test)
+    n_outputs = 100  # Fewer points for speed
 
     # Output directory
     output_dir = Path(__file__).parent.parent / "data" / "trajectories"
