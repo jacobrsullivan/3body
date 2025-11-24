@@ -1,0 +1,38 @@
+%% C4 Context: 3body System Boundaries
+%% Generated: 2025-11-23
+%% Sources: pyproject.toml, src/python/*/, User-Guides/, CLAUDE.md
+%% Architect: abstraction-architect
+%%
+%% Extraction Method:
+%% - Read pyproject.toml for external dependencies
+%% - Listed src/python/*/ for internal subsystems
+%% - Mapped libraries to external systems per C4 rules
+
+C4Context
+    title System Context - 3body Lift-Integrability Research Project
+
+    Person(researcher, "Research Scientist", "Designs experiments and analyzes trajectory data")
+    Person(validator, "Validation Engineer", "Reviews and validates discovered integrals")
+
+    System_Boundary(threebody, "3body Project") {
+        System(integrator, "Integration Engine", "Generates high-precision trajectories using symplectic integrators")
+        System(validator_sys, "Validation Gauntlet", "Three-stage validation pipeline for candidate integrals")
+        System(discovery, "Discovery System", "Symbolic regression and neural network based integral discovery")
+        System(geometry, "Geometric Tools", "Coordinate transformations and lift constructions")
+        System(regularization, "Collision Handler", "Regularization for close encounters")
+    }
+
+    System_Ext(hdf5_store, "HDF5 Data Store", "Persistent trajectory and validation result storage")
+    System_Ext(pysr, "PySR Engine", "Symbolic regression via Julia subprocess")
+    System_Ext(rebound_lib, "REBOUND Library", "Adaptive IAS15 integration algorithms")
+
+    Rel(researcher, integrator, "Configures mass ratios and initial conditions")
+    Rel(integrator, hdf5_store, "Stores trajectory data")
+    Rel(integrator, rebound_lib, "Uses for Tier 1 integration")
+    Rel(validator_sys, hdf5_store, "Reads trajectories for validation")
+    Rel(discovery, hdf5_store, "Loads trajectories for pattern analysis")
+    Rel(discovery, pysr, "Submits symbolic regression tasks")
+    Rel(validator_sys, researcher, "Reports validation results")
+    Rel(validator, validator_sys, "Reviews validation reports")
+    Rel(geometry, integrator, "Provides coordinate transforms")
+    Rel(regularization, integrator, "Handles close encounter events")

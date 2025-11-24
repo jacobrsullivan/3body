@@ -1,0 +1,63 @@
+%% State Machine: Candidate Integral Lifecycle
+%% Generated: 2025-11-23
+%% Sources: src/python/validation/analytical_vetting.py, User-Guides/User-Guide-WP4.md
+%% Architect: abstraction-architect
+%%
+%% Extraction Method:
+%% - Read VettingVerdict enum from analytical_vetting.py
+%% - Read User-Guide-WP4.md for validation gauntlet stages
+%% - Mapped 3-stage validation cascade to state transitions
+%% - Identified terminal states (Validated, Rejected)
+
+stateDiagram-v2
+    [*] --> Discovered : Candidate discovered via symbolic regression or HNN
+
+    Discovered --> AnalyticalVetting : Enter validation gauntlet (WP4.1)
+
+    note right of AnalyticalVetting
+        Three tests:
+        - Conservation: {I, H} = 0
+        - Involution: {I, J} = 0
+        - Independence: rank(∇I) = n
+    end note
+
+    AnalyticalVetting --> Rejected : Conservation test fails<br/>|{I,H}| > 10⁻¹²
+    AnalyticalVetting --> Rejected : Involution test fails<br/>|{I,J}| > 10⁻¹⁰
+    AnalyticalVetting --> Rejected : Independence test fails<br/>rank deficiency detected
+    AnalyticalVetting --> MoralesRamisTest : All analytical tests pass
+
+    note right of MoralesRamisTest
+        Differential Galois Theory:
+        - Phase I: Downstairs (reduced space)
+        - Phase II: Upstairs (lifted space)
+        - Kovacic algorithm
+    end note
+
+    MoralesRamisTest --> Rejected : Downstairs Galois group abelian<br/>(Unexpected - classical non-integrability not confirmed)
+    MoralesRamisTest --> Rejected : Upstairs Galois group non-abelian<br/>(Non-integrable in lifted space)
+    MoralesRamisTest --> MonteCarloValidation : Downstairs non-abelian AND<br/>Upstairs abelian (lift-integrability confirmed)
+
+    note right of MonteCarloValidation
+        Statistical validation:
+        - 10⁴+ trajectories
+        - Parameter space sweep
+        - Mass ratios, energies, eccentricities
+        - Chaos/regular stratification
+    end note
+
+    MonteCarloValidation --> Rejected : Statistical robustness < 95%<br/>(Not universal across parameter space)
+    MonteCarloValidation --> Validated : Statistical robustness ≥ 95%<br/>(Robust across all tests)
+
+    Validated --> Published : Manuscript submission (WP5)
+    Validated --> Archived : Stored in validated integrals database
+
+    Rejected --> [*]
+    Published --> [*]
+    Archived --> [*]
+
+    note left of Validated
+        Successfully passed:
+        ✓ WP4.1: Analytical Vetting
+        ✓ WP4.2: Morales-Ramis Test
+        ✓ WP4.3: Monte Carlo Validation
+    end note
