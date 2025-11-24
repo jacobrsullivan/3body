@@ -8,7 +8,12 @@
 
 ## Executive Summary
 
-This document defines the **optimized agentic architecture** for the 3Body lift-integrability project. It consolidates the original ~30 specialized subagents into **10 strategic roles**, implements the **Pointer Pattern** to prevent code rot, establishes **Flight Recorder** audit trails for scientific reproducibility, and provides a **Meta-Skill navigator** as the orchestrator's primary entry point.
+This document defines the **optimized agentic architecture** for the 3Body lift-integrability project. It consolidates the original ~30 specialized WP subagents into **10 strategic roles**, adds **2 architectural analysis agents** for diagram generation, implements the **Pointer Pattern** to prevent code rot, establishes **Flight Recorder** audit trails for scientific reproducibility, and provides a **dual-tier navigation system** (WP tasks + architectural questions) as the orchestrator's primary entry points.
+
+**Total Agent System**: 12 agents + 11 skills
+- **10 WP Agents**: Research and implementation (wp1-wp5, research-orchestrator)
+- **2 Diagram Agents**: Architectural analysis (abstraction-architect, abstraction-analyst)
+- **11 Skills**: Navigation and specialized capabilities
 
 ### Key Architectural Principles
 
@@ -22,8 +27,15 @@ This document defines the **optimized agentic architecture** for the 3Body lift-
 ## Table of Contents
 
 1. [Architecture Overview](#1-architecture-overview)
-2. [Meta-Skill: Project Navigator](#2-meta-skill-project-navigator)
+2. [Dual-Tier Navigation System](#2-dual-tier-navigation-system)
 3. [Consolidated Subagent Roles](#3-consolidated-subagent-roles)
+   - 3.1 [WP1: Trajectory Catalogue](#31-wp1-trajectory-catalogue)
+   - 3.2 [WP2: Geometric Foundations](#32-wp2-geometric-foundations)
+   - 3.3 [WP3: Invariant Discovery](#33-wp3-invariant-discovery)
+   - 3.4 [WP4: Validation Gauntlet](#34-wp4-validation-gauntlet)
+   - 3.5 [WP5: Publication and Archival](#35-wp5-publication-and-archival)
+   - 3.6 [Diagram and Abstraction Agents](#36-diagram-and-abstraction-agents)
+   - 3.7 [Meta-Orchestrator](#37-meta-orchestrator)
 4. [Skills Catalog (Pointer Pattern)](#4-skills-catalog-pointer-pattern)
 5. [Flight Recorder Specification](#5-flight-recorder-specification)
 6. [Automation Hooks](#6-automation-hooks)
@@ -45,36 +57,76 @@ This document defines the **optimized agentic architecture** for the 3Body lift-
 
 ### 1.2 Optimized Architecture: Role-Based Consolidation
 
-**New Architecture**: 10 strategic roles organized by **persona** (Builder vs. Tester) and **domain** (Integration, Geometry, Discovery, Validation, Publication).
+**New Architecture**:
+- **10 WP strategic roles** organized by **persona** (Builder vs. Critic) and **domain** (Integration, Geometry, Discovery, Validation, Publication)
+- **2 Diagram agents** for architectural analysis (Builder: abstraction-architect, Critic: abstraction-analyst)
+- **Dual-tier navigation**: WP tasks (wp-navigator) + Architectural questions (project-navigator)
 
-**Consolidation Ratio**: 3:1 (30 → 10 subagents)
+**Consolidation Ratio**: 3:1 (30 → 10 WP subagents)
 
 **Token Savings**: ~60% reduction in delegation overhead (estimated 15k → 6k tokens per complex task)
 
 **Key Insight**: Sonnet 4.5's large context window (200k tokens) can handle "Building KS Coordinates" and "Building S¹ Bundles" in the same session without context pollution. Separation is only needed between **Construction** (creative) and **Verification** (critical) work.
 
+**Architectural Analysis**: Separate diagram agents handle the "4 Abstractions" framework (Scope/Time/Data/Logic) for documenting system architecture through Mermaid diagrams.
+
 ---
 
-## 2. Meta-Skill: Project Navigator
+## 2. Dual-Tier Navigation System
 
-### 2.1 Purpose
+### 2.1 Overview
 
-The **Primary Entry Point** for the orchestrator. Loaded automatically at session start, this skill provides:
+The architecture provides **two primary navigation skills** that serve as entry points for different types of tasks:
+
+1. **WP Navigator** (`wp-navigator`): Routes implementation and research tasks to WP-specific subagents
+2. **Project Navigator** (`project-navigator`): Routes architectural questions to diagram-generation skills
+
+Both skills are loaded automatically and provide:
 - Directory structure map
 - Subagent delegation matrix
 - Development rules (Read First, Test Driven, Flight Logs)
 
-### 2.2 Skill Definition
+### 2.2 WP Navigator (Implementation Tasks)
+
+**File**: `.claude/skills/wp-navigator/SKILL.md`
+
+**Purpose**: Primary entry point for **research and implementation work** across Work Packages 1-5.
+
+**Delegation Matrix**:
+- WP1 tasks → wp1-lab-director
+- WP2 construction → wp2-architect
+- WP2 verification → wp2-analyst
+- WP3 discovery → wp3-investigator
+- WP3 filtering → wp3-consolidator
+- WP4 analytical → wp4-mathematician
+- WP4 numerical → wp4-stress-tester
+- WP5 writing → wp5-author
+- WP5 release → wp5-librarian
+- Multi-WP strategy → research-orchestrator
+
+### 2.3 Project Navigator (Architectural Questions)
 
 **File**: `.claude/skills/project-navigator/SKILL.md`
 
+**Purpose**: Routes architectural questions to appropriate diagram skills based on the "4 Abstractions" framework.
+
+**Delegation Matrix**:
+- Scope questions (what systems exist) → diagram-c4
+- Time questions (how does it work) → diagram-sequence
+- Data questions (what data structures) → diagram-erd
+- Logic questions (what states/transitions) → diagram-state
+
+### 2.4 Example: WP Navigator Skill Definition
+
+**File**: `.claude/skills/wp-navigator/SKILL.md`
+
 ```markdown
 ---
-name: project-navigator
-description: PRIMARY SKILL for the 3Body lift-integrability project. Use to navigate codebase structure and identify which subagent to delegate tasks to. Automatically loaded at session start.
+name: wp-navigator
+description: PRIMARY SKILL for 3Body Work Package navigation. Use to identify which WP subagent to delegate research, implementation, validation, and publication tasks to.
 ---
 
-# 3Body Project Navigator
+# 3Body Work Package Navigator
 
 ## Project Context
 
@@ -1222,7 +1274,58 @@ All code and data are available at \href{https://doi.org/10.5281/zenodo.XXXXXX}{
 
 ---
 
-### 3.6 Meta-Orchestrator
+### 3.6 Diagram and Abstraction Agents
+
+#### Overview
+
+In addition to the WP-focused agents, the system includes **architectural analysis agents** that generate and validate Mermaid diagrams according to the "4 Abstractions" framework (Scope, Time, Data, Logic).
+
+#### `abstraction-architect` (Builder Role)
+
+**Purpose**: Extracts architectural information from codebase and generates Mermaid diagrams.
+
+**File**: `.claude/agents/abstraction-architect.md`
+
+**Capabilities**:
+- Analyze codebase structure to extract architectural patterns
+- Generate C4 Context diagrams (Scope abstraction)
+- Generate Sequence diagrams (Time abstraction)
+- Generate Conceptual ERDs (Data abstraction)
+- Generate State Machine diagrams (Logic abstraction)
+
+**Workflow**:
+1. Receive diagram request routed from `project-navigator` skill
+2. Use Glob/Grep to extract relevant architectural information
+3. Generate Mermaid diagram following abstraction-specific rules
+4. Write diagram to `diagrams/<type>/` directory
+5. Update Flight Recorder log in `diagrams/session_log.md`
+
+#### `abstraction-analyst` (Critic Role)
+
+**Purpose**: Validates diagrams against abstraction-specific rules.
+
+**File**: `.claude/agents/abstraction-analyst.md`
+
+**Validation Rules**:
+- **C4 Context**: Max 9 boxes, boundaries defined, no implementation details
+- **Sequence**: Actors defined, messages ordered temporally, no data structures
+- **ERD**: Entities with attributes, relationships with cardinality, conceptual (not physical)
+- **State Machine**: All transitions valid, no orphan states, clear triggers
+
+**Workflow**:
+1. Read generated diagram file
+2. Apply abstraction-specific validation rules (see `.claude/skills/diagram-*/references/rules.md`)
+3. Report violations with specific line numbers
+4. Suggest fixes if rules violated
+
+**Coordination Pattern**:
+```
+User Question → project-navigator → diagram-* skill → abstraction-architect (generate) → abstraction-analyst (validate)
+```
+
+---
+
+### 3.7 Meta-Orchestrator
 
 #### `research-orchestrator`
 
@@ -1335,9 +1438,50 @@ All outputs in `research_strategy/`:
 - **Do** include file paths, function signatures, usage philosophy
 - **Rely on** agent using `Read`, `Grep`, `Glob` on actual codebase
 
-### 4.2 Skill Definitions
+### 4.2 Two-Tier Navigation System
+
+The architecture uses **two primary navigation skills** that route to specialized subagents:
+
+#### Tier 1: Work Package Navigation (`wp-navigator`)
+
+**Purpose**: Routes **implementation and research tasks** to WP-specific subagents.
+
+**Use Cases**:
+- "Generate trajectories" → wp1-lab-director
+- "Build KS lift" → wp2-architect
+- "Search for integrals" → wp3-investigator
+- "Validate candidate" → wp4-mathematician
+- "Write manuscript" → wp5-author
+
+**File**: `.claude/skills/wp-navigator/SKILL.md`
+
+#### Tier 2: Architectural Navigation (`project-navigator`)
+
+**Purpose**: Routes **architectural questions** to diagram-generation skills.
+
+**Use Cases**:
+- "What systems exist?" → diagram-c4 (Scope)
+- "How does validation work?" → diagram-sequence (Time)
+- "What data entities exist?" → diagram-erd (Data)
+- "What are the trajectory states?" → diagram-state (Logic)
+
+**File**: `.claude/skills/project-navigator/SKILL.md`
+
+**Decision Rule for Main Agent**:
+```
+Is user asking about architecture/structure? → Use project-navigator
+Is user asking to implement/research/validate? → Use wp-navigator
+```
+
+### 4.3 Skill Definitions
 
 All skills stored in `.claude/skills/<skill-name>/SKILL.md`
+
+**Total Skills Implemented**: 11
+- 1 WP navigator (wp-navigator)
+- 5 WP-specific skills (wp1-wp5)
+- 1 Project navigator (project-navigator)
+- 4 Diagram skills (diagram-c4, diagram-erd, diagram-sequence, diagram-state)
 
 ---
 
@@ -1590,6 +1734,154 @@ See `User-Guides/User-Guide-WP5.md` Section 1
 4. Reproducibility: Reference dataset validates
 
 **Zenodo Workflow**: See `User-Guides/User-Guide-WP5.md` Section 3
+```
+
+---
+
+#### Skill: `diagram-c4`
+
+```markdown
+---
+name: diagram-c4
+description: Use when generating C4 Context diagrams showing system boundaries and external dependencies for the 3body project. Extracts from dependency manifests, infrastructure files, and module imports. Use when user asks about what systems exist, external dependencies, or architecture overview.
+---
+
+# C4 Context Diagram Generator (Scope Abstraction)
+
+## Source of Truth
+- **Rules**: `.claude/skills/diagram-c4/references/rules.md`
+- **Examples**: `diagrams/context/*.mmd`
+- **Output Directory**: `diagrams/context/`
+
+## When to Use
+User asks about:
+- "What systems exist?"
+- "External dependencies"
+- "How does X integrate with Y?"
+- "Architecture overview"
+
+## Workflow
+1. Extract system boundaries from codebase (imports, API calls, data sources)
+2. Generate C4 Context diagram in Mermaid format
+3. Validate against rules (max 9 boxes, no implementation details)
+4. Write to `diagrams/context/<name>.mmd`
+
+## Validation Rules
+- Maximum 9 boxes on diagram
+- Clear system boundary (internal vs. external)
+- No implementation details (only what, not how)
+- All relationships labeled
+```
+
+---
+
+#### Skill: `diagram-sequence`
+
+```markdown
+---
+name: diagram-sequence
+description: Use when generating Sequence diagrams showing communication flows and temporal ordering for the 3body project. Extracts from code execution paths, test workflows, and pipeline stages. Use when user asks about workflows, message flows, how components communicate, or process steps.
+---
+
+# Sequence Diagram Generator (Time Abstraction)
+
+## Source of Truth
+- **Rules**: `.claude/skills/diagram-sequence/references/rules.md`
+- **Examples**: `diagrams/sequence/*.mmd`
+- **Output Directory**: `diagrams/sequence/`
+
+## When to Use
+User asks about:
+- "How does X work?"
+- "What's the workflow?"
+- "How do Y and Z communicate?"
+- "Process steps"
+
+## Workflow
+1. Trace execution path through codebase (function calls, message passing)
+2. Generate Sequence diagram in Mermaid format
+3. Validate against rules (temporal ordering, actors defined)
+4. Write to `diagrams/sequence/<name>.mmd`
+
+## Validation Rules
+- All actors explicitly defined
+- Messages in temporal order
+- No data structures (entities belong in ERD)
+- Clear start/end points
+```
+
+---
+
+#### Skill: `diagram-erd`
+
+```markdown
+---
+name: diagram-erd
+description: Use when generating Conceptual ERDs showing data entities and relationships for the 3body project. Extracts from data schemas, HDF5 structures, and domain models. Use when user asks about data structures, entities, relationships, or data models.
+---
+
+# Conceptual ERD Generator (Data Abstraction)
+
+## Source of Truth
+- **Rules**: `.claude/skills/diagram-erd/references/rules.md`
+- **Examples**: `diagrams/erd/*.mmd`
+- **Output Directory**: `diagrams/erd/`
+
+## When to Use
+User asks about:
+- "What data structures exist?"
+- "Data model"
+- "Entity relationships"
+- "Storage schema"
+
+## Workflow
+1. Extract data entities from codebase (classes, HDF5 schemas, database models)
+2. Generate Conceptual ERD in Mermaid format
+3. Validate against rules (conceptual not physical, cardinality defined)
+4. Write to `diagrams/erd/<name>.mmd`
+
+## Validation Rules
+- Conceptual entities (not physical tables)
+- All relationships have cardinality (1:1, 1:N, M:N)
+- Attributes included for key entities
+- No implementation details (indexes, foreign keys)
+```
+
+---
+
+#### Skill: `diagram-state`
+
+```markdown
+---
+name: diagram-state
+description: Use when generating State Machine diagrams showing entity lifecycles and valid state transitions for the 3body project. Extracts from status enums, validation stages, and workflow logic. Use when user asks about stages, status, lifecycle, workflow states, or state transitions.
+---
+
+# State Machine Diagram Generator (Logic Abstraction)
+
+## Source of Truth
+- **Rules**: `.claude/skills/diagram-state/references/rules.md`
+- **Examples**: `diagrams/state/*.mmd`
+- **Output Directory**: `diagrams/state/`
+
+## When to Use
+User asks about:
+- "What states exist?"
+- "Lifecycle"
+- "Workflow stages"
+- "Status transitions"
+
+## Workflow
+1. Extract state machines from codebase (enums, workflow logic, status fields)
+2. Generate State Machine diagram in Mermaid format
+3. Validate against rules (all transitions valid, no orphan states)
+4. Write to `diagrams/state/<name>.mmd`
+
+## Validation Rules
+- All states reachable from initial state
+- All transitions have triggers/conditions
+- No orphan states (disconnected)
+- Clear terminal states (if applicable)
 ```
 
 ---
@@ -1868,6 +2160,8 @@ fi
 
 ### Consolidation Map
 
+#### Work Package Agents (27 → 10)
+
 **WP1**: 4 → 1 subagent
 - `wp1-precision-runner` + `wp1-benchmark-specialist` + `wp1-qa-auditor` + `wp1-data-curator` → `wp1-lab-director`
 
@@ -1890,7 +2184,23 @@ fi
 **Meta**: 1 new subagent
 - `research-orchestrator` (high-level multi-WP planning)
 
-**Total**: 27 → 10 subagents (63% reduction)
+**WP Subtotal**: 27 → 10 subagents (63% reduction)
+
+#### Architectural Analysis Agents (New)
+
+**Diagram Generation**: 2 new agents
+- `abstraction-architect` (builder: extracts architecture, generates Mermaid diagrams)
+- `abstraction-analyst` (critic: validates diagrams against abstraction rules)
+
+**Total Agent System**: 12 agents (10 WP + 2 Diagram)
+
+### Skills Catalog Summary
+
+**Total Skills**: 11
+- 1 WP navigator (`wp-navigator`)
+- 5 WP-specific skills (`wp1-precision-integration` through `wp5-publication-standards`)
+- 1 Architectural navigator (`project-navigator`)
+- 4 Diagram skills (`diagram-c4`, `diagram-sequence`, `diagram-erd`, `diagram-state`)
 
 ---
 
@@ -1902,5 +2212,49 @@ This implementation plan provides a **production-ready agentic architecture** op
 2. **Maintainability**: Pointer Pattern prevents code rot by referencing source code, not duplicating it
 3. **Auditability**: Flight Recorder logs document all research decisions for reproducibility
 4. **Ergonomics**: Automated hooks enforce quality gates without agent "laziness"
+5. **Dual-Purpose**: Handles both research tasks (WP agents) and architectural documentation (diagram agents)
 
-**Next Step**: Begin Phase 1 implementation (Infrastructure Setup). Estimated completion: 5 weeks.
+### Implementation Status
+
+**✅ COMPLETED (as of 2025-11-24)**:
+
+**Infrastructure**:
+- ✅ `.claude/settings.json` with all hooks configured
+- ✅ `scripts/run_tests.sh` with `--fast` flag
+- ✅ Flight Recorder template defined
+
+**Agents**:
+- ✅ All 10 WP subagents implemented (wp1-lab-director through research-orchestrator)
+- ✅ Both diagram agents implemented (abstraction-architect, abstraction-analyst)
+
+**Skills**:
+- ✅ wp-navigator (PRIMARY skill for WP delegation)
+- ✅ project-navigator (routes architectural questions)
+- ✅ All 5 WP-specific skills (wp1-wp5)
+- ✅ All 4 diagram skills (c4, sequence, erd, state)
+
+**Total**: 12 agents + 11 skills = **FULLY OPERATIONAL**
+
+### Validation Checklist
+
+To verify the architecture is functioning correctly:
+
+```bash
+# 1. Check all agent files exist
+ls -1 .claude/subagents/*/SUBAGENT.md | wc -l  # Should be 10
+ls -1 .claude/agents/*.md | wc -l               # Should be 2
+
+# 2. Check all skill files exist
+ls -1 .claude/skills/*/SKILL.md | wc -l        # Should be 11
+
+# 3. Verify hooks are configured
+grep -c "postToolUse\|preCommit\|beforeTaskCompletion" .claude/settings.json  # Should be > 0
+
+# 4. Test fast test suite
+./scripts/run_tests.sh --fast
+
+# 5. Verify Flight Recorder template
+test -f Claude-Agent-Docs/Flight-Recorder-Template.md && echo "✓ Template exists"
+```
+
+**Architecture Status**: ✅ **100% COMPLETE AND OPERATIONAL**
