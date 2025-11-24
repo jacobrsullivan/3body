@@ -1,0 +1,18 @@
+
+############################################################
+DRY-RUN: MINIMAL TRAJECTORY TEST
+############################################################
+Date: 2025-11-24 16:32:44
+
+Generating Lagrange L4 initial conditions...
+
+============================================================
+TRAJECTORY INTEGRATION TEST
+============================================================
+Initial state: [ 0.         0.8660254  0.        -0.8660254  0.         0.       ]
+Mass parameter μ = 0.5
+Integration time: 0 → 100.0
+Output points: 1000
+Initial energy: -2.500000000000000e-01
+
+Integrating...
