@@ -1,0 +1,71 @@
+%% Sequence: Validation Gauntlet Workflow
+%% Generated: 2025-11-23
+%% Sources: User-Guides/User-Guide-WP4.md, src/python/validation/
+%% Architect: abstraction-architect
+%%
+%% Extraction Method:
+%% - Read User-Guide-WP4.md for workflow structure
+%% - Identified 3-stage validation cascade
+%% - Mapped to components in src/python/validation/
+
+sequenceDiagram
+    participant User as Research Scientist
+    participant Pipeline as Multi-Stage Pipeline
+    participant Store as HDF5 Store
+    participant AV as Analytical Vetting
+    participant MR as Morales-Ramis Validator
+    participant MC as Monte Carlo Validator
+
+    User->>Pipeline: validate_candidate(integral, tier=2)
+    Note over User,Pipeline: Begin 3-stage validation gauntlet
+
+    Pipeline->>Store: load_trajectories(tier=2, count=100)
+    Store-->>Pipeline: trajectories[100]
+
+    Note over Pipeline,AV: Stage 1: Analytical Vetting (WP4.1)
+    Pipeline->>AV: validate(integral, trajectories)
+    AV->>AV: Check {I, H} = 0 (conservation)
+    AV->>AV: Check {I, J} = 0 (involution)
+    AV->>AV: Check rank(Jacobian) = n (independence)
+
+    alt Conservation test fails
+        AV-->>Pipeline: {passed: false, reason: "conservation_violation", error: 1.2e-8}
+        Pipeline-->>User: REJECTED - Stage 1 failed
+    else All analytical tests pass
+        AV-->>Pipeline: {passed: true, conservation_error: 1.2e-14}
+
+        Note over Pipeline,MR: Stage 2: Morales-Ramis Test (WP4.2)
+        Pipeline->>MR: test_integrability(integral, periodic_orbit)
+        MR->>MR: Compute Normal Variational Equations (NVE)
+        MR->>MR: Apply Kovacic algorithm
+        MR->>MR: Determine Differential Galois group
+
+        alt Phase I: Galois group abelian (downstairs)
+            MR-->>Pipeline: {phase1_passed: true, warning: "Unexpected - should be non-abelian"}
+            Note right of MR: Classical non-integrability<br/>not confirmed
+        else Phase I: Galois group non-abelian (expected)
+            MR->>MR: Phase II: Test upstairs (lifted space)
+
+            alt Phase II: Galois group non-abelian (upstairs)
+                MR-->>Pipeline: {passed: false, upstairs_group: "S4"}
+                Pipeline-->>User: REJECTED - Non-integrable in lifted space
+            else Phase II: Galois group abelian (upstairs)
+                MR-->>Pipeline: {passed: true, downstairs_group: "S_n", upstairs_group: "Z/2Z"}
+
+                Note over Pipeline,MC: Stage 3: Monte Carlo Validation (WP4.3)
+                Pipeline->>MC: statistical_validation(integral, samples=10000)
+                MC->>Store: load_random_trajectories(10000)
+                Store-->>MC: diverse_trajectories[10000]
+                MC->>MC: Compute conservation across parameter space
+                MC->>MC: Test across mass ratios, energies, eccentricities
+
+                alt Robustness < 95%
+                    MC-->>Pipeline: {passed: false, robustness: 87.3%, failures: 1270}
+                    Pipeline-->>User: REJECTED - Not robust across parameter space
+                else Robustness >= 95%
+                    MC-->>Pipeline: {passed: true, robustness: 99.8%, samples: 10000}
+                    Pipeline-->>User: VALIDATED ✓ - All stages passed
+                end
+            end
+        end
+    end
