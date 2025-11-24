@@ -291,6 +291,137 @@ This file documents the extraction process for architectural diagrams using the 
 
 ---
 
-**Flight Recorder Version**: 1.0
+## Phase 2: Scripted Extraction - 2025-11-23
+
+### Automated Extraction Scripts
+
+**Created**: All 4 extraction scripts for automated diagram generation
+
+**Scripts Delivered**:
+- ✓ `.claude/skills/diagram-c4/scripts/extract_dependencies.py` (10.3 KB)
+- ✓ `.claude/skills/diagram-sequence/scripts/trace_workflow.py` (13.7 KB)
+- ✓ `.claude/skills/diagram-erd/scripts/inspect_hdf5_schema.py` (13.0 KB)
+- ✓ `.claude/skills/diagram-state/scripts/extract_state_transitions.py` (12.9 KB)
+
+**Capabilities**:
+- Parse `pyproject.toml` for C4 external dependencies
+- Trace workflow execution paths for sequence diagrams
+- Inspect HDF5 schemas for ERD entity extraction
+- AST-based state transition extraction from Python enums
+
+**Phase 2 Status**: COMPLETE
+
+---
+
+## Phase 3: Validation Automation - 2025-11-24
+
+### Automated Validation System
+
+**Objective**: Automate syntax and rule validation for all diagram types
+
+**Deliverables Implemented**:
+
+1. **Mermaid CLI Installation** (✓ Complete)
+   - Installed `@mermaid-js/mermaid-cli` v11.12.0
+   - Configured with `PUPPETEER_SKIP_DOWNLOAD` for sandbox environment
+   - Available at: `/opt/node22/bin/mmdc`
+
+2. **Validation Script** (✓ Complete)
+   - Created: `scripts/validate_diagram.py` (19.8 KB)
+   - Features:
+     - Syntax validation (structure, quotes, diagram type declaration)
+     - Abstraction-specific rule checking (C4, Sequence, ERD, State Machine)
+     - Metadata validation (header comments, extraction sources)
+     - Color-coded terminal output with detailed error reporting
+   - Exit codes: 0 (pass), 1 (fail), 2 (warnings)
+
+3. **Validation Hooks** (✓ Complete)
+   - Updated: `.claude/settings.json`
+   - Configured `postToolUse.Write` hook for automatic diagram validation
+   - Triggers validation on all `.mmd` files in `diagrams/` subdirectories
+
+4. **Golden Master Diagrams** (✓ Complete)
+   - Created: `diagrams/golden/` directory structure
+   - Baseline diagrams for regression testing:
+     - `golden/context/threebody_system_context.mmd` (2.1 KB)
+     - `golden/sequence/validation_gauntlet.mmd` (3.2 KB)
+     - `golden/erd/trajectory_validation_model.mmd` (2.5 KB)
+     - `golden/state/candidate_lifecycle.mmd` (2.5 KB)
+
+5. **Drift Detection Script** (✓ Complete)
+   - Created: `scripts/compare_diagrams.py` (10.5 KB)
+   - Features:
+     - Structural comparison (entities, relationships, participants, states)
+     - Distinguishes significant drift from cosmetic changes
+     - Supports `--all` (batch mode) and `--diagram` (single file)
+     - Colored diff output with detailed change reports
+   - Exit codes: 0 (no drift), 1 (significant drift), 2 (minor changes)
+
+6. **Test Suite** (✓ Complete)
+   - Created: `scripts/test_phase3_validation.sh`
+   - Coverage: 18 automated tests
+   - Test categories:
+     - Component installation (5 tests)
+     - Golden master existence (5 tests)
+     - Diagram validation (4 tests)
+     - Drift detection (2 tests)
+     - Configuration validation (2 tests)
+   - **Result**: 18/18 tests PASSED
+
+**Validation Rules Implemented**:
+
+- **C4 Context Rules**:
+  - ✓ No protocol names (HTTP, REST, gRPC)
+  - ✓ No vendor names (AWS, Docker, Kubernetes)
+  - ✓ No port numbers or IP addresses
+  - ✓ Plain English descriptions only
+  - ✓ No code-level details
+
+- **Sequence Diagram Rules**:
+  - ✓ Participants defined
+  - ✓ Error handling paths (alt/else blocks)
+  - ✓ Return arrows for responses
+  - ✓ Cross-boundary messages only
+  - ✓ Descriptive message labels
+
+- **ERD Rules**:
+  - ✓ No physical schema types (VARCHAR, BIGINT, etc.)
+  - ✓ No physical constraints (PRIMARY KEY, FOREIGN KEY)
+  - ✓ No audit columns (created_at, updated_at, deleted_at)
+  - ✓ Cardinality on all relationships
+  - ✓ Business entity names only
+
+- **State Machine Rules**:
+  - ✓ Initial state defined ([*] -->)
+  - ✓ Terminal states present
+  - ✓ Business event names (not function names)
+  - ✓ No dead or unreachable states
+  - ✓ Single entity focus
+
+**Testing Results**:
+
+All 4 existing diagrams validated successfully:
+- `threebody_system_context.mmd`: ✓ PASS (C4 rules compliant)
+- `validation_gauntlet.mmd`: ✓ PASS (Sequence rules compliant)
+- `trajectory_validation_model.mmd`: ✓ PASS (ERD rules compliant)
+- `candidate_lifecycle.mmd`: ✓ PASS (State machine rules compliant)
+
+Drift detection confirmed: No drift from golden masters (0 changes detected)
+
+**Phase 3 Success Criteria**:
+- ✓ Invalid Mermaid syntax rejected automatically
+- ✓ Rule violations flagged with specific feedback
+- ✓ Drift detection works against golden masters
+- ✓ All validation tests pass (18/18)
+
+**Phase 3 Status**: COMPLETE (2025-11-24)
+
+**Next Phase**: Phase 4 (CI Integration) - Integrate validation into CI/CD pipeline
+
+---
+
+**Flight Recorder Version**: 2.0
 **Initialized**: 2025-11-23
 **Phase 1 Completed**: 2025-11-23
+**Phase 2 Completed**: 2025-11-23
+**Phase 3 Completed**: 2025-11-24

@@ -4,7 +4,7 @@
     "postToolUse": {
       "Write": {
         "description": "Auto-format Python files and validate diagrams",
-        "command": "if [[ {file} == src/python/*.py ]]; then black '{file}' && flake8 '{file}'; elif [[ {file} == diagrams/*.mmd ]]; then echo 'Validation placeholder: mmdc --validate -i {file}'; fi"
+        "command": "if [[ {file} == src/python/*.py ]]; then black '{file}' && flake8 '{file}'; elif [[ {file} == diagrams/*/*.mmd ]]; then python scripts/validate_diagram.py '{file}'; fi"
       },
       "Edit": {
         "description": "Auto-format and lint Python files after editing",
