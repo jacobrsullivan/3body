@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP1 Understand"
+  short_description: "Help with WP1 Understand tasks"
+  default_prompt: "Use $wp1-understand to summarize WP1 architecture and data flow."

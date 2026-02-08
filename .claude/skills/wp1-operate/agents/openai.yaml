@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP1 Operate"
+  short_description: "Help with WP1 Operate tasks"
+  default_prompt: "Use $wp1-operate to run WP1 setup, smoke tests, and pipelines."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP1 Diagnose"
+  short_description: "Help with WP1 Diagnose tasks"
+  default_prompt: "Use $wp1-diagnose to debug WP1 failures and trace runs."
