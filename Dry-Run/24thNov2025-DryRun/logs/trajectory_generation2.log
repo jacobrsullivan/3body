@@ -1,0 +1,22 @@
+2025-11-24 19:16:18,601 - INFO - ============================================================
+2025-11-24 19:16:18,601 - INFO - 24thNov2025 Minimal Dry-Run Test
+2025-11-24 19:16:18,601 - INFO - ============================================================
+2025-11-24 19:16:18,601 - INFO - 
+Test 1: REBOUND Integration at L4
+2025-11-24 19:16:18,601 - INFO - ------------------------------------------------------------
+2025-11-24 19:16:18,644 - INFO - Testing REBOUND integration...
+2025-11-24 19:16:18,660 - INFO - Initial energy: -2.500000000000000e-01
+2025-11-24 19:16:18,660 - ERROR - Integration failed: 'output_interval'
+2025-11-24 19:16:18,660 - ERROR - Traceback (most recent call last):
+  File "/Users/jacobsullivan/Desktop/3body/Dry-Run/24thNov2025-DryRun/run_minimal_test.py", line 92, in test_rebound_integration
+    n_outputs = int(CONFIG["integration_time"] / CONFIG["output"]["output_interval"])
+                                                 ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'output_interval'
+
+2025-11-24 19:16:18,660 - INFO - 
+============================================================
+2025-11-24 19:16:18,661 - INFO - DRY-RUN TEST SUMMARY
+2025-11-24 19:16:18,661 - INFO - ============================================================
+2025-11-24 19:16:18,661 - INFO - Status: ERROR
+2025-11-24 19:16:18,661 - ERROR - 
+✗ Minimal dry-run test FAILED

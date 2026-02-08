@@ -1,0 +1,42 @@
+✓ Working directory: /Users/jacobsullivan/Desktop/3body
+
+======================================================================
+Simple Trajectory Test - 24thNov2025-DryRun-v2
+======================================================================
+
+Configuration:
+  Integration time: 10.0 time units
+  Output points: 50
+  Output directory: /Users/jacobsullivan/Desktop/3body/Dry-Run/24thNov2025-DryRun-v2/data/trajectories
+
+Creating REBOUND simulation...
+Initial energy: -1.250009e-01
+Number of particles: 3
+
+Integrating for 10.0 time units...
+  t= 0.00, E=-1.250009e-01, |ΔE/E|=0.000e+00
+  t= 2.04, E=-1.250009e-01, |ΔE/E|=2.220e-16
+  t= 4.08, E=-1.250009e-01, |ΔE/E|=6.661e-16
+  t= 6.12, E=-1.250009e-01, |ΔE/E|=4.441e-16
+  t= 8.16, E=-1.250009e-01, |ΔE/E|=0.000e+00
+  t=10.00, E=-1.250009e-01, |ΔE/E|=4.441e-16
+
+✓ Integration completed in 0.00 seconds
+
+Energy Conservation:
+  Initial: -1.2500087502e-01
+  Final:   -1.2500087502e-01
+  |ΔE/E|:  4.441e-16
+  ✓ PASS (|ΔE/E| < 1e-13)
+
+Saving trajectory to: /Users/jacobsullivan/Desktop/3body/Dry-Run/24thNov2025-DryRun-v2/data/trajectories/simple_trajectory_v2.h5
+✓ Trajectory saved
+
+======================================================================
+SUMMARY
+======================================================================
+Status: PASS
+Energy conservation: 4.441e-16
+Integration time: 0.00 seconds
+Output file: /Users/jacobsullivan/Desktop/3body/Dry-Run/24thNov2025-DryRun-v2/data/trajectories/simple_trajectory_v2.h5
+======================================================================

@@ -65,6 +65,115 @@ To run manually:
 pre-commit run --all-files
 ```
 
+## Working Directory and Path Handling
+
+### Critical Rule: Always Work from Project Root
+
+**All commands, scripts, and Claude Code sessions MUST start from the project root directory:**
+
+```bash
+cd /path/to/3body  # Project root
+pwd  # Should show: /path/to/3body (NOT a subdirectory!)
+```
+
+### Validation Before Starting
+
+**Always validate your working directory before any operations:**
+
+```bash
+# Automated validation
+python scripts/validate_working_dir.py
+
+# Manual verification
+test -f CLAUDE.md && test -d src/python && echo "✅ Correct" || echo "❌ Wrong directory"
+
+# From git
+cd $(git rev-parse --show-toplevel)
+```
+
+### Path Handling Best Practices
+
+#### 1. Use Absolute Paths for File Operations
+
+```python
+# ✅ CORRECT - Absolute path
+file_path = "/Users/username/3body/Dry-Run/24thNov2025-DryRun/config.yaml"
+
+# ❌ WRONG - Relative path (fragile, depends on working directory)
+file_path = "Dry-Run/24thNov2025-DryRun/config.yaml"
+```
+
+#### 2. Resolve Paths from Project Root in Scripts
+
+```python
+from pathlib import Path
+
+# Method 1: From script location (adjust parents[N] for nesting depth)
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+# Method 2: From git
+import subprocess
+result = subprocess.run(['git', 'rev-parse', '--show-toplevel'],
+                       capture_output=True, text=True, check=True)
+PROJECT_ROOT = Path(result.stdout.strip())
+
+# Build paths from root
+config_path = PROJECT_ROOT / "Dry-Run" / "configs" / "config.yaml"
+```
+
+#### 3. Validate Working Directory in All Scripts
+
+**Add this to the start of all Python scripts:**
+
+```python
+#!/usr/bin/env python3
+import sys
+from pathlib import Path
+
+# Validate working directory
+PROJECT_ROOT = Path.cwd()
+if not (PROJECT_ROOT / "CLAUDE.md").exists():
+    print(f"ERROR: Must run from project root")
+    print(f"Current: {PROJECT_ROOT}")
+    print(f"Expected: /path/to/3body")
+    print(f"\nFix: cd /path/to/3body")
+    sys.exit(1)
+
+print(f"✓ Working directory: {PROJECT_ROOT}")
+```
+
+### Why This Matters
+
+**Path confusion causes:**
+- Files created in wrong locations
+- Import errors for Python modules
+- Test discovery failures
+- Broken relative path references
+- Confusing nested directory structures
+
+**Always verify before executing:**
+1. Run `pwd` - should show project root
+2. Run `python scripts/validate_working_dir.py` - should pass
+3. Proceed with confidence
+
+### Recovery from Wrong Directory
+
+If you find yourself in a subdirectory:
+
+```bash
+# Option 1: Navigate to root
+cd /path/to/3body
+
+# Option 2: Use git (if in repository)
+cd $(git rev-parse --show-toplevel)
+
+# Option 3: Navigate up manually
+cd ../..  # Adjust as needed
+
+# Then verify
+python scripts/validate_working_dir.py
+```
+
 ## Architecture: The "Validation Gauntlet"
 
 The codebase is structured around a **three-stage validation pipeline** where candidate integrals must pass progressively rigorous tests:

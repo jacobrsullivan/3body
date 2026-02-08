@@ -1,3 +1,9 @@
+---
+name: abstraction-architect
+description: Use this agent for extracting architectural abstractions from code and generating Mermaid diagrams. Creates C4 Context (Scope), Sequence (Time), ERD (Data), and State Machine (Logic) diagrams from actual codebase artifacts.\n\nExamples:\n\n<example>\nContext: User needs to understand system architecture.\nuser: "Create a C4 diagram showing the system boundaries"\nassistant: "I'll use the abstraction-architect agent to extract and generate the C4 Context diagram."\n<Task tool invocation to launch abstraction-architect agent>\n</example>\n\n<example>\nContext: User wants to visualize a workflow.\nuser: "Generate a sequence diagram for the validation pipeline"\nassistant: "Let me bring in the abstraction-architect agent to create that sequence diagram."\n<Task tool invocation to launch abstraction-architect agent>\n</example>
+model: sonnet
+---
+
 # Abstraction Architect Agent
 
 ## Role Definition

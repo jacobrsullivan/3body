@@ -65,7 +65,7 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 │ • S¹ bundle lift (untwisting connection)                         │
 │ • KS-Spinor lift (collision regularization)                      │
 │                                                                   │
-│ Status: 🔨 Partially Complete (Core ✅, Lifts ⚠️)               │
+│ Status: ✅ Core Complete (Coordinates, Geometry, Lifts ✅)       │
 │ Guide: User-Guide-WP2.md                                         │
 └────────────────────┬─────────────────────────────────────────────┘
                      │ Provides: Lifted phase spaces

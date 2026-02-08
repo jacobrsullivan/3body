@@ -1,0 +1,21 @@
+2025-11-24 19:15:01,059 - INFO - ============================================================
+2025-11-24 19:15:01,059 - INFO - 24thNov2025 Minimal Dry-Run Test
+2025-11-24 19:15:01,059 - INFO - ============================================================
+2025-11-24 19:15:01,059 - INFO - 
+Test 1: REBOUND Integration at L4
+2025-11-24 19:15:01,059 - INFO - ------------------------------------------------------------
+2025-11-24 19:15:01,113 - INFO - Testing REBOUND integration...
+2025-11-24 19:15:01,130 - ERROR - Integration failed: 'Simulation' object has no attribute 'calculate_energy'
+2025-11-24 19:15:01,130 - ERROR - Traceback (most recent call last):
+  File "/Users/jacobsullivan/Desktop/3body/Dry-Run/24thNov2025-DryRun/run_minimal_test.py", line 88, in test_rebound_integration
+    E_initial = sim.calculate_energy()
+                ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Simulation' object has no attribute 'calculate_energy'
+
+2025-11-24 19:15:01,131 - INFO - 
+============================================================
+2025-11-24 19:15:01,131 - INFO - DRY-RUN TEST SUMMARY
+2025-11-24 19:15:01,131 - INFO - ============================================================
+2025-11-24 19:15:01,131 - INFO - Status: ERROR
+2025-11-24 19:15:01,131 - ERROR - 
+✗ Minimal dry-run test FAILED

@@ -1,3 +1,9 @@
+---
+name: abstraction-analyst
+description: Use this agent for validating architectural diagrams against abstraction-specific rules (C4 Context, Sequence, ERD, State Machine). Enforces conceptual boundaries, validates Mermaid syntax, and provides constructive feedback.\n\nExamples:\n\n<example>\nContext: User has created a C4 diagram that needs review.\nuser: "Can you validate this C4 Context diagram I created?"\nassistant: "I'll use the abstraction-analyst agent to review your diagram against C4 rules."\n<Task tool invocation to launch abstraction-analyst agent>\n</example>\n\n<example>\nContext: User wants to ensure diagram meets abstraction rules.\nuser: "Check if my sequence diagram follows the correct patterns"\nassistant: "Let me bring in the abstraction-analyst agent to validate your sequence diagram."\n<Task tool invocation to launch abstraction-analyst agent>\n</example>
+model: haiku
+---
+
 # Abstraction Analyst Agent
 
 ## Role Definition

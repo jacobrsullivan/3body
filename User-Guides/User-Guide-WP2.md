@@ -1,7 +1,7 @@
 # User Guide: Work Package 2
 ## Geometric Reduction and Shape Space Analysis
 
-**Status**: 🔨 Partially Implemented (Coordinates, Reduction, Connection, JM Metric ✅; S¹ Lift & KS-Spinor ⚠️ Partial)
+**Status**: ✅ Core Complete (Coordinates, Reduction, Connection, JM Metric, Geometry ✅; S¹ Lift ✅; KS-Spinor ✅ with time regularization)
 **Purpose**: Establish geometric foundations for investigating lift-integrability
 **Role in Project**: Creates the "upstairs" spaces where hidden integrals may exist
 
@@ -112,7 +112,7 @@ Work Package 2 provides the **geometric infrastructure** for searching for hidde
 
 ## What's Implemented
 
-WP2 is **partially complete** with implemented modules for coordinates, reduction, connection, and JM metric. S¹ lift infrastructure exists; KS-Spinor lift is partially implemented.
+WP2 is **substantially complete** with comprehensive modules for coordinates, reduction, connection, geometry, and both lift constructions. The KS-Spinor lift includes full time regularization support.
 
 ### File Structure
 
@@ -133,28 +133,34 @@ src/python/
 ├── geometry/
 │   ├── locked_inertia.py           # Locked inertia tensor
 │   ├── jm_metric.py                # Jacobi-Maupertuis metric
-│   └── curvature.py                # Scalar curvature computation (in jm_metric.py)
+│   ├── lifted_jm_metric.py         # JM metric in lifted spaces
+│   ├── christoffel.py              # Christoffel symbol computation
+│   ├── connection_form.py          # Connection 1-form
+│   ├── curvature_form.py           # Curvature 2-form
+│   └── riemann_curvature.py        # Riemann curvature tensor
 ├── lifts/
 │   ├── s1_bundle.py                # S¹ principal bundle
 │   ├── extended_symplectic.py      # Extended symplectic forms
 │   ├── lifted_hamiltonian.py       # Lifted Hamiltonians
 │   └── integrability.py            # Integrability tests
 └── regularization/
-    └── ks_transform.py             # Kustaanheimo-Stiefel transformation
+    ├── ks_transform.py             # Kustaanheimo-Stiefel transformation
+    ├── ks_pairwise.py              # Pairwise KS for 3BP
+    ├── levi_civita.py              # Levi-Civita regularization
+    ├── sundman.py                  # Sundman time transformation
+    ├── rattle_integrator.py        # RATTLE constrained integrator
+    ├── extended_phase_space.py     # Extended phase space structures
+    ├── time_regularized_dynamics.py # Time-regularized equations
+    ├── threebody_time_regularized.py # Full 3BP time regularization
+    └── automatic_switching.py      # Automatic coordinate switching
 
 tests/
-├── unit/reduction/
-│   ├── test_translation_reduction.py
-│   └── test_rotation_reduction.py
-├── geometry/
-│   ├── test_connection.py
-│   ├── test_jm_metric.py
-│   └── test_standalone.py
-├── lifts/
-│   ├── test_s1_bundle.py
-│   └── test_integrability.py
-└── integration/reduction/
-    └── test_full_reduction.py
+├── regularization/
+│   └── test_time_regularization.py  # Time regularization tests
+├── symbolic_lifts/
+│   └── test_ks_symbolic.py          # KS symbolic validation
+└── validation/
+    └── test_lagrange_equilibrium.py # Equilibrium point tests
 ```
 
 ### Implementation Status
@@ -163,11 +169,11 @@ tests/
 |-----------|--------|-------|-------|
 | **Task 2.1.1** (Coordinates) | ✅ Complete | 7 files | All coordinate systems implemented |
 | **Task 2.1.1** (Reduction) | ✅ Complete | 4 files | Translation & rotation reduction |
-| **Task 2.1.2** (Connection) | ✅ Complete | 2 files | Connection A computed |
-| **Task 2.1.2** (Curvature) | ⚠️ Partial | In jm_metric.py | Computation exists in JM metric class, needs standalone validation |
-| **Task 2.1.3** (JM Metric) | ✅ Complete | 2 files | Metric & curvature implemented |
-| **WP 2.2** (S¹ Lift) | ⚠️ Partial | 4 files | Infrastructure exists, needs integration tests with WP3/WP4 |
-| **WP 2.3** (KS-Spinor) | ⚠️ Partial | 1 file | Single-pair transform complete; needs 3-pair application + constraints |
+| **Task 2.1.2** (Connection) | ✅ Complete | 3 files | Connection A and curvature F computed |
+| **Task 2.1.2** (Curvature) | ✅ Complete | curvature_form.py | Standalone curvature 2-form implementation |
+| **Task 2.1.3** (JM Metric) | ✅ Complete | 4 files | Metric, Christoffel, Riemann curvature |
+| **WP 2.2** (S¹ Lift) | ✅ Complete | 4 files | Full S¹ bundle with extended symplectic form |
+| **WP 2.3** (KS-Spinor) | ✅ Complete | 9 files | Full pairwise KS with time regularization, RATTLE integrator |
 
 ---
 
@@ -795,5 +801,5 @@ To contribute to WP2 implementation:
 
 ---
 
-**Last Updated**: November 23, 2025
-**WP2 Status**: 🔨 Partially Complete - Core infrastructure ready, lift constructions need integration
+**Last Updated**: November 25, 2025
+**WP2 Status**: ✅ Core Complete - All coordinate systems, geometry modules, and lift constructions implemented

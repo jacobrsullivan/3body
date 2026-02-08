@@ -54,6 +54,12 @@ results/
 *.parquet
 build_external/
 
+# Root build artifacts (should be in build/)
+/qd_*
+/test_*
+/verify_qd
+*.dSYM/
+
 # Large installer files
 Mambaforge-Darwin-arm64.sh
 mambaforge.sh

@@ -1,0 +1,290 @@
+# Differential Galois Theory
+
+Mathematical foundations for the Morales-Ramis integrability obstruction test.
+
+## Overview
+
+Differential Galois theory extends classical Galois theory from algebraic equations to linear differential equations. For Hamiltonian systems, it provides the most powerful algebraic criterion for non-integrability.
+
+## Picard-Vessiot Theory
+
+### Linear Differential Equations
+
+Consider a linear ODE system:
+
+```
+dy/dx = A(x) · y
+```
+
+where A(x) is an n×n matrix with entries in a differential field K (typically meromorphic functions).
+
+### Picard-Vessiot Extension
+
+The **Picard-Vessiot extension** L/K is the smallest differential field extension containing all entries of a fundamental solution matrix Y:
+
+```
+dY/dx = A(x) · Y,    det(Y) ≠ 0
+```
+
+**Properties**:
+- L = K(Y_{ij}) where Y_{ij} are entries of Y
+- The field of constants of L equals that of K (typically ℂ)
+- Unique up to K-isomorphism
+
+### Differential Galois Group
+
+The **differential Galois group** (DGG) G = Gal(L/K) consists of all differential automorphisms of L that fix K pointwise.
+
+**Key property**: G acts on the solution space V by:
+```
+σ(Y) = Y · M_σ    for some M_σ ∈ GL(n, ℂ)
+```
+
+This gives an embedding G ↪ GL(n, ℂ).
+
+### Structure of the DGG
+
+**Theorem (Kolchin)**: The differential Galois group G is a linear algebraic group.
+
+**Components**:
+- **G⁰**: Identity component (connected component containing identity)
+- **G/G⁰**: Finite group (component group)
+
+The identity component G⁰ captures the "continuous" symmetries of solutions.
+
+## Morales-Ramis Theorem
+
+### Statement
+
+**Theorem (Morales-Ramis, 2001)**: Let (M, ω, H) be a complex analytic Hamiltonian system. If the system is meromorphically integrable in the Liouville sense (n independent integrals in involution), then the identity component G⁰ of the differential Galois group of the Normal Variational Equations along any non-equilibrium solution is abelian.
+
+### Contrapositive (Obstruction)
+
+If G⁰ is **non-abelian** along ANY solution, the system is **NOT integrable**.
+
+### Why This Works
+
+1. **Integrals constrain solutions**: If I₁, ..., Iₙ are integrals in involution, their level sets foliate phase space into invariant tori.
+
+2. **Variational equations linearize**: The NVE describe how perturbations evolve tangent to level sets.
+
+3. **Commutativity of integrals → Commutativity of Galois**: Integrals in involution generate commuting Hamiltonian flows, which induces abelianness in the Galois group.
+
+### Higher-Order Extension
+
+**Theorem (Morales-Ramis-Simó)**: For integrability, G⁰ must be abelian for variational equations of ALL orders k ≥ 1.
+
+The k-th variational equation captures k-th order perturbation effects.
+
+## Normal Variational Equations
+
+### Definition
+
+For a trajectory φ(t) of ẋ = X_H(x), the NVE is:
+
+```
+d(δx)/dt = DX_H(φ(t)) · δx
+```
+
+where DX_H is the Jacobian (linearization) of the Hamiltonian vector field.
+
+### In Canonical Form
+
+Using Hamilton's equations:
+```
+q̇ = ∂H/∂p,    ṗ = -∂H/∂q
+```
+
+The NVE becomes:
+```
+d/dt [δq]   [H_qp   H_pp ] [δq]
+     [δp] = [-H_qq  -H_qp] [δp]
+```
+
+where H_qq, H_qp, H_pp are blocks of the Hessian ∇²H evaluated along φ(t).
+
+### Symplectic Structure
+
+For Hamiltonian systems, the NVE preserves the symplectic form:
+```
+G ⊆ Sp(2n, ℂ)
+```
+
+This constrains possible Galois groups to symplectic subgroups.
+
+## Classification of Galois Groups
+
+### For Second-Order Equations
+
+The equation y'' + a(x)y' + b(x)y = 0 has Galois group G ⊆ SL(2, ℂ).
+
+**Possible groups** (Kovacic classification):
+
+| Case | G | G⁰ | Abelian? |
+|------|---|----|----|
+| 1 | Triangular | Triangular | Yes |
+| 2 | Dihedral D_n | {±I} or ℂ* | Yes |
+| 3 | Finite (A₄, S₄, A₅) | {I} | Yes |
+| 4 | SL(2, ℂ) | SL(2, ℂ) | **No** |
+
+**Key insight**: Only Case 4 (full SL(2, ℂ)) gives non-abelian G⁰.
+
+### For Higher-Dimensional Systems
+
+Common non-abelian groups:
+- SL(n, ℂ): Full special linear group
+- Sp(2n, ℂ): Full symplectic group
+- SO(n, ℂ): Special orthogonal group
+
+## Three-Body Problem Results
+
+### Known Non-Abelian Cases
+
+**Lagrange equilateral orbit**: 
+- NVE reduces to hypergeometric equation
+- G⁰ ≅ SL(2, ℂ)
+- Proves non-integrability in neighborhood of L4/L5
+
+**Collinear Euler orbits**:
+- Computed up to 5th order by Combot
+- Non-abelian at all orders
+- Confirms non-integrability
+
+**CR3BP resonant orbits**:
+- Yagasaki (2021): Non-integrable for all μ ≠ 0
+- Extends Poincaré's classical result
+
+### Lift-Integrability Hypothesis
+
+For lifted systems:
+- **Downstairs** (reduced space): G⁰ expected non-abelian
+- **Upstairs** (S¹ or KS lift): G⁰ possibly abelian
+
+If upstairs is abelian, integrability is restored in the lifted space.
+
+## Computing the DGG
+
+### Via Kovacic Algorithm
+
+For second-order equations, Kovacic's algorithm decides:
+1. Which case (1-4) applies
+2. Whether solutions are Liouvillian
+3. The structure of G
+
+### Via Monodromy
+
+The **monodromy group** M ⊆ G is generated by analytic continuation around singularities.
+
+**Relation**: The Zariski closure of M equals G (generically).
+
+**Computation**:
+1. Identify singularities in complex time plane
+2. Compute monodromy matrices around each
+3. Generate group from matrices
+
+### Numerical Approach
+
+```python
+def estimate_galois_group(nve_system, periodic_orbit):
+    """
+    Estimate Galois group structure numerically.
+    
+    Strategy:
+    1. Compute monodromy matrix M
+    2. Check if M^n → I for some n (finite group)
+    3. Analyze eigenvalue structure
+    4. Check for abelian indicators
+    """
+    M = compute_monodromy_matrix(nve_system, periodic_orbit)
+    
+    eigenvalues = np.linalg.eigvals(M)
+    trace = np.trace(M)
+    det = np.linalg.det(M)
+    
+    # For symplectic matrix, det = 1
+    assert abs(det - 1) < 1e-10, "Not symplectic"
+    
+    # Check for abelian indicators
+    # If all eigenvalues on unit circle with specific pattern → Case 2 (dihedral)
+    # If trace satisfies |tr| ≤ 2 → bounded orbits → possibly abelian
+    
+    all_on_circle = all(abs(abs(ev) - 1) < 1e-8 for ev in eigenvalues)
+    
+    if all_on_circle and abs(trace) <= 2:
+        return {'likely_abelian': True, 'case': 'bounded'}
+    else:
+        return {'likely_abelian': False, 'case': 'unbounded'}
+```
+
+## Abelianness Tests
+
+### Algebraic Test
+
+For G ⊆ SL(2, ℂ), G⁰ is abelian iff G⁰ is:
+- Trivial {I}
+- Finite cyclic
+- Triangular (unipotent or diagonal)
+
+### Numerical Indicators
+
+```python
+def check_abelian_indicators(monodromy_matrices):
+    """
+    Check numerical indicators of abelianness.
+    """
+    # Generate group elements
+    n_samples = 100
+    products = []
+    
+    for _ in range(n_samples):
+        # Random product of monodromy matrices
+        indices = np.random.choice(len(monodromy_matrices), size=10)
+        M = np.eye(monodromy_matrices[0].shape[0])
+        for i in indices:
+            M = M @ monodromy_matrices[i]
+        products.append(M)
+    
+    # Check commutativity
+    commutator_norms = []
+    for i in range(len(products)):
+        for j in range(i+1, len(products)):
+            comm = products[i] @ products[j] - products[j] @ products[i]
+            commutator_norms.append(np.linalg.norm(comm))
+    
+    max_commutator = max(commutator_norms)
+    
+    if max_commutator < 1e-8:
+        return {'is_abelian': True, 'max_commutator': max_commutator}
+    else:
+        return {'is_abelian': False, 'max_commutator': max_commutator}
+```
+
+## Connection to Integrability
+
+### Liouville Integrability
+
+A Hamiltonian system with n degrees of freedom is Liouville integrable if:
+1. n independent integrals I₁, ..., Iₙ exist
+2. {Iᵢ, Iⱼ} = 0 (involution)
+3. Motion confined to n-tori
+
+### How DGG Reflects Integrability
+
+| DGG Property | Implication |
+|--------------|-------------|
+| G⁰ abelian | Compatible with integrability |
+| G⁰ non-abelian | System NOT integrable |
+| G finite | Very special (algebraic solutions) |
+| G = Sp(2n) | Generic non-integrable |
+
+### Partial Integrability
+
+If G⁰ has abelian component of dimension k, system may have k independent integrals (partial integrability).
+
+## References
+
+- Morales-Ruiz, J.J. (1999). *Differential Galois Theory and Non-integrability of Hamiltonian Systems*
+- Morales-Ruiz & Ramis (2001). "Galoisian obstructions to integrability of Hamiltonian systems"
+- van der Put, M. & Singer, M.F. (2003). *Galois Theory of Linear Differential Equations*
+- Kovacic, J.J. (1986). "An algorithm for solving second order linear homogeneous differential equations"
+- Ziglin, S.L. (1983). "Branching of solutions and nonexistence of first integrals"

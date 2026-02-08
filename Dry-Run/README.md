@@ -4,6 +4,52 @@
 
 This directory contains infrastructure for performing end-to-end **Dry-Run** tests of the 3Body lift-integrability system. Dry runs are small-scale, controlled validation tests that verify the entire pipeline works correctly before committing to expensive production runs.
 
+## ⚠️ IMPORTANT: Working Directory
+
+**All dry-run commands MUST be executed from the project root directory.**
+
+### Correct Working Directory
+
+```bash
+# Navigate to project root (NOT a subdirectory!)
+cd /path/to/3body
+
+# Verify your location
+pwd  # Should output: /path/to/3body
+ls   # Should show: src/, tests/, Dry-Run/, User-Guides/, CLAUDE.md, etc.
+```
+
+### Validation Before Starting
+
+```bash
+# Check you're in the correct location
+python scripts/validate_working_dir.py  # Should show: ✅ Working directory validated
+
+# Or manually verify
+test -f CLAUDE.md && test -d src/python && echo "✅ Correct directory" || echo "❌ Wrong directory"
+```
+
+### If You're in the Wrong Directory
+
+```bash
+# Navigate back to project root
+cd /path/to/3body
+
+# Or from any subdirectory
+cd $(git rev-parse --show-toplevel)
+```
+
+### Why This Matters
+
+- **Relative paths** in scripts assume you're at project root
+- **File creation** will fail or create files in wrong locations
+- **Import paths** for Python modules expect project root in path
+- **Test discovery** assumes running from project root
+
+**Rule of thumb**: If `pwd` doesn't end with `/3body`, you're in the wrong place!
+
+---
+
 ## Purpose
 
 Dry runs serve to validate:
@@ -48,19 +94,39 @@ Dry-Run/
 
 ## Quick Start Guide
 
-### 1. Create a New Dry-Run Session
+### 1. Verify Working Directory (CRITICAL!)
 
 ```bash
-# Create dated folder
+# Step 1: Navigate to project root
+cd /path/to/3body  # Replace with your actual path
+
+# Step 2: Validate location
+pwd  # Must show: /path/to/3body (NOT /path/to/3body/Dry-Run/...)
+
+# Step 3: Run validation script
+python scripts/validate_working_dir.py
+# Expected output: ✅ Working directory validated: project root
+```
+
+**If validation fails, DO NOT PROCEED** - navigate to project root first.
+
+### 2. Create a New Dry-Run Session
+
+```bash
+# Create dated folder (FROM PROJECT ROOT!)
 DATE=$(date +%dth%b%Y)
 mkdir -p Dry-Run/${DATE}-DryRun/{configs,data,logs,results,plots}
 
 # Copy experience log template
 cp Dry-Run/24thNov2025-DryRun/Dry-Run-Experience-Log.MD \
    Dry-Run/${DATE}-DryRun/
+
+# Verify structure was created correctly
+ls -la Dry-Run/${DATE}-DryRun/
+# Should show: configs/ data/ logs/ results/ plots/ Dry-Run-Experience-Log.MD
 ```
 
-### 2. Environment Verification
+### 3. Environment Verification
 
 ```bash
 # Activate environment

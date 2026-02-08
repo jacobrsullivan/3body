@@ -1,20 +1,23 @@
-# Task 3.3.2: Basis Function Optimization Implementation
-## Detailed Implementation Plan
+# AMENDED Task 3.3.2: Enriched Basis Function Library
+## Implementation Plan for Non-Standard Function Discovery
 
-**Duration**: 3-4 days
+**Duration**: 4-5 days
 **Prerequisites**: Task 3.3.1 (Symbolic Regression Pipeline)
-**Objective**: Construct physics-informed, hierarchical basis function libraries to maximize symbolic regression success while minimizing search space
+**Objective**: Construct physics-informed basis function libraries including spinor components, elliptic functions, and other non-standard forms to enable discovery of complex conserved quantities
+
+**Amendment Date**: 2025-11-20
+**Amendment Rationale**: Hidden integrals in the three-body problem, if they exist, are likely complex and may involve non-polynomial functions motivated by KS regularization, integrable system theory, and classical mechanics.
 
 ---
 
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Architecture](#architecture)
+2. [Enhanced Architecture](#enhanced-architecture)
 3. [Implementation Details](#implementation-details)
-4. [Basis Function Design](#basis-function-design)
-5. [Validation Strategy](#validation-strategy)
-6. [Integration Points](#integration-points)
+4. [Spinor Basis Functions](#spinor-basis-functions)
+5. [Elliptic Function Basis](#elliptic-function-basis)
+6. [Validation Strategy](#validation-strategy)
 7. [Testing Plan](#testing-plan)
 8. [Deliverables](#deliverables)
 
@@ -22,853 +25,959 @@
 
 ## Overview
 
-### Purpose
+### Extended Purpose
 
-Task 3.3.2 addresses a critical challenge in symbolic regression: **What functions should we search over?**
+Task 3.3.2 constructs **physics-informed basis function libraries** that go beyond standard polynomials to include:
 
-**Problem**: The space of all possible mathematical expressions is infinite. Searching blindly is computationally intractable and prone to overfitting.
+1. **Spinor components** from KS regularization
+2. **Elliptic functions** (Jacobi sn/cn/dn, Weierstrass ℘)
+3. **Theta functions** for quasi-periodic structures
+4. **Rational and algebraic** combinations of geometric quantities
 
-**Solution**: Construct **physics-informed basis function libraries** that:
-1. Respect the geometric structure of the three-body problem
-2. Include known conserved quantities and their combinations
-3. Use hierarchical refinement (start simple, add complexity only if needed)
-4. Are coordinate-independent (based on geometric invariants)
+### Mathematical Motivation
 
-### Key Insight
+**Historical Precedent**:
 
-For Hamiltonian systems, conserved quantities typically have special structure:
-- **Linear integrals** correspond to symmetries (Noether's theorem)
-- **Quadratic integrals** appear in integrable systems (e.g., Runge-Lenz vector)
-- **Geometric quantities** (distances, angles, angular momenta) are building blocks
+| System | Hidden Integral | Function Type |
+|--------|----------------|---------------|
+| Kepler problem | Runge-Lenz vector | Algebraic (involves $\mathbf{r}/r$) |
+| Kowalevskaya top | Kowalevskaya integral | Elliptic function |
+| Rigid body (Euler) | $L_z$ in body frame | Algebraic |
+| Geodesic flow on ellipsoid | Jacobi's integral | Elliptic integral |
+| Toda lattice | Action variables | Logarithmic |
 
-By designing basis functions around these principles, we dramatically improve symbolic regression success rate and interpretability.
+**Implication**: If the three-body problem has a fourth integral, it may involve similar non-standard functions.
 
 ---
 
-## Architecture
+## Enhanced Architecture
 
-### Module Structure
+### Module Structure (EXTENDED)
 
 ```
 src/python/symbolic/
-├── basis_functions.py              # Main API (this task)
+├── basis_functions.py              # Main API (AMENDED)
 ├── geometric_invariants.py         # Distance, angle, momentum computations
 ├── polynomial_basis.py             # Standard polynomial bases
 ├── physics_basis.py                # Energy, angular momentum combinations
 ├── coordinate_transforms.py        # Cartesian ↔ Shape Space ↔ S¹ ↔ KS
-└── basis_validation.py             # Test basis completeness
+│
+├── spinor_basis.py                 # KS spinor components (NEW)
+├── elliptic_basis.py               # Jacobi/Weierstrass elliptic functions (NEW)
+├── theta_basis.py                  # Jacobi theta functions (NEW)
+├── algebraic_basis.py              # Rational and algebraic combinations (NEW)
+└── special_functions_utils.py     # Numerical evaluation utilities (NEW)
 ```
 
-### Hierarchical Search Strategy
+### Hierarchical Search Strategy (EXTENDED)
 
 ```
 Level 0: Known Integrals {E, L_x, L_y, L_z, p_θ}
-    ↓ Already conserved (trivial)
-Level 1: Linear in coordinates/momenta {q_i, p_i}
-    ↓ ~10-20 functions
-Level 2: Quadratic {q_i q_j, q_i p_j, p_i p_j}
-    ↓ ~50-100 functions
-Level 3: Cubic {q_i q_j q_k, ...}
-    ↓ ~200-500 functions (selective)
-Level 4: Geometric combinations {r_12·r_23, L·r_12, ...}
-    ↓ Physics-motivated
-Level 5: Transcendental {sin(θ), sqrt(r), ...}
-    ↓ For periodic/scaling structures
+    ↓ Already conserved (baseline)
+
+Level 1: Polynomial (degree ≤ 3) in phase space coordinates
+    ↓ ~100 functions | O(n^3) | Standard
+
+Level 2: Rational Functions
+    ↓ ~500 functions | O(n^6) | Gravitational potentials
+
+Level 3: Algebraic (sqrt, nth roots)
+    ↓ ~200 functions | O(n^3) with sqrt | Kepler-like
+
+Level 4: KS Spinor Components (NEW)
+    ↓ ~80 functions | Linear/quadratic in spinors
+    - Individual components: u12_0, u12_1, u12_2, u12_3, ...
+    - Bilinear forms: ⟨u12, u23⟩, ⟨u12, u31⟩, ...
+    - Quaternion products: u12 ⊗ u23
+
+Level 5: Trigonometric (sin, cos of phase space variables)
+    ↓ ~300 functions | Periodic motion
+
+Level 6: Elliptic Functions (Jacobi) (NEW)
+    ↓ ~60 templates | sn(f(q,p), k), cn(f(q,p), k), dn(f(q,p), k)
+    - Argument f(q,p): Energy, angular momentum, geometric combinations
+    - Modulus k: 0.5, 0.7, 0.9, or fitted
+
+Level 7: Elliptic Functions (Weierstrass) (NEW)
+    ↓ ~30 templates | ℘(f(q,p); ω1, ω2)
+    - Lattice parameters ω1, ω2: To be fitted
+
+Level 8: Theta Functions (NEW)
+    ↓ ~16 templates | θ_i(f(q,p), q) for i=1,2,3,4
+    - Nome q = exp(iπτ): Related to elliptic modulus
 ```
 
-**Adaptive Strategy**: Start at Level 1. If SINDy fails (residual too large), move to next level.
+**Adaptive Strategy**: Start at Level 1. Only proceed to next level if:
+- Current level residual > 10^{-8}, AND
+- Current level search exhausted (all combinations tried)
 
 ---
 
 ## Implementation Details
 
-### Part A: Geometric Invariants (1.5 days)
+### Part A: Spinor Basis Functions (NEW - 1.5 days)
 
-**File**: `src/python/symbolic/geometric_invariants.py`
+**File**: `src/python/symbolic/spinor_basis.py`
 
-```python
-"""
-Compute geometric invariants for the three-body problem.
+#### A.1: KS Spinor Representation
 
-These are coordinate-independent quantities that are natural building blocks
-for conserved quantities.
-"""
+**Mathematical Background**:
 
-import numpy as np
-from typing import Tuple, Dict, Callable
-from dataclasses import dataclass
+The Kustaanheimo-Stiefel (KS) transformation represents a 3D position vector $\mathbf{r} \in \mathbb{R}^3$ as a 4D spinor $\mathbf{u} \in \mathbb{R}^4$ (or $\mathbb{C}^2$) via:
 
+$$
+\mathbf{r} = L(\mathbf{u}) \mathbf{u}
+$$
 
-@dataclass
-class GeometricQuantities:
-    """Collection of geometric invariants for three-body system."""
-    # Distances
-    r12: float
-    r23: float
-    r31: float
+where $L(\mathbf{u})$ is a $3 \times 4$ matrix depending linearly on $\mathbf{u}$, and $|\mathbf{r}| = |\mathbf{u}|^2$.
 
-    # Relative positions (vectors)
-    r12_vec: np.ndarray  # Shape: (3,)
-    r23_vec: np.ndarray
-    r31_vec: np.ndarray
+**Key Properties**:
+1. **Bilinear**: The map $(u_0, u_1, u_2, u_3) \mapsto (x, y, z)$ is bilinear
+2. **Distance**: $r = |\mathbf{r}| = u_0^2 + u_1^2 + u_2^2 + u_3^2$
+3. **Regularization**: KS removes the $1/r$ singularity in the Hamiltonian
 
-    # Relative velocities
-    v12_vec: np.ndarray
-    v23_vec: np.ndarray
-    v31_vec: np.ndarray
+**For Three-Body Problem**: We have three spinors (one per pair):
+- $\mathbf{u}_{12} = (u_{12,0}, u_{12,1}, u_{12,2}, u_{12,3})$ for body pair 1-2
+- $\mathbf{u}_{23} = (u_{23,0}, u_{23,1}, u_{23,2}, u_{23,3})$ for body pair 2-3
+- $\mathbf{u}_{31} = (u_{31,0}, u_{31,1}, u_{31,2}, u_{31,3})$ for body pair 3-1
 
-    # Radial velocities (dot products)
-    rdot_12: float  # r̂_12 · v_12
-    rdot_23: float
-    rdot_31: float
-
-    # Angular momentum (per pair)
-    L12_vec: np.ndarray  # r_12 × v_12
-    L23_vec: np.ndarray
-    L31_vec: np.ndarray
-
-    # Total angular momentum
-    L_total: np.ndarray  # Shape: (3,)
-    L_magnitude: float
-
-    # Energy components (if masses provided)
-    kinetic_energy: float
-    potential_energy: float
-    total_energy: float
-
-
-def compute_geometric_quantities(
-    state: np.ndarray,
-    masses: np.ndarray,
-    coordinate_system: str = 'cartesian'
-) -> GeometricQuantities:
-    """
-    Compute all geometric invariants from phase space state.
-
-    Args:
-        state: Phase space vector
-               - Cartesian: [q1x, q1y, q1z, q2x, q2y, q2z, q3x, q3y, q3z,
-                             p1x, p1y, p1z, p2x, p2y, p2z, p3x, p3y, p3z]
-               - Shape space: [r12, r23, r31, θ, pr12, pr23, pr31, pθ]
-        masses: [m1, m2, m3]
-        coordinate_system: 'cartesian', 'shape', 's1', or 'ks'
-
-    Returns:
-        GeometricQuantities object with all invariants
-    """
-    # Convert to Cartesian if needed
-    if coordinate_system != 'cartesian':
-        state = convert_to_cartesian(state, coordinate_system, masses)
-
-    # Extract positions and momenta
-    dim = len(state) // 2
-    q = state[:dim].reshape(3, 3)  # (3 bodies, 3 coords)
-    p = state[dim:].reshape(3, 3)
-
-    # Compute relative positions
-    r12_vec = q[1] - q[0]
-    r23_vec = q[2] - q[1]
-    r31_vec = q[0] - q[2]
-
-    # Distances
-    r12 = np.linalg.norm(r12_vec)
-    r23 = np.linalg.norm(r23_vec)
-    r31 = np.linalg.norm(r31_vec)
-
-    # Velocities (v = p/m in Cartesian coords)
-    v1 = p[0] / masses[0]
-    v2 = p[1] / masses[1]
-    v3 = p[2] / masses[2]
-
-    # Relative velocities
-    v12_vec = v2 - v1
-    v23_vec = v3 - v2
-    v31_vec = v1 - v3
-
-    # Radial velocities
-    rdot_12 = np.dot(r12_vec, v12_vec) / r12 if r12 > 1e-10 else 0.0
-    rdot_23 = np.dot(r23_vec, v23_vec) / r23 if r23 > 1e-10 else 0.0
-    rdot_31 = np.dot(r31_vec, v31_vec) / r31 if r31 > 1e-10 else 0.0
-
-    # Angular momentum (per pair)
-    L12_vec = np.cross(r12_vec, masses[0]*masses[1]/(masses[0]+masses[1]) * v12_vec)
-    L23_vec = np.cross(r23_vec, masses[1]*masses[2]/(masses[1]+masses[2]) * v23_vec)
-    L31_vec = np.cross(r31_vec, masses[2]*masses[0]/(masses[2]+masses[0]) * v31_vec)
-
-    # Total angular momentum
-    L_total = np.cross(q[0], p[0]) + np.cross(q[1], p[1]) + np.cross(q[2], p[2])
-    L_magnitude = np.linalg.norm(L_total)
-
-    # Energy
-    T = 0.5 * np.sum(p**2 / masses[:, None])  # Kinetic
-    V = -masses[0]*masses[1]/r12 - masses[1]*masses[2]/r23 - masses[2]*masses[0]/r31  # Potential
-    E = T + V
-
-    return GeometricQuantities(
-        r12=r12, r23=r23, r31=r31,
-        r12_vec=r12_vec, r23_vec=r23_vec, r31_vec=r31_vec,
-        v12_vec=v12_vec, v23_vec=v23_vec, v31_vec=v31_vec,
-        rdot_12=rdot_12, rdot_23=rdot_23, rdot_31=rdot_31,
-        L12_vec=L12_vec, L23_vec=L23_vec, L31_vec=L31_vec,
-        L_total=L_total, L_magnitude=L_magnitude,
-        kinetic_energy=T, potential_energy=V, total_energy=E
-    )
-
-
-def geometric_basis_functions(
-    masses: np.ndarray,
-    coordinate_system: str = 'cartesian',
-    include_pairs: bool = True,
-    include_vectors: bool = False
-) -> Dict[str, Callable]:
-    """
-    Construct basis of geometric invariant functions.
-
-    Returns:
-        basis: Dictionary mapping names to functions
-               Each function signature: state -> float
-    """
-    basis = {}
-
-    def make_invariant_func(extractor: Callable[[GeometricQuantities], float], name: str):
-        """Factory for creating basis functions from geometric quantities."""
-        def func(state: np.ndarray) -> float:
-            geom = compute_geometric_quantities(state, masses, coordinate_system)
-            return extractor(geom)
-        func.__name__ = name
-        return func
-
-    # Distances
-    basis['r12'] = make_invariant_func(lambda g: g.r12, 'r12')
-    basis['r23'] = make_invariant_func(lambda g: g.r23, 'r23')
-    basis['r31'] = make_invariant_func(lambda g: g.r31, 'r31')
-
-    # Powers of distances
-    basis['r12_sq'] = make_invariant_func(lambda g: g.r12**2, 'r12_sq')
-    basis['r23_sq'] = make_invariant_func(lambda g: g.r23**2, 'r23_sq')
-    basis['r31_sq'] = make_invariant_func(lambda g: g.r31**2, 'r31_sq')
-
-    # Radial velocities
-    basis['rdot_12'] = make_invariant_func(lambda g: g.rdot_12, 'rdot_12')
-    basis['rdot_23'] = make_invariant_func(lambda g: g.rdot_23, 'rdot_23')
-    basis['rdot_31'] = make_invariant_func(lambda g: g.rdot_31, 'rdot_31')
-
-    # Angular momentum magnitude
-    basis['L_mag'] = make_invariant_func(lambda g: g.L_magnitude, 'L_mag')
-    basis['L_sq'] = make_invariant_func(lambda g: g.L_magnitude**2, 'L_sq')
-
-    # Energy
-    basis['E'] = make_invariant_func(lambda g: g.total_energy, 'E')
-
-    # Pairwise products (if requested)
-    if include_pairs:
-        basis['r12_r23'] = make_invariant_func(lambda g: g.r12 * g.r23, 'r12_r23')
-        basis['r12_r31'] = make_invariant_func(lambda g: g.r12 * g.r31, 'r12_r31')
-        basis['r23_r31'] = make_invariant_func(lambda g: g.r23 * g.r31, 'r23_r31')
-
-        # Mixed terms
-        basis['r12_rdot12'] = make_invariant_func(lambda g: g.r12 * g.rdot_12, 'r12_rdot12')
-        basis['E_L'] = make_invariant_func(lambda g: g.total_energy * g.L_magnitude, 'E_L')
-
-    # Vector dot products (if requested)
-    if include_vectors:
-        basis['r12_dot_r23'] = make_invariant_func(
-            lambda g: np.dot(g.r12_vec, g.r23_vec), 'r12_dot_r23'
-        )
-        basis['r12_dot_L'] = make_invariant_func(
-            lambda g: np.dot(g.r12_vec, g.L_total), 'r12_dot_L'
-        )
-
-    return basis
-
-
-def convert_to_cartesian(
-    state: np.ndarray,
-    from_system: str,
-    masses: np.ndarray
-) -> np.ndarray:
-    """
-    Convert state from various coordinate systems to Cartesian.
-
-    Args:
-        state: State vector in specified system
-        from_system: 'shape', 's1', or 'ks'
-        masses: Body masses
-
-    Returns:
-        cartesian_state: State in Cartesian coordinates
-    """
-    # Placeholder - would call coordinate transformation modules from WP2
-    if from_system == 'shape':
-        from ..coordinates.shape_space import shape_to_cartesian
-        return shape_to_cartesian(state, masses)
-    elif from_system == 's1':
-        from ..coordinates.s1_bundle import s1_to_cartesian
-        return s1_to_cartesian(state, masses)
-    elif from_system == 'ks':
-        from ..coordinates.ks_coordinates import ks_to_cartesian
-        return ks_to_cartesian(state, masses)
-    else:
-        return state  # Already Cartesian
-```
-
----
-
-### Part B: Polynomial Basis Construction (1 day)
-
-**File**: `src/python/symbolic/polynomial_basis.py`
+#### A.2: Implementation
 
 ```python
 """
-Standard polynomial basis functions for phase space.
-"""
+Spinor-based basis functions for symbolic regression using KS coordinates.
 
-import numpy as np
-from typing import List, Tuple, Callable
-from itertools import combinations_with_replacement, product
-
-
-def construct_polynomial_basis(
-    dim: int,
-    max_degree: int = 3,
-    include_constant: bool = True,
-    include_cross_terms: bool = True
-) -> List[Tuple[Callable, str]]:
-    """
-    Construct complete polynomial basis up to specified degree.
-
-    Args:
-        dim: Phase space dimension (2n for n DOF)
-        max_degree: Maximum polynomial degree
-        include_constant: Include constant term (1.0)
-        include_cross_terms: Include mixed terms (q_i p_j)
-
-    Returns:
-        basis: List of (function, name) tuples
-    """
-    basis = []
-
-    # Degree 0: Constant
-    if include_constant:
-        basis.append((lambda z: 1.0, "1"))
-
-    # Degree 1: Linear terms z_i
-    for i in range(dim):
-        basis.append((
-            lambda z, idx=i: z[idx],
-            f"z{i}"
-        ))
-
-    # Degree 2: Quadratic terms
-    if max_degree >= 2:
-        for i in range(dim):
-            for j in range(i, dim):
-                if i == j:
-                    # z_i^2
-                    basis.append((
-                        lambda z, idx=i: z[idx]**2,
-                        f"z{i}^2"
-                    ))
-                elif include_cross_terms:
-                    # z_i * z_j
-                    basis.append((
-                        lambda z, i=i, j=j: z[i] * z[j],
-                        f"z{i}*z{j}"
-                    ))
-
-    # Degree 3: Cubic terms (selective to avoid explosion)
-    if max_degree >= 3:
-        # Only include selected cubics (not all combinations)
-        for i in range(dim):
-            # z_i^3
-            basis.append((
-                lambda z, idx=i: z[idx]**3,
-                f"z{i}^3"
-            ))
-
-        # Mixed cubics: z_i^2 * z_j for i != j
-        if include_cross_terms:
-            for i in range(dim):
-                for j in range(dim):
-                    if i != j:
-                        basis.append((
-                            lambda z, i=i, j=j: z[i]**2 * z[j],
-                            f"z{i}^2*z{j}"
-                        ))
-
-    return basis
-
-
-def construct_harmonic_oscillator_basis(dim: int) -> List[Tuple[Callable, str]]:
-    """
-    Basis functions natural for harmonic oscillator systems.
-
-    Includes q^2, p^2, and q*p terms.
-    """
-    n_dof = dim // 2
-    basis = []
-
-    # Kinetic energy terms: p_i^2
-    for i in range(n_dof):
-        p_idx = n_dof + i
-        basis.append((
-            lambda z, idx=p_idx: z[idx]**2,
-            f"p{i}^2"
-        ))
-
-    # Potential energy terms: q_i^2
-    for i in range(n_dof):
-        basis.append((
-            lambda z, idx=i: z[idx]**2,
-            f"q{i}^2"
-        ))
-
-    # Coupling terms: q_i * p_i
-    for i in range(n_dof):
-        p_idx = n_dof + i
-        basis.append((
-            lambda z, qi=i, pi=p_idx: z[qi] * z[pi],
-            f"q{i}*p{i}"
-        ))
-
-    return basis
-
-
-def construct_kepler_basis(dim: int = 4) -> List[Tuple[Callable, str]]:
-    """
-    Basis functions for Kepler problem (includes Runge-Lenz vector components).
-
-    For 2D Kepler: dim=4 (q_x, q_y, p_x, p_y)
-    """
-    basis = []
-
-    # Energy: p^2 - 1/r
-    basis.append((
-        lambda z: z[2]**2 + z[3]**2 - 1/np.sqrt(z[0]**2 + z[1]**2),
-        "E"
-    ))
-
-    # Angular momentum: L = q_x p_y - q_y p_x
-    basis.append((
-        lambda z: z[0]*z[3] - z[1]*z[2],
-        "L"
-    ))
-
-    # Runge-Lenz components (2D):
-    # A_x = p_y L - q_x/r
-    # A_y = -p_x L - q_y/r
-    basis.append((
-        lambda z: z[3]*(z[0]*z[3] - z[1]*z[2]) - z[0]/np.sqrt(z[0]**2 + z[1]**2),
-        "RL_x"
-    ))
-    basis.append((
-        lambda z: -z[2]*(z[0]*z[3] - z[1]*z[2]) - z[1]/np.sqrt(z[0]**2 + z[1]**2),
-        "RL_y"
-    ))
-
-    return basis
-```
-
----
-
-### Part C: Physics-Informed Basis (1 day)
-
-**File**: `src/python/symbolic/physics_basis.py`
-
-```python
-"""
-Physics-informed basis functions for three-body problem.
-
-Combines known conservation laws and geometric structures.
+The KS transformation introduces spinor (quaternion) coordinates that may
+reveal hidden algebraic structure in conserved quantities.
 """
 
 import numpy as np
 from typing import List, Tuple, Callable, Dict
+from dataclasses import dataclass
 
-from .geometric_invariants import compute_geometric_quantities, GeometricQuantities
 
-
-def construct_physics_basis(
-    masses: np.ndarray,
-    coordinate_system: str = 'cartesian',
-    include_energy_powers: bool = True,
-    include_angular_momentum: bool = True,
-    max_degree: int = 3
-) -> List[Tuple[Callable, str]]:
+@dataclass
+class SpinorCoordinates:
     """
-    Construct basis functions based on physical intuition.
+    KS spinor coordinates for three-body system.
 
-    Includes:
-    - Known conserved quantities (E, L)
-    - Powers and products of conserved quantities
-    - Geometric invariants (distances, angles)
-    - Combinations motivated by integrable limits
+    Attributes:
+        u12: Spinor for body pair 1-2 (shape: (4,))
+        u23: Spinor for body pair 2-3 (shape: (4,))
+        u31: Spinor for body pair 3-1 (shape: (4,))
+        u12_dot: Conjugate momenta for u12 (shape: (4,))
+        u23_dot: Conjugate momenta for u23 (shape: (4,))
+        u31_dot: Conjugate momenta for u31 (shape: (4,))
+    """
+    u12: np.ndarray
+    u23: np.ndarray
+    u31: np.ndarray
+    u12_dot: np.ndarray
+    u23_dot: np.ndarray
+    u31_dot: np.ndarray
+
+
+def cartesian_to_ks_spinors(
+    state_cartesian: np.ndarray,
+    masses: np.ndarray
+) -> SpinorCoordinates:
+    """
+    Convert Cartesian phase space state to KS spinor coordinates.
 
     Args:
-        masses: Body masses
-        coordinate_system: Coordinate system of input states
-        include_energy_powers: Include E, E^2, etc.
-        include_angular_momentum: Include L components
-        max_degree: Maximum degree for combinations
+        state_cartesian: [q1x, q1y, q1z, q2x, q2y, q2z, q3x, q3y, q3z,
+                          p1x, p1y, p1z, p2x, p2y, p2z, p3x, p3y, p3z]
+        masses: [m1, m2, m3]
+
+    Returns:
+        SpinorCoordinates object with spinors for all three pairs
+    """
+    # Extract positions
+    q = state_cartesian[:9].reshape(3, 3)  # (3 bodies, 3 coords)
+    p = state_cartesian[9:].reshape(3, 3)
+
+    # Relative positions
+    r12 = q[1] - q[0]
+    r23 = q[2] - q[1]
+    r31 = q[0] - q[2]
+
+    # Convert to spinors using KS transformation
+    u12 = position_to_spinor(r12)
+    u23 = position_to_spinor(r23)
+    u31 = position_to_spinor(r31)
+
+    # Conjugate momenta (requires more complex transformation)
+    # Simplified here - full implementation needs KS momentum map
+    mu12 = masses[0] * masses[1] / (masses[0] + masses[1])
+    mu23 = masses[1] * masses[2] / (masses[1] + masses[2])
+    mu31 = masses[2] * masses[0] / (masses[2] + masses[0])
+
+    v12 = (p[1] / masses[1]) - (p[0] / masses[0])
+    v23 = (p[2] / masses[2]) - (p[1] / masses[1])
+    v31 = (p[0] / masses[0]) - (p[2] / masses[2])
+
+    u12_dot = velocity_to_spinor_momentum(v12, u12, mu12)
+    u23_dot = velocity_to_spinor_momentum(v23, u23, mu23)
+    u31_dot = velocity_to_spinor_momentum(v31, u31, mu31)
+
+    return SpinorCoordinates(u12, u23, u31, u12_dot, u23_dot, u31_dot)
+
+
+def position_to_spinor(r: np.ndarray) -> np.ndarray:
+    """
+    Convert 3D position to 4D spinor (KS map).
+
+    Standard KS transformation:
+        u0 = sqrt((r + x) / 2)
+        u1 = y / (2*u0)
+        u2 = z / (2*u0)
+        u3 = 0  (gauge choice)
+
+    Args:
+        r: 3D position vector [x, y, z]
+
+    Returns:
+        u: 4D spinor [u0, u1, u2, u3]
+    """
+    x, y, z = r
+    r_mag = np.linalg.norm(r)
+
+    # Avoid singularity at origin
+    if r_mag < 1e-10:
+        return np.zeros(4)
+
+    # Standard KS map (Levi-Civita type)
+    u0 = np.sqrt((r_mag + x) / 2)
+    if u0 < 1e-10:
+        # Near x = -r (opposite side), use alternative form
+        u0 = 0.0
+        u1 = np.sqrt((r_mag - x) / 2)
+        u2 = y / (2 * u1) if u1 > 1e-10 else 0.0
+        u3 = z / (2 * u1) if u1 > 1e-10 else 0.0
+    else:
+        u1 = y / (2 * u0)
+        u2 = z / (2 * u0)
+        u3 = 0.0  # Gauge choice (can be parameterized)
+
+    return np.array([u0, u1, u2, u3])
+
+
+def velocity_to_spinor_momentum(
+    v: np.ndarray,
+    u: np.ndarray,
+    mu: float
+) -> np.ndarray:
+    """
+    Convert velocity to spinor momentum (KS momentum map).
+
+    The KS momentum transformation is more complex and involves
+    the spinor derivatives.
+
+    Simplified implementation (full version requires Hamiltonian formalism).
+
+    Args:
+        v: 3D velocity [vx, vy, vz]
+        u: 4D spinor [u0, u1, u2, u3]
+        mu: Reduced mass
+
+    Returns:
+        u_dot: 4D spinor momentum
+    """
+    # Placeholder - full implementation requires solving the momentum map
+    # For now, use a simplified approximation
+    r_mag = np.dot(u, u)
+    if r_mag < 1e-10:
+        return np.zeros(4)
+
+    # Approximate: project velocity onto spinor directions
+    # This is NOT the correct KS momentum map but provides a starting point
+    u_normalized = u / np.sqrt(r_mag)
+    v_parallel = np.dot(v, u[:3]) / np.linalg.norm(u[:3]) if np.linalg.norm(u[:3]) > 1e-10 else 0.0
+
+    u_dot = 2 * mu * v_parallel * u_normalized
+
+    return u_dot
+
+
+def construct_spinor_basis(
+    masses: np.ndarray,
+    max_degree: int = 3,
+    include_quaternion_products: bool = True
+) -> List[Tuple[Callable, str]]:
+    """
+    Construct basis functions using KS spinor coordinates.
+
+    Args:
+        masses: Body masses [m1, m2, m3]
+        max_degree: Maximum polynomial degree in spinor components
+        include_quaternion_products: Include quaternion multiplication
 
     Returns:
         basis: List of (function, name) tuples
+
+    Basis function categories:
+        1. Individual spinor components (24 functions: 3 pairs × 4 components × 2 (position + momentum))
+        2. Spinor norms (6 functions: 3 pairs × 2 (position + momentum))
+        3. Inner products between spinors (9 functions: 3 choose 2 × 3 combinations)
+        4. Quaternion products (6 functions if included)
+        5. Mixed bilinear forms (position spinor · momentum spinor)
     """
     basis = []
 
-    # Helper to create basis functions
-    def make_func(extractor: Callable[[GeometricQuantities], float], name: str):
-        def func(state: np.ndarray) -> float:
-            geom = compute_geometric_quantities(state, masses, coordinate_system)
-            return extractor(geom)
+    def make_spinor_func(extractor: Callable[[SpinorCoordinates], float], name: str):
+        """Factory for creating basis functions from spinor coordinates."""
+        def func(state_cartesian: np.ndarray) -> float:
+            spinors = cartesian_to_ks_spinors(state_cartesian, masses)
+            return extractor(spinors)
         func.__name__ = name
         return (func, name)
 
-    # Category 1: Known integrals
-    basis.append(make_func(lambda g: g.total_energy, "E"))
+    # Category 1: Individual spinor components
+    for pair in ['12', '23', '31']:
+        for i in range(4):
+            # Position spinor components
+            basis.append(make_spinor_func(
+                lambda s, pair=pair, i=i: getattr(s, f'u{pair}')[i],
+                f"u{pair}_{i}"
+            ))
 
-    if include_angular_momentum:
-        basis.append(make_func(lambda g: g.L_magnitude, "L"))
-        basis.append(make_func(lambda g: g.L_total[0], "Lx"))
-        basis.append(make_func(lambda g: g.L_total[1], "Ly"))
-        basis.append(make_func(lambda g: g.L_total[2], "Lz"))
+            # Momentum spinor components
+            basis.append(make_spinor_func(
+                lambda s, pair=pair, i=i: getattr(s, f'u{pair}_dot')[i],
+                f"udot{pair}_{i}"
+            ))
 
-    # Category 2: Powers of conserved quantities
-    if include_energy_powers and max_degree >= 2:
-        basis.append(make_func(lambda g: g.total_energy**2, "E^2"))
-        basis.append(make_func(lambda g: g.L_magnitude**2, "L^2"))
-
-    if max_degree >= 3:
-        basis.append(make_func(lambda g: g.total_energy**3, "E^3"))
-
-    # Category 3: Products of conserved quantities
-    if include_energy_powers and include_angular_momentum:
-        basis.append(make_func(lambda g: g.total_energy * g.L_magnitude, "E*L"))
-        if max_degree >= 2:
-            basis.append(make_func(lambda g: g.total_energy**2 * g.L_magnitude, "E^2*L"))
-            basis.append(make_func(lambda g: g.total_energy * g.L_magnitude**2, "E*L^2"))
-
-    # Category 4: Shape space coordinates (distances)
-    basis.append(make_func(lambda g: g.r12, "r12"))
-    basis.append(make_func(lambda g: g.r23, "r23"))
-    basis.append(make_func(lambda g: g.r31, "r31"))
-
-    # Category 5: Quadratic shape coordinates
-    if max_degree >= 2:
-        basis.append(make_func(lambda g: g.r12**2, "r12^2"))
-        basis.append(make_func(lambda g: g.r23**2, "r23^2"))
-        basis.append(make_func(lambda g: g.r31**2, "r31^2"))
-
-        # Mixed products
-        basis.append(make_func(lambda g: g.r12 * g.r23, "r12*r23"))
-        basis.append(make_func(lambda g: g.r12 * g.r31, "r12*r31"))
-        basis.append(make_func(lambda g: g.r23 * g.r31, "r23*r31"))
-
-    # Category 6: Radial velocities
-    basis.append(make_func(lambda g: g.rdot_12, "rdot12"))
-    basis.append(make_func(lambda g: g.rdot_23, "rdot23"))
-    basis.append(make_func(lambda g: g.rdot_31, "rdot31"))
-
-    # Category 7: Mixed energy-shape terms
-    basis.append(make_func(lambda g: g.total_energy * g.r12, "E*r12"))
-    basis.append(make_func(lambda g: g.L_magnitude * g.r12, "L*r12"))
-
-    # Category 8: Kepler-like combinations (for limiting cases)
-    # Runge-Lenz inspired: L × v - r/|r|
-    # Approximate with geometric terms
-    basis.append(make_func(
-        lambda g: g.L_magnitude * g.rdot_12 - 1/g.r12 if g.r12 > 1e-10 else 0,
-        "RL_like_12"
-    ))
-
-    return basis
-
-
-def construct_s1_bundle_basis(
-    masses: np.ndarray,
-    max_degree: int = 3
-) -> List[Tuple[Callable, str]]:
-    """
-    Basis functions for S¹ bundle coordinates.
-
-    State: (s_1, s_2, s_3, θ, p_s1, p_s2, p_s3, p_θ)
-
-    Key hypothesis: p_θ might be conserved!
-    """
-    basis = []
-
-    # Known fiber momentum
-    basis.append((lambda z: z[7], "p_theta"))
-
-    # Shape coordinates
-    for i in range(3):
-        basis.append((lambda z, idx=i: z[idx], f"s{i}"))
-
-    # Momenta
-    for i in range(3):
-        basis.append((lambda z, idx=i+4: z[idx], f"ps{i}"))
-
-    # Fiber angle
-    basis.append((lambda z: z[3], "theta"))
-    basis.append((lambda z: np.sin(z[3]), "sin(theta)"))
-    basis.append((lambda z: np.cos(z[3]), "cos(theta)"))
-
-    # Quadratic terms
-    if max_degree >= 2:
-        for i in range(3):
-            basis.append((lambda z, idx=i: z[idx]**2, f"s{i}^2"))
-
-        # Energy-like: sum of momenta squared
-        basis.append((
-            lambda z: z[4]**2 + z[5]**2 + z[6]**2,
-            "sum_ps^2"
+    # Category 2: Spinor norms
+    for pair in ['12', '23', '31']:
+        # |u|^2 = r (distance)
+        basis.append(make_spinor_func(
+            lambda s, pair=pair: np.dot(getattr(s, f'u{pair}'), getattr(s, f'u{pair}')),
+            f"|u{pair}|^2"
         ))
 
-        # Mixed terms: s_i * p_theta
-        for i in range(3):
-            basis.append((
-                lambda z, si=i, pt=7: z[si] * z[pt],
-                f"s{i}*p_theta"
+        # |u_dot|^2 (kinetic energy contribution)
+        basis.append(make_spinor_func(
+            lambda s, pair=pair: np.dot(getattr(s, f'u{pair}_dot'), getattr(s, f'u{pair}_dot')),
+            f"|udot{pair}|^2"
+        ))
+
+    # Category 3: Inner products (position spinors)
+    pairs = ['12', '23', '31']
+    for i, pair_i in enumerate(pairs):
+        for j, pair_j in enumerate(pairs):
+            if i < j:
+                basis.append(make_spinor_func(
+                    lambda s, pi=pair_i, pj=pair_j: np.dot(
+                        getattr(s, f'u{pi}'),
+                        getattr(s, f'u{pj}')
+                    ),
+                    f"u{pair_i}_dot_u{pair_j}"
+                ))
+
+    # Category 4: Mixed bilinear forms (position · momentum)
+    for pair in pairs:
+        basis.append(make_spinor_func(
+            lambda s, p=pair: np.dot(
+                getattr(s, f'u{p}'),
+                getattr(s, f'u{p}_dot')
+            ),
+            f"u{pair}_dot_udot{pair}"
+        ))
+
+    # Category 5: Quaternion products (if requested)
+    if include_quaternion_products:
+        for i, pair_i in enumerate(pairs):
+            for j, pair_j in enumerate(pairs):
+                if i < j:
+                    basis.append(make_spinor_func(
+                        lambda s, pi=pair_i, pj=pair_j: quaternion_product_norm(
+                            getattr(s, f'u{pi}'),
+                            getattr(s, f'u{pj}')
+                        ),
+                        f"quat_product_u{pair_i}_u{pair_j}"
+                    ))
+
+    # Category 6: Higher-degree combinations (if max_degree >= 2)
+    if max_degree >= 2:
+        # Quadratic combinations
+        for pair in pairs:
+            # u^2 · u_dot (action-like variable)
+            basis.append(make_spinor_func(
+                lambda s, p=pair: (
+                    np.dot(getattr(s, f'u{p}'), getattr(s, f'u{p}')) *
+                    np.linalg.norm(getattr(s, f'u{p}_dot'))
+                ),
+                f"|u{pair}|^2_|udot{pair}|"
             ))
 
     return basis
+
+
+def quaternion_product_norm(u1: np.ndarray, u2: np.ndarray) -> float:
+    """
+    Compute norm of quaternion product u1 ⊗ u2.
+
+    Quaternion multiplication:
+        (a0 + a1*i + a2*j + a3*k) * (b0 + b1*i + b2*j + b3*k)
+
+    Returns the Euclidean norm of the resulting quaternion.
+
+    Args:
+        u1, u2: 4D spinors representing quaternions
+
+    Returns:
+        |u1 ⊗ u2|
+    """
+    a0, a1, a2, a3 = u1
+    b0, b1, b2, b3 = u2
+
+    # Quaternion multiplication formula
+    c0 = a0*b0 - a1*b1 - a2*b2 - a3*b3
+    c1 = a0*b1 + a1*b0 + a2*b3 - a3*b2
+    c2 = a0*b2 - a1*b3 + a2*b0 + a3*b1
+    c3 = a0*b3 + a1*b2 - a2*b1 + a3*b0
+
+    return np.sqrt(c0**2 + c1**2 + c2**2 + c3**2)
+
+
+# Validation: Test on known integrals
+def test_spinor_basis_on_kepler():
+    """
+    Test spinor basis construction on Kepler problem.
+
+    For two-body Kepler, we have:
+        - Energy: E = |u_dot|^2 / (2*mu) - G*m1*m2 / |u|^2
+        - Angular momentum: L = u × u_dot (in spinor form)
+
+    This test verifies that spinor basis can recover these known integrals.
+    """
+    masses = np.array([1.0, 0.001, 0.0])  # Sun-planet-zero approximation
+
+    basis = construct_spinor_basis(masses, max_degree=2)
+
+    print(f"Spinor basis size: {len(basis)}")
+    print(f"First 10 functions: {[name for _, name in basis[:10]]}")
+
+    # Test evaluation on random state
+    state = np.random.randn(18)
+    for func, name in basis[:5]:
+        value = func(state)
+        print(f"  {name} = {value:.6f}")
+```
+
+**Validation Tests**:
+
+```python
+# tests/symbolic/test_spinor_basis.py
+
+def test_spinor_norm_equals_distance():
+    """Test that |u|^2 = r for KS transformation."""
+    masses = np.array([1.0, 1.0, 1.0])
+
+    # Create test state
+    r12 = np.array([1.0, 2.0, 3.0])
+    r12_mag = np.linalg.norm(r12)
+
+    # Convert to spinor
+    u12 = position_to_spinor(r12)
+
+    # Check |u|^2 = r
+    u_norm_sq = np.dot(u12, u12)
+    assert np.abs(u_norm_sq - r12_mag) < 1e-10, f"KS norm condition failed: {u_norm_sq} ≠ {r12_mag}"
+
+
+def test_spinor_basis_size():
+    """Test that spinor basis has expected number of functions."""
+    masses = np.array([1.0, 1.0, 1.0])
+    basis = construct_spinor_basis(masses, max_degree=2)
+
+    # Expected: 24 (components) + 6 (norms) + 3 (inner products) +
+    #           3 (mixed) + 6 (quaternion) + ... = ~50-80
+    assert len(basis) > 30, f"Basis too small: {len(basis)}"
+    assert len(basis) < 100, f"Basis too large: {len(basis)}"
 ```
 
 ---
 
-### Part D: Main Basis API (0.5 days)
+### Part B: Elliptic Function Basis (NEW - 2 days)
 
-**File**: `src/python/symbolic/basis_functions.py`
+**File**: `src/python/symbolic/elliptic_basis.py`
+
+#### B.1: Mathematical Background
+
+**Jacobi Elliptic Functions**:
+
+The Jacobi elliptic functions sn, cn, dn are defined by:
+$$
+\text{sn}(u, k), \quad \text{cn}(u, k), \quad \text{dn}(u, k)
+$$
+where $u$ is the argument and $k \in [0, 1]$ is the elliptic modulus.
+
+**Properties**:
+- $\text{sn}^2(u, k) + \text{cn}^2(u, k) = 1$
+- $\text{dn}^2(u, k) + k^2 \text{sn}^2(u, k) = 1$
+- Periodic: $\text{sn}(u + 4K, k) = \text{sn}(u, k)$ where $K(k)$ is the complete elliptic integral
+
+**Physical Examples**:
+- **Simple pendulum**: $\theta(t) = 2 \arcsin(\text{sn}(\omega t, k))$
+- **Kowalevskaya top**: One integral involves $\text{sn}(\psi, k)$
+
+#### B.2: Implementation
 
 ```python
 """
-Main API for basis function construction.
+Elliptic function-based basis for symbolic regression.
 
-Provides unified interface for all basis types and adaptive refinement.
+Provides templates for Jacobi and Weierstrass elliptic functions
+with physically motivated argument functions.
 """
 
 import numpy as np
+from scipy import special
+from mpmath import ellipfun, ellipk, ellipe, jtheta
 from typing import List, Tuple, Callable, Dict, Optional
-from enum import Enum
-
-from .polynomial_basis import construct_polynomial_basis, construct_kepler_basis
-from .physics_basis import construct_physics_basis, construct_s1_bundle_basis
-from .geometric_invariants import geometric_basis_functions
 
 
-class BasisType(Enum):
-    """Basis function library types."""
-    POLYNOMIAL = "polynomial"
-    GEOMETRIC = "geometric"
-    PHYSICS = "physics"
-    S1_BUNDLE = "s1_bundle"
-    KS_SPINOR = "ks_spinor"
-    KEPLER = "kepler"
-    CUSTOM = "custom"
-
-
-def construct_basis_library(
-    basis_type: BasisType,
-    dim: int,
+def construct_jacobi_elliptic_basis(
     masses: np.ndarray,
-    coordinate_system: str = 'cartesian',
-    max_degree: int = 2,
-    **kwargs
+    moduli: List[float] = [0.5, 0.7, 0.9],
+    argument_templates: Optional[List[str]] = None
 ) -> List[Tuple[Callable, str]]:
     """
-    Unified interface for basis construction.
+    Construct basis using Jacobi elliptic functions.
 
     Args:
-        basis_type: Type of basis to construct
-        dim: Phase space dimension
-        masses: Body masses [m1, m2, m3]
-        coordinate_system: Input coordinate system
-        max_degree: Maximum polynomial degree
-        **kwargs: Additional arguments for specific basis types
+        masses: Body masses
+        moduli: List of elliptic moduli k to try
+        argument_templates: Types of argument functions f(q,p)
+                            Options: 'energy', 'angle', 'action', 'geometric'
 
     Returns:
         basis: List of (function, name) tuples
 
-    Example:
-        >>> basis = construct_basis_library(
-        ...     BasisType.PHYSICS, dim=8, masses=np.array([1, 1, 1]),
-        ...     coordinate_system='cartesian', max_degree=2
-        ... )
-        >>> print(f"Basis size: {len(basis)}")
+    Each basis function has form:
+        sn(f(q,p), k), cn(f(q,p), k), or dn(f(q,p), k)
+    where f(q,p) is an argument function and k is the modulus.
     """
-    if basis_type == BasisType.POLYNOMIAL:
-        return construct_polynomial_basis(dim, max_degree, **kwargs)
+    if argument_templates is None:
+        argument_templates = ['energy', 'angle', 'geometric']
 
-    elif basis_type == BasisType.GEOMETRIC:
-        geom_dict = geometric_basis_functions(masses, coordinate_system, **kwargs)
-        return [(func, name) for name, func in geom_dict.items()]
+    basis = []
 
-    elif basis_type == BasisType.PHYSICS:
-        return construct_physics_basis(masses, coordinate_system, max_degree=max_degree, **kwargs)
+    # Get argument functions
+    arg_funcs = get_argument_functions(masses, argument_templates)
 
-    elif basis_type == BasisType.S1_BUNDLE:
-        return construct_s1_bundle_basis(masses, max_degree, **kwargs)
+    # For each combination of (elliptic function, argument, modulus)
+    for func_type in ['sn', 'cn', 'dn']:
+        for arg_name, arg_func in arg_funcs.items():
+            for k in moduli:
+                basis.append(make_elliptic_function(
+                    func_type, arg_func, k, f"{func_type}({arg_name}, k={k:.1f})"
+                ))
 
-    elif basis_type == BasisType.KEPLER:
-        return construct_kepler_basis(dim)
-
-    else:
-        raise ValueError(f"Unknown basis type: {basis_type}")
+    return basis
 
 
-class AdaptiveBasisRefinement:
+def make_elliptic_function(
+    func_type: str,
+    arg_func: Callable,
+    modulus: float,
+    name: str
+) -> Tuple[Callable, str]:
     """
-    Adaptive basis refinement strategy.
+    Create an elliptic function basis element.
 
-    Starts with simple basis, adds complexity only if regression fails.
+    Args:
+        func_type: 'sn', 'cn', or 'dn'
+        arg_func: Function that computes argument u = f(q,p)
+        modulus: Elliptic modulus k
+        name: Human-readable name
+
+    Returns:
+        (function, name) tuple
     """
+    def elliptic_func(state: np.ndarray) -> float:
+        u = arg_func(state)
 
-    def __init__(
-        self,
-        dim: int,
-        masses: np.ndarray,
-        coordinate_system: str = 'cartesian',
-        verbose: bool = False
-    ):
-        self.dim = dim
-        self.masses = masses
-        self.coordinate_system = coordinate_system
-        self.verbose = verbose
+        # Evaluate Jacobi elliptic function
+        try:
+            # Use mpmath for high precision
+            if func_type == 'sn':
+                result = float(ellipfun('sn', u, modulus))
+            elif func_type == 'cn':
+                result = float(ellipfun('cn', u, modulus))
+            elif func_type == 'dn':
+                result = float(ellipfun('dn', u, modulus))
+            else:
+                raise ValueError(f"Unknown function type: {func_type}")
 
-        # Refinement levels
-        self.levels = [
-            ('Physics-Linear', BasisType.PHYSICS, {'max_degree': 1}),
-            ('Physics-Quadratic', BasisType.PHYSICS, {'max_degree': 2}),
-            ('Geometric', BasisType.GEOMETRIC, {}),
-            ('Physics-Cubic', BasisType.PHYSICS, {'max_degree': 3}),
-            ('Polynomial-Quadratic', BasisType.POLYNOMIAL, {'max_degree': 2}),
-            ('Polynomial-Cubic', BasisType.POLYNOMIAL, {'max_degree': 3}),
-        ]
+            # Handle numerical issues
+            if not np.isfinite(result):
+                return 0.0
 
-        self.current_level = 0
+            return result
+        except:
+            return 0.0  # Evaluation failed
 
-    def get_next_basis(self) -> Optional[List[Tuple[Callable, str]]]:
-        """
-        Get next basis in refinement sequence.
+    elliptic_func.__name__ = name
+    return (elliptic_func, name)
 
-        Returns:
-            basis: Next basis to try, or None if exhausted
-        """
-        if self.current_level >= len(self.levels):
-            return None
 
-        name, basis_type, kwargs = self.levels[self.current_level]
+def get_argument_functions(
+    masses: np.ndarray,
+    templates: List[str]
+) -> Dict[str, Callable]:
+    """
+    Construct argument functions f(q,p) for elliptic functions.
 
-        if self.verbose:
-            print(f"Refinement Level {self.current_level}: {name}")
+    Templates:
+        - 'energy': sqrt(|E|), E, E^2
+        - 'angle': θ (fiber angle in S¹ bundle), angular momentum angle
+        - 'action': sqrt(E)*θ, L/sqrt(E)
+        - 'geometric': r12*sqrt(E), r12/r23, etc.
 
-        basis = construct_basis_library(
-            basis_type,
-            self.dim,
-            self.masses,
-            self.coordinate_system,
-            **kwargs
+    Returns:
+        Dictionary mapping name -> function
+    """
+    arg_funcs = {}
+
+    if 'energy' in templates:
+        # Energy-based arguments
+        arg_funcs['sqrt_E'] = lambda state: np.sqrt(abs(compute_energy(state, masses)))
+        arg_funcs['E'] = lambda state: compute_energy(state, masses)
+        arg_funcs['E_sq'] = lambda state: compute_energy(state, masses)**2
+
+    if 'angle' in templates:
+        # Angular arguments
+        arg_funcs['theta'] = lambda state: extract_fiber_angle(state)  # If using S¹ bundle
+        arg_funcs['atan_py_px'] = lambda state: np.arctan2(state[-2], state[-3])  # Momentum angle
+
+    if 'action' in templates:
+        # Action-angle-like combinations
+        arg_funcs['sqrt_E_theta'] = lambda state: (
+            np.sqrt(abs(compute_energy(state, masses))) * extract_fiber_angle(state)
+        )
+        arg_funcs['L_over_sqrt_E'] = lambda state: (
+            compute_angular_momentum_magnitude(state, masses) /
+            (np.sqrt(abs(compute_energy(state, masses))) + 1e-10)
         )
 
-        if self.verbose:
-            print(f"  Basis size: {len(basis)} functions")
+    if 'geometric' in templates:
+        # Geometric combinations
+        arg_funcs['r12_sqrt_E'] = lambda state: (
+            compute_r12(state, masses) * np.sqrt(abs(compute_energy(state, masses)))
+        )
+        arg_funcs['r12_over_r23'] = lambda state: (
+            compute_r12(state, masses) / (compute_r23(state, masses) + 1e-10)
+        )
 
-        self.current_level += 1
-        return basis
+    return arg_funcs
 
-    def reset(self):
-        """Reset to initial level."""
-        self.current_level = 0
+
+def construct_weierstrass_elliptic_basis(
+    masses: np.ndarray,
+    lattice_params: Optional[List[Tuple[complex, complex]]] = None,
+    argument_templates: Optional[List[str]] = None
+) -> List[Tuple[Callable, str]]:
+    """
+    Construct basis using Weierstrass ℘ function.
+
+    The Weierstrass ℘ function is defined by:
+        ℘(z; ω1, ω2) where ω1, ω2 are lattice periods
+
+    Args:
+        masses: Body masses
+        lattice_params: List of (ω1, ω2) lattice parameter pairs
+        argument_templates: Types of argument functions
+
+    Returns:
+        basis: List of (function, name) tuples
+    """
+    if lattice_params is None:
+        # Default lattice parameters (to be optimized later)
+        lattice_params = [
+            (1.0 + 0j, 1.0j),      # Square lattice
+            (2.0 + 0j, 1.0j),      # Rectangular lattice
+            (1.0 + 0j, 0.5 + 0.866j),  # Hexagonal lattice
+        ]
+
+    if argument_templates is None:
+        argument_templates = ['energy', 'angle']
+
+    basis = []
+    arg_funcs = get_argument_functions(masses, argument_templates)
+
+    for arg_name, arg_func in arg_funcs.items():
+        for i, (omega1, omega2) in enumerate(lattice_params):
+            basis.append(make_weierstrass_function(
+                arg_func, omega1, omega2, f"wp({arg_name}, omega{i})"
+            ))
+
+    return basis
+
+
+def make_weierstrass_function(
+    arg_func: Callable,
+    omega1: complex,
+    omega2: complex,
+    name: str
+) -> Tuple[Callable, str]:
+    """
+    Create a Weierstrass ℘ function basis element.
+
+    Args:
+        arg_func: Function that computes complex argument z = f(q,p)
+        omega1, omega2: Lattice periods
+        name: Human-readable name
+
+    Returns:
+        (function, name) tuple
+    """
+    def weierstrass_func(state: np.ndarray) -> float:
+        z = arg_func(state)
+
+        try:
+            # Use mpmath for Weierstrass ℘
+            from mpmath import ellipwp
+            result = float(ellipwp(z, omega1, omega2).real)
+
+            if not np.isfinite(result):
+                return 0.0
+
+            return result
+        except:
+            return 0.0
+
+    weierstrass_func.__name__ = name
+    return (weierstrass_func, name)
+
+
+# Placeholder helper functions (to be implemented based on coordinate system)
+def compute_energy(state, masses):
+    """Compute total energy."""
+    # Simplified - needs proper implementation
+    n = len(state) // 2
+    p = state[n:]
+    return 0.5 * np.sum(p**2)
+
+
+def compute_angular_momentum_magnitude(state, masses):
+    """Compute |L|."""
+    # Placeholder
+    return 1.0
+
+
+def compute_r12(state, masses):
+    """Compute distance r12."""
+    # Placeholder
+    return 1.0
+
+
+def compute_r23(state, masses):
+    """Compute distance r23."""
+    # Placeholder
+    return 1.0
+
+
+def extract_fiber_angle(state):
+    """Extract θ from S¹ bundle coordinates."""
+    # Placeholder - assumes S¹ coordinates
+    if len(state) >= 8:
+        return state[3]  # θ is 4th coordinate in S¹ bundle
+    return 0.0
+```
+
+**Validation**:
+
+```python
+# Test elliptic basis on simple pendulum
+def test_elliptic_basis_on_pendulum():
+    """
+    Simple pendulum has exact solution:
+        θ(t) = 2*arcsin(k*sn(ω*t, k))
+    where k = sin(θ_max/2).
+
+    Test if elliptic basis can discover this.
+    """
+    # Generate pendulum trajectory
+    theta_max = np.pi / 3  # Maximum angle
+    k = np.sin(theta_max / 2)
+    omega = 1.0
+
+    # Sample trajectory
+    t_vals = np.linspace(0, 10, 1000)
+    theta_vals = np.array([
+        2 * np.arcsin(k * float(ellipfun('sn', omega * t, k)))
+        for t in t_vals
+    ])
+
+    # Construct basis with this modulus
+    basis = construct_jacobi_elliptic_basis(
+        masses=np.array([1.0]),
+        moduli=[k],
+        argument_templates=['energy']
+    )
+
+    print(f"Elliptic basis size: {len(basis)}")
+    # Test if regression can recover θ(t) form
+```
+
+---
+
+### Part C: Theta Function Basis (NEW - 0.5 days)
+
+**File**: `src/python/symbolic/theta_basis.py`
+
+**Jacobi Theta Functions**: $\theta_1, \theta_2, \theta_3, \theta_4$
+
+Used for doubly periodic functions (two incommensurable frequencies).
+
+```python
+"""
+Jacobi theta function basis for symbolic regression.
+"""
+
+import numpy as np
+from mpmath import jtheta
+from typing import List, Tuple, Callable
+
+
+def construct_theta_basis(
+    masses: np.ndarray,
+    nome_values: List[float] = [0.1, 0.3, 0.5],
+    argument_templates: Optional[List[str]] = None
+) -> List[Tuple[Callable, str]]:
+    """
+    Construct basis using Jacobi theta functions θ₁, θ₂, θ₃, θ₄.
+
+    Args:
+        masses: Body masses
+        nome_values: List of nome parameter q = exp(iπτ) values to try
+        argument_templates: Types of argument functions
+
+    Returns:
+        basis: List of (function, name) tuples
+
+    Theta functions are used when the system has quasi-periodic motion
+    with two incommensurable periods.
+    """
+    if argument_templates is None:
+        argument_templates = ['angle']
+
+    basis = []
+    arg_funcs = get_argument_functions(masses, argument_templates)
+
+    # Four Jacobi theta functions
+    for theta_idx in [1, 2, 3, 4]:
+        for arg_name, arg_func in arg_funcs.items():
+            for q in nome_values:
+                basis.append(make_theta_function(
+                    theta_idx, arg_func, q, f"theta{theta_idx}({arg_name}, q={q:.1f})"
+                ))
+
+    return basis
+
+
+def make_theta_function(
+    theta_index: int,
+    arg_func: Callable,
+    nome: float,
+    name: str
+) -> Tuple[Callable, str]:
+    """Create a theta function basis element."""
+    def theta_func(state: np.ndarray) -> float:
+        z = arg_func(state)
+
+        try:
+            # Use mpmath jtheta
+            result = float(jtheta(theta_index, z, nome).real)
+
+            if not np.isfinite(result):
+                return 0.0
+
+            return result
+        except:
+            return 0.0
+
+    theta_func.__name__ = name
+    return (theta_func, name)
+```
+
+---
+
+### Part D: Main Basis API (AMENDED - 0.5 days)
+
+**File**: `src/python/symbolic/basis_functions.py` (UPDATE EXISTING)
+
+Add new methods to `BasisLibrary` class:
+
+```python
+def add_spinor_basis(self, max_degree: int = 2):
+    """Add KS spinor-based functions."""
+    from .spinor_basis import construct_spinor_basis
+    spinor_funcs = construct_spinor_basis(self.masses, max_degree)
+    for func, name in spinor_funcs:
+        self.add_function(BasisFunction(
+            func=func,
+            name=name,
+            symbol=name,
+            degree=max_degree,
+            category='spinor'
+        ))
+
+
+def add_elliptic_basis(
+    self,
+    moduli: List[float] = [0.5, 0.7, 0.9],
+    function_types: List[str] = ['jacobi']
+):
+    """Add elliptic function-based functions."""
+    from .elliptic_basis import construct_jacobi_elliptic_basis
+
+    if 'jacobi' in function_types:
+        jacobi_funcs = construct_jacobi_elliptic_basis(self.masses, moduli)
+        for func, name in jacobi_funcs:
+            self.add_function(BasisFunction(
+                func=func,
+                name=name,
+                symbol=name,
+                degree=0,  # Transcendental
+                category='elliptic_jacobi'
+            ))
+
+
+def add_theta_basis(self, nome_values: List[float] = [0.1, 0.3, 0.5]):
+    """Add Jacobi theta function-based functions."""
+    from .theta_basis import construct_theta_basis
+    theta_funcs = construct_theta_basis(self.masses, nome_values)
+    for func, name in theta_funcs:
+        self.add_function(BasisFunction(
+            func=func,
+            name=name,
+            symbol=name,
+            degree=0,
+            category='theta'
+        ))
 ```
 
 ---
 
 ## Validation Strategy
 
-### V1: Basis Completeness
+### V1. Function Recovery Tests
 
-**Test**: Does the basis contain known integrals?
+Test basis on systems with known complex integrals:
 
-```python
-def test_basis_contains_energy():
-    """Verify that physics basis includes energy."""
-    masses = np.array([1.0, 1.0, 1.0])
-    basis_list = construct_basis_library(
-        BasisType.PHYSICS, dim=18, masses=masses, max_degree=2
-    )
+1. **Kowalevskaya Top**: Has integral involving elliptic functions
+2. **Simple Pendulum**: Exact solution involves $\text{sn}(t, k)$
+3. **Two-Body Kepler**: Test spinor basis recovers Runge-Lenz vector
 
-    # Check that energy function is in basis
-    names = [name for _, name in basis_list]
-    assert 'E' in names
+### V2. Numerical Stability
 
-
-def test_basis_contains_angular_momentum():
-    """Verify that physics basis includes angular momentum."""
-    masses = np.array([1.0, 1.0, 1.0])
-    basis_list = construct_basis_library(
-        BasisType.PHYSICS, dim=18, masses=masses, max_degree=2
-    )
-
-    names = [name for _, name in basis_list]
-    assert 'L' in names or 'L_mag' in names
-```
-
-### V2: Regression Success Rate
-
-**Test**: Does physics-informed basis improve regression success?
-
-```python
-def test_physics_basis_improves_success():
-    """Compare polynomial vs. physics basis on Kepler problem."""
-    # Known Kepler integral: E
-    def E_kepler(z):
-        q, p = z[:2], z[2:]
-        r = np.linalg.norm(q)
-        return 0.5 * np.sum(p**2) - 1/r
-
-    points = generate_test_points(1000, dim=4)
-
-    # Try polynomial basis
-    poly_basis = construct_basis_library(BasisType.POLYNOMIAL, dim=4, max_degree=2)
-    poly_result = symbolic_regression_sindy(E_kepler, points, poly_basis)
-
-    # Try physics basis (should do better)
-    phys_basis = construct_basis_library(BasisType.KEPLER, dim=4)
-    phys_result = symbolic_regression_sindy(E_kepler, points, phys_basis)
-
-    assert phys_result.residual < poly_result.residual
-```
-
----
-
-## Integration Points
-
-### With Task 3.3.1 (Symbolic Regression)
-
-```python
-# Adaptive refinement workflow
-from symbolic.basis_functions import AdaptiveBasisRefinement
-from symbolic.regression_pipeline import symbolic_regression_pipeline
-
-# Initialize adaptive refinement
-refiner = AdaptiveBasisRefinement(dim=8, masses=masses, verbose=True)
-
-# Try progressively more complex bases
-result = None
-while True:
-    basis = refiner.get_next_basis()
-    if basis is None:
-        break  # Exhausted all levels
-
-    # Try regression with this basis
-    result = symbolic_regression_pipeline(
-        I_numerical, sample_points, basis, method=RegressionMethod.SINDY
-    )
-
-    if result.success:
-        print(f"Success with {refiner.current_level-1} refinement level!")
-        break
-```
+Elliptic functions can have numerical issues:
+- Test evaluation on $10^6$ random states
+- Check for NaN, Inf, overflow
+- Verify periodicity properties
 
 ---
 
@@ -876,71 +985,87 @@ while True:
 
 ### Unit Tests
 
-1. **Geometric invariants**: `test_geometric_invariants.py`
-   - Distance computations
-   - Angular momentum
-   - Energy components
+```python
+# tests/symbolic/test_enriched_basis.py
 
-2. **Polynomial basis**: `test_polynomial_basis.py`
-   - Size scaling with degree
-   - Cross-term inclusion
+def test_spinor_basis_construction():
+    masses = np.array([1.0, 1.0, 1.0])
+    basis = construct_spinor_basis(masses, max_degree=2)
+    assert len(basis) > 20
+    assert any('u12_0' in name for _, name in basis)
 
-3. **Physics basis**: `test_physics_basis.py`
-   - Known integrals present
-   - Correct dimensionality
 
-### Integration Tests
+def test_elliptic_basis_construction():
+    masses = np.array([1.0, 1.0, 1.0])
+    basis = construct_jacobi_elliptic_basis(masses)
+    assert len(basis) > 10
+    assert any('sn(' in name for _, name in basis)
 
-4. **Adaptive refinement**: `test_adaptive_refinement.py`
-   - Progressive complexity
-   - Success on known cases
+
+def test_elliptic_function_periodicity():
+    """Test that sn(u + 4K, k) = sn(u, k)."""
+    k = 0.7
+    K = float(ellipk(k**2))  # Complete elliptic integral
+
+    u = 1.5
+    sn_u = float(ellipfun('sn', u, k))
+    sn_u_plus_4K = float(ellipfun('sn', u + 4*K, k))
+
+    assert np.abs(sn_u - sn_u_plus_4K) < 1e-10
+```
 
 ---
 
-## Deliverables
+## Deliverables (UPDATED)
 
-### Code Modules (5 files)
+### Code Modules (8 files)
 
-- [ ] `geometric_invariants.py` (~500 lines)
-- [ ] `polynomial_basis.py` (~300 lines)
-- [ ] `physics_basis.py` (~400 lines)
-- [ ] `basis_functions.py` (~300 lines)
-- [ ] `coordinate_transforms.py` (~200 lines, if needed)
+- [x] `geometric_invariants.py` (~500 lines)
+- [x] `polynomial_basis.py` (~300 lines)
+- [x] `physics_basis.py` (~400 lines)
+- [x] `basis_functions.py` (~400 lines, UPDATED)
+- [ ] **`spinor_basis.py`** (~600 lines, NEW)
+- [ ] **`elliptic_basis.py`** (~700 lines, NEW)
+- [ ] **`theta_basis.py`** (~300 lines, NEW)
+- [ ] **`special_functions_utils.py`** (~200 lines, NEW)
 
-**Total**: ~1,700 lines
+**Total**: ~3,400 lines (vs. 1,700 original)
 
 ### Documentation
 
-- [ ] Basis library catalog (table of all available bases)
-- [ ] Tutorial: "Choosing the Right Basis for Your Problem"
-
-### Validation
-
-- [ ] Test coverage: >90%
-- [ ] Benchmark: Kepler, harmonic oscillator recovery
+- [ ] **"Complete Basis Catalog"** - Table of all 500+ basis functions
+- [ ] **"Elliptic Functions in Mechanics"** - Tutorial with examples
+- [ ] **"KS Spinor Geometry"** - Mathematical background
+- [ ] Performance benchmarks (evaluation time per function type)
 
 ---
 
-## Success Criteria
+## Success Criteria (REVISED)
 
 ### Minimum Success
-- [ ] Polynomial and geometric bases implemented
-- [ ] Can construct basis for any coordinate system
-- [ ] Adaptive refinement functional
+- [ ] Spinor basis implemented and tested
+- [ ] Elliptic basis (Jacobi) functional
+- [ ] Can evaluate all basis functions without crashing
 
 ### Target Success
-- [ ] Physics basis includes all expected terms
-- [ ] Regression success rate >70% on test cases
-- [ ] Basis size scales reasonably with degree
+- [ ] All 8 basis levels implemented
+- [ ] Regression success rate on test cases (Kowalevskaya top) > 80%
+- [ ] Spinor basis recovers known Kepler integrals
 
 ### Stretch Success
-- [ ] Automatic basis selection based on problem symmetries
-- [ ] Symbolic basis simplification (remove redundant functions)
-- [ ] Publication-ready basis function catalog
+- [ ] Automatic modulus/parameter fitting for elliptic functions
+- [ ] Theta functions operational
+- [ ] Publication: "Enriched Basis Functions for Three-Body Symbolic Regression"
 
 ---
 
-**Document Version**: 1.0
-**Created**: 2025-11-16
-**Status**: Complete Implementation Plan
-**Estimated Implementation Time**: 3-4 days
+**Document Version**: 2.0 (AMENDED)
+**Created**: 2025-11-20
+**Status**: Extended Implementation Plan with Non-Standard Functions
+**Estimated Implementation Time**: 5-6 days (extended from 3-4 days)
+**Key Additions**:
+- Spinor basis from KS regularization
+- Jacobi elliptic functions (sn, cn, dn)
+- Weierstrass ℘ function
+- Jacobi theta functions
+- Enhanced validation on integrable systems

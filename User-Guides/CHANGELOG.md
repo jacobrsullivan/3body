@@ -7,6 +7,47 @@
 
 ## Version History
 
+### v1.2 (2025-11-25) - Status Updates & File Structure Corrections
+
+**Type**: Documentation accuracy update
+**Scope**: WP2 status update, file structure corrections, date stamps
+**Files Modified**: 6 (All User Guides + README.md)
+
+#### Changes
+
+**User-Guide-WP2.md**:
+- ✅ **UPDATED** Status: Changed from "Partially Implemented" to "Core Complete"
+- ✅ **UPDATED** File structure: Added 7 new geometry files:
+  - `lifted_jm_metric.py`, `christoffel.py`, `connection_form.py`
+  - `curvature_form.py`, `riemann_curvature.py`
+- ✅ **UPDATED** Regularization section: Added 9 files for full KS implementation:
+  - `ks_pairwise.py`, `levi_civita.py`, `sundman.py`
+  - `rattle_integrator.py`, `extended_phase_space.py`
+  - `time_regularized_dynamics.py`, `threebody_time_regularized.py`
+- ✅ **UPDATED** Implementation status table: All components now ✅ Complete
+- ✅ **UPDATED** Test directory structure: Corrected to match actual layout
+
+**User-Guide-WP1.md**:
+- ✅ **UPDATED** Test count: Changed from "~121 tests passing" to "51 test files with ~100+ test functions"
+- ✅ **UPDATED** Date stamp
+
+**User-Guide-WP3.md, WP4.md, WP5.md**:
+- ✅ **UPDATED** Date stamps to November 25, 2025
+
+**README.md**:
+- ✅ **UPDATED** WP2 status in project architecture diagram
+
+**Review Document Created**:
+- ✅ **NEW** `reviews/USER-GUIDE-REVIEW-25NOV.md` - Comprehensive accuracy review
+
+#### Statistics
+- **Files modified**: 6
+- **File structure corrections**: 16 new files documented
+- **Status updates**: 2 major (WP2 status, test counts)
+- **Date stamps updated**: 5
+
+---
+
 ### v1.1 (2025-11-23) - Quality Improvements & Clarifications
 
 **Type**: Documentation enhancement release

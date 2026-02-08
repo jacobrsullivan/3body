@@ -1,1008 +1,670 @@
-# Task 3.3.1: Symbolic Regression Pipeline Implementation
-## Detailed Implementation Plan
+# AMENDED Task 3.3.1: Extended Symbolic Regression Pipeline
+## Implementation Plan for Complex Function Discovery
 
-**Duration**: 4-5 days
-**Prerequisites**: WP 3.1 and/or WP 3.2 outputs (numerical candidate integrals)
-**Objective**: Implement and integrate symbolic regression tools to convert numerical functions into analytical expressions
+**Duration**: 5-6 days (extended from 4-5 days)
+**Prerequisites**: Task 3.3.2 (Enriched Basis Functions)
+**Objective**: Extend the symbolic regression pipeline to discover potentially non-standard analytical expressions including elliptic functions, algebraic forms, and spinor-based integrals
+
+**Amendment Date**: 2025-11-20
+**Amendment Rationale**: The current implementation supports polynomial and simple transcendental functions via SINDy/PySR. This amendment adds specialized search methods for elliptic functions and spinor-based expressions, motivated by integrable system theory and KS regularization.
 
 ---
 
 ## Table of Contents
 
 1. [Overview](#overview)
-2. [Architecture](#architecture)
-3. [Implementation Details](#implementation-details)
-4. [Validation Strategy](#validation-strategy)
-5. [Integration Points](#integration-points)
-6. [Testing Plan](#testing-plan)
-7. [Deliverables](#deliverables)
+2. [Current Implementation Status](#current-implementation-status)
+3. [Extended Architecture](#extended-architecture)
+4. [Implementation Details](#implementation-details)
+5. [Elliptic Function Regression](#elliptic-function-regression)
+6. [Spinor-Based Regression](#spinor-based-regression)
+7. [Multi-Method Integration](#multi-method-integration)
+8. [Testing Plan](#testing-plan)
+9. [Deliverables](#deliverables)
 
 ---
 
 ## Overview
 
-### Purpose
+### Current State
 
-Task 3.3.1 creates the infrastructure for **symbolic regression**: the process of discovering analytical mathematical expressions from numerical data. This is critical for converting the numerical candidate integrals discovered in WP 3.1 (geometric methods) and WP 3.2 (machine learning) into symbolic forms suitable for rigorous analytical validation in WP4.
+**IMPLEMENTED** (✅ Complete):
+- SINDy (Sparse Identification) regression
+- PySR (Evolutionary search) regression
+- Hierarchical search (increasing polynomial degree)
+- Comparison tools (SINDy vs. PySR benchmarking)
 
-### Key Challenge
+**File**: `src/python/symbolic/regression_pipeline.py` (520 lines)
 
-**Problem**: Given a numerical function $I_{\text{num}}(q, p)$ evaluated on a set of phase space points, find a symbolic expression $I_{\text{sym}}(q, p)$ such that:
+### Extended Goals
 
-$$
-\|I_{\text{num}} - I_{\text{sym}}\|_{\infty} < \epsilon \quad \text{with } \epsilon \approx 10^{-10}
-$$
+This amendment adds three new regression capabilities:
 
-while minimizing the complexity of $I_{\text{sym}}$.
-
-### Approach
-
-**Two-Stage Pipeline**:
-
-1. **Stage 1: SINDy (Fast, Sparse)**
-   - Use sparse regression on predefined basis functions
-   - Fast convergence (seconds to minutes)
-   - Best for polynomial/rational expressions
-
-2. **Stage 2: PySR (Slow, Exploratory)**
-   - Evolutionary search over expression trees
-   - Discovers complex functional forms
-   - Fallback when SINDy fails
+1. **Elliptic Function Regression**: Template-based search for Jacobi sn/cn/dn and Weierstrass ℘ functions
+2. **Spinor-Based Regression**: Specialized search using KS spinor coordinates
+3. **Multi-Stage Pipeline**: Coordinated use of all methods with intelligent fallback
 
 ---
 
-## Architecture
+## Current Implementation Status
 
-### Module Structure
+### Module: `regression_pipeline.py`
+
+**Functions Implemented**:
+| Function | Purpose | Status |
+|----------|---------|--------|
+| `sindy_regression()` | Sparse polynomial fitting | ✅ COMPLETE |
+| `pysr_regression()` | Evolutionary search | ✅ COMPLETE |
+| `hierarchical_regression()` | Adaptive complexity | ✅ COMPLETE |
+| `compare_methods()` | Benchmark SINDy vs PySR | ✅ COMPLETE |
+
+**Dependencies**:
+- `pysindy` - ✅ Optional, graceful degradation
+- `pysr` - ✅ Optional, graceful degradation
+- `sympy` - ✅ Required
+
+**Coverage**:
+- ✅ Polynomial expressions (degree 1-3)
+- ✅ Rational functions (via PySR)
+- ✅ Simple transcendentals (sin, cos, exp, log)
+- ❌ Elliptic functions (NOT IMPLEMENTED)
+- ❌ Spinor-based search (NOT IMPLEMENTED)
+
+---
+
+## Extended Architecture
+
+### New Module Structure
 
 ```
 src/python/symbolic/
-├── regression_pipeline.py          # Main API (this task)
-├── sindy_wrapper.py                # SINDy integration
-├── pysr_wrapper.py                 # PySR integration
-├── expression_simplification.py    # SymPy post-processing
-├── numerical_validation.py         # Residual checking
-└── export.py                       # Save results (SymPy, LaTeX, NumPy)
-```
-
-### Data Flow
-
-```
-Numerical Integral I_num(q,p)
-    ↓
-Sample on dense grid (N=10^4 to 10^6 points)
-    ↓
-    ├─→ SINDy (polynomial basis)
-    │       ↓
-    │   Success? → Simplify → Validate → Output
-    │       ↓ Failure
-    └─→ PySR (evolutionary search)
-            ↓
-        Pareto front (accuracy vs. complexity)
-            ↓
-        Select best → Simplify → Validate → Output
+├── regression_pipeline.py          # EXTEND (+200 lines)
+│   ├── [EXISTING] sindy_regression()
+│   ├── [EXISTING] pysr_regression()
+│   ├── [EXISTING] hierarchical_regression()
+│   ├── [NEW] elliptic_regression()            # Template-based elliptic search
+│   ├── [NEW] spinor_regression()              # KS spinor specialized search
+│   └── [NEW] multi_stage_regression()         # Coordinated pipeline
+│
+├── elliptic_search.py              # NEW MODULE (~400 lines)
+│   ├── EllipticSearcher class
+│   ├── fit_jacobi_template()                  # Fit sn(f(q,p), k)
+│   ├── fit_weierstrass_template()             # Fit ℘(f(q,p), ω)
+│   ├── optimize_modulus()                      # Find best k
+│   └── optimize_lattice_params()              # Find best ω₁, ω₂
+│
+└── spinor_search.py                # NEW MODULE (~300 lines)
+    ├── SpinorSearcher class
+    ├── transform_to_spinor_coords()
+    ├── spinor_basis_regression()
+    └── validate_spinor_expression()
 ```
 
 ---
 
 ## Implementation Details
 
-### Part A: SINDy Integration (2 days)
+### Part A: Elliptic Function Regression (NEW - 2 days)
 
-#### A.1: Core SINDy Wrapper
+**File**: `src/python/symbolic/elliptic_search.py` (NEW, ~400 lines)
 
-**File**: `src/python/symbolic/sindy_wrapper.py`
+#### A.1: Elliptic Function Search Strategy
+
+**Challenge**: Elliptic functions have both function form AND parameters to fit:
+```
+I(q, p) ≈ c₁·sn(f₁(q,p), k₁) + c₂·cn(f₂(q,p), k₂) + ... + const
+```
+
+**Two-Level Optimization**:
+1. **Outer loop**: Try different argument templates f(q,p)
+2. **Inner loop**: For each template, optimize modulus k (or lattice ω)
+
+#### A.2: Implementation
 
 ```python
 """
-SINDy (Sparse Identification of Nonlinear Dynamics) wrapper for integral discovery.
+Elliptic function regression module.
+
+Searches for conserved quantities expressible as elliptic functions
+by template matching and parameter optimization.
 """
 
 import numpy as np
-import pysindy as ps
+from scipy.optimize import minimize, differential_evolution
+from mpmath import ellipfun, ellipk, ellipe
+import sympy as sp
 from typing import Callable, List, Tuple, Dict, Optional
 from dataclasses import dataclass
-import sympy as sp
 
 
 @dataclass
-class SINDyResult:
-    """Result from SINDy symbolic regression."""
-    expression: sp.Expr  # Symbolic expression (SymPy)
-    coefficients: np.ndarray  # Fitted coefficients
-    residual: float  # Max absolute error
-    sparsity: int  # Number of non-zero terms
-    basis_names: List[str]  # Names of basis functions used
-    success: bool  # Whether fit is acceptable
+class EllipticRegressionResult:
+    """Result from elliptic function regression."""
+    expression_str: str
+    expression_sympy: sp.Expr
+    coefficients: Dict[str, float]
+    moduli: Dict[str, float]  # Fitted elliptic moduli
+    residual: float
+    complexity: int
+    template_used: str
+    optimization_history: List[float]
 
 
-class SINDyRegressor:
+class EllipticSearcher:
     """
-    Wrapper for PySINDy library for conserved quantity discovery.
+    Template-based search for elliptic function representations.
 
-    Solves the sparse regression problem:
-        min_ξ ||I_num - Θ·ξ||₂² + λ||ξ||₁
-
-    where Θ is the library of basis functions.
+    Strategy:
+        1. Define argument templates: f(q,p) = E, √E·θ, L/√E, etc.
+        2. For each template and elliptic function (sn, cn, dn, ℘):
+            a. Fix argument template
+            b. Optimize modulus k (or lattice ω) to minimize residual
+        3. Select best fit across all templates
     """
 
     def __init__(
         self,
-        basis_functions: List[Tuple[Callable, str]],
-        threshold: float = 0.01,
-        max_iter: int = 100,
-        normalize_columns: bool = True,
-        verbose: bool = False
+        function_types: List[str] = ['sn', 'cn', 'dn'],
+        argument_templates: Optional[List[str]] = None,
+        modulus_range: Tuple[float, float] = (0.1, 0.99)
     ):
         """
-        Initialize SINDy regressor.
+        Initialize elliptic searcher.
 
         Args:
-            basis_functions: List of (func, name) tuples
-            threshold: Sparsity threshold for STLSQ algorithm
-            max_iter: Maximum iterations for sequential thresholding
-            normalize_columns: Normalize feature library columns
-            verbose: Print progress
+            function_types: Elliptic functions to try ('sn', 'cn', 'dn', 'wp')
+            argument_templates: Template types ('energy', 'angle', 'action', 'geometric')
+            modulus_range: Range for modulus parameter k search
         """
-        self.basis_functions = basis_functions
-        self.threshold = threshold
-        self.max_iter = max_iter
-        self.normalize_columns = normalize_columns
-        self.verbose = verbose
+        self.function_types = function_types
+        self.modulus_range = modulus_range
 
-        # Build PySINDy feature library
-        self._build_library()
+        if argument_templates is None:
+            self.argument_templates = ['energy', 'angle', 'action', 'geometric']
+        else:
+            self.argument_templates = argument_templates
 
-    def _build_library(self):
-        """Construct PySINDy FeatureLibrary from basis functions."""
-        from pysindy.feature_library import CustomLibrary
+        self.best_result = None
+        self.all_results = []
 
-        # Extract functions and names
-        funcs = [f for f, _ in self.basis_functions]
-        names = [n for _, n in self.basis_functions]
-
-        self.library = CustomLibrary(
-            library_functions=funcs,
-            function_names=names
-        )
-
-    def fit(
+    def search(
         self,
         I_numerical: Callable[[np.ndarray], float],
-        sample_points: np.ndarray,
-        residual_tolerance: float = 1e-10
-    ) -> SINDyResult:
+        sample_states: np.ndarray,
+        masses: np.ndarray,
+        max_templates: int = 10,
+        optimization_method: str = 'differential_evolution'
+    ) -> EllipticRegressionResult:
         """
-        Fit symbolic expression to numerical function.
+        Search for best elliptic function representation.
 
         Args:
-            I_numerical: Function to fit I(q,p) -> R
-            sample_points: Phase space points (N, 2n) where n = DOF
-            residual_tolerance: Accept if max|error| < this
+            I_numerical: Numerical integral to fit
+            sample_states: Sample points (N, state_dim)
+            masses: Body masses
+            max_templates: Maximum number of templates to try
+            optimization_method: 'differential_evolution' or 'minimize'
 
         Returns:
-            SINDyResult with fitted expression
+            best_result: Best EllipticRegressionResult across all templates
         """
         # Evaluate numerical function
-        if self.verbose:
-            print(f"Evaluating I_num on {len(sample_points)} points...")
+        I_values = np.array([I_numerical(state) for state in sample_states])
 
-        I_values = np.array([I_numerical(z) for z in sample_points])
+        # Construct argument functions
+        arg_funcs = self._construct_argument_functions(masses)
 
-        # Reshape for PySINDy (expects (n_samples, n_features))
-        X = sample_points
-        y = I_values.reshape(-1, 1)
+        best_residual = np.inf
+        best_result = None
 
-        # Create SINDy model
-        model = ps.SINDy(
-            feature_library=self.library,
-            optimizer=ps.STLSQ(
-                threshold=self.threshold,
-                max_iter=self.max_iter,
-                normalize_columns=self.normalize_columns
-            ),
-            feature_names=[f"z{i}" for i in range(X.shape[1])]
-        )
+        # Try each combination
+        templates_tried = 0
+        for func_type in self.function_types:
+            for arg_name, arg_func in arg_funcs.items():
+                if templates_tried >= max_templates:
+                    break
 
-        # Fit
-        if self.verbose:
-            print("Fitting SINDy model...")
-        model.fit(X, y, quiet=not self.verbose)
+                print(f"  Trying {func_type}({arg_name}, k)...")
 
-        # Extract coefficients
-        coeffs = model.coefficients()[0]  # First (only) equation
+                # Optimize modulus for this template
+                result = self._fit_template(
+                    I_values,
+                    sample_states,
+                    func_type,
+                    arg_func,
+                    arg_name,
+                    optimization_method
+                )
 
-        # Build SymPy expression
-        symbols_z = sp.symbols(f'z0:{X.shape[1]}')
-        expr = self._build_sympy_expression(coeffs, symbols_z)
+                self.all_results.append(result)
+                templates_tried += 1
 
-        # Compute residual
-        expr_lambda = sp.lambdify(symbols_z, expr, 'numpy')
-        predictions = np.array([expr_lambda(*z) for z in sample_points])
-        residual = np.max(np.abs(predictions - I_values))
+                if result.residual < best_residual:
+                    best_residual = result.residual
+                    best_result = result
+                    print(f"    ✓ New best: residual={result.residual:.2e}, k={result.moduli['k']:.3f}")
 
-        # Check success
-        success = residual < residual_tolerance
-        sparsity = np.count_nonzero(coeffs)
+        self.best_result = best_result
+        return best_result
 
-        if self.verbose:
-            print(f"Residual: {residual:.2e}, Sparsity: {sparsity}/{len(coeffs)}")
-            print(f"Expression: {expr}")
-
-        return SINDyResult(
-            expression=expr,
-            coefficients=coeffs,
-            residual=residual,
-            sparsity=sparsity,
-            basis_names=[self.basis_functions[i][1] for i in range(len(coeffs)) if abs(coeffs[i]) > 1e-12],
-            success=success
-        )
-
-    def _build_sympy_expression(
+    def _fit_template(
         self,
-        coefficients: np.ndarray,
-        symbols: Tuple[sp.Symbol, ...]
-    ) -> sp.Expr:
+        I_values: np.ndarray,
+        sample_states: np.ndarray,
+        func_type: str,
+        arg_func: Callable,
+        arg_name: str,
+        optimization_method: str
+    ) -> EllipticRegressionResult:
         """
-        Convert coefficient array to SymPy expression.
+        Fit a single elliptic function template.
 
-        The library evaluates as:
-            Θ(x) = [φ₀(x), φ₁(x), ..., φₘ(x)]
+        Optimizes: I(z) ≈ c₁·elliptic_func(arg_func(z), k) + c₂
 
-        So the expression is:
-            I(x) = Σᵢ ξᵢ φᵢ(x)
-
-        We need to reconstruct φᵢ from basis_functions.
+        Returns:
+            result: Fitted result with optimal k, c₁, c₂
         """
-        # This is simplified; actual implementation depends on library structure
-        # For polynomial basis, PySINDy provides built-in conversion
+        # Evaluate argument function on all samples
+        arg_values = np.array([arg_func(state) for state in sample_states])
 
-        expr = sp.S(0)  # Start with zero
+        # Define objective: find k, c1, c2 that minimize residual
+        def objective(params):
+            k, c1, c2 = params
 
-        # Manually reconstruct (would use PySINDy's equations() in practice)
-        for i, coeff in enumerate(coefficients):
-            if abs(coeff) > 1e-12:  # Non-zero coefficient
-                # Get basis function name and convert to SymPy
-                basis_name = self.basis_functions[i][1]
-                basis_expr = self._name_to_sympy(basis_name, symbols)
-                expr += coeff * basis_expr
+            # Clip k to valid range
+            k = np.clip(k, self.modulus_range[0], self.modulus_range[1])
 
-        return sp.simplify(expr)
+            # Evaluate elliptic function
+            try:
+                if func_type == 'sn':
+                    elliptic_vals = np.array([float(ellipfun('sn', u, k)) for u in arg_values])
+                elif func_type == 'cn':
+                    elliptic_vals = np.array([float(ellipfun('cn', u, k)) for u in arg_values])
+                elif func_type == 'dn':
+                    elliptic_vals = np.array([float(ellipfun('dn', u, k)) for u in arg_values])
+                else:
+                    raise ValueError(f"Unknown function type: {func_type}")
 
-    def _name_to_sympy(self, name: str, symbols: Tuple[sp.Symbol, ...]) -> sp.Expr:
+                # Predicted integral
+                I_pred = c1 * elliptic_vals + c2
+
+                # Residual
+                residual = np.sqrt(np.mean((I_values - I_pred)**2))
+
+                # Penalize extreme parameters
+                penalty = 0.0
+                if abs(c1) > 1e3 or abs(c2) > 1e3:
+                    penalty += 1e6
+
+                return residual + penalty
+
+            except:
+                return 1e10  # Failed evaluation
+
+        # Optimize
+        if optimization_method == 'differential_evolution':
+            # Global optimization
+            bounds = [(self.modulus_range[0], self.modulus_range[1]),  # k
+                      (-10.0, 10.0),  # c1
+                      (-10.0, 10.0)]  # c2
+
+            opt_result = differential_evolution(
+                objective,
+                bounds,
+                maxiter=100,
+                popsize=15,
+                seed=42,
+                workers=1
+            )
+            k_opt, c1_opt, c2_opt = opt_result.x
+            residual = opt_result.fun
+
+        else:
+            # Local optimization (faster but may miss global optimum)
+            x0 = [0.5, 1.0, 0.0]  # Initial guess
+            opt_result = minimize(
+                objective,
+                x0,
+                method='L-BFGS-B',
+                bounds=[(self.modulus_range[0], self.modulus_range[1]),
+                        (-10.0, 10.0),
+                        (-10.0, 10.0)]
+            )
+            k_opt, c1_opt, c2_opt = opt_result.x
+            residual = opt_result.fun
+
+        # Build symbolic expression
+        u_sym = sp.Symbol(f'f_{arg_name}')  # Argument symbol
+        k_sym = sp.Symbol('k')
+
+        if func_type == 'sn':
+            func_sym = sp.Function('sn')(u_sym, k_sym)
+        elif func_type == 'cn':
+            func_sym = sp.Function('cn')(u_sym, k_sym)
+        elif func_type == 'dn':
+            func_sym = sp.Function('dn')(u_sym, k_sym)
+
+        expression_sympy = c1_opt * func_sym + c2_opt
+        expression_str = f"{c1_opt:.4f}*{func_type}({arg_name}, {k_opt:.4f}) + {c2_opt:.4f}"
+
+        return EllipticRegressionResult(
+            expression_str=expression_str,
+            expression_sympy=expression_sympy,
+            coefficients={'c1': c1_opt, 'c2': c2_opt},
+            moduli={'k': k_opt},
+            residual=residual,
+            complexity=3,  # Function call + 2 coefficients
+            template_used=f"{func_type}({arg_name})",
+            optimization_history=[]
+        )
+
+    def _construct_argument_functions(self, masses: np.ndarray) -> Dict[str, Callable]:
         """
-        Convert basis function name to SymPy expression.
+        Construct physically motivated argument functions.
 
-        Examples:
-            "z0" -> z0
-            "z0*z1" -> z0*z1
-            "z0^2" -> z0**2
+        Returns:
+            arg_funcs: Dictionary mapping name -> function
         """
-        # Parse string to SymPy (simplified version)
-        # In practice, use sympy.sympify with proper namespace
-        namespace = {f'z{i}': symbols[i] for i in range(len(symbols))}
-        return sp.sympify(name.replace('^', '**'), locals=namespace)
+        arg_funcs = {}
+
+        # Energy-based (if 'energy' in templates)
+        if 'energy' in self.argument_templates:
+            arg_funcs['sqrt_E'] = lambda state: np.sqrt(abs(self._compute_energy(state, masses)))
+            arg_funcs['E'] = lambda state: self._compute_energy(state, masses)
+
+        # Angle-based
+        if 'angle' in self.argument_templates:
+            arg_funcs['theta'] = lambda state: state[3] if len(state) >= 8 else 0.0  # S¹ fiber angle
+            arg_funcs['atan_py_px'] = lambda state: np.arctan2(state[-2], state[-3])
+
+        # Action-like
+        if 'action' in self.argument_templates:
+            arg_funcs['sqrt_E_theta'] = lambda state: (
+                np.sqrt(abs(self._compute_energy(state, masses))) * state[3]
+            ) if len(state) >= 8 else 0.0
+
+        # Geometric
+        if 'geometric' in self.argument_templates:
+            arg_funcs['r12'] = lambda state: self._compute_r12(state, masses)
+
+        return arg_funcs
+
+    def _compute_energy(self, state, masses):
+        """Compute total energy (simplified)."""
+        n = len(state) // 2
+        p = state[n:]
+        return 0.5 * np.sum(p**2)  # Kinetic only (simplified)
+
+    def _compute_r12(self, state, masses):
+        """Compute r12 distance (simplified)."""
+        return 1.0  # Placeholder
 
 
-def symbolic_regression_sindy(
+def elliptic_regression(
     I_numerical: Callable[[np.ndarray], float],
-    sample_points: np.ndarray,
-    basis_functions: List[Tuple[Callable, str]],
-    threshold: float = 0.01,
-    residual_tolerance: float = 1e-10,
-    verbose: bool = False
-) -> SINDyResult:
+    sample_states: np.ndarray,
+    masses: np.ndarray,
+    function_types: List[str] = ['sn', 'cn', 'dn'],
+    max_templates: int = 10
+) -> EllipticRegressionResult:
     """
-    Convenience function for SINDy symbolic regression.
+    Perform elliptic function regression.
+
+    Args:
+        I_numerical: Numerical integral to fit
+        sample_states: Sample points
+        masses: Body masses
+        function_types: Elliptic functions to try
+        max_templates: Maximum templates to search
+
+    Returns:
+        result: Best elliptic function fit
 
     Example:
-        >>> basis = [(lambda z: z[0], "z0"), (lambda z: z[0]**2, "z0^2")]
-        >>> result = symbolic_regression_sindy(my_function, points, basis)
-        >>> print(result.expression)
-        0.5*z0**2 + 1.3*z0
+        >>> result = elliptic_regression(my_integral, samples, masses)
+        >>> print(f"Best fit: {result.expression_str}")
+        >>> print(f"Residual: {result.residual:.2e}")
     """
-    regressor = SINDyRegressor(
-        basis_functions=basis_functions,
-        threshold=threshold,
-        verbose=verbose
+    searcher = EllipticSearcher(
+        function_types=function_types,
+        argument_templates=['energy', 'angle', 'action']
     )
 
-    return regressor.fit(I_numerical, sample_points, residual_tolerance)
+    result = searcher.search(
+        I_numerical,
+        sample_states,
+        masses,
+        max_templates=max_templates
+    )
+
+    return result
 ```
 
-**Validation Tests**:
+**Key Features**:
+- Template-based search (try different argument functions)
+- Parameter optimization (modulus k via differential evolution)
+- Multiple elliptic function types (sn, cn, dn)
+- Robust error handling
+
+---
+
+### Part B: Spinor-Based Regression (NEW - 1.5 days)
+
+**File**: `src/python/symbolic/spinor_search.py` (NEW, ~300 lines)
 
 ```python
-# tests/symbolic/test_sindy_wrapper.py
+"""
+Spinor-based symbolic regression for KS coordinates.
 
-def test_sindy_linear():
-    """Test SINDy on linear function: I(z) = 2*z0 + 3*z1"""
-    def I_true(z):
-        return 2*z[0] + 3*z[1]
+Specialized search that exploits KS regularization structure.
+"""
 
-    # Sample points
-    np.random.seed(42)
-    points = np.random.randn(1000, 2)
+import numpy as np
+import sympy as sp
+from typing import Callable
+from ..spinor_basis import cartesian_to_ks_spinors, construct_spinor_basis
 
-    # Basis: {1, z0, z1}
-    basis = [
-        (lambda z: 1.0, "1"),
-        (lambda z: z[0], "z0"),
-        (lambda z: z[1], "z1")
+
+def spinor_regression(
+    I_numerical: Callable[[np.ndarray], float],
+    sample_states_cartesian: np.ndarray,
+    masses: np.ndarray,
+    max_degree: int = 2
+) -> RegressionResult:
+    """
+    Perform regression using KS spinor coordinates.
+
+    Strategy:
+        1. Transform Cartesian states to KS spinor coordinates
+        2. Construct spinor basis (bilinear forms, norms, etc.)
+        3. Run SINDy on spinor basis
+        4. Convert result back to Cartesian form (if needed)
+
+    Args:
+        I_numerical: Numerical integral in Cartesian coords
+        sample_states_cartesian: Cartesian phase space states
+        masses: Body masses
+        max_degree: Maximum polynomial degree in spinors
+
+    Returns:
+        result: RegressionResult with spinor-based expression
+    """
+    from .regression_pipeline import sindy_regression
+
+    # Transform to spinor coordinates
+    print("Converting to KS spinor coordinates...")
+    spinor_coords_list = [
+        cartesian_to_ks_spinors(state, masses)
+        for state in sample_states_cartesian
     ]
 
-    result = symbolic_regression_sindy(I_true, points, basis, threshold=0.01)
-
-    assert result.success
-    assert result.residual < 1e-10
-    assert result.sparsity == 2  # Only z0 and z1 terms
-
-
-def test_sindy_quadratic():
-    """Test on quadratic: I(z) = z0^2 + 2*z0*z1 + z1^2"""
-    def I_true(z):
-        return z[0]**2 + 2*z[0]*z[1] + z[1]**2
-
-    points = np.random.randn(2000, 2)
-
-    # Polynomial basis up to degree 2
-    basis = construct_polynomial_basis(dim=2, max_degree=2)
-
-    result = symbolic_regression_sindy(I_true, points, basis)
-
-    assert result.success
-    assert abs(result.residual) < 1e-9
-```
-
----
-
-#### A.2: Expression Simplification
-
-**File**: `src/python/symbolic/expression_simplification.py`
-
-```python
-"""
-Post-processing and simplification of symbolic expressions.
-"""
-
-import sympy as sp
-from typing import Dict, List, Tuple
-
-
-def simplify_expression(
-    expr: sp.Expr,
-    known_integrals: Dict[str, sp.Expr] = None,
-    target_form: str = 'polynomial'
-) -> Tuple[sp.Expr, Dict[str, any]]:
-    """
-    Simplify symbolic expression using SymPy and physics knowledge.
-
-    Args:
-        expr: Raw expression from symbolic regression
-        known_integrals: Dictionary of known quantities (E, L, etc.)
-        target_form: Desired form ('polynomial', 'rational', 'trigonometric')
-
-    Returns:
-        simplified_expr: Simplified expression
-        metadata: Simplification steps and statistics
-    """
-    metadata = {'steps': []}
-
-    # Step 1: Basic algebraic simplification
-    expr_simp = sp.simplify(expr)
-    metadata['steps'].append(('simplify', expr_simp))
-
-    # Step 2: Factor if polynomial
-    if target_form == 'polynomial':
-        expr_simp = sp.factor(expr_simp)
-        metadata['steps'].append(('factor', expr_simp))
-
-    # Step 3: Rationalize denominators
-    expr_simp = sp.ratsimp(expr_simp)
-    metadata['steps'].append(('ratsimp', expr_simp))
-
-    # Step 4: Trigonometric simplification
-    if target_form == 'trigonometric':
-        expr_simp = sp.trigsimp(expr_simp)
-        metadata['steps'].append(('trigsimp', expr_simp))
-
-    # Step 5: Collect terms by powers
-    if expr_simp.is_polynomial():
-        symbols_list = list(expr_simp.free_symbols)
-        for sym in symbols_list:
-            expr_simp = sp.collect(expr_simp, sym)
-
-    # Step 6: Round small coefficients to zero
-    expr_simp = round_coefficients(expr_simp, threshold=1e-12)
-    metadata['steps'].append(('round', expr_simp))
-
-    # Step 7: Substitute known integrals (optional)
-    if known_integrals:
-        expr_simp = expr_simp.subs(known_integrals)
-        metadata['steps'].append(('substitute', expr_simp))
-
-    # Metadata
-    metadata['complexity'] = count_operations(expr_simp)
-    metadata['degree'] = get_polynomial_degree(expr_simp)
-    metadata['symbols'] = list(expr_simp.free_symbols)
-
-    return expr_simp, metadata
-
-
-def round_coefficients(expr: sp.Expr, threshold: float = 1e-12) -> sp.Expr:
-    """
-    Round coefficients smaller than threshold to zero.
-
-    Example:
-        1.0*x + 1e-14*y -> 1.0*x
-    """
-    def round_term(term):
-        if term.is_number:
-            if abs(float(term)) < threshold:
-                return sp.S(0)
-            else:
-                # Round to reasonable precision
-                return sp.nsimplify(term, rational=True)
-        return term
-
-    return expr.replace(lambda x: x.is_number, round_term)
-
-
-def count_operations(expr: sp.Expr) -> int:
-    """Count number of mathematical operations in expression."""
-    return sp.count_ops(expr)
-
-
-def get_polynomial_degree(expr: sp.Expr) -> int:
-    """Get maximum degree of polynomial (or -1 if not polynomial)."""
-    if not expr.is_polynomial():
-        return -1
-
-    symbols_list = list(expr.free_symbols)
-    if not symbols_list:
-        return 0
-
-    poly = sp.Poly(expr, *symbols_list)
-    return poly.total_degree()
-
-
-def convert_to_latex(expr: sp.Expr) -> str:
-    """Convert expression to LaTeX for publication."""
-    return sp.latex(expr)
-
-
-def convert_to_numpy_function(expr: sp.Expr, symbols: List[sp.Symbol]) -> callable:
-    """
-    Convert SymPy expression to fast NumPy function.
-
-    Returns:
-        func: Callable that accepts NumPy array
-    """
-    return sp.lambdify(symbols, expr, 'numpy')
-```
-
----
-
-### Part B: PySR Integration (2 days)
-
-**File**: `src/python/symbolic/pysr_wrapper.py`
-
-```python
-"""
-PySR (Python Symbolic Regression) wrapper for complex expression discovery.
-"""
-
-import numpy as np
-import pandas as pd
-from pysr import PySRRegressor
-from typing import Callable, List, Dict, Optional
-from dataclasses import dataclass
-import sympy as sp
-
-
-@dataclass
-class PySRResult:
-    """Result from PySR symbolic regression (Pareto front)."""
-    pareto_front: pd.DataFrame  # All solutions (complexity vs. accuracy)
-    best_expression: sp.Expr  # Best trade-off
-    best_residual: float
-    best_complexity: int
-    search_time: float  # Seconds
-
-
-class PySRRegressor:
-    """
-    Wrapper for PySR evolutionary symbolic regression.
-
-    Uses genetic programming to search expression space.
-    """
-
-    def __init__(
-        self,
-        niterations: int = 100,
-        populations: int = 20,
-        population_size: int = 33,
-        binary_operators: List[str] = None,
-        unary_operators: List[str] = None,
-        constraints: Dict = None,
-        maxsize: int = 20,
-        parsimony: float = 0.01,
-        complexity_of_constants: int = 1,
-        verbose: bool = False
-    ):
-        """
-        Initialize PySR regressor.
-
-        Args:
-            niterations: Number of generations
-            populations: Number of parallel populations
-            population_size: Individuals per population
-            binary_operators: ["+", "-", "*", "/", "^"]
-            unary_operators: ["sin", "cos", "exp", "log", "sqrt"]
-            constraints: Operator-specific constraints
-            maxsize: Maximum expression size (number of nodes)
-            parsimony: Penalty for complexity
-            complexity_of_constants: Cost of constant terms
-            verbose: Print progress
-        """
-        # Default operators
-        if binary_operators is None:
-            binary_operators = ["+", "-", "*", "/", "^"]
-        if unary_operators is None:
-            unary_operators = ["sin", "cos", "exp", "log", "sqrt", "abs"]
-
-        # Default constraints
-        if constraints is None:
-            constraints = {
-                "^": (-1, 3),  # Power limited to cubic
-                "/": (-1, 1),  # Denominator complexity limit
-                "log": 3,      # Argument complexity
-                "exp": 3,
-            }
-
-        self.model = PySRRegressor(
-            niterations=niterations,
-            populations=populations,
-            population_size=population_size,
-            binary_operators=binary_operators,
-            unary_operators=unary_operators,
-            constraints=constraints,
-            maxsize=maxsize,
-            parsimony=parsimony,
-            complexity_of_constants=complexity_of_constants,
-            verbosity=1 if verbose else 0,
-            # Performance options
-            procs=0,  # Use all available cores
-            multithreading=True,
-            batching=True,
-            # Convergence
-            early_stop_condition="stop_if(loss, complexity) = loss < 1e-12",
-        )
-
-        self.verbose = verbose
-
-    def fit(
-        self,
-        I_numerical: Callable[[np.ndarray], float],
-        sample_points: np.ndarray,
-        variable_names: List[str] = None
-    ) -> PySRResult:
-        """
-        Fit symbolic expression using evolutionary search.
-
-        Args:
-            I_numerical: Numerical function to fit
-            sample_points: Phase space points (N, dim)
-            variable_names: Names for variables (e.g., ["q0", "q1", "p0", "p1"])
-
-        Returns:
-            PySRResult with Pareto front of solutions
-        """
-        import time
-
-        # Evaluate numerical function
-        if self.verbose:
-            print(f"Evaluating I_num on {len(sample_points)} points...")
-
-        I_values = np.array([I_numerical(z) for z in sample_points])
-
-        # Set variable names
-        if variable_names is None:
-            variable_names = [f"z{i}" for i in range(sample_points.shape[1])]
-
-        # Fit
-        if self.verbose:
-            print("Starting PySR evolutionary search...")
-            print(f"  Iterations: {self.model.niterations}")
-            print(f"  Populations: {self.model.populations}")
-
-        start_time = time.time()
-        self.model.fit(sample_points, I_values, variable_names=variable_names)
-        elapsed = time.time() - start_time
-
-        # Extract results (Pareto front)
-        pareto_df = self.model.equations_
-
-        # Select best expression (trade-off between accuracy and complexity)
-        best_idx = self._select_best_from_pareto(pareto_df)
-        best_row = pareto_df.iloc[best_idx]
-
-        # Convert to SymPy
-        best_expr = sp.sympify(best_row['equation'])
-        best_residual = best_row['loss']
-        best_complexity = best_row['complexity']
-
-        if self.verbose:
-            print(f"Best expression (complexity={best_complexity}, loss={best_residual:.2e}):")
-            print(f"  {best_expr}")
-            print(f"Search completed in {elapsed:.1f}s")
-
-        return PySRResult(
-            pareto_front=pareto_df,
-            best_expression=best_expr,
-            best_residual=best_residual,
-            best_complexity=best_complexity,
-            search_time=elapsed
-        )
-
-    def _select_best_from_pareto(self, pareto_df: pd.DataFrame) -> int:
-        """
-        Select best expression from Pareto front.
-
-        Strategy: Minimize score = loss + parsimony * complexity
-        """
-        scores = pareto_df['loss'] + self.model.parsimony * pareto_df['complexity']
-        return scores.idxmin()
-
-
-def symbolic_regression_pysr(
-    I_numerical: Callable[[np.ndarray], float],
-    sample_points: np.ndarray,
-    niterations: int = 100,
-    maxsize: int = 20,
-    verbose: bool = False
-) -> PySRResult:
-    """
-    Convenience function for PySR symbolic regression.
-
-    Example:
-        >>> result = symbolic_regression_pysr(my_integral, points, niterations=50)
-        >>> print(result.best_expression)
-        z0**2 + sin(z1)
-    """
-    regressor = PySRRegressorWrapper(
-        niterations=niterations,
-        maxsize=maxsize,
-        verbose=verbose
+    # Construct spinor basis
+    spinor_basis_lib = construct_spinor_basis(masses, max_degree=max_degree)
+
+    # Create BasisLibrary object
+    from ..basis_functions import BasisLibrary, BasisFunction, CoordinateSystem
+
+    library = BasisLibrary(CoordinateSystem.KS_SPINOR, masses)
+    for func, name in spinor_basis_lib:
+        library.add_function(BasisFunction(
+            func=func,
+            name=name,
+            symbol=name,
+            degree=max_degree,
+            category='spinor'
+        ))
+
+    # Run SINDy regression in spinor space
+    print(f"Running SINDy on {len(library.functions)} spinor basis functions...")
+    result = sindy_regression(
+        I_numerical,  # Still evaluates on Cartesian, but basis is spinor
+        sample_states_cartesian,
+        library,
+        threshold=0.01
     )
 
-    return regressor.fit(I_numerical, sample_points)
-```
-
----
-
-### Part C: Main Pipeline (1 day)
-
-**File**: `src/python/symbolic/regression_pipeline.py`
-
-```python
-"""
-Main symbolic regression pipeline: SINDy → PySR → Validation.
-"""
-
-import numpy as np
-import sympy as sp
-from typing import Callable, List, Tuple, Dict, Optional
-from dataclasses import dataclass, field
-from enum import Enum
-
-from .sindy_wrapper import symbolic_regression_sindy, SINDyResult
-from .pysr_wrapper import symbolic_regression_pysr, PySRResult
-from .expression_simplification import simplify_expression
-from .numerical_validation import validate_symbolic_fit
-
-
-class RegressionMethod(Enum):
-    """Symbolic regression method selection."""
-    SINDY = "sindy"
-    PYSR = "pysr"
-    AUTO = "auto"  # Try SINDy first, fallback to PySR
-
-
-@dataclass
-class SymbolicRegressionResult:
-    """Complete symbolic regression result."""
-    expression: sp.Expr  # Final simplified expression
-    method_used: RegressionMethod
-    residual: float  # Max absolute error
-    complexity: int  # Number of operations
-    success: bool  # Whether fit is acceptable
-
-    # Method-specific results
-    sindy_result: Optional[SINDyResult] = None
-    pysr_result: Optional[PySRResult] = None
-
-    # Validation
-    validation_passed: bool = False
-    validation_points: int = 0
-
-    # Metadata
-    metadata: Dict = field(default_factory=dict)
-
-
-def symbolic_regression_pipeline(
-    I_numerical: Callable[[np.ndarray], float],
-    sample_points: np.ndarray,
-    basis_functions: List[Tuple[Callable, str]],
-    method: RegressionMethod = RegressionMethod.AUTO,
-    residual_tolerance: float = 1e-10,
-    sindy_threshold: float = 0.01,
-    pysr_iterations: int = 100,
-    validation_points: Optional[np.ndarray] = None,
-    verbose: bool = False
-) -> SymbolicRegressionResult:
-    """
-    Complete symbolic regression pipeline with automatic method selection.
-
-    Workflow:
-        1. Try SINDy (fast, polynomial basis)
-        2. If SINDy fails, try PySR (slow, exploratory)
-        3. Simplify resulting expression
-        4. Validate on independent test points
-
-    Args:
-        I_numerical: Numerical function to fit
-        sample_points: Training points (N, dim)
-        basis_functions: Basis for SINDy
-        method: Regression method (AUTO, SINDY, PYSR)
-        residual_tolerance: Acceptance threshold
-        sindy_threshold: SINDy sparsity parameter
-        pysr_iterations: PySR search iterations
-        validation_points: Independent test set (if None, use holdout)
-        verbose: Print progress
-
-    Returns:
-        SymbolicRegressionResult with best fit
-    """
-    result = SymbolicRegressionResult(
-        expression=sp.S(0),
-        method_used=method,
-        residual=np.inf,
-        complexity=0,
-        success=False
-    )
-
-    # Prepare validation set
-    if validation_points is None:
-        # Use 20% holdout
-        n_train = int(0.8 * len(sample_points))
-        train_points = sample_points[:n_train]
-        validation_points = sample_points[n_train:]
-    else:
-        train_points = sample_points
-
-    # Stage 1: Try SINDy
-    if method in [RegressionMethod.SINDY, RegressionMethod.AUTO]:
-        if verbose:
-            print("=" * 60)
-            print("Stage 1: SINDy (Sparse Polynomial Regression)")
-            print("=" * 60)
-
-        try:
-            sindy_res = symbolic_regression_sindy(
-                I_numerical,
-                train_points,
-                basis_functions,
-                threshold=sindy_threshold,
-                residual_tolerance=residual_tolerance,
-                verbose=verbose
-            )
-
-            result.sindy_result = sindy_res
-
-            if sindy_res.success:
-                if verbose:
-                    print(f"✓ SINDy succeeded! Residual: {sindy_res.residual:.2e}")
-
-                result.expression = sindy_res.expression
-                result.residual = sindy_res.residual
-                result.complexity = sindy_res.sparsity
-                result.method_used = RegressionMethod.SINDY
-                result.success = True
-
-                # Skip PySR if SINDy worked
-                if method == RegressionMethod.AUTO:
-                    method = RegressionMethod.SINDY
-
-        except Exception as e:
-            if verbose:
-                print(f"✗ SINDy failed: {e}")
-
-    # Stage 2: Try PySR (if SINDy failed and method allows)
-    if not result.success and method in [RegressionMethod.PYSR, RegressionMethod.AUTO]:
-        if verbose:
-            print("\n" + "=" * 60)
-            print("Stage 2: PySR (Evolutionary Search)")
-            print("=" * 60)
-
-        try:
-            pysr_res = symbolic_regression_pysr(
-                I_numerical,
-                train_points,
-                niterations=pysr_iterations,
-                verbose=verbose
-            )
-
-            result.pysr_result = pysr_res
-
-            # Check if acceptable
-            if pysr_res.best_residual < residual_tolerance:
-                if verbose:
-                    print(f"✓ PySR succeeded! Residual: {pysr_res.best_residual:.2e}")
-
-                result.expression = pysr_res.best_expression
-                result.residual = pysr_res.best_residual
-                result.complexity = pysr_res.best_complexity
-                result.method_used = RegressionMethod.PYSR
-                result.success = True
-            else:
-                if verbose:
-                    print(f"⚠ PySR converged but residual too large: {pysr_res.best_residual:.2e}")
-
-                # Still use best effort
-                result.expression = pysr_res.best_expression
-                result.residual = pysr_res.best_residual
-                result.complexity = pysr_res.best_complexity
-                result.method_used = RegressionMethod.PYSR
-
-        except Exception as e:
-            if verbose:
-                print(f"✗ PySR failed: {e}")
-
-    # Stage 3: Simplification
-    if result.expression != sp.S(0):
-        if verbose:
-            print("\n" + "=" * 60)
-            print("Stage 3: Expression Simplification")
-            print("=" * 60)
-            print(f"Before: {result.expression}")
-
-        simplified, metadata = simplify_expression(result.expression)
-        result.expression = simplified
-        result.metadata['simplification'] = metadata
-
-        if verbose:
-            print(f"After:  {result.expression}")
-            print(f"Complexity: {metadata['complexity']} operations")
-
-    # Stage 4: Validation on independent test set
-    if result.expression != sp.S(0):
-        if verbose:
-            print("\n" + "=" * 60)
-            print("Stage 4: Validation on Test Set")
-            print("=" * 60)
-
-        validation_passed, val_residual = validate_symbolic_fit(
-            result.expression,
-            I_numerical,
-            validation_points,
-            tolerance=residual_tolerance
-        )
-
-        result.validation_passed = validation_passed
-        result.validation_points = len(validation_points)
-        result.metadata['validation_residual'] = val_residual
-
-        if verbose:
-            status = "✓ PASSED" if validation_passed else "✗ FAILED"
-            print(f"{status} - Validation residual: {val_residual:.2e}")
-
-    # Final summary
-    if verbose:
-        print("\n" + "=" * 60)
-        print("FINAL RESULT")
-        print("=" * 60)
-        print(f"Method: {result.method_used.value}")
-        print(f"Expression: {result.expression}")
-        print(f"Training residual: {result.residual:.2e}")
-        print(f"Validation: {'PASSED' if result.validation_passed else 'FAILED'}")
-        print(f"Success: {result.success}")
+    # Add metadata
+    result.metadata['coordinate_system'] = 'ks_spinor'
+    result.metadata['spinor_basis_size'] = len(library.functions)
 
     return result
 ```
 
 ---
 
-## Validation Strategy
+### Part C: Multi-Stage Regression Pipeline (NEW - 1 day)
 
-### V1: Known Function Recovery
-
-**Test**: Can the pipeline recover known mathematical expressions?
+**Extend**: `src/python/symbolic/regression_pipeline.py` (+200 lines)
 
 ```python
-def test_recover_energy():
-    """Test on Hamiltonian: H = 0.5*(p0^2 + p1^2) + V(q0, q1)"""
-    # Define energy function
-    def H(z):
-        q0, q1, p0, p1 = z
-        return 0.5 * (p0**2 + p1**2) + potential(q0, q1)
+def multi_stage_regression(
+    I_numerical: Callable[[np.ndarray], float],
+    sample_states: np.ndarray,
+    state_dim: int,
+    masses: np.ndarray,
+    residual_threshold: float = 1e-8,
+    enable_elliptic: bool = True,
+    enable_spinor: bool = True
+) -> RegressionResult:
+    """
+    Multi-stage regression pipeline with intelligent fallback.
 
-    # Sample points
-    points = generate_phase_space_grid(n=1000, dim=4)
+    Stages:
+        1. Polynomial (SINDy, degree 1-3)
+        2. Transcendental (PySR with sin/cos)
+        3. Spinor-based (if enabled and state is Cartesian)
+        4. Elliptic functions (if enabled)
 
-    # Basis (quadratic in momenta)
-    basis = construct_polynomial_basis(dim=4, max_degree=2)
+    Each stage only runs if previous stages failed to meet threshold.
 
-    # Regress
-    result = symbolic_regression_pipeline(H, points, basis)
+    Args:
+        I_numerical: Numerical integral
+        sample_states: Sample points
+        state_dim: Phase space dimension
+        masses: Body masses
+        residual_threshold: Target residual
+        enable_elliptic: Try elliptic function search
+        enable_spinor: Try spinor-based search
 
-    assert result.success
-    assert result.residual < 1e-12
-    # Check expression matches expected form
+    Returns:
+        result: Best RegressionResult across all stages
+    """
+    results = []
 
+    # Stage 1: Polynomial (fast)
+    print("=" * 70)
+    print("STAGE 1: Polynomial Regression (SINDy)")
+    print("=" * 70)
 
-def test_recover_angular_momentum():
-    """Test on L = q0*p1 - q1*p0"""
-    def L(z):
-        q0, q1, p0, p1 = z
-        return q0*p1 - q1*p0
+    for degree in [1, 2, 3]:
+        library = construct_hierarchical_basis(
+            state_dim=state_dim,
+            masses=masses,
+            max_polynomial_degree=degree,
+            include_transcendental=False
+        )
 
-    points = np.random.randn(2000, 4)
-    basis = construct_polynomial_basis(dim=4, max_degree=2)
+        result = sindy_regression(I_numerical, sample_states, library)
+        results.append(result)
 
-    result = symbolic_regression_pipeline(L, points, basis)
+        print(f"  Degree {degree}: residual={result.residual:.2e}, complexity={result.complexity}")
 
-    assert result.success
-    assert result.sparsity == 2  # Only two terms
-```
+        if result.residual < residual_threshold:
+            print(f"✓ SUCCESS at Stage 1 (polynomial degree {degree})")
+            return result
 
----
+    # Stage 2: Transcendental (PySR)
+    if PYSR_AVAILABLE:
+        print("\n" + "=" * 70)
+        print("STAGE 2: Transcendental Functions (PySR)")
+        print("=" * 70)
 
-## Integration Points
+        result = pysr_regression(
+            I_numerical,
+            sample_states,
+            niterations=50,
+            unary_operators=['square', 'cube', 'sin', 'cos']
+        )
+        results.append(result)
 
-### Input Interface
+        print(f"  PySR: residual={result.residual:.2e}, complexity={result.complexity}")
 
-**From WP 3.1**:
-```python
-# Killing field converted to integral
-I_geometric = integral_from_killing_field(killing_field, metric)
+        if result.residual < residual_threshold:
+            print("✓ SUCCESS at Stage 2 (transcendental)")
+            return result
 
-# Regress to symbolic form
-result = symbolic_regression_pipeline(
-    I_numerical=I_geometric.evaluate,
-    sample_points=sample_grid,
-    basis_functions=geometric_basis
-)
-```
+    # Stage 3: Spinor-based (if enabled)
+    if enable_spinor and state_dim >= 18:  # Assume Cartesian 3-body
+        print("\n" + "=" * 70)
+        print("STAGE 3: Spinor-Based Regression (KS Coordinates)")
+        print("=" * 70)
 
-**From WP 3.2**:
-```python
-# ML-discovered integral
-I_ml = trained_hnn.predict_integral(state)
+        try:
+            from .spinor_search import spinor_regression
+            result = spinor_regression(I_numerical, sample_states, masses, max_degree=2)
+            results.append(result)
 
-# Convert to symbolic
-result = symbolic_regression_pipeline(
-    I_numerical=I_ml,
-    sample_points=trajectory_data,
-    basis_functions=polynomial_basis,
-    method=RegressionMethod.PYSR  # May need complex forms
-)
-```
+            print(f"  Spinor: residual={result.residual:.2e}, complexity={result.complexity}")
 
-### Output Interface
+            if result.residual < residual_threshold:
+                print("✓ SUCCESS at Stage 3 (spinor)")
+                return result
+        except Exception as e:
+            print(f"  ⚠ Spinor regression failed: {e}")
 
-**To WP 3.3.3** (Candidate Ranking):
-```python
-# Create candidate from regression result
-candidate = CandidateIntegral(
-    expression=result.expression,
-    source='symbolic_regression',
-    conservation_error=result.residual,
-    complexity=result.complexity,
-    independent=True  # To be tested
-)
+    # Stage 4: Elliptic functions (if enabled)
+    if enable_elliptic:
+        print("\n" + "=" * 70)
+        print("STAGE 4: Elliptic Function Search")
+        print("=" * 70)
 
-candidates.append(candidate)
+        try:
+            from .elliptic_search import elliptic_regression
+            result = elliptic_regression(
+                I_numerical,
+                sample_states,
+                masses,
+                max_templates=10
+            )
+            results.append(result)
+
+            print(f"  Elliptic: residual={result.residual:.2e}, template={result.template_used}")
+
+            if result.residual < residual_threshold * 10:  # Relaxed threshold
+                print("✓ SUCCESS at Stage 4 (elliptic)")
+                return result
+        except Exception as e:
+            print(f"  ⚠ Elliptic regression failed: {e}")
+
+    # No stage succeeded - return best result
+    print("\n" + "=" * 70)
+    print("⚠ NO STAGE ACHIEVED THRESHOLD")
+    print("=" * 70)
+
+    best_result = min(results, key=lambda r: r.residual)
+    print(f"Returning best result: residual={best_result.residual:.2e} (method={best_result.method})")
+
+    return best_result
 ```
 
 ---
@@ -1011,167 +673,88 @@ candidates.append(candidate)
 
 ### Unit Tests
 
-1. **SINDy wrapper**: `test_sindy_wrapper.py`
-   - Linear functions
-   - Quadratic functions
-   - Failure cases (non-polynomial)
-
-2. **PySR wrapper**: `test_pysr_wrapper.py`
-   - Transcendental functions
-   - Rational functions
-   - Pareto front selection
-
-3. **Simplification**: `test_simplification.py`
-   - Coefficient rounding
-   - Factorization
-   - Trigonometric identities
-
-### Integration Tests
-
-4. **Full pipeline**: `test_regression_pipeline.py`
-   - Auto method selection
-   - SINDy → PySR fallback
-   - Validation on test set
-
-### Performance Tests
-
-5. **Timing benchmarks**:
-   - SINDy: Should complete in < 1 minute
-   - PySR: Allow up to 1 hour for complex searches
-
----
-
-## Deliverables
-
-### Code Modules (5 files)
-
-- [x] `sindy_wrapper.py` (~400 lines)
-- [x] `pysr_wrapper.py` (~350 lines)
-- [x] `expression_simplification.py` (~250 lines)
-- [x] `numerical_validation.py` (~200 lines) - See below
-- [x] `regression_pipeline.py` (~300 lines)
-
-**Total**: ~1,500 lines
-
-### Documentation
-
-- [ ] API documentation (Sphinx docstrings)
-- [ ] Tutorial notebook: "Symbolic Regression for Conserved Quantities"
-- [ ] Examples: Kepler problem, harmonic oscillator
-
-### Tests
-
-- [ ] Unit tests: 15+ test functions
-- [ ] Integration tests: 5+ end-to-end scenarios
-- [ ] Performance benchmarks
-
----
-
-## Numerical Validation Module
-
-**File**: `src/python/symbolic/numerical_validation.py`
-
 ```python
-"""
-Validation of symbolic expressions against numerical ground truth.
-"""
+# tests/wp3/test_elliptic_search.py
 
-import numpy as np
-import sympy as sp
-from typing import Callable, Tuple, List
-
-
-def validate_symbolic_fit(
-    I_symbolic: sp.Expr,
-    I_numerical: Callable[[np.ndarray], float],
-    test_points: np.ndarray,
-    tolerance: float = 1e-10
-) -> Tuple[bool, float]:
+def test_simple_pendulum_recovery():
     """
-    Verify that symbolic expression matches numerical function on test set.
+    Simple pendulum has exact solution:
+        θ(t) = 2*arcsin(k*sn(ω*t, k))
 
-    Args:
-        I_symbolic: SymPy expression
-        I_numerical: Ground truth function
-        test_points: Test phase space points (N, dim)
-        tolerance: Acceptance threshold for max|error|
-
-    Returns:
-        success: True if max residual < tolerance
-        max_residual: Maximum absolute error
+    Test if elliptic regression can discover this.
     """
-    # Convert SymPy to NumPy function
-    symbols_list = sorted(I_symbolic.free_symbols, key=lambda s: s.name)
-    I_symbolic_func = sp.lambdify(symbols_list, I_symbolic, 'numpy')
+    # Generate pendulum data
+    theta_max = np.pi / 4
+    k_true = np.sin(theta_max / 2)
+    omega = 1.0
 
-    # Evaluate both functions
-    residuals = []
-    for z in test_points:
-        try:
-            val_sym = float(I_symbolic_func(*z))
-            val_num = float(I_numerical(z))
-            residuals.append(abs(val_sym - val_num))
-        except Exception as e:
-            # Handle evaluation errors (e.g., division by zero)
-            residuals.append(np.inf)
-
-    max_residual = np.max(residuals)
-    success = max_residual < tolerance
-
-    return success, max_residual
-
-
-def compute_residual_statistics(
-    I_symbolic: sp.Expr,
-    I_numerical: Callable[[np.ndarray], float],
-    test_points: np.ndarray
-) -> dict:
-    """
-    Compute detailed residual statistics.
-
-    Returns:
-        stats: Dictionary with mean, std, max, percentiles
-    """
-    symbols_list = sorted(I_symbolic.free_symbols, key=lambda s: s.name)
-    I_symbolic_func = sp.lambdify(symbols_list, I_symbolic, 'numpy')
-
-    residuals = np.array([
-        abs(float(I_symbolic_func(*z)) - float(I_numerical(z)))
-        for z in test_points
+    t_vals = np.linspace(0, 10, 100)
+    theta_vals = np.array([
+        2 * np.arcsin(k_true * float(ellipfun('sn', omega * t, k_true)))
+        for t in t_vals
     ])
 
-    return {
-        'mean': np.mean(residuals),
-        'std': np.std(residuals),
-        'max': np.max(residuals),
-        'median': np.median(residuals),
-        'p95': np.percentile(residuals, 95),
-        'p99': np.percentile(residuals, 99)
-    }
+    # Create integral: should be H = (dθ/dt)^2/2 + cos(θ) (constant)
+    # ... (test implementation)
+
+def test_elliptic_modulus_optimization():
+    """Test that modulus k is correctly optimized."""
+    # Create synthetic data with known k
+    k_true = 0.7
+    # ... (test implementation)
 ```
 
 ---
 
-## Success Criteria
+## Deliverables (UPDATED)
 
-### Minimum Success
-- [ ] SINDy wrapper functional on polynomial test cases
-- [ ] PySR wrapper runs without errors
-- [ ] At least one known integral (E or L) recovered
+### Code Modules
 
-### Target Success
-- [ ] Full pipeline converts numerical → symbolic with residual < 1e-10
-- [ ] Works on at least 3/5 test cases
-- [ ] Validation on independent test set passes
+- [ ] `src/python/symbolic/elliptic_search.py` (~400 lines, NEW)
+- [ ] `src/python/symbolic/spinor_search.py` (~300 lines, NEW)
+- [ ] `src/python/symbolic/regression_pipeline.py` (+200 lines, EXTEND)
+- **TOTAL NEW CODE**: ~900 lines
 
-### Stretch Success
-- [ ] Auto method selection always chooses optimal approach
-- [ ] PySR discovers complex forms (transcendental, rational)
-- [ ] Pipeline completes in < 10 minutes for typical cases
+### Tests
+
+- [ ] `tests/wp3/test_elliptic_search.py` (~300 lines)
+- [ ] `tests/wp3/test_spinor_search.py` (~200 lines)
+- [ ] `tests/wp3/test_multi_stage_regression.py` (~200 lines)
+- **TOTAL TEST CODE**: ~700 lines
+
+### Documentation
+
+- [ ] Tutorial: "Elliptic Functions in Symbolic Regression"
+- [ ] Example notebook: "Discovering Complex Integrals"
+- [ ] Performance benchmarks (time per regression stage)
 
 ---
 
-**Document Version**: 1.0
-**Created**: 2025-11-16
-**Status**: Complete Implementation Plan
-**Estimated Implementation Time**: 4-5 days
+## Success Criteria (REVISED)
+
+### Minimum Success
+- [ ] Elliptic search module functional (runs without errors)
+- [ ] Can fit synthetic pendulum data
+- [ ] Multi-stage pipeline selects best method
+
+### Target Success
+- [ ] Elliptic regression finds pendulum solution automatically
+- [ ] Spinor regression recovers Kepler integrals
+- [ ] Multi-stage pipeline tested on 5+ test cases
+
+### Stretch Success
+- [ ] Discover non-polynomial integral in three-body problem
+- [ ] Elliptic function search faster than brute-force PySR
+- [ ] Publication: "Automated Discovery of Elliptic Integrals"
+
+---
+
+**Document Version**: 2.0 (AMENDED)
+**Created**: 2025-11-20
+**Status**: AMENDMENT - Extended Pipeline Design
+**Estimated Implementation Time**: 5-6 days
+**Key Additions**:
+- Elliptic function template search with parameter optimization
+- Spinor-based regression using KS coordinates
+- Multi-stage pipeline with intelligent fallback
+- Benchmark tests on known integrable systems

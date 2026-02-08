@@ -1,0 +1,44 @@
+Setup Verification (Days 1-5)
+========================================
+Python version: 3.13.2
+✓ Python version OK
+✗ Failed to import numpy
+
+❌ Setup verification failed: No module named 'numpy'
+Setup Verification (Days 1-5)
+========================================
+Python version: 3.11.13
+✓ Python version OK
+✓ numpy 2.2.6 imported successfully
+✓ scipy 1.16.1 imported successfully
+✓ matplotlib 3.10.5 imported successfully
+✓ rebound 4.4.10 imported successfully
+✓ pytest 8.4.1 imported successfully
+✓ numba 0.61.2 imported successfully
+✓ h5py 3.14.0 imported successfully
+✓ pyarrow 21.0.0 imported successfully
+clang++ location: /Users/jacobsullivan/miniconda3/envs/wp1_env/bin/clang++
+✓ Conda compilers active
+✓ pyproject.toml found
+✓ poetry.lock found (dependencies locked)
+✓ Git repository initialized
+✓ .gitignore file exists
+
+========================================
+Day 3: QD Library Verification
+========================================
+✓ QD library found
+✓ QD headers found
+✓ QD verification executable found
+✗ QD library verification failed
+
+========================================
+Day 5: QD Python Bindings Verification
+========================================
+✓ qd_python module imported successfully
+✓ qd_python version: 1.0.0
+✓ QD constants working: π = 3.141592653589793e+0...
+✓ QD arithmetic operations working
+✓ QD mathematical functions working
+
+🎉 All checks passed! Environment setup complete.
