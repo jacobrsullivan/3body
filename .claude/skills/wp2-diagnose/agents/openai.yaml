@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP2 Diagnose"
+  short_description: "Debug WP2 failures and anomalies"
+  default_prompt: "Diagnose WP2 test failures or numerical issues."

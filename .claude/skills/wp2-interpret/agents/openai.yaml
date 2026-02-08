@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP2 Interpret"
+  short_description: "Interpret WP2 results and signals"
+  default_prompt: "Interpret WP2 outputs such as curvature and JM metric."
