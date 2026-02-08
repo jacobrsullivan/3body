@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP1 Interpret"
+  short_description: "Help with WP1 Interpret tasks"
+  default_prompt: "Use $wp1-interpret to explain WP1 outputs and validation metrics."
