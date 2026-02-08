@@ -65,6 +65,14 @@ To run manually:
 pre-commit run --all-files
 ```
 
+## Repo-Specific Git/SSH Note
+
+For this repo, use the `id_jacob` SSH key without changing global SSH config. Set a repo-local SSH command:
+
+```bash
+git config core.sshCommand "ssh -i ~/.ssh/id_jacob -o IdentitiesOnly=yes"
+```
+
 ## Working Directory and Path Handling
 
 ### Critical Rule: Always Work from Project Root
