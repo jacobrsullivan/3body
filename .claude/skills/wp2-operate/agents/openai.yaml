@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP2 Operate"
+  short_description: "Run WP2 computations and tests"
+  default_prompt: "Run WP2 workflows and validate outputs."

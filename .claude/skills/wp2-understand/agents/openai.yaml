@@ -1,0 +1,4 @@
+interface:
+  display_name: "WP2 Understand"
+  short_description: "Explain WP2 concepts and map docs"
+  default_prompt: "Explain WP2 geometry foundations and point to the right docs."
