@@ -1,15 +1,15 @@
 ---
 name: wp1-trajectory-integration
 description: >
-  High-precision numerical integration for CR3BP trajectories. Use when: 
-  (1) integrating three-body trajectories, (2) selecting integrators (IAS15, 
-  Yoshida8, AdaptiveSymplectic), (3) computing Jacobi constants, (4) setting up 
-  precision tiers, (5) handling close encounters with regularization, (6) computing 
-  variational equations for WP4 validation, (7) transforming between coordinate 
-  systems (rotating, inertial, KS), (8) estimating orbital periods, (9) configuring 
-  timestep control, or (10) preparing trajectories for downstream WP2/WP3/WP4 
-  analysis. Triggers on requests involving orbit integration, timestep control, 
-  symplectic methods, trajectory generation, variational equations, monodromy matrix, 
+  High-precision numerical integration for CR3BP trajectories. Use when:
+  (1) integrating three-body trajectories, (2) selecting integrators (IAS15,
+  Yoshida8, AdaptiveSymplectic), (3) computing Jacobi constants, (4) setting up
+  precision tiers, (5) handling close encounters with regularization, (6) computing
+  variational equations for WP4 validation, (7) transforming between coordinate
+  systems (rotating, inertial, KS), (8) estimating orbital periods, (9) configuring
+  timestep control, or (10) preparing trajectories for downstream WP2/WP3/WP4
+  analysis. Triggers on requests involving orbit integration, timestep control,
+  symplectic methods, trajectory generation, variational equations, monodromy matrix,
   Floquet multipliers, dense output, Sundman transformation, or coordinate conversion.
 ---
 
@@ -175,14 +175,14 @@ Accurate period estimation is critical for setting integration times:
 def estimate_period(state0, mu, method='frequency'):
     """
     Estimate orbital period from initial conditions.
-    
+
     Methods:
       'frequency': Linearized frequency near Lagrange points
       'velocity': Kepler-like estimate from orbital velocity
       'numerical': Short integration + Poincaré crossing
     """
     x, y, z, vx, vy, vz = state0
-    
+
     if method == 'velocity':
         # Simple Kepler-like estimate
         r = np.sqrt(x**2 + y**2 + z**2)
@@ -192,13 +192,13 @@ def estimate_period(state0, mu, method='frequency'):
             return 2 * np.pi * np.sqrt(1/a_eff**3)
         else:
             return 2 * np.pi  # Default for hyperbolic
-    
+
     elif method == 'numerical':
         # Short integration to detect Poincaré crossing
         from src.python.utils.poincare import PoincareSection
         section = PoincareSection.create_standard_section('y_zero', mu=mu)
         # ... detect first return
-        
+
     elif method == 'frequency':
         # Jacobi constant based estimate
         C = jacobi_constant(state0, mu)
@@ -266,13 +266,13 @@ See `references/variational-integration.md` for complete theory.
 def detect_close_encounter(state, mu, threshold=0.1):
     """Check for close encounter with primaries."""
     x, y, z = state[:3]
-    
+
     # Distance to primary 1 (at -μ, 0, 0)
     r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
-    
+
     # Distance to primary 2 (at 1-μ, 0, 0)
     r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
-    
+
     return min(r1, r2) < threshold, min(r1, r2)
 
 # Usage during integration
@@ -332,7 +332,7 @@ u, p_u = cartesian_to_ks(r, v, primary='m2')
 
 # Full trajectory conversion
 states_inertial = np.array([
-    rotating_to_inertial(s, t, mu) 
+    rotating_to_inertial(s, t, mu)
     for s, t in zip(states, times)
 ])
 ```
@@ -486,15 +486,15 @@ galois_result = validator.analyze_monodromy(var_result['monodromy'])
 def diagnose_integration(times, states, mu):
     """Diagnose integration quality issues."""
     diagnostics = {}
-    
+
     # Check for NaN
     diagnostics['has_nan'] = np.any(np.isnan(states))
-    
+
     # Jacobi conservation
     C_values = [jacobi_constant(s, mu) for s in states]
     diagnostics['C_drift'] = max(C_values) - min(C_values)
     diagnostics['tier1_pass'] = diagnostics['C_drift'] < 1e-14
-    
+
     # Close encounters
     r_mins = [min(
         np.sqrt((s[0]+mu)**2 + s[1]**2 + s[2]**2),
@@ -502,12 +502,12 @@ def diagnose_integration(times, states, mu):
     ) for s in states]
     diagnostics['min_distance'] = min(r_mins)
     diagnostics['had_close_encounter'] = diagnostics['min_distance'] < 0.1
-    
+
     # Escape check
     r_max = max(np.sqrt(s[0]**2 + s[1]**2 + s[2]**2) for s in states)
     diagnostics['max_distance'] = r_max
     diagnostics['escaped'] = r_max > 10.0
-    
+
     return diagnostics
 ```
 

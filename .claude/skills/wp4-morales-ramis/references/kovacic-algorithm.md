@@ -88,26 +88,26 @@ D_∞ = { diagonal and anti-diagonal matrices in SL(2,ℂ) }
 def analyze_poles(r_rational):
     """
     Find poles of r(x) and classify by order.
-    
+
     Returns:
         poles: List of (location, order) tuples
         infinity_order: Order of pole at infinity
     """
     # Factor numerator and denominator
     num, den = r_rational.as_numer_denom()
-    
+
     poles = []
     # Find zeros of denominator
     roots = sp.solve(den, x)
     for root in roots:
         order = sp.Poly(den, x).order(root)
         poles.append((root, order))
-    
+
     # Order at infinity
     deg_num = sp.degree(num, x) if num != 0 else -float('inf')
     deg_den = sp.degree(den, x) if den != 0 else 0
     infinity_order = deg_num - deg_den + 2
-    
+
     return poles, infinity_order
 ```
 
@@ -119,11 +119,11 @@ For each case, compute the set E of possible exponent differences:
 def compute_e_sets(poles, infinity_order, case):
     """
     Compute possible exponent sets E for given case.
-    
+
     The exponents come from local behavior at poles.
     """
     E_sets = {'poles': {}, 'infinity': None}
-    
+
     for pole, order in poles:
         if case == 1:
             # Case 1: E contains specific values based on pole order
@@ -138,11 +138,11 @@ def compute_e_sets(poles, infinity_order, case):
             E = compute_case2_exponents(pole, order)
         elif case == 3:
             E = compute_case3_exponents(pole, order)
-        
+
         E_sets['poles'][pole] = E
-    
+
     E_sets['infinity'] = compute_infinity_exponents(infinity_order, case)
-    
+
     return E_sets
 ```
 
@@ -152,25 +152,25 @@ def compute_e_sets(poles, infinity_order, case):
 def kovacic_search(r_rational, case, E_sets):
     """
     Search for solution in given case.
-    
+
     Parameters:
         r_rational: Coefficient r(x) as SymPy rational function
         case: 1, 2, or 3
         E_sets: Exponent sets from Step 2
-        
+
     Returns:
         solution if found, None otherwise
     """
     x = sp.Symbol('x')
-    
+
     # Enumerate possible exponent combinations
     for exponent_choice in iterate_exponent_choices(E_sets):
         # Compute degree bound for polynomial
         d = compute_degree_bound(exponent_choice)
-        
+
         if d < 0:
             continue  # No valid polynomial
-        
+
         # Build ansatz
         if case == 1:
             # y = exp(∫ω dx) where ω = P/Q for rational P, Q
@@ -181,13 +181,13 @@ def kovacic_search(r_rational, case, E_sets):
         elif case == 3:
             # Algebraic solution of specific degree
             omega = build_case3_ansatz(exponent_choice, d)
-        
+
         # Substitute and solve for coefficients
         solution = solve_for_coefficients(omega, r_rational)
-        
+
         if solution is not None:
             return solution
-    
+
     return None
 ```
 
@@ -197,19 +197,19 @@ def kovacic_search(r_rational, case, E_sets):
 def kovacic_algorithm(a_coeff, b_coeff):
     """
     Apply Kovacic algorithm to y'' + a(x)y' + b(x)y = 0.
-    
+
     Returns:
         KovacicResult with case, galois_group, is_abelian, solution
     """
     x = sp.Symbol('x')
-    
+
     # Convert to reduced form: z'' = r(x)z
     r = b_coeff - sp.Rational(1,2)*sp.diff(a_coeff, x) - sp.Rational(1,4)*a_coeff**2
     r = sp.simplify(r)
-    
+
     # Analyze poles
     poles, inf_order = analyze_poles(r)
-    
+
     # Try Case 1
     E1 = compute_e_sets(poles, inf_order, case=1)
     sol1 = kovacic_search(r, case=1, E_sets=E1)
@@ -220,7 +220,7 @@ def kovacic_algorithm(a_coeff, b_coeff):
             is_abelian=True,
             solution=sol1
         )
-    
+
     # Try Case 2
     E2 = compute_e_sets(poles, inf_order, case=2)
     sol2 = kovacic_search(r, case=2, E_sets=E2)
@@ -231,7 +231,7 @@ def kovacic_algorithm(a_coeff, b_coeff):
             is_abelian=True,
             solution=sol2
         )
-    
+
     # Try Case 3
     E3 = compute_e_sets(poles, inf_order, case=3)
     sol3 = kovacic_search(r, case=3, E_sets=E3)
@@ -244,7 +244,7 @@ def kovacic_algorithm(a_coeff, b_coeff):
             is_abelian=True,
             solution=sol3
         )
-    
+
     # Case 4: No Liouvillian solution
     return KovacicResult(
         case=4,
@@ -296,7 +296,7 @@ Higher-order poles require more complex analysis involving Newton polygons.
 def case1_exponents_irregular(pole, r_expansion, order):
     """
     Exponents for Case 1 at irregular singular point.
-    
+
     Uses Newton polygon method.
     """
     # Build Newton polygon from r expansion
@@ -304,16 +304,16 @@ def case1_exponents_irregular(pole, r_expansion, order):
     for k, coeff in enumerate(r_expansion):
         if coeff != 0:
             points.append((k - order, sp.log(abs(coeff)) if coeff.is_real else 0))
-    
+
     # Find lower convex hull
     hull = compute_lower_hull(points)
-    
+
     # Slopes of hull give exponent candidates
     exponents = set()
     for i in range(len(hull)-1):
         slope = (hull[i+1][1] - hull[i][1]) / (hull[i+1][0] - hull[i][0])
         exponents.add(-slope)
-    
+
     return exponents
 ```
 
@@ -327,26 +327,26 @@ When coefficients are numerical, use:
 def kovacic_numerical(a_func, b_func, x_domain, tolerance=1e-10):
     """
     Numerical Kovacic analysis for non-symbolic coefficients.
-    
+
     Uses numerical integration and monodromy computation.
     """
     # Sample r(x) at many points
     x_samples = np.linspace(x_domain[0], x_domain[1], 1000)
-    
+
     # Detect poles numerically
     poles = detect_numerical_poles(b_func, x_samples)
-    
+
     # For each pole, estimate local behavior
     for pole in poles:
         order = estimate_pole_order(b_func, pole)
         residue = estimate_residue(b_func, pole, order)
-        
+
     # Compute monodromy matrix numerically
     M = numerical_monodromy(a_func, b_func, poles)
-    
+
     # Analyze monodromy eigenvalues
     eigenvalues = np.linalg.eigvals(M)
-    
+
     # Determine case from eigenvalue structure
     if is_case1_monodromy(eigenvalues):
         return KovacicResult(case=1, galois_group='triangular', is_abelian=True)
@@ -366,21 +366,21 @@ For NVE from periodic orbits, the coefficients are periodic:
 def kovacic_periodic(r_periodic, period):
     """
     Kovacic analysis for periodic coefficient r(t).
-    
+
     The Galois group is determined by monodromy around one period.
     """
     # Compute Floquet-normalized monodromy
     M = floquet_monodromy(r_periodic, period)
-    
+
     # Eigenvalue analysis
     mu1, mu2 = np.linalg.eigvals(M)
-    
+
     # For symplectic: mu1 * mu2 = 1
     assert abs(mu1 * mu2 - 1) < 1e-10
-    
+
     # Classification
     trace = mu1 + mu2
-    
+
     if abs(trace) < 2:
         # Elliptic: bounded solutions → likely abelian
         theta = np.arccos(trace.real / 2)

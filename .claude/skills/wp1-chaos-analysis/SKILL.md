@@ -1,14 +1,14 @@
 ---
 name: wp1-chaos-analysis
 description: >
-  Chaos detection and classification for CR3BP orbits using MEGNO, FLI, and 
-  auxiliary indicators. Use when: (1) analyzing orbit stability, (2) detecting 
-  chaos vs regular motion, (3) computing Lyapunov-type indicators, (4) classifying 
-  trajectories for WP3 invariant search, (5) preparing orbits for WP4 Morales-Ramis 
-  validation, (6) mapping chaos across parameter space, or (7) computing variational 
-  equations alongside chaos indicators. Triggers on requests involving chaos detection, 
-  MEGNO, FLI, OFLI, SALI, regular/chaotic classification, Lyapunov exponents, orbit 
-  stability analysis, monodromy matrix, Floquet multipliers, or variational equation 
+  Chaos detection and classification for CR3BP orbits using MEGNO, FLI, and
+  auxiliary indicators. Use when: (1) analyzing orbit stability, (2) detecting
+  chaos vs regular motion, (3) computing Lyapunov-type indicators, (4) classifying
+  trajectories for WP3 invariant search, (5) preparing orbits for WP4 Morales-Ramis
+  validation, (6) mapping chaos across parameter space, or (7) computing variational
+  equations alongside chaos indicators. Triggers on requests involving chaos detection,
+  MEGNO, FLI, OFLI, SALI, regular/chaotic classification, Lyapunov exponents, orbit
+  stability analysis, monodromy matrix, Floquet multipliers, or variational equation
   preparation.
 ---
 
@@ -215,7 +215,7 @@ print(f"Classification: {result['classification']}")
 if result['is_periodic']:
     print(f"Monodromy eigenvalues: {result['floquet_multipliers']}")
     print(f"Stability type: {result['stability_type']}")
-    
+
     # Pass to WP4 Morales-Ramis validator
     monodromy_matrix = result['monodromy_matrix']
 ```
@@ -264,10 +264,10 @@ resonance = detect_resonance(state0, mu, max_order=10)
 if resonance['is_resonant']:
     print(f"Near {resonance['ratio']} resonance detected")
     print(f"Resonance strength: {resonance['strength']:.3f}")
-    
+
     # Extend integration time for resonant orbits
     t_max = 500 * T_period  # 5x longer than standard
-    
+
     # FLI and MEGNO may disagree near resonance - trust MEGNO
     result = analyzer.analyze(state0, t_max=t_max)
 else:

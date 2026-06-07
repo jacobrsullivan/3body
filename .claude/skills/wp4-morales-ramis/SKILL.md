@@ -156,7 +156,7 @@ from src.python.validation.periodic_orbits import PeriodicOrbit
 def compute_downstairs_nve(orbit: PeriodicOrbit, mu: float):
     """
     Compute NVE in reduced (shape) space coordinates.
-    
+
     Returns:
         NVESystem with coefficient matrices A(t)
     """
@@ -165,15 +165,15 @@ def compute_downstairs_nve(orbit: PeriodicOrbit, mu: float):
         """Compute ∇²H at state."""
         # ... numerical or symbolic Hessian
         pass
-    
+
     # Compute A(t) along orbit
     times = np.linspace(0, orbit.period, 1000)
     A_matrices = []
-    
+
     for t in times:
         state = orbit.state_at(t)
         H_hess = hessian(state, mu)
-        
+
         # NVE: δẋ = J · ∇²H · δx where J is symplectic matrix
         J = np.array([[0, 0, 0, 1, 0, 0],
                       [0, 0, 0, 0, 1, 0],
@@ -181,10 +181,10 @@ def compute_downstairs_nve(orbit: PeriodicOrbit, mu: float):
                       [-1, 0, 0, 0, 0, 0],
                       [0, -1, 0, 0, 0, 0],
                       [0, 0, -1, 0, 0, 0]])
-        
+
         A = J @ H_hess
         A_matrices.append(A)
-    
+
     return NVESystem(times=times, A_matrices=A_matrices, period=orbit.period)
 ```
 
@@ -232,27 +232,27 @@ from src.python.lifts.ks_spinor import KSLift
 def lift_orbit_to_s1(orbit: PeriodicOrbit, mu: float, L: float):
     """
     Lift periodic orbit to S¹-bundle over shape space.
-    
+
     Parameters:
         orbit: Periodic orbit in reduced space
         L: Angular momentum value
-        
+
     Returns:
         LiftedOrbit in extended phase space
     """
     lift = S1BundleLift(mu=mu, angular_momentum=L)
-    
+
     # Lift initial condition
     state0 = orbit.state0
     lifted_state0 = lift.lift_state(state0)
-    
+
     # Integrate in lifted space
     lifted_trajectory = lift.integrate(
-        lifted_state0, 
+        lifted_state0,
         t_span=(0, orbit.period),
         dense_output=True
     )
-    
+
     return LiftedOrbit(
         trajectory=lifted_trajectory,
         period=orbit.period,
@@ -265,13 +265,13 @@ def lift_orbit_to_s1(orbit: PeriodicOrbit, mu: float, L: float):
 
 ```python
 def compute_upstairs_nve(
-    lifted_orbit: LiftedOrbit, 
+    lifted_orbit: LiftedOrbit,
     mu: float,
     lift_type: str = 's1_bundle'
 ):
     """
     Compute NVE in lifted (upstairs) coordinates.
-    
+
     The lifted Hamiltonian H̃ includes fiber terms.
     """
     if lift_type == 's1_bundle':
@@ -284,25 +284,25 @@ def compute_upstairs_nve(
         def lifted_hessian(lifted_state, mu):
             # ... compute in spinor coordinates
             pass
-    
+
     # Compute A(t) matrices
     times = np.linspace(0, lifted_orbit.period, 1000)
     A_matrices = []
-    
+
     for t in times:
         state = lifted_orbit.state_at(t)
         H_hess = lifted_hessian(state, mu)
-        
+
         # Extended symplectic structure
         n_lifted = len(state) // 2
         J = np.block([
             [np.zeros((n_lifted, n_lifted)), np.eye(n_lifted)],
             [-np.eye(n_lifted), np.zeros((n_lifted, n_lifted))]
         ])
-        
+
         A = J @ H_hess
         A_matrices.append(A)
-    
+
     return NVESystem(times=times, A_matrices=A_matrices, period=lifted_orbit.period)
 ```
 
@@ -368,86 +368,86 @@ print(f"Floquet multipliers: {orbit.floquet_multipliers}")
 def run_complete_morales_ramis(mu: float, orbit_type: str = 'lagrange_l4'):
     """
     Complete two-phase Morales-Ramis test.
-    
+
     Returns:
         Dict with verdict and detailed results
     """
     from src.python.validation.morales_ramis import MoralesRamisValidator
     from src.python.validation import periodic_orbits
-    
+
     # Get orbit
     orbit_func = getattr(periodic_orbits, f'get_{orbit_type}_orbit')
     orbit = orbit_func(mu=mu)
-    
+
     print(f"{'='*60}")
     print(f"MORALES-RAMIS TEST: {orbit_type}")
     print(f"{'='*60}")
     print(f"Period: {orbit.period:.6f}")
     print(f"Jacobi constant: {orbit.jacobi_constant:.6f}")
-    
+
     mr_val = MoralesRamisValidator(mu=mu)
     results = {}
-    
+
     # Phase I: Downstairs
     print(f"\n{'─'*60}")
     print("PHASE I: DOWNSTAIRS (Reduced Space)")
     print(f"{'─'*60}")
-    
+
     downstairs = mr_val.test_downstairs(orbit)
     results['downstairs'] = downstairs
-    
+
     print(f"Galois group: {downstairs.galois_group}")
     print(f"Is abelian: {downstairs.is_abelian}")
     print(f"Monodromy trace: {downstairs.monodromy_trace:.4f}")
-    
+
     if downstairs.is_abelian:
         print("\n⚠ WARNING: Downstairs is abelian!")
         print("  This contradicts Bruns-Poincaré theorem.")
         print("  Check orbit validity or numerical accuracy.")
         return {'valid': False, 'error': 'unexpected_abelian_downstairs'}
-    
+
     print("✓ Non-abelian (classical obstruction confirmed)")
-    
+
     # Phase II: Upstairs (S¹)
     print(f"\n{'─'*60}")
     print("PHASE II: UPSTAIRS (S¹ Bundle)")
     print(f"{'─'*60}")
-    
+
     upstairs_s1 = mr_val.test_upstairs(orbit, lift_type='s1_bundle')
     results['upstairs_s1'] = upstairs_s1
-    
+
     print(f"Galois group: {upstairs_s1.galois_group}")
     print(f"Is abelian: {upstairs_s1.is_abelian}")
-    
+
     # Phase II: Upstairs (KS)
     print(f"\n{'─'*60}")
     print("PHASE II: UPSTAIRS (KS-Spinor)")
     print(f"{'─'*60}")
-    
+
     upstairs_ks = mr_val.test_upstairs(orbit, lift_type='ks_spinor')
     results['upstairs_ks'] = upstairs_ks
-    
+
     print(f"Galois group: {upstairs_ks.galois_group}")
     print(f"Is abelian: {upstairs_ks.is_abelian}")
-    
+
     # Verdict
     print(f"\n{'='*60}")
     print("VERDICT")
     print(f"{'='*60}")
-    
+
     s1_compatible = not downstairs.is_abelian and upstairs_s1.is_abelian
     ks_compatible = not downstairs.is_abelian and upstairs_ks.is_abelian
-    
+
     if s1_compatible:
         print("✓ S¹ LIFT: Compatible with lift-integrability")
     else:
         print("✗ S¹ LIFT: NOT compatible")
-    
+
     if ks_compatible:
         print("✓ KS LIFT: Compatible with lift-integrability")
     else:
         print("✗ KS LIFT: NOT compatible")
-    
+
     return {
         'valid': True,
         'downstairs': downstairs,
@@ -475,13 +475,13 @@ def analyze_monodromy(orbit: PeriodicOrbit, mu: float):
     """
     # Compute fundamental matrix solution
     M = compute_monodromy_matrix(orbit, mu)
-    
+
     # Eigenvalue analysis
     eigenvalues = np.linalg.eigvals(M)
-    
+
     # Floquet multipliers (should come in reciprocal pairs for Hamiltonian)
     floquet = np.sort(np.abs(eigenvalues))[::-1]
-    
+
     # Stability classification
     if np.all(np.abs(eigenvalues) < 1.01):
         stability = 'stable'
@@ -489,7 +489,7 @@ def analyze_monodromy(orbit: PeriodicOrbit, mu: float):
         stability = 'unstable'
     else:
         stability = 'marginally_stable'
-    
+
     return {
         'monodromy_matrix': M,
         'eigenvalues': eigenvalues,

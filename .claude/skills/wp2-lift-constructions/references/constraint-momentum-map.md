@@ -174,7 +174,7 @@ Dimension: 7 - 1 = 6
 
 ### Identification
 
-**Key result**: 
+**Key result**:
 ```
 M_red ≅ T*(ℝ³ \ {0})
 ```
@@ -294,7 +294,7 @@ acting on spinors.
 ```python
 class S1MomentumMap:
     """S¹ momentum map (KS bilinear constraint)."""
-    
+
     # Generator matrix J
     J = np.array([
         [0, -1, 0, 0],
@@ -302,29 +302,29 @@ class S1MomentumMap:
         [0, 0, 0, -1],
         [0, 0, 1, 0]
     ])
-    
+
     @classmethod
     def evaluate(cls, u, p_u):
         """Compute Ξ = ⟨Ju, p_u⟩."""
         Ju = cls.J @ u
         return np.dot(Ju, p_u)
-    
+
     @classmethod
     def gradient_u(cls, p_u):
         """∂Ξ/∂u = Jᵀp."""
         return cls.J.T @ p_u
-    
+
     @classmethod
     def gradient_p(cls, u):
         """∂Ξ/∂p = Ju."""
         return cls.J @ u
-    
+
     @classmethod
     def hamiltonian_vector_field(cls, u, p_u):
         """Hamiltonian vector field X_Ξ."""
         # X_Ξ = (∂Ξ/∂p, -∂Ξ/∂u) = (Ju, -Jᵀp)
         return np.concatenate([cls.J @ u, -cls.J.T @ p_u])
-    
+
     @classmethod
     def s1_action(cls, phi, u):
         """Apply S¹ rotation by angle φ."""
@@ -343,24 +343,24 @@ class S1MomentumMap:
 def verify_momentum_map(u, p_u, delta=1e-7):
     """
     Verify that Ξ is momentum map for S¹ action.
-    
+
     Check: X_Ξ equals infinitesimal generator of S¹.
     """
     mm = S1MomentumMap()
-    
+
     # Hamiltonian vector field of Ξ
     X_Xi = mm.hamiltonian_vector_field(u, p_u)
-    
+
     # Infinitesimal generator (derivative of action at φ=0)
     u_rotated = mm.s1_action(delta, u)
     X_generator = np.concatenate([
         (u_rotated - u) / delta,
         np.zeros(4)  # p unchanged infinitesimally
     ])
-    
+
     # Compare (should match up to O(delta))
     error = np.linalg.norm(X_Xi[:4] - X_generator[:4])
-    
+
     return {
         'is_momentum_map': error < 10 * delta,
         'error': error
@@ -373,31 +373,31 @@ def verify_momentum_map(u, p_u, delta=1e-7):
 def project_to_constraint(state, tolerance=1e-14):
     """
     Project state to constraint surface Ξ = 0.
-    
+
     Uses gauge transformation to achieve Ξ = 0.
     """
     u, p_u = state[:4], state[4:8]
     Xi = S1MomentumMap.evaluate(u, p_u)
-    
+
     if abs(Xi) < tolerance:
         return state  # Already on constraint
-    
+
     # Find φ such that Ξ(φ·u, φ·p) = 0
     # This is a root-finding problem
     from scipy.optimize import brentq
-    
+
     def Xi_of_phi(phi):
         u_rot = S1MomentumMap.s1_action(phi, u)
         p_rot = S1MomentumMap.s1_action(phi, p_u)
         return S1MomentumMap.evaluate(u_rot, p_rot)
-    
+
     # Find root
     phi_star = brentq(Xi_of_phi, 0, 2*np.pi)
-    
+
     # Apply rotation
     u_new = S1MomentumMap.s1_action(phi_star, u)
     p_new = S1MomentumMap.s1_action(phi_star, p_u)
-    
+
     return np.concatenate([u_new, p_new, state[8:]])
 ```
 

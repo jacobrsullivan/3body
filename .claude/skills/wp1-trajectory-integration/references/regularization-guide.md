@@ -35,26 +35,26 @@ This causes:
 def detect_close_encounter(state, mu, threshold=0.1):
     """
     Detect if trajectory is near a primary.
-    
+
     Args:
         state: [x, y, z, vx, vy, vz] in rotating frame
         mu: mass ratio
         threshold: distance threshold (Hill radius units)
-        
+
     Returns:
         (is_close, r_min, which_primary)
     """
     x, y, z = state[:3]
-    
+
     # Distance to primary 1 (larger mass at -μ, 0, 0)
     r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
-    
+
     # Distance to primary 2 (smaller mass at 1-μ, 0, 0)
     r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
-    
+
     r_min = min(r1, r2)
     which = 'm1' if r1 < r2 else 'm2'
-    
+
     return r_min < threshold, r_min, which
 ```
 
@@ -110,29 +110,29 @@ K = g(H - E) = 0  (on energy surface)
 ```python
 class SundmanTransformation:
     """Sundman time transformation for regularization."""
-    
+
     def __init__(self, strategy='sum', mu=0.0):
         self.strategy = strategy
         self.mu = mu
-        
+
     def g(self, state):
         """Compute regularizing function g(r₁, r₂)."""
         x, y, z = state[:3]
-        
+
         r1 = np.sqrt((x + self.mu)**2 + y**2 + z**2)
         r2 = np.sqrt((x - 1 + self.mu)**2 + y**2 + z**2)
-        
+
         if self.strategy == 'sum':
             return r1 + r2
         elif self.strategy == 'product':
             return r1 * r2
         elif self.strategy == 'min':
             return min(r1, r2)
-            
+
     def dt_ds(self, state):
         """Physical time increment per fictitious time."""
         return self.g(state)
-        
+
     def transform_eom(self, state, eom):
         """Transform equations of motion."""
         g = self.g(state)
@@ -189,24 +189,24 @@ from src.python.regularization.ks_transform import KSTransform
 
 class KSTransform:
     """Kustaanheimo-Stiefel transformation."""
-    
+
     @staticmethod
     def cartesian_to_ks(r, v, primary='m2'):
         """
         Transform Cartesian (r, v) to KS (u, p_u).
-        
+
         Args:
             r: (3,) position relative to primary
             v: (3,) velocity relative to primary
             primary: 'm1' or 'm2' (which primary to regularize)
-            
+
         Returns:
             u: (4,) KS position spinor
             p_u: (4,) KS momentum spinor
         """
         x, y, z = r
         R = np.sqrt(x**2 + y**2 + z**2)
-        
+
         # Choose gauge (u₃ = 0 or u₂ = 0)
         if x >= 0:
             u0 = np.sqrt((R + x) / 2)
@@ -218,15 +218,15 @@ class KSTransform:
             u0 = y / (2 * u1) if u1 > 1e-10 else 0
             u2 = 0
             u3 = z / (2 * u1) if u1 > 1e-10 else 0
-            
+
         u = np.array([u0, u1, u2, u3])
-        
+
         # Transform velocity to KS momentum
         L = KSTransform.ks_matrix(u)
         p_u = 0.5 * L.T @ np.concatenate([v, [0]])
-        
+
         return u, p_u[:4]
-        
+
     @staticmethod
     def ks_to_cartesian(u, p_u):
         """Transform KS (u, p_u) back to Cartesian (r, v)."""
@@ -234,7 +234,7 @@ class KSTransform:
         r = L @ u
         v = 2 * L @ p_u / np.dot(u, u)
         return r[:3], v[:3]
-        
+
     @staticmethod
     def ks_matrix(u):
         """Build the KS transformation matrix L(u)."""
@@ -303,13 +303,13 @@ def smooth_switch(state_cart, state_ks, blend_factor):
     """Smooth transition between coordinate systems."""
     # blend_factor = 0: pure Cartesian
     # blend_factor = 1: pure KS
-    
+
     # Convert both to same representation
     state_cart_in_ks = cartesian_to_ks(state_cart)
-    
+
     # Blend (in KS space for numerical stability)
     blended = (1 - blend_factor) * state_cart_in_ks + blend_factor * state_ks
-    
+
     return blended
 ```
 
@@ -324,36 +324,36 @@ class RegularizedIntegrator:
     """
     Integrator with automatic regularization for close encounters.
     """
-    
+
     def __init__(self, mu, regularization='sundman', **kwargs):
         self.mu = mu
         self.regularization = regularization
         self.switch_threshold = kwargs.get('switch_threshold', 0.05)
         self.hysteresis = kwargs.get('hysteresis', 0.05)
-        
+
         # Base integrators
         self.cart_integrator = AdaptiveSymplecticIntegrator(
             mu=mu,
             sundman_strategy='sum' if regularization == 'sundman' else None
         )
         self.ks_integrator = KSIntegrator(mu=mu) if regularization == 'ks' else None
-        
+
     def integrate(self, state0, t_span, dt=0.1):
         """
         Integrate with automatic regularization switching.
         """
         t, tf = t_span
         state = state0.copy()
-        
+
         times = [t]
         states = [state.copy()]
-        
+
         in_ks = False
-        
+
         while t < tf:
             # Check for close encounter
             is_close, r_min, which = detect_close_encounter(state, self.mu, self.switch_threshold)
-            
+
             # Decide switching
             if is_close and not in_ks:
                 state = self._switch_to_ks(state, which)
@@ -361,19 +361,19 @@ class RegularizedIntegrator:
             elif not is_close and in_ks and r_min > self.switch_threshold + self.hysteresis:
                 state = self._switch_to_cart(state, which)
                 in_ks = False
-                
+
             # Integrate one step
             if in_ks:
                 t_new, state_new = self.ks_integrator.step(state, dt)
             else:
                 t_new, state_new = self.cart_integrator.step(state, dt)
-                
+
             t = t_new
             state = state_new
-            
+
             times.append(t)
             states.append(state.copy() if not in_ks else self._ks_to_cart(state))
-            
+
         return np.array(times), np.array(states)
 ```
 
@@ -409,20 +409,20 @@ Always verify regularization quality:
 ```python
 def validate_regularization(times, states, mu):
     """Validate regularized trajectory."""
-    
+
     # Check Jacobi conservation
     C_values = [jacobi_constant(s, mu) for s in states]
     C_drift = max(C_values) - min(C_values)
-    
+
     # Check for NaN
     has_nan = np.any(np.isnan(states))
-    
+
     # Check minimum distance
     r_mins = []
     for s in states:
         _, r_min, _ = detect_close_encounter(s, mu, threshold=np.inf)
         r_mins.append(r_min)
-    
+
     return {
         'jacobi_drift': C_drift,
         'has_nan': has_nan,
@@ -441,7 +441,7 @@ class OptimizedRegularization:
         self.one_minus_mu = 1 - mu
         self.primary1_pos = np.array([-mu, 0, 0])
         self.primary2_pos = np.array([1-mu, 0, 0])
-        
+
     def distances(self, state):
         """Efficient distance computation."""
         pos = state[:3]
@@ -455,25 +455,25 @@ class OptimizedRegularization:
 ```python
 def safe_regularized_integration(state0, t_span, mu, max_retries=3):
     """Integration with fallback strategies."""
-    
+
     strategies = [
         {'sundman_strategy': 'sum', 'tol': 1e-14},
         {'sundman_strategy': 'product', 'tol': 1e-16},
         {'regularization': 'ks', 'tol': 1e-20},
     ]
-    
+
     for i, strategy in enumerate(strategies):
         try:
             integrator = RegularizedIntegrator(mu=mu, **strategy)
             times, states = integrator.integrate(state0, t_span)
-            
+
             validation = validate_regularization(times, states, mu)
             if validation['passed']:
                 return times, states
-                
+
         except Exception as e:
             print(f"Strategy {i+1} failed: {e}")
             continue
-            
+
     raise RuntimeError("All regularization strategies failed")
 ```

@@ -17,29 +17,24 @@ import numpy as np
 CONFIG = {
     "run_name": "24thNov2025-minimal",
     "test_scope": "minimal",
-
     # Trajectory Parameters
     "n_trajectories": 10,
     "integration_time": 100.0,  # Time units
-    "output_interval": 0.1,     # Save every 0.1 time units
-    "precision": "double",       # Standard double precision
-    "integrator": "ias15",       # REBOUND IAS15 (15th-order adaptive)
-
+    "output_interval": 0.1,  # Save every 0.1 time units
+    "precision": "double",  # Standard double precision
+    "integrator": "ias15",  # REBOUND IAS15 (15th-order adaptive)
     # Three-body parameters
     "mass_ratio": 0.5,  # μ = 0.5 (equal mass case)
-
     # Initial conditions: Lagrange L4 (equilateral triangle)
     "initial_conditions": {
         "type": "lagrange_l4",
         "config": "equilateral",
         "perturbation": 1e-6,  # Small perturbation to test stability
     },
-
     # Integration settings
     "tolerance": 1e-14,  # IAS15 tolerance
-    "min_dt": 1e-10,     # Minimum timestep
-    "max_dt": 0.1,       # Maximum timestep
-
+    "min_dt": 1e-10,  # Minimum timestep
+    "max_dt": 0.1,  # Maximum timestep
     # Validation settings
     "validation": {
         "conservation_check": True,
@@ -48,7 +43,6 @@ CONFIG = {
         "chaos_indicators": False,  # Skip for minimal run
         "analytical_vetting": False,  # Skip for minimal run
     },
-
     # Output settings
     "output": {
         "save_hdf5": True,
@@ -65,6 +59,7 @@ CONFIG = {
 # For μ = 0.5, the equilibrium points form an equilateral triangle
 # Position: (x, y) = (-0.5 + μ, ±√3/2)
 # Velocity: circular orbit velocity
+
 
 def get_l4_initial_state(mu=0.5, perturbation=1e-6):
     """

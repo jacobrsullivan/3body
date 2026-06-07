@@ -156,24 +156,24 @@ def determine_stage_order(times, states):
     """Determine optimal stage order based on trajectory."""
     from src.python.symbolic.spinor_search import detect_regularization_benefit
     from src.python.symbolic.elliptic_search import detect_elliptic_signature
-    
+
     priority = []
-    
+
     # Priority 1: Spinor if close encounters
     if detect_regularization_benefit(times, states):
         priority.append('spinor')
-    
+
     # Priority 2: Elliptic if quasi-periodic
     qp = detect_elliptic_signature(times, states)
     if qp.is_quasi_periodic:
         priority.append('elliptic')
-    
+
     # Priority 3: Theta if integrable signature
     # (Check for very regular motion, bounded, discrete spectrum)
-    
+
     # Always include polynomial as fallback
     priority.append('polynomial')
-    
+
     return priority
 ```
 
@@ -394,7 +394,7 @@ def discover_integrals_complete(times, states, mu, E, L, C=None):
     from src.python.symbolic.multi_stage_pipeline import MultiStageInvariantSearch
     from src.python.symbolic.candidate_ranking import TrivialityChecker, CandidateRanker
     from src.python.ml.independence_test import IndependenceTest
-    
+
     print("=== STAGE 1: Multi-Stage Search ===")
     search = MultiStageInvariantSearch(
         stages=['spinor', 'elliptic', 'polynomial'],
@@ -402,26 +402,26 @@ def discover_integrals_complete(times, states, mu, E, L, C=None):
     )
     results = search.run(times, states, mu=mu)
     print(f"Found {len(results.all_candidates)} raw candidates")
-    
+
     print("\n=== STAGE 2: Triviality Filtering ===")
     checker = TrivialityChecker(
         known_integrals={'energy': E, 'angular_momentum': L}
     )
     if C is not None:
         checker.known_integrals['jacobi_constant'] = C
-    
+
     non_trivial = checker.filter(results.all_candidates, states)
     print(f"{len(non_trivial)} non-trivial candidates remain")
-    
+
     print("\n=== STAGE 3: Independence Testing ===")
     test = IndependenceTest()
     independent = test.find_independent_set(non_trivial, states)
     print(f"{len(independent)} functionally independent candidates")
-    
+
     print("\n=== STAGE 4: Ranking ===")
     ranker = CandidateRanker()
     ranked = ranker.rank(independent)
-    
+
     print("\n=== FINAL RESULTS ===")
     for i, cand in enumerate(ranked[:5]):
         print(f"\n{i+1}. {cand.expression}")
@@ -429,7 +429,7 @@ def discover_integrals_complete(times, states, mu, E, L, C=None):
         print(f"   Score: {cand.score:.3f}")
         print(f"   Conservation error: {cand.conservation_error:.2e}")
         print(f"   Interpretability: {cand.interpretability:.2f}")
-    
+
     return ranked
 ```
 
@@ -507,38 +507,38 @@ Test pipeline on cases with known answers:
 ```python
 def validate_on_known_cases():
     """Test pipeline recovers known integrals."""
-    
+
     # Test 1: CR3BP should find Jacobi constant
     print("Test 1: CR3BP Jacobi Constant")
     times, states = generate_cr3bp_trajectory(mu=0.012)
-    
+
     search = MultiStageInvariantSearch(stages=['polynomial'])
     results = search.run(times, states, mu=0.012)
-    
+
     found_jacobi = any(
-        'omega' in c.expression.lower() or 
+        'omega' in c.expression.lower() or
         '2*omega' in c.expression.lower() or
         'jacobi' in c.expression.lower()
         for c in results.top_candidates
     )
     print(f"  Found Jacobi constant: {found_jacobi}")
-    
+
     # Test 2: Lagrange points (L4/L5)
     print("\nTest 2: Lagrange L4 Point")
     times, states = generate_lagrange_trajectory('L4', mu=0.012)
-    
+
     search = MultiStageInvariantSearch(stages=['polynomial', 'elliptic'])
     results = search.run(times, states, mu=0.012)
-    
+
     print(f"  Found {len(results.top_candidates)} candidates")
-    
+
     # Test 3: Figure-8 orbit (has known periodic structure)
     print("\nTest 3: Figure-8 Orbit")
     times, states = generate_figure8_trajectory()
-    
+
     search = MultiStageInvariantSearch(stages=['polynomial', 'theta'])
     results = search.run(times, states, mu=None)
-    
+
     print(f"  Found {len(results.top_candidates)} candidates")
 ```
 
@@ -591,7 +591,7 @@ def prepare_for_wp4(candidates, times, states, mu):
     Prepare validated candidates for WP4 Morales-Ramis test.
     """
     wp4_candidates = []
-    
+
     for cand in candidates:
         wp4_cand = {
             'expression': cand.expression,
@@ -600,14 +600,14 @@ def prepare_for_wp4(candidates, times, states, mu):
             'conservation_error': cand.conservation_error,
             'interpretability': cand.interpretability,
             'method': cand.method,
-            
+
             # Additional data for WP4
             'sample_states': states[::10],  # Subsampled states
             'mu': mu,
             'validation_passed': True
         }
         wp4_candidates.append(wp4_cand)
-    
+
     return wp4_candidates
 ```
 

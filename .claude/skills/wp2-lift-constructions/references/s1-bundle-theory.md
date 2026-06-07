@@ -107,15 +107,15 @@ where:
 ```python
 def verify_extended_symplectic(omega_tilde, point):
     """Verify extended symplectic form properties."""
-    
+
     # 1. Closure (compute dω̃ numerically)
     d_omega = compute_exterior_derivative(omega_tilde, point)
     closure_error = np.max(np.abs(d_omega))
-    
+
     # 2. Non-degeneracy
     omega_matrix = omega_tilde.as_matrix(point)
     det = np.linalg.det(omega_matrix)
-    
+
     return {
         'closed': closure_error < 1e-10,
         'nondegenerate': abs(det) > 1e-10,
@@ -186,12 +186,12 @@ def test_fiber_momentum_conservation(times, states, tolerance=1e-12):
     Test if p_θ is conserved along trajectory.
     """
     p_thetas = [state[7] for state in states]  # p_θ at index 7
-    
+
     drift = max(p_thetas) - min(p_thetas)
     mean_p_theta = np.mean(p_thetas)
-    
+
     conserved = drift < tolerance
-    
+
     return {
         'conserved': conserved,
         'drift': drift,
@@ -239,7 +239,7 @@ Alternative view:
 def test_involution(integrals, omega_tilde, points):
     """
     Test if integrals are in involution: {I_i, I_j} = 0.
-    
+
     Args:
         integrals: List of (name, function) pairs
         omega_tilde: Extended symplectic form
@@ -247,24 +247,24 @@ def test_involution(integrals, omega_tilde, points):
     """
     n = len(integrals)
     poisson_matrix = np.zeros((n, n))
-    
+
     for i, (name_i, I_i) in enumerate(integrals):
         for j, (name_j, I_j) in enumerate(integrals):
             if i >= j:
                 continue
-            
+
             # Compute {I_i, I_j} = ω̃(X_{I_i}, X_{I_j})
             brackets = []
             for point in points:
                 bracket = poisson_bracket(I_i, I_j, omega_tilde, point)
                 brackets.append(bracket)
-            
+
             poisson_matrix[i, j] = np.mean(brackets)
             poisson_matrix[j, i] = -poisson_matrix[i, j]
-    
+
     max_bracket = np.max(np.abs(poisson_matrix))
     in_involution = max_bracket < 1e-10
-    
+
     return {
         'in_involution': in_involution,
         'poisson_matrix': poisson_matrix,
@@ -281,44 +281,44 @@ def test_involution(integrals, omega_tilde, points):
 ```python
 class S1Bundle:
     """S¹ principal bundle over shape space."""
-    
+
     def __init__(self, masses, angular_momentum):
         self.masses = masses
         self.L = angular_momentum
         self.connection = MechanicalConnection(masses)
-        
+
     def lift_state(self, shape_state, theta=0.0):
         """
         Lift shape space state to bundle.
-        
+
         Args:
             shape_state: (6,) = [s, p_s] on shape space
             theta: Initial fiber coordinate
-            
+
         Returns:
             (8,) = [s, theta, p_s, p_theta] on T*P
         """
         s = shape_state[:3]
         p_s = shape_state[3:6]
-        
+
         # Compute fiber momentum
         # For consistency: p_θ = L · A(s) at equilibrium
         A = self.connection.components(s)
         p_theta = self.L * np.dot(A, p_s) / np.dot(p_s, p_s) if np.any(p_s) else 0
-        
+
         return np.concatenate([s, [theta], p_s, [p_theta]])
-        
+
     def project(self, lifted_state):
         """Project from bundle to shape space."""
         s = lifted_state[:3]
         p_s = lifted_state[4:7]
         return np.concatenate([s, p_s])
-        
+
     def extended_hamiltonian(self, lifted_state):
         """Compute H̃(s, θ, p_s, p_θ)."""
         shape_state = self.project(lifted_state)
         return self.reduced_hamiltonian(shape_state)
-        
+
     def create_integrator(self):
         """Create integrator for lifted dynamics."""
         return S1BundleIntegrator(self)
@@ -329,35 +329,35 @@ class S1Bundle:
 ```python
 class ExtendedSymplecticForm:
     """Extended symplectic form on T*P."""
-    
+
     def __init__(self, masses, angular_momentum):
         self.masses = masses
         self.L = angular_momentum
         self.connection = MechanicalConnection(masses)
-        
+
     def evaluate(self, point, v1, v2):
         """
         Evaluate ω̃(v1, v2) at point.
-        
+
         Args:
             point: (8,) = [s, θ, p_s, p_θ]
             v1, v2: Tangent vectors at point
         """
         s = point[:3]
-        
+
         # Canonical part
         omega_can = self._canonical_part(v1, v2)
-        
+
         # Connection correction
         dA = self.connection.compute_derivative(s)
         correction = self.L * self._connection_correction(point, v1, v2, dA)
-        
+
         return omega_can + correction
-        
+
     def as_matrix(self, point):
         """Return ω̃ as 8×8 antisymmetric matrix."""
         omega = np.zeros((8, 8))
-        
+
         # Fill in using evaluate on basis vectors
         for i in range(8):
             for j in range(i+1, 8):
@@ -367,7 +367,7 @@ class ExtendedSymplecticForm:
                 ej[j] = 1
                 omega[i, j] = self.evaluate(point, ei, ej)
                 omega[j, i] = -omega[i, j]
-                
+
         return omega
 ```
 

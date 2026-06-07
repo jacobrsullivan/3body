@@ -69,40 +69,40 @@ def compute_monodromy_matrix(
 ) -> np.ndarray:
     """
     Compute monodromy matrix by integrating variational equations.
-    
+
     Parameters:
         orbit: Periodic orbit with state_at(t) method
         mu: Mass ratio
         n_dof: Degrees of freedom (3 for spatial CR3BP)
-        
+
     Returns:
         2n × 2n monodromy matrix M
     """
     n = 2 * n_dof  # Phase space dimension
-    
+
     def variational_eom(t, Y_flat):
         """Combined trajectory + variational equations."""
         # First n components: base trajectory state
         # Remaining n² components: Φ matrix (flattened)
         state = Y_flat[:n]
         Phi = Y_flat[n:].reshape((n, n))
-        
+
         # Evaluate Jacobian of EOM at current state
         A = compute_eom_jacobian(state, mu)
-        
+
         # Trajectory evolution
         dstate = cr3bp_eom(state, mu)
-        
+
         # Variational equation: dΦ/dt = A(t)·Φ
         dPhi = A @ Phi
-        
+
         return np.concatenate([dstate, dPhi.flatten()])
-    
+
     # Initial condition: trajectory + identity matrix
     state0 = orbit.state0
     Phi0 = np.eye(n)
     Y0 = np.concatenate([state0, Phi0.flatten()])
-    
+
     # Integrate one period
     sol = solve_ivp(
         variational_eom,
@@ -112,10 +112,10 @@ def compute_monodromy_matrix(
         rtol=1e-12,
         atol=1e-14
     )
-    
+
     # Extract monodromy matrix
     M = sol.y[n:, -1].reshape((n, n))
-    
+
     return M
 
 
@@ -124,10 +124,10 @@ def compute_eom_jacobian(state: np.ndarray, mu: float) -> np.ndarray:
     Compute Jacobian ∂f/∂x of CR3BP equations of motion.
     """
     x, y, z, vx, vy, vz = state
-    
+
     r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
     r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
-    
+
     # Partial derivatives of r1, r2
     dr1_dx = (x + mu) / r1
     dr1_dy = y / r1
@@ -135,7 +135,7 @@ def compute_eom_jacobian(state: np.ndarray, mu: float) -> np.ndarray:
     dr2_dx = (x - 1 + mu) / r2
     dr2_dy = y / r2
     dr2_dz = z / r2
-    
+
     # Second derivatives of effective potential
     Uxx = 1 - (1-mu)/r1**3 - mu/r2**3 + 3*(1-mu)*(x+mu)**2/r1**5 + 3*mu*(x-1+mu)**2/r2**5
     Uyy = 1 - (1-mu)/r1**3 - mu/r2**3 + 3*(1-mu)*y**2/r1**5 + 3*mu*y**2/r2**5
@@ -143,7 +143,7 @@ def compute_eom_jacobian(state: np.ndarray, mu: float) -> np.ndarray:
     Uxy = 3*(1-mu)*(x+mu)*y/r1**5 + 3*mu*(x-1+mu)*y/r2**5
     Uxz = 3*(1-mu)*(x+mu)*z/r1**5 + 3*mu*(x-1+mu)*z/r2**5
     Uyz = 3*(1-mu)*y*z/r1**5 + 3*mu*y*z/r2**5
-    
+
     # Jacobian matrix for rotating frame CR3BP
     A = np.array([
         [0, 0, 0, 1, 0, 0],
@@ -153,7 +153,7 @@ def compute_eom_jacobian(state: np.ndarray, mu: float) -> np.ndarray:
         [Uxy, Uyy, Uyz, -2, 0, 0],
         [Uxz, Uyz, Uzz, 0, 0, 0]
     ])
-    
+
     return A
 ```
 
@@ -171,7 +171,7 @@ class FloquetAnalysis:
     stability_type: str
     stable_directions: int
     unstable_directions: int
-    
+
 def analyze_floquet(
     M: np.ndarray,
     period: float
@@ -181,24 +181,24 @@ def analyze_floquet(
     """
     # Eigenvalue decomposition
     eigenvalues, eigenvectors = np.linalg.eig(M)
-    
+
     # Sort by magnitude
     idx = np.argsort(np.abs(eigenvalues))[::-1]
     eigenvalues = eigenvalues[idx]
     eigenvectors = eigenvectors[:, idx]
-    
+
     multipliers = eigenvalues
-    
+
     # Floquet exponents: λ = log(μ)/T
     # Handle complex logarithm carefully
     exponents = np.log(multipliers) / period
-    
+
     # Count stability
     tol = 1e-8
     n_unstable = np.sum(np.abs(multipliers) > 1 + tol)
     n_stable = np.sum(np.abs(multipliers) < 1 - tol)
     n_marginal = len(multipliers) - n_unstable - n_stable
-    
+
     # Classification
     if n_unstable > 0:
         stability_type = 'unstable'
@@ -206,7 +206,7 @@ def analyze_floquet(
         stability_type = 'marginally_stable'
     else:
         stability_type = 'stable'
-    
+
     return FloquetAnalysis(
         monodromy_matrix=M,
         multipliers=multipliers,
@@ -227,20 +227,20 @@ def verify_symplectic(M: np.ndarray, tol: float = 1e-10) -> dict:
     Verify monodromy matrix is symplectic: M^T J M = J
     """
     n = M.shape[0] // 2
-    
+
     # Standard symplectic matrix
     J = np.block([
         [np.zeros((n, n)), np.eye(n)],
         [-np.eye(n), np.zeros((n, n))]
     ])
-    
+
     # Check symplectic condition
     residual = M.T @ J @ M - J
     max_error = np.max(np.abs(residual))
-    
+
     # Check determinant = 1
     det_error = np.abs(np.linalg.det(M) - 1)
-    
+
     # Check eigenvalue pairing
     eigenvalues = np.linalg.eigvals(M)
     pairs_valid = True
@@ -250,7 +250,7 @@ def verify_symplectic(M: np.ndarray, tol: float = 1e-10) -> dict:
         if not np.any(np.abs(eigenvalues - reciprocal) < tol):
             pairs_valid = False
             break
-    
+
     return {
         'symplectic_error': max_error,
         'determinant_error': det_error,
@@ -265,27 +265,27 @@ def verify_symplectic(M: np.ndarray, tol: float = 1e-10) -> dict:
 def analyze_symplectic_eigenvalues(M: np.ndarray) -> dict:
     """
     Analyze eigenvalue structure for symplectic matrix.
-    
+
     For Hamiltonian systems:
     - Real eigenvalues come in pairs (λ, 1/λ)
     - Complex eigenvalues on unit circle come in conjugate pairs
     - Complex eigenvalues off unit circle come in quartets (λ, λ*, 1/λ, 1/λ*)
     """
     eigenvalues = np.linalg.eigvals(M)
-    
+
     real_pairs = []
     unit_circle_pairs = []
     quartets = []
-    
+
     processed = set()
     tol = 1e-8
-    
+
     for i, ev in enumerate(eigenvalues):
         if i in processed:
             continue
-        
+
         abs_ev = np.abs(ev)
-        
+
         if np.abs(ev.imag) < tol:
             # Real eigenvalue
             for j, ev2 in enumerate(eigenvalues):
@@ -317,7 +317,7 @@ def analyze_symplectic_eigenvalues(M: np.ndarray) -> dict:
             if len(quartet) == 4:
                 quartets.append(tuple(quartet))
             processed.add(i)
-    
+
     return {
         'real_pairs': real_pairs,
         'unit_circle_pairs': unit_circle_pairs,
@@ -340,7 +340,7 @@ def compute_stability_indices(
     """
     n = M.shape[0]
     eigenvalues = np.linalg.eigvals(M)
-    
+
     # Krein signature for unit circle eigenvalues
     def krein_signature(ev, M):
         """Compute Krein signature for eigenvalue on unit circle."""
@@ -348,29 +348,29 @@ def compute_stability_indices(
         _, vecs = np.linalg.eig(M)
         idx = np.argmin(np.abs(eigenvalues - ev))
         v = vecs[:, idx]
-        
+
         # Symplectic form
         n_half = n // 2
         J = np.block([
             [np.zeros((n_half, n_half)), np.eye(n_half)],
             [-np.eye(n_half), np.zeros((n_half, n_half))]
         ])
-        
+
         # Krein signature = sign(i * v^H J v)
         sig = np.sign((1j * v.conj() @ J @ v).imag)
         return sig
-    
+
     # Maximum Lyapunov exponent
     log_multipliers = np.log(np.abs(eigenvalues))
     max_lyapunov = np.max(log_multipliers.real) / period
-    
+
     # Trace (for 2D systems, determines stability type)
     trace = np.trace(M)
-    
+
     # Stability index (fraction of stable directions)
     n_stable = np.sum(np.abs(eigenvalues) <= 1 + 1e-8)
     stability_index = n_stable / n
-    
+
     return {
         'max_lyapunov_exponent': max_lyapunov,
         'trace': trace,
@@ -398,7 +398,7 @@ def analyze_integral_floquet(
 ) -> dict:
     """
     Analyze how integral behaves under Floquet mapping.
-    
+
     For a true integral:
     1. Value should be constant along orbit
     2. Gradient should be an eigenvector of M (or preserved subspace)
@@ -407,27 +407,27 @@ def analyze_integral_floquet(
     n_samples = 1000
     times = np.linspace(0, orbit.period, n_samples)
     values = [integral_func(orbit.state_at(t), mu) for t in times]
-    
+
     variation = np.max(values) - np.min(values)
     relative_variation = variation / np.abs(values[0]) if values[0] != 0 else variation
-    
+
     # Compute gradient at initial point
     grad = compute_gradient(integral_func, orbit.state0, mu)
-    
+
     # Apply monodromy
     grad_mapped = M @ grad
-    
+
     # Check if gradient is preserved (up to scaling)
     # For a true integral, M·∇I = λ·∇I for some λ
     # Since I is conserved, we expect λ = 1 (or conjugate pair)
-    
+
     # Compute angle between grad and M·grad
     cos_angle = np.dot(grad, grad_mapped) / (np.linalg.norm(grad) * np.linalg.norm(grad_mapped))
     angle = np.arccos(np.clip(np.abs(cos_angle), 0, 1))
-    
+
     # Scale factor
     scale = np.linalg.norm(grad_mapped) / np.linalg.norm(grad)
-    
+
     return {
         'value_variation': relative_variation,
         'gradient_preserved': angle < 0.01,  # Within ~0.5 degrees
@@ -441,15 +441,15 @@ def compute_gradient(func, state, mu, epsilon=1e-7):
     """Compute gradient via central differences."""
     n = len(state)
     grad = np.zeros(n)
-    
+
     for i in range(n):
         state_plus = state.copy()
         state_minus = state.copy()
         state_plus[i] += epsilon
         state_minus[i] -= epsilon
-        
+
         grad[i] = (func(state_plus, mu) - func(state_minus, mu)) / (2*epsilon)
-    
+
     return grad
 ```
 
@@ -465,7 +465,7 @@ def analyze_stability_along_family(
 ) -> dict:
     """
     Track stability changes along a family of periodic orbits.
-    
+
     Useful for understanding where integrals may fail or succeed.
     """
     results = {
@@ -475,30 +475,30 @@ def analyze_stability_along_family(
         'max_multipliers': [],
         'integral_variations': []
     }
-    
+
     for orbit in orbit_family:
         # Compute monodromy
         M = compute_monodromy_matrix(orbit, mu)
         floquet = analyze_floquet(M, orbit.period)
-        
+
         results['periods'].append(orbit.period)
         results['jacobi_constants'].append(orbit.jacobi_constant)
         results['stability_types'].append(floquet.stability_type)
         results['max_multipliers'].append(np.max(np.abs(floquet.multipliers)))
-        
+
         # Check integral if provided
         if integral_func is not None:
             int_analysis = analyze_integral_floquet(integral_func, orbit, mu, M)
             results['integral_variations'].append(int_analysis['value_variation'])
-    
+
     # Find bifurcations (stability changes)
     stability_changes = []
     for i in range(1, len(results['stability_types'])):
         if results['stability_types'][i] != results['stability_types'][i-1]:
             stability_changes.append(i)
-    
+
     results['bifurcation_indices'] = stability_changes
-    
+
     return results
 ```
 

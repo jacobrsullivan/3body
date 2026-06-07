@@ -84,13 +84,13 @@ def validate_tier1(times, states, mu):
     # Compute Jacobi constants
     C_values = [jacobi_constant(s, mu) for s in states]
     C_mean = np.mean(C_values)
-    
+
     # Relative drift
     C_drift_rel = (max(C_values) - min(C_values)) / abs(C_mean)
-    
+
     # Check threshold
     passed = C_drift_rel < 1e-14
-    
+
     return {
         'C_drift_relative': C_drift_rel,
         'C_drift_absolute': max(C_values) - min(C_values),
@@ -163,21 +163,21 @@ Memory per orbit:      ~4 MB (1000 periods + variational)
 def validate_tier2(times, states, mu_qd):
     """Validate Tier 2 integration quality."""
     from src.python.qd_python import dd_real
-    
+
     # Compute Jacobi constants in QD
     C_values = [jacobi_constant_qd(s, mu_qd) for s in states]
-    
+
     # Convert to float for comparison
     C_drift_rel = float(
         (max(C_values) - min(C_values)) / abs(C_values[0])
     )
-    
+
     # Check 95th percentile threshold
     passed = C_drift_rel < 1e-25
-    
+
     # Additional symplectic checks
     symplectic_error = check_symplectic_structure(states)
-    
+
     return {
         'C_drift_relative': C_drift_rel,
         'symplectic_error': symplectic_error,
@@ -235,13 +235,13 @@ def qd_array_ops(arr_float):
     """Convert float array to QD and back."""
     # Float → QD
     arr_qd = [dd_real(x) for x in arr_float]
-    
+
     # Operations in QD
     sum_qd = sum(arr_qd)
-    
+
     # QD → Float
     result = float(sum_qd)
-    
+
     return result
 ```
 
@@ -251,13 +251,13 @@ def qd_array_ops(arr_float):
 def tier2_integration(state0, t_span, mu):
     """Full Tier 2 integration workflow."""
     from src.python.qd_python import dd_real
-    
+
     # Convert everything to QD
     mu_qd = dd_real(mu)
     state0_qd = [dd_real(x) for x in state0]
     t0_qd = dd_real(t_span[0])
     tf_qd = dd_real(t_span[1])
-    
+
     # Create Tier 2 integrator
     integrator = AdaptiveSymplecticIntegrator(
         mu=mu_qd,
@@ -265,17 +265,17 @@ def tier2_integration(state0, t_span, mu):
         tol=dd_real(1e-25),
         precision='qd'
     )
-    
+
     # Integrate
     times_qd, states_qd = integrator.integrate(
         state0=state0_qd,
         t_span=(t0_qd, tf_qd)
     )
-    
+
     # Convert back for storage (but keep QD for validation)
     times = [float(t) for t in times_qd]
     states = [[float(x) for x in s] for s in states_qd]
-    
+
     return times, states, states_qd  # Keep QD for validation
 ```
 
@@ -338,12 +338,12 @@ This means:
 def select_tier(state0, mu, requirements):
     """
     Automatically select appropriate precision tier.
-    
+
     Args:
         state0: initial state
         mu: mass ratio
         requirements: dict with analysis requirements
-        
+
     Returns:
         'tier1' or 'tier2'
     """
@@ -351,17 +351,17 @@ def select_tier(state0, mu, requirements):
     is_close, r_min, _ = detect_close_encounter(state0, mu, threshold=0.1)
     if is_close and r_min < 0.01:
         return 'tier2'  # Need regularization
-    
+
     # Check precision requirements
     if requirements.get('variational', False):
         return 'tier2'  # Morales-Ramis needs high precision
-        
+
     if requirements.get('precision', 1e-14) < 1e-20:
         return 'tier2'
-        
+
     if requirements.get('n_periods', 100) > 10000:
         return 'tier2'  # Long integration needs symplectic
-        
+
     return 'tier1'
 ```
 
@@ -375,29 +375,29 @@ def integrate_with_promotion(state0, t_span, mu, dt=0.1):
     # Try Tier 1 first
     integrator_t1 = IAS15Integrator(mu=mu)
     times, states = integrator_t1.integrate(state0, t_span, dt)
-    
+
     # Validate
     validation = validate_tier1(times, states, mu)
-    
+
     if validation['passed']:
         return times, states, 1
-    
+
     # Promote to Tier 2
     print(f"Promoting to Tier 2 (drift: {validation['C_drift_relative']:.2e})")
-    
+
     from src.python.qd_python import dd_real
     mu_qd = dd_real(mu)
     state0_qd = [dd_real(x) for x in state0]
-    
+
     integrator_t2 = AdaptiveSymplecticIntegrator(
         mu=mu_qd, order=6, tol=dd_real(1e-25)
     )
     times, states = integrator_t2.integrate(state0_qd, t_span)
-    
+
     # Convert back
     times = [float(t) for t in times]
     states = [[float(x) for x in s] for s in states]
-    
+
     return times, states, 2
 ```
 
@@ -411,30 +411,30 @@ def integrate_with_promotion(state0, t_span, mu, dt=0.1):
 def full_tier1_validation(times, states, mu):
     """Complete Tier 1 validation suite."""
     results = {}
-    
+
     # 1. Jacobi conservation
     C_values = [jacobi_constant(s, mu) for s in states]
     results['jacobi_drift'] = max(C_values) - min(C_values)
     results['jacobi_pass'] = results['jacobi_drift'] < 1e-14
-    
+
     # 2. NaN check
     results['has_nan'] = np.any(np.isnan(states))
-    
+
     # 3. Escape check
     r_max = max(np.sqrt(s[0]**2 + s[1]**2 + s[2]**2) for s in states)
     results['escaped'] = r_max > 10.0
-    
+
     # 4. Close encounter check
     r_mins = [min_primary_distance(s, mu) for s in states]
     results['min_distance'] = min(r_mins)
-    
+
     # Overall
     results['passed'] = (
-        results['jacobi_pass'] and 
-        not results['has_nan'] and 
+        results['jacobi_pass'] and
+        not results['has_nan'] and
         not results['escaped']
     )
-    
+
     return results
 ```
 
@@ -444,12 +444,12 @@ def full_tier1_validation(times, states, mu):
 def full_tier2_validation(times, states_qd, mu_qd):
     """Complete Tier 2 validation suite."""
     results = {}
-    
+
     # 1. Jacobi conservation (in QD)
     C_values = [jacobi_constant_qd(s, mu_qd) for s in states_qd]
     results['jacobi_drift'] = float(max(C_values) - min(C_values))
     results['jacobi_pass'] = results['jacobi_drift'] < 1e-25
-    
+
     # 2. Symplectic structure (for variational equations)
     if 'phi' in states_qd:
         phi_final = states_qd['phi'][-1]
@@ -457,12 +457,12 @@ def full_tier2_validation(times, states_qd, mu_qd):
         symp_error = np.max(np.abs(phi_final.T @ J @ phi_final - J))
         results['symplectic_error'] = float(symp_error)
         results['symplectic_pass'] = results['symplectic_error'] < 1e-20
-    
+
     # 3. Time reversibility (optional, expensive)
     # results['reversibility'] = test_reversibility(...)
-    
+
     results['passed'] = results['jacobi_pass']
-    
+
     return results
 ```
 

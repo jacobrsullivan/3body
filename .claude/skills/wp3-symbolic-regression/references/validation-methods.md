@@ -64,38 +64,38 @@ A slowly-varying function may appear conserved at short scales but drift at long
 ### Implementation
 
 ```python
-def multi_scale_conservation_test(candidate_func, times, states, 
-                                   scales=[0.01, 0.1, 1.0, 10.0], 
+def multi_scale_conservation_test(candidate_func, times, states,
+                                   scales=[0.01, 0.1, 1.0, 10.0],
                                    tolerance=1e-10):
     """
     Test conservation at multiple timescales.
-    
+
     Args:
         candidate_func: Function I(state) → value
         times: Time array
         states: State array (N × dim)
         scales: Timescales to test (in time units)
         tolerance: Conservation threshold
-    
+
     Returns:
         Dict mapping scale → (passed, error)
     """
     results = {}
-    
+
     # Evaluate candidate on full trajectory
     I_values = candidate_func(states)
     dt = times[1] - times[0]
-    
+
     for scale in scales:
         # Subsample at this scale
         step = max(1, int(scale / dt))
         I_sub = I_values[::step]
-        
+
         # Compute conservation error
         mean_I = np.mean(I_sub)
         max_deviation = np.max(np.abs(I_sub - mean_I))
         relative_error = max_deviation / (np.abs(mean_I) + 1e-15)
-        
+
         passed = relative_error < tolerance
         results[scale] = {
             'passed': passed,
@@ -103,7 +103,7 @@ def multi_scale_conservation_test(candidate_func, times, states,
             'max_deviation': max_deviation,
             'mean': mean_I
         }
-    
+
     return results
 ```
 
@@ -133,45 +133,45 @@ A true integral has drift_rate → 0 as precision increases.
 ### Implementation
 
 ```python
-def long_time_stability(candidate_func, times, states, 
+def long_time_stability(candidate_func, times, states,
                         n_periods=1000, period_estimate=None):
     """
     Test long-time conservation stability.
-    
+
     Args:
         candidate_func: Function I(state) → value
         times: Time array
         states: State array
         n_periods: Number of orbital periods to analyze
         period_estimate: Estimated orbital period (auto-detect if None)
-    
+
     Returns:
         StabilityResult with drift metrics
     """
     # Evaluate candidate
     I_values = candidate_func(states)
-    
+
     # Estimate period if not provided
     if period_estimate is None:
         period_estimate = estimate_period(times, states)
-    
+
     # Compute drift over periods
     total_time = times[-1] - times[0]
     n_actual_periods = total_time / period_estimate
-    
+
     # Linear regression for drift rate
     from scipy.stats import linregress
     slope, intercept, r_value, p_value, std_err = linregress(times, I_values)
-    
+
     drift_per_period = slope * period_estimate
     total_drift = I_values[-1] - I_values[0]
-    
+
     # Stability criterion
     mean_I = np.mean(I_values)
     relative_drift = np.abs(total_drift) / (np.abs(mean_I) + 1e-15)
-    
+
     is_stable = relative_drift < 1e-10 * n_actual_periods
-    
+
     return {
         'is_stable': is_stable,
         'drift_rate': drift_per_period,
@@ -185,19 +185,19 @@ def long_time_stability(candidate_func, times, states,
 def estimate_period(times, states):
     """Estimate orbital period from trajectory."""
     from scipy.fft import fft, fftfreq
-    
+
     # Use radial distance
     r = np.linalg.norm(states[:, :3], axis=1)
     r_centered = r - np.mean(r)
-    
+
     dt = times[1] - times[0]
     spectrum = np.abs(fft(r_centered))[:len(r)//2]
     freqs = fftfreq(len(r), dt)[:len(r)//2]
-    
+
     # Find dominant frequency
     peak_idx = np.argmax(spectrum[1:]) + 1  # Skip DC
     dominant_freq = freqs[peak_idx]
-    
+
     return 1.0 / dominant_freq if dominant_freq > 0 else times[-1]
 ```
 
@@ -216,50 +216,50 @@ Quasi-periodic motion has multiple incommensurable frequencies. The power spectr
 ### Implementation
 
 ```python
-def detect_quasi_periodic(times, states, frequency_threshold=0.1, 
+def detect_quasi_periodic(times, states, frequency_threshold=0.1,
                           rationality_threshold=0.01):
     """
     Detect quasi-periodic motion via FFT analysis.
-    
+
     Args:
         times: Time array
         states: State array
         frequency_threshold: Minimum peak amplitude (relative)
         rationality_threshold: Tolerance for rational frequency ratio
-    
+
     Returns:
         QuasiPeriodicResult
     """
     from scipy.fft import fft, fftfreq
-    
+
     # Use radial distance as observable
     r = np.linalg.norm(states[:, :3], axis=1)
     r_centered = r - np.mean(r)
-    
+
     dt = times[1] - times[0]
     n = len(r)
-    
+
     # FFT
     spectrum = np.abs(fft(r_centered))[:n//2]
     freqs = fftfreq(n, dt)[:n//2]
-    
+
     # Find peaks
     threshold = frequency_threshold * np.max(spectrum)
     peaks = []
-    
+
     for i in range(1, len(spectrum) - 1):
-        if (spectrum[i] > threshold and 
-            spectrum[i] > spectrum[i-1] and 
+        if (spectrum[i] > threshold and
+            spectrum[i] > spectrum[i-1] and
             spectrum[i] > spectrum[i+1]):
             peaks.append({
                 'frequency': freqs[i],
                 'amplitude': spectrum[i],
                 'index': i
             })
-    
+
     # Sort by amplitude
     peaks.sort(key=lambda x: -x['amplitude'])
-    
+
     if len(peaks) < 2:
         return {
             'is_quasi_periodic': False,
@@ -267,11 +267,11 @@ def detect_quasi_periodic(times, states, frequency_threshold=0.1,
             'frequencies': [p['frequency'] for p in peaks],
             'n_peaks': len(peaks)
         }
-    
+
     # Check if top 2 frequencies are incommensurable
     f1, f2 = peaks[0]['frequency'], peaks[1]['frequency']
     ratio = max(f1, f2) / min(f1, f2)
-    
+
     # Test against simple rationals
     is_rational = False
     for p in range(1, 10):
@@ -279,11 +279,11 @@ def detect_quasi_periodic(times, states, frequency_threshold=0.1,
             if abs(ratio - p/q) < rationality_threshold:
                 is_rational = True
                 break
-    
+
     # Estimate elliptic parameter from frequency ratio
     # m ≈ 16 * (1 - T2/T1)^2 for small eccentricity
     elliptic_m = min(0.99, max(0.01, 16 * (1 - min(f1, f2)/max(f1, f2))**2))
-    
+
     return {
         'is_quasi_periodic': not is_rational and len(peaks) >= 2,
         'frequencies': [p['frequency'] for p in peaks[:5]],
@@ -304,20 +304,20 @@ def detect_quasi_periodic(times, states, frequency_threshold=0.1,
 def variance_conservation_test(candidate_func, states, tolerance=1e-10):
     """
     Test conservation using variance.
-    
+
     A conserved quantity has zero variance.
     """
     I_values = candidate_func(states)
-    
+
     mean_I = np.mean(I_values)
     variance = np.var(I_values)
     std = np.std(I_values)
-    
+
     # Relative variance
     rel_variance = variance / (mean_I**2 + 1e-15)
-    
+
     passed = rel_variance < tolerance
-    
+
     return {
         'passed': passed,
         'mean': mean_I,
@@ -334,27 +334,27 @@ def variance_conservation_test(candidate_func, states, tolerance=1e-10):
 def ks_conservation_test(candidate_func, states):
     """
     Test if I(x) distribution is consistent with constant.
-    
+
     Use KS test against constant distribution.
     """
     from scipy.stats import kstest
-    
+
     I_values = candidate_func(states)
     mean_I = np.mean(I_values)
-    
+
     # Normalize to [0, 1]
     I_min, I_max = np.min(I_values), np.max(I_values)
     if I_max - I_min < 1e-15:
         return {'passed': True, 'p_value': 1.0, 'statistic': 0.0}
-    
+
     I_normalized = (I_values - I_min) / (I_max - I_min)
-    
+
     # KS test against uniform (constant would give degenerate distribution)
     statistic, p_value = kstest(I_normalized, 'uniform')
-    
+
     # High statistic = not uniform = possibly constant
     # This is inverse: we WANT high statistic
-    
+
     return {
         'passed': statistic > 0.9,  # Very concentrated distribution
         'statistic': statistic,
@@ -385,15 +385,15 @@ def classify_function(expression_str):
     Classify expression into function type.
     """
     expr_lower = expression_str.lower()
-    
+
     scores = {}
     for func_type, keywords in FUNCTION_TYPES.items():
         score = sum(1 for kw in keywords if kw in expr_lower)
         scores[func_type] = score
-    
+
     if max(scores.values()) == 0:
         return 'unknown'
-    
+
     return max(scores.keys(), key=lambda k: scores[k])
 ```
 
@@ -417,15 +417,15 @@ def interpretability_score(expression_str):
     """
     func_type = classify_function(expression_str)
     base_score = INTERPRETABILITY_SCORES.get(func_type, 0.3)
-    
+
     # Penalize complexity
     n_terms = expression_str.count('+') + expression_str.count('-') + 1
     complexity_penalty = min(0.3, 0.05 * n_terms)
-    
+
     # Penalize nesting
     n_parens = expression_str.count('(')
     nesting_penalty = min(0.2, 0.02 * n_parens)
-    
+
     return max(0.1, base_score - complexity_penalty - nesting_penalty)
 ```
 
@@ -437,18 +437,18 @@ def detect_physical_symmetry(expression_str, variables=['x', 'y', 'z']):
     Detect physical symmetries in expression.
     """
     symmetries = []
-    
+
     # Rotation invariance: depends only on r = sqrt(x² + y² + z²)
     if 'sqrt(x**2 + y**2 + z**2)' in expression_str or 'r' in expression_str:
         symmetries.append('rotation_invariant')
-    
+
     # Translation invariance: depends only on differences
     if all(v not in expression_str for v in variables):
         symmetries.append('translation_invariant')
-    
+
     # Parity: even in all coordinates
     # (Would need symbolic analysis for proper detection)
-    
+
     return symmetries
 ```
 
@@ -459,43 +459,43 @@ def detect_physical_symmetry(expression_str, variables=['x', 'y', 'z']):
 ```python
 class ValidationPipeline:
     """Complete validation pipeline for candidate integrals."""
-    
+
     def __init__(self, multi_scale_tol=1e-10, drift_tol=1e-12):
         self.multi_scale_tol = multi_scale_tol
         self.drift_tol = drift_tol
-    
+
     def validate(self, candidate_func, times, states):
         """
         Run full validation pipeline.
         """
         results = {}
-        
+
         # Multi-scale test
         results['multi_scale'] = multi_scale_conservation_test(
             candidate_func, times, states,
             tolerance=self.multi_scale_tol
         )
-        
+
         # Long-time stability
         results['stability'] = long_time_stability(
             candidate_func, times, states
         )
-        
+
         # Statistical test
         results['variance'] = variance_conservation_test(
             candidate_func, states
         )
-        
+
         # Quasi-periodic check
         results['quasi_periodic'] = detect_quasi_periodic(times, states)
-        
+
         # Overall verdict
         multi_pass = all(r['passed'] for r in results['multi_scale'].values())
         stability_pass = results['stability']['is_stable']
         variance_pass = results['variance']['passed']
-        
+
         results['passed'] = multi_pass and stability_pass and variance_pass
-        
+
         return results
 ```
 

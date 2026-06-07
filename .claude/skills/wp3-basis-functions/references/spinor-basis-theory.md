@@ -239,20 +239,20 @@ Known patterns to search for:
 def position_to_spinor(r, branch='auto'):
     """
     Convert 3D position to 4D spinor.
-    
+
     Args:
         r: Position vector (N, 3) or (3,)
         branch: 'u3_zero' or 'u2_zero' or 'auto'
-    
+
     Returns:
         u: Spinor (N, 4) or (4,)
     """
     r = np.atleast_2d(r)
     x, y, z = r[:, 0], r[:, 1], r[:, 2]
     r_norm = np.linalg.norm(r, axis=1)
-    
+
     u = np.zeros((len(r), 4))
-    
+
     # Choose branch based on sign of x
     if branch == 'auto':
         mask = x >= 0
@@ -260,7 +260,7 @@ def position_to_spinor(r, branch='auto'):
         mask = np.ones(len(r), dtype=bool)
     else:
         mask = np.zeros(len(r), dtype=bool)
-    
+
     # Branch with u₃ = 0
     u0 = np.sqrt((r_norm + x) / 2)
     safe = u0 > 1e-10
@@ -268,7 +268,7 @@ def position_to_spinor(r, branch='auto'):
     u[mask & safe, 1] = y[mask & safe] / (2 * u0[mask & safe])
     u[mask & safe, 2] = z[mask & safe] / (2 * u0[mask & safe])
     u[mask, 3] = 0
-    
+
     # Branch with u₂ = 0
     u1 = np.sqrt((r_norm - x) / 2)
     safe = u1 > 1e-10
@@ -276,7 +276,7 @@ def position_to_spinor(r, branch='auto'):
     u[~mask & safe, 1] = u1[~mask & safe]
     u[~mask, 2] = 0
     u[~mask & safe, 3] = z[~mask & safe] / (2 * u1[~mask & safe])
-    
+
     return u.squeeze()
 ```
 
@@ -286,20 +286,20 @@ def position_to_spinor(r, branch='auto'):
 def spinor_to_position(u):
     """
     Convert 4D spinor to 3D position via KS transformation.
-    
+
     Args:
         u: Spinor (N, 4) or (4,)
-    
+
     Returns:
         r: Position (N, 3) or (3,)
     """
     u = np.atleast_2d(u)
     u0, u1, u2, u3 = u[:, 0], u[:, 1], u[:, 2], u[:, 3]
-    
+
     x = u0**2 - u1**2 - u2**2 + u3**2
     y = 2 * (u0*u1 - u2*u3)
     z = 2 * (u0*u2 + u1*u3)
-    
+
     return np.column_stack([x, y, z]).squeeze()
 ```
 
@@ -309,22 +309,22 @@ def spinor_to_position(u):
 def generate_spinor_basis():
     """
     Generate complete spinor basis for 3-body problem.
-    
+
     Returns:
         List of basis functions, each taking (u1, u2, u3) arrays
     """
     basis = []
-    
+
     # Category 1: Norms
     basis.append(lambda u1, u2, u3: np.sum(u1**2, axis=1))  # |u1|²
     basis.append(lambda u1, u2, u3: np.sum(u2**2, axis=1))  # |u2|²
     basis.append(lambda u1, u2, u3: np.sum(u3**2, axis=1))  # |u3|²
-    
+
     # Category 2: Inner products
     basis.append(lambda u1, u2, u3: np.sum(u1 * u2, axis=1))  # u1·u2
     basis.append(lambda u1, u2, u3: np.sum(u2 * u3, axis=1))  # u2·u3
     basis.append(lambda u1, u2, u3: np.sum(u3 * u1, axis=1))  # u3·u1
-    
+
     # Category 3: Quaternion cross products
     def quat_cross(u, v):
         """Quaternion cross product (imaginary part of u*conj(v))."""
@@ -333,15 +333,15 @@ def generate_spinor_basis():
             u[:, 0]*v[:, 2] - u[:, 2]*v[:, 0] + u[:, 3]*v[:, 1] - u[:, 1]*v[:, 3],
             u[:, 0]*v[:, 3] - u[:, 3]*v[:, 0] + u[:, 1]*v[:, 2] - u[:, 2]*v[:, 1]
         ])
-    
+
     for i in range(3):
         basis.append(lambda u1, u2, u3, i=i: quat_cross(u1, u2)[:, i])
         basis.append(lambda u1, u2, u3, i=i: quat_cross(u2, u3)[:, i])
         basis.append(lambda u1, u2, u3, i=i: quat_cross(u3, u1)[:, i])
-    
+
     # Category 4-6: Add more as needed...
     # (Full implementation in src/python/symbolic/spinor_basis.py)
-    
+
     return basis
 ```
 
@@ -351,16 +351,16 @@ def generate_spinor_basis():
 def verify_bilinear_relation(r, u, tol=1e-10):
     """
     Verify |r| = |u|² for position-spinor pair.
-    
+
     Returns:
         (passed, max_error)
     """
     r_norm = np.linalg.norm(np.atleast_2d(r), axis=1)
     u_norm_sq = np.sum(np.atleast_2d(u)**2, axis=1)
-    
+
     error = np.abs(r_norm - u_norm_sq)
     max_error = np.max(error)
-    
+
     return max_error < tol, max_error
 ```
 

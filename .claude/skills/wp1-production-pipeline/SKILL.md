@@ -1,14 +1,14 @@
 ---
 name: wp1-production-pipeline
 description: >
-  Production pipeline for large-scale CR3BP trajectory catalogue generation using 
-  Snakemake orchestration. Use when: (1) generating trajectory catalogues at scale, 
-  (2) running production integrations on HPC/SLURM clusters, (3) configuring Sobol 
-  parameter sampling, (4) exporting to HDF5/Parquet formats, (5) managing parallel 
-  batch jobs with checkpointing, (6) setting up multi-coordinate output (rotating, 
-  inertial, regularized), (7) configuring Dask distributed computing, or (8) preparing 
-  data for WP2/WP3/WP4 consumption. Triggers on requests involving catalogue generation, 
-  production runs, Snakemake workflows, batch processing, HPC job submission, SLURM 
+  Production pipeline for large-scale CR3BP trajectory catalogue generation using
+  Snakemake orchestration. Use when: (1) generating trajectory catalogues at scale,
+  (2) running production integrations on HPC/SLURM clusters, (3) configuring Sobol
+  parameter sampling, (4) exporting to HDF5/Parquet formats, (5) managing parallel
+  batch jobs with checkpointing, (6) setting up multi-coordinate output (rotating,
+  inertial, regularized), (7) configuring Dask distributed computing, or (8) preparing
+  data for WP2/WP3/WP4 consumption. Triggers on requests involving catalogue generation,
+  production runs, Snakemake workflows, batch processing, HPC job submission, SLURM
   configuration, data export, checkpointing, restart/recovery, or pipeline orchestration.
 ---
 

@@ -227,16 +227,16 @@ class MarsdenWeinsteinReduction:
     """
     Generic Marsden-Weinstein reduction framework.
     """
-    
+
     def __init__(self, group, action, momentum_map):
         self.group = group
         self.action = action
         self.momentum_map = momentum_map
-        
+
     def reduce(self, state, momentum_level):
         """
         Reduce state at given momentum level.
-        
+
         1. Project to momentum level set J⁻¹(μ)
         2. Quotient by stabilizer G_μ
         """
@@ -244,12 +244,12 @@ class MarsdenWeinsteinReduction:
         mu_actual = self.momentum_map(state)
         if not np.allclose(mu_actual, momentum_level):
             raise ValueError("State not at specified momentum level")
-            
+
         # Find orbit representative (gauge fixing)
         reduced = self.gauge_fix(state)
-        
+
         return reduced
-        
+
     def gauge_fix(self, state):
         """Choose canonical representative in orbit."""
         # Implementation depends on group and chosen gauge
@@ -262,7 +262,7 @@ class MarsdenWeinsteinReduction:
 def verify_symplectic_reduction(original_omega, reduced_omega, projection):
     """
     Verify that π*ω_μ = i*ω.
-    
+
     Args:
         original_omega: Symplectic form on M
         reduced_omega: Symplectic form on M_μ
@@ -270,10 +270,10 @@ def verify_symplectic_reduction(original_omega, reduced_omega, projection):
     """
     # Compute pullback
     pullback = projection.pullback(reduced_omega)
-    
+
     # Compare with restriction
     restriction = original_omega.restrict(momentum_level_set)
-    
+
     error = np.max(np.abs(pullback - restriction))
     return error < 1e-10
 ```

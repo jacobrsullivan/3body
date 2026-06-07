@@ -1,15 +1,15 @@
 ---
 name: wp2-connection-curvature
 description: >
-  Mechanical connection, curvature computation, and Jacobi-Maupertuis metric analysis 
-  for the three-body problem. Use when: (1) computing connection 1-forms on shape space, 
-  (2) computing curvature 2-forms F = dA, (3) evaluating locked inertia tensors, 
-  (4) computing Jacobi-Maupertuis metrics and geodesics, (5) computing Christoffel symbols, 
-  (6) analyzing scalar/Riemann curvature, (7) testing curvature-chaos correlation, 
-  (8) understanding geometric obstructions to integrability, (9) visualizing curvature 
-  landscapes, or (10) preparing geometric data for WP3/WP4. Triggers on requests involving 
-  mechanical connection, curvature forms, locked inertia, JM metric, Christoffel symbols, 
-  scalar curvature, Riemann tensor, magnetic terms, geometric phases, anholonomy, 
+  Mechanical connection, curvature computation, and Jacobi-Maupertuis metric analysis
+  for the three-body problem. Use when: (1) computing connection 1-forms on shape space,
+  (2) computing curvature 2-forms F = dA, (3) evaluating locked inertia tensors,
+  (4) computing Jacobi-Maupertuis metrics and geodesics, (5) computing Christoffel symbols,
+  (6) analyzing scalar/Riemann curvature, (7) testing curvature-chaos correlation,
+  (8) understanding geometric obstructions to integrability, (9) visualizing curvature
+  landscapes, or (10) preparing geometric data for WP3/WP4. Triggers on requests involving
+  mechanical connection, curvature forms, locked inertia, JM metric, Christoffel symbols,
+  scalar curvature, Riemann tensor, magnetic terms, geometric phases, anholonomy,
   or curvature-chaos correlation.
 ---
 
@@ -239,45 +239,45 @@ import numpy as np
 def test_curvature_chaos_correlation(trajectories, masses, energy):
     """
     Test if R < 0 correlates with chaotic motion.
-    
+
     Args:
         trajectories: List of trajectory dicts with 'shape_states' and 'state0'
         masses: Mass array
         energy: Fixed energy for JM metric
-        
+
     Returns:
         Correlation coefficient and analysis results
     """
     jm = JacobiMaupertuisMetric(masses=masses, energy=energy)
     analyzer = create_cr3bp_chaos_analyzer(mu=masses[1]/sum(masses))
-    
+
     results = []
     for traj in trajectories:
         # Average scalar curvature along trajectory
         R_values = [jm.scalar_curvature(s) for s in traj['shape_states']]
         R_avg = np.mean(R_values)
         R_min = np.min(R_values)
-        
+
         # Chaos indicator (MEGNO)
         chaos_result = analyzer.analyze(traj['state0'], t_max=100)
-        
+
         results.append({
             'R_avg': R_avg,
             'R_min': R_min,
             'megno': chaos_result['megno'],
             'is_chaotic': chaos_result['classification'] == 'chaotic'
         })
-    
+
     # Compute correlation
     R_values = [r['R_avg'] for r in results]
     megno_values = [r['megno'] for r in results]
     correlation = np.corrcoef(R_values, megno_values)[0, 1]
-    
+
     # Count agreement
-    n_agree = sum(1 for r in results 
+    n_agree = sum(1 for r in results
                   if (r['R_avg'] < 0) == r['is_chaotic'])
     agreement_rate = n_agree / len(results)
-    
+
     return {
         'correlation': correlation,
         'agreement_rate': agreement_rate,
@@ -294,13 +294,13 @@ import numpy as np
 def plot_curvature_landscape(masses, energy, n_points=50):
     """Visualize scalar curvature across shape space."""
     jm = JacobiMaupertuisMetric(masses=masses, energy=energy)
-    
+
     r12_vals = np.linspace(0.5, 2.0, n_points)
     r23_vals = np.linspace(0.5, 2.0, n_points)
     R12, R23 = np.meshgrid(r12_vals, r23_vals)
-    
+
     R_landscape = np.zeros_like(R12)
-    
+
     for i in range(n_points):
         for j in range(n_points):
             # Compute r31 from triangle constraint
@@ -308,32 +308,32 @@ def plot_curvature_landscape(masses, energy, n_points=50):
             if not valid_triangle(R12[i,j], R23[i,j], r31):
                 R_landscape[i,j] = np.nan
                 continue
-            
+
             shape = np.array([R12[i,j], R23[i,j], r31])
-            
+
             # Check if in allowed region (E > V)
             V_eff = compute_potential(shape, masses)
             if energy <= V_eff:
                 R_landscape[i,j] = np.nan
                 continue
-                
+
             R_landscape[i,j] = jm.scalar_curvature(shape)
-    
+
     # Plot
     fig, ax = plt.subplots(figsize=(10, 8))
-    
+
     # Color map: blue = negative (chaos), red = positive (regular)
     im = ax.contourf(R12, R23, R_landscape, levels=20, cmap='RdBu_r')
     plt.colorbar(im, label='Scalar Curvature R')
-    
+
     # Mark R = 0 contour
-    ax.contour(R12, R23, R_landscape, levels=[0], colors='black', 
+    ax.contour(R12, R23, R_landscape, levels=[0], colors='black',
                linewidths=2, linestyles='--')
-    
+
     ax.set_xlabel('r₁₂')
     ax.set_ylabel('r₂₃')
     ax.set_title('Scalar Curvature Landscape\n(R < 0 → chaos expected)')
-    
+
     return fig
 ```
 
@@ -345,55 +345,55 @@ See `references/curvature-chaos.md` for analysis methodology.
 def full_geometric_analysis(shape_point, masses, energy, angular_momentum):
     """
     Complete geometric analysis at a shape space point.
-    
+
     Returns dict with all geometric quantities needed for WP3/WP4.
     """
     from src.python.geometry.locked_inertia import LockedInertiaTensor
     from src.python.reduction.connection import MechanicalConnection
     from src.python.geometry.jm_metric import JacobiMaupertuisMetric
-    
+
     # 1. Locked inertia
     inertia = LockedInertiaTensor(masses=masses)
     I = inertia.compute(shape_point)
     I_inv = inertia.compute_inverse(shape_point)
-    
+
     # 2. Mechanical connection
     conn = MechanicalConnection(masses=masses)
     A = conn.components(shape_point)
     F = conn.compute_curvature(shape_point)
-    
+
     # 3. JM metric and curvature
     jm = JacobiMaupertuisMetric(masses=masses, energy=energy)
     g = jm.metric_tensor(shape_point)
     Gamma = jm.christoffel_symbols(shape_point)
     R_tensor = jm.riemann_tensor(shape_point)
     R_scalar = jm.scalar_curvature(shape_point)
-    
+
     # 4. Magnetic term contribution
     # In reduced Hamiltonian: H_red = K + V + A·ṡ·L
     magnetic_term_coeff = np.dot(A, angular_momentum)
-    
+
     # 5. Obstruction analysis
     F_magnitude = np.linalg.norm(F)
     has_obstruction = F_magnitude > 1e-10
-    
+
     return {
         # Inertia
         'locked_inertia': I,
         'locked_inertia_inverse': I_inv,
-        
+
         # Connection
         'connection_components': A,
         'curvature_matrix': F,
         'curvature_magnitude': F_magnitude,
         'has_geometric_obstruction': has_obstruction,
-        
+
         # JM geometry
         'jm_metric': g,
         'christoffel_symbols': Gamma,
         'riemann_tensor': R_tensor,
         'scalar_curvature': R_scalar,
-        
+
         # Physical
         'magnetic_term_coefficient': magnetic_term_coeff,
         'expects_chaos': R_scalar < 0,
@@ -445,25 +445,25 @@ F_upstairs = bundle.compute_curvature(lifted_point)
 def diagnose_geometry(shape_point, masses, energy):
     """Diagnose common issues with geometric computations."""
     r12, r23, r31 = shape_point
-    
+
     diagnostics = {}
-    
+
     # Check triangle inequality
     diagnostics['valid_triangle'] = (
         abs(r12 - r23) < r31 < r12 + r23 and
         abs(r23 - r31) < r12 < r23 + r31 and
         abs(r31 - r12) < r23 < r31 + r12
     )
-    
+
     # Check for near-collision
     diagnostics['min_distance'] = min(r12, r23, r31)
     diagnostics['near_collision'] = diagnostics['min_distance'] < 0.01
-    
+
     # Check energy condition
     V_eff = compute_effective_potential(shape_point, masses)
     diagnostics['E_minus_V'] = energy - V_eff
     diagnostics['allowed_region'] = diagnostics['E_minus_V'] > 0
-    
+
     return diagnostics
 ```
 
@@ -473,7 +473,7 @@ def diagnose_geometry(shape_point, masses, energy):
 # Connection tests
 pytest tests/geometry/test_connection.py -v
 
-# Locked inertia tests  
+# Locked inertia tests
 pytest tests/geometry/test_locked_inertia.py -v
 
 # JM metric tests

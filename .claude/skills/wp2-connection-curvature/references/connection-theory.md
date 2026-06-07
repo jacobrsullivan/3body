@@ -89,21 +89,21 @@ The locked inertia tensor I(s) is the moment of inertia tensor computed when the
 def compute_locked_inertia(shape_point, masses):
     """
     Compute the locked inertia tensor.
-    
+
     For 3 bodies with positions rᵢ (satisfying Σmᵢrᵢ = 0):
     I_jk = Σᵢ mᵢ (|rᵢ|² δ_jk - rᵢ_j rᵢ_k)
-    
+
     Returns:
         3×3 symmetric matrix
     """
     # Reconstruct positions from shape
     r1, r2, r3 = shape_to_positions(shape_point, masses)
-    
+
     I = np.zeros((3, 3))
     for m, r in zip(masses, [r1, r2, r3]):
         r_sq = np.dot(r, r)
         I += m * (r_sq * np.eye(3) - np.outer(r, r))
-    
+
     return I
 ```
 
@@ -121,20 +121,20 @@ For the connection formula, we need ∂I/∂s:
 def compute_inertia_derivative(shape_point, masses, delta=1e-8):
     """
     Compute ∂I_ij/∂s_k via finite differences.
-    
+
     Returns:
         (3, 3, 3) tensor where result[i,j,k] = ∂I_ij/∂s_k
     """
     dI_ds = np.zeros((3, 3, 3))
     I_center = compute_locked_inertia(shape_point, masses)
-    
+
     for k in range(3):
         shape_plus = shape_point.copy()
         shape_plus[k] += delta
         I_plus = compute_locked_inertia(shape_plus, masses)
-        
+
         dI_ds[:, :, k] = (I_plus - I_center) / delta
-    
+
     return dI_ds
 ```
 
@@ -158,18 +158,18 @@ where L is the (fixed) angular momentum vector.
 def compute_connection_components(shape_point, masses, L):
     """
     Compute connection 1-form components [A₁, A₂, A₃].
-    
+
     A_k = Σ_ij I⁻¹_ij · ∂I_jl/∂s_k · L_l
     """
     I = compute_locked_inertia(shape_point, masses)
     I_inv = np.linalg.inv(I)
     dI_ds = compute_inertia_derivative(shape_point, masses)
-    
+
     A = np.zeros(3)
     for k in range(3):
         # Contract: I⁻¹ · (∂I/∂s_k) · L
         A[k] = np.einsum('ij,jl,l->', I_inv, dI_ds[:,:,k], L)
-    
+
     return A
 ```
 
@@ -214,24 +214,24 @@ This gives a 3×3 antisymmetric matrix.
 def compute_curvature(shape_point, masses, L, delta=1e-8):
     """
     Compute curvature 2-form F = dA.
-    
+
     Returns:
         3×3 antisymmetric matrix F_ij
     """
     A_center = compute_connection_components(shape_point, masses, L)
-    
+
     # Compute partial derivatives
     dA_ds = np.zeros((3, 3))  # dA_ds[i,j] = ∂A_i/∂s_j
-    
+
     for j in range(3):
         shape_plus = shape_point.copy()
         shape_plus[j] += delta
         A_plus = compute_connection_components(shape_plus, masses, L)
         dA_ds[:, j] = (A_plus - A_center) / delta
-    
+
     # Curvature: F_ij = ∂A_j/∂s_i - ∂A_i/∂s_j
     F = dA_ds.T - dA_ds
-    
+
     return F
 ```
 
@@ -246,7 +246,7 @@ def verify_curvature(F):
     """Verify curvature properties."""
     # Check antisymmetry
     antisym_error = np.max(np.abs(F + F.T))
-    
+
     return {
         'antisymmetric': antisym_error < 1e-10,
         'antisymmetry_error': antisym_error
@@ -316,37 +316,37 @@ Non-zero holonomy means: traversing a closed shape cycle returns the system with
 ```python
 class MechanicalConnection:
     """Complete mechanical connection implementation."""
-    
+
     def __init__(self, masses, angular_momentum=None):
         self.masses = masses
         self.L = angular_momentum if angular_momentum is not None else np.array([0, 0, 1])
         self.inertia = LockedInertiaTensor(masses)
-        
+
     def components(self, shape_point):
         """Get connection components [A₁, A₂, A₃]."""
         I = self.inertia.compute(shape_point)
         I_inv = np.linalg.inv(I)
         dI_ds = self.inertia.compute_derivative(shape_point)
-        
+
         A = np.zeros(3)
         for k in range(3):
             A[k] = np.einsum('ij,jl,l->', I_inv, dI_ds[:,:,k], self.L)
         return A
-        
+
     def evaluate(self, shape_point, shape_velocity):
         """Contract A with velocity: A(s) · ṡ"""
         return np.dot(self.components(shape_point), shape_velocity)
-        
+
     def compute_curvature(self, shape_point, delta=1e-8):
         """Compute curvature F = dA."""
         A = self.components(shape_point)
         dA_ds = np.zeros((3, 3))
-        
+
         for j in range(3):
             sp = shape_point.copy()
             sp[j] += delta
             dA_ds[:, j] = (self.components(sp) - A) / delta
-            
+
         return dA_ds.T - dA_ds
 ```
 

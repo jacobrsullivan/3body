@@ -2,7 +2,7 @@
 name: wp3-basis-functions
 description: >
   Specialized basis function libraries for invariant discovery in the three-body problem.
-  Use when: (1) working with KS spinor coordinates and spinor basis functions, 
+  Use when: (1) working with KS spinor coordinates and spinor basis functions,
   (2) using Jacobi elliptic functions (sn, cn, dn) for quasi-periodic motion,
   (3) using Jacobi theta functions for integrable systems, (4) generating polynomial/rational
   basis libraries, (5) estimating parameters (elliptic m, theta nome q) from trajectory data,
@@ -360,7 +360,7 @@ full_basis = generate_combined_basis(
 def select_basis_automatically(times, states, mu=None):
     """
     Automatically select optimal basis based on trajectory analysis.
-    
+
     Returns:
         basis_funcs: List of basis functions
         basis_type: 'spinor', 'elliptic', 'theta', or 'polynomial'
@@ -369,15 +369,15 @@ def select_basis_automatically(times, states, mu=None):
     from src.python.symbolic.spinor_search import detect_regularization_benefit
     from src.python.symbolic.elliptic_search import detect_elliptic_signature
     from src.python.symbolic.theta_basis import detect_integrability_signature
-    
+
     params = {}
-    
+
     # Priority 1: Check for close encounters
     if detect_regularization_benefit(times, states, threshold=0.1):
         from src.python.symbolic.spinor_basis import generate_spinor_basis
         print("✓ Close encounters detected → Spinor basis")
         return generate_spinor_basis(), 'spinor', params
-    
+
     # Priority 2: Check for quasi-periodic motion
     qp = detect_elliptic_signature(times, states)
     if qp.is_quasi_periodic:
@@ -385,7 +385,7 @@ def select_basis_automatically(times, states, mu=None):
         params['m'] = qp.elliptic_parameter
         print(f"✓ Quasi-periodic motion → Elliptic basis (m={params['m']:.4f})")
         return generate_elliptic_basis(m=params['m']), 'elliptic', params
-    
+
     # Priority 3: Check for integrability signature
     integ = detect_integrability_signature(times, states)
     if integ.is_integrable:
@@ -393,7 +393,7 @@ def select_basis_automatically(times, states, mu=None):
         params['q'] = integ.nome
         print(f"✓ Integrable signature → Theta basis (q={abs(params['q']):.6f})")
         return generate_theta_basis(q=params['q']), 'theta', params
-    
+
     # Default: Polynomial
     from src.python.symbolic.basis_functions import generate_polynomial_basis
     print("→ Default polynomial basis")
@@ -455,7 +455,7 @@ results = search.run(times, states, mu=mu)
 def diagnose_basis_issues(basis_funcs, states):
     """Check for common basis evaluation problems."""
     issues = []
-    
+
     for i, func in enumerate(basis_funcs):
         try:
             vals = func(states)
@@ -467,13 +467,13 @@ def diagnose_basis_issues(basis_funcs, states):
                 issues.append(f"Function {i}: Nearly constant")
         except Exception as e:
             issues.append(f"Function {i}: Error - {str(e)}")
-    
+
     if not issues:
         print("✓ All basis functions evaluate correctly")
     else:
         for issue in issues:
             print(f"⚠ {issue}")
-    
+
     return len(issues) == 0
 ```
 

@@ -74,7 +74,7 @@ def ks_inverse(r):
     """
     x, y, z = r
     r_norm = np.linalg.norm(r)
-    
+
     if x >= 0:
         # Branch with u₃ = 0
         u0 = np.sqrt((r_norm + x) / 2)
@@ -87,7 +87,7 @@ def ks_inverse(r):
         u0 = y / (2 * u1) if u1 > 1e-10 else 0
         u2 = 0
         u3 = z / (2 * u1) if u1 > 1e-10 else 0
-    
+
     return np.array([u0, u1, u2, u3])
 ```
 
@@ -336,23 +336,23 @@ Several options for g(r):
 ```python
 class KSTransform:
     """Kustaanheimo-Stiefel transformation."""
-    
+
     @staticmethod
     def forward(u):
         """Spinor → Position."""
         L = levi_civita_matrix(u)
         r_ext = L @ u
         return r_ext[:3]
-    
+
     @staticmethod
     def inverse(r, branch='auto'):
         """Position → Spinor (choosing branch)."""
         x, y, z = r
         r_norm = np.linalg.norm(r)
-        
+
         if branch == 'auto':
             branch = 'u3_zero' if x >= 0 else 'u2_zero'
-        
+
         if branch == 'u3_zero':
             u0 = np.sqrt((r_norm + x) / 2)
             if u0 > 1e-10:
@@ -369,9 +369,9 @@ class KSTransform:
             else:
                 u0, u3 = 0, 0
             u2 = 0
-        
+
         return np.array([u0, u1, u2, u3])
-    
+
     @staticmethod
     def velocity_to_momentum(u, v, mass=1.0):
         """Convert velocity to spinor momentum."""
@@ -380,7 +380,7 @@ class KSTransform:
         v_ext = np.append(v, 0)  # Extend to 4D
         p_u = 0.5 * r_norm * L.T @ v_ext / mass
         return p_u[:4]
-    
+
     @staticmethod
     def momentum_to_velocity(u, p_u, mass=1.0):
         """Convert spinor momentum to velocity."""
@@ -388,7 +388,7 @@ class KSTransform:
         r_norm = np.dot(u, u)
         v_ext = 2 * mass * L @ p_u / r_norm
         return v_ext[:3]
-    
+
     @staticmethod
     def bilinear_constraint(u, p_u):
         """Compute constraint Ξ = 0."""
@@ -400,49 +400,49 @@ class KSTransform:
 ```python
 class PairwiseKS:
     """KS transformation applied to all three body pairs."""
-    
+
     def __init__(self, masses):
         self.masses = masses
         self.ks = KSTransform()
-        
+
     def transform_positions(self, positions):
         """Transform 3 positions to 3 spinors."""
         r1, r2, r3 = positions
-        
+
         r12 = r2 - r1
         r23 = r3 - r2
         r31 = r1 - r3
-        
+
         u12 = self.ks.inverse(r12)
         u23 = self.ks.inverse(r23)
         u31 = self.ks.inverse(r31)
-        
+
         return np.concatenate([u12, u23, u31])  # 12D
-    
+
     def inverse_transform(self, spinors):
         """Transform 3 spinors back to positions."""
         u12 = spinors[:4]
         u23 = spinors[4:8]
         u31 = spinors[8:12]
-        
+
         r12 = self.ks.forward(u12)
         r23 = self.ks.forward(u23)
         r31 = self.ks.forward(u31)
-        
+
         # Reconstruct positions (COM at origin)
         # r1 + r12 = r2, r2 + r23 = r3, r3 + r31 = r1
         # With constraint: m1*r1 + m2*r2 + m3*r3 = 0
-        
+
         return self._reconstruct_positions(r12, r23, r31)
-    
+
     def closure_constraint(self, spinors):
         """Check r12 + r23 + r31 = 0."""
         u12, u23, u31 = spinors[:4], spinors[4:8], spinors[8:12]
-        
+
         r12 = self.ks.forward(u12)
         r23 = self.ks.forward(u23)
         r31 = self.ks.forward(u31)
-        
+
         return np.linalg.norm(r12 + r23 + r31)
 ```
 
@@ -451,50 +451,50 @@ class PairwiseKS:
 ```python
 class TimeRegularizedDynamics:
     """Full time-regularized three-body dynamics."""
-    
+
     def __init__(self, masses, sundman_strategy='sum'):
         self.masses = masses
         self.pairwise_ks = PairwiseKS(masses)
         self.strategy = sundman_strategy
-        
+
     def compute_g(self, spinors):
         """Compute Sundman factor g = dt/ds."""
         r12 = np.dot(spinors[:4], spinors[:4])
         r23 = np.dot(spinors[4:8], spinors[4:8])
         r31 = np.dot(spinors[8:12], spinors[8:12])
-        
+
         if self.strategy == 'sum':
             return r12 + r23 + r31
         elif self.strategy == 'product':
             return r12 * r23 * r31
         elif self.strategy == 'min':
             return min(r12, r23, r31)
-    
+
     def equations_of_motion(self, s, state):
         """
         Equations in fictitious time s.
-        
+
         State: (u12, u23, u31, p12, p23, p31, t, E)
         """
         spinors = state[:12]
         momenta = state[12:24]
         t = state[24]
         E = state[25]
-        
+
         g = self.compute_g(spinors)
-        
+
         # Spinor derivatives
         du_ds = self._compute_du(spinors, momenta, E)
-        
+
         # Momentum derivatives
         dp_ds = self._compute_dp(spinors, momenta, E)
-        
+
         # Time derivative
         dt_ds = g
-        
+
         # Energy derivative (conserved)
         dE_ds = 0
-        
+
         return np.concatenate([du_ds, dp_ds, [dt_ds, dE_ds]])
 ```
 

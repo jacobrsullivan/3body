@@ -1,0 +1,19 @@
+system: earth-moon
+mu: 0.012150585609624
+tier1:
+  n_mu: 30
+  n_C: 15
+  n_orbits_per_mu_c: 200
+  duration: 1000.0
+  output_interval: 1.0
+tier2:
+  n_mu: 30
+  n_C: 15
+  n_orbits_per_mu_c: 30
+  duration: 1000.0
+  output_interval: 1.0
+cores: 16
+megno_fli_map:
+  x_range: [-1.5, 1.5]
+  y_range: [-1.0, 1.0]
+  resolution: 1000

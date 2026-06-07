@@ -226,7 +226,7 @@ Position mapping:
   x = u0² - u1² - u2² + u3²
   y = 2(u0·u1 - u2·u3)
   z = 2(u0·u2 + u1·u3)
-  
+
 Radial distance:
   r = |u|² = u0² + u1² + u2² + u3²
 
@@ -244,13 +244,13 @@ Fictitious time s (Sundman):
 def jacobi_constant(state, mu):
     """Compute Jacobi constant."""
     x, y, z, vx, vy, vz = state
-    
+
     r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
     r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
-    
+
     Omega = 0.5 * (x**2 + y**2) + (1 - mu)/r1 + mu/r2 + 0.5*mu*(1-mu)
     v_squared = vx**2 + vy**2 + vz**2
-    
+
     return 2*Omega - v_squared
 
 # Drift calculation
@@ -281,34 +281,34 @@ import numpy as np
 def load_orbit(filepath):
     """Load complete orbit data from HDF5."""
     data = {}
-    
+
     with h5py.File(filepath, 'r') as f:
         # Metadata
         data['mu'] = f['metadata']['mu'][()]
         data['C'] = f['metadata']['C'][()]
         data['orbit_id'] = f['metadata']['orbit_id'][()]
-        
+
         # Trajectory (rotating frame)
         data['time'] = f['trajectory']['time'][:]
         data['positions'] = f['trajectory']['rotating']['positions'][:]
         data['velocities'] = f['trajectory']['rotating']['velocities'][:]
-        
+
         # Combine into states
         data['states'] = np.hstack([data['positions'], data['velocities']])
-        
+
         # Chaos indicators
         data['megno'] = f['chaos']['megno'][()]
         data['fli'] = f['chaos']['fli'][()]
         data['classification'] = f['chaos']['classification'][()].decode()
-        
+
         # Validation
         data['jacobi_drift'] = f['validation']['jacobi_constant']['drift_relative'][()]
-        
+
         # Variational (Tier 2 only)
         if 'variational' in f:
             data['monodromy'] = f['variational']['monodromy_matrix'][:]
             data['floquet'] = f['variational']['floquet_multipliers'][:]
-    
+
     return data
 ```
 
@@ -350,12 +350,12 @@ from pathlib import Path
 def process_catalogue(catalogue_dir, func, **kwargs):
     """Apply function to all orbits in catalogue."""
     results = []
-    
+
     for hdf5_file in Path(catalogue_dir).glob('*.h5'):
         orbit = load_orbit(hdf5_file)
         result = func(orbit, **kwargs)
         results.append(result)
-    
+
     return results
 
 # Example: compute mean MEGNO

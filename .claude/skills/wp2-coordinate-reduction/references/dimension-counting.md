@@ -100,7 +100,7 @@ T*(Q/ℝ³) ≅ T*(relative positions)
 
 where we've removed the 3D position of the COM but kept its momentum.
 
-**Dimension**: 
+**Dimension**:
 - Original: 18D
 - Remove COM position: -3D
 - Result: 15D

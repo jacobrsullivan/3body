@@ -804,13 +804,13 @@ def evaluate_time_energy_constraint(
 class TimeRegularizedRATTLE:
     """
     RATTLE integrator extended for time-regularized systems.
-    
+
     Maintains constraints:
         1. Spatial: Bilinear and closure constraints
         2. Temporal: K = E · Ω(u)
         3. Hamiltonian: H_reg = 0 (on energy surface)
     """
-    
+
     def step_with_time(
         self,
         state: PairwiseSpinorStateWithTime,
@@ -818,7 +818,7 @@ class TimeRegularizedRATTLE:
     ) -> PairwiseSpinorStateWithTime:
         """
         Single step in fictitious time s, tracking physical time t.
-        
+
         Algorithm:
             1. Standard RATTLE step for spatial coordinates
             2. Advance physical time: t_new = t_old + Ω(u) · ds
@@ -827,16 +827,16 @@ class TimeRegularizedRATTLE:
         """
         # Spatial RATTLE step (standard)
         state_spatial = self.rattle_step_spatial(state, ds)
-        
+
         # Time evolution
         Omega = compute_time_dilation(state_spatial)
         dt = Omega * ds
         t_new = state.t + dt
-        
+
         # Energy update (E conserved, K updated)
         E_new = state.E  # Conserved
         K_new = E_new * Omega  # Updated via time dilation
-        
+
         # Construct updated state
         state_new = PairwiseSpinorStateWithTime(
             u12=state_spatial.u12,
@@ -850,7 +850,7 @@ class TimeRegularizedRATTLE:
             K=K_new,
             E=E_new
         )
-        
+
         # Project onto constraints
         return self.project_extended(state_new)
 ```
@@ -866,7 +866,7 @@ def integrate_through_collision_with_time(
 ) -> CollisionTrajectory:
     """
     Integrate through collision, tracking time dilation.
-    
+
     Returns trajectory with:
         - s (fictitious time)
         - t (physical time)
@@ -875,33 +875,33 @@ def integrate_through_collision_with_time(
         - E, K (energies)
     """
     integrator = TimeRegularizedRATTLE()
-    
+
     n_steps = 10000
     ds = (s_span[1] - s_span[0]) / n_steps
-    
+
     trajectory = []
     time_dilations = []
-    
+
     state = initial_state
-    
+
     for i in range(n_steps):
         # Record state
         trajectory.append(state)
-        
+
         # Monitor time dilation
         Omega = compute_time_dilation(state)
         time_dilations.append(Omega)
-        
+
         # Check for collision (any r_ij → 0)
         r12, r23, r31 = state.individual_radii
         if min(r12, r23, r31) < 1e-6:
             print(f"Near collision at s={state.s:.4f}, t={state.t:.4f}")
             print(f"  r_min={min(r12, r23, r31):.2e}")
             print(f"  Time dilation Ω={Omega:.2e}")
-        
+
         # Integrate step
         state = integrator.step_with_time(state, ds)
-    
+
     return CollisionTrajectory(
         s_values=[s.s for s in trajectory],
         t_values=[s.t for s in trajectory],
@@ -929,7 +929,7 @@ def identify_temporal_integrals(
 ) -> dict:
     """
     Identify conserved quantities related to temporal structure.
-    
+
     Candidate temporal integrals:
         1. E (physical energy) — from t-translation symmetry
         2. K (regularized energy) — from s-translation symmetry
@@ -937,17 +937,17 @@ def identify_temporal_integrals(
         4. Temporal "Casimirs" (if time has gauge structure)
     """
     n = len(trajectory.states)
-    
+
     # Standard energies
     E_values = [s.E for s in trajectory.states]
     K_values = [s.K for s in trajectory.states]
-    
+
     # Mixed temporal integral
     Theta_values = [
-        s.K * s.t - s.E * s.s 
+        s.K * s.t - s.E * s.s
         for s in trajectory.states
     ]
-    
+
     # Check conservation
     results = {
         'E': {
@@ -963,7 +963,7 @@ def identify_temporal_integrals(
             'drift': np.max(np.abs(Theta_values - Theta_values[0]))
         }
     }
-    
+
     return results
 ```
 
@@ -976,13 +976,13 @@ def compare_regularization_strategies(
 ) -> dict:
     """
     Compare regularization with and without time transformation.
-    
+
     Tests:
         1. KS spatial only (fixed physical time) — FAILS near collision
         2. KS + Sundman (fictitious time) — SUCCEEDS
     """
     results = {}
-    
+
     # Strategy 1: KS without time regularization
     try:
         traj_spatial_only = integrate_ks_spatial_only(
@@ -998,7 +998,7 @@ def compare_regularization_strategies(
             'error': str(e),
             'message': "Velocity singularity at collision"
         }
-    
+
     # Strategy 2: KS + Sundman time regularization
     try:
         traj_full = integrate_ks_with_time(
@@ -1014,14 +1014,14 @@ def compare_regularization_strategies(
             'success': False,
             'error': str(e)
         }
-    
+
     # Verdict
     results['conclusion'] = (
-        "Time regularization is NECESSARY" 
-        if results['spatial_only']['success'] == False 
+        "Time regularization is NECESSARY"
+        if results['spatial_only']['success'] == False
         else "Time regularization provides advantage"
     )
-    
+
     return results
 ```
 

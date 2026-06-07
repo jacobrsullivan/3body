@@ -53,6 +53,7 @@ class ParameterRange:
         scale: "linear" or "log" scaling
         description: Parameter description
     """
+
     name: str
     min_value: float
     max_value: float
@@ -91,7 +92,7 @@ class SobolSampler:
         self,
         parameter_ranges: List[ParameterRange],
         scramble: bool = True,
-        seed: Optional[int] = None
+        seed: Optional[int] = None,
     ):
         """
         Initialize Sobol sampler.
@@ -125,7 +126,9 @@ class SobolSampler:
         try:
             from scipy.stats import qmc
         except ImportError:
-            logger.warning("scipy not available, falling back to pseudo-random sampling")
+            logger.warning(
+                "scipy not available, falling back to pseudo-random sampling"
+            )
             return self._fallback_random_samples(n_samples)
 
         # Generate Sobol sequence in unit hypercube
@@ -137,9 +140,9 @@ class SobolSampler:
         # Transform to parameter ranges
         samples = np.zeros_like(samples_unit)
         for i, pr in enumerate(self.parameter_ranges):
-            samples[:, i] = np.array([
-                pr.transform_from_unit(u) for u in samples_unit[:, i]
-            ])
+            samples[:, i] = np.array(
+                [pr.transform_from_unit(u) for u in samples_unit[:, i]]
+            )
 
         logger.info(f"Generated {n_samples} samples")
         return samples
@@ -163,9 +166,9 @@ class SobolSampler:
 
         samples = np.zeros_like(samples_unit)
         for i, pr in enumerate(self.parameter_ranges):
-            samples[:, i] = np.array([
-                pr.transform_from_unit(u) for u in samples_unit[:, i]
-            ])
+            samples[:, i] = np.array(
+                [pr.transform_from_unit(u) for u in samples_unit[:, i]]
+            )
 
         return samples
 
@@ -211,7 +214,7 @@ class SobolSampler:
 def create_cr3bp_parameter_ranges(
     mu_range: Tuple[float, float] = (1e-3, 0.5),
     C_range: Tuple[float, float] = (2.5, 3.5),
-    n_C_values: int = 15
+    n_C_values: int = 15,
 ) -> List[ParameterRange]:
     """
     Create parameter ranges for CR3BP trajectory sampling.
@@ -237,35 +240,35 @@ def create_cr3bp_parameter_ranges(
             min_value=mu_range[0],
             max_value=mu_range[1],
             scale="log",
-            description="Mass parameter (M2/(M1+M2))"
+            description="Mass parameter (M2/(M1+M2))",
         ),
         ParameterRange(
             name="C",
             min_value=C_range[0],
             max_value=C_range[1],
             scale="linear",
-            description="Jacobi constant"
+            description="Jacobi constant",
         ),
         ParameterRange(
             name="x",
             min_value=-1.5,
             max_value=1.5,
             scale="linear",
-            description="Initial x position"
+            description="Initial x position",
         ),
         ParameterRange(
             name="y",
             min_value=-1.0,
             max_value=1.0,
             scale="linear",
-            description="Initial y position"
+            description="Initial y position",
         ),
         ParameterRange(
             name="vx",
             min_value=-2.0,
             max_value=2.0,
             scale="linear",
-            description="Initial x velocity"
+            description="Initial x velocity",
         ),
     ]
 
@@ -273,9 +276,7 @@ def create_cr3bp_parameter_ranges(
 
 
 def generate_tier1_parameters(
-    n_samples: int = 100000,
-    scramble: bool = True,
-    seed: Optional[int] = 42
+    n_samples: int = 100000, scramble: bool = True, seed: Optional[int] = 42
 ) -> Tuple[np.ndarray, List[str]]:
     """
     Generate Tier 1 parameter samples for WP1 production run.
@@ -303,3 +304,94 @@ def generate_tier1_parameters(
         logger.info(f"Star discrepancy: {discrepancy:.4f}")
 
     return samples, param_names
+
+
+def generate_initial_states_for_mu_c(
+    mu: float,
+    C: float,
+    n_samples: int,
+    seed: Optional[int] = 42,
+    x_range: Tuple[float, float] = (-1.5, 1.5),
+    y_range: Tuple[float, float] = (-1.0, 1.0),
+    vx_range: Tuple[float, float] = (-2.0, 2.0),
+    sign_vy: float = 1.0,
+    max_attempts: int = 50,
+) -> np.ndarray:
+    """
+    Generate valid CR3BP initial states for fixed (mu, C).
+
+    Samples (x, y, vx) and solves for vy using the Jacobi constant.
+    Rejects samples where vy^2 < 0 and resamples until n_samples are valid.
+
+    Args:
+        mu: Mass parameter.
+        C: Jacobi constant.
+        n_samples: Number of valid samples to return.
+        seed: Random seed for reproducibility.
+        x_range: Range for x.
+        y_range: Range for y.
+        vx_range: Range for vx.
+        sign_vy: Sign for vy (+1 or -1).
+        max_attempts: Max resampling attempts before error.
+
+    Returns:
+        Array of shape (n_samples, 6) with [x, y, z, vx, vy, vz].
+    """
+    from src.python.utils.dynamics import solve_vy_from_jacobi
+
+    if n_samples <= 0:
+        raise ValueError("n_samples must be positive")
+
+    x_min, x_max = x_range
+    y_min, y_max = y_range
+    vx_min, vx_max = vx_range
+
+    rng = np.random.default_rng(seed)
+
+    try:
+        from scipy.stats import qmc
+
+        sampler = qmc.Sobol(d=3, scramble=True, seed=seed)
+        use_sobol = True
+    except Exception:
+        sampler = None
+        use_sobol = False
+
+    states = []
+    attempts = 0
+
+    while len(states) < n_samples:
+        attempts += 1
+        if attempts > max_attempts:
+            raise RuntimeError(
+                f"Unable to generate {n_samples} valid samples after {max_attempts} attempts"
+            )
+
+        remaining = n_samples - len(states)
+        batch_size = max(256, remaining * 4)
+
+        if use_sobol:
+            u = sampler.random(batch_size)
+        else:
+            u = rng.random((batch_size, 3))
+
+        xs = x_min + u[:, 0] * (x_max - x_min)
+        ys = y_min + u[:, 1] * (y_max - y_min)
+        vxs = vx_min + u[:, 2] * (vx_max - vx_min)
+
+        for x, y, vx in zip(xs, ys, vxs):
+            try:
+                vy = solve_vy_from_jacobi(
+                    np.array([x, y, 0.0, vx, 0.0, 0.0]),
+                    jacobi_constant=C,
+                    mu=mu,
+                    sign=sign_vy,
+                )
+            except ValueError:
+                continue
+
+            states.append([x, y, 0.0, vx, vy, 0.0])
+            if len(states) >= n_samples:
+                break
+
+    return np.array(states, dtype=float)

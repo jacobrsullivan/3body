@@ -108,27 +108,27 @@ If residual is small, candidate is trivial.
 def is_linear_combination(I_values, known_integrals, tolerance=1e-10):
     """
     Check if I is a linear combination of known integrals.
-    
+
     Solves: I ≈ Σⱼ αⱼ Kⱼ + δ
     """
     # Build design matrix [K₁, K₂, ..., 1]
     n = len(I_values)
     m = len(known_integrals) + 1  # +1 for constant term
-    
+
     X = np.zeros((n, m))
     for j, (name, values) in enumerate(known_integrals.items()):
         X[:, j] = values
     X[:, -1] = 1  # Constant term
-    
+
     # Least squares fit
     coeffs, residuals, rank, s = np.linalg.lstsq(X, I_values, rcond=None)
-    
+
     # Compute relative residual
     predicted = X @ coeffs
     residual = np.linalg.norm(I_values - predicted) / (np.linalg.norm(I_values) + 1e-15)
-    
+
     is_combination = residual < tolerance
-    
+
     return is_combination, coeffs, residual
 ```
 
@@ -201,20 +201,20 @@ Output: Is Ĩ independent? Pass rate
 def numerical_gradient(func, x, epsilon=1e-7):
     """
     Compute gradient via central differences.
-    
+
     ∂f/∂xᵢ ≈ (f(x + εeᵢ) - f(x - εeᵢ)) / (2ε)
     """
     n = len(x)
     grad = np.zeros(n)
-    
+
     for i in range(n):
         x_plus = x.copy()
         x_minus = x.copy()
         x_plus[i] += epsilon
         x_minus[i] -= epsilon
-        
+
         grad[i] = (func(x_plus) - func(x_minus)) / (2 * epsilon)
-    
+
     return grad
 ```
 
@@ -224,7 +224,7 @@ def numerical_gradient(func, x, epsilon=1e-7):
 def numerical_rank(matrix, tolerance=1e-8):
     """
     Compute numerical rank via SVD.
-    
+
     rank = number of singular values > tolerance * max(singular values)
     """
     U, S, Vt = np.linalg.svd(matrix)
@@ -238,13 +238,13 @@ def numerical_rank(matrix, tolerance=1e-8):
 def jacobian_rank_test(candidate_func, known_funcs, states, tolerance=1e-8):
     """
     Test functional independence via Jacobian rank.
-    
+
     Args:
         candidate_func: Function Ĩ(state) → scalar
         known_funcs: List of functions [E, L, C, ...]
         states: Array of sample states (N × dim)
         tolerance: Rank tolerance
-    
+
     Returns:
         passed: bool (pass_rate > 0.99)
         pass_rate: Fraction of states where rank increased
@@ -253,37 +253,37 @@ def jacobian_rank_test(candidate_func, known_funcs, states, tolerance=1e-8):
     n_samples = len(states)
     n_known = len(known_funcs)
     dim = states.shape[1]
-    
+
     rank_increased_count = 0
     base_ranks = []
     extended_ranks = []
-    
+
     for state in states:
         # Compute gradients of known functions
         known_grads = np.array([
             numerical_gradient(f, state) for f in known_funcs
         ])
-        
+
         # Compute gradient of candidate
         candidate_grad = numerical_gradient(candidate_func, state)
-        
+
         # Base Jacobian (known only)
         J_base = known_grads
         rank_base = numerical_rank(J_base, tolerance)
         base_ranks.append(rank_base)
-        
+
         # Extended Jacobian (known + candidate)
         J_extended = np.vstack([known_grads, candidate_grad])
         rank_extended = numerical_rank(J_extended, tolerance)
         extended_ranks.append(rank_extended)
-        
+
         # Check if rank increased
         if rank_extended > rank_base:
             rank_increased_count += 1
-    
+
     pass_rate = rank_increased_count / n_samples
     passed = pass_rate > 0.99
-    
+
     return {
         'passed': passed,
         'pass_rate': pass_rate,
@@ -304,8 +304,8 @@ class TrivialityChecker:
     """
     Check if candidate integrals are trivial.
     """
-    
-    def __init__(self, known_integrals, constant_tol=1e-12, 
+
+    def __init__(self, known_integrals, constant_tol=1e-12,
                  correlation_threshold=0.99, linear_tol=1e-10):
         """
         Args:
@@ -318,51 +318,51 @@ class TrivialityChecker:
         self.constant_tol = constant_tol
         self.correlation_threshold = correlation_threshold
         self.linear_tol = linear_tol
-    
+
     def check(self, candidate_values, expression_str=None):
         """
         Check if candidate is trivial.
-        
+
         Returns:
             (is_trivial, reason)
         """
         # Test 1: Constant
         if is_constant(candidate_values, self.constant_tol):
             return True, "constant"
-        
+
         # Test 2: Correlation with known
         is_corr, name, corr = correlates_with_known(
             candidate_values, self.known_integrals, self.correlation_threshold
         )
         if is_corr:
             return True, f"correlates_with_{name} (r={corr:.3f})"
-        
+
         # Test 3: Linear combination
         is_lin, coeffs, residual = is_linear_combination(
             candidate_values, self.known_integrals, self.linear_tol
         )
         if is_lin:
             return True, f"linear_combination (residual={residual:.2e})"
-        
+
         # Test 4: Fiber momentum (if expression available)
         if expression_str and is_fiber_momentum(expression_str):
             return True, "fiber_momentum"
-        
+
         return False, None
-    
+
     def filter(self, candidates, states):
         """Filter out trivial candidates."""
         non_trivial = []
-        
+
         for cand in candidates:
             values = cand.eval_func(states)
             is_trivial, reason = self.check(values, cand.expression)
-            
+
             if not is_trivial:
                 non_trivial.append(cand)
             else:
                 cand.trivial_reason = reason
-        
+
         return non_trivial
 ```
 
@@ -373,11 +373,11 @@ class IndependenceTest:
     """
     Test functional independence of candidate integrals.
     """
-    
+
     def __init__(self, tolerance=1e-8, min_pass_rate=0.99):
         self.tolerance = tolerance
         self.min_pass_rate = min_pass_rate
-    
+
     def is_independent(self, candidate_func, known_funcs, states):
         """
         Test if candidate is independent of known functions.
@@ -386,29 +386,29 @@ class IndependenceTest:
             candidate_func, known_funcs, states, self.tolerance
         )
         return result['passed']
-    
+
     def find_independent_set(self, candidates, states, known_funcs=None):
         """
         Find maximal set of mutually independent candidates.
-        
+
         Greedy algorithm: Add candidates one by one if they increase rank.
         """
         if known_funcs is None:
             known_funcs = []
-        
+
         independent = []
         current_funcs = list(known_funcs)
-        
+
         for cand in candidates:
             # Test if candidate is independent of current set
             result = jacobian_rank_test(
                 cand.eval_func, current_funcs, states, self.tolerance
             )
-            
+
             if result['passed']:
                 independent.append(cand)
                 current_funcs.append(cand.eval_func)
-        
+
         return independent
 ```
 
@@ -424,15 +424,15 @@ At certain states (e.g., equilibria), the Jacobian may have lower rank:
 def filter_degenerate_states(states, known_funcs, min_rank=3):
     """Remove states where known integrals have degenerate Jacobian."""
     valid_states = []
-    
+
     for state in states:
         grads = [numerical_gradient(f, state) for f in known_funcs]
         J = np.array(grads)
         rank = numerical_rank(J)
-        
+
         if rank >= min_rank:
             valid_states.append(state)
-    
+
     return np.array(valid_states)
 ```
 

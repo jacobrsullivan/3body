@@ -19,6 +19,7 @@ from src.python.utils.dynamics import (
     cr3bp_potential,
     kinetic_energy,
     calculate_jacobi_constant,
+    solve_vy_from_jacobi,
     calculate_energy,
     jacobi_drift_metric,
     relative_jacobi_error,
@@ -212,6 +213,55 @@ class TestEnergyCalculations:
         E_total = calculate_energy(state, self.mu)
 
         np.testing.assert_allclose(E_total, T + U, rtol=1e-15)
+
+
+class TestSolveVyFromJacobi:
+    """Test solving vy from Jacobi constant."""
+
+    def setup_method(self):
+        """Set up test parameters."""
+        self.mu = 0.0121505856
+
+    def test_solve_vy_roundtrip(self):
+        """Recover vy from Jacobi constant."""
+        state = np.array([1.1, 0.0, 0.0, 0.0, 0.1, 0.0])
+        C = calculate_jacobi_constant(state, self.mu)
+
+        vy = solve_vy_from_jacobi(
+            np.array([state[0], state[1], state[2], state[3], 0.0, state[5]]),
+            jacobi_constant=C,
+            mu=self.mu,
+            sign=1.0,
+        )
+
+        np.testing.assert_allclose(vy, state[4], rtol=1e-12, atol=1e-12)
+
+    def test_solve_vy_negative_branch(self):
+        """Solve for negative vy branch."""
+        state = np.array([1.1, 0.0, 0.0, 0.0, -0.1, 0.0])
+        C = calculate_jacobi_constant(state, self.mu)
+
+        vy = solve_vy_from_jacobi(
+            np.array([state[0], state[1], state[2], state[3], 0.0, state[5]]),
+            jacobi_constant=C,
+            mu=self.mu,
+            sign=-1.0,
+        )
+
+        np.testing.assert_allclose(vy, state[4], rtol=1e-12, atol=1e-12)
+
+    def test_solve_vy_invalid(self):
+        """Raise error when vy^2 is negative."""
+        state = np.array([1.1, 0.0, 0.0, 0.0, 0.1, 0.0])
+        C = calculate_jacobi_constant(state, self.mu)
+
+        with pytest.raises(ValueError):
+            solve_vy_from_jacobi(
+                np.array([state[0], state[1], state[2], state[3], 0.0, state[5]]),
+                jacobi_constant=C + 10.0,
+                mu=self.mu,
+                sign=1.0,
+            )
 
 
 class TestLagrangePoints:

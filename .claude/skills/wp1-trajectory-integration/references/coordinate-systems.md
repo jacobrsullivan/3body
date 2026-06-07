@@ -31,9 +31,9 @@ Coordinate systems and transformations used in CR3BP integration.
 
 The rotating frame co-rotates with the two primaries, which remain fixed on the x-axis.
 
-**Origin**: Barycenter of m₁ and m₂  
-**x-axis**: Points from m₁ toward m₂  
-**z-axis**: Normal to orbital plane (along angular momentum)  
+**Origin**: Barycenter of m₁ and m₂
+**x-axis**: Points from m₁ toward m₂
+**z-axis**: Normal to orbital plane (along angular momentum)
 **y-axis**: Completes right-handed system
 
 ### Primary Positions
@@ -85,9 +85,9 @@ This is the only known integral of motion in the CR3BP.
 
 Fixed inertial frame centered at the barycenter.
 
-**Origin**: Barycenter (same as rotating)  
-**X-axis**: Fixed direction (e.g., vernal equinox)  
-**Z-axis**: Normal to orbital plane  
+**Origin**: Barycenter (same as rotating)
+**X-axis**: Fixed direction (e.g., vernal equinox)
+**Z-axis**: Normal to orbital plane
 **Y-axis**: Completes right-handed system
 
 ### Primary Positions (Time-Dependent)
@@ -127,8 +127,8 @@ No Coriolis terms, but time-dependent potential.
 
 4D spinor coordinates that regularize the 1/r singularity.
 
-**Position spinor**: u = (u₀, u₁, u₂, u₃) ∈ ℝ⁴  
-**Momentum spinor**: p_u = (p₀, p₁, p₂, p₃) ∈ ℝ⁴  
+**Position spinor**: u = (u₀, u₁, u₂, u₃) ∈ ℝ⁴
+**Momentum spinor**: p_u = (p₀, p₁, p₂, p₃) ∈ ℝ⁴
 **Fictitious time**: s (dt/ds = |u|²)
 
 ### State Vector
@@ -209,32 +209,32 @@ p₁₂, p₃: conjugate momenta
 def rotating_to_inertial(state_rot, t, mu):
     """
     Transform from rotating to inertial frame.
-    
+
     Args:
         state_rot: [x, y, z, vx, vy, vz] in rotating frame
         t: time (rotation angle = t in normalized units)
         mu: mass ratio
-        
+
     Returns:
         state_inert: [X, Y, Z, VX, VY, VZ] in inertial frame
     """
     x, y, z, vx, vy, vz = state_rot
-    
+
     # Rotation matrix (frame rotates with ω = 1)
     cos_t = np.cos(t)
     sin_t = np.sin(t)
-    
+
     # Position transformation
     X = x * cos_t - y * sin_t
     Y = x * sin_t + y * cos_t
     Z = z
-    
+
     # Velocity transformation (includes frame rotation ω×r)
     # v_inertial = R(t) · v_rotating + ω × R(t) · r
     VX = (vx - y) * cos_t - (vy + x) * sin_t
     VY = (vx - y) * sin_t + (vy + x) * cos_t
     VZ = vz
-    
+
     return np.array([X, Y, Z, VX, VY, VZ])
 ```
 
@@ -246,21 +246,21 @@ def inertial_to_rotating(state_inert, t, mu):
     Transform from inertial to rotating frame.
     """
     X, Y, Z, VX, VY, VZ = state_inert
-    
+
     cos_t = np.cos(t)
     sin_t = np.sin(t)
-    
+
     # Position transformation (inverse rotation)
     x = X * cos_t + Y * sin_t
     y = -X * sin_t + Y * cos_t
     z = Z
-    
+
     # Velocity transformation
     # v_rotating = R(-t) · v_inertial - ω × r_rotating
     vx = VX * cos_t + VY * sin_t + y
     vy = -VX * sin_t + VY * cos_t - x
     vz = VZ
-    
+
     return np.array([x, y, z, vx, vy, vz])
 ```
 
@@ -270,19 +270,19 @@ def inertial_to_rotating(state_inert, t, mu):
 def cartesian_to_ks(r, v, which_primary='m2'):
     """
     Transform Cartesian to KS coordinates.
-    
+
     Args:
         r: (3,) position relative to primary
         v: (3,) velocity relative to primary
         which_primary: 'm1' or 'm2'
-        
+
     Returns:
         u: (4,) KS position spinor
         p_u: (4,) KS momentum spinor
     """
     x, y, z = r
     R = np.sqrt(x**2 + y**2 + z**2)
-    
+
     # Gauge choice: set u₃ = 0 when x ≥ 0, else u₂ = 0
     if x >= 0:
         s = np.sqrt(R + x)
@@ -300,12 +300,12 @@ def cartesian_to_ks(r, v, which_primary='m2'):
             0,
             z / (np.sqrt(2) * s) if s > 1e-10 else 0
         ])
-    
+
     # Velocity → KS momentum via L(u) matrix
     L = ks_matrix(u)
     v_ext = np.array([v[0], v[1], v[2], 0])
     p_u = 0.5 * R * L.T @ v_ext
-    
+
     return u, p_u
 ```
 
@@ -317,16 +317,16 @@ def ks_to_cartesian(u, p_u):
     Transform KS to Cartesian coordinates.
     """
     L = ks_matrix(u)
-    
+
     # Position
     r_ext = L @ u
     r = r_ext[:3]
-    
+
     # Velocity
     R = np.dot(u, u)
     v_ext = 2 * L @ p_u / R
     v = v_ext[:3]
-    
+
     return r, v
 
 def ks_matrix(u):
@@ -351,65 +351,65 @@ from src.python.utils.coordinates import CoordinateManager
 
 class CoordinateManager:
     """Unified coordinate transformation handler."""
-    
+
     def __init__(self, mu):
         self.mu = mu
-        
+
     def transform(self, state, from_system, to_system, t=None):
         """
         Transform state between coordinate systems.
-        
+
         Args:
             state: state vector in source system
             from_system: 'rotating', 'inertial', 'ks', 'jacobi'
             to_system: target system
             t: time (required for rotating ↔ inertial)
-            
+
         Returns:
             state in target system
         """
         # Build transformation chain
         if from_system == to_system:
             return state.copy()
-            
+
         if from_system == 'rotating' and to_system == 'inertial':
             return rotating_to_inertial(state, t, self.mu)
-            
+
         if from_system == 'inertial' and to_system == 'rotating':
             return inertial_to_rotating(state, t, self.mu)
-            
+
         if from_system == 'rotating' and to_system == 'ks':
             # Extract relative position to primary
             r_rel, v_rel = self._relative_to_primary(state, 'm2')
             u, p_u = cartesian_to_ks(r_rel, v_rel, 'm2')
             return np.concatenate([u, p_u])
-            
+
         if from_system == 'ks' and to_system == 'rotating':
             u, p_u = state[:4], state[4:8]
             r_rel, v_rel = ks_to_cartesian(u, p_u)
             return self._from_relative(r_rel, v_rel, 'm2')
-            
+
         raise ValueError(f"Unknown transformation: {from_system} → {to_system}")
-        
+
     def _relative_to_primary(self, state, primary):
         """Get position/velocity relative to a primary."""
         x, y, z, vx, vy, vz = state
-        
+
         if primary == 'm1':
             r_rel = np.array([x + self.mu, y, z])
         else:  # m2
             r_rel = np.array([x - (1 - self.mu), y, z])
-            
+
         v_rel = np.array([vx, vy, vz])
         return r_rel, v_rel
-        
+
     def _from_relative(self, r_rel, v_rel, primary):
         """Convert back from relative coordinates."""
         if primary == 'm1':
             x = r_rel[0] - self.mu
         else:
             x = r_rel[0] + (1 - self.mu)
-            
+
         return np.array([x, r_rel[1], r_rel[2], v_rel[0], v_rel[1], v_rel[2]])
 ```
 
@@ -419,23 +419,23 @@ class CoordinateManager:
 def convert_trajectory(times, states, from_system, to_system, mu):
     """
     Convert entire trajectory between coordinate systems.
-    
+
     Args:
         times: (N,) time array
         states: (N, d) state array
         from_system, to_system: coordinate system names
         mu: mass ratio
-        
+
     Returns:
         (N, d') converted states
     """
     manager = CoordinateManager(mu)
-    
+
     converted = []
     for t, state in zip(times, states):
         state_conv = manager.transform(state, from_system, to_system, t=t)
         converted.append(state_conv)
-        
+
     return np.array(converted)
 ```
 
@@ -449,23 +449,23 @@ def integrate_multicoord(state0, t_span, dt, mu, systems=['rotating', 'inertial'
     # Integrate in rotating frame
     integrator = IAS15Integrator(mu=mu)
     times, states_rot = integrator.integrate(state0, t_span, dt)
-    
+
     # Convert to other systems
     result = {
         'times': times,
         'rotating': states_rot,
     }
-    
+
     if 'inertial' in systems:
         result['inertial'] = convert_trajectory(
             times, states_rot, 'rotating', 'inertial', mu
         )
-        
+
     if 'ks' in systems:
         result['ks'] = convert_trajectory(
             times, states_rot, 'rotating', 'ks', mu
         )
-        
+
     return result
 ```
 
@@ -490,13 +490,13 @@ def lagrange_points(mu):
     """Compute Lagrange point positions."""
     # L1: Between m1 and m2
     # Solve: x - (1-μ)/(x+μ)² + μ/(x-1+μ)² = 0
-    
+
     # L2: Beyond m2
     # L3: Beyond m1
-    
+
     # L4, L5: Equilateral triangle
     L4 = np.array([0.5 - mu, np.sqrt(3)/2, 0])
     L5 = np.array([0.5 - mu, -np.sqrt(3)/2, 0])
-    
+
     return {'L1': L1, 'L2': L2, 'L3': L3, 'L4': L4, 'L5': L5}
 ```

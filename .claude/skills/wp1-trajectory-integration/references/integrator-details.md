@@ -348,15 +348,15 @@ AdaptiveSymplectic: ~1.0 MB (trajectory + error estimates)
 ```python
 def select_integrator(orbit_type, precision_needed, has_close_encounters):
     """Select optimal integrator based on requirements."""
-    
+
     if has_close_encounters:
         return 'AdaptiveSymplectic'
-    
+
     if precision_needed == 'tier2':
         return 'AdaptiveSymplectic'
-    
+
     if orbit_type == 'long_term':
         return 'Yoshida8'
-    
+
     return 'IAS15'  # Default
 ```

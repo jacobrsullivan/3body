@@ -114,7 +114,7 @@ class InvolutionResult:
     max_bracket: float
     tolerance: float
     num_samples: int
-    
+
     def summary(self) -> str:
         lines = ["Involution Test Results:"]
         for name, pb in self.poisson_brackets.items():
@@ -126,7 +126,7 @@ class InvolutionResult:
 
 class InvolutionTester:
     """Test involution between candidate and known integrals."""
-    
+
     def __init__(self, mu: float, tolerance: float = 1e-10):
         self.mu = mu
         self.tolerance = tolerance
@@ -135,24 +135,24 @@ class InvolutionTester:
             'angular_momentum': self._angular_momentum_z,
             'jacobi_constant': self._jacobi_constant
         }
-    
+
     def _energy(self, state, mu):
         x, y, z, vx, vy, vz = state
         r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
         r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
         return 0.5*(vx**2 + vy**2 + vz**2) - (1-mu)/r1 - mu/r2
-    
+
     def _angular_momentum_z(self, state, mu):
         x, y, z, vx, vy, vz = state
         return x*vy - y*vx
-    
+
     def _jacobi_constant(self, state, mu):
         x, y, z, vx, vy, vz = state
         r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
         r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
         Omega = 0.5*(x**2 + y**2) + (1-mu)/r1 + mu/r2
         return 2*Omega - (vx**2 + vy**2 + vz**2)
-    
+
     def test_involution(
         self,
         candidate: Callable,
@@ -162,44 +162,44 @@ class InvolutionTester:
     ) -> InvolutionResult:
         """
         Test if candidate is in involution with known integrals.
-        
+
         Parameters:
             candidate: Function I(state, mu) -> float
             known_integrals: Dict of name -> function, or None for defaults
             num_samples: Number of sample points
             seed: Random seed for reproducibility
-            
+
         Returns:
             InvolutionResult with Poisson brackets
         """
         if known_integrals is None:
             known_integrals = self._known_integrals
-        
+
         np.random.seed(seed)
-        
+
         # Compute mean Poisson brackets across samples
         pb_sums = {name: 0.0 for name in known_integrals}
         pb_maxs = {name: 0.0 for name in known_integrals}
-        
+
         for _ in range(num_samples):
             state = self._generate_valid_state()
-            
+
             for name, known_func in known_integrals.items():
                 pb = self._compute_poisson_bracket(
                     candidate, known_func, state
                 )
                 pb_sums[name] += abs(pb)
                 pb_maxs[name] = max(pb_maxs[name], abs(pb))
-        
+
         # Average Poisson brackets
-        pb_means = {name: pb_sums[name] / num_samples 
+        pb_means = {name: pb_sums[name] / num_samples
                     for name in known_integrals}
-        
+
         # Check if all pass
-        all_pass = all(pb_maxs[name] < self.tolerance 
+        all_pass = all(pb_maxs[name] < self.tolerance
                        for name in known_integrals)
         max_bracket = max(pb_maxs.values())
-        
+
         return InvolutionResult(
             passed=all_pass,
             poisson_brackets=pb_maxs,
@@ -207,43 +207,43 @@ class InvolutionTester:
             tolerance=self.tolerance,
             num_samples=num_samples
         )
-    
+
     def _compute_poisson_bracket(
-        self, f_func: Callable, g_func: Callable, 
+        self, f_func: Callable, g_func: Callable,
         state: np.ndarray, epsilon: float = 1e-7
     ) -> float:
         """Compute {f, g} numerically."""
         n = len(state) // 2
         pb = 0.0
-        
+
         for i in range(n):
             q_idx = i
             p_idx = i + n
-            
+
             # Central differences
             state_q_plus = state.copy()
             state_q_minus = state.copy()
             state_q_plus[q_idx] += epsilon
             state_q_minus[q_idx] -= epsilon
-            
+
             state_p_plus = state.copy()
             state_p_minus = state.copy()
             state_p_plus[p_idx] += epsilon
             state_p_minus[p_idx] -= epsilon
-            
-            df_dq = (f_func(state_q_plus, self.mu) - 
+
+            df_dq = (f_func(state_q_plus, self.mu) -
                      f_func(state_q_minus, self.mu)) / (2*epsilon)
-            dg_dp = (g_func(state_p_plus, self.mu) - 
+            dg_dp = (g_func(state_p_plus, self.mu) -
                      g_func(state_p_minus, self.mu)) / (2*epsilon)
-            df_dp = (f_func(state_p_plus, self.mu) - 
+            df_dp = (f_func(state_p_plus, self.mu) -
                      f_func(state_p_minus, self.mu)) / (2*epsilon)
-            dg_dq = (g_func(state_q_plus, self.mu) - 
+            dg_dq = (g_func(state_q_plus, self.mu) -
                      g_func(state_q_minus, self.mu)) / (2*epsilon)
-            
+
             pb += df_dq * dg_dp - df_dp * dg_dq
-        
+
         return pb
-    
+
     def _generate_valid_state(self) -> np.ndarray:
         """Generate physically valid state."""
         while True:
@@ -253,12 +253,12 @@ class InvolutionTester:
             vx = np.random.uniform(-0.5, 0.5)
             vy = np.random.uniform(0.0, 1.0)
             vz = np.random.uniform(-0.2, 0.2)
-            
+
             state = np.array([x, y, z, vx, vy, vz])
-            
+
             r1 = np.sqrt((x + self.mu)**2 + y**2 + z**2)
             r2 = np.sqrt((x - 1 + self.mu)**2 + y**2 + z**2)
-            
+
             if r1 > 0.1 and r2 > 0.1:
                 return state
 ```
@@ -277,51 +277,51 @@ def test_pairwise_involution(
 ) -> Dict:
     """
     Test pairwise involution of multiple candidates.
-    
+
     Parameters:
         candidates: List of {'name': str, 'func': Callable}
-        
+
     Returns:
         Dict with involution_matrix, all_commute, failed_pairs
     """
     np.random.seed(seed)
     n = len(candidates)
-    
+
     # Initialize involution matrix
     involution_matrix = np.zeros((n, n))
-    
+
     tester = InvolutionTester(mu=mu, tolerance=tolerance)
-    
+
     # Generate sample states once
     states = [tester._generate_valid_state() for _ in range(num_samples)]
-    
+
     # Test all pairs
     failed_pairs = []
-    
+
     for i in range(n):
         for j in range(i+1, n):
             f_func = candidates[i]['func']
             g_func = candidates[j]['func']
-            
+
             # Average Poisson bracket over samples
             pb_sum = 0.0
             pb_max = 0.0
-            
+
             for state in states:
                 pb = tester._compute_poisson_bracket(f_func, g_func, state)
                 pb_sum += abs(pb)
                 pb_max = max(pb_max, abs(pb))
-            
+
             involution_matrix[i, j] = pb_max
             involution_matrix[j, i] = pb_max
-            
+
             if pb_max >= tolerance:
                 failed_pairs.append((
                     candidates[i]['name'],
                     candidates[j]['name'],
                     pb_max
                 ))
-    
+
     return {
         'involution_matrix': involution_matrix,
         'all_commute': len(failed_pairs) == 0,
@@ -342,35 +342,35 @@ def plot_involution_matrix(result: Dict, save_path: str = None):
     matrix = result['involution_matrix']
     names = result['candidate_names']
     n = len(names)
-    
+
     fig, ax = plt.subplots(figsize=(8, 6))
-    
+
     # Log scale for better visualization
     log_matrix = np.log10(matrix + 1e-16)
-    
+
     im = ax.imshow(log_matrix, cmap='RdYlGn_r', vmin=-15, vmax=-5)
-    
+
     # Labels
     ax.set_xticks(range(n))
     ax.set_yticks(range(n))
     ax.set_xticklabels(names, rotation=45, ha='right')
     ax.set_yticklabels(names)
-    
+
     # Colorbar
     cbar = plt.colorbar(im, ax=ax)
     cbar.set_label('log₁₀|{Iᵢ, Iⱼ}|')
-    
+
     # Annotate
     for i in range(n):
         for j in range(n):
             if i != j:
                 text = f"{matrix[i,j]:.0e}"
                 color = 'white' if log_matrix[i,j] > -10 else 'black'
-                ax.text(j, i, text, ha='center', va='center', 
+                ax.text(j, i, text, ha='center', va='center',
                         color=color, fontsize=8)
-    
+
     ax.set_title('Involution Matrix: |{Iᵢ, Iⱼ}|')
-    
+
     plt.tight_layout()
     if save_path:
         plt.savefig(save_path, dpi=150)
@@ -392,27 +392,27 @@ def test_involution_symbolic(
 ) -> Dict:
     """
     Test involution symbolically.
-    
+
     Returns:
         Dict with bracket (SymPy expr), is_zero (bool), simplified
     """
     n = len(q_vars)
     pb = sp.Integer(0)
-    
+
     for i in range(n):
         q = q_vars[i]
         p = p_vars[i]
-        
+
         dI_dq = sp.diff(I_expr, q)
         dJ_dp = sp.diff(J_expr, p)
         dI_dp = sp.diff(I_expr, p)
         dJ_dq = sp.diff(J_expr, q)
-        
+
         pb += dI_dq * dJ_dp - dI_dp * dJ_dq
-    
+
     # Simplify
     pb_simplified = sp.simplify(sp.trigsimp(sp.radsimp(pb)))
-    
+
     return {
         'bracket': pb,
         'simplified': pb_simplified,
@@ -436,17 +436,17 @@ def test_involution_near_resonance(
 ) -> Dict:
     """
     Test involution specifically near resonance regions.
-    
+
     Resonances can reveal hidden non-commutativity.
     """
     tester = InvolutionTester(mu=mu)
-    
+
     # Generate states near resonance
     states = []
     for _ in range(num_samples):
         state = generate_near_resonance_state(resonance_params, mu)
         states.append(state)
-    
+
     # Test involution on resonant states
     results = {}
     for name, known_func in known_integrals.items():
@@ -454,13 +454,13 @@ def test_involution_near_resonance(
         for state in states:
             pb = tester._compute_poisson_bracket(candidate, known_func, state)
             pb_values.append(abs(pb))
-        
+
         results[name] = {
             'max': np.max(pb_values),
             'mean': np.mean(pb_values),
             'std': np.std(pb_values)
         }
-    
+
     return results
 ```
 
@@ -477,29 +477,29 @@ def test_involution_lifted(
 ) -> InvolutionResult:
     """
     Test involution in lifted (S¹-bundle) space.
-    
+
     Lifted state: [x, y, z, θ, vx, vy, vz, p_θ]
     """
     tester = InvolutionTester(mu=mu)
-    
+
     pb_values = []
     for _ in range(num_samples):
         # Generate lifted state
         base_state = tester._generate_valid_state()
         theta = np.random.uniform(0, 2*np.pi)
         p_theta = np.random.uniform(-1, 1)  # Fiber momentum
-        
+
         lifted_state = np.concatenate([
             base_state[:3], [theta],
             base_state[3:], [p_theta]
         ])
-        
+
         # Compute Poisson bracket in lifted space
         pb = compute_pb_lifted(I_lifted, J_lifted, lifted_state, mu)
         pb_values.append(abs(pb))
-    
+
     max_pb = np.max(pb_values)
-    
+
     return InvolutionResult(
         passed=max_pb < 1e-10,
         poisson_brackets={'lifted': max_pb},

@@ -85,12 +85,12 @@ import numpy as np
 def search_conserved_quantity(times, states):
     """
     Use PySR to find conserved quantities.
-    
+
     Strategy: Find expressions with minimal variance along trajectory.
     """
     # Compute variance of each candidate expression
     # PySR will optimize to minimize this
-    
+
     model = PySRRegressor(
         niterations=50,
         binary_operators=["+", "-", "*", "/"],
@@ -99,13 +99,13 @@ def search_conserved_quantity(times, states):
         populations=20,
         maxsize=15,
     )
-    
+
     # Target = first state value (we want I constant = I(x₀))
     # This encourages finding quantities that don't vary
     target = np.full(len(states), states[0, 0]**2 + states[0, 1]**2)  # Example
-    
+
     model.fit(states, target)
-    
+
     return model
 ```
 
@@ -363,18 +363,18 @@ class PySRConservationSearch:
     """
     PySR wrapper for conservation search in WP3 pipeline.
     """
-    
+
     def __init__(self, max_complexity=15, timeout=300):
         self.max_complexity = max_complexity
         self.timeout = timeout
         self.model = None
-    
+
     def search(self, times, states, target='variance'):
         """
         Search for conserved quantities using PySR.
         """
         from pysr import PySRRegressor
-        
+
         # Configure model
         self.model = PySRRegressor(
             niterations=50,
@@ -385,7 +385,7 @@ class PySRConservationSearch:
             timeout_in_seconds=self.timeout,
             parsimony=0.001,
         )
-        
+
         # Set target based on strategy
         if target == 'variance':
             # Minimize variance along trajectory
@@ -395,10 +395,10 @@ class PySRConservationSearch:
             y = np.zeros(len(states))
         else:
             y = target
-        
+
         # Fit
         self.model.fit(states, y)
-        
+
         # Extract candidates from Pareto front
         candidates = []
         for idx, row in self.model.equations_.iterrows():
@@ -408,7 +408,7 @@ class PySRConservationSearch:
                 'loss': row['loss'],
                 'sympy': self.model.sympy(idx),
             })
-        
+
         return candidates
 ```
 

@@ -44,6 +44,7 @@ class PeriodicOrbitSpec:
         stability_index: Stability eigenvalue
         amplitude: Characteristic amplitude (family parameter)
     """
+
     name: str
     family: str
     mu: float
@@ -93,16 +94,13 @@ class LyapunovOrbitGenerator:
 
         # Approximate L-point position
         if L_point == "L1":
-            self.x_L = 1.0 - mu - (mu/3.0)**(1.0/3.0)
+            self.x_L = 1.0 - mu - (mu / 3.0) ** (1.0 / 3.0)
         elif L_point == "L2":
-            self.x_L = 1.0 - mu + (mu/3.0)**(1.0/3.0)
+            self.x_L = 1.0 - mu + (mu / 3.0) ** (1.0 / 3.0)
         else:
             raise ValueError(f"L_point must be L1 or L2, got {L_point}")
 
-    def generate_richardson_approximation(
-        self,
-        amplitude: float
-    ) -> PeriodicOrbitSpec:
+    def generate_richardson_approximation(self, amplitude: float) -> PeriodicOrbitSpec:
         """
         Generate Lyapunov orbit using Richardson's 3rd-order approximation.
 
@@ -146,7 +144,7 @@ class LyapunovOrbitGenerator:
             initial_state=initial_state,
             period=period,
             jacobi_constant=C,
-            amplitude=amplitude
+            amplitude=amplitude,
         )
 
         return orbit
@@ -154,12 +152,11 @@ class LyapunovOrbitGenerator:
     def _compute_jacobi_constant(self, state: np.ndarray) -> float:
         """Compute Jacobi constant."""
         from ..utils.dynamics import calculate_jacobi_constant
+
         return calculate_jacobi_constant(state, self.mu)
 
     def generate_family(
-        self,
-        n_orbits: int = 10,
-        amplitude_range: tuple = (0.01, 0.3)
+        self, n_orbits: int = 10, amplitude_range: tuple = (0.01, 0.3)
     ) -> List[PeriodicOrbitSpec]:
         """
         Generate family of Lyapunov orbits.
@@ -191,16 +188,14 @@ class HaloOrbitGenerator:
         self.L_point = L_point
 
         if L_point == "L1":
-            self.x_L = 1.0 - mu - (mu/3.0)**(1.0/3.0)
+            self.x_L = 1.0 - mu - (mu / 3.0) ** (1.0 / 3.0)
         elif L_point == "L2":
-            self.x_L = 1.0 - mu + (mu/3.0)**(1.0/3.0)
+            self.x_L = 1.0 - mu + (mu / 3.0) ** (1.0 / 3.0)
         else:
             raise ValueError(f"L_point must be L1 or L2")
 
     def generate_richardson_halo(
-        self,
-        amplitude_z: float,
-        branch: str = "northern"
+        self, amplitude_z: float, branch: str = "northern"
     ) -> PeriodicOrbitSpec:
         """
         Generate Halo orbit using Richardson's approximation.
@@ -233,6 +228,7 @@ class HaloOrbitGenerator:
         period = 2.0 * np.pi / omega
 
         from ..utils.dynamics import calculate_jacobi_constant
+
         C = calculate_jacobi_constant(initial_state, self.mu)
 
         orbit = PeriodicOrbitSpec(
@@ -243,10 +239,35 @@ class HaloOrbitGenerator:
             initial_state=initial_state,
             period=period,
             jacobi_constant=C,
-            amplitude=amplitude_z
+            amplitude=amplitude_z,
         )
 
         return orbit
+
+    def generate_family(
+        self,
+        n_orbits: int = 10,
+        amplitude_range: tuple = (0.01, 0.3),
+    ) -> List[PeriodicOrbitSpec]:
+        """
+        Generate family of Halo orbits.
+
+        Args:
+            n_orbits: Number of family members
+            amplitude_range: (min, max) out-of-plane amplitude
+
+        Returns:
+            List of PeriodicOrbitSpec
+        """
+        amplitudes = np.linspace(amplitude_range[0], amplitude_range[1], n_orbits)
+        family = []
+
+        for amp in amplitudes:
+            orbit = self.generate_richardson_halo(amp, branch="northern")
+            family.append(orbit)
+
+        logger.info(f"Generated {len(family)} Halo orbits around {self.L_point}")
+        return family
 
 
 def create_earth_moon_library() -> PeriodicOrbitLibrary:

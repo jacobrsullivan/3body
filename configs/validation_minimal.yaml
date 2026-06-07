@@ -1,0 +1,11 @@
+# Minimal Snakemake config for WP1 validation
+# 30 orbits total: 1 mu x 3 C x 10 orbits
+# Runtime: ~5-10 minutes on 4 cores
+tier: 1
+mu: 0.012150585609624
+C_values: [2.9, 3.0, 3.1]
+n_orbits_per_mu_c: 10
+duration: 10.0
+output_interval: 0.5
+seed: 42
+target_accuracy: 1.0e-14

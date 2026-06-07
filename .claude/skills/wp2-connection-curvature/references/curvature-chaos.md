@@ -74,41 +74,41 @@ So R < 0 indicates *on average* negative sectional curvature, suggesting instabi
 def generate_test_ensemble(mu, n_trajectories=1000, n_periods=100):
     """
     Generate diverse trajectory ensemble for testing.
-    
+
     Returns:
         List of trajectory dicts with 'state0', 'states', 'shape_states'
     """
     from src.python.integrators.ias15 import IAS15Integrator
     from src.python.ml.sobol_sampling import SobolSampler
-    
+
     # Sample initial conditions using Sobol sequence
     sampler = SobolSampler(dimension=4)  # (x, y, vx, vy)
     samples = sampler.sample(n_trajectories)
-    
+
     # Transform to physical initial conditions
     trajectories = []
     integrator = IAS15Integrator(mu=mu)
-    
+
     for sample in samples:
         # Map sample to IC (implementation specific)
         state0 = map_to_initial_condition(sample, mu)
-        
+
         # Integrate
         T = estimate_period(state0, mu)
         times, states = integrator.integrate(
             state0, (0, n_periods * T), dt=T/50
         )
-        
+
         # Convert to shape space
         shape_states = [to_shape_space(s, mu) for s in states]
-        
+
         trajectories.append({
             'state0': state0,
             'times': times,
             'states': states,
             'shape_states': shape_states
         })
-    
+
     return trajectories
 ```
 
@@ -120,17 +120,17 @@ def compute_curvature_statistics(trajectory, jm_metric):
     Compute curvature statistics along a trajectory.
     """
     R_values = []
-    
+
     for shape_point in trajectory['shape_states']:
         try:
             R = jm_metric.scalar_curvature(shape_point)
             R_values.append(R)
         except:
             continue  # Skip invalid points
-    
+
     if not R_values:
         return None
-        
+
     return {
         'R_mean': np.mean(R_values),
         'R_min': np.min(R_values),
@@ -151,13 +151,13 @@ def compute_chaos_indicators(trajectory, mu):
     from src.python.validation.chaos_indicators import (
         MEGNOIndicator, FLIIndicator
     )
-    
+
     megno = MEGNOIndicator(mu=mu)
     fli = FLIIndicator(mu=mu)
-    
+
     megno_result = megno.compute(trajectory['state0'], t_max=100)
     fli_result = fli.compute(trajectory['state0'], t_max=50)
-    
+
     return {
         'megno': megno_result['value'],
         'fli': fli_result['value'],
@@ -175,20 +175,20 @@ def analyze_correlation(trajectories, masses, energy, mu):
     Analyze curvature-chaos correlation.
     """
     jm = JacobiMaupertuisMetric(masses=masses, energy=energy)
-    
+
     results = []
     for traj in trajectories:
         curv_stats = compute_curvature_statistics(traj, jm)
         chaos_stats = compute_chaos_indicators(traj, mu)
-        
+
         if curv_stats is None:
             continue
-            
+
         results.append({
             **curv_stats,
             **chaos_stats
         })
-    
+
     return results
 ```
 
@@ -204,27 +204,27 @@ def compute_correlations(results):
     Compute various correlation measures.
     """
     from scipy import stats
-    
+
     R_means = [r['R_mean'] for r in results]
     R_mins = [r['R_min'] for r in results]
     fracs = [r['frac_negative'] for r in results]
     megnos = [r['megno'] for r in results]
     is_chaotic = [r['is_chaotic'] for r in results]
-    
+
     # Pearson correlation (R_mean vs MEGNO)
     pearson_r, pearson_p = stats.pearsonr(R_means, megnos)
-    
+
     # Spearman rank correlation (more robust)
     spearman_r, spearman_p = stats.spearmanr(R_means, megnos)
-    
+
     # Point-biserial correlation (R_mean vs is_chaotic)
     pointbis_r, pointbis_p = stats.pointbiserialr(is_chaotic, R_means)
-    
+
     # Agreement rate
     predictions = [r < 0 for r in R_means]
     n_agree = sum(p == c for p, c in zip(predictions, is_chaotic))
     agreement_rate = n_agree / len(results)
-    
+
     return {
         'pearson': {'r': pearson_r, 'p': pearson_p},
         'spearman': {'r': spearman_r, 'p': spearman_p},
@@ -245,11 +245,11 @@ def compute_confusion_matrix(results):
     FP = sum(1 for r in results if r['R_mean'] < 0 and not r['is_chaotic'])
     TN = sum(1 for r in results if r['R_mean'] >= 0 and not r['is_chaotic'])
     FN = sum(1 for r in results if r['R_mean'] >= 0 and r['is_chaotic'])
-    
+
     precision = TP / (TP + FP) if (TP + FP) > 0 else 0
     recall = TP / (TP + FN) if (TP + FN) > 0 else 0
     accuracy = (TP + TN) / len(results)
-    
+
     return {
         'confusion_matrix': [[TP, FP], [FN, TN]],
         'precision': precision,
@@ -271,36 +271,36 @@ def plot_curvature_vs_megno(results):
     Scatter plot of mean curvature vs MEGNO.
     """
     import matplotlib.pyplot as plt
-    
+
     R_means = [r['R_mean'] for r in results]
     megnos = [r['megno'] for r in results]
     is_chaotic = [r['is_chaotic'] for r in results]
-    
+
     fig, ax = plt.subplots(figsize=(10, 8))
-    
+
     # Color by classification
     colors = ['red' if c else 'blue' for c in is_chaotic]
     ax.scatter(R_means, megnos, c=colors, alpha=0.5, s=20)
-    
+
     # Add reference lines
     ax.axvline(x=0, color='black', linestyle='--', label='R = 0')
     ax.axhline(y=2.0, color='gray', linestyle='--', label='MEGNO = 2 (regular)')
-    
+
     # Labels
     ax.set_xlabel('Mean Scalar Curvature R', fontsize=12)
     ax.set_ylabel('MEGNO', fontsize=12)
     ax.set_title('Curvature-Chaos Correlation', fontsize=14)
-    
+
     # Legend
     from matplotlib.lines import Line2D
     legend_elements = [
-        Line2D([0], [0], marker='o', color='w', markerfacecolor='blue', 
+        Line2D([0], [0], marker='o', color='w', markerfacecolor='blue',
                label='Regular', markersize=10),
-        Line2D([0], [0], marker='o', color='w', markerfacecolor='red', 
+        Line2D([0], [0], marker='o', color='w', markerfacecolor='red',
                label='Chaotic', markersize=10),
     ]
     ax.legend(handles=legend_elements)
-    
+
     return fig
 ```
 
@@ -312,36 +312,36 @@ def plot_curvature_landscape_with_trajectories(masses, energy, trajectories, n_p
     Plot curvature landscape with trajectory chaos classification overlaid.
     """
     import matplotlib.pyplot as plt
-    
+
     jm = JacobiMaupertuisMetric(masses=masses, energy=energy)
-    
+
     # Create grid
     r12_vals = np.linspace(0.5, 2.0, n_points)
     r23_vals = np.linspace(0.5, 2.0, n_points)
     R12, R23 = np.meshgrid(r12_vals, r23_vals)
-    
+
     R_landscape = compute_curvature_landscape(R12, R23, jm)
-    
+
     # Plot landscape
     fig, ax = plt.subplots(figsize=(12, 10))
-    
+
     im = ax.contourf(R12, R23, R_landscape, levels=20, cmap='RdBu_r')
     plt.colorbar(im, ax=ax, label='Scalar Curvature R')
-    
+
     # R = 0 contour
     ax.contour(R12, R23, R_landscape, levels=[0], colors='black', linewidths=2)
-    
+
     # Overlay trajectory starting points
     for traj in trajectories[:100]:  # Limit for clarity
         shape = traj['shape_states'][0]
         color = 'red' if traj.get('is_chaotic', False) else 'blue'
-        ax.scatter(shape[0], shape[1], c=color, s=30, alpha=0.7, 
+        ax.scatter(shape[0], shape[1], c=color, s=30, alpha=0.7,
                    edgecolors='white', linewidths=0.5)
-    
+
     ax.set_xlabel('r₁₂')
     ax.set_ylabel('r₂₃')
     ax.set_title('Curvature Landscape with Trajectory Classification')
-    
+
     return fig
 ```
 
@@ -383,7 +383,7 @@ def refined_curvature_predictor(trajectory, jm_metric, threshold=-0.1):
     for shape in trajectory['shape_states']:
         R = jm_metric.scalar_curvature(shape)
         R_values.append(R)
-    
+
     # Multiple criteria
     criteria = {
         'mean_negative': np.mean(R_values) < 0,
@@ -391,10 +391,10 @@ def refined_curvature_predictor(trajectory, jm_metric, threshold=-0.1):
         'frac_negative_high': np.mean([r < 0 for r in R_values]) > 0.5,
         'integral_negative': np.sum(R_values) < 0,
     }
-    
+
     # Predict chaotic if any criterion satisfied
     predict_chaotic = any(criteria.values())
-    
+
     return {
         'prediction': 'chaotic' if predict_chaotic else 'regular',
         'criteria': criteria,

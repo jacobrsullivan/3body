@@ -63,24 +63,24 @@ For shape space with coordinates s = (r₁₂, r₂₃, r₃₁):
 def jm_metric_tensor(shape_point, masses, energy):
     """
     Compute the Jacobi-Maupertuis metric tensor.
-    
+
     g_JM_ij = 2(E - V(s)) · g_kin_ij
-    
+
     Returns:
         3×3 symmetric positive-definite matrix (if E > V)
     """
     # Kinetic metric in shape space
     g_kin = compute_kinetic_metric(shape_point, masses)
-    
+
     # Potential
     V = compute_potential(shape_point, masses)
-    
+
     # Conformal factor
     Omega = 2 * (energy - V)
-    
+
     if Omega <= 0:
         raise ValueError(f"E ≤ V: forbidden region (Ω = {Omega})")
-    
+
     return Omega * g_kin
 ```
 
@@ -92,28 +92,28 @@ The kinetic metric induced on shape space from the mass-weighted metric:
 def compute_kinetic_metric(shape_point, masses):
     """
     Kinetic metric g_kin on shape space.
-    
+
     For pairwise distance coordinates (r₁₂, r₂₃, r₃₁), this is
     derived from T = ½ Σ mᵢ |ṙᵢ|² expressed in shape variables.
     """
     r12, r23, r31 = shape_point
     m1, m2, m3 = masses
     M = sum(masses)
-    
+
     # Reduced masses
     mu12 = m1 * m2 / M
     mu23 = m2 * m3 / M
     mu31 = m3 * m1 / M
-    
+
     # Metric components (symmetric)
     g = np.zeros((3, 3))
     g[0, 0] = mu12
     g[1, 1] = mu23
     g[2, 2] = mu31
-    
+
     # Off-diagonal terms from constraint coupling
     # (depends on specific embedding)
-    
+
     return g
 ```
 
@@ -153,26 +153,26 @@ For a conformal metric g̃ = Ω · g, the Christoffel symbols transform as:
 def compute_christoffel(shape_point, masses, energy, delta=1e-6):
     """
     Compute Christoffel symbols Γ^k_ij for JM metric.
-    
+
     Returns:
         (3, 3, 3) array where result[k,i,j] = Γ^k_ij
     """
     g = jm_metric_tensor(shape_point, masses, energy)
     g_inv = np.linalg.inv(g)
-    
+
     # Compute metric derivatives
     dg = np.zeros((3, 3, 3))  # dg[i,j,k] = ∂g_ij/∂s_k
-    
+
     for k in range(3):
         sp = shape_point.copy()
         sp[k] += delta
         g_plus = jm_metric_tensor(sp, masses, energy)
-        
+
         sp[k] -= 2*delta
         g_minus = jm_metric_tensor(sp, masses, energy)
-        
+
         dg[:, :, k] = (g_plus - g_minus) / (2*delta)
-    
+
     # Christoffel formula
     Gamma = np.zeros((3, 3, 3))
     for k in range(3):
@@ -182,7 +182,7 @@ def compute_christoffel(shape_point, masses, energy, delta=1e-6):
                     Gamma[k, i, j] += 0.5 * g_inv[k, l] * (
                         dg[l, j, i] + dg[i, l, j] - dg[i, j, l]
                     )
-    
+
     return Gamma
 ```
 
@@ -204,25 +204,25 @@ R^l_ijk = ∂_j Γ^l_ik - ∂_k Γ^l_ij + Γ^l_jm Γ^m_ik - Γ^l_km Γ^m_ij
 def compute_riemann_tensor(shape_point, masses, energy, delta=1e-6):
     """
     Compute Riemann curvature tensor R^l_ijk.
-    
+
     Returns:
         (3, 3, 3, 3) array
     """
     Gamma = compute_christoffel(shape_point, masses, energy)
-    
+
     # Compute Γ derivatives
     dGamma = np.zeros((3, 3, 3, 3))  # dGamma[l,i,k,j] = ∂Γ^l_ik/∂s_j
-    
+
     for j in range(3):
         sp = shape_point.copy()
         sp[j] += delta
         Gamma_plus = compute_christoffel(sp, masses, energy)
-        
+
         sp[j] -= 2*delta
         Gamma_minus = compute_christoffel(sp, masses, energy)
-        
+
         dGamma[:, :, :, j] = (Gamma_plus - Gamma_minus) / (2*delta)
-    
+
     # Riemann formula
     R = np.zeros((3, 3, 3, 3))
     for l in range(3):
@@ -235,7 +235,7 @@ def compute_riemann_tensor(shape_point, masses, energy, delta=1e-6):
                             Gamma[l, j, m] * Gamma[m, i, k] -
                             Gamma[l, k, m] * Gamma[m, i, j]
                         )
-    
+
     return R
 ```
 
@@ -251,13 +251,13 @@ R_ij = R^k_ikj
 def compute_ricci_tensor(shape_point, masses, energy):
     """Compute Ricci tensor by contracting Riemann."""
     R_riemann = compute_riemann_tensor(shape_point, masses, energy)
-    
+
     Ricci = np.zeros((3, 3))
     for i in range(3):
         for j in range(3):
             for k in range(3):
                 Ricci[i, j] += R_riemann[k, i, k, j]
-    
+
     return Ricci
 ```
 
@@ -275,7 +275,7 @@ def compute_scalar_curvature(shape_point, masses, energy):
     g = jm_metric_tensor(shape_point, masses, energy)
     g_inv = np.linalg.inv(g)
     Ricci = compute_ricci_tensor(shape_point, masses, energy)
-    
+
     R = np.einsum('ij,ij->', g_inv, Ricci)
     return R
 ```
@@ -353,74 +353,74 @@ R = 2(K₁₂ + K₂₃ + K₃₁)
 ```python
 class JacobiMaupertuisMetric:
     """Complete Jacobi-Maupertuis metric implementation."""
-    
+
     def __init__(self, masses, energy):
         self.masses = masses
         self.energy = energy
-        
+
     def metric_tensor(self, shape_point):
         """Compute g_JM at shape point."""
         g_kin = self._kinetic_metric(shape_point)
         V = self._potential(shape_point)
         Omega = 2 * (self.energy - V)
-        
+
         if Omega <= 0:
             return None  # Forbidden region
-        
+
         return Omega * g_kin
-        
+
     def inverse_metric(self, shape_point):
         """Compute g^{-1}_JM."""
         g = self.metric_tensor(shape_point)
         return np.linalg.inv(g) if g is not None else None
-        
+
     def christoffel_symbols(self, shape_point):
         """Compute Γ^k_ij."""
         # Implementation as above
         pass
-        
+
     def riemann_tensor(self, shape_point):
         """Compute R^l_ijk."""
         # Implementation as above
         pass
-        
+
     def ricci_tensor(self, shape_point):
         """Compute R_ij."""
         R = self.riemann_tensor(shape_point)
         return np.einsum('kikj->ij', R)
-        
+
     def scalar_curvature(self, shape_point):
         """Compute scalar curvature R."""
         g_inv = self.inverse_metric(shape_point)
         Ricci = self.ricci_tensor(shape_point)
         return np.einsum('ij,ij->', g_inv, Ricci)
-        
+
     def sectional_curvature(self, shape_point, u, v):
         """Compute sectional curvature for plane (u, v)."""
         g = self.metric_tensor(shape_point)
         R = self.riemann_tensor(shape_point)
-        
+
         # Numerator: R_ijkl u^i v^j u^k v^l
         R_lower = np.einsum('lijk,lm->ijkm', R, g)  # Lower first index
         num = np.einsum('ijkl,i,j,k,l->', R_lower, u, v, u, v)
-        
+
         # Denominator: (g_ik g_jl - g_il g_jk) u^i v^j u^k v^l
         term1 = np.einsum('ik,jl,i,j,k,l->', g, g, u, v, u, v)
         term2 = np.einsum('il,jk,i,j,k,l->', g, g, u, v, u, v)
         denom = term1 - term2
-        
+
         return num / denom if abs(denom) > 1e-10 else np.nan
-        
+
     def _kinetic_metric(self, shape_point):
         """Compute kinetic metric g_kin."""
         # Implementation depends on coordinate choice
         pass
-        
+
     def _potential(self, shape_point):
         """Compute gravitational potential V(s)."""
         r12, r23, r31 = shape_point
         m1, m2, m3 = self.masses
-        
+
         # Newtonian potential
         return -(m1*m2/r12 + m2*m3/r23 + m3*m1/r31)
 ```

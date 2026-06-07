@@ -39,13 +39,13 @@ def validate_working_directory(verbose=True):
         "src/python": "Python source code directory",
         "tests": "Test suite directory",
         "Dry-Run": "Dry-run infrastructure directory",
-        "User-Guides": "Documentation directory"
+        "User-Guides": "Documentation directory",
     }
 
     optional_markers = {
         ".git": "Git repository",
         "environment.yml": "Conda environment file",
-        "poetry.lock": "Poetry lock file"
+        "poetry.lock": "Poetry lock file",
     }
 
     # Check critical markers

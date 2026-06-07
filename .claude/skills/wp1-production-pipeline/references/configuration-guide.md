@@ -279,16 +279,16 @@ dev_config = {
     # Small sample
     'n_samples_tier1': 100,
     'n_samples_tier2': 10,
-    
+
     # Short integration
     'n_periods': 10,
     'dt_output': 1.0,
-    
+
     # Skip validation
     'validate_jacobi': False,
     'validate_shadow': False,
     'compute_megno': False,
-    
+
     # Local only
     'cores': 4,
 }
@@ -301,16 +301,16 @@ test_config = {
     # Moderate sample
     'n_samples_tier1': 1000,
     'n_samples_tier2': 100,
-    
+
     # Standard integration
     'n_periods': 50,
     'dt_output': 0.1,
-    
+
     # Basic validation
     'validate_jacobi': True,
     'validate_shadow': False,
     'compute_megno': True,
-    
+
     # Local execution
     'cores': 8,
 }
@@ -323,18 +323,18 @@ production_config = {
     # Full sample
     'n_samples_tier1': 100000,
     'n_samples_tier2': 10000,
-    
+
     # Full integration
     'n_periods': 100,
     'dt_output': 0.1,
-    
+
     # Full validation
     'validate_jacobi': True,
     'validate_shadow': True,
     'validate_reversibility': True,
     'compute_megno': True,
     'compute_fli': True,
-    
+
     # Cluster execution
     'max_jobs': 100,
     'partition': 'normal',
@@ -348,28 +348,28 @@ publication_config = {
     # Extended sample
     'n_samples_tier1': 100000,
     'n_samples_tier2': 20000,
-    
+
     # Extended integration
     'n_periods': 1000,
     'dt_output': 0.01,
-    
+
     # All validation
     'validate_jacobi': True,
     'validate_shadow': True,
     'validate_reversibility': True,
     'compute_megno': True,
     'compute_fli': True,
-    
+
     # Store variational
     'store_variational': True,
     'store_monodromy': True,
-    
+
     # Multi-coordinate
     'coordinate_systems': ['rotating', 'inertial', 'regularized'],
-    
+
     # Maximum compression
     'hdf5_compression_opts': 9,
-    
+
     # Cluster with high resources
     'max_jobs': 500,
     'tier2_time_per_job': '08:00:00',

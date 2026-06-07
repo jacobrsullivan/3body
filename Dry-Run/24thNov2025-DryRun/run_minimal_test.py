@@ -30,16 +30,14 @@ from configs.minimal_test_config import CONFIG, get_l4_initial_state
 
 # Setup logging
 import logging
+
 log_file = Path(CONFIG["output"]["log_dir"]) / "minimal_test_execution.log"
 log_file.parent.mkdir(parents=True, exist_ok=True)
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_file),
-        logging.StreamHandler()
-    ]
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    handlers=[logging.FileHandler(log_file), logging.StreamHandler()],
 )
 logger = logging.getLogger(__name__)
 
@@ -50,6 +48,7 @@ def test_rebound_integration():
     """
     try:
         import rebound
+
         logger.info("Testing REBOUND integration...")
 
         # Create REBOUND simulation
@@ -67,7 +66,7 @@ def test_rebound_integration():
         # Third body at L4
         state = get_l4_initial_state(
             mu=CONFIG["mass_ratio"],
-            perturbation=CONFIG["initial_conditions"]["perturbation"]
+            perturbation=CONFIG["initial_conditions"]["perturbation"],
         )
 
         # Add third body (massless test particle)
@@ -78,7 +77,7 @@ def test_rebound_integration():
             z=state[2],
             vx=state[3],
             vy=state[4],
-            vz=state[5]
+            vz=state[5],
         )
 
         # Move to center of mass frame
@@ -130,7 +129,9 @@ def test_rebound_integration():
             logger.info(f"✓ Energy conservation PASSED (|ΔE/E| < {tolerance:.0e})")
             status = "PASS"
         else:
-            logger.warning(f"✗ Energy conservation FAILED (|ΔE/E| = {dE_relative:.3e} > {tolerance:.0e})")
+            logger.warning(
+                f"✗ Energy conservation FAILED (|ΔE/E| = {dE_relative:.3e} > {tolerance:.0e})"
+            )
             status = "FAIL"
 
         # Save trajectory to HDF5
@@ -138,20 +139,20 @@ def test_rebound_integration():
         output_dir.mkdir(parents=True, exist_ok=True)
 
         output_file = output_dir / "test_trajectory_001.h5"
-        with h5py.File(output_file, 'w') as f:
-            f.create_dataset('time', data=times)
-            f.create_dataset('positions', data=positions)
-            f.create_dataset('velocities', data=velocities)
-            f.create_dataset('energies', data=energies)
+        with h5py.File(output_file, "w") as f:
+            f.create_dataset("time", data=times)
+            f.create_dataset("positions", data=positions)
+            f.create_dataset("velocities", data=velocities)
+            f.create_dataset("energies", data=energies)
 
             # Metadata
-            f.attrs['status'] = status
-            f.attrs['E_initial'] = E_initial
-            f.attrs['E_final'] = E_final
-            f.attrs['dE_relative'] = dE_relative
-            f.attrs['integration_time'] = CONFIG['integration_time']
-            f.attrs['n_outputs'] = n_outputs
-            f.attrs['mass_ratio'] = CONFIG['mass_ratio']
+            f.attrs["status"] = status
+            f.attrs["E_initial"] = E_initial
+            f.attrs["E_final"] = E_final
+            f.attrs["dE_relative"] = dE_relative
+            f.attrs["integration_time"] = CONFIG["integration_time"]
+            f.attrs["n_outputs"] = n_outputs
+            f.attrs["mass_ratio"] = CONFIG["mass_ratio"]
 
         logger.info(f"Trajectory saved to {output_file}")
 
@@ -159,21 +160,22 @@ def test_rebound_integration():
             "status": status,
             "energy_error": dE_relative,
             "integration_time": elapsed,
-            "output_file": str(output_file)
+            "output_file": str(output_file),
         }
 
     except Exception as e:
         logger.error(f"Integration failed: {e}")
         import traceback
+
         logger.error(traceback.format_exc())
         return {"status": "ERROR", "error": str(e)}
 
 
 def main():
     """Run minimal dry-run test."""
-    logger.info("="*60)
+    logger.info("=" * 60)
     logger.info("24thNov2025 Minimal Dry-Run Test")
-    logger.info("="*60)
+    logger.info("=" * 60)
 
     # Test 1: Single trajectory with REBOUND
     logger.info("\nTest 1: REBOUND Integration at L4")
@@ -182,12 +184,12 @@ def main():
     result = test_rebound_integration()
 
     # Summary
-    logger.info("\n" + "="*60)
+    logger.info("\n" + "=" * 60)
     logger.info("DRY-RUN TEST SUMMARY")
-    logger.info("="*60)
+    logger.info("=" * 60)
     logger.info(f"Status: {result['status']}")
 
-    if result['status'] == "PASS":
+    if result["status"] == "PASS":
         logger.info(f"Energy conservation: {result['energy_error']:.3e}")
         logger.info(f"Integration time: {result['integration_time']:.2f} seconds")
         logger.info(f"Output file: {result['output_file']}")

@@ -30,6 +30,9 @@ CMakeFiles/
 cmake_install.cmake
 Makefile
 
+# Snakemake working cache (runtime, not source)
+.snakemake/
+
 # IDEs
 .vscode/
 .idea/

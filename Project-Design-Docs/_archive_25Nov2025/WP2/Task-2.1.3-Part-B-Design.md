@@ -1,6 +1,6 @@
 # Task 2.1.3 Part B: Riemann Curvature Analysis - Detailed Design
 
-**Task**: WP 2.1.3 - Jacobi-Maupertuis Metric Analysis  
+**Task**: WP 2.1.3 - Jacobi-Maupertuis Metric Analysis
 **Part**: B - Riemann and Ricci Curvature Computation
 **Status**: Design Phase
 **Estimated Duration**: 2 days

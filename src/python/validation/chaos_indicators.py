@@ -63,6 +63,7 @@ class ChaosIndicatorResult:
         deviation_norm: Norm of deviation vector ||δ(t)||
         metadata: Additional computation metadata
     """
+
     times: np.ndarray
     megno: np.ndarray
     fli: np.ndarray
@@ -85,7 +86,7 @@ class MEGNOIndicator:
         self,
         dynamics_function: Callable[[float, np.ndarray], np.ndarray],
         jacobian_function: Optional[Callable[[float, np.ndarray], np.ndarray]] = None,
-        normalization_interval: float = 1.0
+        normalization_interval: float = 1.0,
     ):
         """
         Initialize MEGNO indicator.
@@ -105,7 +106,9 @@ class MEGNOIndicator:
         self._t_last_norm = 0.0
         self._cumulative_megno_integral = 0.0
 
-    def _numerical_jacobian(self, t: float, state: np.ndarray, eps: float = 1e-7) -> np.ndarray:
+    def _numerical_jacobian(
+        self, t: float, state: np.ndarray, eps: float = 1e-7
+    ) -> np.ndarray:
         """
         Compute Jacobian numerically via finite differences.
 
@@ -129,11 +132,7 @@ class MEGNOIndicator:
 
         return jac
 
-    def _variational_rhs(
-        self,
-        t: float,
-        combined_state: np.ndarray
-    ) -> np.ndarray:
+    def _variational_rhs(self, t: float, combined_state: np.ndarray) -> np.ndarray:
         """
         Combined RHS for reference orbit + deviation vector + MEGNO accumulation.
 
@@ -148,10 +147,10 @@ class MEGNOIndicator:
             Time derivative of combined state
         """
         # Extract components
-        y = combined_state[:self._dim]  # Reference orbit
-        delta = combined_state[self._dim:2*self._dim]  # Deviation vector
-        Y = combined_state[2*self._dim]  # MEGNO integral accumulator
-        W = combined_state[2*self._dim + 1]  # Weighted integral accumulator
+        y = combined_state[: self._dim]  # Reference orbit
+        delta = combined_state[self._dim : 2 * self._dim]  # Deviation vector
+        Y = combined_state[2 * self._dim]  # MEGNO integral accumulator
+        W = combined_state[2 * self._dim + 1]  # Weighted integral accumulator
 
         # Reference orbit dynamics
         dy_dt = self.dynamics(t, y)
@@ -184,10 +183,10 @@ class MEGNOIndicator:
 
         # Combine derivatives
         dcombined_dt = np.zeros_like(combined_state)
-        dcombined_dt[:self._dim] = dy_dt
-        dcombined_dt[self._dim:2*self._dim] = ddelta_dt
-        dcombined_dt[2*self._dim] = dY_dt
-        dcombined_dt[2*self._dim + 1] = dW_dt
+        dcombined_dt[: self._dim] = dy_dt
+        dcombined_dt[self._dim : 2 * self._dim] = ddelta_dt
+        dcombined_dt[2 * self._dim] = dY_dt
+        dcombined_dt[2 * self._dim + 1] = dW_dt
 
         return dcombined_dt
 
@@ -197,7 +196,7 @@ class MEGNOIndicator:
         t_final: float,
         output_interval: float = 1.0,
         initial_deviation: Optional[np.ndarray] = None,
-        **integrator_kwargs
+        **integrator_kwargs,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Compute MEGNO indicator along trajectory.
@@ -223,20 +222,21 @@ class MEGNOIndicator:
         # Combined initial condition
         # [reference, deviation, Y_accumulator, W_accumulator]
         combined_initial = np.zeros(2 * self._dim + 2)
-        combined_initial[:self._dim] = initial_state
-        combined_initial[self._dim:2*self._dim] = initial_deviation
-        combined_initial[2*self._dim] = 0.0  # Y
-        combined_initial[2*self._dim + 1] = 0.0  # W
+        combined_initial[: self._dim] = initial_state
+        combined_initial[self._dim : 2 * self._dim] = initial_deviation
+        combined_initial[2 * self._dim] = 0.0  # Y
+        combined_initial[2 * self._dim + 1] = 0.0  # W
 
-        # Integration times
-        t_eval = np.arange(0, t_final + output_interval, output_interval)
+        # Integration times (ensure within t_span)
+        n_steps = int(np.ceil(t_final / output_interval)) + 1
+        t_eval = np.linspace(0.0, t_final, n_steps)
 
         # Set up integrator defaults
         defaults = {
-            'method': 'DOP853',
-            'rtol': 1e-12,
-            'atol': 1e-14,
-            'dense_output': False
+            "method": "DOP853",
+            "rtol": 1e-12,
+            "atol": 1e-14,
+            "dense_output": False,
         }
         defaults.update(integrator_kwargs)
 
@@ -247,7 +247,7 @@ class MEGNOIndicator:
             (0, t_final),
             combined_initial,
             t_eval=t_eval,
-            **defaults
+            **defaults,
         )
 
         if not sol.success:
@@ -255,8 +255,8 @@ class MEGNOIndicator:
 
         # Extract results
         times = sol.t
-        W_values = sol.y[2*self._dim + 1, :]  # Weighted integral
-        deviation_norms = np.linalg.norm(sol.y[self._dim:2*self._dim, :], axis=0)
+        W_values = sol.y[2 * self._dim + 1, :]  # Weighted integral
+        deviation_norms = np.linalg.norm(sol.y[self._dim : 2 * self._dim, :], axis=0)
 
         # Compute MEGNO: (2/t) * W(t)
         megno = np.zeros_like(times)
@@ -280,7 +280,7 @@ class FLIIndicator:
     def __init__(
         self,
         dynamics_function: Callable[[float, np.ndarray], np.ndarray],
-        jacobian_function: Optional[Callable[[float, np.ndarray], np.ndarray]] = None
+        jacobian_function: Optional[Callable[[float, np.ndarray], np.ndarray]] = None,
     ):
         """
         Initialize FLI indicator.
@@ -293,7 +293,9 @@ class FLIIndicator:
         self.jacobian = jacobian_function
         self._dim = None
 
-    def _numerical_jacobian(self, t: float, state: np.ndarray, eps: float = 1e-7) -> np.ndarray:
+    def _numerical_jacobian(
+        self, t: float, state: np.ndarray, eps: float = 1e-7
+    ) -> np.ndarray:
         """Compute Jacobian numerically."""
         dim = len(state)
         jac = np.zeros((dim, dim))
@@ -319,8 +321,8 @@ class FLIIndicator:
             Time derivative
         """
         # Extract components
-        y = combined_state[:self._dim]
-        delta = combined_state[self._dim:]
+        y = combined_state[: self._dim]
+        delta = combined_state[self._dim :]
 
         # Reference orbit
         dy_dt = self.dynamics(t, y)
@@ -341,7 +343,7 @@ class FLIIndicator:
         t_final: float,
         output_interval: float = 1.0,
         initial_deviation: Optional[np.ndarray] = None,
-        **integrator_kwargs
+        **integrator_kwargs,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Compute FLI indicator along trajectory.
@@ -367,15 +369,12 @@ class FLIIndicator:
         # Combined initial condition
         combined_initial = np.concatenate([initial_state, initial_deviation])
 
-        # Integration times
-        t_eval = np.arange(0, t_final + output_interval, output_interval)
+        # Integration times (ensure within t_span)
+        n_steps = int(np.ceil(t_final / output_interval)) + 1
+        t_eval = np.linspace(0.0, t_final, n_steps)
 
         # Integrator defaults
-        defaults = {
-            'method': 'DOP853',
-            'rtol': 1e-12,
-            'atol': 1e-14
-        }
+        defaults = {"method": "DOP853", "rtol": 1e-12, "atol": 1e-14}
         defaults.update(integrator_kwargs)
 
         # Integrate
@@ -385,7 +384,7 @@ class FLIIndicator:
             (0, t_final),
             combined_initial,
             t_eval=t_eval,
-            **defaults
+            **defaults,
         )
 
         if not sol.success:
@@ -393,7 +392,7 @@ class FLIIndicator:
 
         # Extract results
         times = sol.t
-        deviation_norms = np.linalg.norm(sol.y[self._dim:, :], axis=0)
+        deviation_norms = np.linalg.norm(sol.y[self._dim :, :], axis=0)
 
         # Compute FLI: log₁₀(||δ(t)||)
         fli = np.log10(deviation_norms + 1e-300)  # Avoid log(0)
@@ -413,7 +412,7 @@ class ChaosAnalyzer:
         dynamics_function: Callable[[float, np.ndarray], np.ndarray],
         jacobian_function: Optional[Callable[[float, np.ndarray], np.ndarray]] = None,
         megno_threshold: float = 2.5,
-        fli_threshold: float = 3.0
+        fli_threshold: float = 3.0,
     ):
         """
         Initialize chaos analyzer.
@@ -436,7 +435,7 @@ class ChaosAnalyzer:
         t_final: float,
         output_interval: float = 1.0,
         compute_both: bool = True,
-        **integrator_kwargs
+        **integrator_kwargs,
     ) -> ChaosIndicatorResult:
         """
         Perform complete chaos analysis on trajectory.
@@ -479,17 +478,17 @@ class ChaosAnalyzer:
         fli_chaotic = final_fli > self.fli_threshold
 
         if megno_chaotic or fli_chaotic:
-            classification = 'chaotic'
+            classification = "chaotic"
         else:
-            classification = 'regular'
+            classification = "regular"
 
         # Metadata
         metadata = {
-            'megno_threshold': self.megno_threshold,
-            'fli_threshold': self.fli_threshold,
-            'megno_chaotic': megno_chaotic,
-            'fli_chaotic': fli_chaotic,
-            'agreement': megno_chaotic == fli_chaotic
+            "megno_threshold": self.megno_threshold,
+            "fli_threshold": self.fli_threshold,
+            "megno_chaotic": megno_chaotic,
+            "fli_chaotic": fli_chaotic,
+            "agreement": megno_chaotic == fli_chaotic,
         }
 
         return ChaosIndicatorResult(
@@ -500,14 +499,11 @@ class ChaosAnalyzer:
             final_fli=final_fli,
             classification=classification,
             deviation_norm=dev_norm_megno,
-            metadata=metadata
+            metadata=metadata,
         )
 
     def classify_orbit(
-        self,
-        initial_state: np.ndarray,
-        t_final: float = 1000.0,
-        **kwargs
+        self, initial_state: np.ndarray, t_final: float = 1000.0, **kwargs
     ) -> str:
         """
         Quick classification: regular or chaotic.
@@ -554,9 +550,7 @@ def cr3bp_dynamics_wrapper(mu: float) -> Callable[[float, np.ndarray], np.ndarra
 
 
 def create_cr3bp_chaos_analyzer(
-    mu: float,
-    megno_threshold: float = 2.5,
-    fli_threshold: float = 3.0
+    mu: float, megno_threshold: float = 2.5, fli_threshold: float = 3.0
 ) -> ChaosAnalyzer:
     """
     Create chaos analyzer for CR3BP.
@@ -574,5 +568,5 @@ def create_cr3bp_chaos_analyzer(
         dynamics,
         jacobian_function=None,  # Will use numerical differentiation
         megno_threshold=megno_threshold,
-        fli_threshold=fli_threshold
+        fli_threshold=fli_threshold,
     )

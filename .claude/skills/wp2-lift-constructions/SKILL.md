@@ -1,15 +1,15 @@
 ---
 name: wp2-lift-constructions
 description: >
-  S¹ bundle and KS-Spinor lift constructions for testing lift-integrability in the 
-  three-body problem. Use when: (1) constructing S¹ principal bundle over shape space, 
-  (2) testing fiber momentum conservation (p_θ), (3) implementing extended symplectic forms, 
-  (4) applying Kustaanheimo-Stiefel transformation, (5) handling collision regularization, 
-  (6) working with spinor coordinates, (7) implementing Sundman time transformation, 
-  (8) using RATTLE constrained integrator, (9) computing bilinear constraints as momentum maps, 
-  (10) testing integrability in lifted spaces, or (11) comparing S¹ vs KS lift effectiveness. 
-  Triggers on requests involving S¹ lift, KS transformation, spinor coordinates, fiber bundle, 
-  extended phase space, collision regularization, bilinear relation, momentum map constraint, 
+  S¹ bundle and KS-Spinor lift constructions for testing lift-integrability in the
+  three-body problem. Use when: (1) constructing S¹ principal bundle over shape space,
+  (2) testing fiber momentum conservation (p_θ), (3) implementing extended symplectic forms,
+  (4) applying Kustaanheimo-Stiefel transformation, (5) handling collision regularization,
+  (6) working with spinor coordinates, (7) implementing Sundman time transformation,
+  (8) using RATTLE constrained integrator, (9) computing bilinear constraints as momentum maps,
+  (10) testing integrability in lifted spaces, or (11) comparing S¹ vs KS lift effectiveness.
+  Triggers on requests involving S¹ lift, KS transformation, spinor coordinates, fiber bundle,
+  extended phase space, collision regularization, bilinear relation, momentum map constraint,
   Sundman time, RATTLE integrator, geometric lift, integrability test, or p_theta conservation.
 ---
 
@@ -229,7 +229,7 @@ The transformation uses the Levi-Civita matrix L(u):
 def levi_civita_matrix(u):
     """
     Build 4×4 Levi-Civita matrix L(u).
-    
+
     Position r is given by: r = L(u)·u (first 3 components)
     """
     u0, u1, u2, u3 = u
@@ -255,7 +255,7 @@ This is the momentum map for the S¹ gauge symmetry of the KS transformation.
 def bilinear_constraint(u, p_u):
     """
     Compute KS bilinear constraint Ξ.
-    
+
     This is the S¹ momentum map—should be zero on physical trajectories.
     """
     return u[0]*p_u[1] - u[1]*p_u[0] + u[2]*p_u[3] - u[3]*p_u[2]
@@ -360,50 +360,50 @@ See `references/ks-spinor-theory.md` for complete mathematical theory.
 def test_lift_integrability(trajectory, masses, method='s1'):
     """
     Test lift-integrability hypothesis using specified lift.
-    
+
     Args:
         trajectory: Dict with 'states', 'times', 'L' (angular momentum)
         masses: Mass array
         method: 's1' or 'ks'
-        
+
     Returns:
         Dict with integrability analysis results
     """
     if method == 's1':
         from src.python.lifts.s1_bundle import S1Bundle
-        
+
         # Construct S¹ bundle
         bundle = S1Bundle(masses=masses, angular_momentum=trajectory['L'])
-        
+
         # Lift trajectory
         lifted = bundle.lift_trajectory(trajectory['states'])
-        
+
         # Integrate in lifted space
         integrator = bundle.create_integrator()
         times, states = integrator.integrate(lifted[0], (0, 100), 0.1)
-        
+
         # Test integrals
         result = test_integrability(times, states, bundle)
-        
+
         return {
             'method': 'S¹ bundle',
             'new_integral': 'p_θ' if result['p_theta_conserved'] else None,
             'integrable': all(result.values()),
             'details': result
         }
-        
+
     elif method == 'ks':
         from src.python.regularization.ks_pairwise import PairwiseKS
         from src.python.regularization.rattle_integrator import RATTLEIntegrator
-        
+
         # KS transformation
         ks = PairwiseKS(masses=masses)
         spinor_state = ks.lift_state(trajectory['states'][0])
-        
+
         # Integrate with RATTLE
         integrator = RATTLEIntegrator(masses=masses)
         times, states = integrator.integrate(spinor_state, (0, 100))
-        
+
         # Search for spinor-based integrals (WP3 does deeper search)
         return {
             'method': 'KS-Spinor',
@@ -424,24 +424,24 @@ def compare_lift_methods(initial_conditions, masses, L):
         'states': initial_conditions,
         'L': L
     }
-    
+
     # Test both lifts
     result_s1 = test_lift_integrability(trajectory, masses, method='s1')
     result_ks = test_lift_integrability(trajectory, masses, method='ks')
-    
+
     print("=" * 50)
     print("LIFT COMPARISON")
     print("=" * 50)
-    
+
     print("\nS¹ Bundle Lift:")
     print(f"  New integral: {result_s1['new_integral']}")
     print(f"  Appears integrable: {result_s1['integrable']}")
-    
+
     print("\nKS-Spinor Lift:")
     print(f"  Regularized: {result_ks['regularized']}")
     print(f"  Constraints OK: {result_ks['constraints_maintained']}")
     print(f"  New integral: {result_ks['new_integral']}")
-    
+
     return {'s1': result_s1, 'ks': result_ks}
 ```
 
@@ -510,19 +510,19 @@ def diagnose_lift(lifted_state, lift_type):
     if lift_type == 's1':
         expected_dim = 8
         s, theta, p_s, p_theta = split_s1_state(lifted_state)
-        
+
         return {
             'dimension_correct': len(lifted_state) == expected_dim,
             'theta_in_range': 0 <= theta < 2*np.pi,
             'p_theta_finite': np.isfinite(p_theta),
         }
-        
+
     elif lift_type == 'ks':
         expected_dim = 8  # Per pair
         u, p_u = lifted_state[:4], lifted_state[4:8]
-        
+
         Xi = bilinear_constraint(u, p_u)
-        
+
         return {
             'dimension_correct': len(lifted_state) >= expected_dim,
             'constraint_satisfied': abs(Xi) < 1e-10,

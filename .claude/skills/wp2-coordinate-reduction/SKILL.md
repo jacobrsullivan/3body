@@ -1,15 +1,15 @@
 ---
 name: wp2-coordinate-reduction
 description: >
-  Coordinate transformations and symplectic reduction for the three-body problem. 
-  Use when: (1) transforming between Cartesian, Jacobi, and Shape Space coordinates, 
-  (2) performing translation reduction (removing COM), (3) performing rotation reduction 
-  (SO(3) quotient), (4) computing angular momentum, (5) validating triangle inequality 
-  constraints, (6) reconstructing full state from reduced state, (7) understanding 
-  dimension counting (18D → 15D → 12D), (8) implementing Marsden-Weinstein reduction, 
-  (9) computing conserved quantities during reduction, or (10) preparing reduced states 
-  for WP2 lift constructions. Triggers on requests involving coordinate systems, Cartesian, 
-  Jacobi, shape space, symplectic reduction, center-of-mass removal, rotation reduction, 
+  Coordinate transformations and symplectic reduction for the three-body problem.
+  Use when: (1) transforming between Cartesian, Jacobi, and Shape Space coordinates,
+  (2) performing translation reduction (removing COM), (3) performing rotation reduction
+  (SO(3) quotient), (4) computing angular momentum, (5) validating triangle inequality
+  constraints, (6) reconstructing full state from reduced state, (7) understanding
+  dimension counting (18D → 15D → 12D), (8) implementing Marsden-Weinstein reduction,
+  (9) computing conserved quantities during reduction, or (10) preparing reduced states
+  for WP2 lift constructions. Triggers on requests involving coordinate systems, Cartesian,
+  Jacobi, shape space, symplectic reduction, center-of-mass removal, rotation reduction,
   SO(3) quotient, angular momentum, momentum map, phase space dimension, or conservation laws.
 ---
 
@@ -38,7 +38,7 @@ Symplectic reduction exploits symmetries to reduce phase space dimension while p
 │ Constraint: Σmᵢrᵢ = 0                                          │
 │ Remaining symmetry: SO(3) rotation                              │
 └──────────────────────────┬─────────────────────────────────────┘
-                           │ Rotation Reduction  
+                           │ Rotation Reduction
                            │ Fix L (angular momentum)
                            │ Quotient by SO(3)/SO(2)
                            ↓
@@ -54,8 +54,8 @@ Symplectic reduction exploits symmetries to reduce phase space dimension while p
 
 ```python
 from src.python.coordinates import (
-    CartesianCoordinates, 
-    JacobiCoordinates, 
+    CartesianCoordinates,
+    JacobiCoordinates,
     ShapeSpaceCoordinates
 )
 from src.python.reduction import TranslationReduction, RotationReduction
@@ -258,49 +258,49 @@ See `references/reduction-theory.md` for complete theory.
 def full_reduction_pipeline(positions, velocities, masses, planar=True):
     """
     Complete reduction from Cartesian to shape space.
-    
+
     Returns dict with all intermediate states and computed quantities.
     """
     from src.python.coordinates import CartesianCoordinates
     from src.python.reduction import TranslationReduction, RotationReduction
-    
+
     # 1. Create Cartesian state
     cart = CartesianCoordinates(masses=masses)
     state_cart = cart.create_state(positions, velocities)
-    
+
     # 2. Compute conserved quantities
     P_total = cart.total_momentum(state_cart)
     L_total = cart.angular_momentum(state_cart)
     E_total = cart.total_energy(state_cart)
-    
+
     # 3. Translation reduction
     trans = TranslationReduction(masses=masses)
     state_jacobi = trans.reduce(state_cart)
-    
+
     # 4. Rotation reduction
     rot = RotationReduction(masses=masses, planar=planar)
     state_reduced = rot.reduce(state_jacobi)
-    
+
     # 5. Extract shape coordinates
     shape_coords = rot.to_shape_space(state_reduced)
-    
+
     return {
         # States at each level
         'cartesian': state_cart,
         'jacobi': state_jacobi,
         'reduced': state_reduced,
         'shape': shape_coords,
-        
+
         # Dimensions
         'dim_cartesian': len(state_cart),
         'dim_jacobi': len(state_jacobi),
         'dim_reduced': len(state_reduced),
-        
+
         # Conserved quantities
         'P_total': P_total,
         'L_total': L_total,
         'E_total': E_total,
-        
+
         # Reduction info
         'planar': planar,
         'masses': masses,
@@ -315,25 +315,25 @@ def full_reduction_pipeline(positions, velocities, masses, planar=True):
 def reconstruct_full_state(reduced_state, masses, COM, orientation, planar=True):
     """
     Reconstruct full Cartesian state from reduced state.
-    
+
     Args:
         reduced_state: State in reduced coordinates
         masses: Mass array
         COM: Center of mass position (3,) and velocity (3,)
         orientation: Rotation matrix R (3×3) or angle θ for planar
         planar: Whether system is planar
-        
+
     Returns:
         Full 18D Cartesian state
     """
     # 1. Lift from shape to Jacobi (add rotation)
     rot = RotationReduction(masses=masses, planar=planar)
     jacobi_state = rot.reconstruct(reduced_state, orientation)
-    
+
     # 2. Lift from Jacobi to Cartesian (add COM)
     trans = TranslationReduction(masses=masses)
     cart_state = trans.reconstruct(jacobi_state, COM)
-    
+
     return cart_state
 ```
 
@@ -345,27 +345,27 @@ Reduction introduces gauge freedom—different full states map to same reduced s
 def gauge_orbit(reduced_state, masses, n_samples=10):
     """
     Sample the gauge orbit of a reduced state.
-    
+
     All states in the orbit reduce to the same reduced_state.
     """
     orbits = []
-    
+
     for _ in range(n_samples):
         # Random COM position and velocity
         COM_pos = np.random.randn(3)
         COM_vel = np.random.randn(3)
-        
+
         # Random orientation
         theta = np.random.uniform(0, 2*np.pi)
         R = rotation_matrix_z(theta)
-        
+
         # Reconstruct
         full_state = reconstruct_full_state(
-            reduced_state, masses, 
+            reduced_state, masses,
             (COM_pos, COM_vel), R
         )
         orbits.append(full_state)
-    
+
     return orbits
 ```
 
@@ -385,12 +385,12 @@ def validate_symplectic_reduction(original_state, reduced_state, masses):
         reduced_state=reduced_state,
         masses=masses
     )
-    
+
     print(f"Symplectic form preserved: {result['symplectic_preserved']}")
     print(f"Momentum conserved: {result['momentum_conserved']}")
     print(f"Energy conserved: {result['energy_conserved']}")
     print(f"Dimension reduction correct: {result['dimension_correct']}")
-    
+
     return result
 ```
 
@@ -406,28 +406,28 @@ def verify_constraints(state, masses, level='jacobi'):
         cart = CartesianCoordinates(masses=masses)
         positions = cart.get_positions(state)
         com = sum(m * r for m, r in zip(masses, positions)) / sum(masses)
-        
+
         # Total momentum zero
         momenta = cart.get_momenta(state)
         P_total = sum(momenta)
-        
+
         return {
             'COM_at_origin': np.allclose(com, 0),
             'COM_error': np.linalg.norm(com),
             'momentum_zero': np.allclose(P_total, 0),
             'momentum_error': np.linalg.norm(P_total)
         }
-        
+
     elif level == 'shape':
         # Triangle inequality
         r12, r23, r31 = state[:3]
-        
+
         valid = (
             abs(r12 - r23) < r31 < r12 + r23 and
             abs(r23 - r31) < r12 < r23 + r31 and
             abs(r31 - r12) < r23 < r31 + r12
         )
-        
+
         return {'triangle_inequality': valid}
 ```
 
@@ -480,24 +480,24 @@ F = conn.compute_curvature(shape_point)
 def diagnose_reduction(state, masses, expected_dim):
     """Diagnose reduction issues."""
     actual_dim = len(state)
-    
+
     diagnostics = {
         'dimension_correct': actual_dim == expected_dim,
         'actual_dim': actual_dim,
         'expected_dim': expected_dim,
     }
-    
+
     # Check for NaN
     diagnostics['has_nan'] = np.any(np.isnan(state))
-    
+
     # Check for infinity
     diagnostics['has_inf'] = np.any(np.isinf(state))
-    
+
     # Check shape constraint (if applicable)
     if expected_dim <= 12:
         r12, r23, r31 = state[:3]
         diagnostics['valid_triangle'] = validate_triangle(r12, r23, r31)
-    
+
     return diagnostics
 ```
 

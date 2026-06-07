@@ -1,0 +1,105 @@
+Assuming unrestricted shared filesystem usage.
+host: Jacobs-MacBook-Air.local
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Job stats:
+job                    count
+-------------------  -------
+aggregate_tier             1
+all                        1
+export_parquet             1
+generate_parameters        1
+integrate_orbit           20
+validation_report          1
+total                     25
+
+Select jobs to execute...
+Execute 1 jobs...
+
+[Mon Feb  9 20:57:29 2026]
+localrule generate_parameters:
+    output: data/tier1/parameters.h5
+    jobid: 3
+    reason: Missing output files: data/tier1/parameters.h5
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:33 2026]
+Finished jobid: 3 (Rule: generate_parameters)
+1 of 25 steps (4%) done
+Select jobs to execute...
+Execute 9 jobs...
+
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu0_C1_1.h5
+    jobid: 9
+    reason: Missing output files: data/tier1/hdf5/orbit_mu0_C1_1.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu0_C1_1
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C0_4.h5
+    jobid: 17
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C0_4.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C0_4
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C1_2.h5
+    jobid: 20
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C1_2.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C1_2
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C0_0.h5
+    jobid: 13
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C0_0.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C0_0
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu0_C0_3.h5
+    jobid: 6
+    reason: Missing output files: data/tier1/hdf5/orbit_mu0_C0_3.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu0_C0_3
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C1_3.h5
+    jobid: 21
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C1_3.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C1_3
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C0_1.h5
+    jobid: 14
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C0_1.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C0_1
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu0_C0_4.h5
+    jobid: 7
+    reason: Missing output files: data/tier1/hdf5/orbit_mu0_C0_4.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu0_C0_4
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+[Mon Feb  9 20:57:35 2026]
+localrule integrate_orbit:
+    input: data/tier1/parameters.h5
+    output: data/tier1/hdf5/orbit_mu1_C1_4.h5
+    jobid: 22
+    reason: Missing output files: data/tier1/hdf5/orbit_mu1_C1_4.h5; Input files updated by another job: data/tier1/parameters.h5
+    wildcards: orbit_id=orbit_mu1_C1_4
+    resources: tmpdir=/var/folders/nj/jypjl_8n7xd6tzz8qk4b20900000gn/T
+Select jobs to execute...

@@ -116,22 +116,22 @@ analyzer = create_cr3bp_chaos_analyzer(
 ```python
 def validate_tier1_chaos(result, times, states, mu):
     """Validate Tier 1 chaos analysis results."""
-    
+
     # Check Jacobi constant conservation
     C_values = [jacobi_constant(s, mu) for s in states]
     C_drift = (max(C_values) - min(C_values)) / abs(C_values[0])
-    
+
     if C_drift > 1e-14:
         return False, f"Jacobi drift {C_drift:.2e} exceeds Tier 1 threshold"
-    
+
     # Check for numerical artifacts in MEGNO
     if result['megno'] < 0:
         return False, "Negative MEGNO indicates numerical instability"
-    
+
     # Check consistency
     if result['megno'] < 2.5 and result['fli'] > 4.0:
         return False, "MEGNO-FLI disagreement - needs review"
-    
+
     return True, "Tier 1 validation passed"
 ```
 
@@ -204,29 +204,29 @@ analyzer = create_cr3bp_chaos_analyzer(
 def validate_tier2_chaos(result, times, states, mu):
     """Validate Tier 2 chaos analysis results."""
     from src.python.qd_python import dd_real
-    
+
     # Check Jacobi constant conservation in QD
     C_values = [jacobi_constant_qd(s, mu) for s in states]
     C_drift = float((max(C_values) - min(C_values)) / abs(C_values[0]))
-    
+
     if C_drift > 1e-25:
         return False, f"Jacobi drift {C_drift:.2e} exceeds Tier 2 threshold"
-    
+
     # Check shadow Hamiltonian
     from src.python.validation.shadow_hamiltonian import ShadowHamiltonianAnalyzer
     shadow = ShadowHamiltonianAnalyzer(dynamics_func=cr3bp_dynamics)
     shadow_result = shadow.analyze(times, states, dt=times[1]-times[0])
-    
+
     if shadow_result['drift_rate'] > 1e-25:
         return False, f"Shadow Hamiltonian drift {shadow_result['drift_rate']:.2e} too large"
-    
+
     # Verify monodromy matrix (for periodic orbits)
     if result.get('monodromy_matrix') is not None:
         M = result['monodromy_matrix']
         det_M = np.linalg.det(M)
         if abs(det_M - 1.0) > 1e-20:
             return False, f"Monodromy determinant {det_M:.2e} ≠ 1"
-    
+
     return True, "Tier 2 validation passed"
 ```
 
@@ -269,10 +269,10 @@ def validate_tier2_chaos(result, times, states, mu):
 def conservation_check(states, mu, tier='tier1'):
     """Check Jacobi constant conservation."""
     threshold = 1e-14 if tier == 'tier1' else 1e-25
-    
+
     C = [jacobi_constant(s, mu) for s in states]
     drift = (max(C) - min(C)) / abs(C[0])
-    
+
     return drift < threshold
 ```
 
@@ -282,12 +282,12 @@ def conservation_check(states, mu, tier='tier1'):
 def shadow_hamiltonian_check(times, states, tier='tier1'):
     """Verify backward error analysis."""
     from src.python.validation.shadow_hamiltonian import ShadowHamiltonianAnalyzer
-    
+
     threshold = 1e-14 if tier == 'tier1' else 1e-25
-    
+
     analyzer = ShadowHamiltonianAnalyzer(dynamics_func=cr3bp_dynamics)
     result = analyzer.analyze(times, states, dt=times[1]-times[0])
-    
+
     return result['drift_rate'] < threshold
 ```
 
@@ -297,13 +297,13 @@ def shadow_hamiltonian_check(times, states, tier='tier1'):
 def reversibility_check(state0, t_final, integrator, tier='tier1'):
     """Check time reversibility."""
     threshold = 1e-14 if tier == 'tier1' else 1e-20
-    
+
     # Forward integration
     _, states_fwd = integrator.integrate(state0, (0, t_final))
-    
+
     # Backward integration
     _, states_bwd = integrator.integrate(states_fwd[-1], (t_final, 0))
-    
+
     error = np.linalg.norm(states_bwd[-1] - state0)
     return error < threshold
 ```
@@ -313,21 +313,21 @@ def reversibility_check(state0, t_final, integrator, tier='tier1'):
 ```python
 def indicator_consistency_check(megno, fli):
     """Check MEGNO-FLI consistency."""
-    
+
     # Both should agree on classification
     megno_regular = megno < 2.5
     fli_regular = fli < 3.0
-    
+
     megno_chaotic = megno > 3.0
     fli_chaotic = fli > 4.0
-    
+
     # Consistent if both agree on type
     consistent = (megno_regular == fli_regular) or (megno_chaotic == fli_chaotic)
-    
+
     # Or if one is borderline
     megno_borderline = 2.5 <= megno <= 3.0
     fli_borderline = 3.0 <= fli <= 4.0
-    
+
     return consistent or megno_borderline or fli_borderline
 ```
 
@@ -340,36 +340,36 @@ def indicator_consistency_check(megno, fli):
 ```python
 def should_upgrade_to_tier2(result, tier1_validation):
     """Determine if Tier 2 precision is needed."""
-    
+
     reasons = []
-    
+
     # Conservation failure
     if not tier1_validation['conservation_passed']:
         reasons.append("Jacobi conservation failed")
-    
+
     # Shadow Hamiltonian drift
     if tier1_validation['shadow_drift'] > 1e-14:
         reasons.append("Shadow Hamiltonian drift too large")
-    
+
     # Borderline classification
     if 2.5 <= result['megno'] <= 3.0:
         reasons.append("MEGNO in borderline range")
-    
+
     if 3.0 <= result['fli'] <= 4.0:
         reasons.append("FLI in borderline range")
-    
+
     # Indicator disagreement
     if not indicator_consistency_check(result['megno'], result['fli']):
         reasons.append("MEGNO-FLI inconsistency")
-    
+
     # For WP4 Morales-Ramis
     if result.get('for_morales_ramis', False):
         reasons.append("Morales-Ramis preparation requires Tier 2")
-    
+
     # Periodic orbit analysis
     if result.get('is_periodic', False):
         reasons.append("Periodic orbit monodromy requires Tier 2")
-    
+
     return len(reasons) > 0, reasons
 ```
 
@@ -378,29 +378,29 @@ def should_upgrade_to_tier2(result, tier1_validation):
 ```python
 def analyze_with_auto_upgrade(state0, mu, t_max):
     """Analyze orbit with automatic precision upgrade."""
-    
+
     # Start with Tier 1
     analyzer_t1 = create_cr3bp_chaos_analyzer(mu=mu, precision='double')
     result_t1 = analyzer_t1.analyze(state0, t_max)
-    
+
     # Validate Tier 1
     validation = validate_tier1_chaos(result_t1, ...)
-    
+
     # Check if upgrade needed
     needs_upgrade, reasons = should_upgrade_to_tier2(result_t1, validation)
-    
+
     if needs_upgrade:
         print(f"Upgrading to Tier 2: {', '.join(reasons)}")
-        
+
         analyzer_t2 = create_cr3bp_chaos_analyzer(
             mu=mu,
             precision='qd',
             integrator='adaptive_symplectic'
         )
         result_t2 = analyzer_t2.analyze(state0, t_max * 10)  # Extended time
-        
+
         return result_t2, 'tier2'
-    
+
     return result_t1, 'tier1'
 ```
 

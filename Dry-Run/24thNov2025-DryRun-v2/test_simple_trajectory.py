@@ -20,15 +20,19 @@ import numpy as np
 import h5py
 import time
 
-print("\n" + "="*70)
+print("\n" + "=" * 70)
 print("Simple Trajectory Test - 24thNov2025-DryRun-v2")
-print("="*70)
+print("=" * 70)
 
 # Configuration
 CONFIG = {
     "integration_time": 10.0,  # Short: just 10 time units
-    "n_outputs": 50,            # Only 50 output points
-    "output_dir": PROJECT_ROOT / "Dry-Run" / "24thNov2025-DryRun-v2" / "data" / "trajectories"
+    "n_outputs": 50,  # Only 50 output points
+    "output_dir": PROJECT_ROOT
+    / "Dry-Run"
+    / "24thNov2025-DryRun-v2"
+    / "data"
+    / "trajectories",
 }
 
 print(f"\nConfiguration:")
@@ -106,30 +110,30 @@ CONFIG["output_dir"].mkdir(parents=True, exist_ok=True)
 output_file = CONFIG["output_dir"] / "simple_trajectory_v2.h5"
 
 print(f"\nSaving trajectory to: {output_file}")
-with h5py.File(output_file, 'w') as f:
-    f.create_dataset('time', data=times)
-    f.create_dataset('positions', data=positions)
-    f.create_dataset('velocities', data=velocities)
-    f.create_dataset('energies', data=energies)
+with h5py.File(output_file, "w") as f:
+    f.create_dataset("time", data=times)
+    f.create_dataset("positions", data=positions)
+    f.create_dataset("velocities", data=velocities)
+    f.create_dataset("energies", data=energies)
 
-    f.attrs['status'] = status
-    f.attrs['E_initial'] = E_initial
-    f.attrs['E_final'] = E_final
-    f.attrs['dE_relative'] = dE_relative
-    f.attrs['integration_time'] = CONFIG['integration_time']
-    f.attrs['n_outputs'] = CONFIG['n_outputs']
-    f.attrs['elapsed_time'] = elapsed
+    f.attrs["status"] = status
+    f.attrs["E_initial"] = E_initial
+    f.attrs["E_final"] = E_final
+    f.attrs["dE_relative"] = dE_relative
+    f.attrs["integration_time"] = CONFIG["integration_time"]
+    f.attrs["n_outputs"] = CONFIG["n_outputs"]
+    f.attrs["elapsed_time"] = elapsed
 
 print(f"✓ Trajectory saved")
 
 # Summary
-print("\n" + "="*70)
+print("\n" + "=" * 70)
 print("SUMMARY")
-print("="*70)
+print("=" * 70)
 print(f"Status: {status}")
 print(f"Energy conservation: {dE_relative:.3e}")
 print(f"Integration time: {elapsed:.2f} seconds")
 print(f"Output file: {output_file}")
-print("="*70)
+print("=" * 70)
 
 sys.exit(0 if status == "PASS" else 1)

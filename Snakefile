@@ -18,20 +18,47 @@ Dependencies:
 import numpy as np
 
 # Configuration
-TIER = config.get("tier", 1)
-MU_VALUES = np.logspace(-3, np.log10(0.5), 30)
-C_VALUES = np.linspace(2.5, 3.5, 15)
+TIER = int(config.get("tier", 1))
 
+# mu configuration: allow explicit list, fixed value, or logspace range
+MU_VALUES = config.get("mu_values")
+if MU_VALUES is None:
+    mu_single = config.get("mu")
+    if mu_single is not None:
+        MU_VALUES = np.array([float(mu_single)])
+    else:
+        n_mu = int(config.get("n_mu", 30))
+        mu_min = float(config.get("mu_min", 1e-3))
+        mu_max = float(config.get("mu_max", 0.5))
+        MU_VALUES = np.logspace(np.log10(mu_min), np.log10(mu_max), n_mu)
+else:
+    MU_VALUES = np.array(MU_VALUES, dtype=float)
+
+# C configuration: allow explicit list or linear range
+C_VALUES = config.get("C_values")
+if C_VALUES is None:
+    n_C = int(config.get("n_C", 15))
+    C_min = float(config.get("C_min", 2.5))
+    C_max = float(config.get("C_max", 3.5))
+    C_VALUES = np.linspace(C_min, C_max, n_C)
+else:
+    C_VALUES = np.array(C_VALUES, dtype=float)
+
+# Per-tier configuration
 if TIER == 1:
-    N_ORBITS_PER_MU_C = 200
+    N_ORBITS_PER_MU_C = int(config.get("n_orbits_per_mu_c", 200))
     INTEGRATOR = "IAS15"
     PRECISION = "double"
-    TARGET_ACCURACY = 1e-14
+    TARGET_ACCURACY = float(config.get("target_accuracy", 1e-14))
 else:  # TIER == 2
-    N_ORBITS_PER_MU_C = 30
+    N_ORBITS_PER_MU_C = int(config.get("n_orbits_per_mu_c", 30))
     INTEGRATOR = "AdaptiveSymplectic"
     PRECISION = "double-double"
-    TARGET_ACCURACY = 1e-25
+    TARGET_ACCURACY = float(config.get("target_accuracy", 1e-25))
+
+DURATION = float(config.get("duration", 1000.0))
+OUTPUT_INTERVAL = float(config.get("output_interval", 1.0))
+SEED = int(config.get("seed", 42))
 
 # Generate orbit IDs
 ORBIT_IDS = expand(
@@ -60,16 +87,32 @@ rule generate_parameters:
     output:
         f"{TIER_DIR}/parameters.h5"
     run:
-        from src.python.ml.sobol_sampling import generate_tier1_parameters
+        from src.python.ml.sobol_sampling import generate_initial_states_for_mu_c
 
         n_total = len(MU_VALUES) * len(C_VALUES) * N_ORBITS_PER_MU_C
-        samples, param_names = generate_tier1_parameters(n_samples=n_total)
+        states = np.zeros((n_total, 6))
+
+        idx = 0
+        for mu_idx, mu in enumerate(MU_VALUES):
+            for C_idx, C in enumerate(C_VALUES):
+                block_seed = SEED + mu_idx * 1000 + C_idx
+                block = generate_initial_states_for_mu_c(
+                    mu=mu,
+                    C=C,
+                    n_samples=N_ORBITS_PER_MU_C,
+                    seed=block_seed,
+                )
+                states[idx:idx + N_ORBITS_PER_MU_C] = block
+                idx += N_ORBITS_PER_MU_C
 
         # Save to HDF5
         import h5py
         with h5py.File(output[0], 'w') as f:
-            f.create_dataset('samples', data=samples)
-            f.attrs['param_names'] = param_names
+            f.create_dataset('states', data=states)
+            f.attrs['mu_values'] = MU_VALUES
+            f.attrs['C_values'] = C_VALUES
+            f.attrs['n_orbits_per_mu_c'] = N_ORBITS_PER_MU_C
+            f.attrs['seed'] = SEED
             f.attrs['tier'] = TIER
             f.attrs['n_samples'] = n_total
 
@@ -94,9 +137,9 @@ rule integrate_orbit:
         orbit_id = wildcards.orbit_id
         # Extract indices from orbit ID
         parts = orbit_id.split('_')
-        mu_idx = int(parts[0].replace('orbitmu', ''))
-        C_idx = int(parts[1].replace('C', ''))
-        orb_idx = int(parts[2])
+        mu_idx = int(parts[1].replace('mu', ''))
+        C_idx = int(parts[2].replace('C', ''))
+        orb_idx = int(parts[3])
 
         mu = MU_VALUES[mu_idx]
         C = C_VALUES[C_idx]
@@ -104,20 +147,10 @@ rule integrate_orbit:
         # Load parameters
         with h5py.File(input[0], 'r') as f:
             sample_idx = mu_idx * len(C_VALUES) * N_ORBITS_PER_MU_C + C_idx * N_ORBITS_PER_MU_C + orb_idx
-            params = f['samples'][sample_idx]
-
-        # Create initial condition from parameters
-        initial_state = np.array([
-            params[2],  # x
-            params[3],  # y
-            0.0,        # z
-            params[4],  # vx
-            0.0,        # vy (from Jacobi constant)
-            0.0         # vz
-        ])
+            initial_state = f['states'][sample_idx]
 
         # Select integrator
-        if params.integrator == "IAS15":
+        if INTEGRATOR == "IAS15":
             integrator = IAS15Integrator(mu, tolerance=TARGET_ACCURACY)
         else:
             integrator = AdaptiveSymplecticIntegrator(
@@ -127,26 +160,44 @@ rule integrate_orbit:
             )
 
         # Integrate
-        result = integrator.integrate(initial_state, duration=1000.0, output_interval=1.0)
+        result = integrator.integrate(
+            initial_state, duration=DURATION, output_interval=OUTPUT_INTERVAL
+        )
 
-        # Compute chaos indicators
-        analyzer = create_cr3bp_chaos_analyzer(mu)
-        chaos_result = analyzer.analyze(initial_state, t_final=1000.0)
+        # Compute chaos indicators (may fail on close-encounter orbits)
+        n_times = len(result.times)
+        try:
+            analyzer = create_cr3bp_chaos_analyzer(mu)
+            chaos_result = analyzer.analyze(
+                initial_state, t_final=DURATION, output_interval=OUTPUT_INTERVAL
+            )
+            megno_data = chaos_result.megno
+            fli_data = chaos_result.fli
+            chaos_class = chaos_result.classification
+            mean_megno = chaos_result.mean_megno
+            final_fli = chaos_result.final_fli
+        except Exception as e:
+            print(f"  Chaos analysis failed for {orbit_id}: {e}", flush=True)
+            megno_data = np.full(n_times, np.nan)
+            fli_data = np.full(n_times, np.nan)
+            chaos_class = "failed"
+            mean_megno = np.nan
+            final_fli = np.nan
 
         # Save to HDF5
         with h5py.File(output[0], 'w') as f:
             f.create_dataset('times', data=result.times)
             f.create_dataset('states_corotating', data=result.states_corotating)
             f.create_dataset('states_inertial', data=result.states_inertial)
-            f.create_dataset('MEGNO', data=chaos_result.megno)
-            f.create_dataset('FLI', data=chaos_result.fli)
+            f.create_dataset('MEGNO', data=megno_data)
+            f.create_dataset('FLI', data=fli_data)
 
             f.attrs['mu'] = mu
             f.attrs['C'] = C
             f.attrs['orbit_id'] = orbit_id
-            f.attrs['chaos_class'] = chaos_result.classification
-            f.attrs['mean_MEGNO'] = chaos_result.mean_megno
-            f.attrs['final_FLI'] = chaos_result.final_fli
+            f.attrs['chaos_class'] = chaos_class
+            f.attrs['mean_MEGNO'] = mean_megno
+            f.attrs['final_FLI'] = final_fli
 
 
 rule aggregate_tier:

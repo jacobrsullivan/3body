@@ -99,27 +99,27 @@ The time-averaged MEGNO is:
 def compute_megno(times, deviation_norms):
     """
     Compute MEGNO from deviation vector history.
-    
+
     Parameters:
         times: array of time values
         deviation_norms: array of |δx(t)| values
-    
+
     Returns:
         megno: time-averaged MEGNO value
     """
     y = deviation_norms
     y_dot = np.gradient(y, times)
-    
+
     # Instantaneous MEGNO integrand
     integrand = (y_dot / y) * times
-    
+
     # Y(t) = (2/t) * integral
     Y = 2.0 * cumulative_trapezoid(integrand, times, initial=0) / times
     Y[0] = 0  # Handle t=0
-    
+
     # Time-averaged MEGNO
     megno_avg = cumulative_trapezoid(Y, times, initial=0) / times
-    
+
     return megno_avg[-1]
 ```
 

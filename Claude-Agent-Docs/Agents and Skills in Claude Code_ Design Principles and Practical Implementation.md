@@ -184,7 +184,7 @@ Design principles:
 
 Think of `CLAUDE.md` as:
 
-“How to work in this repo \+ where things live”  
+“How to work in this repo \+ where things live”
  …not “All knowledge about this repo”.
 
 ### **2.3.3 Hooks as “immune system”**
@@ -249,15 +249,15 @@ Now the same three pillars, but granular and concrete.
 
 **Recommended structure per skill**
 
-.claude/skills/processing-pdfs/  
-├── SKILL.md  
-├── reference/              \# optional, domain docs  
-│   ├── forms.md  
-│   └── extraction-tips.md  
-├── scripts/                \# optional, deterministic helpers  
-│   ├── validate\_form.py  
-│   └── extract\_tables.py  
-└── templates/              \# optional, fill-in-the-blanks  
+.claude/skills/processing-pdfs/
+├── SKILL.md
+├── reference/              \# optional, domain docs
+│   ├── forms.md
+│   └── extraction-tips.md
+├── scripts/                \# optional, deterministic helpers
+│   ├── validate\_form.py
+│   └── extract\_tables.py
+└── templates/              \# optional, fill-in-the-blanks
     └── email\_summary.md
 
 Keep it at 0–1 levels deep; no matryoshka doll directories.
@@ -266,12 +266,12 @@ Keep it at 0–1 levels deep; no matryoshka doll directories.
 
 **Frontmatter requirements**
 
-\---  
-name: processing-pdfs          \# \<= 64 chars, \[a-z0-9-\]  
-description: \>  
-  Extracts text and tables from PDF files, fills forms, and merges documents.  
-  Use when the user mentions PDFs, document extraction, or PDF forms.  
-allowed-tools: Read, Write, Bash   \# Claude Code only, optional  
+\---
+name: processing-pdfs          \# \<= 64 chars, \[a-z0-9-\]
+description: \>
+  Extracts text and tables from PDF files, fills forms, and merges documents.
+  Use when the user mentions PDFs, document extraction, or PDF forms.
+allowed-tools: Read, Write, Bash   \# Claude Code only, optional
 \---
 
 Rules:
@@ -288,25 +288,25 @@ Rules:
 
 \# PDF Processing
 
-\#\# Quick start  
-1\. Use \`Read\` on the specified PDF file(s).  
-2\. If the goal mentions "forms" or "fill", follow the \*\*Form workflow\*\*.  
+\#\# Quick start
+1\. Use \`Read\` on the specified PDF file(s).
+2\. If the goal mentions "forms" or "fill", follow the \*\*Form workflow\*\*.
 3\. If the goal mentions "tables" or "data", follow the \*\*Table extraction workflow\*\*.
 
 \#\# Workflows
 
-\#\#\# Form workflow  
-1\. Read \`reference/forms.md\` for the most recent rules.  
-2\. Use \`scripts/validate\_form.py\` to pre-validate fields.  
-3\. Use \`Write\` to update the filled PDF in \`/tmp/pdf-output/\`.  
+\#\#\# Form workflow
+1\. Read \`reference/forms.md\` for the most recent rules.
+2\. Use \`scripts/validate\_form.py\` to pre-validate fields.
+3\. Use \`Write\` to update the filled PDF in \`/tmp/pdf-output/\`.
 4\. Log key decisions in \`session\_log.md\` if invoked by a subagent.
 
-\#\#\# Table extraction workflow  
-1\. Use \`scripts/extract\_tables.py\` to get CSV.  
+\#\#\# Table extraction workflow
+1\. Use \`scripts/extract\_tables.py\` to get CSV.
 2\. Use the \`analyzing-spreadsheets\` skill if complex analysis is needed.
 
-\#\# References  
-\- \`reference/forms.md\` – detailed field rules.  
+\#\# References
+\- \`reference/forms.md\` – detailed field rules.
 \- \`reference/extraction-tips.md\` – OCR and edge cases.
 
 Key requirements:
@@ -323,23 +323,23 @@ Key requirements:
 
 To write a Django migration, use this example:
 
-\`\`\`python  
-class Migration(migrations.Migration):  
+\`\`\`python
+class Migration(migrations.Migration):
     ...
 
 \*\*Good\*\*
 
-\`\`\`markdown  
+\`\`\`markdown
 \#\# Source of truth
 
-\- Library: \`src/backend/db/migrations/\`  
-\- Templates: \`src/backend/factories/migration\_factory.py\`  
+\- Library: \`src/backend/db/migrations/\`
+\- Templates: \`src/backend/factories/migration\_factory.py\`
 \- Examples: Read the 3 latest files in \`migrations/versions/\`.
 
 \#\# Usage rules
 
-1\. NEVER guess migration syntax.  
-2\. ALWAYS read \`migration\_factory.py\` before writing a migration.  
+1\. NEVER guess migration syntax.
+2\. ALWAYS read \`migration\_factory.py\` before writing a migration.
 3\. ALWAYS use \`./scripts/generate\_migration.sh\` instead of editing files directly.
 
 That’s exactly the pointer pattern you already described.
@@ -368,15 +368,15 @@ Baseline for most repos:
 
 **User-scoped agents**
 
-\~/.claude/agents/  
-├── code-reviewer.md  
+\~/.claude/agents/
+├── code-reviewer.md
 └── debugger.md
 
 **Project-scoped agents**
 
-.claude/agents/  
-├── builder.md  
-├── analyst.md  
+.claude/agents/
+├── builder.md
+├── analyst.md
 └── curator.md
 
 Claude Code \+ the Agent SDK both treat these as discoverable agent definitions; the orchestrator can delegate based on their descriptions.
@@ -385,29 +385,29 @@ Claude Code \+ the Agent SDK both treat these as discoverable agent definitions;
 
 Example: `./.claude/agents/builder.md`
 
-\---  
-name: agent-builder  
-description: \>  
-  Use PROACTIVELY for any task involving code creation, refactoring,  
-  or feature implementation. MUST delegate tests and reviews to other agents.  
-tools:  
-  \- Read  
-  \- Write  
-  \- Edit  
-  \- Bash  
-model: sonnet  
-\---  
+\---
+name: agent-builder
+description: \>
+  Use PROACTIVELY for any task involving code creation, refactoring,
+  or feature implementation. MUST delegate tests and reviews to other agents.
+tools:
+  \- Read
+  \- Write
+  \- Edit
+  \- Bash
+model: sonnet
+\---
 You are the Lead Implementor for this project.
 
-\#\# Mandate  
-1\. Implement features as described by the orchestrator.  
-2\. Refactor legacy code to match modern patterns.  
+\#\# Mandate
+1\. Implement features as described by the orchestrator.
+2\. Refactor legacy code to match modern patterns.
 3\. Maintain test integrity: do not knowingly break existing tests.
 
-\#\# Operating rules  
-\- Follow the Pointer Pattern: read existing code before writing new code.  
-\- Use the \`project-navigator\` skill to understand structure and find files.  
-\- For tests, rely on \`jest-expert-skill\` (or equivalent) for detailed steps.  
+\#\# Operating rules
+\- Follow the Pointer Pattern: read existing code before writing new code.
+\- Use the \`project-navigator\` skill to understand structure and find files.
+\- For tests, rely on \`jest-expert-skill\` (or equivalent) for detailed steps.
 \- When complete, request \`agent-analyst\` to run tests and debugging.
 
 Requirements:
@@ -456,12 +456,12 @@ Subagent system prompt addition:
 
 You MUST maintain \`session\_log.md\` in the current working directory.
 
-Rules:  
-1\. If \`session\_log.md\` does not exist, create it.  
+Rules:
+1\. If \`session\_log.md\` does not exist, create it.
 2\. After every major action, append an entry:
 
-   \- \[HH:MM\] \*\*Action\*\*: \<what you did\>  
-   \- \[HH:MM\] \*\*Result\*\*: \<what happened\>  
+   \- \[HH:MM\] \*\*Action\*\*: \<what you did\>
+   \- \[HH:MM\] \*\*Result\*\*: \<what happened\>
    \- \[HH:MM\] \*\*Reasoning\*\*: \<why you changed course or chose this path\>
 
 3\. When reporting success or failure, reference at least one log entry.
@@ -476,10 +476,10 @@ Practical usage:
 
 If you’re about to create something, ask:
 
-* **Does this need an isolated context, persona, and possibly long-running loops?**  
+* **Does this need an isolated context, persona, and possibly long-running loops?**
    → If **yes**, make a **subagent** that consumes Skills.
 
-* **Is this a reusable, tool-driven workflow, where the main agent should stay in context?**  
+* **Is this a reusable, tool-driven workflow, where the main agent should stay in context?**
    → If **yes**, make a **Skill**.
 
 Example:
@@ -496,28 +496,28 @@ Example:
 
 Recommended baseline:
 
-.  
-├── CLAUDE.md  
-├── .claude/  
-│   ├── settings.json  
-│   ├── settings.local.json        \# gitignored  
-│   ├── skills/  
-│   │   ├── project-navigator/  
-│   │   │   └── SKILL.md  
-│   │   ├── jest-expert-skill/  
-│   │   │   ├── SKILL.md  
-│   │   │   ├── reference/  
-│   │   │   └── examples/  
-│   │   └── security-policy-skill/  
-│   │       └── SKILL.md  
-│   ├── agents/  
-│   │   ├── builder.md  
-│   │   ├── analyst.md  
-│   │   └── curator.md  
-│   └── commands/  
-│       ├── git/  
-│       │   └── smart-commit.md  
-│       └── run-tests.md  
+.
+├── CLAUDE.md
+├── .claude/
+│   ├── settings.json
+│   ├── settings.local.json        \# gitignored
+│   ├── skills/
+│   │   ├── project-navigator/
+│   │   │   └── SKILL.md
+│   │   ├── jest-expert-skill/
+│   │   │   ├── SKILL.md
+│   │   │   ├── reference/
+│   │   │   └── examples/
+│   │   └── security-policy-skill/
+│   │       └── SKILL.md
+│   ├── agents/
+│   │   ├── builder.md
+│   │   ├── analyst.md
+│   │   └── curator.md
+│   └── commands/
+│       ├── git/
+│       │   └── smart-commit.md
+│       └── run-tests.md
 └── src/...
 
 This layout works for:
@@ -530,26 +530,26 @@ This layout works for:
 
 Simple template:
 
-\# Project Overview  
-\- What this repo does  
+\# Project Overview
+\- What this repo does
 \- Core tech stack and key directories
 
-\#\# Workflows  
-\- Implementing a feature  
-\- Running tests  
+\#\# Workflows
+\- Implementing a feature
+\- Running tests
 \- Adding dependencies
 
-\#\# Agent Instructions  
-\- Always start by using the \`project-navigator\` skill.  
-\- For tests, use \`jest-expert-skill\`.  
+\#\# Agent Instructions
+\- Always start by using the \`project-navigator\` skill.
+\- For tests, use \`jest-expert-skill\`.
 \- For any auth/PII change, use \`security-policy-skill\` and \`security-agent\`.
 
-\#\# Dangerous Areas  
-\- Do NOT modify \`infra/prod/\` without explicit user confirmation.  
+\#\# Dangerous Areas
+\- Do NOT modify \`infra/prod/\` without explicit user confirmation.
 \- Migrations must go through \`./scripts/generate\_migration.sh\`.
 
-\#\# Where to Learn More  
-\- @docs/architecture/overview.md  
+\#\# Where to Learn More
+\- @docs/architecture/overview.md
 \- @docs/api/v3-auth.mdx
 
 Keep it lean and pointer-heavy; treat it like an index, not an encyclopedia.
@@ -560,12 +560,12 @@ Keep it lean and pointer-heavy; treat it like an index, not an encyclopedia.
 
 `.claude/settings.json`:
 
-{  
-  "hooks": {  
-    "PostToolUse": {  
-      "command": "if \[\[ \\"$TOOL\_NAME\\" \== \\"Edit\\" || \\"$TOOL\_NAME\\" \== \\"Write\\" \]\]; then cd \\"$CLAUDE\_PROJECT\_DIR\\" && ./scripts/auto\_lint\_and\_test.sh \\"$FILE\_PATH\\"; fi"  
-    }  
-  }  
+{
+  "hooks": {
+    "PostToolUse": {
+      "command": "if \[\[ \\"$TOOL\_NAME\\" \== \\"Edit\\" || \\"$TOOL\_NAME\\" \== \\"Write\\" \]\]; then cd \\"$CLAUDE\_PROJECT\_DIR\\" && ./scripts/auto\_lint\_and\_test.sh \\"$FILE\_PATH\\"; fi"
+    }
+  }
 }
 
 * Any `Edit`/`Write` triggers `auto_lint_and_test.sh`.
@@ -574,12 +574,12 @@ Keep it lean and pointer-heavy; treat it like an index, not an encyclopedia.
 
 **Example 2 – PreToolUse Bash allowlist**
 
-{  
-  "hooks": {  
-    "PreToolUse": {  
-      "command": "cd \\"$CLAUDE\_PROJECT\_DIR\\" && ./scripts/bash\_allowlist.sh \\"$TOOL\_NAME\\" \\"$BASH\_COMMAND\\""  
-    }  
-  }  
+{
+  "hooks": {
+    "PreToolUse": {
+      "command": "cd \\"$CLAUDE\_PROJECT\_DIR\\" && ./scripts/bash\_allowlist.sh \\"$TOOL\_NAME\\" \\"$BASH\_COMMAND\\""
+    }
+  }
 }
 
 `scripts/bash_allowlist.sh` rejects anything not in your whitelist (git, ls, cat, jest, etc.). If the script exits non-zero, the tool call is blocked.
@@ -594,21 +594,21 @@ Place commands here:
 
 Example: `.claude/commands/git/smart-commit.md`:
 
-\---  
-description: Create a git commit message based on staged changes.  
-\---  
+\---
+description: Create a git commit message based on staged changes.
+\---
 \#\# Context
 
-\*\*Current Branch:\*\*  
+\*\*Current Branch:\*\*
 \!\`git branch \--show-current\`
 
-\*\*Git Status:\*\*  
+\*\*Git Status:\*\*
 \!\`git status \--short\`
 
-\*\*Staged Diff:\*\*  
+\*\*Staged Diff:\*\*
 \!\`git diff \--staged\`
 
-\#\# Task  
+\#\# Task
 Write a concise, conventional commit message summarizing these changes.
 
 The agent can call this via the **SlashCommand tool** to automate workflows inside larger tasks (“run tests, then smart-commit if green”).
@@ -674,4 +674,3 @@ If you want a **minimal but serious** setup that follows all of this:
 That gives you a coherent, auditable system instead of a pile of ad-hoc prompts.
 
 If you want, next step can be: **turn this into a concrete “starter repo” skeleton** (ready-to-git-init) that your teams can clone and customize.
-

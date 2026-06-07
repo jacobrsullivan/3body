@@ -62,16 +62,16 @@ set-resources:
   - integrate_orbit:mem_mb=8000
   - integrate_orbit:runtime=120
   - integrate_orbit:partition=normal
-  
+
   # Tier 2 needs more time
   - integrate_orbit_tier2:mem_mb=16000
   - integrate_orbit_tier2:runtime=480
   - integrate_orbit_tier2:partition=long
-  
+
   # Chaos analysis
   - chaos_analysis:mem_mb=4000
   - chaos_analysis:runtime=60
-  
+
   # Aggregation needs lots of memory
   - aggregate_catalogue:mem_mb=64000
   - aggregate_catalogue:runtime=120
@@ -231,19 +231,19 @@ def estimate_memory(n_periods, precision='double'):
     """Estimate memory in MB for orbit integration."""
     # Base: 8 bytes per double, 6 state variables
     bytes_per_step = 8 * 6
-    
+
     # Timesteps: ~100 per period
     n_steps = n_periods * 100
-    
+
     # Buffer factor
     buffer = 3.0
-    
+
     # QD needs 2x memory
     if precision == 'qd':
         buffer *= 2
-    
+
     memory_mb = (bytes_per_step * n_steps * buffer) / (1024 * 1024)
-    
+
     # Minimum 2GB, add overhead
     return max(2000, int(memory_mb) + 1000)
 
@@ -263,9 +263,9 @@ def estimate_runtime(n_periods, tier='tier1'):
         'tier1': 3000,  # ~50 periods/second
         'tier2': 300,   # ~5 periods/second
     }
-    
+
     minutes = n_periods / rates[tier]
-    
+
     # Add overhead and safety factor
     return int(minutes * 2) + 5
 ```

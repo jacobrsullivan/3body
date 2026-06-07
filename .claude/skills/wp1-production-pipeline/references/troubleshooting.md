@@ -410,7 +410,7 @@ MemoryError: Unable to allocate array
 # 1. Process orbits in chunks
 def process_large_catalogue(catalogue_dir, chunk_size=100):
     orbit_files = list(Path(catalogue_dir).glob('*.h5'))
-    
+
     for i in range(0, len(orbit_files), chunk_size):
         chunk = orbit_files[i:i+chunk_size]
         data = [load_orbit(f) for f in chunk]
@@ -485,7 +485,7 @@ cProfile.run('integrate(state0, t_span)', 'profile.stats')
 # Bad:
 for i in range(N):
     result = np.zeros(6)  # Allocates every iteration
-    
+
 # Good:
 result = np.zeros(6)
 for i in range(N):
@@ -502,7 +502,7 @@ def cr3bp_dynamics(t, state, mu):
 # Bad:
 for i in range(N):
     r = np.sqrt(x[i]**2 + y[i]**2)
-    
+
 # Good:
 r = np.sqrt(x**2 + y**2)  # Vectorized
 ```

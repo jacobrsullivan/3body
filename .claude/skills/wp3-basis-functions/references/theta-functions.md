@@ -167,7 +167,7 @@ If you can identify two periods T₁ and T₂ in the motion:
 def estimate_nome_from_periods(T1, T2):
     """
     Estimate nome q from period ratio.
-    
+
     tau = i * T2/T1  (assuming T1 is the "real" period)
     q = exp(i*pi*tau)
     """
@@ -184,17 +184,17 @@ If elliptic parameter m is known:
 def nome_from_elliptic_parameter(m):
     """
     Compute nome q from elliptic parameter m.
-    
+
     q = exp(-π K'/K)
     """
     from scipy.special import ellipk
-    
+
     if m <= 0 or m >= 1:
         raise ValueError("m must be in (0, 1)")
-    
+
     K = ellipk(m)
     Kp = ellipk(1 - m)
-    
+
     q = np.exp(-np.pi * Kp / K)
     return q
 ```
@@ -205,19 +205,19 @@ def nome_from_elliptic_parameter(m):
 def estimate_nome(times, states):
     """
     Estimate nome q from trajectory data.
-    
+
     Strategy:
     1. Estimate elliptic parameter m from oscillations
     2. Convert m to q
     """
     from src.python.symbolic.elliptic_basis import estimate_elliptic_parameter
-    
+
     # Get m from trajectory
     m = estimate_elliptic_parameter(times, states)
-    
+
     # Convert to nome
     q = nome_from_elliptic_parameter(m)
-    
+
     return q
 ```
 
@@ -231,7 +231,7 @@ def estimate_nome(times, states):
 def generate_theta_basis(q, max_terms=20):
     """
     Generate theta function basis.
-    
+
     Categories:
     1. Basic: θ₁, θ₂, θ₃, θ₄
     2. Products: θᵢθⱼ
@@ -239,7 +239,7 @@ def generate_theta_basis(q, max_terms=20):
     4. Ratios: θᵢ/θⱼ
     """
     basis = []
-    
+
     # Basic functions (4)
     basis.extend([
         lambda z, q=q: theta1(z, q),
@@ -247,7 +247,7 @@ def generate_theta_basis(q, max_terms=20):
         lambda z, q=q: theta3(z, q),
         lambda z, q=q: theta4(z, q)
     ])
-    
+
     # Squares (4)
     basis.extend([
         lambda z, q=q: theta1(z, q)**2,
@@ -255,7 +255,7 @@ def generate_theta_basis(q, max_terms=20):
         lambda z, q=q: theta3(z, q)**2,
         lambda z, q=q: theta4(z, q)**2
     ])
-    
+
     # Products (6)
     basis.extend([
         lambda z, q=q: theta1(z, q) * theta2(z, q),
@@ -265,7 +265,7 @@ def generate_theta_basis(q, max_terms=20):
         lambda z, q=q: theta2(z, q) * theta4(z, q),
         lambda z, q=q: theta3(z, q) * theta4(z, q)
     ])
-    
+
     # Ratios with safe division (12)
     def safe_ratio(f1, f2, eps=1e-10):
         def ratio(z, q=q):
@@ -273,13 +273,13 @@ def generate_theta_basis(q, max_terms=20):
             den = f2(z, q)
             return num / np.maximum(np.abs(den), eps) * np.sign(den + eps)
         return ratio
-    
+
     theta_funcs = [theta1, theta2, theta3, theta4]
     for i, ti in enumerate(theta_funcs):
         for j, tj in enumerate(theta_funcs):
             if i != j:
                 basis.append(safe_ratio(ti, tj))
-    
+
     return basis
 ```
 
@@ -293,61 +293,61 @@ def generate_theta_basis(q, max_terms=20):
 def theta1(z, q, n_terms=50):
     """
     Jacobi theta function θ₁(z, q).
-    
+
     θ₁(z, q) = 2 Σₙ₌₀^∞ (-1)ⁿ q^((n+1/2)²) sin((2n+1)z)
     """
     z = np.asarray(z)
     result = np.zeros_like(z, dtype=complex)
-    
+
     for n in range(n_terms):
         coeff = (-1)**n * q**((n + 0.5)**2)
         result += coeff * np.sin((2*n + 1) * z)
-    
+
     return 2 * result
 
 def theta2(z, q, n_terms=50):
     """
     Jacobi theta function θ₂(z, q).
-    
+
     θ₂(z, q) = 2 Σₙ₌₀^∞ q^((n+1/2)²) cos((2n+1)z)
     """
     z = np.asarray(z)
     result = np.zeros_like(z, dtype=complex)
-    
+
     for n in range(n_terms):
         coeff = q**((n + 0.5)**2)
         result += coeff * np.cos((2*n + 1) * z)
-    
+
     return 2 * result
 
 def theta3(z, q, n_terms=50):
     """
     Jacobi theta function θ₃(z, q).
-    
+
     θ₃(z, q) = 1 + 2 Σₙ₌₁^∞ q^(n²) cos(2nz)
     """
     z = np.asarray(z)
     result = np.ones_like(z, dtype=complex)
-    
+
     for n in range(1, n_terms + 1):
         coeff = q**(n**2)
         result += 2 * coeff * np.cos(2 * n * z)
-    
+
     return result
 
 def theta4(z, q, n_terms=50):
     """
     Jacobi theta function θ₄(z, q).
-    
+
     θ₄(z, q) = 1 + 2 Σₙ₌₁^∞ (-1)ⁿ q^(n²) cos(2nz)
     """
     z = np.asarray(z)
     result = np.ones_like(z, dtype=complex)
-    
+
     for n in range(1, n_terms + 1):
         coeff = (-1)**n * q**(n**2)
         result += 2 * coeff * np.cos(2 * n * z)
-    
+
     return result
 ```
 
@@ -357,7 +357,7 @@ def theta4(z, q, n_terms=50):
 def verify_jacobi_identity(q, n_samples=100, tol=1e-8):
     """
     Verify θ₃⁴(0) = θ₂⁴(0) + θ₄⁴(0).
-    
+
     Returns:
         passed: bool
         error: float
@@ -365,12 +365,12 @@ def verify_jacobi_identity(q, n_samples=100, tol=1e-8):
     t2_0 = theta2(0, q)
     t3_0 = theta3(0, q)
     t4_0 = theta4(0, q)
-    
+
     lhs = t3_0**4
     rhs = t2_0**4 + t4_0**4
-    
+
     error = np.abs(lhs - rhs)
-    
+
     return error < tol, error
 ```
 
@@ -380,35 +380,35 @@ def verify_jacobi_identity(q, n_samples=100, tol=1e-8):
 def detect_integrability_signature(times, states, threshold=0.1):
     """
     Detect signatures suggesting complete integrability.
-    
+
     Checks:
     1. Quasi-periodic motion (multiple discrete frequencies)
     2. Bounded motion
     3. Regular (non-chaotic) indicators
-    
+
     Returns:
         is_integrable: bool
         nome: Estimated nome if integrable
         confidence: float
     """
     from scipy.fft import fft, fftfreq
-    
+
     # Extract observable
     r = np.linalg.norm(states[:, :3], axis=1)
-    
+
     # Check 1: Bounded motion
     is_bounded = np.std(r) / np.mean(r) < 1.0
-    
+
     # Check 2: Discrete spectrum (not continuous)
     dt = times[1] - times[0]
     spectrum = np.abs(fft(r - np.mean(r)))[:len(r)//2]
-    
+
     # Count significant peaks
     peak_threshold = threshold * np.max(spectrum)
     n_peaks = np.sum(spectrum > peak_threshold)
-    
+
     has_discrete_spectrum = n_peaks < 10 and n_peaks >= 2
-    
+
     # Check 3: Estimate nome and verify consistency
     if is_bounded and has_discrete_spectrum:
         try:
@@ -417,7 +417,7 @@ def detect_integrability_signature(times, states, threshold=0.1):
                 return True, q, 0.8
         except:
             pass
-    
+
     return False, None, 0.0
 ```
 

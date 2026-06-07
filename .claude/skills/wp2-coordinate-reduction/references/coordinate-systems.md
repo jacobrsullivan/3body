@@ -76,13 +76,13 @@ Jacobi momenta:
 def compute_reduced_masses(masses):
     m1, m2, m3 = masses
     M = m1 + m2 + m3
-    
+
     # First Jacobi pair
     mu1 = m1 * m2 / (m1 + m2)
-    
+
     # Second Jacobi pair (body 3 vs COM of 1,2)
     mu2 = m3 * (m1 + m2) / M
-    
+
     return mu1, mu2
 ```
 
@@ -95,21 +95,21 @@ def jacobi_to_cartesian(rho1, rho2, pi1, pi2, masses):
     m1, m2, m3 = masses
     M = m1 + m2 + m3
     M12 = m1 + m2
-    
+
     # Positions (assuming COM at origin)
     r1 = -m2/M12 * rho1 - m3/M * rho2
     r2 = m1/M12 * rho1 - m3/M * rho2
     r3 = M12/M * rho2
-    
+
     # Momenta
     mu1, mu2 = compute_reduced_masses(masses)
     v1 = pi1 / mu1
     v2 = pi2 / mu2
-    
+
     p1 = m1 * (-m2/M12 * v1 - m3/M * v2)
     p2 = m2 * (m1/M12 * v1 - m3/M * v2)
     p3 = m3 * M12/M * v2
-    
+
     return (r1, r2, r3), (p1, p2, p3)
 ```
 
@@ -172,17 +172,17 @@ Boundary ∂S corresponds to:
 def jacobi_to_shape(rho1, rho2, masses):
     m1, m2, m3 = masses
     M12 = m1 + m2
-    
+
     # Reconstruct Cartesian positions (COM = 0)
     r1 = -m2/M12 * rho1 - m3/sum(masses) * rho2
     r2 = m1/M12 * rho1 - m3/sum(masses) * rho2
     r3 = M12/sum(masses) * rho2
-    
+
     # Pairwise distances
     r12 = np.linalg.norm(r2 - r1)
     r23 = np.linalg.norm(r3 - r2)
     r31 = np.linalg.norm(r1 - r3)
-    
+
     return np.array([r12, r23, r31])
 ```
 
@@ -194,39 +194,39 @@ The conjugate momenta to shape coordinates are more complex:
 def compute_shape_momenta(rho1, rho2, pi1, pi2, masses):
     """
     Compute momenta conjugate to shape coordinates.
-    
+
     These are related to radial velocities of the pairwise distances.
     """
     # Get positions
     r1, r2, r3 = jacobi_to_positions(rho1, rho2, masses)
-    
+
     # Get velocities
     v1, v2, v3 = jacobi_to_velocities(pi1, pi2, masses)
-    
+
     # Radial momenta
     # p_rij = μij * d(rij)/dt = μij * (rj - ri)·(vj - vi) / rij
-    
+
     r12_vec = r2 - r1
     r23_vec = r3 - r2
     r31_vec = r1 - r3
-    
+
     r12 = np.linalg.norm(r12_vec)
     r23 = np.linalg.norm(r23_vec)
     r31 = np.linalg.norm(r31_vec)
-    
+
     r12_dot = np.dot(r12_vec, v2 - v1) / r12
     r23_dot = np.dot(r23_vec, v3 - v2) / r23
     r31_dot = np.dot(r31_vec, v1 - v3) / r31
-    
+
     # Reduced masses for pairs
     mu12 = masses[0] * masses[1] / (masses[0] + masses[1])
     mu23 = masses[1] * masses[2] / (masses[1] + masses[2])
     mu31 = masses[2] * masses[0] / (masses[2] + masses[0])
-    
+
     p12 = mu12 * r12_dot
     p23 = mu23 * r23_dot
     p31 = mu31 * r31_dot
-    
+
     return np.array([p12, p23, p31])
 ```
 
@@ -239,44 +239,44 @@ def compute_shape_momenta(rho1, rho2, pi1, pi2, masses):
 ```python
 class CoordinateTransformer:
     """Transform between all coordinate systems."""
-    
+
     def __init__(self, masses):
         self.masses = masses
         self.M = sum(masses)
         self.mu1, self.mu2 = compute_reduced_masses(masses)
-        
+
     def cartesian_to_jacobi(self, positions, momenta):
         """(r₁,r₂,r₃,p₁,p₂,p₃) → (ρ₁,ρ₂,π₁,π₂)"""
         r1, r2, r3 = positions
         p1, p2, p3 = momenta
         m1, m2, m3 = self.masses
-        
+
         # Jacobi vectors
         rho1 = r2 - r1
         rho2 = r3 - (m1*r1 + m2*r2)/(m1+m2)
-        
+
         # Jacobi momenta (requires velocity transformation)
         v1, v2, v3 = p1/m1, p2/m2, p3/m3
-        
+
         vrho1 = v2 - v1
         vrho2 = v3 - (m1*v1 + m2*v2)/(m1+m2)
-        
+
         pi1 = self.mu1 * vrho1
         pi2 = self.mu2 * vrho2
-        
+
         return rho1, rho2, pi1, pi2
-        
+
     def jacobi_to_cartesian(self, rho1, rho2, pi1, pi2):
         """(ρ₁,ρ₂,π₁,π₂) → (r₁,r₂,r₃,p₁,p₂,p₃)"""
         # Implementation as above
         pass
-        
+
     def jacobi_to_shape(self, rho1, rho2, pi1, pi2):
         """(ρ₁,ρ₂,π₁,π₂) → (r₁₂,r₂₃,r₃₁,p₁₂,p₂₃,p₃₁)"""
         distances = jacobi_to_shape(rho1, rho2, self.masses)
         momenta = compute_shape_momenta(rho1, rho2, pi1, pi2, self.masses)
         return distances, momenta
-        
+
     def cartesian_to_shape(self, positions, momenta):
         """Direct Cartesian to shape."""
         rho1, rho2, pi1, pi2 = self.cartesian_to_jacobi(positions, momenta)
@@ -321,22 +321,22 @@ The explicit form requires computing the Jacobian of the shape → Jacobi map.
 def shape_metric(shape_point, masses):
     """
     Compute metric tensor on shape space.
-    
+
     This is the induced metric from the Jacobi kinetic metric.
     """
     r12, r23, r31 = shape_point
-    
+
     # The metric involves the area of the triangle
     # and the masses...
-    
+
     # Heron's formula for area
     s = (r12 + r23 + r31) / 2
     A = np.sqrt(s * (s-r12) * (s-r23) * (s-r31))
-    
+
     # Metric components (simplified form)
     g = np.zeros((3, 3))
     # ... complex expression involving masses and geometry
-    
+
     return g
 ```
 

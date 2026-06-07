@@ -122,7 +122,7 @@ cn(u+v) = [cn(u)cn(v) - sn(u)dn(u)sn(v)dn(v)] / [1 - m·sn²(u)sn²(v)]
 Given a time series of radial distance r(t):
 
 1. **Find extrema**: r_min, r_max
-2. **Compute eccentricity-like ratio**: 
+2. **Compute eccentricity-like ratio**:
    ```
    e_eff = (r_max - r_min) / (r_max + r_min)
    ```
@@ -130,7 +130,7 @@ Given a time series of radial distance r(t):
    ```
    m ≈ 16·e_eff²·(1 + O(e_eff²))
    ```
-   
+
 For higher accuracy, use the period ratio:
 ```
 m from K(m)/K'(m) = T_1/T_2 (ratio of periods)
@@ -142,43 +142,43 @@ m from K(m)/K'(m) = T_1/T_2 (ratio of periods)
 def estimate_elliptic_parameter(times, states):
     """
     Estimate elliptic parameter m from trajectory data.
-    
+
     Uses FFT to find dominant frequencies, then fits m.
     """
     from scipy.fft import fft, fftfreq
     from scipy.optimize import minimize_scalar
-    
+
     # Extract radial distance
     r = np.linalg.norm(states[:, :3], axis=1)
-    
+
     # Find dominant frequencies via FFT
     dt = times[1] - times[0]
     freqs = fftfreq(len(r), dt)
     spectrum = np.abs(fft(r - np.mean(r)))
-    
+
     # Get top 2 positive frequencies
     pos_mask = freqs > 0
     pos_freqs = freqs[pos_mask]
     pos_spectrum = spectrum[pos_mask]
-    
+
     sorted_idx = np.argsort(pos_spectrum)[::-1]
     f1 = pos_freqs[sorted_idx[0]]
     f2 = pos_freqs[sorted_idx[1]] if len(sorted_idx) > 1 else f1/2
-    
+
     # Period ratio
     T1, T2 = 1/f1, 1/f2
     ratio = T1 / T2 if T1 > T2 else T2 / T1
-    
+
     # Fit m from K(m)/K'(m) = ratio
     from scipy.special import ellipk
-    
+
     def objective(m):
         if m <= 0 or m >= 1:
             return 1e10
         K = ellipk(m)
         Kp = ellipk(1 - m)
         return (K / Kp - ratio)**2
-    
+
     result = minimize_scalar(objective, bounds=(0.01, 0.99), method='bounded')
     return result.x
 ```
@@ -198,25 +198,25 @@ A trajectory is quasi-periodic if:
 def detect_quasi_periodic(times, states, freq_threshold=0.1):
     """
     Detect quasi-periodic motion via FFT analysis.
-    
+
     Returns:
         is_quasi_periodic: bool
         frequencies: List of dominant frequencies
         frequency_ratio: Ratio of top 2 frequencies
     """
     from scipy.fft import fft, fftfreq
-    
+
     # Use radial distance as proxy
     r = np.linalg.norm(states[:, :3], axis=1)
     r_centered = r - np.mean(r)
-    
+
     dt = times[1] - times[0]
     n = len(r)
-    
+
     # FFT
     spectrum = np.abs(fft(r_centered))[:n//2]
     freqs = fftfreq(n, dt)[:n//2]
-    
+
     # Find peaks above threshold
     threshold = freq_threshold * np.max(spectrum)
     peaks = []
@@ -224,17 +224,17 @@ def detect_quasi_periodic(times, states, freq_threshold=0.1):
         if spectrum[i] > threshold:
             if spectrum[i] > spectrum[i-1] and spectrum[i] > spectrum[i+1]:
                 peaks.append((freqs[i], spectrum[i]))
-    
+
     if len(peaks) < 2:
         return False, [], None
-    
+
     # Sort by amplitude
     peaks.sort(key=lambda x: -x[1])
     f1, f2 = peaks[0][0], peaks[1][0]
-    
+
     # Check if ratio is irrational-like
     ratio = max(f1, f2) / min(f1, f2)
-    
+
     # Test against simple rationals
     is_rational = False
     for p in range(1, 10):
@@ -242,7 +242,7 @@ def detect_quasi_periodic(times, states, freq_threshold=0.1):
             if abs(ratio - p/q) < 0.01:
                 is_rational = True
                 break
-    
+
     return not is_rational, [f1, f2], ratio
 ```
 
@@ -256,7 +256,7 @@ def detect_quasi_periodic(times, states, freq_threshold=0.1):
 def generate_elliptic_basis(m, variables=['r']):
     """
     Generate elliptic function basis with parameter m.
-    
+
     Categories:
     1. Basic: sn, cn, dn
     2. Products: sn*cn, sn*dn, cn*dn
@@ -264,46 +264,46 @@ def generate_elliptic_basis(m, variables=['r']):
     4. Ratios: sn/cn, cn/dn, ...
     """
     from scipy.special import ellipj
-    
+
     basis = []
-    
+
     # Helper to evaluate Jacobi functions
-    def make_sn(m): 
+    def make_sn(m):
         return lambda r: ellipj(r, m)[0]
-    def make_cn(m): 
+    def make_cn(m):
         return lambda r: ellipj(r, m)[1]
-    def make_dn(m): 
+    def make_dn(m):
         return lambda r: ellipj(r, m)[2]
-    
+
     sn = make_sn(m)
     cn = make_cn(m)
     dn = make_dn(m)
-    
+
     # Basic (3)
     basis.extend([sn, cn, dn])
-    
+
     # Products (3)
     basis.append(lambda r: sn(r) * cn(r))
     basis.append(lambda r: sn(r) * dn(r))
     basis.append(lambda r: cn(r) * dn(r))
-    
+
     # Powers (9)
     for power in [2, 3, 4]:
         basis.append(lambda r, p=power: sn(r)**p)
         basis.append(lambda r, p=power: cn(r)**p)
         basis.append(lambda r, p=power: dn(r)**p)
-    
+
     # Ratios (6) - with safe division
     def safe_div(a, b, eps=1e-10):
         return a / np.maximum(np.abs(b), eps) * np.sign(b + eps)
-    
+
     basis.append(lambda r: safe_div(sn(r), cn(r)))  # tan-like
     basis.append(lambda r: safe_div(sn(r), dn(r)))
     basis.append(lambda r: safe_div(cn(r), dn(r)))
     basis.append(lambda r: safe_div(cn(r), sn(r)))  # cot-like
     basis.append(lambda r: safe_div(dn(r), sn(r)))
     basis.append(lambda r: safe_div(dn(r), cn(r)))
-    
+
     return basis
 ```
 
@@ -315,28 +315,28 @@ def generate_extended_elliptic_basis(m, state_dim=6):
     Generate elliptic basis mixed with phase space coordinates.
     """
     from scipy.special import ellipj
-    
+
     basis = []
-    
+
     def jacobi(r, m):
         sn, cn, dn, _ = ellipj(r, m)
         return sn, cn, dn
-    
+
     # Mixed with position components
     for i in range(3):
         # x_i * sn(r)
-        basis.append(lambda state, i=i, m=m: 
+        basis.append(lambda state, i=i, m=m:
             state[:, i] * ellipj(np.linalg.norm(state[:, :3], axis=1), m)[0])
         # x_i * cn(r)
         basis.append(lambda state, i=i, m=m:
             state[:, i] * ellipj(np.linalg.norm(state[:, :3], axis=1), m)[1])
-    
+
     # Mixed with velocity components
     for i in range(3, 6):
         # v_i * dn(r)
         basis.append(lambda state, i=i, m=m:
             state[:, i] * ellipj(np.linalg.norm(state[:, :3], axis=1), m)[2])
-    
+
     return basis
 ```
 
@@ -379,28 +379,28 @@ def complete_elliptic_E(m):
 def verify_elliptic_identities(u, m, tol=1e-10):
     """
     Verify fundamental elliptic identities.
-    
+
     Returns:
         passed: bool
         errors: Dict of identity errors
     """
     sn, cn, dn, _ = ellipj(u, m)
-    
+
     errors = {}
-    
+
     # sn² + cn² = 1
     errors['pythagorean'] = np.max(np.abs(sn**2 + cn**2 - 1))
-    
+
     # dn² + m*sn² = 1
     errors['dn_identity'] = np.max(np.abs(dn**2 + m * sn**2 - 1))
-    
+
     # Derivative check: d(sn)/du = cn*dn
     du = 1e-6
     sn_plus, cn_plus, dn_plus, _ = ellipj(u + du, m)
     d_sn_numerical = (sn_plus - sn) / du
     d_sn_analytical = cn * dn
     errors['derivative'] = np.max(np.abs(d_sn_numerical - d_sn_analytical))
-    
+
     passed = all(e < tol for e in errors.values())
     return passed, errors
 ```
@@ -411,28 +411,28 @@ def verify_elliptic_identities(u, m, tol=1e-10):
 def search_elliptic_integral(times, states, mu=None):
     """
     Search for conserved quantities in elliptic function basis.
-    
+
     Returns:
         result: SearchResult with expression, m, confidence, error
     """
     from src.python.symbolic.regression_pipeline import SINDyRegressor
-    
+
     # Step 1: Estimate elliptic parameter
     m = estimate_elliptic_parameter(times, states)
-    
+
     # Step 2: Generate basis
     basis = generate_elliptic_basis(m)
-    
+
     # Step 3: SINDy regression
     sindy = SINDyRegressor(
         basis_functions=basis,
         threshold=0.1,
         alpha=0.01
     )
-    
+
     result = sindy.fit(times, states)
     result.elliptic_parameter = m
-    
+
     return result
 ```
 

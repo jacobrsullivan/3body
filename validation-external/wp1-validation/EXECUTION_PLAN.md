@@ -1,0 +1,89 @@
+# External WP1 Validation Execution Plan (Runbook)
+
+This runbook executes the external validation workflow for WP1 in a reproducible way.
+
+## Workspace
+- Base directory: `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation`
+- Config: `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/config.yaml`
+
+## Phase 1 — Preflight & Dependencies
+```bash
+cd /Users/jacobsullivan/Desktop/3body
+python verify_setup.py
+python -c "import rebound; print(rebound.__version__)"
+
+python -c "import snakemake" || python -m pip install snakemake
+python -c "import heyoka" || python -m pip install heyoka
+
+pytest tests/test_integrators.py::test_ias15_energy_conservation -v
+pytest tests/validation/test_chaos_indicators.py -v
+```
+
+## Phase 2 — Pipeline Hardening (Already Implemented)
+Changes applied:
+- Fixed orbit ID parsing in `Snakefile`.
+- Fixed integrator selection in `Snakefile`.
+- Added `solve_vy_from_jacobi(...)` helper.
+- Added `generate_initial_states_for_mu_c(...)` sampler.
+- Updated `generate_parameters` to emit full `states` array.
+- Updated `integrate_orbit` to read `states` directly.
+- Added unit tests for new helpers.
+
+## Phase 3 — Smoke Run
+```bash
+cd /Users/jacobsullivan/Desktop/3body
+snakemake --cores 8 --config tier=1 n_mu=2 n_C=2 n_orbits_per_mu_c=5
+```
+Expected outputs:
+- `data/tier1/parameters.h5`
+- `data/tier1/analysis/validation_report.txt`
+
+## Phase 4 — Full Tier Runs
+```bash
+cd /Users/jacobsullivan/Desktop/3body
+snakemake --cores 16 --config tier=1
+snakemake --cores 16 --config tier=2
+```
+Log output:
+- `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/logs/`
+
+## Phase 5 — JPL Reference Data
+Fetch and normalize JPL periodic orbits:
+```bash
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/fetch_jpl_periodic_orbits.py \
+  --system earth-moon
+
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/normalize_jpl_orbits.py \
+  --input /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/raw_latest.json \
+  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet
+```
+
+## Phase 6 — Comparative Validation
+```bash
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/compare_to_jpl.py \
+  --jpl /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet \
+  --use-periodic-library \
+  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results/jpl_comparison_summary.csv
+
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/extended_precision_check.py \
+  --use-periodic-library \
+  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results/extended_precision_summary.csv
+```
+
+## Phase 7 — Chaos Maps
+```bash
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/generate_chaos_maps.py \
+  --resolution 1000 \
+  --output-dir /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results
+```
+
+## Phase 8 — Reporting
+```bash
+python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/generate_report.py \
+  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/reports/wp1_external_validation_report.md
+```
+
+## Notes
+- The Snakefile now supports config overrides for `n_mu`, `n_C`, and `n_orbits_per_mu_c`.
+- If `--config mu=<value>` is provided, the pipeline will fix `mu` to that single value.
+- The JPL API endpoint can be overridden in `fetch_jpl_periodic_orbits.py` via `--base-url`.

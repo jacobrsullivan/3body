@@ -178,6 +178,65 @@ def calculate_jacobi_constant(state: np.ndarray, mu: float) -> float:
     return C
 
 
+def solve_vy_from_jacobi(
+    state_no_vy: np.ndarray,
+    jacobi_constant: float,
+    mu: float,
+    sign: float = 1.0,
+) -> float:
+    """
+    Solve for vy given Jacobi constant and the other state components.
+
+    Accepts state vectors in one of these forms:
+    - [x, y, z, vx, vy, vz] (vy ignored)
+    - [x, y, z, vx, vz] (vy omitted)
+
+    Args:
+        state_no_vy: State without vy or with vy placeholder.
+        jacobi_constant: Target Jacobi constant C.
+        mu: Mass parameter (M2 / (M1 + M2)).
+        sign: Sign for vy (+1 or -1). Defaults to +1.
+
+    Returns:
+        vy consistent with the Jacobi constant.
+
+    Raises:
+        ValueError: If vy^2 is negative or state shape is invalid.
+    """
+    state = np.asarray(state_no_vy, dtype=float).reshape(-1)
+
+    if len(state) == 6:
+        x, y, z, vx, _, vz = state
+    elif len(state) == 5:
+        x, y, z, vx, vz = state
+    else:
+        raise ValueError("state_no_vy must be length 5 or 6")
+
+    # Distances to primaries
+    r1 = np.sqrt((x + mu) ** 2 + y**2 + z**2)
+    r2 = np.sqrt((x - 1 + mu) ** 2 + y**2 + z**2)
+
+    r1_safe = max(r1, 1e-15)
+    r2_safe = max(r2, 1e-15)
+
+    vy_sq = (
+        x**2
+        + y**2
+        + 2 * (1 - mu) / r1_safe
+        + 2 * mu / r2_safe
+        - (vx**2 + vz**2)
+        - jacobi_constant
+    )
+
+    if vy_sq < 0:
+        raise ValueError(
+            f"vy^2 is negative ({vy_sq:.3e}); no real vy for given C and state."
+        )
+
+    vy = np.sqrt(vy_sq)
+    return vy if sign >= 0 else -vy
+
+
 def calculate_energy(state: np.ndarray, mu: float) -> float:
     """
     Calculate total energy in the co-rotating frame.

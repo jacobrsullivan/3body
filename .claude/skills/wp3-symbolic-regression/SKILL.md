@@ -420,16 +420,16 @@ def search_for_integrals(times, states, mu, E, L):
     from src.python.symbolic.regression_pipeline import HybridRegressor
     from src.python.symbolic.enhanced_validation import multi_scale_conservation_test
     from src.python.symbolic.interpretability import interpretability_score
-    
+
     # 1. Run hybrid search
     regressor = HybridRegressor(
         sindy_threshold=0.1,
         pysr_iterations=30
     )
     result = regressor.fit(times, states)
-    
+
     print(f"Stage 1: Found {len(result.candidates)} raw candidates")
-    
+
     # 2. Validate each candidate
     validated = []
     for candidate in result.candidates:
@@ -439,26 +439,26 @@ def search_for_integrals(times, states, mu, E, L):
             times, states,
             scales=[0.1, 1.0, 10.0]
         )
-        
+
         max_error = max(scales.values())
-        
+
         if max_error < 1e-10:
             candidate.max_error = max_error
             candidate.interpretability = interpretability_score(candidate.expression)
             validated.append(candidate)
-    
+
     print(f"Stage 2: {len(validated)} candidates pass validation")
-    
+
     # 3. Rank by interpretability
     validated.sort(key=lambda c: -c.interpretability)
-    
+
     # 4. Display results
     print("\n=== Final Candidates ===")
     for i, c in enumerate(validated[:5]):
         print(f"\n{i+1}. {c.expression}")
         print(f"   Max conservation error: {c.max_error:.2e}")
         print(f"   Interpretability: {c.interpretability:.2f}")
-    
+
     return validated
 ```
 
@@ -510,23 +510,23 @@ if result.success:
 def diagnose_regression_issues(result, times, states):
     """Diagnose common regression problems."""
     issues = []
-    
+
     # Check candidate count
     if len(result.candidates) == 0:
         issues.append("No candidates found - try lowering threshold")
     elif len(result.candidates) > 50:
         issues.append("Too many candidates - try raising threshold")
-    
+
     # Check conservation errors
     for c in result.candidates[:5]:
         if c.conservation_error > 1e-5:
             issues.append(f"High conservation error for {c.expression}")
-    
+
     # Check interpretability
     avg_interp = np.mean([c.interpretability for c in result.candidates[:10]])
     if avg_interp < 0.3:
         issues.append("Low interpretability - expressions may be too complex")
-    
+
     if not issues:
         print("✓ No issues detected")
     else:

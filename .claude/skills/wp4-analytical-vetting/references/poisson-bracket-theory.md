@@ -65,34 +65,34 @@ from sympy import symbols, diff, simplify, sqrt
 def compute_poisson_bracket_symbolic(f_expr, g_expr, q_vars, p_vars):
     """
     Compute Poisson bracket {f, g} symbolically.
-    
+
     Parameters:
         f_expr: SymPy expression for f
         g_expr: SymPy expression for g
         q_vars: List of position symbols [q1, q2, ...]
         p_vars: List of momentum symbols [p1, p2, ...]
-        
+
     Returns:
         SymPy expression for {f, g}
     """
     if len(q_vars) != len(p_vars):
         raise ValueError("q and p must have same length")
-    
+
     n = len(q_vars)
     pb = sp.Integer(0)
-    
+
     for i in range(n):
         q = q_vars[i]
         p = p_vars[i]
-        
+
         # {f, g} = Σ (∂f/∂q · ∂g/∂p - ∂f/∂p · ∂g/∂q)
         df_dq = diff(f_expr, q)
         dg_dp = diff(g_expr, p)
         df_dp = diff(f_expr, p)
         dg_dq = diff(g_expr, q)
-        
+
         pb += df_dq * dg_dp - df_dp * dg_dq
-    
+
     return simplify(pb)
 ```
 
@@ -138,28 +138,28 @@ def compute_pb_staged(f_expr, g_expr, q_vars, p_vars):
     """
     n = len(q_vars)
     terms = []
-    
+
     for i in range(n):
         q = q_vars[i]
         p = p_vars[i]
-        
+
         # Compute derivatives
         df_dq = diff(f_expr, q)
         dg_dp = diff(g_expr, p)
         df_dp = diff(f_expr, p)
         dg_dq = diff(g_expr, q)
-        
+
         # Simplify each derivative
         df_dq = simplify(df_dq)
         dg_dp = simplify(dg_dp)
         df_dp = simplify(df_dp)
         dg_dq = simplify(dg_dq)
-        
+
         # Compute term
         term = df_dq * dg_dp - df_dp * dg_dq
         term = simplify(term)
         terms.append(term)
-    
+
     # Sum and final simplification
     result = sum(terms)
     return simplify(sp.trigsimp(sp.radsimp(result)))
@@ -177,47 +177,47 @@ def compute_poisson_bracket_numerical(
 ):
     """
     Compute Poisson bracket {f, g} numerically using central differences.
-    
+
     Parameters:
         f_func: Function f(state, mu) -> float
         g_func: Function g(state, mu) -> float
         state: 6D array [x, y, z, vx, vy, vz]
         mu: Mass ratio parameter
         epsilon: Finite difference step size
-        
+
     Returns:
         float: Approximate value of {f, g}
     """
     n = len(state) // 2  # n = 3 for 3D
     pb = 0.0
-    
+
     for i in range(n):
         q_idx = i      # Position index
         p_idx = i + n  # Momentum index
-        
+
         # ∂f/∂q via central difference
         state_q_plus = state.copy()
         state_q_minus = state.copy()
         state_q_plus[q_idx] += epsilon
         state_q_minus[q_idx] -= epsilon
         df_dq = (f_func(state_q_plus, mu) - f_func(state_q_minus, mu)) / (2*epsilon)
-        
+
         # ∂g/∂p via central difference
         state_p_plus = state.copy()
         state_p_minus = state.copy()
         state_p_plus[p_idx] += epsilon
         state_p_minus[p_idx] -= epsilon
         dg_dp = (g_func(state_p_plus, mu) - g_func(state_p_minus, mu)) / (2*epsilon)
-        
+
         # ∂f/∂p via central difference
         df_dp = (f_func(state_p_plus, mu) - f_func(state_p_minus, mu)) / (2*epsilon)
-        
+
         # ∂g/∂q via central difference
         dg_dq = (g_func(state_q_plus, mu) - g_func(state_q_minus, mu)) / (2*epsilon)
-        
+
         # Accumulate
         pb += df_dq * dg_dp - df_dp * dg_dq
-    
+
     return pb
 ```
 
@@ -235,7 +235,7 @@ The central difference approximation has error O(ε²):
 def optimal_epsilon(scale=1.0, machine_epsilon=2.2e-16):
     """
     Compute optimal step size for central differences.
-    
+
     For central differences: ε_opt ≈ (3 * ε_mach)^(1/3) * |x|
     """
     return (3 * machine_epsilon)**(1/3) * max(scale, 1.0)
@@ -253,42 +253,42 @@ from mpmath import mp, mpf
 def compute_pb_high_precision(f_func, g_func, state, mu, epsilon=1e-15, dps=50):
     """
     High-precision Poisson bracket using mpmath.
-    
+
     Parameters:
         dps: Decimal places of precision (50 = ~165 bits)
     """
     mp.dps = dps
-    
+
     # Convert state to high precision
     state_hp = [mpf(str(x)) for x in state]
     mu_hp = mpf(str(mu))
     epsilon_hp = mpf(str(epsilon))
-    
+
     n = len(state) // 2
     pb = mpf('0')
-    
+
     for i in range(n):
         q_idx = i
         p_idx = i + n
-        
+
         # Central differences with high precision
         state_q_plus = state_hp.copy()
         state_q_minus = state_hp.copy()
         state_q_plus[q_idx] += epsilon_hp
         state_q_minus[q_idx] -= epsilon_hp
-        
+
         state_p_plus = state_hp.copy()
         state_p_minus = state_hp.copy()
         state_p_plus[p_idx] += epsilon_hp
         state_p_minus[p_idx] -= epsilon_hp
-        
+
         df_dq = (f_func(state_q_plus, mu_hp) - f_func(state_q_minus, mu_hp)) / (2*epsilon_hp)
         dg_dp = (g_func(state_p_plus, mu_hp) - g_func(state_p_minus, mu_hp)) / (2*epsilon_hp)
         df_dp = (f_func(state_p_plus, mu_hp) - f_func(state_p_minus, mu_hp)) / (2*epsilon_hp)
         dg_dq = (g_func(state_q_plus, mu_hp) - g_func(state_q_minus, mu_hp)) / (2*epsilon_hp)
-        
+
         pb += df_dq * dg_dp - df_dp * dg_dq
-    
+
     return float(pb)
 ```
 
@@ -299,11 +299,11 @@ def compute_pb_high_precision(f_func, g_func, state, mu, epsilon=1e-15, dps=50):
 ```python
 class PoissonBracketValidator:
     """Validate conservation via Poisson bracket sampling."""
-    
+
     def __init__(self, mu, hamiltonian_func=None):
         self.mu = mu
         self.H = hamiltonian_func or self._default_hamiltonian
-    
+
     def _default_hamiltonian(self, state, mu):
         """CR3BP Hamiltonian."""
         x, y, z, vx, vy, vz = state
@@ -312,33 +312,33 @@ class PoissonBracketValidator:
         T = 0.5 * (vx**2 + vy**2 + vz**2)
         Omega = 0.5*(x**2 + y**2) + (1-mu)/r1 + mu/r2
         return T - Omega - (x*vy - y*vx)
-    
-    def test_conservation(self, integral_func, num_samples=1000, 
+
+    def test_conservation(self, integral_func, num_samples=1000,
                           tolerance=1e-12, seed=42):
         """
         Test if {I, H} = 0 across sampled states.
-        
+
         Returns:
             ConservationResult with statistics
         """
         np.random.seed(seed)
-        
+
         pb_values = []
         states_tested = []
-        
+
         for _ in range(num_samples):
             # Generate valid state
             state = self._generate_valid_state()
             states_tested.append(state)
-            
+
             # Compute Poisson bracket
             pb = compute_poisson_bracket_numerical(
                 integral_func, self.H, state, self.mu
             )
             pb_values.append(abs(pb))
-        
+
         pb_array = np.array(pb_values)
-        
+
         return ConservationResult(
             passed=np.max(pb_array) < tolerance,
             max_pb=np.max(pb_array),
@@ -350,7 +350,7 @@ class PoissonBracketValidator:
             num_samples=num_samples,
             tolerance=tolerance
         )
-    
+
     def _generate_valid_state(self):
         """Generate physically valid state in CR3BP."""
         while True:
@@ -360,13 +360,13 @@ class PoissonBracketValidator:
             vx = np.random.uniform(-0.5, 0.5)
             vy = np.random.uniform(0.0, 1.0)
             vz = np.random.uniform(-0.2, 0.2)
-            
+
             state = np.array([x, y, z, vx, vy, vz])
-            
+
             # Check not too close to primaries
             r1 = np.sqrt((x + self.mu)**2 + y**2 + z**2)
             r2 = np.sqrt((x - 1 + self.mu)**2 + y**2 + z**2)
-            
+
             if r1 > 0.1 and r2 > 0.1:
                 return state
 ```
@@ -387,34 +387,34 @@ The Poisson bracket extends naturally:
 def compute_pb_s1_lifted(f_func, g_func, lifted_state, mu, epsilon=1e-7):
     """
     Poisson bracket in S¹-bundle lifted space.
-    
+
     Lifted state: [x, y, z, θ, vx, vy, vz, p_θ]
     """
     n_total = len(lifted_state) // 2
     pb = 0.0
-    
+
     for i in range(n_total):
         q_idx = i
         p_idx = i + n_total
-        
+
         # Standard central difference computation
         state_q_plus = lifted_state.copy()
         state_q_minus = lifted_state.copy()
         state_q_plus[q_idx] += epsilon
         state_q_minus[q_idx] -= epsilon
-        
+
         state_p_plus = lifted_state.copy()
         state_p_minus = lifted_state.copy()
         state_p_plus[p_idx] += epsilon
         state_p_minus[p_idx] -= epsilon
-        
+
         df_dq = (f_func(state_q_plus, mu) - f_func(state_q_minus, mu)) / (2*epsilon)
         dg_dp = (g_func(state_p_plus, mu) - g_func(state_p_minus, mu)) / (2*epsilon)
         df_dp = (f_func(state_p_plus, mu) - f_func(state_p_minus, mu)) / (2*epsilon)
         dg_dq = (g_func(state_q_plus, mu) - g_func(state_q_minus, mu)) / (2*epsilon)
-        
+
         pb += df_dq * dg_dp - df_dp * dg_dq
-    
+
     return pb
 ```
 
@@ -444,19 +444,19 @@ def compute_pb_with_diagnostics(f_func, g_func, state, mu, epsilon=1e-7):
     """Compute Poisson bracket with term-by-term diagnostics."""
     n = len(state) // 2
     terms = []
-    
+
     for i in range(n):
         # ... compute term_i
         terms.append(term_i)
-    
+
     pb = sum(terms)
     max_magnitude = max(abs(t) for t in terms)
-    
+
     if max_magnitude > 1e6 * abs(pb) and abs(pb) < 1e-10:
         print(f"WARNING: Severe cancellation detected")
         print(f"  Max term: {max_magnitude:.2e}, Result: {pb:.2e}")
         print("  Consider extended precision")
-    
+
     return pb
 ```
 

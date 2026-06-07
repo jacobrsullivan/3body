@@ -17,7 +17,7 @@ Symmetries implemented:
 
 import jax
 import jax.numpy as jnp
-from typing import List, Callable, Tuple
+from typing import List, Callable, Tuple, Dict
 from functools import partial
 
 from .jax_utils import split_state, join_state
@@ -50,8 +50,7 @@ def time_reversal_transform(z: jnp.ndarray) -> jnp.ndarray:
 
 
 def permutation_transform_s1(
-    z: jnp.ndarray,
-    permutation: Tuple[int, int, int] = (0, 2, 1)
+    z: jnp.ndarray, permutation: Tuple[int, int, int] = (0, 2, 1)
 ) -> jnp.ndarray:
     """
     Permutation transformation for S¹ bundle coordinates.
@@ -85,11 +84,7 @@ def permutation_transform_s1(
     return z
 
 
-def rotation_transform(
-    z: jnp.ndarray,
-    axis: jnp.ndarray,
-    angle: float
-) -> jnp.ndarray:
+def rotation_transform(z: jnp.ndarray, axis: jnp.ndarray, angle: float) -> jnp.ndarray:
     """
     SO(3) rotation transformation.
 
@@ -117,8 +112,7 @@ def rotation_transform(
         sin_a = jnp.sin(angle)
 
         # Rotation matrix
-        R = jnp.array([[cos_a, -sin_a],
-                       [sin_a, cos_a]])
+        R = jnp.array([[cos_a, -sin_a], [sin_a, cos_a]])
 
         q_rot = R @ q
         p_rot = R @ p
@@ -129,10 +123,7 @@ def rotation_transform(
     return z
 
 
-def virial_scaling_transform(
-    z: jnp.ndarray,
-    scale_factor: float = 1.2
-) -> jnp.ndarray:
+def virial_scaling_transform(z: jnp.ndarray, scale_factor: float = 1.2) -> jnp.ndarray:
     """
     Virial scaling transformation.
 
@@ -171,7 +162,7 @@ def random_rotation_2d(key: jax.random.PRNGKey) -> Callable:
     Returns:
         rotation_fn: Function that rotates 2D states
     """
-    angle = jax.random.uniform(key, minval=0, maxval=2*jnp.pi)
+    angle = jax.random.uniform(key, minval=0, maxval=2 * jnp.pi)
 
     def rotate(z):
         return rotation_transform(z, axis=jnp.array([0, 0, 1]), angle=angle)
@@ -194,9 +185,7 @@ def identity_transform(z: jnp.ndarray) -> jnp.ndarray:
     return z
 
 
-def compose_transforms(
-    *transforms: Callable
-) -> Callable:
+def compose_transforms(*transforms: Callable) -> Callable:
     """
     Compose multiple transformations.
 
@@ -213,6 +202,7 @@ def compose_transforms(
         ... )
         >>> z_transformed = composed(z)
     """
+
     def composed(z):
         result = z
         for transform in transforms:
@@ -224,13 +214,13 @@ def compose_transforms(
 
 def get_symmetry_transforms_3body(
     masses: jnp.ndarray,
-    manifold_type: str = 's1',
+    manifold_type: str = "s1",
     include_time_reversal: bool = True,
     include_permutations: bool = True,
     include_rotations: bool = False,  # Complex for S¹ bundle
     include_virial: bool = False,
     num_rotations: int = 3,
-    seed: int = 42
+    seed: int = 42,
 ) -> List[Callable]:
     """
     Get applicable symmetry transforms for 3-body problem.
@@ -271,7 +261,7 @@ def get_symmetry_transforms_3body(
                 (1, 0, 2),  # Swap 1 and 2
                 (1, 2, 0),  # Cyclic: 1→2, 2→3, 3→1
                 (2, 0, 1),  # Cyclic: 1→3, 2→1, 3→2
-                (2, 1, 0)   # Reverse: 1→3, 2→2, 3→1
+                (2, 1, 0),  # Reverse: 1→3, 2→2, 3→1
             ]
 
             for perm in permutations:
@@ -280,7 +270,7 @@ def get_symmetry_transforms_3body(
                 transforms.append(transform_fn)
 
     # Rotations (for Cartesian coordinates)
-    if include_rotations and manifold_type == 'cartesian':
+    if include_rotations and manifold_type == "cartesian":
         key = jax.random.PRNGKey(seed)
 
         for i in range(num_rotations):
@@ -304,7 +294,7 @@ def test_symmetry_preservation(
     symmetry_fn: Callable,
     test_states: jnp.ndarray,
     known_invariant: Callable,
-    tolerance: float = 1e-6
+    tolerance: float = 1e-6,
 ) -> Dict:
     """
     Test if a known invariant is preserved under a symmetry transformation.
@@ -347,11 +337,11 @@ def test_symmetry_preservation(
     is_symmetry = max_diff < tolerance
 
     results = {
-        'is_symmetry': bool(is_symmetry),
-        'max_difference': float(max_diff),
-        'mean_difference': float(mean_diff),
-        'num_states': len(test_states),
-        'tolerance': tolerance
+        "is_symmetry": bool(is_symmetry),
+        "max_difference": float(max_diff),
+        "mean_difference": float(mean_diff),
+        "num_states": len(test_states),
+        "tolerance": tolerance,
     }
 
     return results
@@ -390,7 +380,7 @@ if __name__ == "__main__":
     # Test 4: Rotation (2D)
     print("\n[Test 4] 2D rotation (π/2):")
     z_2d = jnp.array([1.0, 0.0, 0.0, 1.0])  # q=[1,0], p=[0,1]
-    z_rot = rotation_transform(z_2d, axis=jnp.array([0, 0, 1]), angle=jnp.pi/2)
+    z_rot = rotation_transform(z_2d, axis=jnp.array([0, 0, 1]), angle=jnp.pi / 2)
     print(f"  Original: {z_2d}")
     print(f"  Rotated π/2: {z_rot}")
     print(f"  Expected: [0, 1, -1, 0] (approximately)")
@@ -403,7 +393,7 @@ if __name__ == "__main__":
         include_time_reversal=True,
         include_permutations=True,
         include_rotations=False,
-        include_virial=False
+        include_virial=False,
     )
     print(f"  Equal masses: {masses_equal}")
     print(f"  Number of symmetries: {len(transforms)}")
@@ -413,9 +403,7 @@ if __name__ == "__main__":
     print("\n[Test 6] Get symmetries for 3-body (unequal masses):")
     masses_unequal = jnp.array([1.0, 2.0, 3.0])
     transforms = get_symmetry_transforms_3body(
-        masses_unequal,
-        include_time_reversal=True,
-        include_permutations=True
+        masses_unequal, include_time_reversal=True, include_permutations=True
     )
     print(f"  Unequal masses: {masses_unequal}")
     print(f"  Number of symmetries: {len(transforms)}")
@@ -431,10 +419,7 @@ if __name__ == "__main__":
 
     test_states = jax.random.normal(jax.random.PRNGKey(0), (100, 4))
     results = test_symmetry_preservation(
-        time_reversal_transform,
-        test_states,
-        harmonic_energy,
-        tolerance=1e-6
+        time_reversal_transform, test_states, harmonic_energy, tolerance=1e-6
     )
 
     print(f"  Is energy preserved under time reversal: {results['is_symmetry']}")
@@ -444,8 +429,7 @@ if __name__ == "__main__":
     # Test 8: Compose transformations
     print("\n[Test 8] Compose transformations:")
     composed = compose_transforms(
-        time_reversal_transform,
-        lambda z: virial_scaling_transform(z, 1.5)
+        time_reversal_transform, lambda z: virial_scaling_transform(z, 1.5)
     )
     z_composed = composed(z)
     print(f"  Original: {z}")

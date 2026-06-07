@@ -193,7 +193,7 @@ The pipeline can automatically select the appropriate tier:
 def select_tier(state0, mu, initial_result=None):
     """
     Automatically select precision tier based on orbit characteristics.
-    
+
     Returns:
         'tier1' or 'tier2'
     """
@@ -201,25 +201,25 @@ def select_tier(state0, mu, initial_result=None):
     # - Periodic orbit families
     # - Morales-Ramis validation
     # - Close encounter orbits
-    
+
     if initial_result is not None:
         # Promote if Tier 1 precision violated
         if initial_result['jacobi_drift'] > 1e-14:
             return 'tier2'
-        
+
         # Promote borderline chaos
         if 2.5 <= initial_result['megno'] <= 3.0:
             return 'tier2'
-    
+
     # Check for close encounters in initial conditions
     x, y, z = state0[:3]
     r1 = np.sqrt((x + mu)**2 + y**2 + z**2)
     r2 = np.sqrt((x - 1 + mu)**2 + y**2 + z**2)
     r_min = min(r1, r2)
-    
+
     if r_min < 0.1:  # Close to primary
         return 'tier2'
-    
+
     return 'tier1'
 ```
 
@@ -228,15 +228,15 @@ def select_tier(state0, mu, initial_result=None):
 ```python
 def integrate_with_promotion(state0, mu, t_max):
     """Integrate with automatic tier promotion."""
-    
+
     # Try Tier 1 first
     result = integrate_tier1(state0, mu, t_max)
-    
+
     # Check if promotion needed
     if not validate_tier1(result):
         print(f"Promoting orbit to Tier 2 (Jacobi drift: {result['jacobi_drift']:.2e})")
         result = integrate_tier2(state0, mu, t_max)
-    
+
     return result
 ```
 

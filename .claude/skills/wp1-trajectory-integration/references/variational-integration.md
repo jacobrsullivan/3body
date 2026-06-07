@@ -79,28 +79,28 @@ For the CR3BP in rotating frame with state x = [q, p] = [x, y, z, vx, vy, vz]:
 def cr3bp_variational(t, state, mu):
     """
     Compute state derivative and variational matrix.
-    
+
     Args:
         t: time
         state: (42,) = [x(6), Φ(36)] flattened state + fundamental matrix
         mu: mass ratio
-    
+
     Returns:
         (42,) derivative of state + fundamental matrix
     """
     # Extract state and fundamental matrix
     x = state[:6]
     Phi = state[6:].reshape(6, 6)
-    
+
     # Compute positions
     r1_vec = np.array([x[0] + mu, x[1], x[2]])
     r2_vec = np.array([x[0] - 1 + mu, x[1], x[2]])
     r1 = np.linalg.norm(r1_vec)
     r2 = np.linalg.norm(r2_vec)
-    
+
     # State derivative (CR3BP dynamics)
     x_dot = cr3bp_dynamics(t, x, mu)
-    
+
     # Hessian matrix components
     # Ω_xx, Ω_xy, Ω_xz, Ω_yy, Ω_yz, Ω_zz
     Omega_xx = 1 - (1-mu)/r1**3 - mu/r2**3 + 3*(1-mu)*(x[0]+mu)**2/r1**5 + 3*mu*(x[0]-1+mu)**2/r2**5
@@ -109,7 +109,7 @@ def cr3bp_variational(t, state, mu):
     Omega_xy = 3*(1-mu)*(x[0]+mu)*x[1]/r1**5 + 3*mu*(x[0]-1+mu)*x[1]/r2**5
     Omega_xz = 3*(1-mu)*(x[0]+mu)*x[2]/r1**5 + 3*mu*(x[0]-1+mu)*x[2]/r2**5
     Omega_yz = 3*(1-mu)*x[1]*x[2]/r1**5 + 3*mu*x[1]*x[2]/r2**5
-    
+
     # Build Jacobian matrix A = Df(x)
     A = np.array([
         [0, 0, 0, 1, 0, 0],
@@ -119,10 +119,10 @@ def cr3bp_variational(t, state, mu):
         [Omega_xy, Omega_yy, Omega_yz, -2, 0, 0],
         [Omega_xz, Omega_yz, Omega_zz, 0, 0, 0]
     ])
-    
+
     # Fundamental matrix derivative
     Phi_dot = A @ Phi
-    
+
     # Combine
     return np.concatenate([x_dot, Phi_dot.flatten()])
 ```
@@ -181,7 +181,7 @@ J = np.array([[0, 0, 0, 1, 0, 0],
               [-1, 0, 0, 0, 0, 0],
               [0, -1, 0, 0, 0, 0],
               [0, 0, -1, 0, 0, 0]])
-              
+
 symplectic_error = np.max(np.abs(M.T @ J @ M - J))
 print(f"Symplectic error: {symplectic_error:.2e}")  # Should be < 1e-20 for Tier 2
 ```
@@ -252,28 +252,28 @@ class VariationalIntegrator:
     """
     Integrator for state + variational equations.
     """
-    
+
     def __init__(self, mu, integrator='adaptive_symplectic', precision='double'):
         self.mu = mu
         self.integrator_type = integrator
         self.precision = precision
-        
+
     def integrate(self, state0, t_span, compute_monodromy=False):
         """
         Integrate state and variational equations.
-        
+
         Args:
             state0: (6,) initial state
             t_span: (t0, tf) time span
             compute_monodromy: If True, return monodromy matrix
-            
+
         Returns:
             dict with 'times', 'states', 'phi', and optionally 'monodromy', 'floquet'
         """
         # Initialize augmented state: [x(6), Φ(36)]
         Phi0 = np.eye(6).flatten()
         augmented0 = np.concatenate([state0, Phi0])
-        
+
         # Integrate
         if self.integrator_type == 'adaptive_symplectic':
             integrator = AdaptiveSymplecticIntegrator(
@@ -283,26 +283,26 @@ class VariationalIntegrator:
             )
         else:
             integrator = IAS15Integrator(mu=self.mu)
-            
+
         times, augmented_states = self._integrate_variational(
             augmented0, t_span, integrator
         )
-        
+
         # Extract results
         states = augmented_states[:, :6]
         phi_flat = augmented_states[:, 6:]
         phi = phi_flat.reshape(-1, 6, 6)
-        
+
         result = {
             'times': times,
             'states': states,
             'phi': phi,  # Fundamental matrix at each time
         }
-        
+
         if compute_monodromy:
             result['monodromy'] = phi[-1]
             result['floquet'] = np.linalg.eigvals(phi[-1])
-            
+
         return result
 ```
 
@@ -369,9 +369,9 @@ def verify_symplectic(Phi, tol=1e-12):
         [np.zeros((3,3)), np.eye(3)],
         [-np.eye(3), np.zeros((3,3))]
     ])
-    
+
     error = np.max(np.abs(Phi.T @ J @ Phi - J))
-    
+
     if error > tol:
         print(f"WARNING: Symplectic structure violated: {error:.2e}")
         return False
@@ -386,16 +386,16 @@ For monodromy computation, period must be very accurate:
 def refine_period(state0, period_estimate, mu, tol=1e-12):
     """Refine orbital period using Poincaré section."""
     from scipy.optimize import brentq
-    
+
     def crossing_condition(T):
         # Integrate to time T
         _, states = integrator.integrate(state0, (0, T))
         # Return y-coordinate (for y=0 section)
         return states[-1][1]
-    
+
     # Bracket and refine
-    period_refined = brentq(crossing_condition, 
-                           period_estimate * 0.99, 
+    period_refined = brentq(crossing_condition,
+                           period_estimate * 0.99,
                            period_estimate * 1.01,
                            xtol=tol)
     return period_refined
