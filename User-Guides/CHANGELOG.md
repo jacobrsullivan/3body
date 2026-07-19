@@ -3,11 +3,24 @@
 **Project**: Three-Body Problem Integrability Research - User Documentation
 **Repository**: https://github.com/jacobrsullivan/3body
 
-> **Current status note (2026-07-19)**: Historical changelog entries below may describe WP1 as complete or publication-ready. The current bobs-mini validation supersedes those entries: WP1 acceptance gates and bounded Tier 2 `1e-25` smoke pass, but production-scale Tier 2 and periodic-candidate quality remain publication blockers.
+> **Current status note (2026-07-19)**: Historical entries below may describe WP1 as broadly complete. Formal qualification `WP1Q-v1-937694ba58a8` now passes for the declared external numerical-method scope; native production-scale periodic-orbit catalogue generation remains outside that claim.
 
 ---
 
 ## Version History
+
+### v1.3 (2026-07-19) - WP1 Formal Qualification
+
+**Type**: Evidence and claim-boundary update
+
+- Recorded the passing locked development, calibration, and holdout campaign.
+- Added the 67,218-record pinned NASA/JPL source and 400-record stratified corpus.
+- Documented independent 224-bit oracle, STM/Floquet, strict reconstruction,
+  bounded Linux parity, and qualification-aware HDF5/Parquet evidence.
+- Updated test counts to 843 collected, 104 focused WP1 passed, and 2/2 CTests.
+- Preserved the explicit exclusion of native production-scale catalogue
+  generation, long-horizon claims, production Tier 2 scale, regularized
+  close-encounter switching, and validated MEGNO/FLI labels.
 
 ### v1.2 (2025-11-25) - Status Updates & File Structure Corrections
 

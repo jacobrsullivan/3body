@@ -1,7 +1,7 @@
 # Work Package 1: High-Fidelity CR3BP Trajectory Catalogue
 ## Implementation Status Report - 22nd November 2025
 
-> **Current status note (2026-07-19)**: This 2025 implementation-status report is historical. The current bobs-mini validation record is in `../../notes/wp1-bobs-mini-migration-plan.md`. The acceptance gate and bounded Tier 2 `1e-25` smoke now pass; production-scale Tier 2 and periodic-candidate validation remain open.
+> **Current status note (2026-07-19)**: This 2025 implementation-status report is historical. Formal qualification `WP1Q-v1-937694ba58a8` now passes all locked development, calibration, and holdout gates against a pinned multi-system NASA/JPL corpus. The current record is in `../../validation-external/wp1-validation/reports/wp1_qualification_report.md`. Native production-catalogue generation and production-scale Tier 2 remain outside that qualified scope.
 
 **Overall Status**: 🟡 **60% COMPLETE** (Excellent Foundations, Missing Key WP1-Specific Requirements)
 

@@ -109,6 +109,40 @@ gate and reusing the same holdout.
 - Freeze lock: `validation-external/wp1-validation/reports/wp1_qualification_lock.json`
 - Decision report: `validation-external/wp1-validation/reports/wp1_qualification_report.md`
 - Machine record: `validation-external/wp1-validation/reports/wp1_qualification_record.json`
+- Qualified artifact audit: `validation-external/wp1-validation/reports/wp1_qualified_artifact_audit.json`
+
+## Final Decision
+
+The campaign completed with decision `PASS` under qualification ID
+`WP1Q-v1-937694ba58a8`. The immutable lock hash is
+`ae72214d2149138a677bd1d4c7996347cf0bfa454290d6f1a06aa4daf88c83df`.
+Development, calibration, and first-execution holdout each passed 39/39 gates.
+
+Holdout evidence:
+
+- 80/80 float64 periodic-orbit propagations succeeded.
+- 36/36 independent 224-bit Taylor-oracle comparisons succeeded.
+- 48/48 analytic STM/Floquet cases succeeded with 100% stability
+  classification accuracy; stability-index relative-error p95 was `3.33e-6`.
+- 40/40 perturbed-seed reconstructions succeeded; closure-error p95 was
+  `1.17e-11` and symmetry-residual p95 was `3.50e-13`.
+- Float64 maximum-Jacobi-drift p95 was `1.04e-13`.
+- Oracle checkpoint-state-error p95 was `6.83e-10` against the locked `1e-9`
+  gate, and high-precision Jacobi-drift p95 was `1.85e-30`.
+
+Post-decision artifact evidence:
+
+- Qualified Tier 1: 30 HDF5 files and 630 Parquet rows, with every orbit
+  retained and every artifact stamped with the qualification hashes.
+- Qualified Tier 2: 3 HDF5 files and 9 Parquet rows, with exact decimal
+  high-precision states retained alongside float64 projections.
+- Tier 2 maximum relative Jacobi drift was `6.53e-28` against `1e-25`.
+- One Tier 1 MEGNO/FLI solve failed and remains present as an explicit failed
+  label. This is outside the qualified claim and was not silently dropped.
+
+The result substantiates the bounded claim in this document. It does not remove
+the separate requirement to qualify native large-scale periodic-orbit
+generation before calling a WP1-generated production catalogue publish-ready.
 
 ## Downstream Rule
 

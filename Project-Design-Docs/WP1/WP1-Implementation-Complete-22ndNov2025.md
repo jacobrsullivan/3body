@@ -1,6 +1,6 @@
 # WP1 Implementation Complete - 22nd November 2025
 
-> **Current status note (2026-07-19)**: This 2025 completion report is superseded by the bobs-mini validation record in `../../notes/wp1-bobs-mini-migration-plan.md`. The current WP1 acceptance gate and a bounded Tier 2 `1e-25` smoke pass, but WP1 is not publication-ready: production-scale Tier 2, periodic-candidate quality, reversibility, and convergence remain unresolved.
+> **Current status note (2026-07-19)**: This 2025 completion report is historical. Formal qualification `WP1Q-v1-937694ba58a8` now passes against a locked external NASA/JPL corpus, including independent high-precision, stability, reconstruction, and artifact-contract evidence. This does not qualify native production-scale periodic-orbit catalogue generation. See `../../validation-external/wp1-validation/reports/wp1_qualification_report.md`.
 
 **Historical Status**: ✅ **100% COMPLETE** (superseded by 2026-07-19 validation)
 **Date**: November 22, 2025

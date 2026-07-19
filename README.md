@@ -23,28 +23,31 @@ This project systematically tests this hypothesis through:
 
 | Work Package | Description | Status | Completion |
 |--------------|-------------|--------|------------|
-| **WP1** | High-Precision Infrastructure | Hardening | Acceptance gate and bounded Tier 2 smoke pass; validation blockers remain |
+| **WP1** | High-Precision Infrastructure | Qualified (scoped) | External CR3BP qualification passes; native production-catalogue claim remains open |
 | **WP2** | Geometric Foundations & Lifts | Prototype | Needs validation against WP1 evidence |
 | **WP3** | Invariant Discovery (ML + Symbolic) | Prototype | Imports and collection repaired; publication claims not validated |
 | **WP4** | Rigorous Validation ("The Gauntlet") | Prototype | Validation criteria need regenerated evidence |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
-**Overall**: the codebase is an active research prototype. WP1 now has a reproducible bobs-mini acceptance gate and a publication-scoped external/JPL-seeded validation catalogue, but the current evidence does not support a native WP1-generated periodic-orbit catalogue claim yet.
+**Overall**: the codebase is an active research prototype. WP1 has a passing, locked qualification against external NASA/JPL periodic-orbit data. That result qualifies the declared propagation, precision, stability, representative reconstruction, and output-contract scope; it does not qualify native production-scale periodic-orbit catalogue generation.
 
 ### Current WP1 Evidence
 
 Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
 
-- `./scripts/run_tests.sh` passes: setup verification, clean collection of 831 tests, 92 focused WP1 tests, and 2/2 CTest QD checks.
-- Tier 1 minimal validation regenerated 30 orbits at target `1e-14`: mean drift `2.88e-15`, median drift `4.59e-16`, 95th percentile `1.20e-14`, max drift `2.94e-14`, pass rate `93.3%`.
-- Tier 2 bounded smoke regenerated 3 orbits at target `1e-25` using `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`: mean drift `5.27e-28`, median drift `4.83e-28`, 95th percentile `6.36e-28`, max drift `6.53e-28`, pass rate `100.0%`.
+- Qualification `WP1Q-v1-937694ba58a8` is `PASS`; development, calibration, and first-execution holdout each passed 39/39 locked gates.
+- The pinned JPL source contains 67,218 records across Sun-Earth, Jupiter-Europa, Saturn-Titan, and Earth-Moon. The 400-record corpus covers Lyapunov/Halo families and four stability regimes, split 240/80/80 for development/calibration/holdout.
+- Holdout: 80/80 float64 propagations, 36/36 independent 224-bit Taylor-oracle comparisons, 48/48 STM/Floquet cases, and 40/40 perturbed-seed reconstructions succeeded. Stability classification accuracy was 100%.
+- `./scripts/run_tests.sh` passes: setup verification, clean collection of 843 tests, 104 focused WP1 tests, and 2/2 CTest QD checks. Bounded Linux/amd64 parity passes 12/12 evidence-bearing tests.
+- Qualified Tier 1 regenerated 30 HDF5 orbits and all 630 Parquet rows at target `1e-14`; every artifact contains the qualification ID and hashes. One failed chaos-indicator solve is retained explicitly.
+- Qualified Tier 2 regenerated 3 HDF5 orbits and all 9 Parquet rows at target `1e-25` using 160-bit `heyoka.real`; decimal high-precision states are preserved alongside float64 projections. Maximum relative Jacobi drift was `6.53e-28`.
 - External JPL validation regenerated with 300 sampled JPL candidates from 21,938 fetched records: closure median `2.30e-11`, Jacobi drift median `4.44e-16`.
 - JPL-seeded validation catalogue generated from the same 300 sampled external seeds: 284 accepted rows under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`; accepted-catalogue closure median `2.01e-11`, 95th percentile `9.73e-10`, max `6.23e-09`.
 - Small-amplitude native Lyapunov seeds now use a guarded differential corrector; the corrected Lyapunov convergence/closure diagnostic reports median closure `1.02e-12` and median Jacobi drift about `1.5e-16`.
 - CR3BP rotating-frame reversibility now uses the correct reversing symmetry and passes the short-time `T=1` diagnostic with median position RMS `2.64e-16` and 100% Tier 1 pass rate.
-- Native candidate quality is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01`, median period error `8.90e-01`, and simplified Halo seeds remain uncorrected.
+- The legacy native candidate comparison is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01` and median period error `8.90e-01`. The qualified representative corrector does not yet constitute family continuation or production-scale native generation.
 
-The current report is regenerated at `validation-external/wp1-validation/reports/wp1_external_validation_report.md`; checksum/provenance metadata is at `validation-external/wp1-validation/reports/wp1_artifact_manifest.json`.
+The formal decision is in `validation-external/wp1-validation/reports/wp1_qualification_report.md` and `wp1_qualification_record.json`; downstream artifact evidence is in `wp1_qualified_artifact_audit.json`. The earlier Earth-Moon report remains at `wp1_external_validation_report.md`.
 
 ---
 
@@ -86,8 +89,10 @@ mu = 0.012150585609624  # Earth-Moon mass ratio
 integrator = IAS15Integrator(mu=mu)
 state0 = np.array([1.15, 0.0, 0.0, 0.0, 0.1, 0.0])  # x, y, z, vx, vy, vz
 
-times, states = integrator.integrate(state0, t_span=(0, 100), dt=0.1)
-print(f"Generated {len(times)} trajectory points")
+result = integrator.integrate(state0, duration=100.0, output_interval=0.1)
+if not result.success:
+    raise RuntimeError(result.message)
+print(f"Generated {len(result.times)} trajectory points")
 ```
 
 ---
@@ -100,7 +105,7 @@ WP1 (Trajectories) --> WP2 (Geometry) --> WP3 (Discovery) --> WP4 (Validation) -
 
 ### WP1: High-Precision Infrastructure
 
-Generates and validates CR3BP trajectory data. Current evidence supports the environment, QD build checks, collection gate, focused WP1 tests, a small Tier 1 validation run, a bounded Tier 2 high-precision smoke, and an external/JPL-seeded validation catalogue. Production-scale Tier 2 validation and native WP1 periodic-candidate validation are still open blockers.
+Generates and validates CR3BP trajectory data. The scoped external qualification covers four physical systems, Lyapunov/Halo families, four stability regimes, independent high-precision propagation, analytic STM/Floquet stability, strict representative correction, and qualification-aware HDF5/Parquet output. Production-scale Tier 2 and native family generation/continuation remain outside the qualified claim.
 
 - **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with precision guard), HeyokaTaylor (bounded arbitrary-precision Tier 2 smoke)
 - **Chaos Detection**: MEGNO, FLI indicators

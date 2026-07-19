@@ -1,0 +1,389 @@
+{
+  "case_counts": {
+    "float64": 80,
+    "oracle": 36,
+    "reconstruction": 40,
+    "stability": 48
+  },
+  "corpus_manifest_sha256": "a52509592b71bff631391ad6d2d0fdfa9d62719da5becb8d7652358054e9de49",
+  "evaluated_utc": "2026-07-19T20:05:46.339425+00:00",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "float64.minimum_cases",
+      "observed": 80,
+      "passed": true,
+      "threshold": 20
+    },
+    {
+      "comparator": ">=",
+      "name": "float64.integration_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.jacobi_catalog_delta_p95",
+      "observed": 4.884981308350689e-15,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.jacobi_catalog_delta_max",
+      "observed": 4.884981308350689e-15,
+      "passed": true,
+      "threshold": 5e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.jacobi_max_drift_p95",
+      "observed": 1.0380585280245209e-13,
+      "passed": true,
+      "threshold": 1e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.jacobi_max_drift_max",
+      "observed": 7.709388682997087e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.frame_roundtrip_max",
+      "observed": 3.552713678800501e-15,
+      "passed": true,
+      "threshold": 5e-13
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.reversibility_error_p95",
+      "observed": 2.2484741674309956e-15,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "float64.reversibility_error_max",
+      "observed": 3.602109700105312e-13,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": ">=",
+      "name": "oracle.minimum_cases",
+      "observed": 36,
+      "passed": true,
+      "threshold": 24
+    },
+    {
+      "comparator": ">=",
+      "name": "oracle.success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle.high_precision_jacobi_drift_p95",
+      "observed": 1.8485450862575634e-30,
+      "passed": true,
+      "threshold": 1e-25
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle.high_precision_jacobi_drift_max",
+      "observed": 2.079040092574412e-29,
+      "passed": true,
+      "threshold": 1e-23
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle.checkpoint_state_error_p95",
+      "observed": 6.829459892237752e-10,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle.checkpoint_state_error_max",
+      "observed": 3.386373036847084e-09,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": ">=",
+      "name": "stability.minimum_cases",
+      "observed": 48,
+      "passed": true,
+      "threshold": 32
+    },
+    {
+      "comparator": ">=",
+      "name": "stability.success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "stability.relative_index_error_p95",
+      "observed": 3.3317785245509285e-06,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": "<=",
+      "name": "stability.relative_index_error_max",
+      "observed": 6.608312154182859e-05,
+      "passed": true,
+      "threshold": 0.005
+    },
+    {
+      "comparator": ">=",
+      "name": "stability.classification_accuracy",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": "<=",
+      "name": "stability.monodromy_determinant_error_max",
+      "observed": 8.849564913093744e-07,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": "<=",
+      "name": "stability.reciprocal_pair_error_max",
+      "observed": 8.377643269108503e-07,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "reconstruction.minimum_cases",
+      "observed": 40,
+      "passed": true,
+      "threshold": 30
+    },
+    {
+      "comparator": ">=",
+      "name": "reconstruction.success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.9
+    },
+    {
+      "comparator": "<=",
+      "name": "reconstruction.closure_error_p95",
+      "observed": 1.1732040413650624e-11,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "reconstruction.closure_error_max",
+      "observed": 3.6748887672123196e-11,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "reconstruction.symmetry_residual_p95",
+      "observed": 3.4964882276317433e-13,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.float64.declared_systems",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.float64.declared_families",
+      "observed": 2,
+      "passed": true,
+      "threshold": 2
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.float64.stability_regimes",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.oracle.declared_systems",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.oracle.declared_families",
+      "observed": 2,
+      "passed": true,
+      "threshold": 2
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.oracle.stability_regimes",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.stability.declared_systems",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.stability.declared_families",
+      "observed": 2,
+      "passed": true,
+      "threshold": 2
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.stability.stability_regimes",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.reconstruction.declared_systems",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.reconstruction.declared_families",
+      "observed": 2,
+      "passed": true,
+      "threshold": 2
+    },
+    {
+      "comparator": "==",
+      "name": "coverage.reconstruction.stability_regimes",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    }
+  ],
+  "group_coverage": {
+    "family": {
+      "halo": 64,
+      "lyapunov": 16
+    },
+    "stability_regime": {
+      "marginal": 16,
+      "moderately_unstable": 24,
+      "strongly_unstable": 24,
+      "weakly_unstable": 16
+    },
+    "system": {
+      "earth-moon": 20,
+      "jupiter-europa": 20,
+      "saturn-titan": 20,
+      "sun-earth": 20
+    }
+  },
+  "input_hashes": {
+    "float64": "d5e5da7ff07b45d199ba1cbf068c55c7565826bc348edabc4c6f256c4eb065b6",
+    "oracle": "fe30fa40553cd63b186106c5d2ac6ff5181064df7bc433bb6c7975d7e0e8b091",
+    "reconstruction": "b13c43b18d6801664f23a9fd1116b42f1c561876377929129af18ac1b6a3accf",
+    "stability": "05b0066f9b34ef355034bb17027f2cdf2f998cf9204e5bb09ce62bafbcad07f0"
+  },
+  "lock_sha256": "ae72214d2149138a677bd1d4c7996347cf0bfa454290d6f1a06aa4daf88c83df",
+  "qualification_id": "WP1Q-v1-937694ba58a8",
+  "result_group_coverage": {
+    "float64": {
+      "family": {
+        "halo": 64,
+        "lyapunov": 16
+      },
+      "stability_regime": {
+        "marginal": 16,
+        "moderately_unstable": 24,
+        "strongly_unstable": 24,
+        "weakly_unstable": 16
+      },
+      "system": {
+        "earth-moon": 20,
+        "jupiter-europa": 20,
+        "saturn-titan": 20,
+        "sun-earth": 20
+      }
+    },
+    "oracle": {
+      "family": {
+        "halo": 26,
+        "lyapunov": 10
+      },
+      "stability_regime": {
+        "marginal": 4,
+        "moderately_unstable": 12,
+        "strongly_unstable": 12,
+        "weakly_unstable": 8
+      },
+      "system": {
+        "earth-moon": 8,
+        "jupiter-europa": 11,
+        "saturn-titan": 8,
+        "sun-earth": 9
+      }
+    },
+    "reconstruction": {
+      "family": {
+        "halo": 31,
+        "lyapunov": 9
+      },
+      "stability_regime": {
+        "marginal": 7,
+        "moderately_unstable": 15,
+        "strongly_unstable": 14,
+        "weakly_unstable": 4
+      },
+      "system": {
+        "earth-moon": 8,
+        "jupiter-europa": 11,
+        "saturn-titan": 11,
+        "sun-earth": 10
+      }
+    },
+    "stability": {
+      "family": {
+        "halo": 38,
+        "lyapunov": 10
+      },
+      "stability_regime": {
+        "marginal": 11,
+        "moderately_unstable": 15,
+        "strongly_unstable": 16,
+        "weakly_unstable": 6
+      },
+      "system": {
+        "earth-moon": 12,
+        "jupiter-europa": 12,
+        "saturn-titan": 12,
+        "sun-earth": 12
+      }
+    }
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "1c6f5198b5b718877644515311b8d657c795e7398ee664c6f08b1b94d4b1d692",
+  "split": "holdout",
+  "status": "PASS"
+}

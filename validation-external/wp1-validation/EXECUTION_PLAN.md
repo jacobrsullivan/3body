@@ -2,6 +2,45 @@
 
 This runbook executes the external validation workflow for WP1 in a reproducible way.
 
+## Formal Qualification Decision (2026-07-19)
+
+The formal campaign is complete with decision `PASS` under qualification ID
+`WP1Q-v1-937694ba58a8`. Development, calibration, and the locked first-execution
+holdout each passed 39/39 gates. The exact source snapshot, corpus, split
+results, lock, report, and machine record are versioned in this workspace.
+
+Verify the immutable lock and final record without rerunning or overwriting the
+original holdout evidence:
+
+```bash
+cd /Users/bob/Desktop/3body
+MAMBA_ROOT_PREFIX=/Users/bob/micromamba \
+PYTHONPATH=/Users/bob/Desktop/3body \
+  /opt/homebrew/bin/micromamba run -n wp1_env \
+  python validation-external/wp1-validation/scripts/verify_qualification_lock.py \
+    --repo-root /Users/bob/Desktop/3body \
+    --lock validation-external/wp1-validation/reports/wp1_qualification_lock.json \
+    --corpus-manifest validation-external/wp1-validation/data/qualification/corpus_manifest.json
+
+MAMBA_ROOT_PREFIX=/Users/bob/micromamba \
+PYTHONPATH=/Users/bob/Desktop/3body \
+  /opt/homebrew/bin/micromamba run -n wp1_env \
+  python -c "from src.python.validation.qualification import load_qualification_record; print(load_qualification_record()['status'])"
+```
+
+The formal evidence is in:
+
+- `reports/wp1_qualification_report.md`
+- `reports/wp1_qualification_record.json`
+- `reports/wp1_qualification_lock.json`
+- `reports/wp1_qualified_artifact_audit.json`
+- `results/qualification/`
+- `data/qualification/`
+
+The qualified claim and exclusions are normative in `qualification_spec.json`.
+The older Earth-Moon workflow below remains a useful secondary diagnostic, but
+it is not the formal multi-system qualification decision.
+
 ## Workspace
 - Base directory: `/Users/bob/Desktop/3body/validation-external/wp1-validation`
 - Config: `/Users/bob/Desktop/3body/validation-external/wp1-validation/config.yaml`
@@ -13,7 +52,7 @@ python verify_setup.py
 python -c "import rebound; print(rebound.__version__)"
 
 python -c "import snakemake" || python -m pip install snakemake
-python -c "import heyoka" || python -m pip install heyoka
+python -c "import heyoka; print(heyoka.__version__)"  # installed from environment.yml
 
 pytest tests/test_integrators.py::test_ias15_energy_conservation -v
 pytest tests/validation/test_chaos_indicators.py -v

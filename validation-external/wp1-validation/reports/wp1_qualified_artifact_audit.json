@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "audited_utc": "2026-07-19T20:19:48Z",
+  "status": "PASS",
+  "qualification_id": "WP1Q-v1-937694ba58a8",
+  "qualification_lock_sha256": "ae72214d2149138a677bd1d4c7996347cf0bfa454290d6f1a06aa4daf88c83df",
+  "qualification_record_sha256": "6c79472c4f959419de387e38cdf22acd148fe3a81c1197c66c4b61e4d805ac60",
+  "contract": {
+    "all_hdf5_metadata_matches": true,
+    "all_parquet_metadata_matches": true,
+    "numeric_state_and_indicator_dtype": "float64",
+    "silent_input_skips": 0,
+    "tier2_decimal_states_preserved_exactly": true
+  },
+  "tier1": {
+    "scope": "bounded qualified production-path validation",
+    "integrator": "IAS15",
+    "target_accuracy": 1e-14,
+    "hdf5_files": 30,
+    "hdf5_manifest_sha256": "79f38edcc4799382db240dddf4969937e2387e5e327235575f7ec58f5911c745",
+    "parquet_rows": 630,
+    "parquet_orbits": 30,
+    "parquet_sha256": "11dce54b96f8d0202f7f871d6aa03001db70dfe1724657cc3cc1cc363ec5df53",
+    "parquet_bytes": 270376,
+    "validation_report_sha256": "2bcd06d22e6340d4c2361ef6a65bec96295a03e7a37ed9bcb1f59e3828372ff3",
+    "jacobi_relative_drift": {
+      "mean": 2.8822657604666114e-15,
+      "median": 4.594026308793752e-16,
+      "p95": 1.1984678482598773e-14,
+      "max": 2.936718968363317e-14,
+      "pass_rate": 0.9333333333333333
+    },
+    "chaos_class_counts": {
+      "regular": 22,
+      "chaotic": 7,
+      "failed": 1
+    }
+  },
+  "tier2": {
+    "scope": "bounded high-precision production-path validation",
+    "integrator": "HeyokaTaylor",
+    "precision_backend": "heyoka.real",
+    "precision_bits": 160,
+    "target_accuracy": 1e-25,
+    "hdf5_files": 3,
+    "hdf5_manifest_sha256": "bea1a62f600b204b40abf48d499dab909eec733a92454863a297f012684d251c",
+    "parquet_rows": 9,
+    "parquet_orbits": 3,
+    "parquet_sha256": "439d6606491a0ba295765005d70636403f8d3e828a2b4c7b2bd95ddedca3038b",
+    "parquet_bytes": 31518,
+    "validation_report_sha256": "31f33342c915430c6dd4ed5a2fcd8cfda43211f9b98e54c961a81d82835baa96",
+    "jacobi_relative_drift": {
+      "mean": 5.270471222832793e-28,
+      "median": 4.83042174282884e-28,
+      "p95": 6.3575097056785545e-28,
+      "max": 6.527186145995189e-28,
+      "pass_rate": 1.0
+    },
+    "chaos_class_counts": {
+      "regular": 3,
+      "chaotic": 0,
+      "failed": 0
+    }
+  },
+  "evidence_boundary": "The Tier 1 and Tier 2 runs validate the qualified writer and a bounded production path. They do not establish production-scale throughput or validate MEGNO/FLI scientific labels."
+}

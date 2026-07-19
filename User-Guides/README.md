@@ -4,7 +4,7 @@
 
 This folder contains comprehensive, user-friendly guides for each Work Package (WP) in the project. Each guide explains what the WP does, how it fits into the overall project, what code is available, and how to use it.
 
-> **Current status (2026-07-19)**: WP1 has a passing bobs-mini acceptance gate, a bounded Tier 2 `1e-25` smoke using 160-bit `heyoka.real`, and a publication-scoped external/JPL-seeded validation catalogue. Native WP1-generated periodic-candidate quality, production-scale Tier 2, reversibility, and convergence remain blockers. See `../README.md` and `../notes/wp1-bobs-mini-migration-plan.md` for the latest evidence.
+> **Current status (2026-07-19)**: WP1 qualification `WP1Q-v1-937694ba58a8` passes all locked development, calibration, and holdout gates against a pinned multi-system NASA/JPL corpus. The acceptance gate, bounded Tier 1/Tier 2 qualified artifacts, and Linux/amd64 parity also pass. This qualifies the declared numerical-method scope, not native production-scale periodic-orbit catalogue generation. See `../README.md`, `../notes/wp1-qualification-plan.md`, and the formal qualification report for the evidence boundary.
 
 ---
 
@@ -53,7 +53,7 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 │ • Validation (shadow Hamiltonian, time reversibility)            │
 │ • Production pipeline (10⁵+ orbit catalogue)                     │
 │                                                                   │
-│ Status: Hardening; external/JPL-seeded validation catalogue     │
+│ Status: Scoped external qualification PASS                     │
 │ Guide: User-Guide-WP1.md                                         │
 └────────────────────┬─────────────────────────────────────────────┘
                      │ Provides: High-fidelity trajectories
@@ -126,7 +126,7 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 
 **Purpose**: Establish computational foundation for three-body problem integration
 
-**Status**: **Hardening; external/JPL-seeded validation catalogue available**
+**Status**: **Scoped external qualification PASS; native production catalogue unqualified**
 
 **Key Components**:
 - **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with guard), HeyokaTaylor (bounded Tier 2 smoke)
@@ -134,6 +134,7 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 - **Validation**: Shadow Hamiltonian analysis, time reversibility tests
 - **Production Pipeline**: Snakemake workflow for 10⁵+ orbit catalogue
 - **External-seeded Catalogue**: 284 accepted JPL seeds under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`
+- **Formal Qualification**: 39/39 gates pass on development, calibration, and locked holdout across four systems, two families, and four stability regimes
 
 **Quick Start**:
 ```python
@@ -462,7 +463,7 @@ All contributions should maintain the guides' focus on:
 
 | Work Package | Status | Completion | User Guide |
 |--------------|--------|------------|------------|
-| **WP1** | Hardening | Acceptance gate passing; validation blockers remain | [User-Guide-WP1.md](User-Guide-WP1.md) |
+| **WP1** | Qualified (scoped) | External method claim passes; native production catalogue remains open | [User-Guide-WP1.md](User-Guide-WP1.md) |
 | **WP2** | 🔨 Partial | ~70% | [User-Guide-WP2.md](User-Guide-WP2.md) |
 | **WP3** | ✅ Complete | 100% | [User-Guide-WP3.md](User-Guide-WP3.md) |
 | **WP4** | ✅ Complete | 100% | [User-Guide-WP4.md](User-Guide-WP4.md) |

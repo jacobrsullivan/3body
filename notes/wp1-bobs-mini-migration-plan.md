@@ -20,7 +20,7 @@ Publish-ready means:
 
 ## Implementation Progress: 2026-07-19
 
-This clean bobs-mini checkout now supports a scoped WP1 publication package: environment setup, acceptance gates, Tier 1 smoke, bounded Tier 2 high-precision smoke, external JPL cross-checks, and an external/JPL-seeded validation catalogue. A formal multi-system qualification campaign is in progress under `notes/wp1-qualification-plan.md`; development and calibration each pass all 39 predeclared gates, and the holdout remains unexecuted at the pre-freeze checkpoint. It is not publication-ready for the broader claim that WP1 natively generates a production periodic-orbit catalogue.
+This clean bobs-mini checkout now supports a scoped WP1 publication package: environment setup, acceptance gates, qualified Tier 1/Tier 2 artifacts, external JPL cross-checks, and a locked multi-system qualification. Qualification `WP1Q-v1-937694ba58a8` passes 39/39 gates on development, calibration, and first-execution holdout data. It is not publication-ready for the broader claim that WP1 natively generates a production periodic-orbit catalogue.
 
 Completed:
 
@@ -57,11 +57,20 @@ MAMBA_ROOT_PREFIX=/Users/bob/micromamba \
 Observed result:
 
 - setup verification passes;
-- pytest collection is clean, with 831 tests collected;
-- focused WP1 suite passes, with 92 tests passing;
+- pytest collection is clean, with 843 tests collected;
+- focused WP1 suite passes, with 104 tests passing;
 - CTest QD checks pass, with 2/2 tests passing.
 
 Regenerated validation artifacts:
+
+- Formal external qualification completed against 67,218 pinned NASA/JPL
+  records and a 400-record multi-system corpus; all three splits pass 39/39
+  gates under `WP1Q-v1-937694ba58a8`.
+- Holdout completed 80 float64, 36 independent 224-bit oracle, 48
+  STM/Floquet, and 40 strict reconstruction cases with 100% method success.
+- Bounded Navillus Linux/amd64 parity passes 12/12 evidence-bearing tests.
+- Qualified Tier 1 and Tier 2 HDF5/Parquet outputs embed the qualification ID,
+  lock hash, and record hash; Tier 2 decimal states survive export exactly.
 
 - Tier 1 minimal Snakemake run completed with 30 orbits at target `1e-14`.
 - Tier 1 report: mean drift `2.88e-15`, median drift `4.59e-16`, 95th percentile `1.20e-14`, max drift `2.94e-14`, pass rate `93.3%`.
@@ -86,15 +95,15 @@ Regenerated validation artifacts:
 - Convergence/closure diagnostic on corrected small-amplitude Lyapunov seeds now reports median closure about `1.02e-12` and median Jacobi drift about `1.5e-16`; the fitted slope is explicitly marked floor-limited rather than treated as an empirical order proof.
 - Updated external validation pipeline run on 2026-07-19: `./run_validation.sh --skip-fetch --cores 8 --max-jpl 300` completed end to end, including the new JPL-seeded catalogue and artifact-manifest phases, and regenerated `reports/wp1_external_validation_report.md`.
 - Final hygiene check on 2026-07-19: `git diff --check` passed.
-- Final fast gate on 2026-07-19: `./scripts/run_tests.sh --fast` passed with setup verification, 92 focused WP1 tests, and 2/2 CTest checks.
-- Final canonical gate on 2026-07-19: `./scripts/run_tests.sh` passed with setup verification, 831 tests collected, 92 focused WP1 tests passed, and 2/2 CTest checks.
+- Final fast gate on 2026-07-19: `./scripts/run_tests.sh --fast` passed with setup verification, 104 focused WP1 tests, and 2/2 CTest checks.
+- Final canonical gate on 2026-07-19: `./scripts/run_tests.sh` passed with setup verification, 843 tests collected, 104 focused WP1 tests passed, and 2/2 CTest checks.
 
 Remaining publication blockers for broad/native catalogue claims:
 
 - `AdaptiveSymplecticIntegrator` remains a float64 prototype and now rejects tolerances below its float64 floor before stepping. Before this fix, Tier 2 could silently write a false-positive report after failed integrations.
 - The new `HeyokaTaylorIntegrator` proves a bounded Tier 2 smoke, not a production-scale Tier 2 catalogue.
-- Native candidate quality is still weak against JPL: median state distance `8.37e-01`, median period error `8.90e-01`, and simplified Halo candidates are not corrected periodic seeds.
-- Current evidence supports "WP1 environment, acceptance gate, Tier 1 smoke, bounded Tier 2 smoke, and external/JPL-seeded validation catalogue are operational and publication-scoped"; it does not support "native WP1-generated periodic-orbit catalogue is publish-ready."
+- The legacy native candidate comparison is still weak against JPL: median state distance `8.37e-01` and median period error `8.90e-01`. The qualified representative corrector is not yet a family-continuation catalogue generator.
+- Current evidence supports the exact scoped claim in `qualification_spec.json`; it does not support "native WP1-generated periodic-orbit catalogue is publish-ready."
 
 Required next fixes before publication claims:
 

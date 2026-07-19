@@ -1,11 +1,11 @@
 # User Guide: Work Package 1
 ## High-Fidelity CR3BP Trajectory Catalogue
 
-**Status**: Hardening; external/JPL-seeded validation catalogue available, native-candidate blockers remain
+**Status**: Scoped external qualification PASS; native production-catalogue generation remains unqualified
 **Purpose**: Establish high-precision infrastructure for three-body problem integration and validation
 **Role in Project**: Foundation for all subsequent work packages
 
-> **Current status (2026-07-19)**: On `bobs-mac-mini`, `./scripts/run_tests.sh` passes setup verification, clean collection of 831 tests, 92 focused WP1 tests, and 2/2 QD CTest checks. Tier 1 minimal validation has been regenerated. A bounded Tier 2 `1e-25` smoke passes using `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`. The external/JPL-seeded validation catalogue accepts 284 of 300 sampled JPL seeds under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`. Production-scale Tier 2 and native WP1-generated periodic-candidate validation remain publication blockers. See `../notes/wp1-bobs-mini-migration-plan.md` for the current plan and evidence.
+> **Current status (2026-07-19)**: Qualification `WP1Q-v1-937694ba58a8` passes all 39 gates on development, calibration, and a locked first-execution holdout. The campaign uses a pinned 67,218-record NASA/JPL source snapshot and a 400-record corpus spanning four systems, Lyapunov/Halo families, and four stability regimes. The canonical gate collects 843 tests, passes 104 focused WP1 tests and 2/2 QD CTests, and bounded Linux/amd64 parity passes 12/12 evidence-bearing tests. Qualified Tier 1/Tier 2 artifacts preserve all rows and embed the qualification hashes. Production-scale Tier 2 and native WP1-generated family continuation/catalogue validation remain publication blockers. See `../notes/wp1-qualification-plan.md` and the formal report under `../validation-external/wp1-validation/reports/`.
 
 ---
 
@@ -89,7 +89,7 @@ The 3-body integrability research project follows this progression:
 
 ## What's Implemented
 
-WP1 is in a **hardening** state. The environment, QD build, focused acceptance gate, Tier 1 smoke, bounded high-precision Tier 2 smoke, and external/JPL-seeded validation catalogue are operational. Native WP1-generated periodic-orbit candidates are not publication-ready yet.
+WP1 has a **passing scoped qualification**. The environment, QD build, focused acceptance gate, external multi-system campaign, independent high-precision oracle, analytic STM/Floquet path, strict representative differential correction, and qualification-aware artifact writers are operational. Native WP1-generated family continuation and a production-scale periodic-orbit catalogue are not qualified yet.
 
 ### File Structure
 
@@ -149,6 +149,17 @@ Snakefile                            # Production pipeline orchestration
 - Acceptance thresholds: closure `<= 1e-8`, absolute Jacobi drift `<= 1e-12`
 - Current result: 284 accepted rows; accepted-catalogue closure median `2.01e-11`, 95th percentile `9.73e-10`, max `6.23e-09`
 - Scope: publishable as external-seeded validation evidence only, not as a native WP1-generated periodic catalogue
+
+**Formal Multi-System Qualification**:
+- Qualification ID: `WP1Q-v1-937694ba58a8`
+- Source: 67,218 pinned NASA/JPL records across four CR3BP systems
+- Corpus: 400 content-addressed records; 240 development, 80 calibration, 80 locked holdout
+- Coverage: Lyapunov/Halo, L1/L2, north/south Halo branches, four stability regimes
+- Decisions: development 39/39, calibration 39/39, holdout 39/39 gates passed
+- Holdout case counts: 80 float64, 36 independent 224-bit oracle, 48 stability, 40 reconstruction
+- Stability classification: 100%; reconstruction success: 100%
+- Evidence: `validation-external/wp1-validation/reports/wp1_qualification_report.md`
+- Boundary: validates the declared methods and bounded output path, not native production-scale catalogue generation
 
 ---
 
@@ -688,4 +699,4 @@ Once you're comfortable with WP1, proceed to:
 ---
 
 **Last Updated**: July 19, 2026
-**WP1 Status**: Hardening - acceptance gate and bounded Tier 2 smoke passing; candidate-validation and production-scale blockers remain
+**WP1 Status**: Scoped external qualification PASS; native generation and production-scale blockers remain
