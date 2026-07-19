@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import importlib
 from importlib import metadata
 import platform
 import subprocess
@@ -106,7 +107,11 @@ def runtime_fingerprint() -> dict[str, object]:
         try:
             packages[name] = metadata.version(name)
         except metadata.PackageNotFoundError:
-            packages[name] = "not-installed"
+            if name == "heyoka":
+                module = importlib.import_module("heyoka")
+                packages[name] = str(module.__version__)
+            else:
+                packages[name] = "not-installed"
     return {
         "python": platform.python_version(),
         "python_implementation": platform.python_implementation(),
@@ -180,6 +185,10 @@ def main() -> None:
     dirty_paths = subprocess.check_output(
         ["git", "status", "--short"], cwd=repo_root, text=True
     ).splitlines()
+    output_relative = Path(args.output).resolve().relative_to(repo_root).as_posix()
+    dirty_paths = [
+        entry for entry in dirty_paths if entry[3:].strip() != output_relative
+    ]
     payload = {
         "schema_version": "1.0",
         "frozen_utc": datetime.now(timezone.utc).isoformat(),
