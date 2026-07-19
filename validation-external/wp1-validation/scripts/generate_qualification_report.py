@@ -28,6 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--development", required=True)
     parser.add_argument("--calibration", required=True)
     parser.add_argument("--holdout", required=True)
+    parser.add_argument("--linux-parity", required=True)
     parser.add_argument("--report", required=True)
     parser.add_argument("--record", required=True)
     return parser.parse_args()
@@ -87,6 +88,9 @@ def main() -> None:
     spec = load_spec(spec_path)
     lock = verify_qualification_lock(args.lock, repo_root)
     corpus = load_json(args.corpus_manifest)
+    linux_parity = load_json(args.linux_parity)
+    if linux_parity.get("status") != "PASS":
+        raise RuntimeError("Linux parity evidence is not passing")
     evaluation_paths = {
         "development": Path(args.development).resolve(),
         "calibration": Path(args.calibration).resolve(),
@@ -123,6 +127,7 @@ def main() -> None:
         "development_evaluation": Path(args.development).resolve(),
         "calibration_evaluation": Path(args.calibration).resolve(),
         "holdout_evaluation": Path(args.holdout).resolve(),
+        "linux_parity": Path(args.linux_parity).resolve(),
     }
     evidence_files = {
         name: {
@@ -148,6 +153,7 @@ def main() -> None:
         "external_source": spec["external_source"],
         "corpus_counts": corpus["counts"],
         "runtime": lock["runtime"],
+        "cross_platform_parity": linux_parity,
         "evaluation_status": {
             split: evaluation["status"] for split, evaluation in evaluations.items()
         },
@@ -242,6 +248,17 @@ def main() -> None:
             "The production writer rejects a missing or failed qualification record and stamps "
             "the qualification ID and hashes into HDF5 and Parquet artifacts. Numeric state "
             "columns are float64; Tier 2 output also preserves decimal high-precision states.",
+            "",
+            "## Cross-Platform Parity",
+            "",
+            f"Bounded Linux/amd64 parity: **{linux_parity['status']}**, with "
+            f"{linux_parity['passed']}/{linux_parity['collected']} evidence-bearing tests "
+            f"passing on `{linux_parity['host']}` using Python {linux_parity['python']} "
+            f"in `{linux_parity['container_image']}`.",
+            "",
+            "This is a bounded architecture check of the analytic STM/Floquet path, strict "
+            "differential correctors, evidence integrity, and high-precision artifact "
+            "contract. It is not represented as a full Linux replay of the campaign.",
             "",
             "## References",
             "",

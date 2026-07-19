@@ -71,6 +71,7 @@ def tracked_inputs(
         repo_root / "poetry.lock",
         repo_root / "Snakefile",
         workspace / "run_qualification.sh",
+        workspace / "reports/wp1_linux_parity.json",
     ]
     unique = {
         path.resolve()

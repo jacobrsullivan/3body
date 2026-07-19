@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "executed_utc": "2026-07-19T20:01:07Z",
+  "status": "PASS",
+  "scope": "Bounded evidence-bearing numerical and artifact-contract parity; not a full qualification replay",
+  "host": "navillusserver1",
+  "os": "Linux",
+  "kernel": "7.0.0-27-generic",
+  "machine": "x86_64",
+  "tested_commit": "bec56a3abcd60ea16478527d017696f70edf1ca7",
+  "container_image": "python@sha256:db3ff2e1800a8581e2c48a27c3995339d47bdf046da21c7627accd3d51053a93",
+  "python": "3.11.15",
+  "packages": {
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "pyarrow": "21.0.0",
+    "rebound": "4.4.10",
+    "h5py": "3.14.0",
+    "pytest": "8.4.1",
+    "sympy": "1.14.0"
+  },
+  "tests": [
+    "tests/test_wp1_qualification.py",
+    "tests/test_validation_external.py::TestParquetExport::test_qualified_high_precision_export_preserves_contract"
+  ],
+  "collected": 12,
+  "passed": 12,
+  "failed": 0,
+  "duration_seconds": 1.19
+}

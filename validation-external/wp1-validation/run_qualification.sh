@@ -113,6 +113,7 @@ finalize_campaign() {
     --development "$RESULTS_DIR/development_evaluation.json" \
     --calibration "$RESULTS_DIR/calibration_evaluation.json" \
     --holdout "$RESULTS_DIR/holdout_evaluation.json" \
+    --linux-parity "$REPORTS_DIR/wp1_linux_parity.json" \
     --report "$REPORTS_DIR/wp1_qualification_report.md" \
     --record "$REPORTS_DIR/wp1_qualification_record.json"
 }

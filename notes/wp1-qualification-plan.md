@@ -96,6 +96,8 @@ gate and reusing the same holdout.
 - Reconstruction success: 100% on both pre-holdout splits.
 - Canonical bobs-mini acceptance gate: 843 tests collected, 104 focused WP1
   tests passed, and 2/2 QD CTests passed.
+- Bounded Navillus Linux/amd64 parity: 12/12 evidence-bearing tests passed in
+  the pinned Python 3.11 container recorded by `reports/wp1_linux_parity.json`.
 - No holdout output existed when this status was recorded.
 
 ## Final Evidence Paths
