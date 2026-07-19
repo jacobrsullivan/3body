@@ -37,7 +37,7 @@ References:
 """
 
 from dataclasses import dataclass
-from typing import Protocol, Dict, Any
+from typing import Protocol, Dict, Any, Callable
 import numpy as np
 import logging
 
@@ -90,7 +90,8 @@ class TimeReversibilityTester:
         self,
         hamiltonian=None,
         tier1_threshold: float = 1e-14,
-        tier2_threshold: float = 1e-20
+        tier2_threshold: float = 1e-20,
+        reversal_operator: Callable[[np.ndarray], np.ndarray] | None = None,
     ):
         """
         Initialize reversibility tester.
@@ -99,10 +100,19 @@ class TimeReversibilityTester:
             hamiltonian: Optional Hamiltonian function H(state) → scalar
             tier1_threshold: Tier 1 error threshold
             tier2_threshold: Tier 2 error threshold
+            reversal_operator: State-space involution used for time reversal
         """
         self.hamiltonian = hamiltonian
         self.tier1_threshold = tier1_threshold
         self.tier2_threshold = tier2_threshold
+        self.reversal_operator = reversal_operator or self._default_reversal_operator
+
+    @staticmethod
+    def _default_reversal_operator(state: np.ndarray) -> np.ndarray:
+        """Canonical time reversal for inertial position/velocity states."""
+        reversed_state = state.copy()
+        reversed_state[3:6] = -reversed_state[3:6]
+        return reversed_state
 
     def test_reversibility(
         self,
@@ -144,10 +154,9 @@ class TimeReversibilityTester:
         state_at_T = result_forward.states_corotating[-1]
         logger.info(f"State at T: {state_at_T}")
 
-        # 2. Negate velocities (time reversal)
-        logger.info("Step 2: Velocity reversal...")
-        state_reversed = state_at_T.copy()
-        state_reversed[3:6] = -state_reversed[3:6]  # vx, vy, vz → -vx, -vy, -vz
+        # 2. Apply the configured time-reversal symmetry.
+        logger.info("Step 2: Time reversal...")
+        state_reversed = self.reversal_operator(state_at_T)
         logger.info(f"Reversed state: {state_reversed}")
 
         # 3. Backward integration
@@ -164,9 +173,8 @@ class TimeReversibilityTester:
         # Get final state from backward integration
         state_final = result_backward.states_corotating[-1]
 
-        # Re-reverse velocities to compare with initial
-        state_final_unreversed = state_final.copy()
-        state_final_unreversed[3:6] = -state_final_unreversed[3:6]
+        # Re-apply the involution to compare with the initial state.
+        state_final_unreversed = self.reversal_operator(state_final)
 
         logger.info(f"Final state (unreversed): {state_final_unreversed}")
 
@@ -322,8 +330,17 @@ def create_cr3bp_reversibility_tester(mu: float) -> TimeReversibilityTester:
         """CR3BP Jacobi constant."""
         return -calculate_jacobi_constant(state, mu)
 
+    def cr3bp_rotating_frame_reversal(state: np.ndarray) -> np.ndarray:
+        """CR3BP rotating-frame symmetry: (x,y,z,vx,vy,vz)->(x,-y,z,-vx,vy,-vz)."""
+        reversed_state = state.copy()
+        reversed_state[1] = -reversed_state[1]
+        reversed_state[3] = -reversed_state[3]
+        reversed_state[5] = -reversed_state[5]
+        return reversed_state
+
     return TimeReversibilityTester(
         hamiltonian=hamiltonian_cr3bp,
         tier1_threshold=1e-14,
-        tier2_threshold=1e-20
+        tier2_threshold=1e-20,
+        reversal_operator=cr3bp_rotating_frame_reversal,
     )

@@ -75,11 +75,12 @@ public:
         bool precision_31 = result > one;
         report_test("Precision at 1e-31 (1 + 1e-31 > 1)", precision_31);
 
-        // Test that we lose precision at 1e-35
+        // QD stores values as an unevaluated sum of two doubles. This build
+        // preserves a 1e-35 low component in a simple compensated addition.
         dd_real very_tiny("1e-35");
         dd_real result2 = one + very_tiny;
-        bool precision_35 = (result2 - one).is_zero();
-        report_test("Precision limit at 1e-35 (precision lost)", precision_35);
+        bool precision_35 = result2 > one;
+        report_test("Low component retention at 1e-35", precision_35);
 
         // Test mantissa bits (~106 bits)
         dd_real epsilon = dd_real("1e-31");
@@ -233,7 +234,7 @@ public:
         // Test string construction
         dd_real from_string("3.14159265358979323846264338327950288");
         std::string back_to_string = from_string.to_string(35);
-        bool string_ok = back_to_string.substr(0, 20) == "3.1415926535897932384";
+        bool string_ok = back_to_string.rfind("3.1415926535897932384", 0) == 0;
         report_test("String construction and conversion", string_ok);
 
         // Test precision control

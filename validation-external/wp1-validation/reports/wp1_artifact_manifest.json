@@ -1,0 +1,198 @@
+{
+  "generated_utc": "2026-07-19T18:35:27.772231+00:00",
+  "scope": "WP1 bobs-mini validation artifacts",
+  "repo": {
+    "root": "/Users/bob/Desktop/3body",
+    "commit": "13d20836bcadbea15a37e0800609702002d76f75",
+    "branch": "main",
+    "dirty": true,
+    "status_short": [
+      "M Project-Design-Docs/Implementation-Status/Implementation-WP1-22ndNov2025.md",
+      " M Project-Design-Docs/WP1/WP1-Implementation-Complete-22ndNov2025.md",
+      " M README.md",
+      " M Snakefile",
+      " M User-Guides/CHANGELOG.md",
+      " M User-Guides/README.md",
+      " M User-Guides/User-Guide-WP1.md",
+      " M User-Guides/reviews/USER-GUIDE-REVIEW-23NOV.md",
+      " M environment.yml",
+      " M poetry.lock",
+      " M pyproject.toml",
+      " M scripts/run_tests.sh",
+      " M src/cpp/qd_comprehensive_test.cpp",
+      " M src/cpp/qd_python_bindings.cpp",
+      " M src/python/integrators/adaptive_symplectic.py",
+      " M src/python/ml/__init__.py",
+      " M src/python/orbits/periodic_families.py",
+      " M src/python/symbolic/spinor_basis.py",
+      " M src/python/validation/time_reversibility.py",
+      " M tests/python/test_environment.py",
+      " M tests/test_integrators.py",
+      " M tests/test_validation_external.py",
+      " M validation-external/wp1-validation/EXECUTION_PLAN.md",
+      " M validation-external/wp1-validation/reports/wp1_external_validation_report.md",
+      " M validation-external/wp1-validation/run_validation.sh",
+      " M validation-external/wp1-validation/scripts/generate_report.py",
+      " M validation-external/wp1-validation/scripts/run_convergence_check.py",
+      " M validation-external/wp1-validation/scripts/run_reversibility_check.py",
+      " M verify_setup.py",
+      "?? notes/",
+      "?? src/python/integrators/heyoka_taylor.py",
+      "?? tests/unit/__init__.py",
+      "?? validation-external/wp1-validation/reports/wp1_artifact_manifest.json",
+      "?? validation-external/wp1-validation/scripts/build_jpl_seeded_catalog.py",
+      "?? validation-external/wp1-validation/scripts/generate_artifact_manifest.py"
+    ]
+  },
+  "environment": {
+    "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:29:05) [Clang 19.1.7 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.2.6",
+      "scipy": "1.16.1",
+      "rebound": "4.4.10",
+      "heyoka": "not-installed",
+      "h5py": "3.14.0",
+      "pyarrow": "21.0.0",
+      "pytest": "8.4.1",
+      "snakemake": "8.30.0"
+    }
+  },
+  "command": "./run_validation.sh --skip-fetch --cores 8 --max-jpl 300",
+  "artifact_count": 22,
+  "artifacts": [
+    {
+      "path": "data/tier1/analysis/validation_report.txt",
+      "size_bytes": 351,
+      "mtime_utc": "2026-07-19T17:08:02.284759+00:00",
+      "sha256": "5ea5b0575796b8ba688d979c6519234cef3b9182f7d59a878867cacee502cc58"
+    },
+    {
+      "path": "data/tier1/parquet/tier1.parquet",
+      "size_bytes": 132993,
+      "mtime_utc": "2026-07-19T17:08:02.673870+00:00",
+      "sha256": "f9d69e65525c32a97194bf4c16dba793ac4a5a9cdf4700fb574e2dcdebb2d142"
+    },
+    {
+      "path": "data/tier2/analysis/validation_report.txt",
+      "size_bytes": 455,
+      "mtime_utc": "2026-07-19T17:48:30.944034+00:00",
+      "sha256": "31f33342c915430c6dd4ed5a2fcd8cfda43211f9b98e54c961a81d82835baa96"
+    },
+    {
+      "path": "data/tier2/parquet/tier2.parquet",
+      "size_bytes": 11910,
+      "mtime_utc": "2026-07-19T17:40:35.102410+00:00",
+      "sha256": "c513de16ec1832f906d4161dd055ebbd08edac2bad05492fe35ac3c21ef94935"
+    },
+    {
+      "path": "environment.yml",
+      "size_bytes": 465,
+      "mtime_utc": "2026-07-19T16:46:18.590417+00:00",
+      "sha256": "81597df0c8ff9a43b7664bffa82a1a39b12027a5bfd255c1b479e2a0fe277e48"
+    },
+    {
+      "path": "poetry.lock",
+      "size_bytes": 323088,
+      "mtime_utc": "2026-07-19T16:46:27.439572+00:00",
+      "sha256": "0ea8c97cf93c9af78b6fcc8adaf82d2bdfe37a8c71176855fe73c3a29851d12a"
+    },
+    {
+      "path": "pyproject.toml",
+      "size_bytes": 719,
+      "mtime_utc": "2026-07-19T16:46:55.456829+00:00",
+      "sha256": "7d52d72c3aec46e96c5f691e1b865b297cda2647b13bd440d07c884f73cb3575"
+    },
+    {
+      "path": "validation-external/wp1-validation/config.yaml",
+      "size_bytes": 320,
+      "mtime_utc": "2026-07-19T16:38:19.844302+00:00",
+      "sha256": "ebeed98d9d42ed7bfe570de55d66f672df257694cd75a72386b120ff96eed00b"
+    },
+    {
+      "path": "validation-external/wp1-validation/data/jpl/manifest.json",
+      "size_bytes": 734,
+      "mtime_utc": "2026-07-19T17:41:14.644499+00:00",
+      "sha256": "185b20641d5a9b322ae85ea7004d1ca4c47daff77cba5ed2d17f44e1741fd91d"
+    },
+    {
+      "path": "validation-external/wp1-validation/data/jpl/normalized.parquet",
+      "size_bytes": 1557638,
+      "mtime_utc": "2026-07-19T18:29:55.333280+00:00",
+      "sha256": "ef1dfd9d1528c40f970b99cc99761b99de871f66506499e60f74e6512a640d52"
+    },
+    {
+      "path": "validation-external/wp1-validation/data/jpl/raw_latest.json",
+      "size_bytes": 5416590,
+      "mtime_utc": "2026-07-19T17:41:14.644317+00:00",
+      "sha256": "41da8a595724788d88be069030456cecdaf13f4a76b56d97d9032036558bcf83"
+    },
+    {
+      "path": "validation-external/wp1-validation/reports/wp1_external_validation_report.md",
+      "size_bytes": 6061,
+      "mtime_utc": "2026-07-19T18:35:27.604761+00:00",
+      "sha256": "9282c312f5a4a92fa1b141911154b35b7e358ad5dcb98071b10ce741bf1d2832"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/convergence.csv",
+      "size_bytes": 4809,
+      "mtime_utc": "2026-07-19T18:31:02.036860+00:00",
+      "sha256": "bbd8d77c5088d59a042fe4d4b6f4332347b3df05f0ef1225abbc72d76f57e11d"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/convergence_summary.json",
+      "size_bytes": 1956,
+      "mtime_utc": "2026-07-19T18:31:02.037618+00:00",
+      "sha256": "07941e33c1bfdcdc34245d0f0244da9b738a0de97bba02e241d7972d2d0b23e0"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/extended_precision_summary.csv",
+      "size_bytes": 1176,
+      "mtime_utc": "2026-07-19T18:30:45.555745+00:00",
+      "sha256": "05298799bb8798529f6cdcce19338a671a850ab5d968b32e744f715e040fdcfc"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/jpl_comparison.csv",
+      "size_bytes": 37983,
+      "mtime_utc": "2026-07-19T18:30:19.858963+00:00",
+      "sha256": "6b98ec9669f02f9463586c44114e5b0033b7b5a9b684b84645101ab771a79414"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/jpl_comparison_summary.json",
+      "size_bytes": 940,
+      "mtime_utc": "2026-07-19T18:30:19.859753+00:00",
+      "sha256": "a117696b08516db949a949d3116cd8800b032a910a235576c7f09c01db732fec"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/jpl_seeded_catalog.parquet",
+      "size_bytes": 30874,
+      "mtime_utc": "2026-07-19T18:30:44.216483+00:00",
+      "sha256": "055afcba720cded7c8fe3205f0bf74a002749abc1b5241cac2f3c1c2fbb451f4"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/jpl_seeded_catalog_summary.json",
+      "size_bytes": 1605,
+      "mtime_utc": "2026-07-19T18:30:44.217216+00:00",
+      "sha256": "930ebbbd5dee1c82d73957f4f6340340f99425147dfac591497f1156800d890f"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/jpl_seeded_validation.csv",
+      "size_bytes": 101188,
+      "mtime_utc": "2026-07-19T18:30:44.215400+00:00",
+      "sha256": "a8e75fa010d81c9b18b5d911c6e82c008b82664b090808c1035dac23dcab6de7"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/reversibility.csv",
+      "size_bytes": 6516,
+      "mtime_utc": "2026-07-19T18:30:58.430850+00:00",
+      "sha256": "25de2d9878f71e13304438942c0c6e295ae85f804db52e7aa3812433d28b8367"
+    },
+    {
+      "path": "validation-external/wp1-validation/results/reversibility_summary.json",
+      "size_bytes": 559,
+      "mtime_utc": "2026-07-19T18:30:58.431164+00:00",
+      "sha256": "2d4054f36e4bf186660116f80d18feab3b7ff6063c65e712243b2b8d8150aedb"
+    }
+  ]
+}

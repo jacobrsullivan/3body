@@ -3,6 +3,8 @@
 **Project**: Three-Body Problem Integrability Research - User Documentation
 **Repository**: https://github.com/jacobrsullivan/3body
 
+> **Current status note (2026-07-19)**: Historical changelog entries below may describe WP1 as complete or publication-ready. The current bobs-mini validation supersedes those entries: WP1 acceptance gates and bounded Tier 2 `1e-25` smoke pass, but production-scale Tier 2 and periodic-candidate quality remain publication blockers.
+
 ---
 
 ## Version History

@@ -1,0 +1,141 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1 external CR3BP qualification",
+  "claim": "WP1 is qualified for normalized rotating-frame CR3BP propagation against externally sourced JPL periodic-orbit data across the declared systems, Lyapunov and Halo families, published stability regimes, and float64/high-precision validation tiers. Qualification includes independent arbitrary-precision checkpoint propagation, invariant and reversibility checks, analytic STM/Floquet validation, strict representative differential correction, output-schema enforcement, and a locked holdout suite.",
+  "evidence_boundary": "This qualification does not claim a native production periodic-orbit catalogue, universal correctness outside the declared scope, production-scale Tier 2 throughput, long-horizon 10^4-10^6-period accuracy, regularized close-encounter switching, or validated MEGNO/FLI labels.",
+  "external_source": {
+    "name": "NASA/JPL Three-Body Periodic Orbits API",
+    "url": "https://ssd-api.jpl.nasa.gov/periodic_orbits.api",
+    "documentation": "https://ssd-api.jpl.nasa.gov/doc/periodic_orbits.html",
+    "required_api_version": "1.0",
+    "systems": [
+      "sun-earth",
+      "jupiter-europa",
+      "saturn-titan",
+      "earth-moon"
+    ],
+    "queries": [
+      {"family": "lyapunov", "libr": 1},
+      {"family": "lyapunov", "libr": 2},
+      {"family": "halo", "libr": 1, "branch": "N"},
+      {"family": "halo", "libr": 1, "branch": "S"},
+      {"family": "halo", "libr": 2, "branch": "N"},
+      {"family": "halo", "libr": 2, "branch": "S"}
+    ]
+  },
+  "sampling": {
+    "per_stability_stratum": 5,
+    "split_salt": "wp1-qualification-v1-locked-20260719",
+    "stability_regimes": {
+      "marginal": [0.0, 1.0000001],
+      "weakly_unstable": [1.0000001, 10.0],
+      "moderately_unstable": [10.0, 100.0],
+      "strongly_unstable": [100.0, 1e100]
+    },
+    "split_cycle": [
+      "development",
+      "development",
+      "development",
+      "calibration",
+      "holdout"
+    ]
+  },
+  "float64": {
+    "integrator": "IAS15Integrator",
+    "tolerance": 1e-14,
+    "output_points": 9,
+    "reversibility_horizon_max": 1.0,
+    "minimum_cases": {
+      "development": 80,
+      "calibration": 20,
+      "holdout": 20
+    },
+    "gates": {
+      "integration_success_rate_min": 1.0,
+      "jacobi_catalog_delta_p95_max": 5e-12,
+      "jacobi_catalog_delta_max": 5e-11,
+      "jacobi_max_drift_p95_max": 1e-12,
+      "jacobi_max_drift_max": 1e-10,
+      "frame_roundtrip_max": 5e-13,
+      "reversibility_error_p95_max": 1e-10,
+      "reversibility_error_max": 1e-7
+    }
+  },
+  "oracle": {
+    "backend": "heyoka.real adaptive Taylor",
+    "precision_bits": 224,
+    "tolerance": 1e-28,
+    "output_points": 9,
+    "maximum_cases": {
+      "development": 36,
+      "calibration": 20,
+      "holdout": 36
+    },
+    "minimum_cases": {
+      "development": 24,
+      "calibration": 12,
+      "holdout": 24
+    },
+    "gates": {
+      "success_rate_min": 1.0,
+      "high_precision_jacobi_drift_p95_max": 1e-25,
+      "high_precision_jacobi_drift_max": 1e-23,
+      "checkpoint_state_error_p95_max": 1e-9,
+      "checkpoint_state_error_max": 1e-7
+    }
+  },
+  "stability": {
+    "maximum_cases": {
+      "development": 48,
+      "calibration": 24,
+      "holdout": 48
+    },
+    "minimum_cases": {
+      "development": 32,
+      "calibration": 16,
+      "holdout": 32
+    },
+    "rtol": 3e-12,
+    "atol": 3e-14,
+    "classification_tolerance": 1e-4,
+    "gates": {
+      "success_rate_min": 1.0,
+      "relative_index_error_p95_max": 1e-4,
+      "relative_index_error_max": 5e-3,
+      "classification_accuracy_min": 0.98,
+      "monodromy_determinant_error_max": 1e-4,
+      "reciprocal_pair_error_max": 1e-4
+    }
+  },
+  "reconstruction": {
+    "maximum_cases": {
+      "development": 40,
+      "calibration": 24,
+      "holdout": 40
+    },
+    "minimum_cases": {
+      "development": 30,
+      "calibration": 16,
+      "holdout": 30
+    },
+    "lyapunov_x_perturbation": 1e-5,
+    "halo_z_relative_perturbation": 1e-5,
+    "minimum_secondary_distance_radii": 1.0,
+    "gates": {
+      "success_rate_min": 0.9,
+      "closure_error_p95_max": 1e-8,
+      "closure_error_max": 1e-7,
+      "symmetry_residual_p95_max": 1e-9
+    }
+  },
+  "output_contract": {
+    "state_dtype": "float64",
+    "required_hdf5_attributes": [
+      "wp1_qualification_id",
+      "wp1_qualification_status",
+      "wp1_qualification_lock_sha256",
+      "wp1_qualification_record_sha256"
+    ],
+    "high_precision_state_encoding": "decimal-string alongside float64 projection"
+  }
+}

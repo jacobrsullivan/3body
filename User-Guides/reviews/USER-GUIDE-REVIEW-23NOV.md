@@ -3,6 +3,8 @@
 **Reviewer**: Claude (Automated Review)
 **Purpose**: Comprehensive testing and review of all User Guides
 
+> **Current status note (2026-07-19)**: This review is historical. Its "publication-ready" documentation assessment is superseded by the current bobs-mini validation record: WP1 acceptance gates and bounded Tier 2 `1e-25` smoke pass, but production-scale Tier 2 and periodic-candidate quality remain blockers.
+
 ---
 
 ## Executive Summary

@@ -54,7 +54,7 @@ PYBIND11_MODULE(qd_python, m) {
 
         // Unary operators
         .def(-py::self, "Unary negation")
-        .def(+py::self, "Unary plus")
+        .def("__pos__", [](const dd_real &a) { return a; }, "Unary plus")
 
         // In-place operators
         .def(py::self += py::self, "In-place addition")
@@ -175,9 +175,9 @@ PYBIND11_MODULE(qd_python, m) {
     m.attr("log10") = dd_real::_log10;
 
     // Utility functions
-    m.def("max", [](const dd_real &x, const dd_real &y) { return max(x, y); },
+    m.def("max", [](const dd_real &x, const dd_real &y) { return x < y ? y : x; },
           py::arg("x"), py::arg("y"), "Maximum of two values");
-    m.def("min", [](const dd_real &x, const dd_real &y) { return min(x, y); },
+    m.def("min", [](const dd_real &x, const dd_real &y) { return y < x ? y : x; },
           py::arg("x"), py::arg("y"), "Minimum of two values");
 
     // Version information

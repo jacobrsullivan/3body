@@ -4,6 +4,8 @@
 
 This folder contains comprehensive, user-friendly guides for each Work Package (WP) in the project. Each guide explains what the WP does, how it fits into the overall project, what code is available, and how to use it.
 
+> **Current status (2026-07-19)**: WP1 has a passing bobs-mini acceptance gate, a bounded Tier 2 `1e-25` smoke using 160-bit `heyoka.real`, and a publication-scoped external/JPL-seeded validation catalogue. Native WP1-generated periodic-candidate quality, production-scale Tier 2, reversibility, and convergence remain blockers. See `../README.md` and `../notes/wp1-bobs-mini-migration-plan.md` for the latest evidence.
+
 ---
 
 ## Quick Navigation
@@ -51,7 +53,7 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 │ • Validation (shadow Hamiltonian, time reversibility)            │
 │ • Production pipeline (10⁵+ orbit catalogue)                     │
 │                                                                   │
-│ Status: ✅ 100% Complete                                         │
+│ Status: Hardening; external/JPL-seeded validation catalogue     │
 │ Guide: User-Guide-WP1.md                                         │
 └────────────────────┬─────────────────────────────────────────────┘
                      │ Provides: High-fidelity trajectories
@@ -124,13 +126,14 @@ This project investigates **hidden integrability** in the Newtonian three-body p
 
 **Purpose**: Establish computational foundation for three-body problem integration
 
-**Status**: ✅ **100% Complete**
+**Status**: **Hardening; external/JPL-seeded validation catalogue available**
 
 **Key Components**:
-- **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (Tier 2 precision)
+- **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with guard), HeyokaTaylor (bounded Tier 2 smoke)
 - **Chaos Detection**: MEGNO, FLI indicators
 - **Validation**: Shadow Hamiltonian analysis, time reversibility tests
 - **Production Pipeline**: Snakemake workflow for 10⁵+ orbit catalogue
+- **External-seeded Catalogue**: 284 accepted JPL seeds under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`
 
 **Quick Start**:
 ```python
@@ -459,13 +462,13 @@ All contributions should maintain the guides' focus on:
 
 | Work Package | Status | Completion | User Guide |
 |--------------|--------|------------|------------|
-| **WP1** | ✅ Complete | 100% | [User-Guide-WP1.md](User-Guide-WP1.md) |
+| **WP1** | Hardening | Acceptance gate passing; validation blockers remain | [User-Guide-WP1.md](User-Guide-WP1.md) |
 | **WP2** | 🔨 Partial | ~70% | [User-Guide-WP2.md](User-Guide-WP2.md) |
 | **WP3** | ✅ Complete | 100% | [User-Guide-WP3.md](User-Guide-WP3.md) |
 | **WP4** | ✅ Complete | 100% | [User-Guide-WP4.md](User-Guide-WP4.md) |
 | **WP5** | 📋 Designed | 0% | [User-Guide-WP5.md](User-Guide-WP5.md) |
 
-**Overall Project**: ~80% Complete (infrastructure and discovery ready, publication pending results)
+**Overall Project**: Active research prototype. Infrastructure is usable, but publication claims are pending validated WP1 evidence and downstream validation.
 
 ---
 

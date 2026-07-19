@@ -56,6 +56,7 @@ def _fmt_stat_table(section: dict, metrics: list[tuple[str, str]]) -> list[str]:
 def main() -> None:
     args = parse_args()
     ws = args.workspace
+    output_dir = os.path.dirname(args.output)
 
     tier1_report = os.path.join(
         str(REPO_ROOT), "data", "tier1", "analysis", "validation_report.txt"
@@ -65,6 +66,10 @@ def main() -> None:
     )
 
     jpl_summary = os.path.join(ws, "results", "jpl_comparison_summary.json")
+    jpl_seeded_summary = os.path.join(
+        ws, "results", "jpl_seeded_catalog_summary.json"
+    )
+    artifact_manifest = os.path.join(ws, "reports", "wp1_artifact_manifest.json")
     ext_precision = os.path.join(ws, "results", "extended_precision_summary.csv")
 
     megno_img = os.path.join(ws, "results", "chaos_map_megno.png")
@@ -89,6 +94,27 @@ def main() -> None:
     report_lines.append("```")
     report_lines.append("")
 
+    report_lines.append("## Publication-Readiness Interpretation")
+    report_lines.append("")
+    report_lines.append(
+        "Current evidence supports WP1 environment setup, acceptance tests, "
+        "and bounded integrator-validation claims, including the Tier 2 "
+        "heyoka.real smoke run. It does not yet support publication claims "
+        "for a production WP1 periodic-orbit catalogue."
+    )
+    report_lines.append("")
+    report_lines.append(
+        "The strongest positive evidence below is the JPL initial-condition "
+        "cross-check, which isolates integrator behavior from candidate "
+        "generation. The JPL-seeded validation catalogue is publishable only "
+        "as an external-seeded catalogue. The native-candidate quality, reversibility, "
+        "and convergence sections are candidate-library diagnostics; their "
+        "current failures are publication blockers for native WP1 catalogue "
+        "claims unless that paper scope is narrowed to infrastructure/methods "
+        "and external/JPL-seeded validation."
+    )
+    report_lines.append("")
+
     # --- JPL Cross-Check with structured output ---
     report_lines.append("## JPL Cross-Check Summary")
     if os.path.exists(jpl_summary):
@@ -109,7 +135,8 @@ def main() -> None:
         report_lines.append("")
         report_lines.append(
             "Measures IAS15 performance on **JPL initial conditions** "
-            "(converged periodic orbits). Isolates integrator quality."
+            "(converged periodic orbits). This is the cleanest integrator "
+            "evidence because it does not depend on WP1 candidate generation."
         )
         report_lines.append("")
         int_section = summary.get("integrator_accuracy", {})
@@ -124,12 +151,15 @@ def main() -> None:
         )
         report_lines.append("")
 
-        # Richardson Approximation Quality
-        report_lines.append("### Richardson Approximation Quality")
+        # Native Candidate Quality
+        report_lines.append("### Native Candidate Quality")
         report_lines.append("")
         report_lines.append(
-            "Measures geometric distance between WP1 Richardson 3rd-order ICs "
-            "and JPL converged ICs. No integration — purely geometric comparison."
+            "Measures geometric distance between WP1 native candidate ICs "
+            "(corrected small-amplitude Lyapunov seeds plus simplified Halo "
+            "seeds) and JPL converged ICs. This is a candidate-library quality "
+            "gate, not an integrator test. Large distances or period errors "
+            "mean the native WP1 catalogue is not publication-ready."
         )
         report_lines.append("")
         rich_section = summary.get("richardson_quality", {})
@@ -147,9 +177,77 @@ def main() -> None:
         report_lines.append("(missing)")
     report_lines.append("")
 
+    report_lines.append("## JPL-Seeded Validation Catalogue")
+    report_lines.append("")
+    report_lines.append(
+        "This artifact validates normalized JPL periodic-orbit initial "
+        "conditions with the WP1 IAS15 stack and writes an accepted-only "
+        "Parquet catalogue. It is suitable for external-seeded validation "
+        "claims, not for claims that WP1 generated those periodic seeds."
+    )
+    report_lines.append("")
+    if os.path.exists(jpl_seeded_summary):
+        with open(jpl_seeded_summary, "r", encoding="utf-8") as f:
+            seeded = json.load(f)
+
+        meta = seeded.get("meta", {})
+        acceptance = meta.get("acceptance_rate")
+        acceptance_text = (
+            f"{acceptance:.1%}" if isinstance(acceptance, (int, float)) else "?"
+        )
+        report_lines.append(
+            f"*Accepted {meta.get('n_accepted', '?')} of "
+            f"{meta.get('n_sampled', '?')} sampled JPL seeds "
+            f"({acceptance_text}) from {meta.get('n_jpl_total', '?')} total "
+            f"records.*"
+        )
+        report_lines.append("")
+        report_lines.append(
+            f"Thresholds: closure <= {meta.get('closure_threshold', '?')}, "
+            f"absolute Jacobi drift <= {meta.get('jacobi_drift_threshold', '?')}; "
+            f"integrator: {meta.get('integrator', '?')} at tolerance "
+            f"{meta.get('tolerance', '?')}."
+        )
+        report_lines.append("")
+        catalog_output = meta.get("catalog_output")
+        if catalog_output:
+            report_lines.append(
+                "Accepted catalogue: "
+                f"`{os.path.relpath(catalog_output, os.path.dirname(args.output))}`"
+            )
+            report_lines.append("")
+        report_lines.append("### Accepted Catalogue Metrics")
+        report_lines.append("")
+        accepted = seeded.get("accepted_catalog", {})
+        report_lines.extend(
+            _fmt_stat_table(
+                accepted,
+                [
+                    ("closure_error", "Closure error (||x(T) - x(0)||)"),
+                    ("jacobi_drift", "Jacobi drift (|C(T) - C(0)|)"),
+                ],
+            )
+        )
+        report_lines.append("")
+        groups = accepted.get("groups", {})
+        if groups:
+            report_lines.append("### Accepted Catalogue Groups")
+            report_lines.append("")
+            report_lines.append("| Family | L-point | Branch | Count |")
+            report_lines.append("|--------|---------|--------|------:|")
+            for key, count in groups.items():
+                family, lpoint, branch = (key.split("|") + ["", "", ""])[:3]
+                report_lines.append(
+                    f"| {family or '-'} | {lpoint or '-'} | {branch or '-'} | {count} |"
+                )
+            report_lines.append("")
+    else:
+        report_lines.append("(missing)")
+        report_lines.append("")
+
     report_lines.append("## Extended Precision Summary")
     if os.path.exists(ext_precision):
-        ext_rel = os.path.relpath(ext_precision, os.path.dirname(args.output))
+        ext_rel = os.path.relpath(ext_precision, output_dir)
         report_lines.append(f"See `{ext_rel}` for full details.")
     else:
         report_lines.append("(missing)")
@@ -160,9 +258,11 @@ def main() -> None:
     report_lines.append("## Reversibility Test")
     report_lines.append("")
     report_lines.append(
-        "Forward-backward integration should recover the initial state. "
-        "This tests that the integrator preserves Hamiltonian time-reversal symmetry "
-        "(Hairer, Lubich & Wanner 2006). Error is expected to grow with forward time."
+        "This diagnostic integrates WP1 candidates forward, applies the CR3BP "
+        "rotating-frame reversing symmetry, and checks whether the trajectory "
+        "recovers its initial position. Short-time results test the symmetry "
+        "and integrator plumbing; long-time results are a stress diagnostic in "
+        "unstable orbit neighborhoods."
     )
     report_lines.append("")
     if os.path.exists(reversibility_summary):
@@ -192,14 +292,24 @@ def main() -> None:
     report_lines.append("## Convergence Order Test")
     report_lines.append("")
     report_lines.append(
-        "Sweeps integrator tolerance from 1e-8 to 1e-14 and measures how error scales. "
-        "For a well-behaved integrator, error should scale roughly as O(tol) "
-        "(slope ~1 in log-log space)."
+        "Sweeps IAS15 tolerance from 1e-8 to 1e-14 on corrected small-amplitude "
+        "L1/L2 Lyapunov seeds and measures one-period closure/Jacobi behavior. "
+        "When the closure values sit near the corrected-seed or machine-precision "
+        "floor, the fitted slope is a floor diagnostic, not an empirical order "
+        "proof."
     )
     report_lines.append("")
     if os.path.exists(convergence_summary):
         with open(convergence_summary, "r", encoding="utf-8") as f:
             conv_data = json.load(f)
+        meta = conv_data.get("meta", {})
+        if meta:
+            report_lines.append(
+                f"*Scope: {meta.get('candidate_scope', 'unknown')} "
+                f"({meta.get('n_orbits', '?')} orbits, amplitudes "
+                f"{meta.get('amplitude_range', '?')}).*"
+            )
+            report_lines.append("")
         report_lines.append(
             "| Tolerance | N | Med Closure | P95 Closure" " | Med Jacobi | P95 Jacobi |"
         )
@@ -221,12 +331,24 @@ def main() -> None:
             report_lines.append(f"**Estimated convergence order (slope):** {order:.2f}")
         else:
             report_lines.append("**Estimated convergence order:** not computed")
+        interpretation = conv_data.get("interpretation")
+        if interpretation:
+            report_lines.append("")
+            report_lines.append(f"**Interpretation:** {interpretation}")
     else:
         report_lines.append("(missing)")
     report_lines.append("")
 
+    report_lines.append("## Artifact Manifest")
+    manifest_rel = os.path.relpath(artifact_manifest, output_dir)
+    report_lines.append(
+        f"Checksum and provenance manifest: `{manifest_rel}`. "
+        "It is generated as the final `run_validation.sh` phase so it can hash "
+        "the completed report."
+    )
+    report_lines.append("")
+
     report_lines.append("## Chaos Maps")
-    output_dir = os.path.dirname(args.output)
     if os.path.exists(megno_img):
         report_lines.append(f"![MEGNO Map]({os.path.relpath(megno_img, output_dir)})")
     if os.path.exists(fli_img):

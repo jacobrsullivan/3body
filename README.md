@@ -23,13 +23,28 @@ This project systematically tests this hypothesis through:
 
 | Work Package | Description | Status | Completion |
 |--------------|-------------|--------|------------|
-| **WP1** | High-Precision Infrastructure | Complete | 100% |
-| **WP2** | Geometric Foundations & Lifts | Partial | ~70% |
-| **WP3** | Invariant Discovery (ML + Symbolic) | Complete | 100% |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Complete | 100% |
-| **WP5** | Consolidation & Publication | Designed | Pending Results |
+| **WP1** | High-Precision Infrastructure | Hardening | Acceptance gate and bounded Tier 2 smoke pass; validation blockers remain |
+| **WP2** | Geometric Foundations & Lifts | Prototype | Needs validation against WP1 evidence |
+| **WP3** | Invariant Discovery (ML + Symbolic) | Prototype | Imports and collection repaired; publication claims not validated |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Prototype | Validation criteria need regenerated evidence |
+| **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
-**Overall**: ~80% complete. Infrastructure and discovery pipelines are operational. Publication awaits validation of candidate integrals.
+**Overall**: the codebase is an active research prototype. WP1 now has a reproducible bobs-mini acceptance gate and a publication-scoped external/JPL-seeded validation catalogue, but the current evidence does not support a native WP1-generated periodic-orbit catalogue claim yet.
+
+### Current WP1 Evidence
+
+Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
+
+- `./scripts/run_tests.sh` passes: setup verification, clean collection of 831 tests, 92 focused WP1 tests, and 2/2 CTest QD checks.
+- Tier 1 minimal validation regenerated 30 orbits at target `1e-14`: mean drift `2.88e-15`, median drift `4.59e-16`, 95th percentile `1.20e-14`, max drift `2.94e-14`, pass rate `93.3%`.
+- Tier 2 bounded smoke regenerated 3 orbits at target `1e-25` using `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`: mean drift `5.27e-28`, median drift `4.83e-28`, 95th percentile `6.36e-28`, max drift `6.53e-28`, pass rate `100.0%`.
+- External JPL validation regenerated with 300 sampled JPL candidates from 21,938 fetched records: closure median `2.30e-11`, Jacobi drift median `4.44e-16`.
+- JPL-seeded validation catalogue generated from the same 300 sampled external seeds: 284 accepted rows under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`; accepted-catalogue closure median `2.01e-11`, 95th percentile `9.73e-10`, max `6.23e-09`.
+- Small-amplitude native Lyapunov seeds now use a guarded differential corrector; the corrected Lyapunov convergence/closure diagnostic reports median closure `1.02e-12` and median Jacobi drift about `1.5e-16`.
+- CR3BP rotating-frame reversibility now uses the correct reversing symmetry and passes the short-time `T=1` diagnostic with median position RMS `2.64e-16` and 100% Tier 1 pass rate.
+- Native candidate quality is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01`, median period error `8.90e-01`, and simplified Halo seeds remain uncorrected.
+
+The current report is regenerated at `validation-external/wp1-validation/reports/wp1_external_validation_report.md`; checksum/provenance metadata is at `validation-external/wp1-validation/reports/wp1_artifact_manifest.json`.
 
 ---
 
@@ -85,9 +100,9 @@ WP1 (Trajectories) --> WP2 (Geometry) --> WP3 (Discovery) --> WP4 (Validation) -
 
 ### WP1: High-Precision Infrastructure
 
-Generates validated CR3BP trajectory catalogues with unprecedented precision.
+Generates and validates CR3BP trajectory data. Current evidence supports the environment, QD build checks, collection gate, focused WP1 tests, a small Tier 1 validation run, a bounded Tier 2 high-precision smoke, and an external/JPL-seeded validation catalogue. Production-scale Tier 2 validation and native WP1 periodic-candidate validation are still open blockers.
 
-- **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (double-double precision)
+- **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with precision guard), HeyokaTaylor (bounded arbitrary-precision Tier 2 smoke)
 - **Chaos Detection**: MEGNO, FLI indicators
 - **Validation**: Shadow Hamiltonian analysis, time reversibility tests
 - **Production Pipeline**: Snakemake workflow for 10^5+ orbit generation

@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - python=3.11
+  - numpy>=1.24,<2.3
   - poetry
   # Crucial: Ensures consistent C/C++/Fortran compilers across systems
   - compilers
@@ -11,6 +12,9 @@ dependencies:
   - make
   # Required for bridging Python and C++
   - pybind11
+  # High-precision and validated scientific dependencies managed by conda-forge
+  - qd
+  - heyoka.py=7.12.0
   # Additional useful tools
   - git
   - curl

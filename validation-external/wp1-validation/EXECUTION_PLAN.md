@@ -3,12 +3,12 @@
 This runbook executes the external validation workflow for WP1 in a reproducible way.
 
 ## Workspace
-- Base directory: `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation`
-- Config: `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/config.yaml`
+- Base directory: `/Users/bob/Desktop/3body/validation-external/wp1-validation`
+- Config: `/Users/bob/Desktop/3body/validation-external/wp1-validation/config.yaml`
 
 ## Phase 1 — Preflight & Dependencies
 ```bash
-cd /Users/jacobsullivan/Desktop/3body
+cd /Users/bob/Desktop/3body
 python verify_setup.py
 python -c "import rebound; print(rebound.__version__)"
 
@@ -31,7 +31,7 @@ Changes applied:
 
 ## Phase 3 — Smoke Run
 ```bash
-cd /Users/jacobsullivan/Desktop/3body
+cd /Users/bob/Desktop/3body
 snakemake --cores 8 --config tier=1 n_mu=2 n_C=2 n_orbits_per_mu_c=5
 ```
 Expected outputs:
@@ -40,47 +40,63 @@ Expected outputs:
 
 ## Phase 4 — Full Tier Runs
 ```bash
-cd /Users/jacobsullivan/Desktop/3body
+cd /Users/bob/Desktop/3body
 snakemake --cores 16 --config tier=1
 snakemake --cores 16 --config tier=2
 ```
 Log output:
-- `/Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/logs/`
+- `/Users/bob/Desktop/3body/validation-external/wp1-validation/logs/`
 
 ## Phase 5 — JPL Reference Data
 Fetch and normalize JPL periodic orbits:
 ```bash
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/fetch_jpl_periodic_orbits.py \
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/fetch_jpl_periodic_orbits.py \
   --system earth-moon
 
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/normalize_jpl_orbits.py \
-  --input /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/raw_latest.json \
-  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/normalize_jpl_orbits.py \
+  --input /Users/bob/Desktop/3body/validation-external/wp1-validation/data/jpl/raw_latest.json \
+  --output /Users/bob/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet
 ```
 
 ## Phase 6 — Comparative Validation
 ```bash
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/compare_to_jpl.py \
-  --jpl /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet \
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/compare_to_jpl.py \
+  --jpl /Users/bob/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet \
   --use-periodic-library \
-  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results/jpl_comparison_summary.csv
+  --output /Users/bob/Desktop/3body/validation-external/wp1-validation/results/jpl_comparison.csv \
+  --summary /Users/bob/Desktop/3body/validation-external/wp1-validation/results/jpl_comparison_summary.json
 
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/extended_precision_check.py \
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/build_jpl_seeded_catalog.py \
+  --jpl /Users/bob/Desktop/3body/validation-external/wp1-validation/data/jpl/normalized.parquet \
+  --max-jpl 300 \
+  --metrics-output /Users/bob/Desktop/3body/validation-external/wp1-validation/results/jpl_seeded_validation.csv \
+  --catalog-output /Users/bob/Desktop/3body/validation-external/wp1-validation/results/jpl_seeded_catalog.parquet \
+  --summary /Users/bob/Desktop/3body/validation-external/wp1-validation/results/jpl_seeded_catalog_summary.json
+
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/extended_precision_check.py \
   --use-periodic-library \
-  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results/extended_precision_summary.csv
+  --output /Users/bob/Desktop/3body/validation-external/wp1-validation/results/extended_precision_summary.csv
 ```
+
+Current JPL-seeded catalogue thresholds are closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`. The 2026-07-19 bobs-mini run accepted 284/300 sampled seeds.
 
 ## Phase 7 — Chaos Maps
 ```bash
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/generate_chaos_maps.py \
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/generate_chaos_maps.py \
   --resolution 1000 \
-  --output-dir /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/results
+  --output-dir /Users/bob/Desktop/3body/validation-external/wp1-validation/results
 ```
 
 ## Phase 8 — Reporting
 ```bash
-python /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/scripts/generate_report.py \
-  --output /Users/jacobsullivan/Desktop/3body/validation-external/wp1-validation/reports/wp1_external_validation_report.md
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/generate_report.py \
+  --workspace /Users/bob/Desktop/3body/validation-external/wp1-validation \
+  --output /Users/bob/Desktop/3body/validation-external/wp1-validation/reports/wp1_external_validation_report.md
+
+python /Users/bob/Desktop/3body/validation-external/wp1-validation/scripts/generate_artifact_manifest.py \
+  --workspace /Users/bob/Desktop/3body/validation-external/wp1-validation \
+  --output /Users/bob/Desktop/3body/validation-external/wp1-validation/reports/wp1_artifact_manifest.json \
+  --command "./run_validation.sh --skip-fetch --cores 8 --max-jpl 300"
 ```
 
 ## Notes

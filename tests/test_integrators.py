@@ -21,6 +21,8 @@ from src.python.integrators.base import (
     IntegrationFailedException,
     InvalidInitialConditionsError,
 )
+from src.python.integrators.adaptive_symplectic import AdaptiveSymplecticIntegrator
+from src.python.integrators.heyoka_taylor import HeyokaTaylorIntegrator
 from src.python.utils.dynamics import calculate_jacobi_constant
 
 
@@ -187,6 +189,85 @@ class TestIntegrationResult:
         assert result.message == "Test"
         assert result.stats["test"] == 1
         np.testing.assert_array_equal(result.times, times)
+
+
+class TestAdaptiveSymplecticIntegrator:
+    """Test AdaptiveSymplectic precision guard and short-run behavior."""
+
+    def setup_method(self):
+        self.mu = 0.0121505856
+        self.initial_state = np.array(
+            [1.1094406061, -0.1250111591, 0.0, -0.0050612502, 0.4862950307, 0.0]
+        )
+
+    def test_short_double_precision_integration_completes(self):
+        """The current float64 path should complete at a realistic tolerance."""
+        integrator = AdaptiveSymplecticIntegrator(
+            self.mu,
+            order=6,
+            error_tolerance=1e-10,
+            max_steps=2000,
+        )
+
+        result = integrator.integrate(
+            self.initial_state,
+            duration=0.05,
+            output_interval=0.025,
+        )
+
+        assert result.success, result.message
+        assert result.stats["accepted_steps"] > 0
+        assert result.stats["stop_reason"] == "completed"
+
+    def test_tier2_tolerance_fails_without_qd_backend(self):
+        """Tier 2 targets must not spin until max_steps on the float64 path."""
+        integrator = AdaptiveSymplecticIntegrator(
+            self.mu,
+            order=6,
+            error_tolerance=1e-25,
+            max_steps=2000,
+        )
+
+        result = integrator.integrate(
+            self.initial_state,
+            duration=0.05,
+            output_interval=0.025,
+        )
+
+        assert not result.success
+        assert result.stats["stop_reason"] == "unsupported_precision"
+        assert result.stats["total_steps"] == 0
+        assert "requires a QD-backed arithmetic path" in result.message
+
+
+class TestHeyokaTaylorIntegrator:
+    """Test high-precision heyoka Taylor Tier 2 smoke behavior."""
+
+    def setup_method(self):
+        pytest.importorskip("heyoka")
+        self.mu = 0.012150585609624
+        self.initial_state = np.array(
+            [1.1094406061, -0.1250111591, 0.0, -0.0050612502, 0.4862950307, 0.0]
+        )
+
+    def test_tier2_smoke_meets_declared_precision(self):
+        integrator = HeyokaTaylorIntegrator(
+            self.mu,
+            tolerance=1e-25,
+            precision_bits=160,
+        )
+
+        result = integrator.integrate(
+            self.initial_state,
+            duration=1.0,
+            output_interval=0.5,
+        )
+
+        assert result.success, result.message
+        assert result.stats["precision_backend"] == "heyoka.real"
+        assert result.stats["precision_bits"] == 160
+        assert result.stats["jacobi_relative_drift_float"] < 1e-25
+        assert len(result.times) == 3
 
 
 # Skip IAS15 tests if REBOUND is not available

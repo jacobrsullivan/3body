@@ -1,0 +1,43 @@
+{
+  "corpus_path": "corpus.parquet",
+  "corpus_sha256": "757565e14d9f9dcc4c489923df1abc32cf09339ea654a154519eed22f061e6f3",
+  "counts": {
+    "family": {
+      "halo": 320,
+      "lyapunov": 80
+    },
+    "split": {
+      "calibration": 80,
+      "development": 240,
+      "holdout": 80
+    },
+    "stability_regime": {
+      "marginal": 80,
+      "moderately_unstable": 120,
+      "strongly_unstable": 120,
+      "weakly_unstable": 80
+    },
+    "system": {
+      "earth-moon": 100,
+      "jupiter-europa": 100,
+      "saturn-titan": 100,
+      "sun-earth": 100
+    }
+  },
+  "holdout_ids_path": "holdout_ids.json",
+  "holdout_ids_sha256": "10a4783727359bf7ec4254d5fd42e754e318575962cd02f8ef01023282c9937e",
+  "path_base": "corpus_manifest_directory",
+  "sampled_record_count": 400,
+  "schema_version": "1.0",
+  "source_hashes": {
+    "earth-moon": "ed2b9787cbbef74bbeca23ff61f40b2bd64c7bf12acc67939f3c3649551b150a",
+    "jupiter-europa": "02ac57379f5ebe47da71bf9912a37145334b6bd00b03527d7dba3f82c10cab1c",
+    "saturn-titan": "9a27eaf20838a71f38bb8f306e377ea1fd1aeb2e0c5527c4de69d31974a2d614",
+    "sun-earth": "689e46645c387fd36a07433e45e14bf99dad5968db45c1adf4f21f2e5f7ab0c0"
+  },
+  "source_manifest": "raw/manifest.json",
+  "source_manifest_sha256": "2b0a453dc11bd0b81329e286ee8fd460e6652d8a5cfbfba73a0f5b829b25b2a3",
+  "source_record_count": 67218,
+  "spec_path": "../../qualification_spec.json",
+  "spec_sha256": "1c6f5198b5b718877644515311b8d657c795e7398ee664c6f08b1b94d4b1d692"
+}

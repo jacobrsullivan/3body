@@ -116,6 +116,15 @@ def spinor_to_position(u: np.ndarray) -> np.ndarray:
     return np.array([x, y, z])
 
 
+def compute_spinor_norm(u: np.ndarray) -> float:
+    """
+    Compute the Euclidean norm of a KS spinor.
+
+    For the KS map used here, ||u||^2 equals the physical radius ||r||.
+    """
+    return float(np.linalg.norm(u))
+
+
 def velocity_to_spinor_momentum(
     v: np.ndarray,
     u: np.ndarray,
@@ -425,6 +434,18 @@ def test_ks_inverse(n_tests: int = 100, tolerance: float = 1e-8) -> bool:
             return False
 
     return True
+
+
+def test_ks_transformation(
+    n_tests: int = 100,
+    norm_tolerance: float = 1e-10,
+    inverse_tolerance: float = 1e-8
+) -> bool:
+    """Run the core KS transformation validation checks."""
+    return (
+        test_ks_norm_property(n_tests=n_tests, tolerance=norm_tolerance)
+        and test_ks_inverse(n_tests=n_tests, tolerance=inverse_tolerance)
+    )
 
 
 if __name__ == "__main__":

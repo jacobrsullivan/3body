@@ -125,17 +125,18 @@ def check_qd_library():
             print("✗ QD headers not found")
 
         # Test if verify_qd executable exists and runs
-        if os.path.exists("verify_qd"):
+        verify_qd = os.path.join("build", "verify_qd")
+        if os.path.exists(verify_qd):
             print("✓ QD verification executable found")
             result = subprocess.run(
-                ["./verify_qd"], capture_output=True, text=True, timeout=5
+                [verify_qd], capture_output=True, text=True, timeout=5
             )
             if result.returncode == 0 and "3.14159" in result.stdout:
                 print("✓ QD library verification passed")
             else:
                 print("✗ QD library verification failed")
         else:
-            print("⚠ QD verification executable not found")
+            print("⚠ QD verification executable not found at build/verify_qd")
 
     except Exception as e:
         print(f"⚠ QD library check warning: {e}")

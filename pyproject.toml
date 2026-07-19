@@ -5,6 +5,7 @@ description = "High-precision three-body problem integrability research"
 authors = ["Jacob Sullivan <jacobrsullivan@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
@@ -19,7 +20,6 @@ rebound = "^4.4.10"
 numba = ">=0.59"
 pybind11 = "^2.13.0"
 snakemake = "^8.0.0"
-heyoka = "^7.8.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"

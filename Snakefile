@@ -17,6 +17,8 @@ Dependencies:
 
 import numpy as np
 
+from src.python.validation.qualification import qualification_metadata
+
 # Configuration
 TIER = int(config.get("tier", 1))
 
@@ -52,13 +54,18 @@ if TIER == 1:
     TARGET_ACCURACY = float(config.get("target_accuracy", 1e-14))
 else:  # TIER == 2
     N_ORBITS_PER_MU_C = int(config.get("n_orbits_per_mu_c", 30))
-    INTEGRATOR = "AdaptiveSymplectic"
-    PRECISION = "double-double"
+    INTEGRATOR = "HeyokaTaylor"
+    PRECISION = "heyoka-real"
     TARGET_ACCURACY = float(config.get("target_accuracy", 1e-25))
+    PRECISION_BITS = int(config.get("precision_bits", 160))
 
 DURATION = float(config.get("duration", 1000.0))
 OUTPUT_INTERVAL = float(config.get("output_interval", 1.0))
 SEED = int(config.get("seed", 42))
+REQUIRE_QUALIFICATION = bool(config.get("require_qualification", True))
+QUALIFICATION_METADATA = (
+    qualification_metadata(require_pass=True) if REQUIRE_QUALIFICATION else {}
+)
 
 # Generate orbit IDs
 ORBIT_IDS = expand(
@@ -131,6 +138,7 @@ rule integrate_orbit:
         import numpy as np
         from src.python.integrators.ias15 import IAS15Integrator
         from src.python.integrators.adaptive_symplectic import AdaptiveSymplecticIntegrator
+        from src.python.integrators.heyoka_taylor import HeyokaTaylorIntegrator
         from src.python.validation.chaos_indicators import create_cr3bp_chaos_analyzer
 
         # Parse orbit ID
@@ -152,17 +160,28 @@ rule integrate_orbit:
         # Select integrator
         if INTEGRATOR == "IAS15":
             integrator = IAS15Integrator(mu, tolerance=TARGET_ACCURACY)
-        else:
+        elif INTEGRATOR == "AdaptiveSymplectic":
             integrator = AdaptiveSymplecticIntegrator(
                 mu,
                 order=6,
                 error_tolerance=TARGET_ACCURACY
             )
+        elif INTEGRATOR == "HeyokaTaylor":
+            integrator = HeyokaTaylorIntegrator(
+                mu,
+                tolerance=TARGET_ACCURACY,
+                precision_bits=PRECISION_BITS,
+                preserve_high_precision_states=True,
+            )
+        else:
+            raise ValueError(f"Unknown integrator: {INTEGRATOR}")
 
         # Integrate
         result = integrator.integrate(
             initial_state, duration=DURATION, output_interval=OUTPUT_INTERVAL
         )
+        if not result.success:
+            raise RuntimeError(f"Integration failed for {orbit_id}: {result.message}")
 
         # Compute chaos indicators (may fail on close-encounter orbits)
         n_times = len(result.times)
@@ -198,6 +217,35 @@ rule integrate_orbit:
             f.attrs['chaos_class'] = chaos_class
             f.attrs['mean_MEGNO'] = mean_megno
             f.attrs['final_FLI'] = final_fli
+            f.attrs['integrator'] = INTEGRATOR
+            f.attrs['precision'] = PRECISION
+            for key, value in QUALIFICATION_METADATA.items():
+                f.attrs[key] = value
+            if 'jacobi_relative_drift' in result.stats:
+                f.attrs['jacobi_relative_drift'] = result.stats[
+                    'jacobi_relative_drift'
+                ]
+                f.attrs['jacobi_relative_drift_float'] = result.stats[
+                    'jacobi_relative_drift_float'
+                ]
+                f.attrs['jacobi_initial_hp'] = result.stats['jacobi_initial']
+                f.attrs['jacobi_final_hp'] = result.stats['jacobi_final']
+                f.attrs['precision_backend'] = result.stats['precision_backend']
+                f.attrs['precision_bits'] = result.stats['precision_bits']
+            if 'states_corotating_high_precision' in result.stats:
+                string_dtype = h5py.string_dtype(encoding='utf-8')
+                f.create_dataset(
+                    'states_corotating_high_precision',
+                    data=np.asarray(
+                        result.stats['states_corotating_high_precision'], dtype=object
+                    ),
+                    dtype=string_dtype,
+                )
+                f.create_dataset(
+                    'times_high_precision',
+                    data=np.asarray(result.stats['times_high_precision'], dtype=object),
+                    dtype=string_dtype,
+                )
 
 
 rule aggregate_tier:
@@ -241,16 +289,29 @@ rule validation_report:
 
         jacobi_drifts = []
         chaos_classes = []
+        integrators = set()
+        precisions = set()
+        precision_backends = set()
+        precision_bits = set()
 
         for orbit_file in orbit_files:
             with h5py.File(orbit_file, 'r') as f:
                 mu = f.attrs['mu']
                 states = f['states_corotating'][:]
+                integrators.add(str(f.attrs.get('integrator', INTEGRATOR)))
+                precisions.add(str(f.attrs.get('precision', PRECISION)))
+                if 'precision_backend' in f.attrs:
+                    precision_backends.add(str(f.attrs['precision_backend']))
+                if 'precision_bits' in f.attrs:
+                    precision_bits.add(str(f.attrs['precision_bits']))
 
                 # Compute Jacobi constant drift
-                C_initial = calculate_jacobi_constant(states[0], mu)
-                C_final = calculate_jacobi_constant(states[-1], mu)
-                drift = abs(C_final - C_initial) / abs(C_initial)
+                if TIER == 2 and 'jacobi_relative_drift' in f.attrs:
+                    drift = float(f.attrs['jacobi_relative_drift'])
+                else:
+                    C_initial = calculate_jacobi_constant(states[0], mu)
+                    C_final = calculate_jacobi_constant(states[-1], mu)
+                    drift = abs(C_final - C_initial) / abs(C_initial)
 
                 jacobi_drifts.append(drift)
                 chaos_classes.append(f.attrs['chaos_class'])
@@ -262,7 +323,16 @@ rule validation_report:
             f.write(f"WP1 Tier {TIER} Validation Report\n")
             f.write("="*60 + "\n\n")
             f.write(f"Total orbits: {len(orbit_files)}\n")
-            f.write(f"Target accuracy: {TARGET_ACCURACY:.0e}\n\n")
+            f.write(f"Target accuracy: {TARGET_ACCURACY:.0e}\n")
+            f.write(f"Integrator(s): {', '.join(sorted(integrators))}\n")
+            f.write(f"Precision: {', '.join(sorted(precisions))}\n")
+            if precision_backends:
+                f.write(
+                    f"Precision backend(s): {', '.join(sorted(precision_backends))}\n"
+                )
+            if precision_bits:
+                f.write(f"Precision bits: {', '.join(sorted(precision_bits))}\n")
+            f.write("\n")
 
             f.write("Jacobi Constant Precision:\n")
             f.write(f"  Mean drift: {np.mean(jacobi_drifts):.2e}\n")

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 """
-Time-reversibility validation for WP1 orbit subset.
+Rotating-frame reversibility validation for a WP1 orbit subset.
 
-Tests forward-backward integration error at multiple forward times (T=1, 10, 50 TU).
-Uses the existing TimeReversibilityTester from
-src/python/validation/time_reversibility.py.
+Tests forward/reversed integration error at multiple forward times
+(T=1, 10, 50 TU). For CR3BP this uses the rotating-frame reversing
+symmetry configured by create_cr3bp_reversibility_tester(), not a plain
+velocity flip.
 """
 
 from __future__ import annotations

@@ -21,11 +21,85 @@ References:
 """
 
 from dataclasses import dataclass
+from functools import lru_cache
 from typing import List, Optional
 import numpy as np
 import logging
+from scipy.integrate import solve_ivp
+from scipy.optimize import root, root_scalar
 
 logger = logging.getLogger(__name__)
+
+_MAX_CORRECTED_LYAPUNOV_AMPLITUDE = 0.15
+
+
+@lru_cache(maxsize=32)
+def collinear_lagrange_point(mu: float, L_point: str) -> float:
+    """Compute the collinear L1/L2 point for CR3BP mass parameter mu."""
+    if L_point == "L1":
+        bracket = (1e-12, 1.0 - mu - 1e-12)
+    elif L_point == "L2":
+        bracket = (1.0 - mu + 1e-12, 2.0)
+    else:
+        raise ValueError(f"L_point must be L1 or L2, got {L_point}")
+
+    def force_balance(x: float) -> float:
+        r1 = abs(x + mu)
+        r2 = abs(x - 1.0 + mu)
+        return (
+            x
+            - (1.0 - mu) * (x + mu) / r1**3
+            - mu * (x - 1.0 + mu) / r2**3
+        )
+
+    result = root_scalar(force_balance, bracket=bracket, xtol=1e-14, rtol=1e-14)
+    if not result.converged:
+        raise RuntimeError(f"Could not solve {L_point} for mu={mu}")
+    return float(result.root)
+
+
+def _cr3bp_rhs(mu: float):
+    """Return CR3BP first-order dynamics for scipy integrators."""
+    from ..utils.dynamics import cr3bp_acceleration
+
+    def rhs(_t: float, state: np.ndarray) -> np.ndarray:
+        deriv = np.empty(6, dtype=float)
+        deriv[:3] = state[3:]
+        deriv[3:] = cr3bp_acceleration(state, mu)
+        return deriv
+
+    return rhs
+
+
+def _planar_second_derivatives(mu: float, x: float) -> tuple[float, float]:
+    """Planar CR3BP potential Hessian terms at y=z=0."""
+    r1 = abs(x + mu)
+    r2 = abs(x - 1.0 + mu)
+    uxx = 1.0 + 2.0 * (1.0 - mu) / r1**3 + 2.0 * mu / r2**3
+    uyy = 1.0 - (1.0 - mu) / r1**3 - mu / r2**3
+    return uxx, uyy
+
+
+def _planar_linear_frequency(mu: float, x_L: float) -> float:
+    """Return the center-manifold planar frequency at a collinear point."""
+    uxx, uyy = _planar_second_derivatives(mu, x_L)
+    matrix = np.array(
+        [
+            [0.0, 0.0, 1.0, 0.0],
+            [0.0, 0.0, 0.0, 1.0],
+            [uxx, 0.0, 0.0, 2.0],
+            [0.0, uyy, -2.0, 0.0],
+        ]
+    )
+    eigenvalues = np.linalg.eigvals(matrix)
+    imag_parts = sorted(
+        abs(ev.imag)
+        for ev in eigenvalues
+        if abs(ev.real) < 1e-8 and abs(ev.imag) > 1e-8
+    )
+    if not imag_parts:
+        raise RuntimeError("Could not identify planar center frequency")
+    return float(imag_parts[0])
 
 
 @dataclass
@@ -92,17 +166,21 @@ class LyapunovOrbitGenerator:
         self.mu = mu
         self.L_point = L_point
 
-        # Approximate L-point position
         if L_point == "L1":
-            self.x_L = 1.0 - mu - (mu / 3.0) ** (1.0 / 3.0)
+            self.x_L = collinear_lagrange_point(mu, L_point)
         elif L_point == "L2":
-            self.x_L = 1.0 - mu + (mu / 3.0) ** (1.0 / 3.0)
+            self.x_L = collinear_lagrange_point(mu, L_point)
         else:
             raise ValueError(f"L_point must be L1 or L2, got {L_point}")
 
     def generate_richardson_approximation(self, amplitude: float) -> PeriodicOrbitSpec:
         """
-        Generate Lyapunov orbit using Richardson's 3rd-order approximation.
+        Generate a planar Lyapunov orbit.
+
+        Small-amplitude L1/L2 orbits are differentially corrected from a
+        linearized seed. Larger amplitudes retain the historical Richardson
+        approximation, because the simple two-variable corrector is not a
+        global family continuation method.
 
         Args:
             amplitude: Orbit amplitude (Ay)
@@ -110,6 +188,21 @@ class LyapunovOrbitGenerator:
         Returns:
             PeriodicOrbitSpec
         """
+        if 0.0 < amplitude <= _MAX_CORRECTED_LYAPUNOV_AMPLITUDE:
+            try:
+                return self._generate_differentially_corrected(amplitude)
+            except Exception as exc:
+                logger.warning(
+                    "Differential correction failed for %s amplitude %.6g: %s",
+                    self.L_point,
+                    amplitude,
+                    exc,
+                )
+
+        return self._generate_richardson_fallback(amplitude)
+
+    def _generate_richardson_fallback(self, amplitude: float) -> PeriodicOrbitSpec:
+        """Generate Lyapunov orbit using the historical simplified approximation."""
         # Richardson's approximation (simplified)
         # Full implementation would use complete 3rd-order expansion
 
@@ -148,6 +241,80 @@ class LyapunovOrbitGenerator:
         )
 
         return orbit
+
+    def _generate_differentially_corrected(self, amplitude: float) -> PeriodicOrbitSpec:
+        """Generate a corrected planar Lyapunov orbit for bounded amplitudes."""
+        direction = -1.0 if self.L_point == "L1" else 1.0
+        x0 = self.x_L + direction * amplitude
+        omega = _planar_linear_frequency(self.mu, self.x_L)
+        uxx, _uyy = _planar_second_derivatives(self.mu, self.x_L)
+
+        # Linear center-mode seed. The correction solves vy0 and half-period
+        # so the orbit crosses y=0 with vx=0 at the opposite symmetry point.
+        dx = x0 - self.x_L
+        vy_guess = -((omega**2 + uxx) * dx) / 2.0
+        half_period_guess = np.pi / omega
+        initial_guess = np.array([vy_guess, half_period_guess], dtype=float)
+        rhs = _cr3bp_rhs(self.mu)
+
+        def propagate(vy0: float, half_period: float) -> np.ndarray:
+            state0 = np.array([x0, 0.0, 0.0, 0.0, vy0, 0.0], dtype=float)
+            solution = solve_ivp(
+                rhs,
+                (0.0, half_period),
+                state0,
+                method="DOP853",
+                rtol=1e-12,
+                atol=1e-14,
+            )
+            if not solution.success:
+                raise RuntimeError(solution.message)
+            return solution.y[:, -1]
+
+        def residual(variables: np.ndarray) -> np.ndarray:
+            vy0, half_period = variables
+            if half_period <= 0.1 or not np.all(np.isfinite(variables)):
+                return np.array([1e6, 1e6], dtype=float)
+            final_state = propagate(vy0, half_period)
+            return np.array([final_state[1], final_state[3]], dtype=float)
+
+        corrected = root(residual, initial_guess, method="hybr", tol=1e-11)
+        if not corrected.success or not np.all(np.isfinite(corrected.x)):
+            raise RuntimeError(corrected.message)
+
+        vy0, half_period = corrected.x
+        if half_period <= 0.1:
+            raise RuntimeError(f"invalid corrected half-period {half_period}")
+
+        initial_state = np.array([x0, 0.0, 0.0, 0.0, vy0, 0.0], dtype=float)
+        period = 2.0 * float(half_period)
+        full_solution = solve_ivp(
+            rhs,
+            (0.0, period),
+            initial_state,
+            method="DOP853",
+            rtol=1e-12,
+            atol=1e-14,
+        )
+        if not full_solution.success:
+            raise RuntimeError(full_solution.message)
+
+        closure_error = float(np.linalg.norm(full_solution.y[:, -1] - initial_state))
+        if closure_error > 1e-6:
+            raise RuntimeError(f"closure error {closure_error:.3e} exceeds tolerance")
+
+        C = self._compute_jacobi_constant(initial_state)
+
+        return PeriodicOrbitSpec(
+            name=f"{self.L_point}_Lyapunov_A{amplitude:.3f}",
+            family="lyapunov",
+            mu=self.mu,
+            L_point=self.L_point,
+            initial_state=initial_state,
+            period=period,
+            jacobi_constant=C,
+            amplitude=amplitude,
+        )
 
     def _compute_jacobi_constant(self, state: np.ndarray) -> float:
         """Compute Jacobi constant."""

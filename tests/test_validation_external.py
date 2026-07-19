@@ -14,10 +14,13 @@ Covers:
 import os
 import sys
 import tempfile
+import hashlib
+import json
 from pathlib import Path
 
 import numpy as np
 import pytest
+from scipy.integrate import solve_ivp
 
 # Ensure repo root is importable
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -62,6 +65,60 @@ class TestLyapunovGenerateFamily:
         amps = [orb.amplitude for orb in family]
         assert pytest.approx(amps[0], abs=1e-10) == 0.02
         assert pytest.approx(amps[-1], abs=1e-10) == 0.1
+
+    def test_corrected_orbit_closes(self):
+        """Generated small-amplitude Lyapunov seeds should be true periodic candidates."""
+        from src.python.utils.dynamics import (
+            calculate_jacobi_constant,
+            cr3bp_acceleration,
+        )
+
+        orbit = self.gen.generate_richardson_approximation(0.01)
+
+        def rhs(_t, state):
+            deriv = np.empty(6, dtype=float)
+            deriv[:3] = state[3:]
+            deriv[3:] = cr3bp_acceleration(state, self.mu)
+            return deriv
+
+        solution = solve_ivp(
+            rhs,
+            (0.0, orbit.period),
+            orbit.initial_state,
+            method="DOP853",
+            rtol=1e-12,
+            atol=1e-14,
+        )
+        assert solution.success
+
+        final_state = solution.y[:, -1]
+        closure = np.linalg.norm(final_state - orbit.initial_state)
+        jacobi_drift = abs(
+            calculate_jacobi_constant(final_state, self.mu) - orbit.jacobi_constant
+        )
+
+        assert closure < 1e-6
+        assert jacobi_drift < 1e-10
+
+    def test_cr3bp_reversibility_uses_rotating_frame_symmetry(self):
+        """CR3BP reversibility must use the rotating-frame involution, not velocity flip."""
+        from src.python.integrators.ias15 import IAS15Integrator
+        from src.python.validation.time_reversibility import (
+            create_cr3bp_reversibility_tester,
+        )
+
+        orbit = self.gen.generate_richardson_approximation(0.02)
+        tester = create_cr3bp_reversibility_tester(self.mu)
+        integrator = IAS15Integrator(self.mu, tolerance=1e-14)
+
+        result = tester.test_reversibility(
+            integrator,
+            orbit.initial_state,
+            forward_time=1.0,
+        )
+
+        assert result.position_rms_error < 1e-12
+        assert result.velocity_rms_error < 1e-12
 
 
 # ---------------------------------------------------------------------------
@@ -188,9 +245,9 @@ class TestReportPathHandling:
             / "generate_report.py"
         )
         content = report_src.read_text()
-        assert (
-            "/Users/" not in content
-        ), "Hardcoded /Users/ path found in generate_report.py"
+        assert "/Users/" not in content, (
+            "Hardcoded /Users/ path found in generate_report.py"
+        )
 
     def test_read_text_missing(self):
         """read_text should return '(missing)' for nonexistent files."""
@@ -380,12 +437,129 @@ class TestSplitMetrics:
 
 
 # ---------------------------------------------------------------------------
+# JPL-seeded validation catalogue
+# ---------------------------------------------------------------------------
+class TestJPLSeededCatalog:
+    def test_acceptance_thresholds(self):
+        from build_jpl_seeded_catalog import (
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+            should_accept,
+        )
+
+        assert should_accept(
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+        )
+        assert not should_accept(
+            DEFAULT_CLOSURE_THRESHOLD * 10,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+        )
+        assert not should_accept(
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD * 10,
+            DEFAULT_CLOSURE_THRESHOLD,
+            DEFAULT_JACOBI_DRIFT_THRESHOLD,
+        )
+
+    def test_seed_validation_requires_state_and_period(self):
+        from build_jpl_seeded_catalog import is_valid_seed
+
+        valid = {
+            "x": 0.1,
+            "y": 0.0,
+            "z": 0.0,
+            "vx": 0.0,
+            "vy": 1.0,
+            "vz": 0.0,
+            "period": 2.0,
+        }
+        assert is_valid_seed(valid)
+
+        missing_period = dict(valid)
+        missing_period["period"] = np.nan
+        assert not is_valid_seed(missing_period)
+
+        bad_state = dict(valid)
+        bad_state["x"] = np.inf
+        assert not is_valid_seed(bad_state)
+
+    def test_catalog_id_is_stable_and_sanitized(self):
+        from build_jpl_seeded_catalog import build_catalog_id
+
+        row = {"family": "Halo Orbit", "lpoint": "L1", "branch": "north/south"}
+        assert build_catalog_id(row, 7) == "jpl-halo-orbit-l1-north-south-00007"
+
+    def test_run_validation_wires_catalog_phase(self):
+        script = (
+            REPO_ROOT / "validation-external" / "wp1-validation" / "run_validation.sh"
+        )
+        content = script.read_text()
+        assert "build_jpl_seeded_catalog.py" in content
+        assert "jpl_seeded_catalog.parquet" in content
+        assert "jpl_seeded_catalog_summary.json" in content
+
+    def test_report_includes_jpl_seeded_section(self):
+        report_src = (
+            REPO_ROOT
+            / "validation-external"
+            / "wp1-validation"
+            / "scripts"
+            / "generate_report.py"
+        )
+        content = report_src.read_text()
+        assert "JPL-Seeded Validation Catalogue" in content
+        assert "external-seeded validation" in content
+
+
+# ---------------------------------------------------------------------------
+# Artifact manifest
+# ---------------------------------------------------------------------------
+class TestArtifactManifest:
+    def test_sha256_file(self, tmp_path):
+        from generate_artifact_manifest import sha256_file
+
+        fp = tmp_path / "artifact.txt"
+        fp.write_text("wp1\n", encoding="utf-8")
+        assert (
+            sha256_file(fp)
+            == "2cb56317e3d695da5fdffe22aa1a9d26265fa9a3616739f87a3097a34c1275ca"
+        )
+
+    def test_run_validation_wires_manifest_phase(self):
+        script = (
+            REPO_ROOT / "validation-external" / "wp1-validation" / "run_validation.sh"
+        )
+        content = script.read_text()
+        assert "generate_artifact_manifest.py" in content
+        assert "wp1_artifact_manifest.json" in content
+        assert '--command "$PIPELINE_COMMAND"' in content
+
+    def test_report_includes_manifest_section(self):
+        report_src = (
+            REPO_ROOT
+            / "validation-external"
+            / "wp1-validation"
+            / "scripts"
+            / "generate_report.py"
+        )
+        content = report_src.read_text()
+        assert "Artifact Manifest" in content
+        assert "wp1_artifact_manifest.json" in content
+
+
+# ---------------------------------------------------------------------------
 # Parquet export
 # ---------------------------------------------------------------------------
 class TestParquetExport:
     def test_export_tier1_produces_valid_parquet(self, tmp_path):
         """export_tier1_to_parquet should produce valid Parquet from HDF5."""
         import h5py
+        import pyarrow as pa
         import pyarrow.parquet as pq
 
         # Create sample HDF5 files
@@ -410,14 +584,15 @@ class TestParquetExport:
 
         from src.python.ml.parquet_export import export_tier1_to_parquet
 
-        export_tier1_to_parquet(str(hdf5_dir), output_path)
+        export_tier1_to_parquet(str(hdf5_dir), output_path, require_qualification=False)
 
         # Verify output
         assert os.path.exists(output_path)
         table = pq.read_table(output_path)
         assert table.num_rows == 3 * n_points
-        expected_cols = {
+        required_cols = {
             "orbit_id",
+            "orbit_key",
             "mu",
             "C",
             "t",
@@ -436,8 +611,24 @@ class TestParquetExport:
             "MEGNO",
             "FLI",
             "chaos_class",
+            "precision",
+            "precision_bits",
+            "x_hp",
+            "y_hp",
+            "z_hp",
+            "vx_hp",
+            "vy_hp",
+            "vz_hp",
+            "t_hp",
+            "wp1_qualification_id",
+            "wp1_qualification_status",
+            "wp1_qualification_lock_sha256",
+            "wp1_qualification_record_sha256",
         }
-        assert expected_cols == set(table.column_names)
+        assert required_cols == set(table.column_names)
+        for name in ["x", "y", "z", "vx", "vy", "vz", "MEGNO", "FLI"]:
+            assert table.schema.field(name).type == pa.float64()
+        assert table.schema.metadata[b"wp1_state_dtype"] == b"float64"
 
     def test_export_empty_dir(self, tmp_path):
         """export_tier1_to_parquet should handle empty directories gracefully."""
@@ -447,10 +638,98 @@ class TestParquetExport:
 
         from src.python.ml.parquet_export import export_tier1_to_parquet
 
-        export_tier1_to_parquet(str(hdf5_dir), output_path)
+        export_tier1_to_parquet(str(hdf5_dir), output_path, require_qualification=False)
 
         # No output file should be created
         assert not os.path.exists(output_path)
+
+    def test_qualified_high_precision_export_preserves_contract(self, tmp_path):
+        import h5py
+        import pyarrow.parquet as pq
+
+        record = {
+            "schema_version": "1.0",
+            "qualification_id": "WP1Q-contract-test",
+            "status": "PASS",
+            "claim": "contract fixture",
+            "lock_sha256": "lock-test",
+        }
+        canonical = json.dumps(
+            record, sort_keys=True, separators=(",", ":"), ensure_ascii=True
+        ).encode("ascii")
+        record["record_payload_sha256"] = hashlib.sha256(canonical).hexdigest()
+        record_path = tmp_path / "qualification.json"
+        record_path.write_text(json.dumps(record), encoding="utf-8")
+
+        from src.python.validation.qualification import qualification_metadata
+
+        qualification = qualification_metadata(record_path)
+        hdf5_dir = tmp_path / "hdf5"
+        hdf5_dir.mkdir()
+        decimal_states = np.array(
+            [
+                [
+                    "0.12345678901234567890123456789",
+                    "0",
+                    "0",
+                    "0",
+                    "0.98765432109876543210987654321",
+                    "0",
+                ],
+                [
+                    "0.22345678901234567890123456789",
+                    "0",
+                    "0",
+                    "0",
+                    "0.88765432109876543210987654321",
+                    "0",
+                ],
+            ],
+            dtype=object,
+        )
+        with h5py.File(hdf5_dir / "orbit.h5", "w") as handle:
+            for key, value in qualification.items():
+                handle.attrs[key] = value
+            handle.attrs["mu"] = 0.012
+            handle.attrs["C"] = 3.0
+            handle.attrs["orbit_id"] = "hp-orbit"
+            handle.attrs["chaos_class"] = "unvalidated"
+            handle.attrs["precision"] = "heyoka-real"
+            handle.attrs["precision_bits"] = 224
+            handle.create_dataset("times", data=np.array([0.0, 1.0]))
+            handle.create_dataset(
+                "states_corotating", data=decimal_states.astype(float)
+            )
+            handle.create_dataset("states_inertial", data=decimal_states.astype(float))
+            handle.create_dataset("MEGNO", data=np.array([np.nan, np.nan]))
+            handle.create_dataset("FLI", data=np.array([np.nan, np.nan]))
+            string_type = h5py.string_dtype(encoding="utf-8")
+            handle.create_dataset(
+                "states_corotating_high_precision",
+                data=decimal_states,
+                dtype=string_type,
+            )
+            handle.create_dataset(
+                "times_high_precision",
+                data=np.array(["0", "1"], dtype=object),
+                dtype=string_type,
+            )
+
+        from src.python.ml.parquet_export import export_tier1_to_parquet
+
+        output = tmp_path / "qualified.parquet"
+        count = export_tier1_to_parquet(
+            str(hdf5_dir),
+            str(output),
+            qualification_record=str(record_path),
+        )
+        table = pq.read_table(output)
+        assert count == 1
+        assert table.column("x_hp").to_pylist()[0] == decimal_states[0, 0]
+        assert table.schema.metadata[b"wp1_qualification_id"] == b"WP1Q-contract-test"
+        assert set(table.column("wp1_qualification_record_sha256").to_pylist()) == {
+            qualification["wp1_qualification_record_sha256"]
+        }
 
 
 # ---------------------------------------------------------------------------

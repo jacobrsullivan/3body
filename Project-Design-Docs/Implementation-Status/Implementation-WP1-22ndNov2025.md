@@ -1,6 +1,8 @@
 # Work Package 1: High-Fidelity CR3BP Trajectory Catalogue
 ## Implementation Status Report - 22nd November 2025
 
+> **Current status note (2026-07-19)**: This 2025 implementation-status report is historical. The current bobs-mini validation record is in `../../notes/wp1-bobs-mini-migration-plan.md`. The acceptance gate and bounded Tier 2 `1e-25` smoke now pass; production-scale Tier 2 and periodic-candidate validation remain open.
+
 **Overall Status**: 🟡 **60% COMPLETE** (Excellent Foundations, Missing Key WP1-Specific Requirements)
 
 **Last Updated**: November 22, 2025
@@ -124,7 +126,7 @@ WP1 demonstrates **exceptional quality** in implemented components, particularly
 - `/home/user/3body/examples/orbital_mechanics_demo.py` - Kepler problem with ~1e-30 precision
 - `/home/user/3body/examples/high_precision_pi.py` - π calculation demonstration
 
-**Assessment**: ✅ Exceeds WP1 requirements. Ready for Tier 2 (10^-25 precision) production runs.
+**Assessment**: Historical assessment superseded. QD infrastructure is installed and verified, and bounded Tier 2 smoke now uses `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`. Production-scale Tier 2 remains unvalidated.
 
 ---
 

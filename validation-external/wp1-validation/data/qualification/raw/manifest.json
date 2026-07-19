@@ -1,0 +1,39 @@
+{
+  "files": [
+    {
+      "mass_ratio": 3.0542e-06,
+      "path": "sun-earth.json",
+      "records": 16892,
+      "sha256": "689e46645c387fd36a07433e45e14bf99dad5968db45c1adf4f21f2e5f7ab0c0",
+      "system": "sun-earth"
+    },
+    {
+      "mass_ratio": 2.52801752854e-05,
+      "path": "jupiter-europa.json",
+      "records": 22528,
+      "sha256": "02ac57379f5ebe47da71bf9912a37145334b6bd00b03527d7dba3f82c10cab1c",
+      "system": "jupiter-europa"
+    },
+    {
+      "mass_ratio": 0.0002366393158331484,
+      "path": "saturn-titan.json",
+      "records": 5860,
+      "sha256": "9a27eaf20838a71f38bb8f306e377ea1fd1aeb2e0c5527c4de69d31974a2d614",
+      "system": "saturn-titan"
+    },
+    {
+      "mass_ratio": 0.01215058560962404,
+      "path": "earth-moon.json",
+      "records": 21938,
+      "sha256": "ed2b9787cbbef74bbeca23ff61f40b2bd64c7bf12acc67939f3c3649551b150a",
+      "system": "earth-moon"
+    }
+  ],
+  "required_api_version": "1.0",
+  "retrieved_utc": "2026-07-19T19:35:57.206921+00:00",
+  "schema_version": "1.0",
+  "source_config_sha256": "5655183e4e0802ed3cce6e0e2be9f65c67aa4fc4fc3eb67e5bf2fc77d4e87b97",
+  "spec_path": "/Users/bob/Desktop/3body/validation-external/wp1-validation/qualification_spec.json",
+  "spec_sha256_at_fetch": "1c6f5198b5b718877644515311b8d657c795e7398ee664c6f08b1b94d4b1d692",
+  "total_records": 67218
+}

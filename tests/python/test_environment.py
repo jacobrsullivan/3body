@@ -91,18 +91,19 @@ class TestCompilers:
 class TestQDLibrary:
     """Test QD library installation and basic functionality."""
 
+    VERIFY_QD = os.path.join("build", "verify_qd")
+
     def test_qd_executable_exists(self):
         """Verify QD verification executable exists."""
-        assert os.path.exists("verify_qd"), "verify_qd executable not found"
+        assert os.path.exists(self.VERIFY_QD), "build/verify_qd executable not found"
 
-    @pytest.mark.skip(reason="verify_qd has RPATH library loading issues on macOS")
     def test_qd_executable_runs(self):
         """Test that QD verification executable runs successfully."""
-        if not os.path.exists("verify_qd"):
-            pytest.skip("verify_qd executable not found")
+        if not os.path.exists(self.VERIFY_QD):
+            pytest.skip("build/verify_qd executable not found")
 
         result = subprocess.run(
-            ["./verify_qd"], capture_output=True, text=True, timeout=5
+            [self.VERIFY_QD], capture_output=True, text=True, timeout=5
         )
         assert result.returncode == 0, "verify_qd execution failed"
         assert "3.14159" in result.stdout, "QD verification output incorrect"
@@ -143,10 +144,13 @@ class TestProjectStructure:
             "tests",
             "tests/python",
             "tests/cpp",
-            "docs",
-            "notebooks",
             "examples",
             "scripts",
+            "Project-Design-Docs",
+            "Science-Research-Docs",
+            "User-Guides",
+            "External-Validation-Planning-Docs",
+            "validation-external",
         ]
 
         for directory in required_dirs:
@@ -168,7 +172,7 @@ class TestProjectStructure:
 
     def test_documentation_exists(self):
         """Verify documentation files exist."""
-        doc_files = ["README.md", "TechnicalReadme.md"]
+        doc_files = ["README.md", "CLAUDE.md"]
 
         for file in doc_files:
             assert os.path.exists(file), f"Documentation file {file} not found"

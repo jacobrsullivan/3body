@@ -100,6 +100,8 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
     - High-precision arithmetic support (QD integration ready)
     """
 
+    DOUBLE_PRECISION_TOLERANCE_FLOOR = 1e-15
+
     def __init__(
         self,
         mu: float,
@@ -381,6 +383,39 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
         Returns:
             IntegrationResult
         """
+        if self.error_tolerance < self.DOUBLE_PRECISION_TOLERANCE_FLOOR:
+            message = (
+                "AdaptiveSymplecticIntegrator requested tolerance "
+                f"{self.error_tolerance:.1e}, below the supported float64 floor "
+                f"{self.DOUBLE_PRECISION_TOLERANCE_FLOOR:.1e}. "
+                "Tier 2 precision requires a QD-backed arithmetic path, which "
+                "this integrator does not currently implement."
+            )
+            logger.error(message)
+            return IntegrationResult(
+                times=np.array([0.0]),
+                states_corotating=np.array([initial_state.copy()]),
+                states_inertial=np.array([
+                    corotating_to_inertial(initial_state, 0.0)
+                ]),
+                success=False,
+                message=message,
+                stats={
+                    'total_steps': 0,
+                    'accepted_steps': 0,
+                    'rejected_steps': 0,
+                    'acceptance_rate': 0.0,
+                    'final_time': 0.0,
+                    'final_timestep': self.ds,
+                    'stop_reason': 'unsupported_precision',
+                    'precision_mode': 'float64',
+                    'requested_tolerance': self.error_tolerance,
+                    'minimum_supported_tolerance': (
+                        self.DOUBLE_PRECISION_TOLERANCE_FLOOR
+                    ),
+                },
+            )
+
         # Initialize
         state = initial_state.copy()
         t = 0.0
@@ -389,12 +424,13 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
         # Output storage
         times = [0.0]
         states_corot = [initial_state.copy()]
-        states_inert = [corotating_to_inertial(initial_state, 0.0, self.mu)]
+        states_inert = [corotating_to_inertial(initial_state, 0.0)]
 
         t_next_output = output_interval
         n_steps = 0
         n_accepted = 0
         n_rejected = 0
+        stop_reason = "completed"
 
         logger.info(f"Starting adaptive symplectic integration to t={duration}")
 
@@ -414,7 +450,7 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
                     times.append(t_next_output)
                     states_corot.append(state.copy())
                     states_inert.append(
-                        corotating_to_inertial(state, t_next_output, self.mu)
+                        corotating_to_inertial(state, t_next_output)
                     )
                     t_next_output += output_interval
             else:
@@ -425,24 +461,27 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
 
             # Safety check
             if n_steps > self.max_steps:
-                logger.warning(f"Max steps ({self.max_steps}) reached at t={t:.2f}")
+                stop_reason = f"max steps ({self.max_steps}) reached at t={t:.6g}"
+                logger.warning(stop_reason)
                 break
 
             # Check for escape or collision
             r1, r2 = distances_to_primaries(state, self.mu)
             if r1 < 1e-8 or r2 < 1e-8:
-                logger.warning(f"Collision detected at t={t:.2f}")
+                stop_reason = f"collision detected at t={t:.6g}"
+                logger.warning(stop_reason)
                 break
 
             if np.linalg.norm(state[:3]) > 10.0:  # Escape criterion
-                logger.info(f"Escape detected at t={t:.2f}")
+                stop_reason = f"escape detected at t={t:.6g}"
+                logger.info(stop_reason)
                 break
 
         # Final output if not already added
         if t > times[-1]:
             times.append(t)
             states_corot.append(state.copy())
-            states_inert.append(corotating_to_inertial(state, t, self.mu))
+            states_inert.append(corotating_to_inertial(state, t))
 
         # Convert to arrays
         times = np.array(times)
@@ -457,7 +496,13 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
             'acceptance_rate': n_accepted / n_steps if n_steps > 0 else 0.0,
             'final_time': t,
             'final_timestep': ds,
+            'stop_reason': stop_reason,
         }
+
+        success = t >= duration
+        if not success and stop_reason == "completed":
+            stop_reason = f"stopped before requested duration at t={t:.6g}"
+            stats['stop_reason'] = stop_reason
 
         logger.info(
             f"Integration completed: {n_accepted} accepted, {n_rejected} rejected, "
@@ -468,8 +513,12 @@ class AdaptiveSymplecticIntegrator(IntegratorBase):
             times=times,
             states_corotating=states_corot,
             states_inertial=states_inert,
-            success=True,
-            message="Adaptive symplectic integration completed",
+            success=success,
+            message=(
+                "Adaptive symplectic integration completed"
+                if success else
+                f"Adaptive symplectic integration incomplete: {stop_reason}"
+            ),
             stats=stats,
         )
 

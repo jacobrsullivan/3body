@@ -1,6 +1,8 @@
 # WP1 Implementation Complete - 22nd November 2025
 
-**Status**: ✅ **100% COMPLETE**
+> **Current status note (2026-07-19)**: This 2025 completion report is superseded by the bobs-mini validation record in `../../notes/wp1-bobs-mini-migration-plan.md`. The current WP1 acceptance gate and a bounded Tier 2 `1e-25` smoke pass, but WP1 is not publication-ready: production-scale Tier 2, periodic-candidate quality, reversibility, and convergence remain unresolved.
+
+**Historical Status**: ✅ **100% COMPLETE** (superseded by 2026-07-19 validation)
 **Date**: November 22, 2025
 **Implementation Time**: Single session (comprehensive implementation)
 
@@ -95,7 +97,7 @@ Work Package 1 (High-Fidelity CR3BP Trajectory Catalogue) has been completed fro
    - Statistics tracking (accepted/rejected steps)
 
 **Tier 2 Precision Support**:
-- Error tolerance: 1e-14 (configurable down to 1e-25)
+- Error tolerance: 1e-14 on the AdaptiveSymplectic float64 path; bounded 1e-25 smoke is handled by HeyokaTaylor
 - QD library integration ready
 - High-precision arithmetic compatible
 
@@ -103,7 +105,7 @@ Work Package 1 (High-Fidelity CR3BP Trajectory Catalogue) has been completed fro
 - ✅ Maintains symplectic structure
 - ✅ Adaptive timestep based on error
 - ✅ Handles close encounters smoothly
-- ✅ Target: ΔC < 10⁻²⁵ achievable
+- Blocked target: ΔC < 10⁻²⁵ requires QD-backed integration
 
 ---
 
@@ -120,7 +122,7 @@ Work Package 1 (High-Fidelity CR3BP Trajectory Catalogue) has been completed fro
    - H₂ correction computation via Hessian
    - Shadow Hamiltonian: H̃ = H + h²·H₂
    - Drift rate measurement (linear regression)
-   - Tier 2 validation (drift < 10⁻²⁵)
+   - Tier 2 validation target (drift < 10⁻²⁵) is now demonstrated only for the bounded HeyokaTaylor smoke
 
 2. **Time Reversibility Tests** (`TimeReversibilityTester`)
    - Forward-backward integration
@@ -342,10 +344,10 @@ Work Package 1 (High-Fidelity CR3BP Trajectory Catalogue) has been completed fro
 | Metric | Target | Status | Notes |
 |--------|--------|--------|-------|
 | **Tier 1 Precision** | ΔC < 10⁻¹⁴ | ✅ Ready | IAS15 + validation |
-| **Tier 2 Precision** | ΔC < 10⁻²⁵ | ✅ Ready | AdaptiveSymplectic + shadow H |
+| **Tier 2 Precision** | ΔC < 10⁻²⁵ | Bounded smoke passing in 2026 validation | HeyokaTaylor, 160-bit `heyoka.real` |
 | **MEGNO Accuracy** | Within 1% of reference | ✅ Implemented | Variational equations |
 | **Time Reversibility** | RMS error < 10⁻²⁰ | ✅ Implemented | Forward-backward tests |
-| **Shadow H Drift** | < 10⁻²⁵ (Tier 2) | ✅ Implemented | Backward error analysis |
+| **Shadow H Drift** | < 10⁻²⁵ (Tier 2) | Blocked for Tier 2 claims | Requires valid Tier 2 trajectories |
 | **Pipeline Throughput** | >1000 orbits/day | ✅ Ready | Snakemake parallel |
 | **Test Coverage** | >80% | ⚠️ Pending | Tests written, env setup needed |
 
@@ -452,7 +454,7 @@ Work Package 1 (High-Fidelity CR3BP Trajectory Catalogue) has been completed fro
 Work Package 1 has been successfully completed from 60% to 100%. All 13 identified gaps have been addressed with production-quality implementations. The codebase now provides:
 
 - ✅ Complete chaos detection (MEGNO + FLI)
-- ✅ Tier 2 precision capability (adaptive symplectic)
+- Tier 2 precision capability currently exists only as a bounded HeyokaTaylor smoke, not a production-scale catalogue
 - ✅ Rigorous validation framework (shadow H, reversibility)
 - ✅ Production pipeline (Snakemake orchestration)
 - ✅ ML-ready data export (Parquet)
@@ -460,7 +462,7 @@ Work Package 1 has been successfully completed from 60% to 100%. All 13 identifi
 
 The implementation represents ~5,500 lines of well-documented, tested, production-ready code spanning all phases of the WP1 specification. The system is ready for large-scale production runs to generate the high-fidelity CR3BP trajectory catalogue.
 
-**WP1 Status**: ✅ **100% COMPLETE** - Ready for Production Runs
+**WP1 Status**: Superseded historical completion report. Current status is hardening: acceptance gate passing, Tier 2 and candidate-validation blockers remain.
 
 ---
 

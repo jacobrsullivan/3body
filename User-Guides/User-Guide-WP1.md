@@ -1,9 +1,11 @@
 # User Guide: Work Package 1
 ## High-Fidelity CR3BP Trajectory Catalogue
 
-**Status**: ✅ 100% Complete
+**Status**: Hardening; external/JPL-seeded validation catalogue available, native-candidate blockers remain
 **Purpose**: Establish high-precision infrastructure for three-body problem integration and validation
 **Role in Project**: Foundation for all subsequent work packages
+
+> **Current status (2026-07-19)**: On `bobs-mac-mini`, `./scripts/run_tests.sh` passes setup verification, clean collection of 831 tests, 92 focused WP1 tests, and 2/2 QD CTest checks. Tier 1 minimal validation has been regenerated. A bounded Tier 2 `1e-25` smoke passes using `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`. The external/JPL-seeded validation catalogue accepts 284 of 300 sampled JPL seeds under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`. Production-scale Tier 2 and native WP1-generated periodic-candidate validation remain publication blockers. See `../notes/wp1-bobs-mini-migration-plan.md` for the current plan and evidence.
 
 ---
 
@@ -87,7 +89,7 @@ The 3-body integrability research project follows this progression:
 
 ## What's Implemented
 
-WP1 is **100% complete** with 16 new/modified files and ~5,500 lines of production code. All critical gaps have been resolved.
+WP1 is in a **hardening** state. The environment, QD build, focused acceptance gate, Tier 1 smoke, bounded high-precision Tier 2 smoke, and external/JPL-seeded validation catalogue are operational. Native WP1-generated periodic-orbit candidates are not publication-ready yet.
 
 ### File Structure
 
@@ -136,9 +138,17 @@ Snakefile                            # Production pipeline orchestration
 
 **Tier 2** (Ultra-High Precision):
 - Target: ΔC < 10⁻²⁵
-- Integrator: AdaptiveSymplectic + QD library (double-double arithmetic)
-- Use case: Selected subset (10⁴ orbits) requiring extreme precision
-- Speed: ~10x slower but maintains symplectic structure
+- Current bounded smoke: `HeyokaTaylorIntegrator` with 160-bit `heyoka.real`
+- Smoke result: 3 orbits, max relative Jacobi drift `6.53e-28`, pass rate `100.0%`
+- Remaining gap: production-scale Tier 2 catalogue and final publication scope are not yet validated
+
+**External/JPL-Seeded Catalogue**:
+- Source: normalized JPL Earth-Moon periodic-orbit records
+- Current sample: 300 stratified seeds from 21,938 records
+- Accepted output: `validation-external/wp1-validation/results/jpl_seeded_catalog.parquet`
+- Acceptance thresholds: closure `<= 1e-8`, absolute Jacobi drift `<= 1e-12`
+- Current result: 284 accepted rows; accepted-catalogue closure median `2.01e-11`, 95th percentile `9.73e-10`, max `6.23e-09`
+- Scope: publishable as external-seeded validation evidence only, not as a native WP1-generated periodic catalogue
 
 ---
 
@@ -271,14 +281,15 @@ times, states = integrator.integrate(
 
 **Tests**: `tests/test_yoshida8.py::test_symplectic_energy_conservation`
 
-#### AdaptiveSymplectic (Tier 2 Precision)
+#### AdaptiveSymplectic (Current Float64 Prototype)
 **Location**: `src/python/integrators/adaptive_symplectic.py`
 
 **Strengths**:
 - Symplectic + adaptive timestep
 - Sundman time transformation (natural adaptivity near close encounters)
 - Error control with step doubling
-- Target: ΔC < 10⁻²⁵
+- Current float64 path completes short probes at realistic tolerances such as `1e-14`
+- Requests below the float64 floor fail immediately instead of producing false-positive Tier 2 reports
 
 **Usage**:
 ```python
@@ -287,14 +298,39 @@ from src.python.integrators.adaptive_symplectic import AdaptiveSymplecticIntegra
 integrator = AdaptiveSymplecticIntegrator(
     mu=0.012150585609624,
     order=6,  # 4 or 6
-    tol=1e-14,  # error tolerance (can go down to 1e-25 with QD)
+    error_tolerance=1e-14,
     sundman_strategy='sum'  # 'sum', 'product', or 'min'
 )
-times, states = integrator.integrate(
-    state0=initial_state,
-    t_span=(0, 100),
-    max_steps=1000000
+result = integrator.integrate(
+    initial_state=initial_state,
+    duration=100,
+    output_interval=1.0,
 )
+```
+
+#### HeyokaTaylor (Bounded Tier 2 Smoke)
+**Location**: `src/python/integrators/heyoka_taylor.py`
+
+**Strengths**:
+- Uses `heyoka.real` arbitrary-precision Taylor integration
+- Records high-precision Jacobi drift in `IntegrationResult.stats`
+- Supports the current bounded Tier 2 smoke at target `1e-25`
+
+**Usage**:
+```python
+from src.python.integrators.heyoka_taylor import HeyokaTaylorIntegrator
+
+integrator = HeyokaTaylorIntegrator(
+    mu=0.012150585609624,
+    tolerance=1e-25,
+    precision_bits=160,
+)
+result = integrator.integrate(
+    initial_state=initial_state,
+    duration=1.0,
+    output_interval=0.5,
+)
+print(result.stats["jacobi_relative_drift"])
 ```
 
 **Reference**: See `Project-Design-Docs/WP1/WP1-Implementation-Complete-22ndNov2025.md` for full implementation details.
@@ -364,7 +400,7 @@ result = analyzer.analyze(
 )
 print(f"H₂ correction: {result['H2']:.3e}")
 print(f"Shadow Hamiltonian drift: {result['drift_rate']:.3e}")
-# Drift should be < 1e-25 for Tier 2
+# Current Tier 2 smoke drift is measured directly by HeyokaTaylorIntegrator.
 ```
 
 **Reference**: See `Science-Research-Docs/Explanation_DoubleDoubleArithmetic.md` for precision requirements.
@@ -599,7 +635,8 @@ float_val = float(c)
 |-----------|-------|-----------|----------|
 | IAS15 | 50 periods/s | ΔC ~ 1e-15 | Tier 1 catalogue |
 | Yoshida8 | 250 periods/s | ΔC ~ 1e-8 | Long-term symplectic |
-| AdaptiveSymplectic | 20 periods/s | ΔC ~ 1e-25 | Tier 2 extreme precision |
+| AdaptiveSymplectic | Probe-dependent | Float64 path with guard | Symplectic prototype |
+| HeyokaTaylor | Smoke-scale | ΔC < 1e-25 in bounded smoke | Tier 2 high-precision validation subset |
 | MEGNO | 10 periods/s | N/A | Chaos detection |
 
 **Benchmarking**: Use `benchmarks/cr3bp_smoke.yaml` with `scripts/run_benchmark.py`
@@ -650,5 +687,5 @@ Once you're comfortable with WP1, proceed to:
 
 ---
 
-**Last Updated**: November 25, 2025
-**WP1 Status**: ✅ 100% Complete - Ready for Production Runs
+**Last Updated**: July 19, 2026
+**WP1 Status**: Hardening - acceptance gate and bounded Tier 2 smoke passing; candidate-validation and production-scale blockers remain

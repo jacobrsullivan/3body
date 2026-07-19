@@ -67,3 +67,13 @@ build_external/
 Mambaforge-Darwin-arm64.sh
 mambaforge.sh
 miniconda.sh
+
+# Frozen WP1 qualification evidence is a versioned publication input/output.
+!validation-external/wp1-validation/data/
+validation-external/wp1-validation/data/*
+!validation-external/wp1-validation/data/qualification/
+!validation-external/wp1-validation/data/qualification/**
+!validation-external/wp1-validation/results/
+validation-external/wp1-validation/results/*
+!validation-external/wp1-validation/results/qualification/
+!validation-external/wp1-validation/results/qualification/**
