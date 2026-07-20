@@ -1,0 +1,216 @@
+{
+  "campaign": "WP2-UPQ-v1",
+  "case_count": 48,
+  "case_ids": [
+    "up-brutus-equal_mass_plummer-00196",
+    "up-brutus-equal_mass_plummer-00302",
+    "up-brutus-equal_mass_plummer-00438",
+    "up-brutus-equal_mass_plummer-00881",
+    "up-brutus-equal_mass_plummer-01534",
+    "up-brutus-equal_mass_plummer-01676",
+    "up-brutus-equal_mass_plummer-01678",
+    "up-brutus-equal_mass_plummer-01977",
+    "up-brutus-equal_mass_plummer-02464",
+    "up-brutus-equal_mass_plummer-02938",
+    "up-brutus-equal_mass_plummer-02939",
+    "up-brutus-equal_mass_plummer-03939",
+    "up-brutus-equal_mass_plummer-03975",
+    "up-brutus-equal_mass_plummer-04215",
+    "up-brutus-equal_mass_plummer-04568",
+    "up-brutus-equal_mass_plummer-04744",
+    "up-brutus-equal_mass_plummer-04849",
+    "up-brutus-equal_mass_plummer-05015",
+    "up-brutus-equal_mass_plummer-05189",
+    "up-brutus-equal_mass_plummer-07756",
+    "up-brutus-equal_mass_plummer-08233",
+    "up-brutus-equal_mass_plummer-08648",
+    "up-brutus-equal_mass_plummer-09190",
+    "up-brutus-equal_mass_plummer-09479",
+    "up-brutus-mass_4_2_1_plummer-00272",
+    "up-brutus-mass_4_2_1_plummer-00290",
+    "up-brutus-mass_4_2_1_plummer-01380",
+    "up-brutus-mass_4_2_1_plummer-01481",
+    "up-brutus-mass_4_2_1_plummer-01644",
+    "up-brutus-mass_4_2_1_plummer-02317",
+    "up-brutus-mass_4_2_1_plummer-02436",
+    "up-brutus-mass_4_2_1_plummer-03742",
+    "up-brutus-mass_4_2_1_plummer-03840",
+    "up-brutus-mass_4_2_1_plummer-03921",
+    "up-brutus-mass_4_2_1_plummer-04129",
+    "up-brutus-mass_4_2_1_plummer-04539",
+    "up-brutus-mass_4_2_1_plummer-05093",
+    "up-brutus-mass_4_2_1_plummer-06391",
+    "up-brutus-mass_4_2_1_plummer-06516",
+    "up-brutus-mass_4_2_1_plummer-06789",
+    "up-brutus-mass_4_2_1_plummer-06818",
+    "up-brutus-mass_4_2_1_plummer-07011",
+    "up-brutus-mass_4_2_1_plummer-07802",
+    "up-brutus-mass_4_2_1_plummer-08081",
+    "up-brutus-mass_4_2_1_plummer-08114",
+    "up-brutus-mass_4_2_1_plummer-09513",
+    "up-brutus-mass_4_2_1_plummer-09664",
+    "up-brutus-mass_4_2_1_plummer-09810"
+  ],
+  "corpus_sha256": "3396ddb75a5c67bd2383fe9984fbdaa6974018c4265e1a64cdcee3faca9070bc",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "reference_hamiltonian_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "reference_vector_field_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "shell_hamiltonian_scaled_max",
+      "observed": 2.4069635173873394e-13,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_level_abs_max",
+      "observed": 4.440892098500626e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "roundtrip_scaled_max",
+      "observed": 5.778828073461955e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "sundman_projection_scaled_max",
+      "observed": 2.5442786343033763e-14,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "canonical_gradient_scaled_max",
+      "observed": 9.970558257089159e-10,
+      "passed": true,
+      "threshold": 3e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_hamiltonian_scaled_max",
+      "observed": 1.3655743202889425e-13,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_projection_scaled_max",
+      "observed": 6.934593688154347e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_vector_covariance_scaled_max",
+      "observed": 2.163229155742174e-14,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_lie_abs_max",
+      "observed": 1.1368683772161603e-13,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "angular_momentum_lie_scaled_max",
+      "observed": 5.8517913021267116e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_projection_scaled_max",
+      "observed": 8.753771799774275e-16,
+      "passed": true,
+      "threshold": 3e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_hamiltonian_drift_scaled_max",
+      "observed": 1.1657341758564144e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_xi_drift_abs_max",
+      "observed": 1.3877787807814457e-16,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": ">=",
+      "name": "selected_collision_finite_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "structural_simultaneous_regularization_qualified",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    }
+  ],
+  "generated_utc": "2026-07-20T18:35:21.366822+00:00",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+      "status": "PASS"
+    },
+    "wp2_kepler_ks": {
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+      "status": "PASS"
+    },
+    "wp2_threebody_flow": {
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "record_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9",
+      "status": "PASS"
+    }
+  },
+  "results_sha256": "622e9292f7544316d8bc026d1ac0036bd53c63e9edd535b75c55447facff2c39",
+  "schema_version": "1.0",
+  "spec_sha256": "d4daa588cc795755e13fa1b9200186e86d570b232595230314b0149de6b6d415",
+  "split": "development",
+  "status": "PASS"
+}

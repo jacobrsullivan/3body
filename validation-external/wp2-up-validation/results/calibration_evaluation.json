@@ -1,0 +1,192 @@
+{
+  "campaign": "WP2-UPQ-v1",
+  "case_count": 24,
+  "case_ids": [
+    "up-brutus-equal_mass_plummer-00229",
+    "up-brutus-equal_mass_plummer-01922",
+    "up-brutus-equal_mass_plummer-02901",
+    "up-brutus-equal_mass_plummer-03370",
+    "up-brutus-equal_mass_plummer-03571",
+    "up-brutus-equal_mass_plummer-04330",
+    "up-brutus-equal_mass_plummer-04577",
+    "up-brutus-equal_mass_plummer-04717",
+    "up-brutus-equal_mass_plummer-06073",
+    "up-brutus-equal_mass_plummer-06097",
+    "up-brutus-equal_mass_plummer-07146",
+    "up-brutus-equal_mass_plummer-09771",
+    "up-brutus-mass_4_2_1_plummer-00196",
+    "up-brutus-mass_4_2_1_plummer-00767",
+    "up-brutus-mass_4_2_1_plummer-02470",
+    "up-brutus-mass_4_2_1_plummer-02819",
+    "up-brutus-mass_4_2_1_plummer-02908",
+    "up-brutus-mass_4_2_1_plummer-04524",
+    "up-brutus-mass_4_2_1_plummer-05232",
+    "up-brutus-mass_4_2_1_plummer-05901",
+    "up-brutus-mass_4_2_1_plummer-06554",
+    "up-brutus-mass_4_2_1_plummer-08338",
+    "up-brutus-mass_4_2_1_plummer-08489",
+    "up-brutus-mass_4_2_1_plummer-09994"
+  ],
+  "corpus_sha256": "3396ddb75a5c67bd2383fe9984fbdaa6974018c4265e1a64cdcee3faca9070bc",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "reference_hamiltonian_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "reference_vector_field_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "shell_hamiltonian_scaled_max",
+      "observed": 1.3455903058456897e-13,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_level_abs_max",
+      "observed": 3.3306690738754696e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "roundtrip_scaled_max",
+      "observed": 4.2853259175764093e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "sundman_projection_scaled_max",
+      "observed": 6.201895703765421e-14,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "canonical_gradient_scaled_max",
+      "observed": 1.1413686605242245e-09,
+      "passed": true,
+      "threshold": 3e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_hamiltonian_scaled_max",
+      "observed": 3.517186542012496e-13,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_projection_scaled_max",
+      "observed": 4.992498445464614e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "s1_vector_covariance_scaled_max",
+      "observed": 8.149559449546635e-14,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_lie_abs_max",
+      "observed": 2.3803181647963356e-13,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "angular_momentum_lie_scaled_max",
+      "observed": 8.971653668035499e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_projection_scaled_max",
+      "observed": 6.661338147750939e-16,
+      "passed": true,
+      "threshold": 3e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_hamiltonian_drift_scaled_max",
+      "observed": 2.2620794126737565e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "short_flow_xi_drift_abs_max",
+      "observed": 1.1796119636642288e-16,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": ">=",
+      "name": "selected_collision_finite_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "structural_simultaneous_regularization_qualified",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    }
+  ],
+  "generated_utc": "2026-07-20T18:35:23.120539+00:00",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+      "status": "PASS"
+    },
+    "wp2_kepler_ks": {
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+      "status": "PASS"
+    },
+    "wp2_threebody_flow": {
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "record_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9",
+      "status": "PASS"
+    }
+  },
+  "results_sha256": "b5d80001c2b1b416a4797af4203eddfa4411d63638754bde529c8e5d355ea915",
+  "schema_version": "1.0",
+  "spec_sha256": "d4daa588cc795755e13fa1b9200186e86d570b232595230314b0149de6b6d415",
+  "split": "calibration",
+  "status": "PASS"
+}

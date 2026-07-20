@@ -1,0 +1,1184 @@
+{
+  "cases": [
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00196",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-00196",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00219",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-00219",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00223",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-00223",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00229",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-00229",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00302",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-00302",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00438",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-00438",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-00881",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-00881",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01140",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-01140",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01534",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-01534",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01676",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-01676",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01678",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-01678",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01922",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-01922",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-01977",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-01977",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-02464",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-02464",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-02901",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-02901",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-02938",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-02938",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-02939",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-02939",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-03370",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-03370",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-03571",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-03571",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-03939",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-03939",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-03975",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-03975",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04215",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-04215",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04330",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-04330",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04568",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-04568",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04577",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-04577",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04717",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-04717",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04744",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-04744",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04849",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-04849",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-04901",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-04901",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-05015",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-05015",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-05189",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-05189",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-06073",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-06073",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-06097",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-06097",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-06582",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-06582",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-07146",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-07146",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-07756",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-07756",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-08233",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-equal_mass_plummer-08233",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-08577",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-08577",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-08648",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-equal_mass_plummer-08648",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-09190",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-equal_mass_plummer-09190",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-09479",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-09479",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-equal_mass_plummer-09771",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-equal_mass_plummer-09771",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-00196",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-00196",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-00272",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-00272",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-00290",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-00290",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-00767",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-00767",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-01380",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-01380",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-01481",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-01481",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-01644",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-01644",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02085",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02085",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02317",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02317",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02436",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02436",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02470",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02470",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02819",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02819",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-02908",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-02908",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-03742",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-03742",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-03840",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-03840",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-03921",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-03921",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-04129",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-04129",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-04524",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-04524",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-04539",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-04539",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-04863",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-04863",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-05093",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-05093",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-05232",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-05232",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-05328",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-05328",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-05901",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-05901",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06391",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06391",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06516",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06516",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06554",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06554",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06621",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06621",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06789",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06789",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-06818",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-06818",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-07011",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-07011",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-07151",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-07151",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-07802",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-07802",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-08081",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-08081",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-08114",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.0,
+      "source_case_id": "brutus-mass_4_2_1_plummer-08114",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-08338",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-08338",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-08489",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-08489",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-09287",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-09287",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-09513",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 0.37,
+      "source_case_id": "brutus-mass_4_2_1_plummer-09513",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-09664",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": -0.91,
+      "source_case_id": "brutus-mass_4_2_1_plummer-09664",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-09810",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-09810",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "up-brutus-mass_4_2_1_plummer-09994",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "gauge_angle": 1.43,
+      "source_case_id": "brutus-mass_4_2_1_plummer-09994",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    }
+  ],
+  "corpus_id": "wp2-up-v1-external-spatial-corpus",
+  "schema_version": "1.0",
+  "spatial_corpus_sha256": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff",
+  "spec_sha256": "d4daa588cc795755e13fa1b9200186e86d570b232595230314b0149de6b6d415"
+}
