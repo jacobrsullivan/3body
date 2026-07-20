@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-UPQ-v1",
+  "sources": [
+    {
+      "kind": "qualified_external_spatial_corpus",
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a"
+    },
+    {
+      "kind": "qualified_canonical_ks",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    {
+      "kind": "qualified_threebody_flow",
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "record_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9"
+    }
+  ],
+  "reference_implementation": "reference/upstairs_reference.py is an independently written formula implementation and imports no production upstairs module"
+}

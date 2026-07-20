@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-UPQ-v1",
+  "specification_status": "LOCKABLE",
+  "claim": "If and only if the final record is PASS and its lock verifies, WP2-UPQ-v1 qualifies the declared 14-dimensional canonical one-channel KS Hamiltonian for the collision-free translation-reduced Newtonian three-body problem, its S1 action and Xi momentum map, the fixed-energy Hamiltonian K_h, the Sundman relation dt/ds=|q|^2, projection from K_h=Xi=0 to the physical Jacobi flow, and finite continuation of the selected binary-channel vector field at q=0 when the other pair separations remain nonzero.",
+  "evidence_boundary": "The claim covers positive finite masses, the rho=x2-x1 KS channel, zero Xi for physical projection, the frozen external spatial/chaotic checkpoint corpus, and short bounded flow comparisons. It does not qualify either other binary channel, triple collision, simultaneous pairwise regularization, a global three-pair Sundman time, nonzero-Xi physical reduction, orbit discovery, an additional first integral, Liouville integrability, or any WP3/WP4 claim.",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a"
+    },
+    "wp2_kepler_ks": {
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    "wp2_threebody_flow": {
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "record_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9"
+    }
+  },
+  "model": {
+    "canonical_order": ["q[4]", "lambda[3]", "Q[4]", "p_lambda[3]"],
+    "selected_channel": "rho=x2-x1",
+    "hamiltonian": "K_h=|Q|^2/(8*mu12)-G*m1*m2+|q|^2*(|p_lambda|^2/(2*mu3_12)-G*m2*m3/|x23|-G*m3*m1/|x31|-h)",
+    "physical_shell": "K_h=0 and Xi=0",
+    "time_policy": "dt/ds=|q|^2"
+  },
+  "execution": {
+    "checkpoint_indices": [0, 2, 4, 6, 8],
+    "gauge_angles": [0.0, 0.37, -0.91, 1.43],
+    "finite_difference_step": 2e-7,
+    "integration_s_horizon": 0.01,
+    "integration_rtol": 2e-12,
+    "integration_atol": 2e-13,
+    "integration_max_step": 0.0005
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "prerequisite_pass_rate_min": 1.0,
+    "reference_hamiltonian_scaled_max": 2e-12,
+    "reference_vector_field_scaled_max": 2e-11,
+    "shell_hamiltonian_scaled_max": 2e-12,
+    "xi_level_abs_max": 2e-12,
+    "roundtrip_scaled_max": 2e-12,
+    "sundman_projection_scaled_max": 2e-11,
+    "canonical_gradient_scaled_max": 3e-7,
+    "s1_hamiltonian_scaled_max": 2e-12,
+    "s1_projection_scaled_max": 2e-12,
+    "s1_vector_covariance_scaled_max": 2e-11,
+    "xi_lie_abs_max": 2e-11,
+    "angular_momentum_lie_scaled_max": 2e-11,
+    "short_flow_projection_scaled_max": 3e-8,
+    "short_flow_hamiltonian_drift_scaled_max": 2e-9,
+    "short_flow_xi_drift_abs_max": 2e-9,
+    "selected_collision_finite_rate_min": 1.0,
+    "structural_simultaneous_regularization_qualified": 0
+  },
+  "downstream_policy": "A PASS authorizes this model as the frozen canonical target for a separately locked WP3 upstairs candidate search. It does not authorize candidate interpretation, opening a sealed WP3 reserve, or a WP4 integrability claim."
+}
