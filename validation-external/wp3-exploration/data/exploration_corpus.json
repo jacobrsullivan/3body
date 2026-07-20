@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "wp3-exploration-jacobi-v1",
+  "interpretation_status": "EXPLORATORY_ONLY",
+  "upstream_corpus": "validation-external/wp1-n3bp-validation/data/qualification_corpus.json",
+  "upstream_corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "executable_splits": [
+    "training",
+    "calibration"
+  ],
+  "execution": {
+    "rtol": 1e-12,
+    "atol": 1e-14,
+    "max_step_fraction_of_period": 0.004
+  },
+  "trajectory_sources": [
+    {
+      "case_id": "train_lagrange_unit_planar",
+      "split": "training",
+      "source_case_id": "lagrange_unit_planar",
+      "required_upstream_split": "development",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "train_figure_eight_published_rounded",
+      "split": "training",
+      "source_case_id": "figure_eight_published_rounded",
+      "required_upstream_split": "development",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "train_sjtu_line_14",
+      "split": "training",
+      "source_case_id": "sjtu_line_14_m0800_m0756",
+      "required_upstream_split": "development",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "train_sjtu_line_29734",
+      "split": "training",
+      "source_case_id": "sjtu_line_29734_m0870_m0800",
+      "required_upstream_split": "development",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "train_sjtu_line_44348",
+      "split": "training",
+      "source_case_id": "sjtu_line_44348_m0900_m0850",
+      "required_upstream_split": "development",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "cal_lagrange_scaled_rotated",
+      "split": "calibration",
+      "source_case_id": "lagrange_scaled_spatial",
+      "required_upstream_split": "calibration",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "cal_sjtu_line_59402",
+      "split": "calibration",
+      "source_case_id": "sjtu_line_59402_m0930_m0890",
+      "required_upstream_split": "calibration",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    },
+    {
+      "case_id": "cal_sjtu_line_69432",
+      "split": "calibration",
+      "source_case_id": "sjtu_line_69432_m0950_m0900",
+      "required_upstream_split": "calibration",
+      "sample_count": 41,
+      "period_fraction": 1.0
+    }
+  ],
+  "collocation_sources": [
+    {
+      "set_id": "train_spatial_collocation",
+      "split": "training",
+      "seed": 310031,
+      "count": 160,
+      "mass_range": [
+        0.4,
+        2.0
+      ],
+      "gravitational_constant_range": [
+        0.5,
+        1.5
+      ],
+      "length_scale_range": [
+        0.7,
+        1.8
+      ],
+      "velocity_factor_range": [
+        0.15,
+        1.2
+      ],
+      "minimum_separation_fraction": 0.4
+    },
+    {
+      "set_id": "cal_spatial_collocation",
+      "split": "calibration",
+      "seed": 310032,
+      "count": 96,
+      "mass_range": [
+        0.3,
+        2.3
+      ],
+      "gravitational_constant_range": [
+        0.4,
+        1.7
+      ],
+      "length_scale_range": [
+        0.6,
+        2.1
+      ],
+      "velocity_factor_range": [
+        0.1,
+        1.4
+      ],
+      "minimum_separation_fraction": 0.35
+    }
+  ],
+  "quarantined_upstream_holdout_ids": [
+    "reserved_lagrange_spatial",
+    "reserved_sjtu_line_34537_m0880_m0820",
+    "reserved_sjtu_line_49352_m0910_m0860",
+    "reserved_sjtu_line_54382_m0920_m0880",
+    "reserved_sjtu_line_64422_m0940_m0900"
+  ],
+  "holdout_policy": "The upstream holdout was already executed for WP1Q-N3BP-v1 and is excluded from WP3 exploration. It is not represented as a fresh WP3 publication holdout. A separately sealed WP3 holdout is required by the publication gate."
+}

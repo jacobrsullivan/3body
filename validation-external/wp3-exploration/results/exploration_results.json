@@ -1,0 +1,3557 @@
+{
+  "campaign": "WP3-EXP-v1",
+  "claim_boundary": "Outputs rank numerical screening directions only. No conservation, independence, involution, or integrability claim is made.",
+  "generated_utc": "2026-07-20T08:57:59.699717+00:00",
+  "implementation_snapshot": {
+    "file_hashes": {
+      "src/python/wp3_exploration/__init__.py": "94783c8b8bc2f772406cb6425b14d6041e922240eca2abf57ab7cb6a93abc010",
+      "src/python/wp3_exploration/dynamics.py": "d62d7c8d55f4825864adeca3fbe65ba475d5d12f64906fa27e21978eef79ae64",
+      "src/python/wp3_exploration/features.py": "d3d33f74fe8f80472ad17bf0b4fffd7e62174c579b28d8044181beb2b806a1fd",
+      "src/python/wp3_exploration/publication_gate.py": "f214021252896a19b9a8e8a5d1367ab8f080fd37ed33ec2267703d4a0f1d63d6",
+      "src/python/wp3_exploration/search.py": "6c22c81fe68bdee788ff1b948c18dd5ca9fedc6fa4933ec63194dea7819bd6fd",
+      "src/python/wp3_exploration/source_cases.py": "a898f3297499f247a410243bcfff4cc9f694e767db20d67d9960140a90d200a0",
+      "validation-external/wp3-exploration/scripts/evaluate_publication_gate.py": "b6e977dc411b18423f558dfd9fc34802737d061b557eef9ac37acd5e73318cfe",
+      "validation-external/wp3-exploration/scripts/run_exploration.py": "91d210cb8d477748e402d882305a34ec9d698fd5f1f237b96144bbb2c9a30bd3"
+    },
+    "snapshot_sha256": "16c82183cd778581046a27db9373db49b8bb8736c913c070d8394c16e3591d26"
+  },
+  "input_hashes": {
+    "exploration_corpus_sha256": "89ed032014166b97abbacd567fa98c366746700dcfe2843abe59c0fb41e00191",
+    "exploration_spec_sha256": "179dcd506059ac031ce7dbc8fea09d2fa96331f8ed2f29d6e8367f421acfec52",
+    "upstream_n3bp_corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a"
+  },
+  "interpretation_status": "EXPLORATORY_ONLY",
+  "known_control_trajectory_drift": {
+    "angular_momentum_squared": {
+      "calibration_max_scaled_peak_to_peak": 2.833242381146895e-17,
+      "calibration_trajectories": [
+        {
+          "absolute_peak_to_peak": 1.5543122344752192e-15,
+          "case_id": "cal_lagrange_scaled_rotated",
+          "scaled_peak_to_peak": 6.372750529704074e-18
+        },
+        {
+          "absolute_peak_to_peak": 6.910270966553611e-15,
+          "case_id": "cal_sjtu_line_59402",
+          "scaled_peak_to_peak": 2.833242381146895e-17
+        },
+        {
+          "absolute_peak_to_peak": 4.1772141301521515e-15,
+          "case_id": "cal_sjtu_line_69432",
+          "scaled_peak_to_peak": 1.71267670485797e-17
+        }
+      ],
+      "coefficients": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "training_max_scaled_peak_to_peak": 5.438221769196484e-16,
+      "training_trajectories": [
+        {
+          "absolute_peak_to_peak": 9.43689570931383e-16,
+          "case_id": "train_figure_eight_published_rounded",
+          "scaled_peak_to_peak": 1.799946849867904e-17
+        },
+        {
+          "absolute_peak_to_peak": 4.440892098500626e-15,
+          "case_id": "train_lagrange_unit_planar",
+          "scaled_peak_to_peak": 8.470338117025432e-17
+        },
+        {
+          "absolute_peak_to_peak": 2.85119150511548e-14,
+          "case_id": "train_sjtu_line_14",
+          "scaled_peak_to_peak": 5.438221769196484e-16
+        },
+        {
+          "absolute_peak_to_peak": 2.3497154742757598e-14,
+          "case_id": "train_sjtu_line_29734",
+          "scaled_peak_to_peak": 4.481731171230719e-16
+        },
+        {
+          "absolute_peak_to_peak": 1.0959982921221467e-14,
+          "case_id": "train_sjtu_line_44348",
+          "scaled_peak_to_peak": 2.0904529774752606e-16
+        }
+      ]
+    },
+    "energy": {
+      "calibration_max_scaled_peak_to_peak": 3.1400214690783128e-12,
+      "calibration_trajectories": [
+        {
+          "absolute_peak_to_peak": 6.106226635438361e-16,
+          "case_id": "cal_lagrange_scaled_rotated",
+          "scaled_peak_to_peak": 4.7567696273744353e-17
+        },
+        {
+          "absolute_peak_to_peak": 4.0308201221250783e-11,
+          "case_id": "cal_sjtu_line_59402",
+          "scaled_peak_to_peak": 3.1400214690783128e-12
+        },
+        {
+          "absolute_peak_to_peak": 3.8539393898417984e-11,
+          "case_id": "cal_sjtu_line_69432",
+          "scaled_peak_to_peak": 3.00223082598135e-12
+        }
+      ],
+      "coefficients": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "training_max_scaled_peak_to_peak": 1.545183866486339e-11,
+      "training_trajectories": [
+        {
+          "absolute_peak_to_peak": 8.815170815523743e-14,
+          "case_id": "train_figure_eight_published_rounded",
+          "scaled_peak_to_peak": 1.6839553617372067e-14
+        },
+        {
+          "absolute_peak_to_peak": 2.220446049250313e-15,
+          "case_id": "train_lagrange_unit_planar",
+          "scaled_peak_to_peak": 4.241701163066012e-16
+        },
+        {
+          "absolute_peak_to_peak": 8.08872968605101e-11,
+          "case_id": "train_sjtu_line_14",
+          "scaled_peak_to_peak": 1.545183866486339e-11
+        },
+        {
+          "absolute_peak_to_peak": 7.06052993848516e-11,
+          "case_id": "train_sjtu_line_29734",
+          "scaled_peak_to_peak": 1.3487676524294044e-11
+        },
+        {
+          "absolute_peak_to_peak": 4.361311312095495e-11,
+          "case_id": "train_sjtu_line_44348",
+          "scaled_peak_to_peak": 8.331379756447739e-12
+        }
+      ]
+    }
+  },
+  "matrix_hashes": {
+    "calibration_features": "3ff9d857b27e977decf7e1facf924f912c9c4c15ad4455471ee5f13b9e39a2a9",
+    "calibration_lie_derivatives": "5772d15cd90ae25b33abeaaf5ad4098035ab943f8406219cd5935902773ebec5",
+    "training_features": "3eacc9b490810c2121bf5627d98e28cc5d0bf8c83af3e1c76f07953efedf1fd8",
+    "training_lie_derivatives": "dea1b24431aff7b6352f4c6529cca06cdf5c13220806e17bea01941ee7e6c8ea"
+  },
+  "provenance": {
+    "calibration": {
+      "case_count": 4,
+      "case_ids": [
+        "cal_lagrange_scaled_rotated",
+        "cal_sjtu_line_59402",
+        "cal_sjtu_line_69432",
+        "cal_spatial_collocation"
+      ],
+      "sample_count": 219,
+      "source_kind_counts": {
+        "deterministic_spatial_collocation": 96,
+        "qualified_trajectory": 123
+      }
+    },
+    "holdout_policy": "The upstream holdout was already executed for WP1Q-N3BP-v1 and is excluded from WP3 exploration. It is not represented as a fresh WP3 publication holdout. A separately sealed WP3 holdout is required by the publication gate.",
+    "quarantined_upstream_holdout_ids": [
+      "reserved_lagrange_spatial",
+      "reserved_sjtu_line_34537_m0880_m0820",
+      "reserved_sjtu_line_49352_m0910_m0860",
+      "reserved_sjtu_line_54382_m0920_m0880",
+      "reserved_sjtu_line_64422_m0940_m0900"
+    ],
+    "training": {
+      "case_count": 6,
+      "case_ids": [
+        "train_figure_eight_published_rounded",
+        "train_lagrange_unit_planar",
+        "train_sjtu_line_14",
+        "train_sjtu_line_29734",
+        "train_sjtu_line_44348",
+        "train_spatial_collocation"
+      ],
+      "sample_count": 365,
+      "source_kind_counts": {
+        "deterministic_spatial_collocation": 160,
+        "qualified_trajectory": 205
+      }
+    }
+  },
+  "publication_gate": {
+    "campaign": "WP3-PUB-GATE-v1",
+    "interpretation_authorized": false,
+    "result_sha256": "9c5c5986d426a832556138ff742f4f3651a68a94052f746aa29ce542f652702a",
+    "status": "BLOCKED"
+  },
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "search": {
+    "dimension_sector_count": 9,
+    "dimensional_policy": "Search each mass-length-time dimension sector independently. Coefficients from different physical dimensions are never combined.",
+    "feature_count": 70,
+    "interpretation_status": "EXPLORATORY_ONLY",
+    "known_control_metrics": {
+      "angular_momentum_squared": {
+        "calibration_lie_max_abs": 9.094947017729282e-13,
+        "calibration_lie_rms": 6.888980843637683e-14,
+        "calibration_value_std": 243.89974583665295,
+        "training_lie_max_abs": 2.084998840246044e-13,
+        "training_lie_rms": 2.6427585029511186e-14,
+        "training_value_std": 52.428746493300025
+      },
+      "energy": {
+        "calibration_lie_max_abs": 3.410605131648481e-13,
+        "calibration_lie_rms": 2.442972729317071e-14,
+        "calibration_value_std": 12.836918988672524,
+        "training_lie_max_abs": 2.2737367544323206e-13,
+        "training_lie_rms": 1.5513213243263553e-14,
+        "training_value_std": 5.234800764807573
+      }
+    },
+    "nullity_relative_tolerance": 1e-10,
+    "numerical_nullity_after_known_controls": 0,
+    "sectors": [
+      {
+        "derivative_scales": [
+          7.431056276067962,
+          4.856562681196167,
+          4.8252593346993
+        ],
+        "dimension_signature": {
+          "length_exponent": 2,
+          "mass_exponent": 0,
+          "time_exponent": 0
+        },
+        "feature_count": 3,
+        "feature_names": [
+          "dot(rho,rho)",
+          "dot(rho,lambda)",
+          "dot(lambda,lambda)"
+        ],
+        "global_feature_indices": [
+          0,
+          1,
+          4
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 8.4962397074079,
+            "calibration_lie_rms": 1.5391824856240128,
+            "calibration_value_std": 1.620912259889716,
+            "coefficients": [
+              0.03961776034342538,
+              -0.12355790361407662,
+              0.15200615057596317
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.9284490011286911,
+            "top_terms": [
+              {
+                "coefficient": 0.15200615057596317,
+                "feature": "dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.12355790361407662,
+                "feature": "dot(rho,lambda)"
+              },
+              {
+                "coefficient": 0.03961776034342538,
+                "feature": "dot(rho,rho)"
+              }
+            ],
+            "training_lie_max_abs": 5.243122296345903,
+            "training_lie_rms": 0.9213327373532295,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 6.6058269965196814e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 4.0753760459367056e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.1057124047925876,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.0652178451656477
+                },
+                {
+                  "absolute_peak_to_peak": 0.10794053856591004,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.06659246230468645
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.06659246230468645,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.45932507584769044,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.45932507584769044
+                },
+                {
+                  "absolute_peak_to_peak": 2.0539125955565396e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 2.0539125955565396e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.11115643507196724,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.11115643507196724
+                },
+                {
+                  "absolute_peak_to_peak": 0.11244287934852451,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.11244287934852451
+                },
+                {
+                  "absolute_peak_to_peak": 0.10897080590472864,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.10897080590472864
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.45932507584769044
+            }
+          },
+          {
+            "calibration_lie_max_abs": 3.949091120752849,
+            "calibration_lie_rms": 0.9377674875319862,
+            "calibration_value_std": 0.9002614145243443,
+            "coefficients": [
+              0.09861389937209619,
+              0.09573798403526101,
+              0.017875978984830582
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.9835883320807992,
+            "top_terms": [
+              {
+                "coefficient": 0.09861389937209619,
+                "feature": "dot(rho,rho)"
+              },
+              {
+                "coefficient": 0.09573798403526101,
+                "feature": "dot(rho,lambda)"
+              },
+              {
+                "coefficient": 0.017875978984830582,
+                "feature": "dot(lambda,lambda)"
+              }
+            ],
+            "training_lie_max_abs": 6.298143233109022,
+            "training_lie_rms": 0.8578274390036184,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 5.218048215738236e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 5.796147798353889e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.1169836530634406,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.12994409310016833
+                },
+                {
+                  "absolute_peak_to_peak": 0.1222076655451455,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.13574686593639504
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.13574686593639504,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.4249736488782012,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.4249736488782013
+                },
+                {
+                  "absolute_peak_to_peak": 2.5951463200613034e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 2.595146320061304e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.08762362287893252,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.08762362287893254
+                },
+                {
+                  "absolute_peak_to_peak": 0.10109142965019866,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.10109142965019868
+                },
+                {
+                  "absolute_peak_to_peak": 0.10875914483298452,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.10875914483298454
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.4249736488782013
+            }
+          },
+          {
+            "calibration_lie_max_abs": 8.679185653124085,
+            "calibration_lie_rms": 1.6104813219163474,
+            "calibration_value_std": 1.3122024688047194,
+            "coefficients": [
+              -0.07847190039642307,
+              0.15653994917616956,
+              0.17740631060729548
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 1.081913326148471,
+            "top_terms": [
+              {
+                "coefficient": 0.17740631060729548,
+                "feature": "dot(lambda,lambda)"
+              },
+              {
+                "coefficient": 0.15653994917616956,
+                "feature": "dot(rho,lambda)"
+              },
+              {
+                "coefficient": -0.07847190039642307,
+                "feature": "dot(rho,rho)"
+              }
+            ],
+            "training_lie_max_abs": 10.586356690291812,
+            "training_lie_rms": 1.3900811729582176,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 2.8449465006019636e-14,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 2.1680697668503974e-14
+                },
+                {
+                  "absolute_peak_to_peak": 0.41700183595040985,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.3177877239708712
+                },
+                {
+                  "absolute_peak_to_peak": 0.4309125927521399,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.3283887989821088
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.3283887989821088,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.907129284783702,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.9071292847837022
+                },
+                {
+                  "absolute_peak_to_peak": 5.294376048681215e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.294376048681216e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.30469830089058025,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.3046983008905803
+                },
+                {
+                  "absolute_peak_to_peak": 0.35604781476336367,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.3560478147633637
+                },
+                {
+                  "absolute_peak_to_peak": 0.3875054323170931,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.3875054323170932
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.9071292847837022
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+0_L+2_T+0",
+        "standardized_singular_values": [
+          1.081913326148471,
+          0.9835883320807992,
+          0.9284490011286911
+        ]
+      },
+      {
+        "derivative_scales": [
+          325.1057119323333,
+          147.35903380387867,
+          103.2301938863884,
+          74.1267188977497,
+          70.24774147133613,
+          113.00781142972005
+        ],
+        "dimension_signature": {
+          "length_exponent": 4,
+          "mass_exponent": 0,
+          "time_exponent": 0
+        },
+        "feature_count": 6,
+        "feature_names": [
+          "dot(rho,rho)*dot(rho,rho)",
+          "dot(rho,rho)*dot(rho,lambda)",
+          "dot(rho,rho)*dot(lambda,lambda)",
+          "dot(rho,lambda)*dot(rho,lambda)",
+          "dot(rho,lambda)*dot(lambda,lambda)",
+          "dot(lambda,lambda)*dot(lambda,lambda)"
+        ],
+        "global_feature_indices": [
+          10,
+          11,
+          14,
+          20,
+          23,
+          44
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 18.139026446615706,
+            "calibration_lie_rms": 1.6166061079685774,
+            "calibration_value_std": 0.7350985615178691,
+            "coefficients": [
+              -0.002250318074028015,
+              -0.007140017474664426,
+              0.01149721434756395,
+              -0.009067102728042778,
+              0.00572770476152288,
+              -0.0023953005977506085
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.36451101878286385,
+            "top_terms": [
+              {
+                "coefficient": 0.01149721434756395,
+                "feature": "dot(rho,rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.009067102728042778,
+                "feature": "dot(rho,lambda)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": -0.007140017474664426,
+                "feature": "dot(rho,rho)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": 0.00572770476152288,
+                "feature": "dot(rho,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.0023953005977506085,
+                "feature": "dot(lambda,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.002250318074028015,
+                "feature": "dot(rho,rho)*dot(rho,rho)"
+              }
+            ],
+            "training_lie_max_abs": 5.213104288135062,
+            "training_lie_rms": 0.7047210454665963,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 5.828670879282072e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 7.929101190521627e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.006368057957690057,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.008662862765696297
+                },
+                {
+                  "absolute_peak_to_peak": 0.00660241568943421,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.008981674070754817
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.008981674070754817,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.053722500982903855,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.05372250098290386
+                },
+                {
+                  "absolute_peak_to_peak": 4.2500725161431774e-17,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 4.250072516143178e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.004378900382085345,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.004378900382085346
+                },
+                {
+                  "absolute_peak_to_peak": 0.005382388965663624,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.005382388965663625
+                },
+                {
+                  "absolute_peak_to_peak": 0.005902695465598049,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.00590269546559805
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.05372250098290386
+            }
+          },
+          {
+            "calibration_lie_max_abs": 34.292585312899774,
+            "calibration_lie_rms": 2.852853588385375,
+            "calibration_value_std": 2.11439650727646,
+            "coefficients": [
+              -0.001085441998264359,
+              -0.0072447769057264345,
+              -0.00796491322124804,
+              0.01182572644649799,
+              0.010751702864749444,
+              0.00393196025507456
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.47610435374498555,
+            "top_terms": [
+              {
+                "coefficient": 0.01182572644649799,
+                "feature": "dot(rho,lambda)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": 0.010751702864749444,
+                "feature": "dot(rho,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.00796491322124804,
+                "feature": "dot(rho,rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.0072447769057264345,
+                "feature": "dot(rho,rho)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": 0.00393196025507456,
+                "feature": "dot(lambda,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.001085441998264359,
+                "feature": "dot(rho,rho)*dot(rho,rho)"
+              }
+            ],
+            "training_lie_max_abs": 7.511888559432066,
+            "training_lie_rms": 0.8877309548910418,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 1.6792123247455493e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 7.941804287732822e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.011861364685415422,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.005609810952957903
+                },
+                {
+                  "absolute_peak_to_peak": 0.012934748085639767,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.006117465688732587
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.006117465688732587,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.08681704838413702,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.08681704838413701
+                },
+                {
+                  "absolute_peak_to_peak": 1.726049858596923e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 1.7260498585969226e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.004821253025779374,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.004821253025779373
+                },
+                {
+                  "absolute_peak_to_peak": 0.007944553570231607,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.007944553570231605
+                },
+                {
+                  "absolute_peak_to_peak": 0.009925140626264557,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.009925140626264555
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.08681704838413701
+            }
+          },
+          {
+            "calibration_lie_max_abs": 48.45060392898738,
+            "calibration_lie_rms": 4.546429901033189,
+            "calibration_value_std": 3.3977875507825557,
+            "coefficients": [
+              -0.001314586511720183,
+              -0.0013659158979611773,
+              0.0021777053778712914,
+              0.01309011798887554,
+              -0.012666720949808096,
+              -0.007157217791843968
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 0.7385347692159869,
+            "top_terms": [
+              {
+                "coefficient": 0.01309011798887554,
+                "feature": "dot(rho,lambda)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": -0.012666720949808096,
+                "feature": "dot(rho,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.007157217791843968,
+                "feature": "dot(lambda,lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": 0.0021777053778712914,
+                "feature": "dot(rho,rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.0013659158979611773,
+                "feature": "dot(rho,rho)*dot(rho,lambda)"
+              },
+              {
+                "coefficient": -0.001314586511720183,
+                "feature": "dot(rho,rho)*dot(rho,rho)"
+              }
+            ],
+            "training_lie_max_abs": 10.76983896596172,
+            "training_lie_rms": 1.2047834211526613,
+            "training_value_std": 0.9999999999999999,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 3.58046925441613e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.0537648987475688e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.01857716613568756,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.005467430160961356
+                },
+                {
+                  "absolute_peak_to_peak": 0.01942719523193954,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.005717601510272529
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.005717601510272529,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.11078698916856689,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.1107869891685669
+                },
+                {
+                  "absolute_peak_to_peak": 1.5742615544489524e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 1.5742615544489527e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.012042219821693335,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.012042219821693336
+                },
+                {
+                  "absolute_peak_to_peak": 0.01461937046673471,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.014619370466734711
+                },
+                {
+                  "absolute_peak_to_peak": 0.01661293379251766,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.016612933792517662
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.1107869891685669
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+0_L+4_T+0",
+        "standardized_singular_values": [
+          1.7109647726226667,
+          1.1452588349586277,
+          0.9252051145467745,
+          0.7385347692159869,
+          0.47610435374498555,
+          0.36451101878286385
+        ]
+      },
+      {
+        "derivative_scales": [
+          13.86877801324658,
+          17.59391564138305,
+          12.701819754864676,
+          2.193880356626721,
+          22.54359570098056
+        ],
+        "dimension_signature": {
+          "length_exponent": 2,
+          "mass_exponent": 1,
+          "time_exponent": -2
+        },
+        "feature_count": 5,
+        "feature_names": [
+          "kinetic_rho",
+          "kinetic_lambda",
+          "potential_12",
+          "potential_23",
+          "potential_31"
+        ],
+        "global_feature_indices": [
+          65,
+          66,
+          67,
+          68,
+          69
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {
+          "energy": {
+            "calibration_lie_max_abs": 3.410605131648481e-13,
+            "calibration_lie_rms": 2.442972729317071e-14,
+            "calibration_value_std": 12.836918988672524,
+            "training_lie_max_abs": 2.2737367544323206e-13,
+            "training_lie_rms": 1.5513213243263553e-14,
+            "training_value_std": 5.234800764807573
+          }
+        },
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 24.38691793109706,
+            "calibration_lie_rms": 1.8842864237346837,
+            "calibration_value_std": 2.912682454473804,
+            "coefficients": [
+              0.40248166247090356,
+              -0.272387456297257,
+              0.41641148922633636,
+              -0.3218969858426465,
+              -0.11556369173897234
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 5.551115123125783e-17,
+            "rank": 1,
+            "standardized_singular_value": 0.11542749614563194,
+            "top_terms": [
+              {
+                "coefficient": 0.41641148922633636,
+                "feature": "potential_12"
+              },
+              {
+                "coefficient": 0.40248166247090356,
+                "feature": "kinetic_rho"
+              },
+              {
+                "coefficient": -0.3218969858426465,
+                "feature": "potential_23"
+              },
+              {
+                "coefficient": -0.272387456297257,
+                "feature": "kinetic_lambda"
+              },
+              {
+                "coefficient": -0.11556369173897234,
+                "feature": "potential_31"
+              }
+            ],
+            "training_lie_max_abs": 17.192611293347987,
+            "training_lie_rms": 1.09129984098568,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 2.5396351688300456e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 8.719231184742547e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.4511348962475498,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.1548863988089805
+                },
+                {
+                  "absolute_peak_to_peak": 0.4491228803144998,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.15419562116174346
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.1548863988089805,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.4107158589762129,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.41071585897621293
+                },
+                {
+                  "absolute_peak_to_peak": 9.783840404509192e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 9.783840404509194e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.2823591408712471,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.28235914087124714
+                },
+                {
+                  "absolute_peak_to_peak": 0.40702880640951394,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.407028806409514
+                },
+                {
+                  "absolute_peak_to_peak": 0.4410034004908903,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.4410034004908904
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.4410034004908904
+            }
+          },
+          {
+            "calibration_lie_max_abs": 17.867275051108532,
+            "calibration_lie_rms": 3.481624917744933,
+            "calibration_value_std": 1.672831722991503,
+            "coefficients": [
+              0.02330154251011584,
+              0.0048136544603560715,
+              0.0006778551635445988,
+              2.161226581450495,
+              -0.032434232601084405
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 3.469446951953614e-18,
+            "rank": 2,
+            "standardized_singular_value": 0.9929834748726095,
+            "top_terms": [
+              {
+                "coefficient": 2.161226581450495,
+                "feature": "potential_23"
+              },
+              {
+                "coefficient": -0.032434232601084405,
+                "feature": "potential_31"
+              },
+              {
+                "coefficient": 0.02330154251011584,
+                "feature": "kinetic_rho"
+              },
+              {
+                "coefficient": 0.0048136544603560715,
+                "feature": "kinetic_lambda"
+              },
+              {
+                "coefficient": 0.0006778551635445988,
+                "feature": "potential_12"
+              }
+            ],
+            "training_lie_max_abs": 72.60703251474881,
+            "training_lie_rms": 4.775401331863986,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 5.88418203051333e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 3.5174978747956334e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.7351083110744931,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.3315660222727561
+                },
+                {
+                  "absolute_peak_to_peak": 0.7392730248853532,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.3311913404445694
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.3315660222727561,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 2.051146548797206,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.6658812537958755
+                },
+                {
+                  "absolute_peak_to_peak": 1.5987211554602254e-14,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 7.58268561300096e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.8535140132993704,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.39672012726487405
+                },
+                {
+                  "absolute_peak_to_peak": 0.8324738280098201,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.38284439710779794
+                },
+                {
+                  "absolute_peak_to_peak": 0.7639240102351252,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.34983053485556476
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.6658812537958755
+            }
+          },
+          {
+            "calibration_lie_max_abs": 196.51425613682693,
+            "calibration_lie_rms": 27.392782454426325,
+            "calibration_value_std": 2.166294499639614,
+            "coefficients": [
+              -0.27147878534635567,
+              0.20271644383500723,
+              0.4279587014134942,
+              -0.16225865574698398,
+              -0.1550475003920479
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 2.0816681711721685e-17,
+            "rank": 3,
+            "standardized_singular_value": 1.2898737807271141,
+            "top_terms": [
+              {
+                "coefficient": 0.4279587014134942,
+                "feature": "potential_12"
+              },
+              {
+                "coefficient": -0.27147878534635567,
+                "feature": "kinetic_rho"
+              },
+              {
+                "coefficient": 0.20271644383500723,
+                "feature": "kinetic_lambda"
+              },
+              {
+                "coefficient": -0.16225865574698398,
+                "feature": "potential_23"
+              },
+              {
+                "coefficient": -0.1550475003920479,
+                "feature": "potential_31"
+              }
+            ],
+            "training_lie_max_abs": 106.19410902136835,
+            "training_lie_rms": 10.698088579283503,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 4.2049697057677804e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.9410886684461976e-15
+                },
+                {
+                  "absolute_peak_to_peak": 8.63172641521853,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 1.2200790548304075
+                },
+                {
+                  "absolute_peak_to_peak": 8.408438541452544,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 1.249397401256337
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 1.249397401256337,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 1.0711423189667661,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 1.0711423189667661
+                },
+                {
+                  "absolute_peak_to_peak": 7.605027718682322e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 7.605027718682322e-15
+                },
+                {
+                  "absolute_peak_to_peak": 3.002592153329614,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 1.8759747085196652
+                },
+                {
+                  "absolute_peak_to_peak": 5.278905007029133,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 1.2977261664290207
+                },
+                {
+                  "absolute_peak_to_peak": 8.059642722771809,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 1.2080536099049044
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 1.8759747085196652
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+1_L+2_T-2",
+        "standardized_singular_values": [
+          1.528687653366838,
+          1.2898737807271141,
+          0.9929834748726095,
+          0.11542749614563194
+        ]
+      },
+      {
+        "derivative_scales": [
+          6.295385316944074,
+          5.962364610880623,
+          5.699136039389551,
+          7.310319762681279
+        ],
+        "dimension_signature": {
+          "length_exponent": 2,
+          "mass_exponent": 1,
+          "time_exponent": -1
+        },
+        "feature_count": 4,
+        "feature_names": [
+          "dot(rho,p_rho)",
+          "dot(rho,p_lambda)",
+          "dot(lambda,p_rho)",
+          "dot(lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          2,
+          3,
+          5,
+          6
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 38.83795569950693,
+            "calibration_lie_rms": 4.517565403935123,
+            "calibration_value_std": 1.2040547980867755,
+            "coefficients": [
+              0.25557046698500757,
+              -0.23224049436979155,
+              0.17554235114976094,
+              -0.1791642096479076
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.6157007042262092,
+            "top_terms": [
+              {
+                "coefficient": 0.25557046698500757,
+                "feature": "dot(rho,p_rho)"
+              },
+              {
+                "coefficient": -0.23224049436979155,
+                "feature": "dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.1791642096479076,
+                "feature": "dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.17554235114976094,
+                "feature": "dot(lambda,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 14.536336780811892,
+            "training_lie_rms": 1.6546577800812308,
+            "training_value_std": 0.9999999999999999,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 3.0531133177191805e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 2.5356929955102793e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.7997385893489705,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.6642044785833192
+                },
+                {
+                  "absolute_peak_to_peak": 0.7676251552871115,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.6375334050467272
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.6642044785833192,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.9059929064098378,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.9059929064098379
+                },
+                {
+                  "absolute_peak_to_peak": 5.10702591327572e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.107025913275721e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.24467418182468273,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.24467418182468276
+                },
+                {
+                  "absolute_peak_to_peak": 0.7120815487885672,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.7120815487885673
+                },
+                {
+                  "absolute_peak_to_peak": 0.9071164273925316,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.9071164273925317
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.9071164273925317
+            }
+          },
+          {
+            "calibration_lie_max_abs": 43.58829832635857,
+            "calibration_lie_rms": 6.41878750946766,
+            "calibration_value_std": 1.2863855595605453,
+            "coefficients": [
+              -0.1400637280013389,
+              -0.1644128979207846,
+              0.3335652887723009,
+              0.19223742968151988
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 1.0233951966477168,
+            "top_terms": [
+              {
+                "coefficient": 0.3335652887723009,
+                "feature": "dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.19223742968151988,
+                "feature": "dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.1644128979207846,
+                "feature": "dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.1400637280013389,
+                "feature": "dot(rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 20.16430169692307,
+            "training_lie_rms": 2.7702281759195184,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 2.55351295663786e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.9850292454388177e-15
+                },
+                {
+                  "absolute_peak_to_peak": 1.3952434876329853,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 1.0846230955123815
+                },
+                {
+                  "absolute_peak_to_peak": 1.372345363826007,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 1.0668227372630237
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 1.0846230955123815,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.6702491891483624,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.6702491891483624
+                },
+                {
+                  "absolute_peak_to_peak": 4.052314039881821e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 4.052314039881821e-15
+                },
+                {
+                  "absolute_peak_to_peak": 1.0158683753893747,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 1.0158683753893747
+                },
+                {
+                  "absolute_peak_to_peak": 1.473824461961708,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 1.473824461961708
+                },
+                {
+                  "absolute_peak_to_peak": 1.7094329020815298,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 1.7094329020815298
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 1.7094329020815298
+            }
+          },
+          {
+            "calibration_lie_max_abs": 42.6279481695738,
+            "calibration_lie_rms": 6.594996318590468,
+            "calibration_value_std": 1.4295781257479743,
+            "coefficients": [
+              -0.11821903719385167,
+              0.27794355780871066,
+              0.2781546344584634,
+              -0.19908787038487755
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 1.0607560945522725,
+            "top_terms": [
+              {
+                "coefficient": 0.2781546344584634,
+                "feature": "dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.27794355780871066,
+                "feature": "dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.19908787038487755,
+                "feature": "dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.11821903719385167,
+                "feature": "dot(rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 24.156114814017883,
+            "training_lie_rms": 2.9873736011429943,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 8.430756093247282e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 5.89737345682748e-15
+                },
+                {
+                  "absolute_peak_to_peak": 1.1969500293438813,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.837275002873747
+                },
+                {
+                  "absolute_peak_to_peak": 1.119073515108645,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.7827998309103469
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.837275002873747,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 1.0791124513341357,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 1.0791124513341357
+                },
+                {
+                  "absolute_peak_to_peak": 5.4539706084710815e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.4539706084710815e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.6800018571830343,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.6800018571830343
+                },
+                {
+                  "absolute_peak_to_peak": 1.276434474448902,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 1.276434474448902
+                },
+                {
+                  "absolute_peak_to_peak": 1.4644399116246065,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 1.4644399116246065
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 1.4644399116246065
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+1_L+2_T-1",
+        "standardized_singular_values": [
+          1.2034830377549748,
+          1.0607560945522725,
+          1.0233951966477168,
+          0.6157007042262092
+        ]
+      },
+      {
+        "derivative_scales": [
+          134.21451914196345,
+          100.22215058247708,
+          40.40164034012459,
+          76.07699380018792,
+          45.77514249016771,
+          64.8511130245909,
+          21.16743731820773,
+          36.99171423079526,
+          49.948243724502866,
+          42.179507947726655,
+          38.33369422118314,
+          71.51374766168546
+        ],
+        "dimension_signature": {
+          "length_exponent": 4,
+          "mass_exponent": 1,
+          "time_exponent": -1
+        },
+        "feature_count": 12,
+        "feature_names": [
+          "dot(rho,rho)*dot(rho,p_rho)",
+          "dot(rho,rho)*dot(rho,p_lambda)",
+          "dot(rho,rho)*dot(lambda,p_rho)",
+          "dot(rho,rho)*dot(lambda,p_lambda)",
+          "dot(rho,lambda)*dot(rho,p_rho)",
+          "dot(rho,lambda)*dot(rho,p_lambda)",
+          "dot(rho,lambda)*dot(lambda,p_rho)",
+          "dot(rho,lambda)*dot(lambda,p_lambda)",
+          "dot(rho,p_rho)*dot(lambda,lambda)",
+          "dot(rho,p_lambda)*dot(lambda,lambda)",
+          "dot(lambda,lambda)*dot(lambda,p_rho)",
+          "dot(lambda,lambda)*dot(lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          12,
+          13,
+          15,
+          16,
+          21,
+          22,
+          24,
+          25,
+          31,
+          38,
+          45,
+          46
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 37.77904418449233,
+            "calibration_lie_rms": 5.256057292757411,
+            "calibration_value_std": 2.420637095145317,
+            "coefficients": [
+              0.0030394828318233737,
+              0.001516246080929532,
+              -0.013011413777555195,
+              0.03417318842894511,
+              0.01966192774645596,
+              -0.04499425889228673,
+              0.06283206870379482,
+              -0.01306441199320134,
+              -0.034089083889433026,
+              0.021164373009075203,
+              -0.00739727915424261,
+              -0.004950240605420887
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.2461531021680117,
+            "top_terms": [
+              {
+                "coefficient": 0.06283206870379482,
+                "feature": "dot(rho,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.04499425889228673,
+                "feature": "dot(rho,lambda)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.03417318842894511,
+                "feature": "dot(rho,rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.034089083889433026,
+                "feature": "dot(rho,p_rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": 0.021164373009075203,
+                "feature": "dot(rho,p_lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": 0.01966192774645596,
+                "feature": "dot(rho,lambda)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": -0.01306441199320134,
+                "feature": "dot(rho,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.013011413777555195,
+                "feature": "dot(rho,rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.00739727915424261,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.004950240605420887,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.0030394828318233737,
+                "feature": "dot(rho,rho)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": 0.001516246080929532,
+                "feature": "dot(rho,rho)*dot(rho,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 7.174732728742477,
+            "training_lie_rms": 1.166396197289004,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 3.969047313034935e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.6396705317765372e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.04739793922963969,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.01958077041977838
+                },
+                {
+                  "absolute_peak_to_peak": 0.04925789376316587,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.020349144389282686
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.020349144389282686,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.11325347604593654,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.11325347604593654
+                },
+                {
+                  "absolute_peak_to_peak": 5.48172618408671e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.48172618408671e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.027226044488565193,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.027226044488565193
+                },
+                {
+                  "absolute_peak_to_peak": 0.0358597156179859,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.0358597156179859
+                },
+                {
+                  "absolute_peak_to_peak": 0.040500073480182225,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.040500073480182225
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.11325347604593654
+            }
+          },
+          {
+            "calibration_lie_max_abs": 58.069950776945234,
+            "calibration_lie_rms": 7.277415964928406,
+            "calibration_value_std": 2.3355412791366237,
+            "coefficients": [
+              0.004749011105217595,
+              -0.002712925325208574,
+              -0.03677872842968546,
+              -0.009552292173144843,
+              0.045850296812463984,
+              0.018807029172599382,
+              0.0027289936076451853,
+              -0.04407274480159385,
+              -0.01244873555872318,
+              0.01643289825365129,
+              0.005213030898313895,
+              -0.0029160228052262536
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.3125476637783836,
+            "top_terms": [
+              {
+                "coefficient": 0.045850296812463984,
+                "feature": "dot(rho,lambda)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": -0.04407274480159385,
+                "feature": "dot(rho,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.03677872842968546,
+                "feature": "dot(rho,rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.018807029172599382,
+                "feature": "dot(rho,lambda)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.01643289825365129,
+                "feature": "dot(rho,p_lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.01244873555872318,
+                "feature": "dot(rho,p_rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.009552292173144843,
+                "feature": "dot(rho,rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.005213030898313895,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.004749011105217595,
+                "feature": "dot(rho,rho)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0029160228052262536,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.0027289936076451853,
+                "feature": "dot(rho,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.002712925325208574,
+                "feature": "dot(rho,rho)*dot(rho,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 8.292126122469867,
+            "training_lie_rms": 1.1147298840830242,
+            "training_value_std": 0.9999999999999997,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 8.049116928532385e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 3.446360379255592e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.055567226835950737,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.02379201229810513
+                },
+                {
+                  "absolute_peak_to_peak": 0.05895424503869021,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.025242219251412137
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.025242219251412137,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.0853510926600547,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.08535109266005472
+                },
+                {
+                  "absolute_peak_to_peak": 3.677613769070831e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 3.677613769070832e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.04000783614624182,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.040007836146241836
+                },
+                {
+                  "absolute_peak_to_peak": 0.03867970531497844,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.038679705314978455
+                },
+                {
+                  "absolute_peak_to_peak": 0.044830850908748776,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.04483085090874879
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.08535109266005472
+            }
+          },
+          {
+            "calibration_lie_max_abs": 62.649961853332584,
+            "calibration_lie_rms": 5.692265699229291,
+            "calibration_value_std": 2.8720481730299863,
+            "coefficients": [
+              0.01216726489173019,
+              -0.0031919854213955344,
+              0.048937409964636955,
+              -0.0152419246351684,
+              -0.01077286363320524,
+              0.0020924019788777135,
+              0.03688222617666077,
+              -0.014945248372483644,
+              -0.0322941230519963,
+              0.006883069151293471,
+              -0.02084478801766567,
+              0.010332494448155392
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 0.4106601806441691,
+            "top_terms": [
+              {
+                "coefficient": 0.048937409964636955,
+                "feature": "dot(rho,rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.03688222617666077,
+                "feature": "dot(rho,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.0322941230519963,
+                "feature": "dot(rho,p_rho)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.02084478801766567,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.0152419246351684,
+                "feature": "dot(rho,rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.014945248372483644,
+                "feature": "dot(rho,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.01216726489173019,
+                "feature": "dot(rho,rho)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": -0.01077286363320524,
+                "feature": "dot(rho,lambda)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": 0.010332494448155392,
+                "feature": "dot(lambda,lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.006883069151293471,
+                "feature": "dot(rho,p_lambda)*dot(lambda,lambda)"
+              },
+              {
+                "coefficient": -0.0031919854213955344,
+                "feature": "dot(rho,rho)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.0020924019788777135,
+                "feature": "dot(rho,lambda)*dot(rho,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 10.13337028160407,
+            "training_lie_rms": 1.4846488501124309,
+            "training_value_std": 1.0000000000000002,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 1.8943180357666733e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 6.595704255782673e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.08614451674116935,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.029994105791856414
+                },
+                {
+                  "absolute_peak_to_peak": 0.0822529542975762,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.02863912766853072
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.029994105791856414,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.16130642528298245,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.16130642528298242
+                },
+                {
+                  "absolute_peak_to_peak": 1.1969591984239969e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 1.1969591984239967e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.03745981109982071,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.0374598110998207
+                },
+                {
+                  "absolute_peak_to_peak": 0.08724992437333227,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.08724992437333226
+                },
+                {
+                  "absolute_peak_to_peak": 0.10142449816229157,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.10142449816229154
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.16130642528298242
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+1_L+4_T-1",
+        "standardized_singular_values": [
+          1.928111308648756,
+          1.5039567659009738,
+          1.2585168088137633,
+          1.2029842853825543,
+          1.0042774954925322,
+          0.8438475086927058,
+          0.6287115800088268,
+          0.5505959030986605,
+          0.49341655605024337,
+          0.4106601806441691,
+          0.3125476637783836,
+          0.2461531021680117
+        ]
+      },
+      {
+        "derivative_scales": [
+          11.89966445521873,
+          10.53184923931304,
+          22.651939486196028
+        ],
+        "dimension_signature": {
+          "length_exponent": 2,
+          "mass_exponent": 2,
+          "time_exponent": -2
+        },
+        "feature_count": 3,
+        "feature_names": [
+          "dot(p_rho,p_rho)",
+          "dot(p_rho,p_lambda)",
+          "dot(p_lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          7,
+          8,
+          9
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 13.861986295664972,
+            "calibration_lie_rms": 2.097313354131097,
+            "calibration_value_std": 2.121720788655499,
+            "coefficients": [
+              0.036319591376760135,
+              0.3098963804451487,
+              -0.14931386348006215
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.35926098822593316,
+            "top_terms": [
+              {
+                "coefficient": 0.3098963804451487,
+                "feature": "dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.14931386348006215,
+                "feature": "dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.036319591376760135,
+                "feature": "dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 22.166625908746255,
+            "training_lie_rms": 1.6957220364896144,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 1.4710455076283324e-15,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 6.933266221897702e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.39834775872541994,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.18774749291015178
+                },
+                {
+                  "absolute_peak_to_peak": 0.4070175112331722,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.1918336820798616
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.1918336820798616,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.49406077205314536,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.49406077205314547
+                },
+                {
+                  "absolute_peak_to_peak": 4.8155923693116165e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 4.815592369311617e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.28275507343080153,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.2827550734308016
+                },
+                {
+                  "absolute_peak_to_peak": 0.35902943711395774,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.3590294371139578
+                },
+                {
+                  "absolute_peak_to_peak": 0.38369426597550393,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.38369426597550405
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.49406077205314547
+            }
+          },
+          {
+            "calibration_lie_max_abs": 67.10725936633828,
+            "calibration_lie_rms": 8.75419002621503,
+            "calibration_value_std": 3.5268967961527253,
+            "coefficients": [
+              0.2616409846148881,
+              -0.09275479332307829,
+              -0.02405186161276726
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.9439537685010223,
+            "top_terms": [
+              {
+                "coefficient": 0.2616409846148881,
+                "feature": "dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.09275479332307829,
+                "feature": "dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.02405186161276726,
+                "feature": "dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 34.624442801459004,
+            "training_lie_rms": 3.1228513075271187,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 6.765421556309548e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.9182363270990888e-16
+                },
+                {
+                  "absolute_peak_to_peak": 2.6067102133135864,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.7390945536475823
+                },
+                {
+                  "absolute_peak_to_peak": 2.5465043512571888,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.7220240620692427
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.7390945536475823,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.3634895259635742,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.36348952596357426
+                },
+                {
+                  "absolute_peak_to_peak": 2.1371793224034263e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 2.1371793224034267e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.6146316896230505,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.6146316896230506
+                },
+                {
+                  "absolute_peak_to_peak": 1.4208346652263695,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 1.0873791448133963
+                },
+                {
+                  "absolute_peak_to_peak": 2.3611116095304707,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 1.0474846964192295
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 1.0873791448133963
+            }
+          },
+          {
+            "calibration_lie_max_abs": 59.11892359342279,
+            "calibration_lie_rms": 8.44763071201923,
+            "calibration_value_std": 3.41061693028658,
+            "coefficients": [
+              0.08995675995951274,
+              0.20588964619840755,
+              0.09841247545154035
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 1.4070830911043044,
+            "top_terms": [
+              {
+                "coefficient": 0.20588964619840755,
+                "feature": "dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.09841247545154035,
+                "feature": "dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.08995675995951274,
+                "feature": "dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 44.71591219086989,
+            "training_lie_rms": 4.627850973749282,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 5.412337245047638e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.5869085727528076e-16
+                },
+                {
+                  "absolute_peak_to_peak": 1.3504052475010657,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.39594163610382266
+                },
+                {
+                  "absolute_peak_to_peak": 1.4512227981529593,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.4255015523045032
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.4255015523045032,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.2834849204098988,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.2834849204098988
+                },
+                {
+                  "absolute_peak_to_peak": 3.4416913763379853e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 3.4416913763379853e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.9057234286977961,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.9057234286977961
+                },
+                {
+                  "absolute_peak_to_peak": 1.0437965656079897,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.9641555520057835
+                },
+                {
+                  "absolute_peak_to_peak": 1.2054718095558767,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.9659620186571147
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.9659620186571147
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+2_L+2_T-2",
+        "standardized_singular_values": [
+          1.4070830911043044,
+          0.9439537685010223,
+          0.35926098822593316
+        ]
+      },
+      {
+        "derivative_scales": [
+          105.0818044517392,
+          49.96280239854586,
+          125.66271442862663,
+          36.46227998634047,
+          25.22292883752541,
+          83.67111427907643,
+          103.67231626292356,
+          53.43209657624207,
+          34.66209757874292,
+          35.290548280639754,
+          111.78877837361817,
+          24.613400067787236,
+          89.18251562655757,
+          50.835692284680924,
+          29.18215541615889,
+          62.0245692131903,
+          40.43005837189686,
+          33.52685483962543,
+          61.83186525850962
+        ],
+        "dimension_signature": {
+          "length_exponent": 4,
+          "mass_exponent": 2,
+          "time_exponent": -2
+        },
+        "feature_count": 19,
+        "feature_names": [
+          "dot(rho,rho)*dot(p_rho,p_rho)",
+          "dot(rho,rho)*dot(p_rho,p_lambda)",
+          "dot(rho,rho)*dot(p_lambda,p_lambda)",
+          "dot(rho,lambda)*dot(p_rho,p_rho)",
+          "dot(rho,lambda)*dot(p_rho,p_lambda)",
+          "dot(rho,lambda)*dot(p_lambda,p_lambda)",
+          "dot(rho,p_rho)*dot(rho,p_rho)",
+          "dot(rho,p_rho)*dot(rho,p_lambda)",
+          "dot(rho,p_rho)*dot(lambda,p_rho)",
+          "dot(rho,p_rho)*dot(lambda,p_lambda)",
+          "dot(rho,p_lambda)*dot(rho,p_lambda)",
+          "dot(rho,p_lambda)*dot(lambda,p_rho)",
+          "dot(rho,p_lambda)*dot(lambda,p_lambda)",
+          "dot(lambda,lambda)*dot(p_rho,p_rho)",
+          "dot(lambda,lambda)*dot(p_rho,p_lambda)",
+          "dot(lambda,lambda)*dot(p_lambda,p_lambda)",
+          "dot(lambda,p_rho)*dot(lambda,p_rho)",
+          "dot(lambda,p_rho)*dot(lambda,p_lambda)",
+          "dot(lambda,p_lambda)*dot(lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          17,
+          18,
+          19,
+          26,
+          27,
+          28,
+          29,
+          30,
+          32,
+          33,
+          37,
+          39,
+          40,
+          47,
+          48,
+          49,
+          50,
+          51,
+          55
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {
+          "angular_momentum_squared": {
+            "calibration_lie_max_abs": 9.094947017729282e-13,
+            "calibration_lie_rms": 6.888980843637683e-14,
+            "calibration_value_std": 243.89974583665295,
+            "training_lie_max_abs": 2.084998840246044e-13,
+            "training_lie_rms": 2.6427585029511186e-14,
+            "training_value_std": 52.428746493300025
+          }
+        },
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 3.442495653506718,
+            "calibration_lie_rms": 0.35831669337675387,
+            "calibration_value_std": 3.7418030407996272,
+            "coefficients": [
+              0.011513225043251694,
+              0.0016164525069114497,
+              0.00048702183701459736,
+              0.001132153498264696,
+              -0.011427583085609897,
+              0.0007091407431399025,
+              -0.011991749758075945,
+              -0.0009180032279023146,
+              -0.0014720677239101522,
+              -0.0004425839894596042,
+              4.6661020383278825e-05,
+              0.010240592227404878,
+              -0.0009720825574694807,
+              0.0006183633404728469,
+              0.0005325025475055343,
+              -0.029775548467699774,
+              4.756589976451087e-05,
+              0.00014441418621160933,
+              0.029954563837339538
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 1.6653345369377348e-16,
+            "rank": 1,
+            "standardized_singular_value": 0.019259947594409604,
+            "top_terms": [
+              {
+                "coefficient": 0.029954563837339538,
+                "feature": "dot(lambda,p_lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.029775548467699774,
+                "feature": "dot(lambda,lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.011991749758075945,
+                "feature": "dot(rho,p_rho)*dot(rho,p_rho)"
+              },
+              {
+                "coefficient": 0.011513225043251694,
+                "feature": "dot(rho,rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.011427583085609897,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.010240592227404878,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.0016164525069114497,
+                "feature": "dot(rho,rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.0014720677239101522,
+                "feature": "dot(rho,p_rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.001132153498264696,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0009720825574694807,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0009180032279023146,
+                "feature": "dot(rho,p_rho)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.0007091407431399025,
+                "feature": "dot(rho,lambda)*dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 0.5272421912697217,
+            "training_lie_rms": 0.060986253028294045,
+            "training_value_std": 0.9999999999999999,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 3.41740524767431e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 9.133044177931947e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.00858998504427674,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.0022956807054283243
+                },
+                {
+                  "absolute_peak_to_peak": 0.008560471877216433,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.002287793286785894
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.0022956807054283243,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.007029547215559918,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.007029547215559919
+                },
+                {
+                  "absolute_peak_to_peak": 8.257283745649602e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 8.257283745649603e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.00281407645087857,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.0028140764508785706
+                },
+                {
+                  "absolute_peak_to_peak": 0.003898515371593763,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.0038985153715937635
+                },
+                {
+                  "absolute_peak_to_peak": 0.007264545751530249,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.00726454575153025
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.00726454575153025
+            }
+          },
+          {
+            "calibration_lie_max_abs": 24.290148099118593,
+            "calibration_lie_rms": 2.5845041633570265,
+            "calibration_value_std": 3.023503537546915,
+            "coefficients": [
+              0.001577714195500897,
+              -0.01764400036419724,
+              0.0047281837829526874,
+              -0.034115146245268985,
+              -0.030463535607682755,
+              0.03352718773241417,
+              -0.001962295368405256,
+              0.021312476625019543,
+              0.036747035678899885,
+              -0.014281528060306423,
+              -0.000797580164321324,
+              0.03147922296508444,
+              -0.035345959182810596,
+              0.01116084875969396,
+              0.05944351914614839,
+              0.00586087908246408,
+              -0.005948415210653654,
+              -0.05385502759665015,
+              -0.004144162436095728
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 1.3877787807814457e-17,
+            "rank": 2,
+            "standardized_singular_value": 0.04893018575571364,
+            "top_terms": [
+              {
+                "coefficient": 0.05944351914614839,
+                "feature": "dot(lambda,lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.05385502759665015,
+                "feature": "dot(lambda,p_rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.036747035678899885,
+                "feature": "dot(rho,p_rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.035345959182810596,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.034115146245268985,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": 0.03352718773241417,
+                "feature": "dot(rho,lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.03147922296508444,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.030463535607682755,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.021312476625019543,
+                "feature": "dot(rho,p_rho)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.01764400036419724,
+                "feature": "dot(rho,rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.014281528060306423,
+                "feature": "dot(rho,p_rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.01116084875969396,
+                "feature": "dot(lambda,lambda)*dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 1.982189214006149,
+            "training_lie_rms": 0.2757995449996381,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 3.165870343657673e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.0470867006910352e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.07178441043924702,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.023742128807789812
+                },
+                {
+                  "absolute_peak_to_peak": 0.07673309719455568,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.0253788680058275
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.0253788680058275,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.14009513565308834,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.14009513565308834
+                },
+                {
+                  "absolute_peak_to_peak": 3.903127820947816e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 3.903127820947816e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.04195729121564102,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.04195729121564102
+                },
+                {
+                  "absolute_peak_to_peak": 0.05450165909194153,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.05450165909194153
+                },
+                {
+                  "absolute_peak_to_peak": 0.06333753265419799,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.06333753265419799
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.14009513565308834
+            }
+          },
+          {
+            "calibration_lie_max_abs": 13.326191084631498,
+            "calibration_lie_rms": 1.5851621250986723,
+            "calibration_value_std": 2.8175978972304456,
+            "coefficients": [
+              0.001619147711420192,
+              -0.04176918594162993,
+              0.005160529556158656,
+              -0.04278500834442387,
+              -0.00840418344532118,
+              -0.01769258794498062,
+              -0.0019060928286799292,
+              0.04149296754872498,
+              0.042861237319841775,
+              -0.01650992367280301,
+              -0.007111839090080498,
+              0.024839994834926306,
+              0.01803301702300875,
+              0.005651515387530153,
+              -0.0070242105891010894,
+              -0.000350313698960407,
+              -0.004388731737270831,
+              0.004752029098951117,
+              -0.0009867906140883205
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 0.0761311105893724,
+            "top_terms": [
+              {
+                "coefficient": 0.042861237319841775,
+                "feature": "dot(rho,p_rho)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": -0.04278500834442387,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.04176918594162993,
+                "feature": "dot(rho,rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.04149296754872498,
+                "feature": "dot(rho,p_rho)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.024839994834926306,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_rho)"
+              },
+              {
+                "coefficient": 0.01803301702300875,
+                "feature": "dot(rho,p_lambda)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.01769258794498062,
+                "feature": "dot(rho,lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.01650992367280301,
+                "feature": "dot(rho,p_rho)*dot(lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.00840418344532118,
+                "feature": "dot(rho,lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.007111839090080498,
+                "feature": "dot(rho,p_lambda)*dot(rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.0070242105891010894,
+                "feature": "dot(lambda,lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.005651515387530153,
+                "feature": "dot(lambda,lambda)*dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 3.243617661803548,
+            "training_lie_rms": 0.34682476570417836,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 8.951173136040325e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 3.1768809683024214e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.025643099914389067,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.009101050202938794
+                },
+                {
+                  "absolute_peak_to_peak": 0.026176997890591185,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.009290537133180654
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.009290537133180654,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.0474160280192206,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.0474160280192206
+                },
+                {
+                  "absolute_peak_to_peak": 8.187894806610529e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 8.187894806610529e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.010977873700727976,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.010977873700727976
+                },
+                {
+                  "absolute_peak_to_peak": 0.012750980785687652,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.012750980785687652
+                },
+                {
+                  "absolute_peak_to_peak": 0.016665816506902846,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.016665816506902846
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.0474160280192206
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+2_L+4_T-2",
+        "standardized_singular_values": [
+          2.4817195239114676,
+          2.184411952648335,
+          1.7420177275957416,
+          1.1320231450518474,
+          1.0451476247841935,
+          0.9542831850950353,
+          0.7423326374044816,
+          0.6198300375334163,
+          0.5111107557274962,
+          0.4695455091899773,
+          0.38641335959465195,
+          0.2992833791980948,
+          0.2182782386511364,
+          0.16833893207570935,
+          0.09967964236895713,
+          0.0761311105893724,
+          0.04893018575571364,
+          0.019259947594409604
+        ]
+      },
+      {
+        "derivative_scales": [
+          121.26817404588886,
+          46.85568122029747,
+          129.74626136253124,
+          47.70294418616488,
+          44.18615648038088,
+          141.7715658849618,
+          60.02728860064729,
+          31.292824937760617,
+          72.16316107515713,
+          98.85222217108821,
+          70.01326233084606,
+          265.4332951819334
+        ],
+        "dimension_signature": {
+          "length_exponent": 4,
+          "mass_exponent": 3,
+          "time_exponent": -3
+        },
+        "feature_count": 12,
+        "feature_names": [
+          "dot(rho,p_rho)*dot(p_rho,p_rho)",
+          "dot(rho,p_rho)*dot(p_rho,p_lambda)",
+          "dot(rho,p_rho)*dot(p_lambda,p_lambda)",
+          "dot(rho,p_lambda)*dot(p_rho,p_rho)",
+          "dot(rho,p_lambda)*dot(p_rho,p_lambda)",
+          "dot(rho,p_lambda)*dot(p_lambda,p_lambda)",
+          "dot(lambda,p_rho)*dot(p_rho,p_rho)",
+          "dot(lambda,p_rho)*dot(p_rho,p_lambda)",
+          "dot(lambda,p_rho)*dot(p_lambda,p_lambda)",
+          "dot(lambda,p_lambda)*dot(p_rho,p_rho)",
+          "dot(lambda,p_lambda)*dot(p_rho,p_lambda)",
+          "dot(lambda,p_lambda)*dot(p_lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          34,
+          35,
+          36,
+          41,
+          42,
+          43,
+          52,
+          53,
+          54,
+          56,
+          57,
+          58
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 28.475750769821754,
+            "calibration_lie_rms": 2.1965742489335596,
+            "calibration_value_std": 3.1708868616762036,
+            "coefficients": [
+              3.062598707559885e-07,
+              0.0026264722257906066,
+              -0.0011461576061254932,
+              -0.0034203229760105956,
+              0.011051812819840325,
+              -0.0016228166349869547,
+              -0.0004985278667958796,
+              -0.01066326774906619,
+              0.07372179336857536,
+              0.002111053179765277,
+              -0.07295752427766015,
+              -0.00045957035791409253
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.026226251702553917,
+            "top_terms": [
+              {
+                "coefficient": 0.07372179336857536,
+                "feature": "dot(lambda,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.07295752427766015,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.011051812819840325,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.01066326774906619,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.0034203229760105956,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": 0.0026264722257906066,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.002111053179765277,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0016228166349869547,
+                "feature": "dot(rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0011461576061254932,
+                "feature": "dot(rho,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0004985278667958796,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.00045957035791409253,
+                "feature": "dot(lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 3.062598707559885e-07,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 1.6926244272052473,
+            "training_lie_rms": 0.1943574684203823,
+            "training_value_std": 0.9999999999999999,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 4.336808689942018e-17,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.3676958148073063e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.06547117814852876,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.02064759198438231
+                },
+                {
+                  "absolute_peak_to_peak": 0.07062227950021085,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.022272090610914543
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.022272090610914543,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.05146244496502339,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.0514624449650234
+                },
+                {
+                  "absolute_peak_to_peak": 5.828670879282072e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.828670879282073e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.022555580184835996,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.022555580184836
+                },
+                {
+                  "absolute_peak_to_peak": 0.033498786360198464,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.03349878636019847
+                },
+                {
+                  "absolute_peak_to_peak": 0.050629238455402875,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.05062923845540288
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.0514624449650234
+            }
+          },
+          {
+            "calibration_lie_max_abs": 76.83153476199179,
+            "calibration_lie_rms": 5.300169710654223,
+            "calibration_value_std": 5.2006950572098525,
+            "coefficients": [
+              -0.0004941304426310556,
+              -0.054543919887104865,
+              6.077525589537545e-05,
+              0.05727006547447311,
+              0.0012467114094700446,
+              0.0015305919446456622,
+              -0.0003647608050333011,
+              0.002809871858109999,
+              -0.0016310094044795994,
+              -0.0008953083569199671,
+              -0.00407742189898274,
+              1.3227798421546707e-05
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.053600374536449814,
+            "top_terms": [
+              {
+                "coefficient": 0.05727006547447311,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.054543919887104865,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.00407742189898274,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.002809871858109999,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.0016310094044795994,
+                "feature": "dot(lambda,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.0015305919446456622,
+                "feature": "dot(rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.0012467114094700446,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.0008953083569199671,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0004941304426310556,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0003647608050333011,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": 6.077525589537545e-05,
+                "feature": "dot(rho,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 1.3227798421546707e-05,
+                "feature": "dot(lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 1.8999470768697573,
+            "training_lie_rms": 0.2016991237660287,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 6.678685382510707e-17,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.2841909223752468e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.05157779718513329,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.009917481532325129
+                },
+                {
+                  "absolute_peak_to_peak": 0.05613632982792619,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.01079400526475841
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.01079400526475841,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.043893725339113246,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.04389372533911325
+                },
+                {
+                  "absolute_peak_to_peak": 5.412337245047638e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.412337245047639e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.015909645839038828,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.01590964583903883
+                },
+                {
+                  "absolute_peak_to_peak": 0.025310952956055736,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.025310952956055743
+                },
+                {
+                  "absolute_peak_to_peak": 0.03905839864461258,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.03905839864461259
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.04389372533911325
+            }
+          },
+          {
+            "calibration_lie_max_abs": 52.06439061961363,
+            "calibration_lie_rms": 6.060299089645392,
+            "calibration_value_std": 6.252105334570211,
+            "coefficients": [
+              -0.0038662308062053677,
+              -0.0067562430592715975,
+              -0.002008947064438729,
+              0.00410727706961003,
+              0.05434592457465478,
+              -0.022296426542681894,
+              -0.002301160009533085,
+              -0.042910469487736816,
+              0.015860626762999014,
+              0.008938125223887965,
+              0.02430969636545234,
+              -0.0031032877133524268
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 0.1323962809547995,
+            "top_terms": [
+              {
+                "coefficient": 0.05434592457465478,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.042910469487736816,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.02430969636545234,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.022296426542681894,
+                "feature": "dot(rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.015860626762999014,
+                "feature": "dot(lambda,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.008938125223887965,
+                "feature": "dot(lambda,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0067562430592715975,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.00410727706961003,
+                "feature": "dot(rho,p_lambda)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0038662308062053677,
+                "feature": "dot(rho,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.0031032877133524268,
+                "feature": "dot(lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.002301160009533085,
+                "feature": "dot(lambda,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.002008947064438729,
+                "feature": "dot(rho,p_rho)*dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 6.754886232994633,
+            "training_lie_rms": 0.6441708724623942,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 2.8449465006019636e-16,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 4.550381588856474e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.028318796193147776,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.004529481619025617
+                },
+                {
+                  "absolute_peak_to_peak": 0.030637087330157697,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.004900283295093234
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.004900283295093234,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.12682433394520157,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.1268243339452016
+                },
+                {
+                  "absolute_peak_to_peak": 1.3877787807814457e-15,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 1.387778780781446e-15
+                },
+                {
+                  "absolute_peak_to_peak": 0.030581181214359973,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.03058118121435998
+                },
+                {
+                  "absolute_peak_to_peak": 0.03713048522471197,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.037130485224711976
+                },
+                {
+                  "absolute_peak_to_peak": 0.035928166144902525,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.03592816614490253
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.1268243339452016
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+3_L+4_T-3",
+        "standardized_singular_values": [
+          2.4327476520331017,
+          1.685830462524459,
+          1.2286443278756367,
+          0.8813293452924955,
+          0.6560463879340152,
+          0.5246248267871654,
+          0.35166595233943776,
+          0.28116705398934366,
+          0.15480534852282352,
+          0.1323962809547995,
+          0.053600374536449814,
+          0.026226251702553917
+        ]
+      },
+      {
+        "derivative_scales": [
+          173.32912854597535,
+          65.2018053283201,
+          110.17971767831766,
+          66.95231735200544,
+          146.83730570596782,
+          749.5472530506057
+        ],
+        "dimension_signature": {
+          "length_exponent": 4,
+          "mass_exponent": 4,
+          "time_exponent": -4
+        },
+        "feature_count": 6,
+        "feature_names": [
+          "dot(p_rho,p_rho)*dot(p_rho,p_rho)",
+          "dot(p_rho,p_rho)*dot(p_rho,p_lambda)",
+          "dot(p_rho,p_rho)*dot(p_lambda,p_lambda)",
+          "dot(p_rho,p_lambda)*dot(p_rho,p_lambda)",
+          "dot(p_rho,p_lambda)*dot(p_lambda,p_lambda)",
+          "dot(p_lambda,p_lambda)*dot(p_lambda,p_lambda)"
+        ],
+        "global_feature_indices": [
+          59,
+          60,
+          61,
+          62,
+          63,
+          64
+        ],
+        "interpretation_status": "EXPLORATORY_ONLY",
+        "known_control_metrics": {},
+        "near_null_modes": [
+          {
+            "calibration_lie_max_abs": 24.64280926566561,
+            "calibration_lie_rms": 2.1393095963368474,
+            "calibration_value_std": 10.422534326853155,
+            "coefficients": [
+              -0.0004941010029527773,
+              -0.0026002044285268894,
+              -0.009754801063967856,
+              0.013773339912488743,
+              0.0016138516407816876,
+              -0.0012709686757482162
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 1,
+            "standardized_singular_value": 0.09917576519623149,
+            "top_terms": [
+              {
+                "coefficient": 0.013773339912488743,
+                "feature": "dot(p_rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.009754801063967856,
+                "feature": "dot(p_rho,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0026002044285268894,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.0016138516407816876,
+                "feature": "dot(p_rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0012709686757482162,
+                "feature": "dot(p_lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.0004941010029527773,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_rho)"
+              }
+            ],
+            "training_lie_max_abs": 1.9168530886427528,
+            "training_lie_rms": 0.17192932147396406,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 1.2468324983583301e-18,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 1.1962853364233368e-19
+                },
+                {
+                  "absolute_peak_to_peak": 0.03186461772401666,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.0030572811491653253
+                },
+                {
+                  "absolute_peak_to_peak": 0.02839087141240095,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.0027239892450393035
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.0030572811491653253,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.006545321079094886,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.006545321079094886
+                },
+                {
+                  "absolute_peak_to_peak": 5.898059818321144e-17,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 5.898059818321144e-17
+                },
+                {
+                  "absolute_peak_to_peak": 0.00788574175298654,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.00788574175298654
+                },
+                {
+                  "absolute_peak_to_peak": 0.015756972492315745,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.015756972492315745
+                },
+                {
+                  "absolute_peak_to_peak": 0.031675732430294944,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.031675732430294944
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.031675732430294944
+            }
+          },
+          {
+            "calibration_lie_max_abs": 70.94473942605678,
+            "calibration_lie_rms": 5.849331043513974,
+            "calibration_value_std": 24.460546928264378,
+            "coefficients": [
+              0.005010374777118104,
+              0.028523848735820832,
+              -0.012739639051692382,
+              0.0027404534005715433,
+              -0.00514879221839756,
+              0.0015530553258509936
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 2,
+            "standardized_singular_value": 0.15651124617897927,
+            "top_terms": [
+              {
+                "coefficient": 0.028523848735820832,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.012739639051692382,
+                "feature": "dot(p_rho,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": -0.00514879221839756,
+                "feature": "dot(p_rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.005010374777118104,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": 0.0027404534005715433,
+                "feature": "dot(p_rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": 0.0015530553258509936,
+                "feature": "dot(p_lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 3.4587340498348973,
+            "training_lie_rms": 0.44663776143160655,
+            "training_value_std": 0.9999999999999998,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 9.486769009248164e-18,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 3.8783961115301637e-19
+                },
+                {
+                  "absolute_peak_to_peak": 0.2945320883704239,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.012041108043667228
+                },
+                {
+                  "absolute_peak_to_peak": 0.2665090601918195,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.010895466114204748
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.012041108043667228,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.029979282134484322,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.029979282134484326
+                },
+                {
+                  "absolute_peak_to_peak": 2.437286483747414e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 2.4372864837474145e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.02432699894369504,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.024326998943695045
+                },
+                {
+                  "absolute_peak_to_peak": 0.11639771402890792,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.11639771402890793
+                },
+                {
+                  "absolute_peak_to_peak": 0.27181133885111913,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.2718113388511192
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.2718113388511192
+            }
+          },
+          {
+            "calibration_lie_max_abs": 61.47550718269443,
+            "calibration_lie_rms": 8.337077683648332,
+            "calibration_value_std": 19.311968193611058,
+            "coefficients": [
+              -0.012719024575348596,
+              0.01875557300680559,
+              0.003505718914754155,
+              0.0030813375573870514,
+              -0.00645263277189588,
+              -0.000655344041774548
+            ],
+            "interpretation_status": "EXPLORATORY_ONLY",
+            "known_control_overlap_max": 0.0,
+            "rank": 3,
+            "standardized_singular_value": 0.6831904231181849,
+            "top_terms": [
+              {
+                "coefficient": 0.01875557300680559,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.012719024575348596,
+                "feature": "dot(p_rho,p_rho)*dot(p_rho,p_rho)"
+              },
+              {
+                "coefficient": -0.00645263277189588,
+                "feature": "dot(p_rho,p_lambda)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.003505718914754155,
+                "feature": "dot(p_rho,p_rho)*dot(p_lambda,p_lambda)"
+              },
+              {
+                "coefficient": 0.0030813375573870514,
+                "feature": "dot(p_rho,p_lambda)*dot(p_rho,p_lambda)"
+              },
+              {
+                "coefficient": -0.000655344041774548,
+                "feature": "dot(p_lambda,p_lambda)*dot(p_lambda,p_lambda)"
+              }
+            ],
+            "training_lie_max_abs": 17.719774134625197,
+            "training_lie_rms": 1.8941036263079474,
+            "training_value_std": 1.0,
+            "trajectory_drift": {
+              "calibration": [
+                {
+                  "absolute_peak_to_peak": 6.1257422745431e-18,
+                  "case_id": "cal_lagrange_scaled_rotated",
+                  "scaled_peak_to_peak": 3.1719927317246045e-19
+                },
+                {
+                  "absolute_peak_to_peak": 1.2239127841440307,
+                  "case_id": "cal_sjtu_line_59402",
+                  "scaled_peak_to_peak": 0.06337586992033964
+                },
+                {
+                  "absolute_peak_to_peak": 1.157197582824655,
+                  "case_id": "cal_sjtu_line_69432",
+                  "scaled_peak_to_peak": 0.05992126598507389
+                }
+              ],
+              "calibration_max_scaled_peak_to_peak": 0.06337586992033964,
+              "training": [
+                {
+                  "absolute_peak_to_peak": 0.023244989510805843,
+                  "case_id": "train_figure_eight_published_rounded",
+                  "scaled_peak_to_peak": 0.023244989510805843
+                },
+                {
+                  "absolute_peak_to_peak": 1.5265566588595902e-16,
+                  "case_id": "train_lagrange_unit_planar",
+                  "scaled_peak_to_peak": 1.5265566588595902e-16
+                },
+                {
+                  "absolute_peak_to_peak": 0.05473671443559685,
+                  "case_id": "train_sjtu_line_14",
+                  "scaled_peak_to_peak": 0.05473671443559685
+                },
+                {
+                  "absolute_peak_to_peak": 0.32783738217299047,
+                  "case_id": "train_sjtu_line_29734",
+                  "scaled_peak_to_peak": 0.32783738217299047
+                },
+                {
+                  "absolute_peak_to_peak": 0.9829407397431107,
+                  "case_id": "train_sjtu_line_44348",
+                  "scaled_peak_to_peak": 0.9829407397431107
+                }
+              ],
+              "training_max_scaled_peak_to_peak": 0.9829407397431107
+            }
+          }
+        ],
+        "nullity_relative_tolerance": 1e-10,
+        "numerical_nullity_after_known_controls": 0,
+        "sector_id": "M+4_L+4_T-4",
+        "standardized_singular_values": [
+          1.7717271427465557,
+          1.1179433714581937,
+          1.0536151066896553,
+          0.6831904231181849,
+          0.15651124617897927,
+          0.09917576519623149
+        ]
+      }
+    ]
+  }
+}

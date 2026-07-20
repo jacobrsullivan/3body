@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-EXP-v1",
+  "purpose": "Deterministic screening for low Lie-derivative combinations in an SO(3)-invariant feature library on qualified canonical Jacobi variables.",
+  "interpretation_status": "EXPLORATORY_ONLY",
+  "search": {
+    "mode_count_per_dimension_sector": 3,
+    "nullity_relative_tolerance": 1e-10,
+    "top_term_count": 12
+  },
+  "dimensional_policy": "Search each mass-length-time dimension sector independently. Coefficients from different physical dimensions are never combined.",
+  "implementation_files": [
+    "src/python/wp3_exploration/__init__.py",
+    "src/python/wp3_exploration/dynamics.py",
+    "src/python/wp3_exploration/features.py",
+    "src/python/wp3_exploration/publication_gate.py",
+    "src/python/wp3_exploration/search.py",
+    "src/python/wp3_exploration/source_cases.py",
+    "validation-external/wp3-exploration/scripts/evaluate_publication_gate.py",
+    "validation-external/wp3-exploration/scripts/run_exploration.py"
+  ],
+  "controls": [
+    "total_energy",
+    "angular_momentum_squared"
+  ],
+  "forbidden_claims_without_publication_gate": [
+    "new first integral",
+    "functional independence",
+    "Poisson involution",
+    "hidden integrability",
+    "global conservation",
+    "publication-ready invariant"
+  ],
+  "publication_gate_spec": "validation-external/wp3-exploration/publication_gate_spec.json",
+  "publication_evidence_manifest": "validation-external/wp3-exploration/publication_evidence_manifest.json"
+}

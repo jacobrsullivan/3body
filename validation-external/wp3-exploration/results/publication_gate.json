@@ -1,0 +1,109 @@
+{
+  "campaign": "WP3-PUB-GATE-v1",
+  "evidence_manifest_campaign": "WP3-PUB-GATE-v1",
+  "evidence_manifest_sha256": "760381aef8b46b8b17e30d80682e2fe114ab81d0acc8c4391187e3be4a0f30de",
+  "gates": [
+    {
+      "description": "Qualified exact Newtonian three-body production propagation.",
+      "id": "wp1_n3bp_qualification",
+      "kind": "qualification",
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "observed_status": "PASS",
+      "passed": true,
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27"
+    },
+    {
+      "description": "Qualified canonical Kepler/KS prototype.",
+      "id": "wp2_kepler_ks_qualification",
+      "kind": "qualification",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "observed_status": "PASS",
+      "passed": true,
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    {
+      "description": "Qualified canonical Jacobi reduction and constrained pairwise KS kinematics.",
+      "id": "wp2_threebody_reduction_qualification",
+      "kind": "qualification",
+      "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+      "observed_status": "PASS",
+      "passed": true,
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+      "record_sha256": "b0a0afa4d93e886323295db6ba4135cc3a13f2013c0c5edc91b366c8e3ed5041"
+    },
+    {
+      "description": "Independent implementation of the three-body reduction and reconstruction conventions.",
+      "id": "independent_threebody_reduction_replication",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "The qualified WP2-3BRQ-v1 implementation has trajectory conformance but no second independently coded reduction implementation."
+    },
+    {
+      "description": "Qualified genuinely non-planar and chaotic three-body trajectories outside the current periodic corpus.",
+      "id": "qualified_spatial_chaotic_n3bp_corpus",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "Current qualified trajectories are periodic and planar up to rigid rotation; random spatial collocation is not external trajectory evidence."
+    },
+    {
+      "description": "Independent high-precision N3BP propagation evidence beyond float64 DOP853/IAS15 agreement.",
+      "id": "high_precision_n3bp_oracle",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "REBOUND IAS15 is an independent float64 implementation, not an arbitrary-precision N3BP oracle."
+    },
+    {
+      "description": "Qualified reduced or KS-lifted three-body vector field, including gauge and reconstruction dynamics.",
+      "id": "qualified_reduced_or_lifted_vector_field",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "WP2-3BRQ-v1 qualifies maps and kinematic lifts, not reduced Hamilton equations or a lifted N3BP flow."
+    },
+    {
+      "description": "A candidate-blind WP3 publication holdout reserved after model and thresholds are frozen.",
+      "id": "sealed_wp3_publication_holdout",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "The existing WP1 holdout has already been executed and cannot serve as a fresh candidate-blind WP3 holdout."
+    },
+    {
+      "description": "Candidate-specific SO(3), permutation, scale, gauge, and reconstruction falsification results.",
+      "id": "candidate_covariance_and_gauge_falsification",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "No screening mode has yet passed candidate-specific covariance and gauge falsification."
+    },
+    {
+      "description": "Functional-rank, Poisson-bracket, variational, and long-time drift evidence for each surviving candidate.",
+      "id": "candidate_independence_poisson_variational_evidence",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "No screening mode has yet passed rank, Poisson, variational, or long-time tests."
+    },
+    {
+      "description": "Independent code and external data replicate each candidate-specific result.",
+      "id": "candidate_independent_replication",
+      "kind": "artifact",
+      "observed_status": "MISSING",
+      "passed": false,
+      "reason": "No screening result has yet been replicated independently."
+    }
+  ],
+  "generated_utc": "2026-07-20T08:57:58.324387+00:00",
+  "interpretation_authorized": false,
+  "passed_gate_count": 3,
+  "policy": "No WP3 screening mode may be described as a new conserved quantity, independent first integral, involutive integral, or evidence of hidden integrability unless every required gate is PASS. A PASS would authorize only the bounded numerical claim declared by the candidate-specific evidence, not a theorem of global integrability.",
+  "required_gate_count": 11,
+  "schema_version": "1.0",
+  "spec_sha256": "df112f0f2453b9cc6b26cc154e418c4a1c4d133824243568f2ee873236028e71",
+  "status": "BLOCKED"
+}

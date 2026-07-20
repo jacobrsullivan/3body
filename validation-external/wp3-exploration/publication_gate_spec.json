@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-PUB-GATE-v1",
+  "policy": "No WP3 screening mode may be described as a new conserved quantity, independent first integral, involutive integral, or evidence of hidden integrability unless every required gate is PASS. A PASS would authorize only the bounded numerical claim declared by the candidate-specific evidence, not a theorem of global integrability.",
+  "artifact_record_contract": {
+    "format": "JSON object",
+    "required_fields": [
+      "schema_version",
+      "evidence_id",
+      "status",
+      "record_payload_sha256"
+    ],
+    "required_status": "PASS",
+    "integrity": "record_payload_sha256 is SHA-256 of canonical JSON after removing record_payload_sha256; the manifest separately pins the artifact file SHA-256"
+  },
+  "required_evidence": [
+    {
+      "id": "wp1_n3bp_qualification",
+      "kind": "qualification",
+      "description": "Qualified exact Newtonian three-body production propagation.",
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187"
+    },
+    {
+      "id": "wp2_kepler_ks_qualification",
+      "kind": "qualification",
+      "description": "Qualified canonical Kepler/KS prototype.",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2"
+    },
+    {
+      "id": "wp2_threebody_reduction_qualification",
+      "kind": "qualification",
+      "description": "Qualified canonical Jacobi reduction and constrained pairwise KS kinematics.",
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3"
+    },
+    {
+      "id": "independent_threebody_reduction_replication",
+      "kind": "artifact",
+      "evidence_class": "independent_implementation",
+      "description": "Independent implementation of the three-body reduction and reconstruction conventions."
+    },
+    {
+      "id": "qualified_spatial_chaotic_n3bp_corpus",
+      "kind": "artifact",
+      "evidence_class": "external_corpus",
+      "description": "Qualified genuinely non-planar and chaotic three-body trajectories outside the current periodic corpus."
+    },
+    {
+      "id": "high_precision_n3bp_oracle",
+      "kind": "artifact",
+      "evidence_class": "independent_high_precision_oracle",
+      "description": "Independent high-precision N3BP propagation evidence beyond float64 DOP853/IAS15 agreement."
+    },
+    {
+      "id": "qualified_reduced_or_lifted_vector_field",
+      "kind": "artifact",
+      "evidence_class": "downstream_qualification",
+      "description": "Qualified reduced or KS-lifted three-body vector field, including gauge and reconstruction dynamics."
+    },
+    {
+      "id": "sealed_wp3_publication_holdout",
+      "kind": "artifact",
+      "evidence_class": "sealed_holdout",
+      "description": "A candidate-blind WP3 publication holdout reserved after model and thresholds are frozen."
+    },
+    {
+      "id": "candidate_covariance_and_gauge_falsification",
+      "kind": "artifact",
+      "evidence_class": "candidate_specific_falsification",
+      "description": "Candidate-specific SO(3), permutation, scale, gauge, and reconstruction falsification results."
+    },
+    {
+      "id": "candidate_independence_poisson_variational_evidence",
+      "kind": "artifact",
+      "evidence_class": "candidate_specific_structure",
+      "description": "Functional-rank, Poisson-bracket, variational, and long-time drift evidence for each surviving candidate."
+    },
+    {
+      "id": "candidate_independent_replication",
+      "kind": "artifact",
+      "evidence_class": "independent_candidate_replication",
+      "description": "Independent code and external data replicate each candidate-specific result."
+    }
+  ]
+}
