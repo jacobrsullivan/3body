@@ -1,0 +1,518 @@
+{
+  "base_git_commit": "dd0631f9afecafc1d769aa3d4b7215bdc38f4283",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP1Q-N3BP-SPATIAL-v1 qualifies bounded collision-free propagation of genuinely spatial chaotic Newtonian three-body states drawn from the published Brutus virialized Plummer corpus. Qualification includes independently converged arbitrary-precision Taylor checkpoints over each full published trajectory, agreement with published Brutus terminal states within bounds calibrated for the source's decimal initial-state conditioning, float64 production agreement through the first frozen checkpoint, invariant non-planarity, and finite-time variational growth within the frozen corpus bounds.",
+  "code_snapshot_sha256": "8216e5f53247c810fe1c79797150a63b7eeac263c61cc74a3b248e91752bdd93",
+  "corpus_case_counts": {
+    "calibration": 24,
+    "development": 48,
+    "holdout": 12
+  },
+  "corpus_sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321",
+  "downstream_policy": "A PASS supplies qualified external spatial/chaotic states and an arbitrary-precision N3BP oracle to staged WP3 search readiness. It does not authorize interpretation of a WP3 mode or replace the separate reduced/lifted-flow, sealed-publication-holdout, and candidate-specific gates.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "FAIL"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP1Q-N3BP-SPATIAL-v1",
+      "case_count": 24,
+      "case_ids": [
+        "brutus-equal_mass_plummer-00290",
+        "brutus-equal_mass_plummer-01620",
+        "brutus-equal_mass_plummer-02317",
+        "brutus-equal_mass_plummer-02866",
+        "brutus-equal_mass_plummer-03520",
+        "brutus-equal_mass_plummer-04618",
+        "brutus-equal_mass_plummer-04954",
+        "brutus-equal_mass_plummer-05332",
+        "brutus-equal_mass_plummer-05703",
+        "brutus-equal_mass_plummer-07556",
+        "brutus-equal_mass_plummer-07894",
+        "brutus-equal_mass_plummer-08299",
+        "brutus-mass_4_2_1_plummer-00610",
+        "brutus-mass_4_2_1_plummer-00702",
+        "brutus-mass_4_2_1_plummer-00970",
+        "brutus-mass_4_2_1_plummer-03865",
+        "brutus-mass_4_2_1_plummer-05002",
+        "brutus-mass_4_2_1_plummer-06117",
+        "brutus-mass_4_2_1_plummer-06249",
+        "brutus-mass_4_2_1_plummer-06792",
+        "brutus-mass_4_2_1_plummer-07831",
+        "brutus-mass_4_2_1_plummer-08470",
+        "brutus-mass_4_2_1_plummer-09194",
+        "brutus-mass_4_2_1_plummer-09353"
+      ],
+      "corpus_sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "source_precision_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "spatial_rank_ratio_min",
+          "observed": 0.051453046473488834,
+          "passed": true,
+          "threshold": 0.05
+        },
+        {
+          "comparator": ">=",
+          "name": "positive_ftle_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.9
+        },
+        {
+          "comparator": ">=",
+          "name": "median_ftle",
+          "observed": 0.9803751698009202,
+          "passed": true,
+          "threshold": 0.02
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_position_scaled_max",
+          "observed": 5.9420144820102135e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_velocity_scaled_max",
+          "observed": 7.3471449882679e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_position_scaled_max",
+          "observed": 3.6016531758114325e-07,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_velocity_scaled_max",
+          "observed": 3.777280788240012e-06,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_position_scaled_max",
+          "observed": 1.6522709238559646e-09,
+          "passed": true,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_velocity_scaled_max",
+          "observed": 8.564477148484248e-09,
+          "passed": true,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_relative_energy_drift_max",
+          "observed": 2.968599824930879e-30,
+          "passed": true,
+          "threshold": 1e-22
+        },
+        {
+          "comparator": "<=",
+          "name": "production_validation_horizon_max",
+          "observed": 2.5,
+          "passed": true,
+          "threshold": 2.5
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.005577240419160553,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "source_payload_hash_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:01:13.285684+00:00",
+      "results_sha256": "e25cfe6cd0cc0d3cfd6a9ed160ae9023c1531bcadb04ca362dfc5f0bd5d0e758",
+      "schema_version": "1.0",
+      "spec_sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP1Q-N3BP-SPATIAL-v1",
+      "case_count": 48,
+      "case_ids": [
+        "brutus-equal_mass_plummer-01158",
+        "brutus-equal_mass_plummer-01379",
+        "brutus-equal_mass_plummer-01562",
+        "brutus-equal_mass_plummer-01979",
+        "brutus-equal_mass_plummer-02621",
+        "brutus-equal_mass_plummer-03237",
+        "brutus-equal_mass_plummer-03320",
+        "brutus-equal_mass_plummer-03700",
+        "brutus-equal_mass_plummer-04274",
+        "brutus-equal_mass_plummer-04527",
+        "brutus-equal_mass_plummer-04575",
+        "brutus-equal_mass_plummer-05183",
+        "brutus-equal_mass_plummer-05758",
+        "brutus-equal_mass_plummer-06261",
+        "brutus-equal_mass_plummer-06536",
+        "brutus-equal_mass_plummer-07663",
+        "brutus-equal_mass_plummer-07707",
+        "brutus-equal_mass_plummer-07718",
+        "brutus-equal_mass_plummer-08269",
+        "brutus-equal_mass_plummer-08317",
+        "brutus-equal_mass_plummer-08370",
+        "brutus-equal_mass_plummer-08421",
+        "brutus-equal_mass_plummer-09461",
+        "brutus-equal_mass_plummer-09810",
+        "brutus-mass_4_2_1_plummer-00344",
+        "brutus-mass_4_2_1_plummer-00438",
+        "brutus-mass_4_2_1_plummer-00607",
+        "brutus-mass_4_2_1_plummer-01465",
+        "brutus-mass_4_2_1_plummer-01708",
+        "brutus-mass_4_2_1_plummer-02253",
+        "brutus-mass_4_2_1_plummer-02730",
+        "brutus-mass_4_2_1_plummer-02922",
+        "brutus-mass_4_2_1_plummer-04232",
+        "brutus-mass_4_2_1_plummer-04271",
+        "brutus-mass_4_2_1_plummer-04723",
+        "brutus-mass_4_2_1_plummer-04744",
+        "brutus-mass_4_2_1_plummer-05051",
+        "brutus-mass_4_2_1_plummer-05161",
+        "brutus-mass_4_2_1_plummer-05539",
+        "brutus-mass_4_2_1_plummer-05622",
+        "brutus-mass_4_2_1_plummer-05639",
+        "brutus-mass_4_2_1_plummer-06084",
+        "brutus-mass_4_2_1_plummer-06392",
+        "brutus-mass_4_2_1_plummer-06394",
+        "brutus-mass_4_2_1_plummer-06460",
+        "brutus-mass_4_2_1_plummer-08136",
+        "brutus-mass_4_2_1_plummer-08421",
+        "brutus-mass_4_2_1_plummer-09371"
+      ],
+      "corpus_sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "source_precision_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "spatial_rank_ratio_min",
+          "observed": 0.05341822500338935,
+          "passed": true,
+          "threshold": 0.05
+        },
+        {
+          "comparator": ">=",
+          "name": "positive_ftle_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.9
+        },
+        {
+          "comparator": ">=",
+          "name": "median_ftle",
+          "observed": 0.8403736409289542,
+          "passed": true,
+          "threshold": 0.02
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_position_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_velocity_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_position_scaled_max",
+          "observed": 5.717697729627739e-08,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_velocity_scaled_max",
+          "observed": 5.865697642948198e-07,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_position_scaled_max",
+          "observed": 7.108093276414412e-10,
+          "passed": true,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_velocity_scaled_max",
+          "observed": 1.1057179061552313e-07,
+          "passed": true,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_relative_energy_drift_max",
+          "observed": 1.783991752102877e-30,
+          "passed": true,
+          "threshold": 1e-22
+        },
+        {
+          "comparator": "<=",
+          "name": "production_validation_horizon_max",
+          "observed": 2.5,
+          "passed": true,
+          "threshold": 2.5
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.0016321074444805052,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "source_payload_hash_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:01:13.233139+00:00",
+      "results_sha256": "181bb471761e67d45210f496e58867ab18b696bc04226557cad680bf7611447b",
+      "schema_version": "1.0",
+      "spec_sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP1Q-N3BP-SPATIAL-v1",
+      "case_count": 12,
+      "case_ids": [
+        "brutus-equal_mass_plummer-00931",
+        "brutus-equal_mass_plummer-01770",
+        "brutus-equal_mass_plummer-02229",
+        "brutus-equal_mass_plummer-04061",
+        "brutus-equal_mass_plummer-04190",
+        "brutus-equal_mass_plummer-09439",
+        "brutus-mass_4_2_1_plummer-00368",
+        "brutus-mass_4_2_1_plummer-02955",
+        "brutus-mass_4_2_1_plummer-03700",
+        "brutus-mass_4_2_1_plummer-04527",
+        "brutus-mass_4_2_1_plummer-05338",
+        "brutus-mass_4_2_1_plummer-06335"
+      ],
+      "corpus_sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "source_precision_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "spatial_rank_ratio_min",
+          "observed": 0.057869557329840324,
+          "passed": true,
+          "threshold": 0.05
+        },
+        {
+          "comparator": ">=",
+          "name": "positive_ftle_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.9
+        },
+        {
+          "comparator": ">=",
+          "name": "median_ftle",
+          "observed": 0.8489719673786096,
+          "passed": true,
+          "threshold": 0.02
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_position_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_convergence_velocity_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_position_scaled_max",
+          "observed": 2.2475546795121445e-11,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_brutus_velocity_scaled_max",
+          "observed": 2.2627259294368697e-10,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_position_scaled_max",
+          "observed": 1.4422163317021886e-08,
+          "passed": false,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "production_oracle_short_velocity_scaled_max",
+          "observed": 1.5524359480845071e-06,
+          "passed": false,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "oracle_relative_energy_drift_max",
+          "observed": 2.859343488176938e-30,
+          "passed": true,
+          "threshold": 1e-22
+        },
+        {
+          "comparator": "<=",
+          "name": "production_validation_horizon_max",
+          "observed": 2.25,
+          "passed": true,
+          "threshold": 2.5
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.003931477569785056,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "source_payload_hash_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:03:59.868077+00:00",
+      "lock_sha256": "47e7e4d9f2e07803e5e6e68507d4e3151bf1b65dbf48d0ec86302ca9a44c3819",
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v1-8216e5f53247",
+      "results_sha256": "69d4010243d3dfab9f4d60478d755440c5f8936c4856eb26bfe0aa5b71e977dc",
+      "schema_version": "1.0",
+      "spec_sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485",
+      "split": "holdout",
+      "status": "FAIL"
+    }
+  },
+  "evidence_boundary": "This campaign covers the selected equal-mass and 4:2:1-mass Brutus cases in standard Henon units with G=1, source durations from 5 through 20, the declared minimum-separation bound, and the frozen checkpoint grid. The float64 production claim ends at the first nonzero checkpoint, source duration divided by eight (0.625 through 2.5 time units); full-horizon float64 errors remain reported diagnostics because pathwise error is exponentially conditioned on these chaotic trajectories. It does not qualify arbitrary-duration float64 chaotic prediction, collision passage, catalogue completeness, statistical escape distributions, periodicity, regularization, a new first integral, or any WP3 candidate claim. A positive finite-time variational exponent is a bounded chaos diagnostic, not a theorem about asymptotic Lyapunov exponents.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp3-spatial-validation/results/calibration_evaluation.json",
+      "sha256": "756c824c80334c6a661c90bcd85330e73b2f664877579019ffe26b98aefac286"
+    },
+    "corpus": {
+      "path": "validation-external/wp3-spatial-validation/data/qualification_corpus.json",
+      "sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp3-spatial-validation/results/development_evaluation.json",
+      "sha256": "cb8b57c5a47049ffc0e2486cf0541d72015e1694127648b51786da6ecc5b4b7b"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp3-spatial-validation/results/holdout_evaluation.json",
+      "sha256": "14d496e04c3c42d453b26595c14741170522e0d4516846ff692098090727f639"
+    },
+    "lock": {
+      "path": "validation-external/wp3-spatial-validation/reports/wp3_spatial_qualification_lock.json",
+      "sha256": "d9cd7f894a39b2b86903dfcf5f7cae1bbe2a909cbbea4396d93c9a7c712b3829"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp3-spatial-validation/sources/manifest.json",
+      "sha256": "3574862dc23f00d198c63248cb93b3b93c92f4360550909117a84c879275a51c"
+    },
+    "spec": {
+      "path": "validation-external/wp3-spatial-validation/qualification_spec.json",
+      "sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485"
+    }
+  },
+  "generated_utc": "2026-07-20T10:04:38.660440+00:00",
+  "holdout_ids_sha256": "b23100d28705be35d7b05fd2f1da866b2327cbb91eca4e03d9bf861cc8c3f692",
+  "lock_sha256": "47e7e4d9f2e07803e5e6e68507d4e3151bf1b65dbf48d0ec86302ca9a44c3819",
+  "qualification_id": "WP1Q-N3BP-SPATIAL-v1-8216e5f53247",
+  "record_payload_sha256": "df53d5f3d8d62a687929a89acd2d68d06a7fc6e1e36d27a8f0aa504c93201dfc",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "3574862dc23f00d198c63248cb93b3b93c92f4360550909117a84c879275a51c",
+  "spec_sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485",
+  "status": "FAIL"
+}
