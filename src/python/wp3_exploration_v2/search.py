@@ -13,6 +13,18 @@ from scipy.linalg import null_space
 FloatArray: TypeAlias = NDArray[np.float64]
 
 
+def _matrix_vector(matrix: FloatArray, vector: FloatArray) -> FloatArray:
+    """Contract without macOS Accelerate's spurious matmul FPE warnings."""
+
+    return np.einsum("ij,j->i", matrix, vector, optimize=False)
+
+
+def _matrix_matrix(first: FloatArray, second: FloatArray) -> FloatArray:
+    """Use a deterministic contraction order across supported macOS runtimes."""
+
+    return np.einsum("ij,jk->ik", first, second, optimize=False)
+
+
 def _matrix(value: ArrayLike, name: str) -> FloatArray:
     array = np.asarray(value, dtype=np.float64)
     if array.ndim != 2 or not array.size or not np.all(np.isfinite(array)):
@@ -96,9 +108,11 @@ def _fit(
         coefficients = np.asarray(value, dtype=np.float64)
         if coefficients.shape != (values.shape[1],):
             raise ValueError(f"known control {name} has the wrong length")
-        control_coordinates.append(active_singular * (active_right @ coefficients))
-        projected_values = values @ coefficients
-        projected_derivatives = derivatives @ coefficients
+        control_coordinates.append(
+            active_singular * _matrix_vector(active_right, coefficients)
+        )
+        projected_values = _matrix_vector(values, coefficients)
+        projected_derivatives = _matrix_vector(derivatives, coefficients)
         control_metrics[name] = {
             "weighted_value_std": _weighted_std(projected_values, weights),
             "weighted_lie_rms": float(
@@ -125,14 +139,18 @@ def _fit(
     if complement.shape[1] == 0:
         raise ValueError("known algebra spans the active value space")
 
-    search_operator = derivative_operator @ coefficient_map @ complement
+    search_operator = _matrix_matrix(
+        _matrix_matrix(derivative_operator, coefficient_map), complement
+    )
     _, singular_values, right_vectors = np.linalg.svd(
         search_operator, full_matrices=False
     )
     order = np.argsort(singular_values)[: min(mode_count, singular_values.size)]
     coefficients = []
     for index in order:
-        vector = coefficient_map @ complement @ right_vectors[index]
+        vector = _matrix_vector(
+            _matrix_matrix(coefficient_map, complement), right_vectors[index]
+        )
         dominant = int(np.argmax(np.abs(vector)))
         if vector[dominant] < 0.0:
             vector = -vector
@@ -248,10 +266,14 @@ def search_near_null_modes(
     modes = []
     candidates = []
     for rank, coefficients in enumerate(fit.coefficients, start=1):
-        training_projected = train_values @ coefficients
-        calibration_projected = calibration_values_array @ coefficients
-        training_lie = train_derivatives @ coefficients
-        calibration_lie = calibration_derivatives_array @ coefficients
+        training_projected = _matrix_vector(train_values, coefficients)
+        calibration_projected = _matrix_vector(
+            calibration_values_array, coefficients
+        )
+        training_lie = _matrix_vector(train_derivatives, coefficients)
+        calibration_lie = _matrix_vector(
+            calibration_derivatives_array, coefficients
+        )
         training_lie_rms = float(
             np.sqrt(np.sum(training_weights * np.square(training_lie)))
         )

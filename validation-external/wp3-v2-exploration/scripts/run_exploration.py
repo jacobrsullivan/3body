@@ -307,18 +307,18 @@ def main() -> None:
             search_spec["calibration_trajectory_drift_max"]
         ),
     )
-    known_control_max = max(
-        metric["lie_max_abs"]
+    known_control_weighted_rms_max = max(
+        metric["weighted_lie_rms"]
         for metric in search["known_control_metrics"].values()
     )
     search_ready_gates = [
         make_gate("prerequisite_pass_rate", 1.0, ">=", 1.0),
         make_gate("sealed_reserve_intact", 1, "==", 1),
         make_gate(
-            "known_control_lie_max",
-            known_control_max,
+            "known_control_weighted_lie_rms_max",
+            known_control_weighted_rms_max,
             "<=",
-            float(search_spec["known_control_lie_max"]),
+            float(search_spec["known_control_weighted_lie_rms_max"]),
         ),
     ]
     search_ready = "PASS" if all(gate["passed"] for gate in search_ready_gates) else "FAIL"

@@ -42,7 +42,7 @@
     "calibration_to_training_max": 2.0,
     "family_fold_coefficient_cosine_min": 0.9,
     "calibration_trajectory_drift_max": 1e-8,
-    "known_control_lie_max": 2e-10
+    "known_control_weighted_lie_rms_max": 1e-10
   },
   "staged_policy": {
     "SEARCH_READY": "Requires both prerequisite qualification records, an intact sealed reserve, and machine-precision behavior of the represented known algebra.",

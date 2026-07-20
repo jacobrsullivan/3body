@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-EXP-v2-PARITY-v1",
+  "required_exact_matches": [
+    "input_hashes",
+    "implementation_snapshot",
+    "matrix_hashes",
+    "source_summary",
+    "search_structure",
+    "staged_gate_decisions",
+    "sealed_reserve_status"
+  ],
+  "thresholds": {
+    "singular_value_max_abs_delta": 1e-9,
+    "mode_coefficient_relative_l2_max": 1e-6,
+    "mode_coefficient_cosine_min": 0.999999,
+    "mode_metric_relative_delta_max": 1e-6,
+    "known_control_metric_abs_delta_max": 1e-9
+  }
+}

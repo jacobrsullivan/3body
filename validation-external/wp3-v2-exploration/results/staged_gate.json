@@ -28,16 +28,16 @@
       },
       {
         "comparator": "<=",
-        "name": "known_control_lie_max",
-        "observed": 1.1641532182693481e-10,
+        "name": "known_control_weighted_lie_rms_max",
+        "observed": 2.7448310794973796e-11,
         "passed": true,
-        "threshold": 2e-10
+        "threshold": 1e-10
       }
     ],
     "status": "PASS"
   },
   "campaign": "WP3-EXP-v2",
-  "generated_utc": "2026-07-20T10:18:09.934675+00:00",
-  "result_sha256": "79fdcf8b88a3e5148ec85cb780f7cd57206588e6021bf0a488cd0b16dc8d4d9b",
+  "generated_utc": "2026-07-20T10:23:11.894845+00:00",
+  "result_sha256": "94418264a37e39d63fb762441effb21aa0532b7367380ff3ea7c5702f57fdc54",
   "schema_version": "1.0"
 }
