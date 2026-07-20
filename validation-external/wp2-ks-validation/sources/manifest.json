@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2KSQ-v1",
+  "sources": [
+    {
+      "source_id": "van-der-meer-2021",
+      "title": "Reduction and regularization of the Kepler problem",
+      "author": "J. C. van der Meer",
+      "doi": "10.1007/s10569-021-10029-5",
+      "role": "Published S1 reduction and KS regularization convention cross-check"
+    },
+    {
+      "source_id": "kummer-1982",
+      "title": "On the regularization of the Kepler problem",
+      "author": "M. Kummer",
+      "doi": "10.1007/BF01208375",
+      "role": "Independent published reduction foundation"
+    },
+    {
+      "source_id": "rebound-ias15",
+      "title": "REBOUND N-body code, IAS15 integrator",
+      "url": "https://rebound.readthedocs.io/",
+      "role": "External Cartesian implementation; exact installed version is recorded in every result and the freeze runtime"
+    }
+  ],
+  "convention_crosswalk": "convention_crosswalk.md",
+  "oracle_independence": "The validation-side analytic and REBOUND modules do not import src.python.ks. Production-aware comparison is isolated in evaluation/ks_benchmark_evaluator.py."
+}

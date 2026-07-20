@@ -1,0 +1,68 @@
+{
+  "campaign": "WP2KSQ-v1",
+  "cases": [
+    {
+      "case_id": "circular_unit",
+      "case_type": "elliptic",
+      "metrics": {
+        "analytic_state_error_max": 2.220446049250313e-16,
+        "analytic_state_error_rms": 9.957982076279826e-17,
+        "closure_position_error": 2.4492935982947064e-16,
+        "closure_velocity_error": 2.4492935982947064e-16,
+        "minimum_radius": 0.9999999999999999,
+        "momentum_map_abs_max": 0.0,
+        "period_relative_error": 0.0,
+        "physical_energy_abs_error_max": 3.3306690738754696e-16,
+        "rebound_state_error_max": 1.1102230246251565e-15,
+        "rebound_state_error_rms": 4.1214420270790484e-16,
+        "regularized_hamiltonian_abs_max": 0.0
+      },
+      "rebound_version": "4.5.1",
+      "success": true
+    },
+    {
+      "case_id": "moderate_e_retrograde",
+      "case_type": "elliptic",
+      "metrics": {
+        "analytic_state_error_max": 3.1086244689504383e-15,
+        "analytic_state_error_rms": 9.993921123645714e-16,
+        "closure_position_error": 1.9484335006297032e-15,
+        "closure_velocity_error": 1.712375058312158e-16,
+        "minimum_radius": 1.7226942064744444,
+        "momentum_map_abs_max": 1.1102230246251565e-16,
+        "period_relative_error": 1.5683438684187899e-16,
+        "physical_energy_abs_error_max": 4.163336342344337e-17,
+        "rebound_state_error_max": 6.661338147750939e-15,
+        "rebound_state_error_rms": 1.277966335628536e-15,
+        "regularized_hamiltonian_abs_max": 1.1102230246251565e-16
+      },
+      "rebound_version": "4.5.1",
+      "success": true
+    }
+  ],
+  "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+  "generated_utc": "2026-07-20T06:41:08.129431+00:00",
+  "rebound_distribution_version": "4.5.1",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+  "split": "development",
+  "structural_metrics": {
+    "cotangent_roundtrip_error_max": 1.519617764955683e-15,
+    "poisson_error_max": 1.7763568394002505e-15,
+    "radius_error_max": 1.7763568394002505e-15,
+    "s1_invariance_error_max": 1.7763568394002505e-15
+  }
+}

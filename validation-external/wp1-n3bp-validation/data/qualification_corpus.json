@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "wp1-n3bp-full-state-v1",
+  "state_order": ["r1x", "r1y", "r1z", "r2x", "r2y", "r2z", "r3x", "r3y", "r3z", "v1x", "v1y", "v1z", "v2x", "v2y", "v2z", "v3x", "v3y", "v3z"],
+  "cases": [
+    {
+      "case_id": "lagrange_unit_planar",
+      "split": "development",
+      "case_type": "lagrange",
+      "side_length": 1.0,
+      "mass": 1.0,
+      "gravitational_constant": 1.0,
+      "phase": 0.0,
+      "rotation_xyz": [0.0, 0.0, 0.0]
+    },
+    {
+      "case_id": "figure_eight_published_rounded",
+      "split": "development",
+      "case_type": "figure_eight",
+      "source": "Chenciner-Montgomery values as reproduced in Hubber et al. 2011 Table 2"
+    },
+    {
+      "case_id": "sjtu_line_14_m0800_m0756",
+      "split": "development",
+      "case_type": "sjtu_periodic",
+      "source_line": 14,
+      "masses": ["0.800", "0.756", "1.000"],
+      "x1": "-1.35024519775613e-01",
+      "v1": "2.51505829297841e+00",
+      "v2": "3.16396261593079e-01",
+      "period": "5.16008719949432e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "sjtu_line_29734_m0870_m0800",
+      "split": "development",
+      "case_type": "sjtu_periodic",
+      "source_line": 29734,
+      "masses": ["0.870", "0.800", "1.000"],
+      "x1": "-1.85517464380132e-01",
+      "v1": "2.02215468795289e+00",
+      "v2": "3.96897646805765e-01",
+      "period": "5.98891271205882e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "sjtu_line_44348_m0900_m0850",
+      "split": "development",
+      "case_type": "sjtu_periodic",
+      "source_line": 44348,
+      "masses": ["0.900", "0.850", "1.000"],
+      "x1": "-2.22746846934935e-01",
+      "v1": "1.78127695164077e+00",
+      "v2": "4.15003557019123e-01",
+      "period": "6.35086603914435e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "lagrange_scaled_spatial",
+      "split": "calibration",
+      "case_type": "lagrange",
+      "side_length": 1.7,
+      "mass": 0.6,
+      "gravitational_constant": 1.3,
+      "phase": 0.4,
+      "rotation_xyz": [0.5, -0.8, 1.1]
+    },
+    {
+      "case_id": "sjtu_line_59402_m0930_m0890",
+      "split": "calibration",
+      "case_type": "sjtu_periodic",
+      "source_line": 59402,
+      "masses": ["0.930", "0.890", "1.000"],
+      "x1": "-2.61036674363779e-01",
+      "v1": "1.58833353187897e+00",
+      "v2": "4.30447701476608e-01",
+      "period": "6.68055311088189e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "sjtu_line_69432_m0950_m0900",
+      "split": "calibration",
+      "case_type": "sjtu_periodic",
+      "source_line": 69432,
+      "masses": ["0.950", "0.900", "1.000"],
+      "x1": "-2.81386265317406e-01",
+      "v1": "1.49896726022434e+00",
+      "v2": "4.43236769411638e-01",
+      "period": "6.86766628267780e+00",
+      "source_stability_label": "U"
+    },
+    {
+      "case_id": "reserved_lagrange_spatial",
+      "split": "holdout",
+      "case_type": "lagrange",
+      "side_length": 0.73,
+      "mass": 1.4,
+      "gravitational_constant": 0.8,
+      "phase": 1.2,
+      "rotation_xyz": [-0.6, 0.9, -1.3]
+    },
+    {
+      "case_id": "reserved_sjtu_line_34537_m0880_m0820",
+      "split": "holdout",
+      "case_type": "sjtu_periodic",
+      "source_line": 34537,
+      "masses": ["0.880", "0.820", "1.000"],
+      "x1": "-1.98577691784095e-01",
+      "v1": "1.93069506624547e+00",
+      "v2": "4.03267112177143e-01",
+      "period": "6.12298846844785e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "reserved_sjtu_line_49352_m0910_m0860",
+      "split": "holdout",
+      "case_type": "sjtu_periodic",
+      "source_line": 49352,
+      "masses": ["0.910", "0.860", "1.000"],
+      "x1": "-2.33570634887167e-01",
+      "v1": "1.72098984334656e+00",
+      "v2": "4.21124295781943e-01",
+      "period": "6.45157133796456e+00",
+      "source_stability_label": "U"
+    },
+    {
+      "case_id": "reserved_sjtu_line_54382_m0920_m0880",
+      "split": "holdout",
+      "case_type": "sjtu_periodic",
+      "source_line": 54382,
+      "masses": ["0.920", "0.880", "1.000"],
+      "x1": "-2.49185250272155e-01",
+      "v1": "1.64392482139001e+00",
+      "v2": "4.24910983082338e-01",
+      "period": "6.57739880747303e+00",
+      "source_stability_label": "S"
+    },
+    {
+      "case_id": "reserved_sjtu_line_64422_m0940_m0900",
+      "split": "holdout",
+      "case_type": "sjtu_periodic",
+      "source_line": 64422,
+      "masses": ["0.940", "0.900", "1.000"],
+      "x1": "-2.73341309711922e-01",
+      "v1": "1.53462673680163e+00",
+      "v2": "4.35782679273297e-01",
+      "period": "6.78553486785149e+00",
+      "source_stability_label": "U"
+    }
+  ]
+}

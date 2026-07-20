@@ -1,0 +1,158 @@
+{
+  "campaign": "WP1Q-N3BP-v1",
+  "case_count": 3,
+  "case_ids": [
+    "lagrange_scaled_spatial",
+    "sjtu_line_59402_m0930_m0890",
+    "sjtu_line_69432_m0950_m0900"
+  ],
+  "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "dop853_rebound_position_error_scaled_max",
+      "observed": 1.882061153738848e-11,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "dop853_rebound_velocity_error_scaled_max",
+      "observed": 3.83140531310984e-10,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "lagrange_analytic_position_error_scaled_max",
+      "observed": 6.525517428647043e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "lagrange_analytic_velocity_error_scaled_max",
+      "observed": 5.7592163808629945e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "periodic_closure_position_scaled_max",
+      "observed": 1.0006836326791986e-11,
+      "passed": true,
+      "threshold": 2e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "periodic_closure_velocity_scaled_max",
+      "observed": 5.60606386175759e-11,
+      "passed": true,
+      "threshold": 2e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "relative_energy_drift_max",
+      "observed": 2.965520832149684e-12,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "linear_momentum_drift_scaled_max",
+      "observed": 2.1304559680060017e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "angular_momentum_drift_scaled_max",
+      "observed": 5.67390700080504e-14,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "center_of_mass_position_drift_scaled_max",
+      "observed": 7.172335238201109e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "center_of_mass_velocity_drift_scaled_max",
+      "observed": 2.1304559680060013e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": ">=",
+      "name": "minimum_pair_separation_scaled_min",
+      "observed": 0.08400652068984002,
+      "passed": true,
+      "threshold": 0.01
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_translation_boost_error_max",
+      "observed": 7.812485400332793e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_rotation_error_max",
+      "observed": 4.687491240199676e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_permutation_error_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_internal_force_balance_error_max",
+      "observed": 7.892679204094883e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_barycenter_residual_max",
+      "observed": 4.600370576871214e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "sjtu_closure_position_scaled_max",
+      "observed": 1.0006836326791986e-11,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "sjtu_closure_velocity_scaled_max",
+      "observed": 5.60606386175759e-11,
+      "passed": true,
+      "threshold": 2e-08
+    }
+  ],
+  "generated_utc": "2026-07-20T06:41:23.864710+00:00",
+  "results_sha256": "194423c10aa7235aa3f02b884712b91eeba1f7e7c79b6ebfe9e715a1ed730a49",
+  "schema_version": "1.0",
+  "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+  "split": "calibration",
+  "status": "PASS"
+}

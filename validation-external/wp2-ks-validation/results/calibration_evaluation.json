@@ -1,0 +1,108 @@
+{
+  "campaign": "WP2KSQ-v1",
+  "case_count": 2,
+  "case_ids": [
+    "high_e_collision_free",
+    "low_e_inclined"
+  ],
+  "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "analytic_state_error_max",
+      "observed": 1.2434497875801753e-14,
+      "passed": true,
+      "threshold": 5e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "rebound_state_error_max",
+      "observed": 2.9316660210554346e-11,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "closure_position_error_max",
+      "observed": 4.041272810440265e-16,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "closure_velocity_error_max",
+      "observed": 3.953391794989626e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "regularized_hamiltonian_abs_max",
+      "observed": 2.220446049250313e-16,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "momentum_map_abs_max",
+      "observed": 4.440892098500626e-16,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "physical_energy_abs_error_max",
+      "observed": 3.552713678800501e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "period_relative_error_max",
+      "observed": 2.8271597168564594e-16,
+      "passed": true,
+      "threshold": 5e-13
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_radius_error_max",
+      "observed": 1.7763568394002505e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_s1_invariance_error_max",
+      "observed": 1.790234627208065e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_cotangent_roundtrip_error_max",
+      "observed": 1.5543122344752192e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_poisson_error_max",
+      "observed": 1.7763568394002505e-15,
+      "passed": true,
+      "threshold": 2e-11
+    }
+  ],
+  "generated_utc": "2026-07-20T06:41:08.752238+00:00",
+  "results_sha256": "d53fa4582874b87533a9ad3d62f9247d5f82a11c683fcdbf5272d0a6f27e0c9d",
+  "schema_version": "1.0",
+  "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+  "split": "calibration",
+  "status": "PASS"
+}

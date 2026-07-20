@@ -1,0 +1,123 @@
+{
+  "campaign": "WP1Q-N3BP-v1",
+  "cases": [
+    {
+      "case_id": "lagrange_unit_planar",
+      "case_type": "lagrange",
+      "metrics": {
+        "angular_momentum_drift_scaled": 3.418600331348557e-16,
+        "center_of_mass_position_drift_scaled": 1.5088190054317743e-15,
+        "center_of_mass_velocity_drift_scaled": 3.6322628520578434e-16,
+        "dop853_rebound_position_error_scaled": 1.1857187100668865e-14,
+        "dop853_rebound_velocity_error_scaled": 8.452533607127861e-15,
+        "lagrange_analytic_position_error_scaled": 1.8388943387034376e-14,
+        "lagrange_analytic_velocity_error_scaled": 1.4419940900886283e-14,
+        "linear_momentum_drift_scaled": 3.632262852057843e-16,
+        "minimum_pair_separation_scaled": 0.9999999999999838,
+        "periodic_closure_position_scaled": 1.8486130188118633e-14,
+        "periodic_closure_velocity_scaled": 1.4493265997277305e-14,
+        "relative_energy_drift": 2.0724163126336257e-15
+      },
+      "period": 3.6275987284684357,
+      "success": true
+    },
+    {
+      "case_id": "figure_eight_published_rounded",
+      "case_type": "figure_eight",
+      "metrics": {
+        "angular_momentum_drift_scaled": 1.895213101419456e-13,
+        "center_of_mass_position_drift_scaled": 4.1944491150416307e-16,
+        "center_of_mass_velocity_drift_scaled": 2.581694064217818e-16,
+        "dop853_rebound_position_error_scaled": 1.4519130794757483e-12,
+        "dop853_rebound_velocity_error_scaled": 3.699852020533957e-12,
+        "linear_momentum_drift_scaled": 2.581694064217818e-16,
+        "minimum_pair_separation_scaled": 0.34526331723500486,
+        "periodic_closure_position_scaled": 2.0509608922741864e-08,
+        "periodic_closure_velocity_scaled": 3.2741145299154407e-08,
+        "relative_energy_drift": 9.117142821347985e-13
+      },
+      "period": 6.32591398,
+      "success": true
+    },
+    {
+      "case_id": "sjtu_line_14_m0800_m0756",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 1.5100096804453552e-13,
+        "center_of_mass_position_drift_scaled": 6.039570786544735e-15,
+        "center_of_mass_velocity_drift_scaled": 1.9669736483251653e-15,
+        "dop853_rebound_position_error_scaled": 2.704794674909374e-11,
+        "dop853_rebound_velocity_error_scaled": 1.1416844967347514e-08,
+        "linear_momentum_drift_scaled": 1.9669736483251653e-15,
+        "minimum_pair_separation_scaled": 0.012923150070795343,
+        "periodic_closure_position_scaled": 5.8199150837193796e-12,
+        "periodic_closure_velocity_scaled": 1.3044976244043302e-10,
+        "relative_energy_drift": 4.224677261682367e-12
+      },
+      "period": 5.16008719949432,
+      "success": true
+    },
+    {
+      "case_id": "sjtu_line_29734_m0870_m0800",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 7.965642349699536e-14,
+        "center_of_mass_position_drift_scaled": 1.4976951652220852e-15,
+        "center_of_mass_velocity_drift_scaled": 8.093779517703447e-16,
+        "dop853_rebound_position_error_scaled": 1.6843336722768192e-11,
+        "dop853_rebound_velocity_error_scaled": 4.33224055622946e-10,
+        "linear_momentum_drift_scaled": 8.093779517703445e-16,
+        "minimum_pair_separation_scaled": 0.0645987873279083,
+        "periodic_closure_position_scaled": 2.0835382115482306e-12,
+        "periodic_closure_velocity_scaled": 3.496515661169878e-11,
+        "relative_energy_drift": 3.6016649908192596e-12
+      },
+      "period": 5.98891271205882,
+      "success": true
+    },
+    {
+      "case_id": "sjtu_line_44348_m0900_m0850",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 7.346815268998459e-14,
+        "center_of_mass_position_drift_scaled": 4.5425129379309385e-15,
+        "center_of_mass_velocity_drift_scaled": 1.5219034327034093e-15,
+        "dop853_rebound_position_error_scaled": 1.16269734116124e-11,
+        "dop853_rebound_velocity_error_scaled": 3.1582695832859925e-10,
+        "linear_momentum_drift_scaled": 1.5219034327034093e-15,
+        "minimum_pair_separation_scaled": 0.06914536486777685,
+        "periodic_closure_position_scaled": 3.1826554904355116e-12,
+        "periodic_closure_velocity_scaled": 1.5435572128988315e-11,
+        "relative_energy_drift": 2.597823759973973e-12
+      },
+      "period": 6.35086603914435,
+      "success": true
+    }
+  ],
+  "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "generated_utc": "2026-07-20T06:41:22.883189+00:00",
+  "rebound_distribution_version": "4.5.1",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+  "split": "development",
+  "structural_metrics": {
+    "barycenter_residual_max": 3.5215265277871864e-16,
+    "internal_force_balance_error_max": 5.321697283934277e-16,
+    "permutation_error_max": 0.0,
+    "rotation_error_max": 2.736073038842762e-15,
+    "translation_boost_error_max": 2.220446049250313e-15
+  }
+}

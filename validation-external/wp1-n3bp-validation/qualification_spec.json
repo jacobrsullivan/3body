@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1Q-N3BP-v1",
+  "specification_status": "LOCKABLE",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP1Q-N3BP-v1 qualifies the declared float64 production path to propagate an 18-dimensional inertial Cartesian state for three positive Newtonian point masses, without softening, over the bounded collision-free intervals and mass/separation ranges in the frozen corpus. Qualification covers explicit state/parameter contracts, barycentric normalization, conservation diagnostics, three-dimensional Euclidean/Galilean/body-permutation covariance, analytic Lagrange relative equilibria, the published rounded figure-eight, pinned published unequal-mass full-state periodic-orbit seeds, and checkpoint agreement with the independently implemented external REBOUND IAS15 propagator.",
+  "evidence_boundary": "This qualification establishes bounded full-state Newtonian propagation, not native periodic-orbit discovery or correction. The published external catalogue is planar; spatial numerical coverage is supplied only by rotated analytic Lagrange cases and 3D covariance tests. The claim excludes collisions, trajectories whose minimum pair separation is below the frozen bound, regularization, softened gravity, zero/negative masses, long-term stability classification, arbitrary-duration accuracy, catalogue completeness, CR3BP equivalence, KS reduction, pairwise KS, full symplectic three-body reduction, and WP3/WP4 claims.",
+  "model": {
+    "state_order": ["r1x", "r1y", "r1z", "r2x", "r2y", "r2z", "r3x", "r3y", "r3z", "v1x", "v1y", "v1z", "v2x", "v2y", "v2z", "v3x", "v3y", "v3z"],
+    "equations": "dr_i/dt=v_i; dv_i/dt=G*sum_{j!=i} m_j*(r_j-r_i)/|r_j-r_i|^3",
+    "frame": "nonrotating inertial Cartesian; corpus states are translated and boosted to the barycentric frame",
+    "parameters": "three ordered finite positive masses and finite G>0",
+    "softening": 0.0,
+    "time": "physical/source nondimensional Newtonian time"
+  },
+  "corpus": {
+    "path": "data/qualification_corpus.json",
+    "external_source": "Li, Li, and Liao 2021 supplementary full-state periodic-orbit table, pinned to an immutable authors' repository commit",
+    "minimum_pair_separation_over_initial_length_scale": 0.01,
+    "maximum_mass_ratio": 1.4,
+    "maximum_propagation_periods": 1.0,
+    "source_seed_policy": "Original source decimals and periods are propagated unchanged except for an exactly recorded barycentric translation and boost. No differential correction is performed. Source-period closure therefore measures both source rounding and propagation and is not the primary integrator-accuracy gate.",
+    "split_policy": "Inputs are split by source row or analytic parameter tuple. This is an accuracy qualification with no fitted model or tuned case-dependent parameter; continuation-neighbor leakage is recorded but cannot train the fixed equations or fixed tolerances."
+  },
+  "independent_references": {
+    "analytic": "Rigidly rotating Lagrange equilateral solutions evaluated independently at each checkpoint.",
+    "external_implementation": "REBOUND IAS15, configured from the same full inertial state without importing the production derivative.",
+    "published_benchmarks": [
+      {
+        "title": "One family of 13315 stable periodic orbits of non-hierarchical unequal-mass triple systems",
+        "authors": "X. Li, X. Li, and S. Liao",
+        "doi": "10.1007/s11433-020-1624-7"
+      },
+      {
+        "title": "A remarkable periodic solution of the three-body problem in the case of equal masses",
+        "authors": "A. Chenciner and R. Montgomery",
+        "doi": "10.2307/2661357"
+      }
+    ]
+  },
+  "execution": {
+    "production_integrator": "scipy.integrate.solve_ivp(method='DOP853')",
+    "production_rtol": 2e-13,
+    "production_atol": 2e-15,
+    "production_max_step_fraction_of_period": 0.0078125,
+    "checkpoints_per_period": 129,
+    "rebound_integrator": "IAS15",
+    "rebound_epsilon": 1e-12,
+    "rebound_adaptive_mode_sjtu": "prs23",
+    "rebound_adaptive_mode_figure_eight": "global",
+    "structural_random_cases_per_split": 256,
+    "structural_seed_by_split": {
+      "development": 314159,
+      "calibration": 271828,
+      "holdout": 161803
+    },
+    "holdout_rule": "The holdout runner verifies every frozen file hash before selecting holdout cases. A failed holdout remains FAIL and requires a new campaign version."
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "dop853_rebound_position_error_scaled_max": 2e-8,
+    "dop853_rebound_velocity_error_scaled_max": 2e-8,
+    "lagrange_analytic_position_error_scaled_max": 2e-9,
+    "lagrange_analytic_velocity_error_scaled_max": 2e-9,
+    "periodic_closure_position_scaled_max": 2e-7,
+    "periodic_closure_velocity_scaled_max": 2e-7,
+    "sjtu_closure_position_scaled_max": 2e-8,
+    "sjtu_closure_velocity_scaled_max": 2e-8,
+    "relative_energy_drift_max": 2e-10,
+    "linear_momentum_drift_scaled_max": 2e-11,
+    "angular_momentum_drift_scaled_max": 2e-10,
+    "center_of_mass_position_drift_scaled_max": 2e-11,
+    "center_of_mass_velocity_drift_scaled_max": 2e-11,
+    "minimum_pair_separation_scaled_min": 0.01,
+    "structural_translation_boost_error_max": 2e-12,
+    "structural_rotation_error_max": 2e-12,
+    "structural_permutation_error_max": 2e-12,
+    "structural_internal_force_balance_error_max": 2e-12,
+    "structural_barycenter_residual_max": 2e-12
+  },
+  "downstream_policy": "This PASS is necessary but insufficient for full three-body reduction or pairwise KS. Those paths may be rebuilt only when this record and WP2KSQ-v1 are both PASS with valid locks, and the rebuilt path must then satisfy its own downstream qualification."
+}

@@ -1,0 +1,87 @@
+{
+  "campaign": "WP1Q-N3BP-v1",
+  "cases": [
+    {
+      "case_id": "lagrange_scaled_spatial",
+      "case_type": "lagrange",
+      "metrics": {
+        "angular_momentum_drift_scaled": 2.356422717528633e-16,
+        "center_of_mass_position_drift_scaled": 1.3053886452182166e-15,
+        "center_of_mass_velocity_drift_scaled": 3.0371405752578295e-16,
+        "dop853_rebound_position_error_scaled": 9.391208460439075e-15,
+        "dop853_rebound_velocity_error_scaled": 7.468843455690691e-15,
+        "lagrange_analytic_position_error_scaled": 6.525517428647043e-15,
+        "lagrange_analytic_velocity_error_scaled": 5.7592163808629945e-15,
+        "linear_momentum_drift_scaled": 3.0371405752578295e-16,
+        "minimum_pair_separation_scaled": 0.9999999999999907,
+        "periodic_closure_position_scaled": 6.429115188000537e-15,
+        "periodic_closure_velocity_scaled": 5.604567527033098e-15,
+        "relative_energy_drift": 1.3442871380788939e-15
+      },
+      "period": 9.10427404302596,
+      "success": true
+    },
+    {
+      "case_id": "sjtu_line_59402_m0930_m0890",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 5.67390700080504e-14,
+        "center_of_mass_position_drift_scaled": 2.977003261916479e-15,
+        "center_of_mass_velocity_drift_scaled": 9.219129937961151e-16,
+        "dop853_rebound_position_error_scaled": 1.3942884045180511e-11,
+        "dop853_rebound_velocity_error_scaled": 3.179013884141104e-10,
+        "linear_momentum_drift_scaled": 9.21912993796115e-16,
+        "minimum_pair_separation_scaled": 0.08400652068984002,
+        "periodic_closure_position_scaled": 7.113331042445689e-12,
+        "periodic_closure_velocity_scaled": 2.6789935682356962e-11,
+        "relative_energy_drift": 2.6073134502354275e-12
+      },
+      "period": 6.68055311088189,
+      "success": true
+    },
+    {
+      "case_id": "sjtu_line_69432_m0950_m0900",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 3.342060661514169e-14,
+        "center_of_mass_position_drift_scaled": 7.172335238201109e-15,
+        "center_of_mass_velocity_drift_scaled": 2.1304559680060013e-15,
+        "dop853_rebound_position_error_scaled": 1.882061153738848e-11,
+        "dop853_rebound_velocity_error_scaled": 3.83140531310984e-10,
+        "linear_momentum_drift_scaled": 2.1304559680060017e-15,
+        "minimum_pair_separation_scaled": 0.09009555917257206,
+        "periodic_closure_position_scaled": 1.0006836326791986e-11,
+        "periodic_closure_velocity_scaled": 5.60606386175759e-11,
+        "relative_energy_drift": 2.965520832149684e-12
+      },
+      "period": 6.8676662826778,
+      "success": true
+    }
+  ],
+  "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "generated_utc": "2026-07-20T06:41:23.739305+00:00",
+  "rebound_distribution_version": "4.5.1",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+  "split": "calibration",
+  "structural_metrics": {
+    "barycenter_residual_max": 4.600370576871214e-16,
+    "internal_force_balance_error_max": 7.892679204094883e-16,
+    "permutation_error_max": 0.0,
+    "rotation_error_max": 4.687491240199676e-15,
+    "translation_boost_error_max": 7.812485400332793e-15
+  }
+}

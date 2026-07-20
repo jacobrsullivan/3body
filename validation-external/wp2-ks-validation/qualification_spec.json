@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2KSQ-v1",
+  "specification_status": "LOCKABLE",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2KSQ-v1 qualifies the declared canonical Kustaanheimo-Stiefel construction for isolated negative-energy Kepler motion: the Hopf position map, canonical cotangent lift, common-phase S1 action, Xi momentum map, zero-level quotient, fixed-energy Sundman rule dt/ds=|u|^2, regular four-dimensional isotropic oscillator, physical-time reconstruction, and smooth radial-collision passage in regular variables. Within the frozen corpus bounds, projected collision-free trajectories reproduce independently encoded analytic Kepler conics and the external REBOUND IAS15 implementation at the declared checkpoints.",
+  "evidence_boundary": "This qualification is limited to an isolated two-body Hamiltonian with reduced_mass>0, kappa>0, fixed E<0, Xi=0, elliptic eccentricity 0<=e<=0.97, the parameter ranges in the frozen corpus, and the explicitly tested radial-collision continuation. It does not qualify E>=0, nonzero-Xi magnetic reduction, perturbed Kepler motion, a pair embedded in a three-body field, pairwise or simultaneous three-body KS, full three-body reduction, orbit discovery, additional first integrals, or any WP3/WP4 claim.",
+  "model": {
+    "physical_hamiltonian": "H(x,p)=dot(p,p)/(2*reduced_mass)-kappa/|x|",
+    "ks_map": [
+      "x1=2*(u1*u3+u2*u4)",
+      "x2=2*(u1*u4-u2*u3)",
+      "x3=u1^2+u2^2-u3^2-u4^2",
+      "|x|=dot(u,u)"
+    ],
+    "s1_generator": "J*u=(-u2,u1,-u4,u3)",
+    "momentum_map": "Xi=u1*pu2-u2*pu1+u3*pu4-u4*pu3",
+    "cotangent_lift": "p_u=DKS(u)^T*p; p=DKS(u)*p_u/(4*dot(u,u)) on Xi=0",
+    "quotient": "Xi^-1(0)/S1 is represented by the physical Kepler phase state away from collision",
+    "regularized_hamiltonian": "K_E=dot(p_u,p_u)/(8*reduced_mass)-kappa-E*dot(u,u)=0",
+    "sundman_rule": "dt/ds=dot(u,u)",
+    "oscillator": "du/ds=p_u/(4*reduced_mass); dp_u/ds=2*E*u"
+  },
+  "corpus": {
+    "path": "data/qualification_corpus.json",
+    "splits": {
+      "development": "Previously exercised implementation cases",
+      "calibration": "Previously exercised threshold-confirmation cases",
+      "holdout": "Reserved inputs whose outputs must not exist before lock verification"
+    },
+    "collision_free_bounds": {
+      "eccentricity_max": 0.97,
+      "periapsis_min": 0.1
+    }
+  },
+  "independent_references": {
+    "analytic": "Validation-side elliptic Kepler solver using eccentric anomaly and independent orbital-element rotations; it imports no production KS code.",
+    "external": "REBOUND IAS15 Cartesian two-body propagation with the central mass fixed at the origin; it imports no production KS code.",
+    "published_foundations": [
+      {
+        "title": "Reduction and regularization of the Kepler problem",
+        "author": "J. C. van der Meer",
+        "doi": "10.1007/s10569-021-10029-5"
+      },
+      {
+        "title": "On the regularization of the Kepler problem",
+        "author": "M. Kummer",
+        "doi": "10.1007/BF01208375"
+      }
+    ]
+  },
+  "execution": {
+    "structural_random_cases_per_split": 512,
+    "structural_seed_by_split": {
+      "development": 90210,
+      "calibration": 41031,
+      "holdout": 77123
+    },
+    "rebound_ias15_epsilon": 1e-12,
+    "holdout_rule": "The holdout runner verifies every frozen file hash before selecting holdout cases. A failed holdout remains FAIL and requires a new campaign version."
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "analytic_state_error_max": 5e-10,
+    "rebound_state_error_max": 2e-8,
+    "closure_position_error_max": 2e-10,
+    "closure_velocity_error_max": 2e-9,
+    "regularized_hamiltonian_abs_max": 5e-12,
+    "momentum_map_abs_max": 5e-12,
+    "physical_energy_abs_error_max": 2e-9,
+    "period_relative_error_max": 5e-13,
+    "structural_radius_error_max": 2e-12,
+    "structural_s1_invariance_error_max": 2e-12,
+    "structural_cotangent_roundtrip_error_max": 2e-11,
+    "structural_poisson_error_max": 2e-11,
+    "radial_collision_q_norm_max": 2e-14,
+    "radial_symmetry_error_max": 2e-11,
+    "radial_regularized_hamiltonian_abs_max": 5e-12
+  },
+  "downstream_policy": "This PASS is necessary but insufficient for full three-body reduction or pairwise KS. Those paths may be rebuilt only when this record and WP1Q-N3BP-v1 are both PASS with valid locks, and the rebuilt path must then satisfy its own downstream qualification."
+}
