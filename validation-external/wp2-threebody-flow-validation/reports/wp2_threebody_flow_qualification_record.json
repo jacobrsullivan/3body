@@ -1,0 +1,531 @@
+{
+  "base_git_commit": "89937dd03eba779580bcdd78476d90843d4822a5",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2-3BFLOWQ-v1 qualifies an independently replicated canonical Jacobi reduction, the exact 12-dimensional physical-time Jacobi Hamiltonian vector field, its generic non-collinear nine-coordinate SO(3)-quotient derivative with body-frame reconstruction dynamics, and a constrained physical-time pairwise KS lift whose projection, Xi levels, S1-cubed covariance, and triangle position/velocity closure derivatives conform to the qualified Newtonian three-body flow.",
+  "code_snapshot_sha256": "90fab6dac1caa9bb9f99e57cec33c72637d2eb6fd1c24c08faa76d5cd0a9e89f",
+  "corpus_case_counts": {
+    "calibration": 12,
+    "development": 16,
+    "holdout": 6
+  },
+  "corpus_sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c",
+  "downstream_policy": "A PASS closes the independent-reduction and qualified-reduced-or-lifted-vector-field infrastructure items for staged WP3 search readiness. It does not authorize a conserved-quantity, hidden-integrability, regularized-collision, or publication claim.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP2-3BFLOWQ-v1",
+      "case_count": 12,
+      "case_ids": [
+        "flow-brutus-equal_mass_plummer-00229",
+        "flow-brutus-equal_mass_plummer-01922",
+        "flow-brutus-equal_mass_plummer-02901",
+        "flow-brutus-equal_mass_plummer-03370",
+        "flow-brutus-equal_mass_plummer-03571",
+        "flow-brutus-equal_mass_plummer-04330",
+        "flow-brutus-mass_4_2_1_plummer-00196",
+        "flow-brutus-mass_4_2_1_plummer-00767",
+        "flow-brutus-mass_4_2_1_plummer-02470",
+        "flow-brutus-mass_4_2_1_plummer-02819",
+        "flow-brutus-mass_4_2_1_plummer-02908",
+        "flow-brutus-mass_4_2_1_plummer-04524"
+      ],
+      "corpus_sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_canonical_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_state_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_roundtrip_scaled_max",
+          "observed": 2.371508070700116e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_body_frame_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "canonical_tangent_scaled_max",
+          "observed": 1.1953925675779342e-14,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "hamiltonian_lie_scaled_max",
+          "observed": 1.1368683772161603e-13,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "reduced_quotient_fd_scaled_max",
+          "observed": 2.926734231270459e-08,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "reconstruction_frame_fd_scaled_max",
+          "observed": 1.1766100174783121e-08,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_projection_fd_scaled_max",
+          "observed": 1.3722189877670893e-08,
+          "passed": true,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_derivative_abs_max",
+          "observed": 2.8199664825478976e-14,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_derivative_max",
+          "observed": 4.440892098500626e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_derivative_max",
+          "observed": 1.1368683772161603e-13,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_covariance_scaled_max",
+          "observed": 5.908433865877192e-13,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:15:07.277566+00:00",
+      "prerequisites": {
+        "wp1_spatial_n3bp": {
+          "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+          "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+          "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+          "status": "PASS"
+        },
+        "wp2_kepler_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "results_sha256": "64fbafdcbc8d3f6fb29b356d350aec77aa55ffd771c62c248d22f987901f5cf3",
+      "schema_version": "1.0",
+      "spec_sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP2-3BFLOWQ-v1",
+      "case_count": 16,
+      "case_ids": [
+        "flow-brutus-equal_mass_plummer-00196",
+        "flow-brutus-equal_mass_plummer-00302",
+        "flow-brutus-equal_mass_plummer-00438",
+        "flow-brutus-equal_mass_plummer-00881",
+        "flow-brutus-equal_mass_plummer-01534",
+        "flow-brutus-equal_mass_plummer-01676",
+        "flow-brutus-equal_mass_plummer-01678",
+        "flow-brutus-equal_mass_plummer-01977",
+        "flow-brutus-mass_4_2_1_plummer-00272",
+        "flow-brutus-mass_4_2_1_plummer-00290",
+        "flow-brutus-mass_4_2_1_plummer-01380",
+        "flow-brutus-mass_4_2_1_plummer-01481",
+        "flow-brutus-mass_4_2_1_plummer-01644",
+        "flow-brutus-mass_4_2_1_plummer-02317",
+        "flow-brutus-mass_4_2_1_plummer-02436",
+        "flow-brutus-mass_4_2_1_plummer-03742"
+      ],
+      "corpus_sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_canonical_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_state_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_roundtrip_scaled_max",
+          "observed": 2.3160165837498855e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_body_frame_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "canonical_tangent_scaled_max",
+          "observed": 5.0248354762120854e-15,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "hamiltonian_lie_scaled_max",
+          "observed": 1.4210854715202004e-14,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "reduced_quotient_fd_scaled_max",
+          "observed": 3.4243818182735864e-08,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "reconstruction_frame_fd_scaled_max",
+          "observed": 2.0727443069348946e-08,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_projection_fd_scaled_max",
+          "observed": 1.9417425556333967e-08,
+          "passed": true,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_derivative_abs_max",
+          "observed": 2.26929586233382e-13,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_derivative_max",
+          "observed": 8.881784197001252e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_derivative_max",
+          "observed": 1.1368683772161603e-13,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_covariance_scaled_max",
+          "observed": 1.78547789836303e-14,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:15:06.572441+00:00",
+      "prerequisites": {
+        "wp1_spatial_n3bp": {
+          "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+          "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+          "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+          "status": "PASS"
+        },
+        "wp2_kepler_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "results_sha256": "41d5d61d5dbf11187b754c135a5f58e8ca2bc573bcf8b4db3659ad6acff9c8f4",
+      "schema_version": "1.0",
+      "spec_sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP2-3BFLOWQ-v1",
+      "case_count": 6,
+      "case_ids": [
+        "flow-brutus-equal_mass_plummer-00219",
+        "flow-brutus-equal_mass_plummer-00223",
+        "flow-brutus-equal_mass_plummer-01140",
+        "flow-brutus-mass_4_2_1_plummer-02085",
+        "flow-brutus-mass_4_2_1_plummer-04863",
+        "flow-brutus-mass_4_2_1_plummer-05328"
+      ],
+      "corpus_sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_canonical_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_state_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_jacobi_roundtrip_scaled_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_body_frame_scaled_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "canonical_tangent_scaled_max",
+          "observed": 1.687333165433291e-15,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "hamiltonian_lie_scaled_max",
+          "observed": 8.881784197001252e-16,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "reduced_quotient_fd_scaled_max",
+          "observed": 8.327082501417234e-09,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "reconstruction_frame_fd_scaled_max",
+          "observed": 4.6117817894499715e-09,
+          "passed": true,
+          "threshold": 3e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_projection_fd_scaled_max",
+          "observed": 1.994674281302622e-08,
+          "passed": true,
+          "threshold": 5e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_derivative_abs_max",
+          "observed": 1.7486012637846216e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_derivative_max",
+          "observed": 2.486410087150353e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_derivative_max",
+          "observed": 3.552713678800501e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_covariance_scaled_max",
+          "observed": 3.4365951476543497e-15,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T10:16:28.534272+00:00",
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "prerequisites": {
+        "wp1_spatial_n3bp": {
+          "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+          "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+          "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+          "status": "PASS"
+        },
+        "wp2_kepler_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "results_sha256": "86df533e91419b9cb3a30669a4d846cbc43efab06f46ec13ae69ebb8f6569b21",
+      "schema_version": "1.0",
+      "spec_sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "This qualification covers positive finite masses, collision-free states, the generic non-collinear body-frame chart, zero-Xi pairwise KS sections, and the frozen external spatial/chaotic checkpoint corpus. The pairwise KS flow is a redundant constrained physical-time lift, not three independent Kepler systems. The claim excludes a global Sundman transformation, collision passage, a globally regularized three-body Hamiltonian, a Darboux assertion for the SO(3) quotient, nonzero-Xi magnetic reduction, orbit discovery, and every WP3 invariant claim.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp2-threebody-flow-validation/results/calibration_evaluation.json",
+      "sha256": "e816256901d575fda7b2273502ce41d048ea3a4b6be81577f6b3eef67a3fada3"
+    },
+    "corpus": {
+      "path": "validation-external/wp2-threebody-flow-validation/data/qualification_corpus.json",
+      "sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp2-threebody-flow-validation/results/development_evaluation.json",
+      "sha256": "3af6c67207bec7b57ec0e12afa5ffd73ca5b53083759e517259c57336244fbb5"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp2-threebody-flow-validation/results/holdout_evaluation.json",
+      "sha256": "63c696eb07c54ebcd40753e94fad894d36073a49017e460f20f46c7efc7c0a80"
+    },
+    "lock": {
+      "path": "validation-external/wp2-threebody-flow-validation/reports/wp2_threebody_flow_qualification_lock.json",
+      "sha256": "be33644c6868ed39cce2eeba75483b691616e4a5f35ed53b01f2a98f95fd0e8d"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp2-threebody-flow-validation/sources/manifest.json",
+      "sha256": "3d0fef62e8d37aaf5f11133ffa55e01bde35f85d2c6a4edc8b1bffa19e725083"
+    },
+    "spec": {
+      "path": "validation-external/wp2-threebody-flow-validation/qualification_spec.json",
+      "sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f"
+    }
+  },
+  "generated_utc": "2026-07-20T10:16:42.786498+00:00",
+  "holdout_ids_sha256": "38b3b9a422c3b819194706d180dc8f241f7bf26b60075323e449b0c28cda7fa5",
+  "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+  "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+  "record_payload_sha256": "8001f614c2544371885b045a69487f6f87df8f7e006d197cf4d10b5e4fe11f5c",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "3d0fef62e8d37aaf5f11133ffa55e01bde35f85d2c6a4edc8b1bffa19e725083",
+  "spec_sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f",
+  "status": "PASS"
+}
