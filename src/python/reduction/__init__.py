@@ -1,12 +1,16 @@
-"""
-Symplectic reduction for three-body problem.
+"""Legacy exploratory reduction package.
 
-This module implements Marsden-Weinstein reduction for the 3BP:
+This namespace is retained for compatibility and is not qualification-bearing.
+Its Cartesian gauge representatives and historical dimension labels are not
+the canonical full phase-space quotient qualified by WP2-3BRQ-v1. Use
+``src.python.threebody_reduction`` for the qualified implementation.
+
+The historical API contains:
 - Translation reduction (quotient by ℝ³)
 - Rotation reduction (quotient by SO(3))
 - Mechanical connection computation
 
-Part of WP 2.1 - Geometric Reduction and Shape Space Analysis.
+The mechanical-connection code here remains an unqualified research prototype.
 """
 
 from .base import SymplecticReduction

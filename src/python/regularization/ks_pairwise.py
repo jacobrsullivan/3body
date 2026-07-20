@@ -1,7 +1,10 @@
-"""
-Pairwise KS transformation for three-body problem (WP 2.3, Part B).
+"""Legacy velocity-style pairwise KS prototype (WP 2.3, Part B).
 
-Applies KS regularization to all three pairwise separations:
+Qualification notice: this module is retained for compatibility but does not
+implement the canonical cotangent lift or qualified constraint accounting.
+Use ``src.python.pairwise_ks`` for the WP2-3BRQ-v1 path.
+
+It applies the legacy transform to all three pairwise separations:
     r12 → u12 ∈ ℝ⁴
     r23 → u23 ∈ ℝ⁴
     r31 → u31 ∈ ℝ⁴

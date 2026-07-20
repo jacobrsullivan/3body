@@ -1,8 +1,13 @@
-"""
-Translation reduction for 3-body problem.
+"""Legacy Cartesian gauge fixing for translation symmetry.
 
-Implements quotient by ℝ³ translations, enforcing zero total momentum.
-This is the first stage of Marsden-Weinstein reduction for the 3BP.
+Qualification notice: this compatibility module stores a redundant
+barycentric Cartesian representative and retains historical dimension labels.
+It is not the canonical phase-space quotient qualified by WP2-3BRQ-v1. Use
+``src.python.threebody_reduction`` for canonical Jacobi variables, the correct
+12-dimensional translation quotient, and reconstruction metadata.
+
+It shifts a state to a barycentric Cartesian representative and enforces zero
+total momentum. It was intended as the first reduction stage.
 
 Mathematical Background:
     - Symmetry group: G = ℝ³ (translations in 3D space)

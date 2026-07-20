@@ -66,6 +66,10 @@ The formal decision is in `validation-external/wp1-validation/reports/wp1_qualif
   canonical Jacobi translation reduction, a generic non-collinear SO(3)
   quotient chart, and a constrained kinematic pairwise-KS lift with `S1^3`
   gauge invariance and closure.
+- A clean bobs-mini checkout independently verifies all three relevant locks,
+  passes 160/160 focused tests under Python 3.11, and replays downstream
+  development and calibration at 24/24 gates. The supplemental parity record
+  discloses a non-decision-bearing NumPy/Accelerate warning.
 - The downstream result does not implement or qualify reduced Hamilton
   equations, a global three-body Sundman time, three decoupled Kepler
   oscillators, collision passage for the full N3BP, or a periodic-orbit

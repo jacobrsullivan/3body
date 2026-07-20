@@ -293,6 +293,11 @@ under `src/python/reduction` and `src/python/regularization` remain unqualified
 legacy prototypes and must not generate claim-bearing evidence. Prerequisite
 evidence did not confer the downstream `PASS`; it only unlocked the campaign.
 
+Supplemental parity on the clean bobs-mini checkout verified all three locks,
+passed 160 focused tests, and replayed development and calibration at 24/24
+gates. It did not rerun any one-time holdout. The machine record is
+`validation-external/wp2-threebody-validation/reports/wp2_threebody_bobs_mini_parity.json`.
+
 ## Change Control
 
 Changes to a model equation, state ordering, frame, unit or time convention,

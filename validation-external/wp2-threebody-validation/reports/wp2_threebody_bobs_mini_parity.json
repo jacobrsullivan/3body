@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2026-07-20T07:37:53+00:00",
+  "status": "PASS",
+  "scope": "Supplemental bounded platform parity; not part of the frozen first-execution holdout decision",
+  "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+  "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+  "verification_commit": "7f63b018e1d3f9d527aca50c8e858a9548c55377",
+  "host": {
+    "ssh_alias": "bobs-mac-mini",
+    "node": "Mac",
+    "checkout": "/Users/bob/Desktop/3body",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "pytest": "8.4.1",
+    "blas": "Apple Accelerate"
+  },
+  "checks": {
+    "worktree_clean_before_and_after": true,
+    "wp2_ks_lock_verified": "WP2KSQ-v1-dc4b342e3bd2",
+    "wp1_n3bp_lock_verified": "WP1Q-N3BP-v1-892335b25187",
+    "downstream_lock_verified": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+    "focused_tests": {
+      "passed": 160,
+      "failed": 0
+    },
+    "development_replay": {
+      "status": "PASS",
+      "passed_gates": 24,
+      "gate_count": 24,
+      "results_sha256": "31f4e21b4a0c1872b3d042723a7cf62ce2eda33d373183fe2e75c8ac03d088fc",
+      "largest_observed_error_gate": 4.440892098500626e-15
+    },
+    "calibration_replay": {
+      "status": "PASS",
+      "passed_gates": 24,
+      "gate_count": 24,
+      "results_sha256": "48bbd9e06a06b022bd4cec805efe1b28fe3a48ff59783790c1f63f14089d662b",
+      "largest_observed_error_gate": 3.552713678800501e-15
+    },
+    "holdout_replayed": false,
+    "holdout_policy": "The frozen one-time holdout was not rerun for platform parity."
+  },
+  "runtime_caveat": {
+    "observed": true,
+    "description": "NumPy 2.2.6 with Apple Accelerate emits divide-by-zero, overflow, and invalid RuntimeWarning flags for one finite 18x18 block-matrix multiplication used to check symplecticity.",
+    "impact": "No numerical result is non-finite and no assertion or gate fails. The computed jacobi_symplectic_error is 2.220446049250313e-16 in both replayed splits, identical to the original platform.",
+    "classification": "Non-decision-bearing platform-library warning"
+  }
+}

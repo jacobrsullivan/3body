@@ -1,7 +1,12 @@
-"""
-Kustaanheimo-Stiefel (KS) Regularization for the Three-Body Problem.
+"""Legacy exploratory regularization package.
 
-This module implements the KS spinor transformation with time regularization:
+This namespace is retained for compatibility and is not qualification-bearing.
+Use ``src.python.ks`` for the qualified isolated Kepler/KS construction and
+``src.python.pairwise_ks`` for the qualified constrained kinematic N3BP pair
+lift. No global Sundman time or regularized three-body dynamics in this legacy
+package is covered by a qualification record.
+
+The historical API contains KS-like spinor and time transformations:
 1. Spatial Lift: Embeds 3D space into 4D spinor space
 2. Temporal Lift: Sundman time transformation (dt/ds = r)
 3. Combined: (4+1)-dimensional regularization eliminating singularities

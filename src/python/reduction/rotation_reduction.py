@@ -1,8 +1,12 @@
-"""
-Rotation reduction for 3-body problem.
+"""Legacy orientation gauge fixing for the three-body problem.
 
-Implements quotient by SO(3) rotations, fixing orientation.
-This is the second stage of Marsden-Weinstein reduction for the 3BP.
+Qualification notice: this compatibility module rotates a redundant Cartesian
+representative and is not a complete Marsden-Weinstein reduction. Use
+``src.python.threebody_reduction`` for the qualified generic SO(3) Poisson
+quotient chart, singular-stratum checks, and exact reconstruction metadata.
+
+It rotates a redundant Cartesian state to selected orientation gauges. It was
+intended as the second reduction stage.
 
 Mathematical Background:
     - Symmetry group: G = SO(3) (rotations in 3D space)
