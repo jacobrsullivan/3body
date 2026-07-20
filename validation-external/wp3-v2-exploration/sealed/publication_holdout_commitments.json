@@ -1,0 +1,154 @@
+{
+  "campaign": "WP3-PUBLICATION-HOLDOUT-v1",
+  "case_count": 24,
+  "commitments": [
+    {
+      "commitment_id": "0852446e31d264956714",
+      "hmac_sha256": "184013c683018ac694b0bcb0895278150ebeba68121b77a30aa27b8abd80f033",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "13d4f34357924aaabae9",
+      "hmac_sha256": "51fa4ba9002355ae90dfc038223c23d7a7063191c5744d6dda38b807f3a261ba",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "160012e3787a878d9330",
+      "hmac_sha256": "957b8591eda03a20875d4e4da928e505468360bc32251b5699ab40e9f5923e11",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "192c6d5cc90f93272115",
+      "hmac_sha256": "37b2c8b21b26137260a734c5d818560c2107bb174ec8460f294e1efa7cfc789c",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "1aadf687910c87106f6d",
+      "hmac_sha256": "f29771f6e0be4e20d1c9d7412791a4bbd6f90bbf4adc1536adb093786b73c1f2",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "22fde8b59210e1ec9d03",
+      "hmac_sha256": "1ca82056a1ac68caa7882299b9b3f9dd3af9ab79f14b329570b3d353dd8d2c5e",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "4537085ebbca32b51d3e",
+      "hmac_sha256": "26d143fb13645d9d1e45a999a93c78b55104d4dbec6db0f9c77c6b9a900fe782",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "5c37d1e68dad6c8aea1f",
+      "hmac_sha256": "73f714f3aeb41c056393fdf935d92d8d84f0f0364a1b416cc63918e9a57dde23",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "651f03ba53b237910f98",
+      "hmac_sha256": "e5f111fe1a9dc000df03217d5c7c4242cd29295a2860de7f651b10e46729711e",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "7679f16d8fa44dcd8cba",
+      "hmac_sha256": "bfa3ed6e73ff66e755151c48b2a5b2c6d0c554284e143c93da8a75b7e429929a",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "7bcfc7275c0f79a36023",
+      "hmac_sha256": "24a147ee5efddedb78de3241792a4d47893badc70281b068de2bf6714adc98e0",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "96fa8cb625586980e6a9",
+      "hmac_sha256": "5f0d36c559d6e03aec1d04fa5fdfd0d9bf6c226ddf00fc37d96789561ce4e94f",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "a271c658405e101ac593",
+      "hmac_sha256": "2ab8e77f2763de29a62e8909ab04ed1339aa1b7bf2f85f8491ade21b9ce2f0ca",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "a925b05a9fb5827e433a",
+      "hmac_sha256": "60ae476fa0435a6546a8e4692399130f943ab75388a8713d47cb2c909ecfc812",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "b65cf38c5fef36bc8092",
+      "hmac_sha256": "d7ef2d1cb232eeed3e9bf14abb89401578c881734ff148458564620f1098e758",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "c7eb0c832fdb02557009",
+      "hmac_sha256": "2bae1793cf336686378efc2f0d620131fa94e49db12b8b1ae9a27e00a62cffe1",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "cb0ab029667e4245c88a",
+      "hmac_sha256": "fb16e6efc51baf74b8a94548a1c8a7d31e0389ee0c652149f9f6e431f14537d3",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "d4d5eadb1e36b61daefe",
+      "hmac_sha256": "a7dece76b3645efc1773204853df25b12b85b570a6762d84c9ca4743fcdb5088",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "d4e73485f6a3c3864287",
+      "hmac_sha256": "2732f4a77d624c458ecb13201c5759fec19e20cf73e5bf6bda0cc4c6cf5b20d7",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "d7c6fb7e541c11143697",
+      "hmac_sha256": "021a8a5bf1eb0aa5e464f36aa9cfc9c78e711dd6a2d272bc081181a398b34f42",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "dae38c3579951a2b4817",
+      "hmac_sha256": "402c62e81cb5753e355e0684615d0f3c57a6170afd8ca31e91011e9381f1cd20",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "e53dac31e98831b5676e",
+      "hmac_sha256": "17e1076486aaf4b74da0b70ab76268ab4ee9cea5117530e30cdf5d25ddfd26b8",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "f3a66c15861379316345",
+      "hmac_sha256": "a88996e49512512788cb670d99e23773a3cb4cfe6de6993b171eac679679cdbd",
+      "source_family": "mass_4_2_1_plummer",
+      "status": "SEALED_UNEXECUTED"
+    },
+    {
+      "commitment_id": "fede4697c34a59a26a2b",
+      "hmac_sha256": "8fb32010330359a0ad182d320243b8e456fa205b7311082e97529579af0172a5",
+      "source_family": "equal_mass_plummer",
+      "status": "SEALED_UNEXECUTED"
+    }
+  ],
+  "key_location_policy": "The HMAC key and source rows are stored outside the repository on the designated holdout custodian host.",
+  "schema_version": "1.0",
+  "selection_source": "WP1Q-N3BP-SPATIAL-v1",
+  "status": "SEALED_UNEXECUTED"
+}

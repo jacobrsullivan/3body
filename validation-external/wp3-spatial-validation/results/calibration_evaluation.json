@@ -1,0 +1,144 @@
+{
+  "campaign": "WP1Q-N3BP-SPATIAL-v1",
+  "case_count": 24,
+  "case_ids": [
+    "brutus-equal_mass_plummer-00290",
+    "brutus-equal_mass_plummer-01620",
+    "brutus-equal_mass_plummer-02317",
+    "brutus-equal_mass_plummer-02866",
+    "brutus-equal_mass_plummer-03520",
+    "brutus-equal_mass_plummer-04618",
+    "brutus-equal_mass_plummer-04954",
+    "brutus-equal_mass_plummer-05332",
+    "brutus-equal_mass_plummer-05703",
+    "brutus-equal_mass_plummer-07556",
+    "brutus-equal_mass_plummer-07894",
+    "brutus-equal_mass_plummer-08299",
+    "brutus-mass_4_2_1_plummer-00610",
+    "brutus-mass_4_2_1_plummer-00702",
+    "brutus-mass_4_2_1_plummer-00970",
+    "brutus-mass_4_2_1_plummer-03865",
+    "brutus-mass_4_2_1_plummer-05002",
+    "brutus-mass_4_2_1_plummer-06117",
+    "brutus-mass_4_2_1_plummer-06249",
+    "brutus-mass_4_2_1_plummer-06792",
+    "brutus-mass_4_2_1_plummer-07831",
+    "brutus-mass_4_2_1_plummer-08470",
+    "brutus-mass_4_2_1_plummer-09194",
+    "brutus-mass_4_2_1_plummer-09353"
+  ],
+  "corpus_sha256": "e2e30abd56810db0b500b73d76eae05873617bceaf807b810983766b3152c321",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "source_precision_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "spatial_rank_ratio_min",
+      "observed": 0.051453046473488834,
+      "passed": true,
+      "threshold": 0.05
+    },
+    {
+      "comparator": ">=",
+      "name": "positive_ftle_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.9
+    },
+    {
+      "comparator": ">=",
+      "name": "median_ftle",
+      "observed": 0.9803751698009202,
+      "passed": true,
+      "threshold": 0.02
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_position_scaled_max",
+      "observed": 5.9420144820102135e-16,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_velocity_scaled_max",
+      "observed": 7.3471449882679e-16,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_position_scaled_max",
+      "observed": 3.6016531758114325e-07,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_velocity_scaled_max",
+      "observed": 3.777280788240012e-06,
+      "passed": true,
+      "threshold": 1e-05
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_position_scaled_max",
+      "observed": 1.6522709238559646e-09,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_velocity_scaled_max",
+      "observed": 8.564477148484248e-09,
+      "passed": true,
+      "threshold": 5e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_relative_energy_drift_max",
+      "observed": 2.968599824930879e-30,
+      "passed": true,
+      "threshold": 1e-22
+    },
+    {
+      "comparator": "<=",
+      "name": "production_validation_horizon_max",
+      "observed": 2.5,
+      "passed": true,
+      "threshold": 2.5
+    },
+    {
+      "comparator": ">=",
+      "name": "minimum_pair_separation_scaled_min",
+      "observed": 0.005577240419160553,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "source_payload_hash_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    }
+  ],
+  "generated_utc": "2026-07-20T10:01:13.285684+00:00",
+  "results_sha256": "e25cfe6cd0cc0d3cfd6a9ed160ae9023c1531bcadb04ca362dfc5f0bd5d0e758",
+  "schema_version": "1.0",
+  "spec_sha256": "39528edef7839fa595565fd99ff774b703b4dcdd83ec1456aa21cb94857b9485",
+  "split": "calibration",
+  "status": "PASS"
+}

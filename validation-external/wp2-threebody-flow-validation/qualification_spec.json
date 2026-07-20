@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-3BFLOWQ-v1",
+  "specification_status": "LOCKABLE",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2-3BFLOWQ-v1 qualifies an independently replicated canonical Jacobi reduction, the exact 12-dimensional physical-time Jacobi Hamiltonian vector field, its generic non-collinear nine-coordinate SO(3)-quotient derivative with body-frame reconstruction dynamics, and a constrained physical-time pairwise KS lift whose projection, Xi levels, S1-cubed covariance, and triangle position/velocity closure derivatives conform to the qualified Newtonian three-body flow.",
+  "evidence_boundary": "This qualification covers positive finite masses, collision-free states, the generic non-collinear body-frame chart, zero-Xi pairwise KS sections, and the frozen external spatial/chaotic checkpoint corpus. The pairwise KS flow is a redundant constrained physical-time lift, not three independent Kepler systems. The claim excludes a global Sundman transformation, collision passage, a globally regularized three-body Hamiltonian, a Darboux assertion for the SO(3) quotient, nonzero-Xi magnetic reduction, orbit discovery, and every WP3 invariant claim.",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "qualification_id": "TO_BE_FROZEN",
+      "lock_sha256": "TO_BE_FROZEN",
+      "record_sha256": "TO_BE_FROZEN"
+    },
+    "wp2_kepler_ks": {
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    }
+  },
+  "model": {
+    "canonical_flow": "Hamilton equations of the translation-reduced Newtonian Hamiltonian in (rho,lambda,p_rho,p_lambda)",
+    "rotation_flow": "Derivative of the generic body-frame quotient plus frame_dot=frame*hat(omega_body) reconstruction data",
+    "pairwise_lift": "For each pair, q_dot=DK(q)^T*x_dot/(4*r) and Q_dot=DK(q_dot)^T*p+DK(q)^T*p_dot at Xi=0",
+    "time_policy": "Physical Newtonian time only; no global or pair-specific Sundman time is defined"
+  },
+  "execution": {
+    "checkpoint_indices": [0, 2, 4, 6, 8],
+    "finite_difference_step": 1e-7,
+    "cases_per_family_by_split": {
+      "development": 2,
+      "calibration": 2,
+      "holdout": 3
+    },
+    "gauge_angles": [0.37, -0.91, 1.43]
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "prerequisite_pass_rate_min": 1.0,
+    "independent_jacobi_state_scaled_max": 3e-12,
+    "independent_jacobi_roundtrip_scaled_max": 3e-12,
+    "independent_body_frame_scaled_max": 3e-12,
+    "symbolic_canonical_rate_min": 1.0,
+    "canonical_tangent_scaled_max": 3e-12,
+    "hamiltonian_lie_scaled_max": 2e-8,
+    "reduced_quotient_fd_scaled_max": 3e-7,
+    "reconstruction_frame_fd_scaled_max": 3e-7,
+    "pairwise_projection_fd_scaled_max": 5e-7,
+    "pairwise_xi_derivative_abs_max": 2e-11,
+    "pairwise_position_closure_derivative_max": 2e-12,
+    "pairwise_velocity_closure_derivative_max": 2e-12,
+    "pairwise_s1_covariance_scaled_max": 3e-12,
+    "structural_global_sundman_qualified": 0
+  },
+  "downstream_policy": "A PASS closes the independent-reduction and qualified-reduced-or-lifted-vector-field infrastructure items for staged WP3 search readiness. It does not authorize a conserved-quantity, hidden-integrability, regularized-collision, or publication claim."
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-3BFLOWQ-v1",
+  "sources": [
+    {
+      "kind": "qualified_external_corpus",
+      "path": "validation-external/wp3-spatial-validation/reports/wp3_spatial_qualification_record.json",
+      "status": "TO_BE_FROZEN"
+    },
+    {
+      "kind": "published_convention",
+      "title": "Reduction and regularization of the Kepler problem",
+      "author": "J. C. van der Meer",
+      "doi": "10.1007/s10569-021-10025-9"
+    }
+  ],
+  "independence_contract": "The clean-room reference module imports NumPy and SymPy but no src.python package. It derives the Jacobi map and cotangent matrix directly, proves the reference transform canonical with exact symbolic arithmetic, and is compared with production only in the qualification evaluator."
+}

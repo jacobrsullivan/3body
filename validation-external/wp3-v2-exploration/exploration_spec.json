@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-EXP-v2",
+  "specification_status": "LOCKABLE",
+  "interpretation_status": "SEARCH_ONLY",
+  "purpose": "A bounded numerical search for additional low-degree SO(3)-invariant first-integral candidates after value identities and the represented algebra of constants, H, H^2, and |L|^2 are removed.",
+  "evidence_boundary": "A no-candidate result excludes only the frozen degree-two primitive library and mass-parameter blocks on the frozen development/calibration corpus at the declared thresholds. A numerical candidate does not authorize physical interpretation, a conservation claim, or opening the sealed publication reserve; it only triggers a separately frozen candidate qualification.",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "qualification_id": "TO_BE_FROZEN",
+      "lock_sha256": "TO_BE_FROZEN",
+      "record_sha256": "TO_BE_FROZEN"
+    },
+    "wp2_threebody_flow": {
+      "qualification_id": "TO_BE_FROZEN",
+      "lock_sha256": "TO_BE_FROZEN",
+      "record_sha256": "TO_BE_FROZEN"
+    },
+    "sealed_publication_reserve_sha256": "TO_BE_FROZEN"
+  },
+  "data": {
+    "external_checkpoint_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    "synthetic_collocation_seed": 872341,
+    "synthetic_development_count": 90,
+    "synthetic_calibration_count": 45,
+    "synthetic_min_mass_fraction": 0.05,
+    "synthetic_spatial_rank_ratio_min": 0.03
+  },
+  "library": {
+    "rotation_group": "SO(3)",
+    "dot_primitive_count": 10,
+    "scalar_triple_primitive_count": 4,
+    "energy_primitive_count": 5,
+    "primitive_product_degree_max": 2,
+    "parameter_blocks": ["1", "mass_s2", "mass_s3"],
+    "known_algebra": ["constant", "H", "H2", "L2"]
+  },
+  "search": {
+    "mode_count": 5,
+    "value_rank_relative_tolerance": 1e-11,
+    "candidate_lie_rms_max": 1e-10,
+    "calibration_to_training_max": 2.0,
+    "family_fold_coefficient_cosine_min": 0.9,
+    "calibration_trajectory_drift_max": 1e-8,
+    "known_control_lie_max": 1e-10
+  },
+  "staged_policy": {
+    "SEARCH_READY": "Requires both prerequisite qualification records, an intact sealed reserve, and machine-precision behavior of the represented known algebra.",
+    "CANDIDATE_READY": "Requires every frozen numerical candidate threshold; no semantic interpretation is authorized.",
+    "PUBLICATION_READY": "Requires a separate candidate-specific lock, covariance and gauge falsification, independence and Poisson tests, variational and long-time tests, sealed-reserve execution, and independent replication. It is blocked in this campaign."
+  },
+  "implementation_files": [
+    "src/python/wp3_exploration_v2/__init__.py",
+    "src/python/wp3_exploration_v2/normalization.py",
+    "src/python/wp3_exploration_v2/features.py",
+    "src/python/wp3_exploration_v2/search.py",
+    "src/python/wp3_exploration_v2/EXPLORATION_BOUNDARY.md",
+    "validation-external/wp3-v2-exploration/scripts/build_corpus.py",
+    "validation-external/wp3-v2-exploration/scripts/run_exploration.py",
+    "validation-external/wp3-v2-exploration/scripts/render_report.py"
+  ]
+}
