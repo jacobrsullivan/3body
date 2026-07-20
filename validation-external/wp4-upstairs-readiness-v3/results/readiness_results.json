@@ -1,0 +1,480 @@
+{
+  "campaign": "WP4-UP-READY-v3",
+  "case_count": 6,
+  "cases": [
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 5.7767124417296145e-12,
+        "hamiltonian_vector_field_scaled": 7.457923167919489e-12,
+        "momentum_commutation_abs": 1.5188655888564995e-11,
+        "poisson_antisymmetry_abs": 4.440892098500626e-16,
+        "xi_generator_scaled": 7.831533136604555e-12
+      },
+      "case_id": "equal-01",
+      "energy": -1.1885429924154893,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.4241722045935462,
+        "residual_scaled": {
+          "K_h": 1.1102230246251565e-16,
+          "Lx": 1.1102230246251565e-16,
+          "Ly": 1.1102230246251565e-16,
+          "Lz": 0.0,
+          "Xi": 1.6132928326584306e-16,
+          "dependent_2K_minus_3Xi": 2.6194324487249787e-16
+        }
+      },
+      "initial_shell_abs": 2.7755575615628914e-16,
+      "initial_xi_abs": 5.0306980803327406e-17,
+      "integration": {
+        "drifts": {
+          "K_h": 8.881784197001252e-16,
+          "Lx": 5.551115123125783e-16,
+          "Ly": 5.551115123125783e-16,
+          "Lz": 5.124106267500723e-16,
+          "Xi": 5.290906601729262e-16,
+          "dependent_2K_minus_3Xi": 3.030561912531482e-15,
+          "q0_nonconserved": 0.001123703671760512
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 1.807478503592781e-12,
+        "Lx": 2.3567694129896632e-14,
+        "Ly": 2.502711849611877e-13,
+        "Lz": 4.108521101135921e-12,
+        "Xi": 5.231007427913568e-13,
+        "dependent_2K_minus_3Xi": 1.446226748871792e-12,
+        "q0_nonconserved": 0.020353351984563416
+      },
+      "masses": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    },
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 6.654898854208113e-12,
+        "hamiltonian_vector_field_scaled": 1.0485943523118181e-11,
+        "momentum_commutation_abs": 1.6794066137748587e-11,
+        "poisson_antisymmetry_abs": 1.7763568394002505e-15,
+        "xi_generator_scaled": 2.1927652958790044e-11
+      },
+      "case_id": "equal-02",
+      "energy": -1.3220077674332225,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.2110844030745218,
+        "residual_scaled": {
+          "K_h": 1.1102230246251565e-16,
+          "Lx": 2.220446049250313e-16,
+          "Ly": 1.1102230246251565e-16,
+          "Lz": 2.7755575615628914e-16,
+          "Xi": 1.1102230246251565e-16,
+          "dependent_2K_minus_3Xi": 1.6653345369377348e-16
+        }
+      },
+      "initial_shell_abs": 1.1102230246251565e-16,
+      "initial_xi_abs": 5.551115123125783e-17,
+      "integration": {
+        "drifts": {
+          "K_h": 7.771561172376096e-16,
+          "Lx": 4.440892098500626e-16,
+          "Ly": 4.440892098500626e-16,
+          "Lz": 5.551115123125783e-16,
+          "Xi": 5.551115123125783e-16,
+          "dependent_2K_minus_3Xi": 2.942091015256665e-15,
+          "q0_nonconserved": 0.0061209387823385475
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 2.807452170168617e-12,
+        "Lx": 1.3519377931685705e-12,
+        "Ly": 2.4567685249149113e-12,
+        "Lz": 7.03386639572462e-13,
+        "Xi": 7.848897431481668e-13,
+        "dependent_2K_minus_3Xi": 2.091352013026709e-12,
+        "q0_nonconserved": 0.10981186478503553
+      },
+      "masses": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    },
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 3.3657521214536246e-12,
+        "hamiltonian_vector_field_scaled": 9.38288596125103e-12,
+        "momentum_commutation_abs": 1.0197509503484525e-11,
+        "poisson_antisymmetry_abs": 8.881784197001252e-16,
+        "xi_generator_scaled": 1.550950326031557e-11
+      },
+      "case_id": "equal-03",
+      "energy": -1.189756028326311,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.8987085507965108,
+        "residual_scaled": {
+          "K_h": 1.6653345369377348e-16,
+          "Lx": 1.1102230246251565e-16,
+          "Ly": 2.220446049250313e-16,
+          "Lz": 1.3877787807814457e-16,
+          "Xi": 1.1102230246251565e-16,
+          "dependent_2K_minus_3Xi": 6.661338147750939e-16
+        }
+      },
+      "initial_shell_abs": 5.551115123125783e-17,
+      "initial_xi_abs": 1.1102230246251565e-16,
+      "integration": {
+        "drifts": {
+          "K_h": 1.4988010832439613e-15,
+          "Lx": 9.992007221626409e-16,
+          "Ly": 8.881784197001252e-16,
+          "Lz": 4.163336342344337e-16,
+          "Xi": 6.661338147750939e-16,
+          "dependent_2K_minus_3Xi": 4.829470157119431e-15,
+          "q0_nonconserved": 0.006171592988702179
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 9.362445253194322e-15,
+        "Lx": 8.494165059676724e-13,
+        "Ly": 1.4458756842822621e-13,
+        "Lz": 7.643398694551285e-13,
+        "Xi": 1.3781182719876528e-13,
+        "dependent_2K_minus_3Xi": 1.1619337858551356e-13,
+        "q0_nonconserved": 0.13354908211134842
+      },
+      "masses": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    },
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 8.410716567652798e-12,
+        "hamiltonian_vector_field_scaled": 4.300685393750064e-12,
+        "momentum_commutation_abs": 3.540723270134549e-11,
+        "poisson_antisymmetry_abs": 7.105427357601002e-15,
+        "xi_generator_scaled": 1.8030273674199146e-11
+      },
+      "case_id": "mass-421-01",
+      "energy": -9.226320672446606,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.21976792116097055,
+        "residual_scaled": {
+          "K_h": 1.7763568394002505e-15,
+          "Lx": 1.1102230246251565e-16,
+          "Ly": 1.1102230246251565e-16,
+          "Lz": 1.1102230246251565e-16,
+          "Xi": 5.551115123125783e-17,
+          "dependent_2K_minus_3Xi": 3.3861802251067274e-15
+        }
+      },
+      "initial_shell_abs": 8.881784197001252e-16,
+      "initial_xi_abs": 5.551115123125783e-17,
+      "integration": {
+        "drifts": {
+          "K_h": 5.329070518200751e-15,
+          "Lx": 5.551115123125783e-16,
+          "Ly": 5.551115123125783e-16,
+          "Lz": 4.440892098500626e-16,
+          "Xi": 4.996003610813204e-16,
+          "dependent_2K_minus_3Xi": 1.1823875212257917e-14,
+          "q0_nonconserved": 0.0023430898284685364
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 2.5388466216513553e-13,
+        "Lx": 1.7039241718016697e-12,
+        "Ly": 1.5222239910658212e-12,
+        "Lz": 1.85417846969411e-12,
+        "Xi": 6.339478287175364e-13,
+        "dependent_2K_minus_3Xi": 1.129302719021459e-13,
+        "q0_nonconserved": 0.005127980030094631
+      },
+      "masses": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    },
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 1.2507328506217164e-11,
+        "hamiltonian_vector_field_scaled": 4.856607033757507e-12,
+        "momentum_commutation_abs": 6.943778885215579e-11,
+        "poisson_antisymmetry_abs": 1.4210854715202004e-14,
+        "xi_generator_scaled": 3.1894632071494924e-11
+      },
+      "case_id": "mass-421-02",
+      "energy": -8.951719521111444,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.6849339310683685,
+        "residual_scaled": {
+          "K_h": 0.0,
+          "Lx": 0.0,
+          "Ly": 2.220446049250313e-16,
+          "Lz": 1.1102230246251565e-16,
+          "Xi": 1.1102230246251565e-16,
+          "dependent_2K_minus_3Xi": 3.3306690738754696e-16
+        }
+      },
+      "initial_shell_abs": 0.0,
+      "initial_xi_abs": 2.220446049250313e-16,
+      "integration": {
+        "drifts": {
+          "K_h": 7.993605777301127e-15,
+          "Lx": 7.771561172376096e-16,
+          "Ly": 5.551115123125783e-16,
+          "Lz": 4.440892098500626e-16,
+          "Xi": 7.771561172376096e-16,
+          "dependent_2K_minus_3Xi": 1.6986412276764895e-14,
+          "q0_nonconserved": 0.00039602281581074816
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 7.268170344458004e-13,
+        "Lx": 6.7904713715346e-13,
+        "Ly": 1.6779292541560753e-13,
+        "Lz": 1.44114675500989e-12,
+        "Xi": 8.508881524829982e-13,
+        "dependent_2K_minus_3Xi": 4.910706071579428e-13,
+        "q0_nonconserved": 0.0026523977122992538
+      },
+      "masses": [
+        4.0,
+        2.0,
+        1.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    },
+    {
+      "canonical": {
+        "angular_momentum_so3_abs": 1.9625412406298892e-12,
+        "hamiltonian_vector_field_scaled": 1.0996836533007357e-11,
+        "momentum_commutation_abs": 1.3220624595078334e-10,
+        "poisson_antisymmetry_abs": 1.7763568394002505e-15,
+        "xi_generator_scaled": 2.4748758598036602e-11
+      },
+      "case_id": "mass-235-01",
+      "energy": -17.99816399566171,
+      "gauge": {
+        "negative_coordinate_gauge_change": 0.1460798640462211,
+        "residual_scaled": {
+          "K_h": 8.881784197001252e-16,
+          "Lx": 1.1102230246251565e-16,
+          "Ly": 5.551115123125783e-17,
+          "Lz": 1.1102230246251565e-16,
+          "Xi": 1.1102230246251565e-16,
+          "dependent_2K_minus_3Xi": 1.4432899320127035e-15
+        }
+      },
+      "initial_shell_abs": 3.552713678800501e-15,
+      "initial_xi_abs": 0.0,
+      "integration": {
+        "drifts": {
+          "K_h": 6.217248937900877e-15,
+          "Lx": 5.551115123125783e-16,
+          "Ly": 1.6653345369377348e-15,
+          "Lz": 3.3306690738754696e-16,
+          "Xi": 4.440892098500626e-16,
+          "dependent_2K_minus_3Xi": 1.3433698597964394e-14,
+          "q0_nonconserved": 0.0032050618235799355
+        },
+        "step_count": 51,
+        "success": true
+      },
+      "lie_derivative_scaled": {
+        "K_h": 1.057902970593672e-13,
+        "Lx": 1.9839648846740884e-13,
+        "Ly": 5.538264212499198e-13,
+        "Lz": 7.532888488087065e-14,
+        "Xi": 2.6859196439161638e-14,
+        "dependent_2K_minus_3Xi": 1.0814527151166197e-13,
+        "q0_nonconserved": 0.010060719618434601
+      },
+      "masses": [
+        2.0,
+        3.0,
+        5.0
+      ],
+      "rank": {
+        "dependent_increment": 0,
+        "known": 5,
+        "nonconserved_coordinate_increment": 1,
+        "with_dependent": 5,
+        "with_nonconserved_coordinate": 6
+      }
+    }
+  ],
+  "controls": {
+    "negative": {
+      "dependent_2K_minus_3Xi": {
+        "conservation_precheck_passed": true,
+        "decision": "REJECT_FUNCTIONALLY_DEPENDENT"
+      },
+      "q0_nonconserved": {
+        "decision": "REJECT_NONCONSERVED_AND_GAUGE_VARIANT"
+      }
+    },
+    "positive": {
+      "K_h": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 1.7763568394002505e-15,
+        "lie_derivative_scaled_max": 2.807452170168617e-12,
+        "trajectory_drift_scaled_max": 7.993605777301127e-15
+      },
+      "Lx": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.220446049250313e-16,
+        "lie_derivative_scaled_max": 1.7039241718016697e-12,
+        "trajectory_drift_scaled_max": 9.992007221626409e-16
+      },
+      "Ly": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.220446049250313e-16,
+        "lie_derivative_scaled_max": 2.4567685249149113e-12,
+        "trajectory_drift_scaled_max": 1.6653345369377348e-15
+      },
+      "Lz": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.7755575615628914e-16,
+        "lie_derivative_scaled_max": 4.108521101135921e-12,
+        "trajectory_drift_scaled_max": 5.551115123125783e-16
+      },
+      "Xi": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 1.6132928326584306e-16,
+        "lie_derivative_scaled_max": 8.508881524829982e-13,
+        "trajectory_drift_scaled_max": 7.771561172376096e-16
+      }
+    }
+  },
+  "generated_utc": "2026-07-20T20:30:28.391436+00:00",
+  "lock_sha256": "1ca028a3feae2f9eca448fb20909197502c5a474e42095d09e49caa6a27dee0c",
+  "metrics": {
+    "angular_momentum_so3_abs_max": 1.2507328506217164e-11,
+    "candidate_validation_triggered": 0,
+    "dependent_control_gauge_residual_scaled_max": 3.3861802251067274e-15,
+    "dependent_control_lie_scaled_max": 2.091352013026709e-12,
+    "dependent_control_trajectory_drift_scaled_max": 1.6986412276764895e-14,
+    "dependent_rank_increment_max": 0,
+    "deterministic_state_count": 6,
+    "hamiltonian_vector_field_scaled_max": 1.0996836533007357e-11,
+    "initial_shell_abs_max": 3.552713678800501e-15,
+    "initial_xi_abs_max": 2.220446049250313e-16,
+    "integration_success_rate": 1.0,
+    "known_functional_rank_min": 5,
+    "momentum_commutation_abs_max": 1.3220624595078334e-10,
+    "morales_ramis_triggered": 0,
+    "negative_controls_rejected": 2,
+    "negative_coordinate_gauge_change_min": 0.1460798640462211,
+    "negative_coordinate_lie_scaled_min": 0.0026523977122992538,
+    "negative_coordinate_trajectory_drift_scaled_min": 0.00039602281581074816,
+    "nonconserved_rank_increment_min": 1,
+    "poisson_antisymmetry_abs_max": 1.4210854715202004e-14,
+    "positive_control_lie_scaled_max": 4.108521101135921e-12,
+    "positive_controls_accepted": 5,
+    "positive_gauge_residual_scaled_max": 1.7763568394002505e-15,
+    "positive_trajectory_drift_scaled_max": 7.993605777301127e-15,
+    "publication_reserve_open_attempts": 0,
+    "xi_generator_scaled_max": 3.1894632071494924e-11
+  },
+  "qualification_id": "WP4-UP-READY-v3-696827675bff",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "48dd8892e16608226ecd42d1e31bfb889e715a802cc208b9aa58bf5146834547",
+  "wp2_upstairs_prerequisite": {
+    "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+    "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+    "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "status": "PASS"
+  },
+  "wp3_upstairs_state": {
+    "candidate_count": 0,
+    "candidate_decision_sha256": "a32067353d3a387893c5c83c90c93b5189e8d8b43ead753cc7fe8a0c4aabbcb4",
+    "candidate_protocol_sha256": "53b16ed382e8807080756149f106f519c93ff56993690f5c981dd4a672148637",
+    "candidate_status": "NOT_TRIGGERED",
+    "lock_sha256": "ec91c679d4b352f2c076e6b0e1c493c587ffc6f97a95984beb00a7dd67e55996",
+    "null_result_status": "PASS",
+    "publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "publication_reserve_status": "SEALED_UNEXECUTED",
+    "qualification_id": "WP3-UP-CAND-v3-2979adbb0597",
+    "sealed_qualification_status": "NOT_TRIGGERED",
+    "search_lock_file_sha256": "237a07457e48ed6b5dc399be25126be7cfe9d7a5cb3a8cc63a83233e01a0d972",
+    "search_record_payload_sha256": "f58385ca63305dd5a38382b4ec27f25d4843534b7bde4279836904c8dcd58e2b",
+    "search_record_sha256": "e867493b2ee64f3a565745c17e2e2a04763dd1ac905e04ea6496f3419563fd83",
+    "search_results_sha256": "f272257850ecf9248bd67e0c2fa64f98455baaae778cecc35490240a2d5fb379",
+    "search_status": "PASS",
+    "spectral_certificate": {
+      "backend_guarded_lower_bound": 0.00016394931459667498,
+      "bound_formula": "max(0, sigma_min - factor*eps*max(shape)*sigma_max)",
+      "candidate_training_threshold": 1e-10,
+      "certifies_no_training_eligible_direction": true,
+      "generalized_operator_shape": [
+        1566,
+        1090
+      ],
+      "smallest_generalized_singular_value": 0.00016456129372731588,
+      "svd_backend_uncertainty_bound": 6.119791306408978e-07,
+      "svd_backward_error_factor": 16.0
+    },
+    "staged_gate_sha256": "f4e4e37bdc350ef0a408657d60256573f7f9194e0c338b054daae66d3769a124",
+    "wp4_candidate_status": "BLOCKED"
+  }
+}

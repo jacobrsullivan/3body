@@ -24,15 +24,26 @@ standalone publication package.
 `WP2-UPQ-v2-3baea4a70768` is the authoritative one-channel upstairs model
 qualification. See `notes/wp2-up-v2-assessment.md`.
 
-## WP3-UP-CAND-v2
+## WP3-UP-CAND-v3
 
-The parameter-aware degree-three search is invalidated as a null claim because
-its approximate value quotient failed to preserve exact parameter-weighted
-angular-momentum controls. Its candidate gate and downstream WP4-v2 record are
-historical only. See `notes/wp3-up-cand-v2-assessment.md`.
+`WP3-UP-CAND-v3-2979adbb0597` is the authoritative corrective search. It
+removed the exact rank-30 represented known module and evaluated all 1,090
+observable quotient directions. The guarded minimum generalized singular value
+was `1.63949e-4`, versus the `1e-10` candidate threshold, so it produced a
+basis-invariant bounded finite-library null. The candidate gate was not
+triggered and the publication reserve remains sealed. See
+`notes/wp3-up-cand-v3-result.md`.
+
+## WP4-UP-READY-v3
+
+`WP4-UP-READY-v3-696827675bff` passes all 30 control-harness gates against the
+authoritative WP2/WP3 chain. This qualifies known/false/dependent control
+discrimination only. Candidate validation and Morales-Ramis analysis were not
+triggered.
 
 ## Project Effect
 
 The catalogue track can continue independently from the invariant track. The
-corrective `WP3-UP-CAND-v3` campaign must complete before the current polynomial
-hypothesis class can be assessed. No invariant interpretation is authorized.
+current polynomial hypothesis class has now been assessed with a bounded null,
+but the broader lift-integrability hypothesis remains unresolved. No discovered
+invariant exists to interpret or advance into candidate-specific WP4 stages.

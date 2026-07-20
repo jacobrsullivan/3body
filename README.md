@@ -25,16 +25,16 @@ This project systematically tests this hypothesis through:
 |--------------|-------------|--------|------------|
 | **WP1** | High-Precision Infrastructure | Qualified (scoped) | Propagation qualifications pass; WP1-CAT-v1 qualifies two bounded native Earth-Moon planar Lyapunov segments, while a general production catalogue remains open |
 | **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | Canonical Kepler/KS, one-channel perturbed upstairs KS, and bounded reduction/pairwise-KS qualifications pass; global regularization remains open |
-| **WP3** | Invariant Discovery (ML + Symbolic) | Remediation in progress | WP3-UP-CAND-v2 was invalidated by a known-module quotient defect; exact-module v3 is specified but not yet decision-bearing |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Requalification pending | The v2 control harness passed 30/30 gates, but its upstream WP3-v2 chain was invalidated; no candidate claim is active |
+| **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-UP-CAND-v3 excludes training-eligible directions in its frozen degree-three quotient; this is not a no-integral or non-integrability theorem |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Harness qualified | WP4-UP-READY-v3 passes 30/30 known/false/dependent control gates; candidate and Morales-Ramis stages were not triggered |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
 into a claim of integrability or native production-scale periodic-orbit catalogue
 generation. See `notes/wp1-wp2-model-boundary.md`,
-`notes/wp3-up-cand-v2-assessment.md`, and
-`notes/wp4-upstairs-v2-readiness-result.md` for the exact boundaries.
+`notes/wp3-up-cand-v3-result.md`, and
+`notes/wp4-upstairs-v3-readiness-result.md` for the exact boundaries.
 
 ### Current WP1 Evidence
 
@@ -103,10 +103,17 @@ The machine-readable records and human reports are under
 - `WP3-UP-CAND-v3` replaces approximate value-identity removal with an exact
   rank-30 coefficient quotient: 18 generators of the degree-three `Xi=0`
   constraint ideal and 12 represented angular-momentum parameter-module
-  generators. Its decision remains pending until the clean pre-search freeze.
-- `WP4-UP-READY-v2` passed its numerical control harness, but its chain is not
-  authoritative because it consumed the invalid v2 null decision. WP4 will be
-  re-frozen only after corrected WP3 evidence and a new candidate gate exist.
+  generators. `WP3-UP-CAND-v3-2979adbb0597` passed 15/15 readiness gates and
+  produced a basis-invariant bounded null: its backend-guarded minimum
+  generalized singular value is `1.63949e-4`, versus the `1e-10` candidate
+  threshold, across all 1,090 observable quotient directions.
+- The v3 candidate gate is `NOT_TRIGGERED_NO_CANDIDATE`; the 24-case
+  publication reserve remains sealed and no candidate interpretation is
+  authorized.
+- `WP4-UP-READY-v3-696827675bff` is the authoritative control-harness result.
+  It passes 30/30 gates while binding the exact WP2-UP-v2 and WP3-v3 records.
+  It is harness-readiness evidence only; no candidate, Morales-Ramis, or
+  integrability result was produced.
 
 ---
 
@@ -192,9 +199,12 @@ The qualified foundation is deliberately narrower than the project hypothesis.
 Multi-method search for hidden conserved quantities.
 
 The prior parameter-aware campaign is invalidated: it failed a known-control
-recovery audit. The replacement campaign removes the exact represented known
-module before generalized Lie/value screening. No v3 result may be interpreted
-until its pre-search lock and staged gates complete.
+recovery audit. The authoritative v3 campaign removes the exact represented
+known module before generalized Lie/value screening and uses a guarded
+minimum-singular-value certificate, so a null cannot depend on an arbitrary
+SVD basis. It found no training-eligible direction in the frozen degree-three
+quotient. That bounded finite-library null does not imply that no additional
+first integral exists.
 
 - **Symbolic Regression**: Spinor basis (~80 functions), elliptic functions (sn, cn, dn), theta functions
 - **Machine Learning**: Hamiltonian Neural Networks, SINDy
@@ -204,10 +214,10 @@ until its pre-search lock and staged gates complete.
 
 Three-stage validation pipeline for candidate integrals:
 
-The v2 readiness campaign demonstrated the control harness against known,
-false, and dependent controls, but its upstream null decision was invalidated.
-The harness must be re-frozen against corrected WP3 evidence before it is
-authoritative. Candidate-specific stages remain intentionally unexecuted.
+The authoritative v3 readiness campaign verifies the control harness against
+known, false, and dependent controls while binding the corrected WP3-v3 null
+chain. Candidate-specific and Morales-Ramis stages remain intentionally
+unexecuted because WP3 produced no candidate subspace.
 
 1. **Analytical Vetting (WP4.1)**: Poisson brackets {I, H} = 0, involution tests, functional independence
 2. **Morales-Ramis Test (WP4.2)**: Differential Galois theory obstruction
