@@ -33,9 +33,9 @@ from src.python.wp3_upstairs import (  # noqa: E402
 SPATIAL_ROOT = VALIDATION_ROOT / "wp3-spatial-validation-v2"
 SPATIAL_LOCK = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_lock.json"
 SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_record.json"
-UP_ROOT = VALIDATION_ROOT / "wp2-up-validation"
-UP_LOCK = UP_ROOT / "reports/wp2_up_qualification_lock.json"
-UP_RECORD = UP_ROOT / "reports/wp2_up_qualification_record.json"
+UP_ROOT = VALIDATION_ROOT / "wp2-up-validation-v2"
+UP_LOCK = UP_ROOT / "reports/wp2_up_v2_qualification_lock.json"
+UP_RECORD = UP_ROOT / "reports/wp2_up_v2_qualification_record.json"
 
 
 def _args() -> argparse.Namespace:
@@ -186,7 +186,7 @@ def main() -> None:
     if lock["spec_sha256"] != sha256_file(args.spec) or lock["corpus_sha256"] != sha256_file(args.corpus):
         raise RuntimeError("WP3-UP search lock input mismatch")
     prerequisites = {
-        "wp2_upstairs": _verify_prerequisite(spec["prerequisites"]["wp2_upstairs"], UP_LOCK, UP_RECORD, "WP2-UPQ-v1"),
+        "wp2_upstairs": _verify_prerequisite(spec["prerequisites"]["wp2_upstairs"], UP_LOCK, UP_RECORD, "WP2-UPQ-v2"),
         "wp1_spatial_n3bp": _verify_prerequisite(spec["prerequisites"]["wp1_spatial_n3bp"], SPATIAL_LOCK, SPATIAL_RECORD, "WP1Q-N3BP-SPATIAL-v2"),
     }
     reserve = _verify_reserve(args.commitments, spec["prerequisites"]["sealed_publication_reserve_sha256"])

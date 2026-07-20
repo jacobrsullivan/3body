@@ -6,9 +6,9 @@
   "evidence_boundary": "A no-candidate result excludes only total-degree-three-or-less polynomials in the 14 dimensionless canonical upstairs variables on the frozen development/calibration corpus, gauges, and thresholds. A numerical candidate is not a conserved quantity and only triggers a separately frozen candidate-specific qualification. This campaign cannot open the sealed publication reserve and cannot authorize a WP4 or integrability claim.",
   "prerequisites": {
     "wp2_upstairs": {
-      "qualification_id": "WP2-UPQ-v1-64cdda5ede83",
-      "lock_sha256": "12a11e64a590e620c3527d4d46ceadad79ad149bc7ffeef32f084e94a853de37",
-      "record_sha256": "30ac5db1a3003b756cd4868833e7efb0634e099bc1beed75265329c8b66667e5"
+      "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+      "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+      "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c"
     },
     "wp1_spatial_n3bp": {
       "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",

@@ -1,6 +1,6 @@
 # WP3-UP-CAND-v1
 
-This is a preregistered candidate search on the qualified `WP2-UP-v1`
+This is a preregistered candidate search on the qualified `WP2-UP-v2`
 Hamiltonian.  It searches all degree-one through degree-three monomials in the
 14 dimensionless canonical upstairs variables, evaluates exact Lie
 derivatives, removes value identities and the represented known algebra, and
