@@ -16,7 +16,8 @@ confirmation.
 
 The decision-bearing numerical runtime is pinned in
 `runtime_requirements.txt`; cross-runtime replay is supplemental evidence and
-cannot alter the frozen decision.
+cannot alter the frozen decision. The runner refuses to execute unless Python,
+NumPy, and SciPy match the frozen `decision_runtime` exactly.
 
 The sealed 24-case publication reserve is commitment-only input.  This
 campaign cannot execute it.  A surviving mode can only trigger a new

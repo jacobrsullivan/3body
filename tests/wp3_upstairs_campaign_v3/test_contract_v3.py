@@ -40,7 +40,10 @@ def test_v3_runner_uses_physical_and_s1_derivatives() -> None:
     assert "s1_generator" in runner
     assert "known_module_coefficients" in runner
     assert "known_module_projection_residual" in runner
+    assert "all_generalized_modes_evaluated" in runner
     assert "physical_point_id" in runner
+    assert "_verify_runtime" in runner
+    assert "fixed_energy" in runner
 
 
 def test_v3_final_record_uses_generalized_quotient_metrics() -> None:
@@ -55,3 +58,16 @@ def test_v3_corpus_excludes_publication_reserve() -> None:
     corpus = _json("data/search_corpus.json")
     assert corpus["corpus_id"] == "wp3-upstairs-v3-exact-module-frozen-corpus"
     assert {case["split"] for case in corpus["cases"]} == {"development", "calibration"}
+
+
+def test_v3_runtime_is_exact_and_import_closure_is_direct() -> None:
+    spec = _json("search_spec.json")
+    assert spec["decision_runtime"] == {
+        "python": "3.13.2",
+        "packages": {"numpy": "2.3.5", "scipy": "1.16.3"},
+    }
+    shell = (CAMPAIGN / "run_search.sh").read_text(encoding="utf-8")
+    runner = (CAMPAIGN / "scripts/run_search.py").read_text(encoding="utf-8")
+    assert "src/python/wp3_exploration_v2/normalization.py" in shell
+    assert "src/python/wp3_exploration_v2/__init__.py" not in shell
+    assert "wp3_exploration_v2.normalization import nondimensionalize" in runner

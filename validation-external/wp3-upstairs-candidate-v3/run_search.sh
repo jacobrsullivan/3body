@@ -36,7 +36,6 @@ case "${1:-}" in
       --scope validation-external/wp3-v2-exploration/data/exploration_corpus.json \
       --scope validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json \
       --scope src/python/wp3_upstairs_v3 --scope src/python/upstairs_ks \
-      --scope src/python/wp3_exploration_v2/__init__.py \
       --scope src/python/wp3_exploration_v2/normalization.py \
       --scope src/python/wp3_exploration_v3 \
       --scope tests/wp3_upstairs_v3 --scope tests/wp3_exploration_v3 \

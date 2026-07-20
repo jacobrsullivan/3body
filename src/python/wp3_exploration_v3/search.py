@@ -67,6 +67,7 @@ class _Fit:
     raw_coefficients: tuple[FloatArray, ...]
     normalized_coefficients: tuple[FloatArray, ...]
     generalized_singular_values: FloatArray
+    reconstructed_training_lie_rms: FloatArray
     feature_scales: FloatArray
     value_rank: int
     value_nullity: int
@@ -88,8 +89,7 @@ def _fit(
     known_module: Mapping[str, ArrayLike],
     *,
     value_rank_relative_tolerance: float,
-    candidate_lie_rms_max: float,
-    mode_count: int,
+    return_mode_count: int | None,
     feature_scales: FloatArray | None = None,
 ) -> _Fit:
     feature_count = values.shape[1]
@@ -126,7 +126,7 @@ def _fit(
         normalized_derivatives, complement
     )
 
-    _, value_singular, value_right = np.linalg.svd(value_operator, full_matrices=False)
+    _, value_singular, value_right = np.linalg.svd(value_operator, full_matrices=True)
     value_rank = _svd_rank(value_singular, value_rank_relative_tolerance)
     if value_rank == 0:
         raise ValueError("quotient library has no observable value direction")
@@ -157,11 +157,11 @@ def _fit(
         generalized_operator, full_matrices=False
     )
     order = np.argsort(generalized_singular)
-    below_threshold = int(np.count_nonzero(generalized_singular <= candidate_lie_rms_max))
-    selected = order[: max(mode_count, below_threshold)]
     raw_coefficients: list[FloatArray] = []
     normalized_coefficients: list[FloatArray] = []
-    for index in selected:
+    reconstructed_lie_rms: list[float] = []
+    selected_generalized: list[float] = []
+    for index in order:
         observable_coordinates = generalized_right[index] / value_singular[:value_rank]
         nuisance_coordinates = np.zeros(nuisance.shape[1], dtype=np.float64)
         if nuisance_rank:
@@ -188,10 +188,22 @@ def _fit(
             normalized = -normalized
         raw_coefficients.append(raw)
         normalized_coefficients.append(normalized)
+        reconstructed_lie_rms.append(
+            _weighted_rms(_matrix_vector(derivatives, raw), weights)
+        )
+        selected_generalized.append(float(generalized_singular[index]))
+    reconstructed_order = np.argsort(reconstructed_lie_rms)
+    if return_mode_count is not None:
+        reconstructed_order = reconstructed_order[:return_mode_count]
     return _Fit(
-        raw_coefficients=tuple(raw_coefficients),
-        normalized_coefficients=tuple(normalized_coefficients),
-        generalized_singular_values=np.sort(generalized_singular),
+        raw_coefficients=tuple(raw_coefficients[index] for index in reconstructed_order),
+        normalized_coefficients=tuple(normalized_coefficients[index] for index in reconstructed_order),
+        generalized_singular_values=np.asarray(
+            [selected_generalized[index] for index in reconstructed_order], dtype=np.float64
+        ),
+        reconstructed_training_lie_rms=np.asarray(
+            [reconstructed_lie_rms[index] for index in reconstructed_order], dtype=np.float64
+        ),
         feature_scales=feature_scales,
         value_rank=value_rank,
         value_nullity=complement.shape[1] - value_rank,
@@ -201,16 +213,20 @@ def _fit(
     )
 
 
-def _subspace_projection(vector: FloatArray, modes: tuple[FloatArray, ...]) -> float:
+def _subspace_basis(modes: tuple[FloatArray, ...]) -> FloatArray:
     if not modes:
-        return 0.0
+        return np.empty((0, 0), dtype=np.float64)
     matrix = np.column_stack(modes)
     basis, singular, _ = np.linalg.svd(matrix, full_matrices=False)
     rank = _svd_rank(singular, 1e-11)
+    return basis[:, :rank]
+
+
+def _subspace_projection(vector: FloatArray, basis: FloatArray) -> float:
     denominator = float(np.linalg.norm(vector))
-    if rank == 0 or denominator == 0.0:
+    if basis.shape[1] == 0 or denominator == 0.0:
         return 0.0
-    return float(np.linalg.norm(basis[:, :rank].T @ (vector / denominator)))
+    return float(np.linalg.norm(basis.T @ (vector / denominator)))
 
 
 def _group_drift(
@@ -301,13 +317,13 @@ def search_quotient_modes(
         training_weights,
         known_module,
         value_rank_relative_tolerance=value_rank_relative_tolerance,
-        candidate_lie_rms_max=candidate_lie_rms_max,
-        mode_count=mode_count,
+        return_mode_count=None,
     )
 
     training_families = np.asarray(training_family_ids, dtype=object)
     training_groups = np.asarray(training_group_ids, dtype=object)
-    fold_modes: dict[str, tuple[FloatArray, ...]] = {}
+    fold_bases: dict[str, FloatArray] = {}
+    fold_summaries: dict[str, dict[str, int]] = {}
     for held_out in sorted({str(value) for value in training_families}):
         mask = training_families != held_out
         fold_weights = balanced_row_weights(
@@ -319,11 +335,17 @@ def search_quotient_modes(
             fold_weights,
             known_module,
             value_rank_relative_tolerance=value_rank_relative_tolerance,
-            candidate_lie_rms_max=candidate_lie_rms_max,
-            mode_count=fold_mode_count,
+            return_mode_count=fold_mode_count,
             feature_scales=fit.feature_scales,
         )
-        fold_modes[held_out] = fold.normalized_coefficients
+        fold_bases[held_out] = _subspace_basis(fold.normalized_coefficients)
+        fold_summaries[held_out] = {
+            "row_count": int(np.count_nonzero(mask)),
+            "observable_value_rank": fold.value_rank,
+            "value_nuisance_nullity": fold.value_nullity,
+            "value_nuisance_derivative_rank": fold.value_null_derivative_rank,
+            "retained_subspace_mode_count": len(fold.normalized_coefficients),
+        }
 
     known_metrics: dict[str, dict[str, float]] = {}
     for name, value in known_module.items():
@@ -364,8 +386,8 @@ def search_quotient_modes(
         calibration_gauge_rms = _weighted_rms(calibration_gauge_lie, calibration_weights)
         ratio = calibration_lie_rms / max(training_lie_rms, calibration_ratio_floor)
         fold_projections = {
-            family: _subspace_projection(normalized_coefficients, family_modes)
-            for family, family_modes in fold_modes.items()
+            family: _subspace_projection(normalized_coefficients, basis)
+            for family, basis in fold_bases.items()
         }
         drift_rows, drift_max = _group_drift(
             calibration_projected, calibration_group_ids, calibration_point_ids
@@ -405,12 +427,13 @@ def search_quotient_modes(
             "calibration_trajectory_drift_max": drift_max,
             "training_gauge_orbit_spread_max": training_gauge_spread,
             "calibration_gauge_orbit_spread_max": calibration_gauge_spread,
-            "coefficients": coefficients.tolist(),
-            "top_terms": [
+        }
+        if rank <= mode_count or passed:
+            payload["coefficients"] = coefficients.tolist()
+            payload["top_terms"] = [
                 {"feature": str(feature_names[int(index)]), "coefficient": float(coefficients[index])}
                 for index in ordered_terms
-            ],
-        }
+            ]
         modes.append(payload)
         if passed:
             candidates.append(rank)
@@ -426,8 +449,12 @@ def search_quotient_modes(
         "value_nuisance_nullity": fit.value_nullity,
         "value_nuisance_derivative_rank": fit.value_null_derivative_rank,
         "generalized_lie_value_singular_values": fit.generalized_singular_values.tolist(),
+        "reconstructed_training_lie_rms": fit.reconstructed_training_lie_rms.tolist(),
+        "evaluated_mode_count": len(fit.raw_coefficients),
+        "reported_expression_count": sum("coefficients" in mode for mode in modes),
+        "family_fold_summaries": fold_summaries,
         "numerical_nullity_at_candidate_threshold": int(
-            np.count_nonzero(fit.generalized_singular_values <= candidate_lie_rms_max)
+            np.count_nonzero(fit.reconstructed_training_lie_rms <= candidate_lie_rms_max)
         ),
         "candidate_mode_ranks": candidates,
         "candidate_count": len(candidates),

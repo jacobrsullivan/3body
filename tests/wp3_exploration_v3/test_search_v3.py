@@ -1,8 +1,14 @@
 from __future__ import annotations
 
 import numpy as np
+import pytest
 
 from src.python.wp3_exploration_v3 import search_quotient_modes
+from src.python.wp3_exploration_v3.search import (
+    _fit,
+    _subspace_basis,
+    _subspace_projection,
+)
 
 
 def test_search_preserves_exact_integral_after_known_module_quotient() -> None:
@@ -55,3 +61,44 @@ def test_search_preserves_exact_integral_after_known_module_quotient() -> None:
     assert cosine > 1.0 - 1e-10
     assert result["modes"][0]["training_lie_rms"] < 1e-12
     assert result["modes"][0]["calibration_lie_rms"] < 1e-12
+    assert result["evaluated_mode_count"] == result["observable_value_rank"]
+
+
+def test_wide_value_operator_uses_complete_right_nullspace() -> None:
+    rng = np.random.default_rng(7)
+    values = rng.normal(size=(8, 12))
+    derivatives = rng.normal(size=(8, 12))
+    exact = np.zeros(12)
+    exact[1:3] = (1.0, 2.0)
+    derivatives[:, 1] = -2.0 * derivatives[:, 2]
+    known = np.zeros(12)
+    known[0] = 1.0
+    weights = np.ones(8) / 8.0
+    fit = _fit(
+        values,
+        derivatives,
+        weights,
+        {"known": known},
+        value_rank_relative_tolerance=1e-12,
+        return_mode_count=None,
+    )
+    assert fit.value_nullity >= 4
+    assert fit.value_null_derivative_rank > 1
+    assert len(fit.raw_coefficients) == fit.value_rank
+    assert np.min(fit.reconstructed_training_lie_rms) < 1e-12
+
+
+def test_subspace_projection_is_invariant_under_basis_rotation() -> None:
+    first = np.array([1.0, 0.0, 0.0, 0.0])
+    second = np.array([0.0, 1.0, 0.0, 0.0])
+    angle = 0.713
+    rotated = (
+        np.cos(angle) * first + np.sin(angle) * second,
+        -np.sin(angle) * first + np.cos(angle) * second,
+    )
+    original_basis = _subspace_basis((first, second))
+    rotated_basis = _subspace_basis(rotated)
+    probe = np.array([0.3, -0.8, 0.4, 0.1])
+    assert _subspace_projection(probe, original_basis) == pytest.approx(
+        _subspace_projection(probe, rotated_basis), abs=2e-15
+    )

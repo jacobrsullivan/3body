@@ -5,7 +5,9 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.metadata
 from pathlib import Path
+import platform
 import sys
 from typing import Any
 
@@ -24,7 +26,7 @@ from qualification_tools import (  # noqa: E402
 )
 from src.python.n3bp_qualification import InertialState, SystemParameters  # noqa: E402
 from src.python.upstairs_ks import lift_jacobi_state, upstairs_vector_field  # noqa: E402
-from src.python.wp3_exploration_v2 import nondimensionalize  # noqa: E402
+from src.python.wp3_exploration_v2.normalization import nondimensionalize  # noqa: E402
 from src.python.wp3_exploration_v3 import search_quotient_modes  # noqa: E402
 from src.python.wp3_upstairs_v3 import (  # noqa: E402
     evaluate_upstairs_v3_features, feature_names, known_module_coefficients,
@@ -126,6 +128,19 @@ def _matrix_sha256(matrix: np.ndarray) -> str:
     return digest.hexdigest()
 
 
+def _verify_runtime(expected: dict[str, Any]) -> dict[str, Any]:
+    observed = {
+        "python": platform.python_version(),
+        "packages": {
+            name: importlib.metadata.version(name)
+            for name in expected["packages"]
+        },
+    }
+    if observed != expected:
+        raise RuntimeError(f"decision runtime mismatch: expected {expected}, observed {observed}")
+    return observed
+
+
 def _evaluate_state(
     state: InertialState,
     parameters: SystemParameters,
@@ -136,23 +151,25 @@ def _evaluate_state(
     family_id: str,
     source_kind: str,
     point_label: str,
-) -> tuple[list[np.ndarray], list[np.ndarray], list[np.ndarray], list[dict[str, str]]]:
+    fixed_energy: float | None = None,
+) -> tuple[list[np.ndarray], list[np.ndarray], list[np.ndarray], list[dict[str, Any]]]:
     system = nondimensionalize(state, parameters, length_scale=length_scale)
     values, derivatives, gauge_derivatives, metadata = [], [], [], []
     for gauge_index, angle in enumerate(gauge_angles):
         shell = lift_jacobi_state(system.state, system.parameters, angle=float(angle))
-        flow = upstairs_vector_field(shell.state, system.parameters, shell.energy)
+        energy = shell.energy if fixed_energy is None else float(fixed_energy)
+        flow = upstairs_vector_field(shell.state, system.parameters, energy)
         evaluation = evaluate_upstairs_v3_features(
             shell.state,
             flow.derivative,
             system.parameters,
-            fixed_energy=shell.energy,
+            fixed_energy=energy,
         )
         gauge_evaluation = evaluate_upstairs_v3_features(
             shell.state,
             s1_generator(shell.state),
             system.parameters,
-            fixed_energy=shell.energy,
+            fixed_energy=energy,
         )
         if evaluation.names != feature_names():
             raise RuntimeError("upstairs feature ordering changed")
@@ -166,6 +183,7 @@ def _evaluate_state(
                 "group_id": group_id,
                 "family_id": family_id,
                 "source_kind": source_kind,
+                "checkpoint_energy_difference": float(shell.energy - energy),
             }
         )
     return values, derivatives, gauge_derivatives, metadata
@@ -176,11 +194,11 @@ def _split_matrices(
     corpus: dict[str, Any],
     source_definitions: dict[str, dict[str, Any]],
     source_results: dict[str, dict[str, Any]],
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[dict[str, str]]]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, list[dict[str, Any]]]:
     values: list[np.ndarray] = []
     derivatives: list[np.ndarray] = []
     gauge_derivatives: list[np.ndarray] = []
-    metadata: list[dict[str, str]] = []
+    metadata: list[dict[str, Any]] = []
     angles = [float(value) for value in corpus["gauge_angles"]]
     for case in (item for item in corpus["cases"] if item["split"] == split):
         if case["source_kind"] == "qualified_external_trajectory":
@@ -190,6 +208,16 @@ def _split_matrices(
                 [float(value) for value in definition["masses_decimal"]],
                 gravitational_constant=1.0,
             )
+            reference_index = int(case["checkpoint_indices"][0])
+            reference_state = InertialState(
+                np.asarray(result["oracle"]["states_decimal"][reference_index], dtype=float)
+            )
+            reference_system = nondimensionalize(
+                reference_state, parameters, length_scale=float(case["length_scale"])
+            )
+            fixed_energy = lift_jacobi_state(
+                reference_system.state, reference_system.parameters, angle=0.0
+            ).energy
             for checkpoint in case["checkpoint_indices"]:
                 state = InertialState(np.asarray(result["oracle"]["states_decimal"][checkpoint], dtype=float))
                 chunk = _evaluate_state(
@@ -197,6 +225,7 @@ def _split_matrices(
                     gauge_angles=angles, group_id=case["case_id"],
                     family_id=case["source_family"], source_kind=case["source_kind"],
                     point_label=f"{case['case_id']}:checkpoint-{checkpoint}",
+                    fixed_energy=fixed_energy,
                 )
                 values.extend(chunk[0]); derivatives.extend(chunk[1]); gauge_derivatives.extend(chunk[2]); metadata.extend(chunk[3])
         elif case["source_kind"] == "deterministic_spatial_collocation":
@@ -217,6 +246,7 @@ def _split_matrices(
 def main() -> None:
     args = _args()
     spec, corpus, source_corpus = load_json(args.spec), load_json(args.corpus), load_json(args.source_corpus)
+    decision_runtime = _verify_runtime(spec["decision_runtime"])
     spatial_corpus = load_json(args.spatial_corpus)
     if corpus["spec_sha256"] != sha256_file(args.spec) or corpus["source_corpus_sha256"] != sha256_file(args.source_corpus):
         raise RuntimeError("WP3-UP corpus input mismatch")
@@ -278,6 +308,10 @@ def main() -> None:
     parameter_weighted_angular_count = sum(
         name.startswith("known:") and "*" in name for name in known_metrics
     )
+    fixed_energy_checkpoint_abs_max = max(
+        abs(float(item["checkpoint_energy_difference"]))
+        for item in (*train_metadata, *calibration_metadata)
+    )
     search_ready_gates = [
         make_gate("prerequisite_pass_rate", 1.0, ">=", 1.0),
         make_gate("search_lock_verified", 1, "==", 1),
@@ -290,6 +324,9 @@ def main() -> None:
         make_gate("known_module_gauge_lie_rms_max", known_gauge_max, "<=", float(search_spec["known_module_gauge_lie_rms_max"])),
         make_gate("constraint_value_abs_max", constraint_value_max, "<=", float(search_spec["constraint_value_abs_max"])),
         make_gate("known_module_projection_residual", float(search["exact_known_module_projection_residual"]), "<=", float(search_spec["known_module_projection_residual_max"])),
+        make_gate("all_generalized_modes_evaluated", int(search["evaluated_mode_count"]), "==", int(search["observable_value_rank"])),
+        make_gate("decision_runtime_exact", 1, "==", 1),
+        make_gate("fixed_energy_checkpoint_abs_max", fixed_energy_checkpoint_abs_max, "<=", float(search_spec["fixed_energy_checkpoint_abs_max"])),
     ]
     search_ready = "PASS" if all(gate["passed"] for gate in search_ready_gates) else "FAIL"
     candidate_count = int(search["candidate_count"])
@@ -313,7 +350,7 @@ def main() -> None:
         "source_corpus_sha256": sha256_file(args.source_corpus),
         "prerequisites": prerequisites, "sealed_publication_reserve": reserve,
         "qualified_spatial_inputs": spatial_inputs,
-        "runtime": runtime_fingerprint(),
+        "runtime": runtime_fingerprint(), "decision_runtime": decision_runtime,
         "matrix_hashes": {
             "training_values": _matrix_sha256(train_values),
             "training_lie_derivatives": _matrix_sha256(train_derivatives),
@@ -327,6 +364,7 @@ def main() -> None:
             "training_groups": len({item["group_id"] for item in train_metadata}),
             "calibration_groups": len({item["group_id"] for item in calibration_metadata}),
             "gauge_count": len(corpus["gauge_angles"]),
+            "fixed_energy_checkpoint_abs_max": fixed_energy_checkpoint_abs_max,
         },
         "search": search,
     }

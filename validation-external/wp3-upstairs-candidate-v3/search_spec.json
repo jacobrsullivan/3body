@@ -33,6 +33,13 @@
     "source_exploration_corpus": "validation-external/wp3-v2-exploration/data/exploration_corpus.json",
     "executable_splits": ["development", "calibration"]
   },
+  "decision_runtime": {
+    "python": "3.13.2",
+    "packages": {
+      "numpy": "2.3.5",
+      "scipy": "1.16.3"
+    }
+  },
   "search": {
     "mode_count": 20,
     "fold_mode_count": 40,
@@ -47,7 +54,8 @@
     "known_module_lie_rms_max": 1e-10,
     "known_module_gauge_lie_rms_max": 1e-10,
     "constraint_value_abs_max": 1e-10,
-    "known_module_projection_residual_max": 1e-10
+    "known_module_projection_residual_max": 1e-10,
+    "fixed_energy_checkpoint_abs_max": 1e-10
   },
   "staged_policy": {
     "SEARCH_READY": "Requires both prerequisite locks and records, exact hashes for every consumed spatial corpus/result, an intact pre-search lock and reserve commitment, rank-30 exact known-module removal, and passing Xi/angular control diagnostics.",
