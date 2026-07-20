@@ -115,7 +115,18 @@ def _numeric_deltas(
     second_singular = np.asarray(second_search["post_projection_singular_values"])
     if first_singular.shape != second_singular.shape:
         raise RuntimeError("parity singular-value vectors differ in shape")
-    singular_delta = float(np.max(np.abs(first_singular - second_singular)))
+    singular_delta = float(
+        np.max(
+            np.abs(first_singular - second_singular)
+            / np.maximum.reduce(
+                (
+                    np.abs(first_singular),
+                    np.abs(second_singular),
+                    np.ones_like(first_singular),
+                )
+            )
+        )
+    )
     coefficient_relative = 0.0
     coefficient_cosine_min = 1.0
     metric_relative = 0.0
@@ -154,7 +165,7 @@ def _numeric_deltas(
             ),
         )
     return {
-        "singular_value_max_abs_delta": singular_delta,
+        "singular_value_relative_delta_max": singular_delta,
         "mode_coefficient_relative_l2_max": coefficient_relative,
         "mode_coefficient_cosine_min": coefficient_cosine_min,
         "mode_metric_relative_delta_max": metric_relative,

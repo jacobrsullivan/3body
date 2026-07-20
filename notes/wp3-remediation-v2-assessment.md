@@ -36,6 +36,10 @@ authorized.
   candidate ceiling of `1e-10`.
 - Candidate count: zero. The 24-case publication reserve remains
   `SEALED_UNEXECUTED` on the custodian host.
+- Cross-runtime replication: **PASS** (12/12 parity checks) on bobs-mini with
+  Python 3.11.15 versus the local Python 3.13.2 run. Input and matrix hashes,
+  search structure, staged decisions, and reserve status match exactly; the
+  worst singular-spectrum relative delta is `2.892089783224773e-10`.
 
 ## Prove-able Boundary
 

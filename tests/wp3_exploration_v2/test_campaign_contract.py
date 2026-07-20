@@ -87,3 +87,12 @@ def test_implementation_snapshot_recomputes() -> None:
         "file_hashes"
     ].items():
         assert _sha(ROOT / relative_name) == expected_hash
+
+
+def test_bobs_mini_cross_runtime_parity_passes() -> None:
+    parity = _json(CAMPAIGN / "reports/wp3_v2_bobs_mini_parity.json")
+    assert parity["status"] == "PASS"
+    assert parity["comparison"]["runtime"]["python"] == "3.11.15"
+    assert parity["reference"]["runtime"]["python"] == "3.13.2"
+    assert len(parity["checks"]) == 12
+    assert all(check["passed"] for check in parity["checks"])

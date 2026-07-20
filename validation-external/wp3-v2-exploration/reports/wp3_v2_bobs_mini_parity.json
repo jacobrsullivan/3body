@@ -1,0 +1,109 @@
+{
+  "campaign": "WP3-EXP-v2-PARITY-v1",
+  "checks": [
+    {
+      "name": "input_hashes",
+      "passed": true
+    },
+    {
+      "name": "implementation_snapshot",
+      "passed": true
+    },
+    {
+      "name": "matrix_hashes",
+      "passed": true
+    },
+    {
+      "name": "source_summary",
+      "passed": true
+    },
+    {
+      "name": "search_structure",
+      "passed": true
+    },
+    {
+      "name": "staged_gate_decisions",
+      "passed": true
+    },
+    {
+      "name": "sealed_reserve_status",
+      "passed": true
+    },
+    {
+      "comparator": "<=",
+      "name": "singular_value_relative_delta_max",
+      "observed": 2.892089783224773e-10,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "mode_coefficient_relative_l2_max",
+      "observed": 1.2040412737423707e-08,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": ">=",
+      "name": "mode_coefficient_cosine_min",
+      "observed": 0.9999999999999997,
+      "passed": true,
+      "threshold": 0.999999
+    },
+    {
+      "comparator": "<=",
+      "name": "mode_metric_relative_delta_max",
+      "observed": 1.5245013437685295e-07,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "known_control_metric_abs_delta_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 1e-09
+    }
+  ],
+  "comparison": {
+    "label": "bobs-mini-macos-arm64-python-3.11",
+    "path": "/private/tmp/wp3-v2-exploration-results-bobs.json",
+    "runtime": {
+      "machine": "arm64",
+      "packages": {
+        "numpy": "2.2.6",
+        "pytest": "8.4.1",
+        "rebound": "4.4.10",
+        "scipy": "1.16.1"
+      },
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "python": "3.11.15",
+      "python_executable": "/Users/bob/micromamba/envs/wp1_env/bin/python3.11",
+      "python_implementation": "CPython"
+    },
+    "sha256": "34130a4ff5e4b962c0a03539fc42cd16aafc3ce7c36a43d5007c570281a7c97c"
+  },
+  "generated_utc": "2026-07-20T10:27:07.586356+00:00",
+  "implementation_sha256": "1034ceb50ddfa85ede2497c425860d1c4cc310dd1c23cf3e790a0207e35a7de3",
+  "reference": {
+    "label": "local-macos-arm64-python-3.13",
+    "path": "validation-external/wp3-v2-exploration/results/exploration_results.json",
+    "runtime": {
+      "machine": "arm64",
+      "packages": {
+        "numpy": "2.3.5",
+        "pytest": "8.4.1",
+        "rebound": "4.5.1",
+        "scipy": "1.16.3"
+      },
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "python": "3.13.2",
+      "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+      "python_implementation": "CPython"
+    },
+    "sha256": "94418264a37e39d63fb762441effb21aa0532b7367380ff3ea7c5702f57fdc54"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "f4804026858391a53d78c6533b2f1b83f87d28ece956d87059090e3ba89508cb",
+  "status": "PASS"
+}
