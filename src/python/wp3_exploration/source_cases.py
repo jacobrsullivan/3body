@@ -46,13 +46,18 @@ def _rotation_xyz(angles: list[float]) -> np.ndarray:
     rx = np.array([[1.0, 0.0, 0.0], [0.0, cx, -sx], [0.0, sx, cx]])
     ry = np.array([[cy, 0.0, sy], [0.0, 1.0, 0.0], [-sy, 0.0, cy]])
     rz = np.array([[cz, -sz, 0.0], [sz, cz, 0.0], [0.0, 0.0, 1.0]])
-    return rz @ ry @ rx
+    return np.einsum(
+        "ij,jk->ik",
+        rz,
+        np.einsum("ij,jk->ik", ry, rx, optimize=False),
+        optimize=False,
+    )
 
 
 def _rotate_state(state: InertialState, rotation: np.ndarray) -> InertialState:
     return InertialState.from_components(
-        state.positions @ rotation.T,
-        state.velocities @ rotation.T,
+        np.einsum("ij,kj->ik", state.positions, rotation, optimize=False),
+        np.einsum("ij,kj->ik", state.velocities, rotation, optimize=False),
     )
 
 

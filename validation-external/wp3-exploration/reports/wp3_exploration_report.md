@@ -20,8 +20,8 @@ This report ranks numerical near-null directions only. It makes no conservation,
 
 | Control | Train Lie RMS | Calibration Lie RMS | Train max drift | Calibration max drift |
 |---|---:|---:|---:|---:|
-| `angular_momentum_squared` | 2.643e-14 | 6.889e-14 | 5.438e-16 | 2.833e-17 |
-| `energy` | 1.551e-14 | 2.443e-14 | 1.545e-11 | 3.140e-12 |
+| `angular_momentum_squared` | 2.644e-14 | 6.922e-14 | 5.440e-16 | 2.879e-17 |
+| `energy` | 1.551e-14 | 2.444e-14 | 1.545e-11 | 3.140e-12 |
 
 ## Screening Modes
 

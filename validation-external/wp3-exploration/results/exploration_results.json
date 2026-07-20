@@ -1,19 +1,19 @@
 {
   "campaign": "WP3-EXP-v1",
   "claim_boundary": "Outputs rank numerical screening directions only. No conservation, independence, involution, or integrability claim is made.",
-  "generated_utc": "2026-07-20T08:57:59.699717+00:00",
+  "generated_utc": "2026-07-20T09:05:05.362273+00:00",
   "implementation_snapshot": {
     "file_hashes": {
       "src/python/wp3_exploration/__init__.py": "94783c8b8bc2f772406cb6425b14d6041e922240eca2abf57ab7cb6a93abc010",
       "src/python/wp3_exploration/dynamics.py": "d62d7c8d55f4825864adeca3fbe65ba475d5d12f64906fa27e21978eef79ae64",
       "src/python/wp3_exploration/features.py": "d3d33f74fe8f80472ad17bf0b4fffd7e62174c579b28d8044181beb2b806a1fd",
       "src/python/wp3_exploration/publication_gate.py": "f214021252896a19b9a8e8a5d1367ab8f080fd37ed33ec2267703d4a0f1d63d6",
-      "src/python/wp3_exploration/search.py": "6c22c81fe68bdee788ff1b948c18dd5ca9fedc6fa4933ec63194dea7819bd6fd",
-      "src/python/wp3_exploration/source_cases.py": "a898f3297499f247a410243bcfff4cc9f694e767db20d67d9960140a90d200a0",
+      "src/python/wp3_exploration/search.py": "1f2604205ae0e7d7d902615b55cb4bd5208143b886a12b104d062542dce1c4f6",
+      "src/python/wp3_exploration/source_cases.py": "bfa663186e01639c7b69d0645c8df1e1b2a47f54353f8447180848c9796d1d12",
       "validation-external/wp3-exploration/scripts/evaluate_publication_gate.py": "b6e977dc411b18423f558dfd9fc34802737d061b557eef9ac37acd5e73318cfe",
-      "validation-external/wp3-exploration/scripts/run_exploration.py": "91d210cb8d477748e402d882305a34ec9d698fd5f1f237b96144bbb2c9a30bd3"
+      "validation-external/wp3-exploration/scripts/run_exploration.py": "069cca2ddcef62adb5fae0496c5a4a64dd5dead20f635b112760e3d0dfc012e7"
     },
-    "snapshot_sha256": "16c82183cd778581046a27db9373db49b8bb8736c913c070d8394c16e3591d26"
+    "snapshot_sha256": "e0463bc12e61331d050638c002bb767dd681733830b5b7847b20da792d632c02"
   },
   "input_hashes": {
     "exploration_corpus_sha256": "89ed032014166b97abbacd567fa98c366746700dcfe2843abe59c0fb41e00191",
@@ -23,22 +23,22 @@
   "interpretation_status": "EXPLORATORY_ONLY",
   "known_control_trajectory_drift": {
     "angular_momentum_squared": {
-      "calibration_max_scaled_peak_to_peak": 2.833242381146895e-17,
+      "calibration_max_scaled_peak_to_peak": 2.879117650027019e-17,
       "calibration_trajectories": [
         {
-          "absolute_peak_to_peak": 1.5543122344752192e-15,
+          "absolute_peak_to_peak": 2.220446049250313e-15,
           "case_id": "cal_lagrange_scaled_rotated",
-          "scaled_peak_to_peak": 6.372750529704074e-18
+          "scaled_peak_to_peak": 9.103929328148678e-18
         },
         {
-          "absolute_peak_to_peak": 6.910270966553611e-15,
+          "absolute_peak_to_peak": 7.022160630754115e-15,
           "case_id": "cal_sjtu_line_59402",
-          "scaled_peak_to_peak": 2.833242381146895e-17
+          "scaled_peak_to_peak": 2.879117650027019e-17
         },
         {
-          "absolute_peak_to_peak": 4.1772141301521515e-15,
+          "absolute_peak_to_peak": 4.163336342344337e-15,
           "case_id": "cal_sjtu_line_69432",
-          "scaled_peak_to_peak": 1.71267670485797e-17
+          "scaled_peak_to_peak": 1.706986749027877e-17
         }
       ],
       "coefficients": [
@@ -113,12 +113,12 @@
         0.0,
         0.0
       ],
-      "training_max_scaled_peak_to_peak": 5.438221769196484e-16,
+      "training_max_scaled_peak_to_peak": 5.439545259527269e-16,
       "training_trajectories": [
         {
-          "absolute_peak_to_peak": 9.43689570931383e-16,
+          "absolute_peak_to_peak": 1.1102230246251565e-15,
           "case_id": "train_figure_eight_published_rounded",
-          "scaled_peak_to_peak": 1.799946849867904e-17
+          "scaled_peak_to_peak": 2.117584529256358e-17
         },
         {
           "absolute_peak_to_peak": 4.440892098500626e-15,
@@ -126,19 +126,19 @@
           "scaled_peak_to_peak": 8.470338117025432e-17
         },
         {
-          "absolute_peak_to_peak": 2.85119150511548e-14,
+          "absolute_peak_to_peak": 2.851885394505871e-14,
           "case_id": "train_sjtu_line_14",
-          "scaled_peak_to_peak": 5.438221769196484e-16
+          "scaled_peak_to_peak": 5.439545259527269e-16
         },
         {
-          "absolute_peak_to_peak": 2.3497154742757598e-14,
+          "absolute_peak_to_peak": 2.350897254643769e-14,
           "case_id": "train_sjtu_line_29734",
-          "scaled_peak_to_peak": 4.481731171230719e-16
+          "scaled_peak_to_peak": 4.483985240700338e-16
         },
         {
-          "absolute_peak_to_peak": 1.0959982921221467e-14,
+          "absolute_peak_to_peak": 1.0970391262077328e-14,
           "case_id": "train_sjtu_line_44348",
-          "scaled_peak_to_peak": 2.0904529774752606e-16
+          "scaled_peak_to_peak": 2.0924382129714386e-16
         }
       ]
     },
@@ -146,9 +146,9 @@
       "calibration_max_scaled_peak_to_peak": 3.1400214690783128e-12,
       "calibration_trajectories": [
         {
-          "absolute_peak_to_peak": 6.106226635438361e-16,
+          "absolute_peak_to_peak": 7.216449660063518e-16,
           "case_id": "cal_lagrange_scaled_rotated",
-          "scaled_peak_to_peak": 4.7567696273744353e-17
+          "scaled_peak_to_peak": 5.621636832351605e-17
         },
         {
           "absolute_peak_to_peak": 4.0308201221250783e-11,
@@ -264,8 +264,8 @@
     }
   },
   "matrix_hashes": {
-    "calibration_features": "3ff9d857b27e977decf7e1facf924f912c9c4c15ad4455471ee5f13b9e39a2a9",
-    "calibration_lie_derivatives": "5772d15cd90ae25b33abeaaf5ad4098035ab943f8406219cd5935902773ebec5",
+    "calibration_features": "9187be9dd296f84f5cc742046d8f7c08ddbef632392b0617096dbf0e75abfa99",
+    "calibration_lie_derivatives": "2c3754fdc916ec2d7ab53da28d9e2e3af1a1655d531e38076aacd0d8ebc54a31",
     "training_features": "3eacc9b490810c2121bf5627d98e28cc5d0bf8c83af3e1c76f07953efedf1fd8",
     "training_lie_derivatives": "dea1b24431aff7b6352f4c6529cca06cdf5c13220806e17bea01941ee7e6c8ea"
   },
@@ -312,7 +312,7 @@
   "publication_gate": {
     "campaign": "WP3-PUB-GATE-v1",
     "interpretation_authorized": false,
-    "result_sha256": "9c5c5986d426a832556138ff742f4f3651a68a94052f746aa29ce542f652702a",
+    "result_sha256": "52e9352b3c9efc27e6acf7a38e4d72119638ab8056ea1782e12db1af03a529b8",
     "status": "BLOCKED"
   },
   "runtime": {
@@ -337,18 +337,18 @@
     "known_control_metrics": {
       "angular_momentum_squared": {
         "calibration_lie_max_abs": 9.094947017729282e-13,
-        "calibration_lie_rms": 6.888980843637683e-14,
+        "calibration_lie_rms": 6.921685570566919e-14,
         "calibration_value_std": 243.89974583665295,
         "training_lie_max_abs": 2.084998840246044e-13,
-        "training_lie_rms": 2.6427585029511186e-14,
+        "training_lie_rms": 2.6440038836047502e-14,
         "training_value_std": 52.428746493300025
       },
       "energy": {
         "calibration_lie_max_abs": 3.410605131648481e-13,
-        "calibration_lie_rms": 2.442972729317071e-14,
+        "calibration_lie_rms": 2.444261752665411e-14,
         "calibration_value_std": 12.836918988672524,
         "training_lie_max_abs": 2.2737367544323206e-13,
-        "training_lie_rms": 1.5513213243263553e-14,
+        "training_lie_rms": 1.5513855435917302e-14,
         "training_value_std": 5.234800764807573
       }
     },
@@ -413,9 +413,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 6.6058269965196814e-15,
+                  "absolute_peak_to_peak": 1.226796442210798e-14,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 4.0753760459367056e-15
+                  "scaled_peak_to_peak": 7.568555513882454e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.1057124047925876,
@@ -431,32 +431,32 @@
               "calibration_max_scaled_peak_to_peak": 0.06659246230468645,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.45932507584769044,
+                  "absolute_peak_to_peak": 0.45932507584769056,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.45932507584769044
+                  "scaled_peak_to_peak": 0.4593250758476906
                 },
                 {
                   "absolute_peak_to_peak": 2.0539125955565396e-15,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 2.0539125955565396e-15
+                  "scaled_peak_to_peak": 2.05391259555654e-15
                 },
                 {
-                  "absolute_peak_to_peak": 0.11115643507196724,
+                  "absolute_peak_to_peak": 0.11115643507196722,
                   "case_id": "train_sjtu_line_14",
                   "scaled_peak_to_peak": 0.11115643507196724
                 },
                 {
-                  "absolute_peak_to_peak": 0.11244287934852451,
+                  "absolute_peak_to_peak": 0.11244287934852448,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.11244287934852451
+                  "scaled_peak_to_peak": 0.1124428793485245
                 },
                 {
                   "absolute_peak_to_peak": 0.10897080590472864,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.10897080590472864
+                  "scaled_peak_to_peak": 0.10897080590472866
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.45932507584769044
+              "training_max_scaled_peak_to_peak": 0.4593250758476906
             }
           },
           {
@@ -492,22 +492,22 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 5.218048215738236e-15,
+                  "absolute_peak_to_peak": 9.658940314238862e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 5.796147798353889e-15
+                  "scaled_peak_to_peak": 1.0729039541633794e-14
                 },
                 {
                   "absolute_peak_to_peak": 0.1169836530634406,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.12994409310016833
+                  "scaled_peak_to_peak": 0.1299440931001683
                 },
                 {
                   "absolute_peak_to_peak": 0.1222076655451455,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.13574686593639504
+                  "scaled_peak_to_peak": 0.135746865936395
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.13574686593639504,
+              "calibration_max_scaled_peak_to_peak": 0.135746865936395,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.4249736488782012,
@@ -571,9 +571,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 2.8449465006019636e-14,
+                  "absolute_peak_to_peak": 3.047562202596055e-14,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 2.1680697668503974e-14
+                  "scaled_peak_to_peak": 2.3224786380504742e-14
                 },
                 {
                   "absolute_peak_to_peak": 0.41700183595040985,
@@ -591,7 +591,7 @@
                 {
                   "absolute_peak_to_peak": 0.907129284783702,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.9071292847837022
+                  "scaled_peak_to_peak": 0.9071292847837021
                 },
                 {
                   "absolute_peak_to_peak": 5.294376048681215e-15,
@@ -611,10 +611,10 @@
                 {
                   "absolute_peak_to_peak": 0.3875054323170931,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.3875054323170932
+                  "scaled_peak_to_peak": 0.38750543231709317
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.9071292847837022
+              "training_max_scaled_peak_to_peak": 0.9071292847837021
             }
           }
         ],
@@ -709,9 +709,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 5.828670879282072e-16,
+                  "absolute_peak_to_peak": 7.7021722333370235e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 7.929101190521627e-16
+                  "scaled_peak_to_peak": 1.0477740858903578e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.006368057957690057,
@@ -719,7 +719,7 @@
                   "scaled_peak_to_peak": 0.008662862765696297
                 },
                 {
-                  "absolute_peak_to_peak": 0.00660241568943421,
+                  "absolute_peak_to_peak": 0.006602415689434211,
                   "case_id": "cal_sjtu_line_69432",
                   "scaled_peak_to_peak": 0.008981674070754817
                 }
@@ -727,9 +727,9 @@
               "calibration_max_scaled_peak_to_peak": 0.008981674070754817,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.053722500982903855,
+                  "absolute_peak_to_peak": 0.05372250098290386,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.05372250098290386
+                  "scaled_peak_to_peak": 0.05372250098290387
                 },
                 {
                   "absolute_peak_to_peak": 4.2500725161431774e-17,
@@ -747,12 +747,12 @@
                   "scaled_peak_to_peak": 0.005382388965663625
                 },
                 {
-                  "absolute_peak_to_peak": 0.005902695465598049,
+                  "absolute_peak_to_peak": 0.00590269546559805,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.00590269546559805
+                  "scaled_peak_to_peak": 0.005902695465598051
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.05372250098290386
+              "training_max_scaled_peak_to_peak": 0.05372250098290387
             }
           },
           {
@@ -803,9 +803,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 1.6792123247455493e-15,
+                  "absolute_peak_to_peak": 1.7486012637846216e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 7.941804287732822e-16
+                  "scaled_peak_to_peak": 8.269978018630871e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.011861364685415422,
@@ -897,9 +897,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 3.58046925441613e-15,
+                  "absolute_peak_to_peak": 4.475586568020162e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.0537648987475688e-15
+                  "scaled_peak_to_peak": 1.317206123434461e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.01857716613568756,
@@ -988,21 +988,21 @@
         "known_control_metrics": {
           "energy": {
             "calibration_lie_max_abs": 3.410605131648481e-13,
-            "calibration_lie_rms": 2.442972729317071e-14,
+            "calibration_lie_rms": 2.444261752665411e-14,
             "calibration_value_std": 12.836918988672524,
             "training_lie_max_abs": 2.2737367544323206e-13,
-            "training_lie_rms": 1.5513213243263553e-14,
+            "training_lie_rms": 1.5513855435917302e-14,
             "training_value_std": 5.234800764807573
           }
         },
         "near_null_modes": [
           {
-            "calibration_lie_max_abs": 24.38691793109706,
-            "calibration_lie_rms": 1.8842864237346837,
-            "calibration_value_std": 2.912682454473804,
+            "calibration_lie_max_abs": 24.386917931097063,
+            "calibration_lie_rms": 1.8842864237346841,
+            "calibration_value_std": 2.9126824544738046,
             "coefficients": [
               0.40248166247090356,
-              -0.272387456297257,
+              -0.2723874562972571,
               0.41641148922633636,
               -0.3218969858426465,
               -0.11556369173897234
@@ -1025,7 +1025,7 @@
                 "feature": "potential_23"
               },
               {
-                "coefficient": -0.272387456297257,
+                "coefficient": -0.2723874562972571,
                 "feature": "kinetic_lambda"
               },
               {
@@ -1033,51 +1033,51 @@
                 "feature": "potential_31"
               }
             ],
-            "training_lie_max_abs": 17.192611293347987,
+            "training_lie_max_abs": 17.19261129334799,
             "training_lie_rms": 1.09129984098568,
             "training_value_std": 1.0,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 2.5396351688300456e-15,
+                  "absolute_peak_to_peak": 5.002942504717112e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 8.719231184742547e-16
+                  "scaled_peak_to_peak": 1.7176408973222342e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.4511348962475498,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.1548863988089805
+                  "scaled_peak_to_peak": 0.15488639880898053
                 },
                 {
-                  "absolute_peak_to_peak": 0.4491228803144998,
+                  "absolute_peak_to_peak": 0.44912288031449976,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.15419562116174346
+                  "scaled_peak_to_peak": 0.15419562116174348
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.1548863988089805,
+              "calibration_max_scaled_peak_to_peak": 0.15488639880898053,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.4107158589762129,
+                  "absolute_peak_to_peak": 0.410715858976213,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.41071585897621293
+                  "scaled_peak_to_peak": 0.410715858976213
                 },
                 {
                   "absolute_peak_to_peak": 9.783840404509192e-15,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 9.783840404509194e-15
+                  "scaled_peak_to_peak": 9.783840404509192e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.2823591408712471,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.28235914087124714
+                  "scaled_peak_to_peak": 0.2823591408712471
                 },
                 {
-                  "absolute_peak_to_peak": 0.40702880640951394,
+                  "absolute_peak_to_peak": 0.407028806409514,
                   "case_id": "train_sjtu_line_29734",
                   "scaled_peak_to_peak": 0.407028806409514
                 },
                 {
-                  "absolute_peak_to_peak": 0.4410034004908903,
+                  "absolute_peak_to_peak": 0.4410034004908904,
                   "case_id": "train_sjtu_line_44348",
                   "scaled_peak_to_peak": 0.4410034004908904
                 }
@@ -1086,18 +1086,18 @@
             }
           },
           {
-            "calibration_lie_max_abs": 17.867275051108532,
-            "calibration_lie_rms": 3.481624917744933,
+            "calibration_lie_max_abs": 17.867275051108535,
+            "calibration_lie_rms": 3.481624917744934,
             "calibration_value_std": 1.672831722991503,
             "coefficients": [
               0.02330154251011584,
-              0.0048136544603560715,
+              0.004813654460356073,
               0.0006778551635445988,
               2.161226581450495,
               -0.032434232601084405
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
-            "known_control_overlap_max": 3.469446951953614e-18,
+            "known_control_overlap_max": 0.0,
             "rank": 2,
             "standardized_singular_value": 0.9929834748726095,
             "top_terms": [
@@ -1114,7 +1114,7 @@
                 "feature": "kinetic_rho"
               },
               {
-                "coefficient": 0.0048136544603560715,
+                "coefficient": 0.004813654460356073,
                 "feature": "kinetic_lambda"
               },
               {
@@ -1122,28 +1122,28 @@
                 "feature": "potential_12"
               }
             ],
-            "training_lie_max_abs": 72.60703251474881,
-            "training_lie_rms": 4.775401331863986,
-            "training_value_std": 1.0,
+            "training_lie_max_abs": 72.6070325147488,
+            "training_lie_rms": 4.775401331863985,
+            "training_value_std": 0.9999999999999999,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 5.88418203051333e-15,
+                  "absolute_peak_to_peak": 1.0436096431476471e-14,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 3.5174978747956334e-15
+                  "scaled_peak_to_peak": 6.238581136429991e-15
                 },
                 {
-                  "absolute_peak_to_peak": 0.7351083110744931,
+                  "absolute_peak_to_peak": 0.7351083110744936,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.3315660222727561
+                  "scaled_peak_to_peak": 0.3315660222727562
                 },
                 {
-                  "absolute_peak_to_peak": 0.7392730248853532,
+                  "absolute_peak_to_peak": 0.7392730248853527,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.3311913404445694
+                  "scaled_peak_to_peak": 0.3311913404445692
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.3315660222727561,
+              "calibration_max_scaled_peak_to_peak": 0.3315660222727562,
               "training": [
                 {
                   "absolute_peak_to_peak": 2.051146548797206,
@@ -1151,9 +1151,9 @@
                   "scaled_peak_to_peak": 0.6658812537958755
                 },
                 {
-                  "absolute_peak_to_peak": 1.5987211554602254e-14,
+                  "absolute_peak_to_peak": 1.6431300764452317e-14,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 7.58268561300096e-15
+                  "scaled_peak_to_peak": 7.793315768917653e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.8535140132993704,
@@ -1186,7 +1186,7 @@
               -0.1550475003920479
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
-            "known_control_overlap_max": 2.0816681711721685e-17,
+            "known_control_overlap_max": 2.7755575615628914e-17,
             "rank": 3,
             "standardized_singular_value": 1.2898737807271141,
             "top_terms": [
@@ -1217,9 +1217,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 4.2049697057677804e-15,
+                  "absolute_peak_to_peak": 4.912736883966318e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.9410886684461976e-15
+                  "scaled_peak_to_peak": 2.267806563135162e-15
                 },
                 {
                   "absolute_peak_to_peak": 8.63172641521853,
@@ -1340,22 +1340,22 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 3.0531133177191805e-15,
+                  "absolute_peak_to_peak": 4.274358644806853e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 2.5356929955102793e-15
+                  "scaled_peak_to_peak": 3.5499701937143914e-15
                 },
                 {
-                  "absolute_peak_to_peak": 0.7997385893489705,
+                  "absolute_peak_to_peak": 0.7997385893489704,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.6642044785833192
+                  "scaled_peak_to_peak": 0.6642044785833191
                 },
                 {
-                  "absolute_peak_to_peak": 0.7676251552871115,
+                  "absolute_peak_to_peak": 0.7676251552871116,
                   "case_id": "cal_sjtu_line_69432",
                   "scaled_peak_to_peak": 0.6375334050467272
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.6642044785833192,
+              "calibration_max_scaled_peak_to_peak": 0.6642044785833191,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.9059929064098378,
@@ -1368,9 +1368,9 @@
                   "scaled_peak_to_peak": 5.107025913275721e-15
                 },
                 {
-                  "absolute_peak_to_peak": 0.24467418182468273,
+                  "absolute_peak_to_peak": 0.24467418182468276,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.24467418182468276
+                  "scaled_peak_to_peak": 0.24467418182468278
                 },
                 {
                   "absolute_peak_to_peak": 0.7120815487885672,
@@ -1424,9 +1424,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 2.55351295663786e-15,
+                  "absolute_peak_to_peak": 3.0531133177191805e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.9850292454388177e-15
+                  "scaled_peak_to_peak": 2.3734045325898905e-15
                 },
                 {
                   "absolute_peak_to_peak": 1.3952434876329853,
@@ -1434,7 +1434,7 @@
                   "scaled_peak_to_peak": 1.0846230955123815
                 },
                 {
-                  "absolute_peak_to_peak": 1.372345363826007,
+                  "absolute_peak_to_peak": 1.3723453638260072,
                   "case_id": "cal_sjtu_line_69432",
                   "scaled_peak_to_peak": 1.0668227372630237
                 }
@@ -1452,9 +1452,9 @@
                   "scaled_peak_to_peak": 4.052314039881821e-15
                 },
                 {
-                  "absolute_peak_to_peak": 1.0158683753893747,
+                  "absolute_peak_to_peak": 1.0158683753893745,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 1.0158683753893747
+                  "scaled_peak_to_peak": 1.0158683753893745
                 },
                 {
                   "absolute_peak_to_peak": 1.473824461961708,
@@ -1471,14 +1471,14 @@
             }
           },
           {
-            "calibration_lie_max_abs": 42.6279481695738,
+            "calibration_lie_max_abs": 42.62794816957379,
             "calibration_lie_rms": 6.594996318590468,
-            "calibration_value_std": 1.4295781257479743,
+            "calibration_value_std": 1.429578125747974,
             "coefficients": [
-              -0.11821903719385167,
-              0.27794355780871066,
-              0.2781546344584634,
-              -0.19908787038487755
+              -0.11821903719385166,
+              0.2779435578087106,
+              0.27815463445846333,
+              -0.19908787038487752
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
             "known_control_overlap_max": 0.0,
@@ -1486,72 +1486,72 @@
             "standardized_singular_value": 1.0607560945522725,
             "top_terms": [
               {
-                "coefficient": 0.2781546344584634,
+                "coefficient": 0.27815463445846333,
                 "feature": "dot(lambda,p_rho)"
               },
               {
-                "coefficient": 0.27794355780871066,
+                "coefficient": 0.2779435578087106,
                 "feature": "dot(rho,p_lambda)"
               },
               {
-                "coefficient": -0.19908787038487755,
+                "coefficient": -0.19908787038487752,
                 "feature": "dot(lambda,p_lambda)"
               },
               {
-                "coefficient": -0.11821903719385167,
+                "coefficient": -0.11821903719385166,
                 "feature": "dot(rho,p_rho)"
               }
             ],
-            "training_lie_max_abs": 24.156114814017883,
+            "training_lie_max_abs": 24.15611481401788,
             "training_lie_rms": 2.9873736011429943,
-            "training_value_std": 1.0,
+            "training_value_std": 0.9999999999999999,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 8.430756093247282e-15,
+                  "absolute_peak_to_peak": 9.457712391025552e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 5.89737345682748e-15
+                  "scaled_peak_to_peak": 6.615736643338154e-15
                 },
                 {
                   "absolute_peak_to_peak": 1.1969500293438813,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.837275002873747
+                  "scaled_peak_to_peak": 0.8372750028737473
                 },
                 {
-                  "absolute_peak_to_peak": 1.119073515108645,
+                  "absolute_peak_to_peak": 1.1190735151086448,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.7827998309103469
+                  "scaled_peak_to_peak": 0.782799830910347
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.837275002873747,
+              "calibration_max_scaled_peak_to_peak": 0.8372750028737473,
               "training": [
                 {
                   "absolute_peak_to_peak": 1.0791124513341357,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 1.0791124513341357
+                  "scaled_peak_to_peak": 1.079112451334136
                 },
                 {
-                  "absolute_peak_to_peak": 5.4539706084710815e-15,
+                  "absolute_peak_to_peak": 5.4817261840867104e-15,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 5.4539706084710815e-15
+                  "scaled_peak_to_peak": 5.481726184086711e-15
                 },
                 {
-                  "absolute_peak_to_peak": 0.6800018571830343,
+                  "absolute_peak_to_peak": 0.6800018571830342,
                   "case_id": "train_sjtu_line_14",
                   "scaled_peak_to_peak": 0.6800018571830343
                 },
                 {
                   "absolute_peak_to_peak": 1.276434474448902,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 1.276434474448902
+                  "scaled_peak_to_peak": 1.2764344744489022
                 },
                 {
                   "absolute_peak_to_peak": 1.4644399116246065,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 1.4644399116246065
+                  "scaled_peak_to_peak": 1.4644399116246067
                 }
               ],
-              "training_max_scaled_peak_to_peak": 1.4644399116246065
+              "training_max_scaled_peak_to_peak": 1.4644399116246067
             }
           }
         ],
@@ -1695,9 +1695,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 3.969047313034935e-15,
+                  "absolute_peak_to_peak": 5.773159728050814e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.6396705317765372e-15
+                  "scaled_peak_to_peak": 2.3849753189476907e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.04739793922963969,
@@ -1733,9 +1733,9 @@
                   "scaled_peak_to_peak": 0.0358597156179859
                 },
                 {
-                  "absolute_peak_to_peak": 0.040500073480182225,
+                  "absolute_peak_to_peak": 0.04050007348018223,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.040500073480182225
+                  "scaled_peak_to_peak": 0.04050007348018223
                 }
               ],
               "training_max_scaled_peak_to_peak": 0.11325347604593654
@@ -1819,27 +1819,27 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 8.049116928532385e-16,
+                  "absolute_peak_to_peak": 1.5543122344752192e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 3.446360379255592e-16
+                  "scaled_peak_to_peak": 6.655040732355627e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.055567226835950737,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.02379201229810513
+                  "scaled_peak_to_peak": 0.023792012298105136
                 },
                 {
-                  "absolute_peak_to_peak": 0.05895424503869021,
+                  "absolute_peak_to_peak": 0.05895424503869022,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.025242219251412137
+                  "scaled_peak_to_peak": 0.025242219251412148
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.025242219251412137,
+              "calibration_max_scaled_peak_to_peak": 0.025242219251412148,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.0853510926600547,
+                  "absolute_peak_to_peak": 0.08535109266005468,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.08535109266005472
+                  "scaled_peak_to_peak": 0.0853510926600547
                 },
                 {
                   "absolute_peak_to_peak": 3.677613769070831e-16,
@@ -1849,20 +1849,20 @@
                 {
                   "absolute_peak_to_peak": 0.04000783614624182,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.040007836146241836
+                  "scaled_peak_to_peak": 0.04000783614624183
                 },
                 {
                   "absolute_peak_to_peak": 0.03867970531497844,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.038679705314978455
+                  "scaled_peak_to_peak": 0.03867970531497845
                 },
                 {
                   "absolute_peak_to_peak": 0.044830850908748776,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.04483085090874879
+                  "scaled_peak_to_peak": 0.04483085090874878
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.08535109266005472
+              "training_max_scaled_peak_to_peak": 0.0853510926600547
             }
           },
           {
@@ -1938,14 +1938,14 @@
               }
             ],
             "training_lie_max_abs": 10.13337028160407,
-            "training_lie_rms": 1.4846488501124309,
+            "training_lie_rms": 1.4846488501124306,
             "training_value_std": 1.0000000000000002,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 1.8943180357666733e-15,
+                  "absolute_peak_to_peak": 2.3175905639050143e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 6.595704255782673e-16
+                  "scaled_peak_to_peak": 8.069469675572941e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.08614451674116935,
@@ -2066,9 +2066,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 1.4710455076283324e-15,
+                  "absolute_peak_to_peak": 1.6132928326584306e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 6.933266221897702e-16
+                  "scaled_peak_to_peak": 7.603699983920829e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.39834775872541994,
@@ -2145,9 +2145,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 6.765421556309548e-16,
+                  "absolute_peak_to_peak": 1.1275702593849246e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.9182363270990888e-16
+                  "scaled_peak_to_peak": 3.197060545165148e-16
                 },
                 {
                   "absolute_peak_to_peak": 2.6067102133135864,
@@ -2224,9 +2224,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 5.412337245047638e-16,
+                  "absolute_peak_to_peak": 6.071532165918825e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.5869085727528076e-16
+                  "scaled_peak_to_peak": 1.7801858989214187e-16
                 },
                 {
                   "absolute_peak_to_peak": 1.3504052475010657,
@@ -2354,31 +2354,31 @@
         "known_control_metrics": {
           "angular_momentum_squared": {
             "calibration_lie_max_abs": 9.094947017729282e-13,
-            "calibration_lie_rms": 6.888980843637683e-14,
+            "calibration_lie_rms": 6.921685570566919e-14,
             "calibration_value_std": 243.89974583665295,
             "training_lie_max_abs": 2.084998840246044e-13,
-            "training_lie_rms": 2.6427585029511186e-14,
+            "training_lie_rms": 2.6440038836047502e-14,
             "training_value_std": 52.428746493300025
           }
         },
         "near_null_modes": [
           {
-            "calibration_lie_max_abs": 3.442495653506718,
-            "calibration_lie_rms": 0.35831669337675387,
-            "calibration_value_std": 3.7418030407996272,
+            "calibration_lie_max_abs": 3.442495653506712,
+            "calibration_lie_rms": 0.3583166933767539,
+            "calibration_value_std": 3.7418030407996263,
             "coefficients": [
-              0.011513225043251694,
+              0.01151322504325169,
               0.0016164525069114497,
               0.00048702183701459736,
               0.001132153498264696,
-              -0.011427583085609897,
+              -0.011427583085609892,
               0.0007091407431399025,
               -0.011991749758075945,
               -0.0009180032279023146,
               -0.0014720677239101522,
               -0.0004425839894596042,
               4.6661020383278825e-05,
-              0.010240592227404878,
+              0.010240592227404876,
               -0.0009720825574694807,
               0.0006183633404728469,
               0.0005325025475055343,
@@ -2388,7 +2388,7 @@
               0.029954563837339538
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
-            "known_control_overlap_max": 1.6653345369377348e-16,
+            "known_control_overlap_max": 1.1102230246251565e-16,
             "rank": 1,
             "standardized_singular_value": 0.019259947594409604,
             "top_terms": [
@@ -2405,15 +2405,15 @@
                 "feature": "dot(rho,p_rho)*dot(rho,p_rho)"
               },
               {
-                "coefficient": 0.011513225043251694,
+                "coefficient": 0.01151322504325169,
                 "feature": "dot(rho,rho)*dot(p_rho,p_rho)"
               },
               {
-                "coefficient": -0.011427583085609897,
+                "coefficient": -0.011427583085609892,
                 "feature": "dot(rho,lambda)*dot(p_rho,p_lambda)"
               },
               {
-                "coefficient": 0.010240592227404878,
+                "coefficient": 0.010240592227404876,
                 "feature": "dot(rho,p_lambda)*dot(lambda,p_rho)"
               },
               {
@@ -2441,56 +2441,56 @@
                 "feature": "dot(rho,lambda)*dot(p_lambda,p_lambda)"
               }
             ],
-            "training_lie_max_abs": 0.5272421912697217,
-            "training_lie_rms": 0.060986253028294045,
-            "training_value_std": 0.9999999999999999,
+            "training_lie_max_abs": 0.5272421912697215,
+            "training_lie_rms": 0.060986253028294024,
+            "training_value_std": 0.9999999999999998,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 3.41740524767431e-16,
+                  "absolute_peak_to_peak": 4.180683577104105e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 9.133044177931947e-17
+                  "scaled_peak_to_peak": 1.1172911913104566e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.00858998504427674,
+                  "absolute_peak_to_peak": 0.008589985044276752,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.0022956807054283243
+                  "scaled_peak_to_peak": 0.0022956807054283278
                 },
                 {
-                  "absolute_peak_to_peak": 0.008560471877216433,
+                  "absolute_peak_to_peak": 0.008560471877216445,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.002287793286785894
+                  "scaled_peak_to_peak": 0.002287793286785897
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.0022956807054283243,
+              "calibration_max_scaled_peak_to_peak": 0.0022956807054283278,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.007029547215559918,
+                  "absolute_peak_to_peak": 0.007029547215559925,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.007029547215559919
+                  "scaled_peak_to_peak": 0.007029547215559926
                 },
                 {
                   "absolute_peak_to_peak": 8.257283745649602e-16,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 8.257283745649603e-16
+                  "scaled_peak_to_peak": 8.257283745649604e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.00281407645087857,
+                  "absolute_peak_to_peak": 0.002814076450878568,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.0028140764508785706
+                  "scaled_peak_to_peak": 0.0028140764508785684
                 },
                 {
-                  "absolute_peak_to_peak": 0.003898515371593763,
+                  "absolute_peak_to_peak": 0.0038985153715937653,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.0038985153715937635
+                  "scaled_peak_to_peak": 0.003898515371593766
                 },
                 {
-                  "absolute_peak_to_peak": 0.007264545751530249,
+                  "absolute_peak_to_peak": 0.007264545751530257,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.00726454575153025
+                  "scaled_peak_to_peak": 0.007264545751530259
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.00726454575153025
+              "training_max_scaled_peak_to_peak": 0.007264545751530259
             }
           },
           {
@@ -2519,7 +2519,7 @@
               -0.004144162436095728
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
-            "known_control_overlap_max": 1.3877787807814457e-17,
+            "known_control_overlap_max": 1.214306433183765e-17,
             "rank": 2,
             "standardized_singular_value": 0.04893018575571364,
             "top_terms": [
@@ -2573,19 +2573,19 @@
               }
             ],
             "training_lie_max_abs": 1.982189214006149,
-            "training_lie_rms": 0.2757995449996381,
+            "training_lie_rms": 0.27579954499963816,
             "training_value_std": 1.0,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 3.165870343657673e-16,
+                  "absolute_peak_to_peak": 3.46077333457373e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.0470867006910352e-16
+                  "scaled_peak_to_peak": 1.1446235440430767e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.07178441043924702,
+                  "absolute_peak_to_peak": 0.07178441043924705,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.023742128807789812
+                  "scaled_peak_to_peak": 0.023742128807789822
                 },
                 {
                   "absolute_peak_to_peak": 0.07673309719455568,
@@ -2596,9 +2596,9 @@
               "calibration_max_scaled_peak_to_peak": 0.0253788680058275,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.14009513565308834,
+                  "absolute_peak_to_peak": 0.14009513565308837,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.14009513565308834
+                  "scaled_peak_to_peak": 0.14009513565308837
                 },
                 {
                   "absolute_peak_to_peak": 3.903127820947816e-16,
@@ -2606,9 +2606,9 @@
                   "scaled_peak_to_peak": 3.903127820947816e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.04195729121564102,
+                  "absolute_peak_to_peak": 0.04195729121564101,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.04195729121564102
+                  "scaled_peak_to_peak": 0.04195729121564101
                 },
                 {
                   "absolute_peak_to_peak": 0.05450165909194153,
@@ -2616,31 +2616,31 @@
                   "scaled_peak_to_peak": 0.05450165909194153
                 },
                 {
-                  "absolute_peak_to_peak": 0.06333753265419799,
+                  "absolute_peak_to_peak": 0.06333753265419798,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.06333753265419799
+                  "scaled_peak_to_peak": 0.06333753265419798
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.14009513565308834
+              "training_max_scaled_peak_to_peak": 0.14009513565308837
             }
           },
           {
-            "calibration_lie_max_abs": 13.326191084631498,
+            "calibration_lie_max_abs": 13.326191084631494,
             "calibration_lie_rms": 1.5851621250986723,
             "calibration_value_std": 2.8175978972304456,
             "coefficients": [
-              0.001619147711420192,
+              0.0016191477114201925,
               -0.04176918594162993,
               0.005160529556158656,
               -0.04278500834442387,
-              -0.00840418344532118,
+              -0.008404183445321178,
               -0.01769258794498062,
               -0.0019060928286799292,
               0.04149296754872498,
               0.042861237319841775,
               -0.01650992367280301,
               -0.007111839090080498,
-              0.024839994834926306,
+              0.024839994834926302,
               0.01803301702300875,
               0.005651515387530153,
               -0.0070242105891010894,
@@ -2650,7 +2650,7 @@
               -0.0009867906140883205
             ],
             "interpretation_status": "EXPLORATORY_ONLY",
-            "known_control_overlap_max": 0.0,
+            "known_control_overlap_max": 2.7755575615628914e-17,
             "rank": 3,
             "standardized_singular_value": 0.0761311105893724,
             "top_terms": [
@@ -2671,7 +2671,7 @@
                 "feature": "dot(rho,p_rho)*dot(rho,p_lambda)"
               },
               {
-                "coefficient": 0.024839994834926306,
+                "coefficient": 0.024839994834926302,
                 "feature": "dot(rho,p_lambda)*dot(lambda,p_rho)"
               },
               {
@@ -2687,7 +2687,7 @@
                 "feature": "dot(rho,p_rho)*dot(lambda,p_lambda)"
               },
               {
-                "coefficient": -0.00840418344532118,
+                "coefficient": -0.008404183445321178,
                 "feature": "dot(rho,lambda)*dot(p_rho,p_lambda)"
               },
               {
@@ -2709,22 +2709,22 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 8.951173136040325e-16,
+                  "absolute_peak_to_peak": 1.1293049828609014e-15,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 3.1768809683024214e-16
+                  "scaled_peak_to_peak": 4.008041686753636e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.025643099914389067,
+                  "absolute_peak_to_peak": 0.02564309991438907,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.009101050202938794
+                  "scaled_peak_to_peak": 0.009101050202938795
                 },
                 {
-                  "absolute_peak_to_peak": 0.026176997890591185,
+                  "absolute_peak_to_peak": 0.02617699789059119,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.009290537133180654
+                  "scaled_peak_to_peak": 0.009290537133180657
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.009290537133180654,
+              "calibration_max_scaled_peak_to_peak": 0.009290537133180657,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.0474160280192206,
@@ -2732,14 +2732,14 @@
                   "scaled_peak_to_peak": 0.0474160280192206
                 },
                 {
-                  "absolute_peak_to_peak": 8.187894806610529e-16,
+                  "absolute_peak_to_peak": 8.153200337090993e-16,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 8.187894806610529e-16
+                  "scaled_peak_to_peak": 8.153200337090993e-16
                 },
                 {
-                  "absolute_peak_to_peak": 0.010977873700727976,
+                  "absolute_peak_to_peak": 0.01097787370072797,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.010977873700727976
+                  "scaled_peak_to_peak": 0.01097787370072797
                 },
                 {
                   "absolute_peak_to_peak": 0.012750980785687652,
@@ -2906,13 +2906,13 @@
             ],
             "training_lie_max_abs": 1.6926244272052473,
             "training_lie_rms": 0.1943574684203823,
-            "training_value_std": 0.9999999999999999,
+            "training_value_std": 1.0,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 4.336808689942018e-17,
+                  "absolute_peak_to_peak": 1.0408340855860843e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.3676958148073063e-17
+                  "scaled_peak_to_peak": 3.282469955537535e-17
                 },
                 {
                   "absolute_peak_to_peak": 0.06547117814852876,
@@ -2920,17 +2920,17 @@
                   "scaled_peak_to_peak": 0.02064759198438231
                 },
                 {
-                  "absolute_peak_to_peak": 0.07062227950021085,
+                  "absolute_peak_to_peak": 0.07062227950021084,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.022272090610914543
+                  "scaled_peak_to_peak": 0.02227209061091454
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.022272090610914543,
+              "calibration_max_scaled_peak_to_peak": 0.02227209061091454,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.05146244496502339,
+                  "absolute_peak_to_peak": 0.051462444965023384,
                   "case_id": "train_figure_eight_published_rounded",
-                  "scaled_peak_to_peak": 0.0514624449650234
+                  "scaled_peak_to_peak": 0.05146244496502339
                 },
                 {
                   "absolute_peak_to_peak": 5.828670879282072e-16,
@@ -2943,9 +2943,9 @@
                   "scaled_peak_to_peak": 0.022555580184836
                 },
                 {
-                  "absolute_peak_to_peak": 0.033498786360198464,
+                  "absolute_peak_to_peak": 0.03349878636019846,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.03349878636019847
+                  "scaled_peak_to_peak": 0.033498786360198464
                 },
                 {
                   "absolute_peak_to_peak": 0.050629238455402875,
@@ -2953,7 +2953,7 @@
                   "scaled_peak_to_peak": 0.05062923845540288
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.0514624449650234
+              "training_max_scaled_peak_to_peak": 0.05146244496502339
             }
           },
           {
@@ -3034,22 +3034,22 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 6.678685382510707e-17,
+                  "absolute_peak_to_peak": 5.898059818321144e-17,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.2841909223752468e-17
+                  "scaled_peak_to_peak": 1.134090684695023e-17
                 },
                 {
-                  "absolute_peak_to_peak": 0.05157779718513329,
+                  "absolute_peak_to_peak": 0.05157779718513328,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.009917481532325129
+                  "scaled_peak_to_peak": 0.009917481532325126
                 },
                 {
-                  "absolute_peak_to_peak": 0.05613632982792619,
+                  "absolute_peak_to_peak": 0.0561363298279262,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.01079400526475841
+                  "scaled_peak_to_peak": 0.010794005264758412
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.01079400526475841,
+              "calibration_max_scaled_peak_to_peak": 0.010794005264758412,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.043893725339113246,
@@ -3057,9 +3057,9 @@
                   "scaled_peak_to_peak": 0.04389372533911325
                 },
                 {
-                  "absolute_peak_to_peak": 5.412337245047638e-16,
+                  "absolute_peak_to_peak": 5.342948306008566e-16,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 5.412337245047639e-16
+                  "scaled_peak_to_peak": 5.342948306008567e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.015909645839038828,
@@ -3067,9 +3067,9 @@
                   "scaled_peak_to_peak": 0.01590964583903883
                 },
                 {
-                  "absolute_peak_to_peak": 0.025310952956055736,
+                  "absolute_peak_to_peak": 0.025310952956055732,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.025310952956055743
+                  "scaled_peak_to_peak": 0.02531095295605574
                 },
                 {
                   "absolute_peak_to_peak": 0.03905839864461258,
@@ -3152,28 +3152,28 @@
                 "feature": "dot(rho,p_rho)*dot(p_lambda,p_lambda)"
               }
             ],
-            "training_lie_max_abs": 6.754886232994633,
+            "training_lie_max_abs": 6.754886232994632,
             "training_lie_rms": 0.6441708724623942,
             "training_value_std": 0.9999999999999998,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 2.8449465006019636e-16,
+                  "absolute_peak_to_peak": 3.0964814046186007e-16,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 4.550381588856474e-17
+                  "scaled_peak_to_peak": 4.952701912261468e-17
                 },
                 {
-                  "absolute_peak_to_peak": 0.028318796193147776,
+                  "absolute_peak_to_peak": 0.028318796193147762,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.004529481619025617
+                  "scaled_peak_to_peak": 0.004529481619025615
                 },
                 {
-                  "absolute_peak_to_peak": 0.030637087330157697,
+                  "absolute_peak_to_peak": 0.030637087330157693,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.004900283295093234
+                  "scaled_peak_to_peak": 0.004900283295093233
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.004900283295093234,
+              "calibration_max_scaled_peak_to_peak": 0.004900283295093233,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.12682433394520157,
@@ -3181,9 +3181,9 @@
                   "scaled_peak_to_peak": 0.1268243339452016
                 },
                 {
-                  "absolute_peak_to_peak": 1.3877787807814457e-15,
+                  "absolute_peak_to_peak": 1.384309333829492e-15,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 1.387778780781446e-15
+                  "scaled_peak_to_peak": 1.3843093338294925e-15
                 },
                 {
                   "absolute_peak_to_peak": 0.030581181214359973,
@@ -3305,22 +3305,22 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 1.2468324983583301e-18,
+                  "absolute_peak_to_peak": 1.7889335846010823e-18,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 1.1962853364233368e-19
+                  "scaled_peak_to_peak": 1.7164093957378312e-19
                 },
                 {
-                  "absolute_peak_to_peak": 0.03186461772401666,
+                  "absolute_peak_to_peak": 0.031864617724016664,
                   "case_id": "cal_sjtu_line_59402",
-                  "scaled_peak_to_peak": 0.0030572811491653253
+                  "scaled_peak_to_peak": 0.0030572811491653257
                 },
                 {
-                  "absolute_peak_to_peak": 0.02839087141240095,
+                  "absolute_peak_to_peak": 0.028390871412400952,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.0027239892450393035
+                  "scaled_peak_to_peak": 0.002723989245039304
                 }
               ],
-              "calibration_max_scaled_peak_to_peak": 0.0030572811491653253,
+              "calibration_max_scaled_peak_to_peak": 0.0030572811491653257,
               "training": [
                 {
                   "absolute_peak_to_peak": 0.006545321079094886,
@@ -3333,9 +3333,9 @@
                   "scaled_peak_to_peak": 5.898059818321144e-17
                 },
                 {
-                  "absolute_peak_to_peak": 0.00788574175298654,
+                  "absolute_peak_to_peak": 0.007885741752986536,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.00788574175298654
+                  "scaled_peak_to_peak": 0.007885741752986536
                 },
                 {
                   "absolute_peak_to_peak": 0.015756972492315745,
@@ -3343,12 +3343,12 @@
                   "scaled_peak_to_peak": 0.015756972492315745
                 },
                 {
-                  "absolute_peak_to_peak": 0.031675732430294944,
+                  "absolute_peak_to_peak": 0.03167573243029495,
                   "case_id": "train_sjtu_line_44348",
-                  "scaled_peak_to_peak": 0.031675732430294944
+                  "scaled_peak_to_peak": 0.03167573243029495
                 }
               ],
-              "training_max_scaled_peak_to_peak": 0.031675732430294944
+              "training_max_scaled_peak_to_peak": 0.03167573243029495
             }
           },
           {
@@ -3394,14 +3394,14 @@
               }
             ],
             "training_lie_max_abs": 3.4587340498348973,
-            "training_lie_rms": 0.44663776143160655,
+            "training_lie_rms": 0.4466377614316066,
             "training_value_std": 0.9999999999999998,
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 9.486769009248164e-18,
+                  "absolute_peak_to_peak": 8.565197162635485e-18,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 3.8783961115301637e-19
+                  "scaled_peak_to_peak": 3.5016376321243765e-19
                 },
                 {
                   "absolute_peak_to_peak": 0.2945320883704239,
@@ -3422,9 +3422,9 @@
                   "scaled_peak_to_peak": 0.029979282134484326
                 },
                 {
-                  "absolute_peak_to_peak": 2.437286483747414e-16,
+                  "absolute_peak_to_peak": 2.445960101127298e-16,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 2.4372864837474145e-16
+                  "scaled_peak_to_peak": 2.4459601011272985e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.02432699894369504,
@@ -3432,9 +3432,9 @@
                   "scaled_peak_to_peak": 0.024326998943695045
                 },
                 {
-                  "absolute_peak_to_peak": 0.11639771402890792,
+                  "absolute_peak_to_peak": 0.11639771402890789,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.11639771402890793
+                  "scaled_peak_to_peak": 0.1163977140289079
                 },
                 {
                   "absolute_peak_to_peak": 0.27181133885111913,
@@ -3493,9 +3493,9 @@
             "trajectory_drift": {
               "calibration": [
                 {
-                  "absolute_peak_to_peak": 6.1257422745431e-18,
+                  "absolute_peak_to_peak": 1.0679391398982219e-17,
                   "case_id": "cal_lagrange_scaled_rotated",
-                  "scaled_peak_to_peak": 3.1719927317246045e-19
+                  "scaled_peak_to_peak": 5.52993423141369e-19
                 },
                 {
                   "absolute_peak_to_peak": 1.2239127841440307,
@@ -3503,35 +3503,35 @@
                   "scaled_peak_to_peak": 0.06337586992033964
                 },
                 {
-                  "absolute_peak_to_peak": 1.157197582824655,
+                  "absolute_peak_to_peak": 1.1571975828246548,
                   "case_id": "cal_sjtu_line_69432",
-                  "scaled_peak_to_peak": 0.05992126598507389
+                  "scaled_peak_to_peak": 0.059921265985073885
                 }
               ],
               "calibration_max_scaled_peak_to_peak": 0.06337586992033964,
               "training": [
                 {
-                  "absolute_peak_to_peak": 0.023244989510805843,
+                  "absolute_peak_to_peak": 0.02324498951080584,
                   "case_id": "train_figure_eight_published_rounded",
                   "scaled_peak_to_peak": 0.023244989510805843
                 },
                 {
-                  "absolute_peak_to_peak": 1.5265566588595902e-16,
+                  "absolute_peak_to_peak": 1.5092094240998222e-16,
                   "case_id": "train_lagrange_unit_planar",
-                  "scaled_peak_to_peak": 1.5265566588595902e-16
+                  "scaled_peak_to_peak": 1.5092094240998224e-16
                 },
                 {
                   "absolute_peak_to_peak": 0.05473671443559685,
                   "case_id": "train_sjtu_line_14",
-                  "scaled_peak_to_peak": 0.05473671443559685
+                  "scaled_peak_to_peak": 0.054736714435596856
                 },
                 {
                   "absolute_peak_to_peak": 0.32783738217299047,
                   "case_id": "train_sjtu_line_29734",
-                  "scaled_peak_to_peak": 0.32783738217299047
+                  "scaled_peak_to_peak": 0.3278373821729905
                 },
                 {
-                  "absolute_peak_to_peak": 0.9829407397431107,
+                  "absolute_peak_to_peak": 0.9829407397431106,
                   "case_id": "train_sjtu_line_44348",
                   "scaled_peak_to_peak": 0.9829407397431107
                 }

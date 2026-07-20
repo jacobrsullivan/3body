@@ -152,7 +152,9 @@ def _trajectory_drift(
     feature_values: np.ndarray,
     coefficients: np.ndarray,
 ) -> list[dict[str, float | str]]:
-    projected = feature_values @ coefficients
+    projected = np.einsum(
+        "ij,j->i", feature_values, coefficients, optimize=False
+    )
     trajectory_cases = sorted(
         {
             point.case_id

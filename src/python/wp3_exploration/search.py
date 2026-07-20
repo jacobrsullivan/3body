@@ -39,11 +39,23 @@ def _readonly_matrix(value: ArrayLike, columns: int, name: str) -> FloatArray:
 
 
 def _residual_metrics(matrix: FloatArray, coefficients: FloatArray) -> dict[str, float]:
-    residual = matrix @ coefficients
+    residual = _matrix_vector(matrix, coefficients)
     return {
         "lie_rms": float(np.sqrt(np.mean(np.square(residual)))),
         "lie_max_abs": float(np.max(np.abs(residual))),
     }
+
+
+def _matrix_vector(matrix: FloatArray, vector: FloatArray) -> FloatArray:
+    """Contract without macOS Accelerate's spurious matmul FPE warnings."""
+
+    return np.einsum("ij,j->i", matrix, vector, optimize=False)
+
+
+def _matrix_matrix(first: FloatArray, second: FloatArray) -> FloatArray:
+    """Contract two matrices with a deterministic, warning-clean path."""
+
+    return np.einsum("ij,jk->ik", first, second, optimize=False)
 
 
 @dataclass(frozen=True)
@@ -233,9 +245,11 @@ def search_near_null_modes(
             "training_lie_max_abs": training_metrics["lie_max_abs"],
             "calibration_lie_rms": calibration_metrics["lie_rms"],
             "calibration_lie_max_abs": calibration_metrics["lie_max_abs"],
-            "training_value_std": float(np.std(train_features @ vector)),
+            "training_value_std": float(
+                np.std(_matrix_vector(train_features, vector))
+            ),
             "calibration_value_std": float(
-                np.std(calibration_features_array @ vector)
+                np.std(_matrix_vector(calibration_features_array, vector))
             ),
         }
 
@@ -254,7 +268,7 @@ def search_near_null_modes(
     if complement.shape[1] == 0:
         raise ValueError("known controls span the entire feature library")
 
-    reduced_operator = standardized_derivatives @ complement
+    reduced_operator = _matrix_matrix(standardized_derivatives, complement)
     _, singular_values, right_vectors = np.linalg.svd(
         reduced_operator, full_matrices=False
     )
@@ -267,9 +281,11 @@ def search_near_null_modes(
     modes: list[NearNullMode] = []
     indices = np.argsort(singular_values)[: min(mode_count, singular_values.size)]
     for rank, singular_index in enumerate(indices, start=1):
-        scaled_coefficients = complement @ right_vectors[singular_index]
+        scaled_coefficients = _matrix_vector(
+            complement, right_vectors[singular_index]
+        )
         coefficients = scaled_coefficients / derivative_scales
-        values = train_features @ coefficients
+        values = _matrix_vector(train_features, coefficients)
         value_scale = float(np.std(values))
         if value_scale <= np.finfo(float).eps:
             value_scale = float(np.linalg.norm(coefficients))
@@ -287,7 +303,13 @@ def search_near_null_modes(
         scaled_candidate = derivative_scales * coefficients
         scaled_candidate /= np.linalg.norm(scaled_candidate)
         overlap = (
-            float(np.max(np.abs(control_basis.T @ scaled_candidate)))
+            float(
+                np.max(
+                    np.abs(
+                        _matrix_vector(control_basis.T, scaled_candidate)
+                    )
+                )
+            )
             if control_basis.shape[1]
             else 0.0
         )
@@ -303,9 +325,15 @@ def search_near_null_modes(
                 training_lie_max_abs=training_metrics["lie_max_abs"],
                 calibration_lie_rms=calibration_metrics["lie_rms"],
                 calibration_lie_max_abs=calibration_metrics["lie_max_abs"],
-                training_value_std=float(np.std(train_features @ coefficients)),
+                training_value_std=float(
+                    np.std(_matrix_vector(train_features, coefficients))
+                ),
                 calibration_value_std=float(
-                    np.std(calibration_features_array @ coefficients)
+                    np.std(
+                        _matrix_vector(
+                            calibration_features_array, coefficients
+                        )
+                    )
                 ),
                 known_control_overlap_max=overlap,
             )
