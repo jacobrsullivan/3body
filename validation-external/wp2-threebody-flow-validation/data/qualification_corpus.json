@@ -1,0 +1,449 @@
+{
+  "cases": [
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00196",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00196",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00302",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00302",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00438",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00438",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00881",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00881",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01534",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01534",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01676",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01676",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01678",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01678",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01977",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01977",
+      "source_family": "equal_mass_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00272",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-00272",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00290",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-00290",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01380",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-01380",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01481",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-01481",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01644",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-01644",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02317",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02317",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02436",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02436",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-03742",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-03742",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "development"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00229",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00229",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01922",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01922",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-02901",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-02901",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-03370",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-03370",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-03571",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-03571",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-04330",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-04330",
+      "source_family": "equal_mass_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00196",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-00196",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00767",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-00767",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02470",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02470",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02819",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02819",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02908",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02908",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-04524",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-04524",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "calibration"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00219",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00219",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00223",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-00223",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01140",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-equal_mass_plummer-01140",
+      "source_family": "equal_mass_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02085",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-02085",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-04863",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-04863",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-05328",
+      "checkpoint_indices": [
+        0,
+        2,
+        4,
+        6,
+        8
+      ],
+      "source_case_id": "brutus-mass_4_2_1_plummer-05328",
+      "source_family": "mass_4_2_1_plummer",
+      "split": "holdout"
+    }
+  ],
+  "corpus_id": "wp2-threebody-flow-external-v1",
+  "schema_version": "1.0",
+  "spatial_corpus_sha256": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff"
+}

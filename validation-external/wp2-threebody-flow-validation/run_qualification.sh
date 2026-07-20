@@ -4,7 +4,7 @@ set -euo pipefail
 WS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$WS_DIR/../.." && pwd)"
 VALIDATION_ROOT="$REPO_ROOT/validation-external"
-SPATIAL_ROOT="$VALIDATION_ROOT/wp3-spatial-validation"
+SPATIAL_ROOT="$VALIDATION_ROOT/wp3-spatial-validation-v2"
 SPEC="$WS_DIR/qualification_spec.json"
 CORPUS="$WS_DIR/data/qualification_corpus.json"
 SPATIAL_CORPUS="$SPATIAL_ROOT/data/qualification_corpus.json"

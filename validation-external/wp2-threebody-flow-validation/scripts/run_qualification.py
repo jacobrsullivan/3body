@@ -50,9 +50,9 @@ from src.python.threebody_reduction import (  # noqa: E402
 )
 
 
-SPATIAL_ROOT = REPO_ROOT / "validation-external/wp3-spatial-validation"
-SPATIAL_LOCK = SPATIAL_ROOT / "reports/wp3_spatial_qualification_lock.json"
-SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_qualification_record.json"
+SPATIAL_ROOT = REPO_ROOT / "validation-external/wp3-spatial-validation-v2"
+SPATIAL_LOCK = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_lock.json"
+SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_record.json"
 KS_LOCK = REPO_ROOT / "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_lock.json"
 KS_RECORD = REPO_ROOT / "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_record.json"
 REFERENCE = CAMPAIGN_ROOT / "reference/independent_reduction.py"
@@ -83,7 +83,7 @@ def _reference_module():
 
 def _verify_prerequisites(spec: dict[str, Any]) -> dict[str, Any]:
     definitions = (
-        ("wp1_spatial_n3bp", SPATIAL_LOCK, SPATIAL_RECORD, "WP1Q-N3BP-SPATIAL-v1"),
+        ("wp1_spatial_n3bp", SPATIAL_LOCK, SPATIAL_RECORD, "WP1Q-N3BP-SPATIAL-v2"),
         ("wp2_kepler_ks", KS_LOCK, KS_RECORD, "WP2KSQ-v1"),
     )
     output = {}

@@ -1,0 +1,361 @@
+{
+  "campaign": "WP2-3BFLOWQ-v1",
+  "cases": [
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00196",
+      "metrics": {
+        "canonical_tangent_scaled": 2.7755575615628914e-16,
+        "hamiltonian_lie_scaled": 1.7763568394002505e-15,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.1581352034660498e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 3.1031676915590914e-17,
+        "pairwise_projection_fd_scaled": 7.1130394303199065e-09,
+        "pairwise_s1_covariance_scaled": 9.945589263387908e-16,
+        "pairwise_velocity_closure_derivative": 1.2560739669470201e-15,
+        "pairwise_xi_derivative_abs": 4.579669976578771e-16,
+        "reconstruction_frame_fd_scaled": 2.3587438113814585e-09,
+        "reduced_quotient_fd_scaled": 7.439930671537809e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-00196",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00302",
+      "metrics": {
+        "canonical_tangent_scaled": 7.422996128052467e-16,
+        "hamiltonian_lie_scaled": 1.4210854715202004e-14,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.2183070031258332e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.7755575615628914e-17,
+        "pairwise_projection_fd_scaled": 3.66703073434781e-09,
+        "pairwise_s1_covariance_scaled": 1.27675647831893e-14,
+        "pairwise_velocity_closure_derivative": 1.507288760336424e-14,
+        "pairwise_xi_derivative_abs": 8.881784197001252e-16,
+        "reconstruction_frame_fd_scaled": 1.3722263767239885e-09,
+        "reduced_quotient_fd_scaled": 1.3575563330653738e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-00302",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00438",
+      "metrics": {
+        "canonical_tangent_scaled": 1.841232526708215e-15,
+        "hamiltonian_lie_scaled": 4.440892098500626e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.3425897201348564e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.7755575615628914e-17,
+        "pairwise_projection_fd_scaled": 1.1299253976915224e-08,
+        "pairwise_s1_covariance_scaled": 1.2546022504028787e-14,
+        "pairwise_velocity_closure_derivative": 6.280369834735101e-16,
+        "pairwise_xi_derivative_abs": 9.43689570931383e-16,
+        "reconstruction_frame_fd_scaled": 2.0727443069348946e-08,
+        "reduced_quotient_fd_scaled": 3.641699357592115e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-00438",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-00881",
+      "metrics": {
+        "canonical_tangent_scaled": 4.440892098500626e-16,
+        "hamiltonian_lie_scaled": 2.220446049250313e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.9935643192015502e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 1.1102230246251565e-16,
+        "pairwise_projection_fd_scaled": 2.6449113001725095e-09,
+        "pairwise_s1_covariance_scaled": 1.0348224775604384e-15,
+        "pairwise_velocity_closure_derivative": 1.9860273225978185e-15,
+        "pairwise_xi_derivative_abs": 3.1086244689504383e-15,
+        "reconstruction_frame_fd_scaled": 3.2892858125266113e-09,
+        "reduced_quotient_fd_scaled": 2.2599285891060554e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-00881",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01534",
+      "metrics": {
+        "canonical_tangent_scaled": 5.78337836387534e-16,
+        "hamiltonian_lie_scaled": 5.551115123125783e-17,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.2410785052875833e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 0.0,
+        "pairwise_projection_fd_scaled": 6.788358811380056e-09,
+        "pairwise_s1_covariance_scaled": 1.568618136232676e-15,
+        "pairwise_velocity_closure_derivative": 8.881784197001252e-16,
+        "pairwise_xi_derivative_abs": 6.661338147750939e-16,
+        "reconstruction_frame_fd_scaled": 4.292738919002622e-09,
+        "reduced_quotient_fd_scaled": 7.603044507868014e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-01534",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01676",
+      "metrics": {
+        "canonical_tangent_scaled": 2.1823496563365698e-16,
+        "hamiltonian_lie_scaled": 4.440892098500626e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.6321042736297978e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.220446049250313e-16,
+        "pairwise_projection_fd_scaled": 7.000393764666768e-09,
+        "pairwise_s1_covariance_scaled": 1.2212453270876722e-15,
+        "pairwise_velocity_closure_derivative": 2.8108601893111292e-15,
+        "pairwise_xi_derivative_abs": 8.76902717106276e-16,
+        "reconstruction_frame_fd_scaled": 2.8069540580766272e-09,
+        "reduced_quotient_fd_scaled": 1.4379390567142991e-08,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-01676",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01678",
+      "metrics": {
+        "canonical_tangent_scaled": 5.0248354762120854e-15,
+        "hamiltonian_lie_scaled": 3.552713678800501e-15,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.70834100179155e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 1.1102230246251565e-16,
+        "pairwise_projection_fd_scaled": 1.773403490723524e-08,
+        "pairwise_s1_covariance_scaled": 7.864488220461441e-16,
+        "pairwise_velocity_closure_derivative": 9.155133597044475e-16,
+        "pairwise_xi_derivative_abs": 2.7755575615628914e-15,
+        "reconstruction_frame_fd_scaled": 1.4600890274607536e-08,
+        "reduced_quotient_fd_scaled": 2.7089310794536914e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-01678",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-equal_mass_plummer-01977",
+      "metrics": {
+        "canonical_tangent_scaled": 2.0753127541493283e-16,
+        "hamiltonian_lie_scaled": 5.551115123125783e-17,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.3274475961367918e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 5.551115123125783e-17,
+        "pairwise_projection_fd_scaled": 1.9417425556333967e-08,
+        "pairwise_s1_covariance_scaled": 2.04772883057788e-15,
+        "pairwise_velocity_closure_derivative": 4.965068306494546e-16,
+        "pairwise_xi_derivative_abs": 4.432218481120742e-16,
+        "reconstruction_frame_fd_scaled": 8.534128487225345e-09,
+        "reduced_quotient_fd_scaled": 3.4243818182735864e-08,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-equal_mass_plummer-01977",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00272",
+      "metrics": {
+        "canonical_tangent_scaled": 1.9352899520195985e-16,
+        "hamiltonian_lie_scaled": 8.881784197001252e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.0212343058872775e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.220446049250313e-16,
+        "pairwise_projection_fd_scaled": 1.0439713871157608e-08,
+        "pairwise_s1_covariance_scaled": 6.256355022295874e-16,
+        "pairwise_velocity_closure_derivative": 9.159339953157541e-16,
+        "pairwise_xi_derivative_abs": 2.185751579730777e-16,
+        "reconstruction_frame_fd_scaled": 1.3440755219851134e-09,
+        "reduced_quotient_fd_scaled": 9.583350759133803e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-00272",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-00290",
+      "metrics": {
+        "canonical_tangent_scaled": 2.142465240332828e-16,
+        "hamiltonian_lie_scaled": 5.551115123125783e-17,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.220446049250313e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 5.551115123125783e-17,
+        "pairwise_projection_fd_scaled": 9.399110822982948e-09,
+        "pairwise_s1_covariance_scaled": 2.7755575615628914e-16,
+        "pairwise_velocity_closure_derivative": 9.489809492268385e-16,
+        "pairwise_xi_derivative_abs": 2.7755575615628914e-16,
+        "reconstruction_frame_fd_scaled": 2.3494010903402085e-09,
+        "reduced_quotient_fd_scaled": 8.920278747764826e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-00290",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01380",
+      "metrics": {
+        "canonical_tangent_scaled": 1.7243169651442597e-16,
+        "hamiltonian_lie_scaled": 4.440892098500626e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.528270301883769e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.7755575615628914e-17,
+        "pairwise_projection_fd_scaled": 5.376836790387185e-09,
+        "pairwise_s1_covariance_scaled": 6.661338147750939e-16,
+        "pairwise_velocity_closure_derivative": 7.364386412590295e-16,
+        "pairwise_xi_derivative_abs": 4.0245584642661925e-16,
+        "reconstruction_frame_fd_scaled": 1.425033313573465e-09,
+        "reduced_quotient_fd_scaled": 1.3673719934104156e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-01380",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01481",
+      "metrics": {
+        "canonical_tangent_scaled": 5.031519789298456e-16,
+        "hamiltonian_lie_scaled": 1.0658141036401503e-14,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.1488241534813293e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.220446049250313e-16,
+        "pairwise_projection_fd_scaled": 1.816398170761957e-09,
+        "pairwise_s1_covariance_scaled": 3.1086244689504383e-15,
+        "pairwise_velocity_closure_derivative": 1.4217791915866692e-14,
+        "pairwise_xi_derivative_abs": 9.298117831235686e-16,
+        "reconstruction_frame_fd_scaled": 6.361742486734467e-10,
+        "reduced_quotient_fd_scaled": 7.454860895261817e-10,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-01481",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-01644",
+      "metrics": {
+        "canonical_tangent_scaled": 1.6990135534886783e-15,
+        "hamiltonian_lie_scaled": 3.552713678800501e-15,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 2.3160165837498855e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 2.220446049250313e-16,
+        "pairwise_projection_fd_scaled": 6.5392517920453365e-09,
+        "pairwise_s1_covariance_scaled": 1.78547789836303e-14,
+        "pairwise_velocity_closure_derivative": 3.972054645195637e-15,
+        "pairwise_xi_derivative_abs": 3.566591466608315e-15,
+        "reconstruction_frame_fd_scaled": 3.982418204855398e-10,
+        "reduced_quotient_fd_scaled": 1.4728386080879756e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-01644",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02317",
+      "metrics": {
+        "canonical_tangent_scaled": 3.9039665055318605e-16,
+        "hamiltonian_lie_scaled": 1.3322676295501878e-15,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.83502348690164e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 7.850462293418876e-17,
+        "pairwise_projection_fd_scaled": 1.2347237565712987e-08,
+        "pairwise_s1_covariance_scaled": 9.519891590620243e-16,
+        "pairwise_velocity_closure_derivative": 1.7763568394002505e-15,
+        "pairwise_xi_derivative_abs": 3.191891195797325e-16,
+        "reconstruction_frame_fd_scaled": 1.074926031142393e-09,
+        "reduced_quotient_fd_scaled": 2.213924848162195e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-02317",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-02436",
+      "metrics": {
+        "canonical_tangent_scaled": 1.6653345369377348e-16,
+        "hamiltonian_lie_scaled": 5.551115123125783e-17,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.820335396055167e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 8.881784197001252e-16,
+        "pairwise_projection_fd_scaled": 2.9541736362646695e-09,
+        "pairwise_s1_covariance_scaled": 9.412902576320444e-15,
+        "pairwise_velocity_closure_derivative": 1.1368683772161603e-13,
+        "pairwise_xi_derivative_abs": 2.26929586233382e-13,
+        "reconstruction_frame_fd_scaled": 4.1139203626189206e-09,
+        "reduced_quotient_fd_scaled": 2.72815232651404e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-02436",
+      "success": true
+    },
+    {
+      "case_id": "flow-brutus-mass_4_2_1_plummer-03742",
+      "metrics": {
+        "canonical_tangent_scaled": 1.3678968252580695e-15,
+        "hamiltonian_lie_scaled": 4.440892098500626e-16,
+        "independent_body_frame_scaled": 0.0,
+        "independent_jacobi_roundtrip_scaled": 1.1102230246251565e-16,
+        "independent_jacobi_state_scaled": 0.0,
+        "pairwise_position_closure_derivative": 1.1102230246251565e-16,
+        "pairwise_projection_fd_scaled": 4.428151081271243e-09,
+        "pairwise_s1_covariance_scaled": 8.986861625541699e-15,
+        "pairwise_velocity_closure_derivative": 3.5596458096434965e-15,
+        "pairwise_xi_derivative_abs": 8.951173136040325e-16,
+        "reconstruction_frame_fd_scaled": 1.2100002734430774e-09,
+        "reduced_quotient_fd_scaled": 2.0513879456380914e-09,
+        "symbolic_canonical_pass": 1
+      },
+      "source_case_id": "brutus-mass_4_2_1_plummer-03742",
+      "success": true
+    }
+  ],
+  "corpus_sha256": "b84c537bbf5e53be38c1b17fc8669fc3b28b2bd673652e28b7ac62d8d305283c",
+  "generated_utc": "2026-07-20T10:15:06.448753+00:00",
+  "prerequisites": {
+    "wp1_spatial_n3bp": {
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+      "status": "PASS"
+    },
+    "wp2_kepler_ks": {
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+      "status": "PASS"
+    }
+  },
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spatial_results_sha256": "3b535e05f8de8cc2d7d265fd330894e1f4d1b4c8ec9789263436ae7882ccf70f",
+  "spec_sha256": "91eae63081b623f41065dca63c9463d7218750f3aa4b92f9b47d6662b67bb30f",
+  "split": "development",
+  "structural": {
+    "global_sundman_qualified": 0
+  }
+}

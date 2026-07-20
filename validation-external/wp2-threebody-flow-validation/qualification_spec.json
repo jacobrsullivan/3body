@@ -6,9 +6,9 @@
   "evidence_boundary": "This qualification covers positive finite masses, collision-free states, the generic non-collinear body-frame chart, zero-Xi pairwise KS sections, and the frozen external spatial/chaotic checkpoint corpus. The pairwise KS flow is a redundant constrained physical-time lift, not three independent Kepler systems. The claim excludes a global Sundman transformation, collision passage, a globally regularized three-body Hamiltonian, a Darboux assertion for the SO(3) quotient, nonzero-Xi magnetic reduction, orbit discovery, and every WP3 invariant claim.",
   "prerequisites": {
     "wp1_spatial_n3bp": {
-      "qualification_id": "TO_BE_FROZEN",
-      "lock_sha256": "TO_BE_FROZEN",
-      "record_sha256": "TO_BE_FROZEN"
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a"
     },
     "wp2_kepler_ks": {
       "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
@@ -26,8 +26,8 @@
     "checkpoint_indices": [0, 2, 4, 6, 8],
     "finite_difference_step": 1e-7,
     "cases_per_family_by_split": {
-      "development": 2,
-      "calibration": 2,
+      "development": 8,
+      "calibration": 6,
       "holdout": 3
     },
     "gauge_angles": [0.37, -0.91, 1.43]
@@ -40,7 +40,7 @@
     "independent_body_frame_scaled_max": 3e-12,
     "symbolic_canonical_rate_min": 1.0,
     "canonical_tangent_scaled_max": 3e-12,
-    "hamiltonian_lie_scaled_max": 2e-8,
+    "hamiltonian_lie_scaled_max": 1e-10,
     "reduced_quotient_fd_scaled_max": 3e-7,
     "reconstruction_frame_fd_scaled_max": 3e-7,
     "pairwise_projection_fd_scaled_max": 5e-7,
