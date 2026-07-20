@@ -3,7 +3,7 @@ set -euo pipefail
 
 WS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$WS_DIR/../.." && pwd)"
-SPATIAL_ROOT="$REPO_ROOT/validation-external/wp3-spatial-validation"
+SPATIAL_ROOT="$REPO_ROOT/validation-external/wp3-spatial-validation-v2"
 SPEC="$WS_DIR/exploration_spec.json"
 CORPUS="$WS_DIR/data/exploration_corpus.json"
 COMMITMENTS="$WS_DIR/sealed/publication_holdout_commitments.json"

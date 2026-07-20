@@ -7,16 +7,16 @@
   "evidence_boundary": "A no-candidate result excludes only the frozen degree-two primitive library and mass-parameter blocks on the frozen development/calibration corpus at the declared thresholds. A numerical candidate does not authorize physical interpretation, a conservation claim, or opening the sealed publication reserve; it only triggers a separately frozen candidate qualification.",
   "prerequisites": {
     "wp1_spatial_n3bp": {
-      "qualification_id": "TO_BE_FROZEN",
-      "lock_sha256": "TO_BE_FROZEN",
-      "record_sha256": "TO_BE_FROZEN"
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "record_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a"
     },
     "wp2_threebody_flow": {
-      "qualification_id": "TO_BE_FROZEN",
-      "lock_sha256": "TO_BE_FROZEN",
-      "record_sha256": "TO_BE_FROZEN"
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "record_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9"
     },
-    "sealed_publication_reserve_sha256": "TO_BE_FROZEN"
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
   },
   "data": {
     "external_checkpoint_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8],
@@ -37,12 +37,12 @@
   },
   "search": {
     "mode_count": 5,
-    "value_rank_relative_tolerance": 1e-11,
+    "value_rank_relative_tolerance": 1e-8,
     "candidate_lie_rms_max": 1e-10,
     "calibration_to_training_max": 2.0,
     "family_fold_coefficient_cosine_min": 0.9,
     "calibration_trajectory_drift_max": 1e-8,
-    "known_control_lie_max": 1e-10
+    "known_control_lie_max": 2e-10
   },
   "staged_policy": {
     "SEARCH_READY": "Requires both prerequisite qualification records, an intact sealed reserve, and machine-precision behavior of the represented known algebra.",

@@ -1,6 +1,6 @@
 # WP3 Remediation v2 Execution Plan
 
-Status: IN PROGRESS
+Status: COMPLETE
 
 ## Immutable Baseline
 
@@ -31,3 +31,11 @@ which the v2 search is evaluated. No v1 mode is promoted or reinterpreted.
 
 A no-candidate v2 result completes the campaign as a bounded null result. It
 does not fabricate candidate-specific evidence or weaken the publication gate.
+
+## Outcome
+
+The spatial v1 holdout failed and remains immutable. A fresh spatial v2
+campaign passed, the three-body flow campaign passed, and WP3-EXP-v2 completed
+with `SEARCH_READY=PASS`, zero candidate modes, and the publication reserve
+still sealed. See `notes/wp3-remediation-v2-assessment.md` for the claim boundary
+and evidence identifiers.

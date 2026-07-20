@@ -39,10 +39,10 @@ from src.python.wp3_exploration_v2 import (  # noqa: E402
 )
 
 
-SPATIAL_ROOT = VALIDATION_ROOT / "wp3-spatial-validation"
+SPATIAL_ROOT = VALIDATION_ROOT / "wp3-spatial-validation-v2"
 FLOW_ROOT = VALIDATION_ROOT / "wp2-threebody-flow-validation"
-SPATIAL_LOCK = SPATIAL_ROOT / "reports/wp3_spatial_qualification_lock.json"
-SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_qualification_record.json"
+SPATIAL_LOCK = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_lock.json"
+SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_record.json"
 FLOW_LOCK = FLOW_ROOT / "reports/wp2_threebody_flow_qualification_lock.json"
 FLOW_RECORD = FLOW_ROOT / "reports/wp2_threebody_flow_qualification_record.json"
 
@@ -253,7 +253,7 @@ def main() -> None:
             spec["prerequisites"]["wp1_spatial_n3bp"],
             SPATIAL_LOCK,
             SPATIAL_RECORD,
-            "WP1Q-N3BP-SPATIAL-v1",
+            "WP1Q-N3BP-SPATIAL-v2",
         ),
         "wp2_threebody_flow": _verify_prerequisite(
             spec["prerequisites"]["wp2_threebody_flow"],
