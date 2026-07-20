@@ -23,13 +23,16 @@ This project systematically tests this hypothesis through:
 
 | Work Package | Description | Status | Completion |
 |--------------|-------------|--------|------------|
-| **WP1** | High-Precision Infrastructure | Qualified (scoped) | External CR3BP qualification passes; native production-catalogue claim remains open |
-| **WP2** | Geometric Foundations & Lifts | Prototype | Needs validation against WP1 evidence |
+| **WP1** | High-Precision Infrastructure | Qualified (scoped) | Separate CR3BP and full Newtonian N3BP propagation qualifications pass; native production-catalogue claim remains open |
+| **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | Canonical Kepler/KS and bounded three-body reduction/pairwise-KS composition qualifications pass; reduced N3BP dynamics and integrability claims remain open |
 | **WP3** | Invariant Discovery (ML + Symbolic) | Prototype | Imports and collection repaired; publication claims not validated |
 | **WP4** | Rigorous Validation ("The Gauntlet") | Prototype | Validation criteria need regenerated evidence |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
-**Overall**: the codebase is an active research prototype. WP1 has a passing, locked qualification against external NASA/JPL periodic-orbit data. That result qualifies the declared propagation, precision, stability, representative reconstruction, and output-contract scope; it does not qualify native production-scale periodic-orbit catalogue generation.
+**Overall**: the codebase is an active research prototype with several bounded,
+locked qualification records. The records are model-specific and do not combine
+into a claim of integrability or native production-scale periodic-orbit catalogue
+generation. See `notes/wp1-wp2-model-boundary.md` for the exact boundaries.
 
 ### Current WP1 Evidence
 
@@ -48,6 +51,30 @@ Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
 - The legacy native candidate comparison is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01` and median period error `8.90e-01`. The qualified representative corrector does not yet constitute family continuation or production-scale native generation.
 
 The formal decision is in `validation-external/wp1-validation/reports/wp1_qualification_report.md` and `wp1_qualification_record.json`; downstream artifact evidence is in `wp1_qualified_artifact_audit.json`. The earlier Earth-Moon report remains at `wp1_external_validation_report.md`.
+
+### Current Full-State and WP2 Evidence
+
+- `WP1Q-N3BP-v1-892335b25187` is `PASS` for bounded collision-free 18D
+  Newtonian three-body propagation. Its independent evidence includes analytic
+  Lagrange conics, published rounded figure-eight and unequal-mass SJTU source
+  states, and REBOUND IAS15 checkpoint comparisons.
+- `WP2KSQ-v1-dc4b342e3bd2` is `PASS` for the canonical isolated
+  negative-energy Kepler/KS cotangent lift, `S1` action, `Xi=0` quotient,
+  fixed-energy Sundman transform, and regular oscillator. It does not cover a
+  pair perturbed by a third body.
+- `WP2-3BRQ-v1-d4c0d5d7e2e3` is `PASS` for the downstream composition:
+  canonical Jacobi translation reduction, a generic non-collinear SO(3)
+  quotient chart, and a constrained kinematic pairwise-KS lift with `S1^3`
+  gauge invariance and closure.
+- The downstream result does not implement or qualify reduced Hamilton
+  equations, a global three-body Sundman time, three decoupled Kepler
+  oscillators, collision passage for the full N3BP, or a periodic-orbit
+  catalogue.
+
+The machine-readable records and human reports are under
+`validation-external/wp1-n3bp-validation/reports/`,
+`validation-external/wp2-ks-validation/reports/`, and
+`validation-external/wp2-threebody-validation/reports/`.
 
 ---
 
@@ -114,12 +141,19 @@ Generates and validates CR3BP trajectory data. The scoped external qualification
 
 ### WP2: Geometric Foundations
 
-Creates the mathematical framework for lifting phase space.
+The qualified foundation is deliberately narrower than the project hypothesis.
 
-- **Coordinate Systems**: Cartesian (18D) -> Jacobi (15D) -> Shape Space (12D)
-- **Mechanical Connection**: Computes connection 1-form A and curvature 2-form F
-- **S^1 Bundle Lift**: Minimal cohomological "untwisting" of connection
-- **KS-Spinor Lift**: Kustaanheimo-Stiefel regularization for collision handling
+- **Canonical Jacobi split**: Cartesian 18D -> center-of-mass canonical pair
+  plus a 12D translation quotient
+- **Rotation quotient**: generic non-collinear SO(3) orbit chart in a 9D
+  Poisson space; a fixed nonzero angular-momentum magnitude selects an 8D leaf
+- **Canonical KS prototype**: qualified isolated negative-energy Kepler
+  cotangent lift, quotient, Sundman transform, and oscillator
+- **Pairwise KS composition**: qualified 12D constrained kinematic lift of the
+  three relative phase states, without a global Sundman or regularized N3BP
+  dynamics claim
+- **Still exploratory**: mechanical-connection dynamics, cohomological lifts,
+  singular rotation charts, and hidden-integrability constructions
 
 ### WP3: Invariant Discovery
 

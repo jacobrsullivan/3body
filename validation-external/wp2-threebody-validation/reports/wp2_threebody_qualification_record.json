@@ -1,0 +1,676 @@
+{
+  "base_git_commit": "2187a4abf3c5346ea0f1147df124dddde373a759",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2-3BRQ-v1 qualifies the declared downstream composition of two prerequisite PASS artifacts: (1) the exact linear canonical Jacobi transformation and 12-dimensional zero-total-momentum translation quotient for the qualified 18D Newtonian three-body state, (2) a reconstruction-complete nine-coordinate body-frame chart on the generic non-collinear SO(3) Poisson quotient, with generic nonzero-angular-momentum symplectic-leaf dimension eight, and (3) a constrained kinematic lift of all three oriented relative phase states through the qualified zero-Xi canonical KS cotangent lift, including S1^3 gauge invariance, triangle position/velocity closure, and exact full-state reconstruction within the frozen corpus bounds.",
+  "code_snapshot_sha256": "d4c0d5d7e2e3c7da2b4653da628bedc541f300dffc1a40ea3519f0b8bf2325ec",
+  "corpus_case_counts": {
+    "calibration": 3,
+    "development": 3,
+    "holdout": 5
+  },
+  "corpus_sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82",
+  "downstream_policy": "This PASS, if achieved, authorizes the bounded reduction and kinematic pairwise-KS representation as qualified inputs to later WP2 research. It does not authorize a production periodic-orbit catalogue claim or any unimplemented three-body regularized dynamics. Any such extension requires a new model specification, independent evidence, frozen gates, and its own qualification record.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP2-3BRQ-v1",
+      "case_count": 3,
+      "case_ids": [
+        "cal_lagrange_spatial",
+        "cal_sjtu_59402",
+        "cal_sjtu_69432"
+      ],
+      "corpus_sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_roundtrip_scaled_max",
+          "observed": 3.307188887270012e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_symplectic_error_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_one_form_scaled_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "energy_split_scaled_max",
+          "observed": 2.220446049250313e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_split_scaled_max",
+          "observed": 1.1335697856308468e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_roundtrip_scaled_max",
+          "observed": 6.644072814092945e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_rigid_invariance_scaled_max",
+          "observed": 8.408461700880283e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_energy_scaled_max",
+          "observed": 2.6645352591003757e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_roundtrip_scaled_max",
+          "observed": 3.930908870877335e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_roundtrip_scaled_max",
+          "observed": 5.571997654901249e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_abs_max",
+          "observed": 3.552713678800501e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_scaled_max",
+          "observed": 5.263870075295065e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_scaled_max",
+          "observed": 8.74414709243228e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_projection_scaled_max",
+          "observed": 3.9407430091917656e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_reconstruction_scaled_max",
+          "observed": 6.415747697019396e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": ">=",
+          "name": "singular_classification_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "generic_sample_count",
+          "observed": 7,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "structural_translation_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_rotation_poisson_dimension",
+          "observed": 9,
+          "passed": true,
+          "threshold": 9
+        },
+        {
+          "comparator": "==",
+          "name": "structural_generic_leaf_dimension",
+          "observed": 8,
+          "passed": true,
+          "threshold": 8
+        },
+        {
+          "comparator": "==",
+          "name": "structural_pairwise_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T07:30:48.070894+00:00",
+      "prerequisites": {
+        "wp1_n3bp": {
+          "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+          "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+          "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+          "status": "PASS"
+        },
+        "wp2_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "results_sha256": "b11e5af9b50d97f673be9914bb38ff4ac6598693d542427e07285e45a281c495",
+      "schema_version": "1.0",
+      "spec_sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP2-3BRQ-v1",
+      "case_count": 3,
+      "case_ids": [
+        "dev_figure_eight",
+        "dev_lagrange_unit",
+        "dev_sjtu_14"
+      ],
+      "corpus_sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_roundtrip_scaled_max",
+          "observed": 3.6196114853589774e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_symplectic_error_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_one_form_scaled_max",
+          "observed": 2.220446049250313e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "energy_split_scaled_max",
+          "observed": 3.552713678800501e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_split_scaled_max",
+          "observed": 9.104505742017336e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_roundtrip_scaled_max",
+          "observed": 7.777516656418573e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_rigid_invariance_scaled_max",
+          "observed": 1.7991731274320852e-15,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_energy_scaled_max",
+          "observed": 4.440892098500626e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_roundtrip_scaled_max",
+          "observed": 4.2287177843659284e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_roundtrip_scaled_max",
+          "observed": 5.050905051397739e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_abs_max",
+          "observed": 2.6645352591003757e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_scaled_max",
+          "observed": 6.352461749387808e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_scaled_max",
+          "observed": 7.872815576142104e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_projection_scaled_max",
+          "observed": 4.08992861596437e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_reconstruction_scaled_max",
+          "observed": 8.102147748236153e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": ">=",
+          "name": "singular_classification_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "generic_sample_count",
+          "observed": 7,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "structural_translation_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_rotation_poisson_dimension",
+          "observed": 9,
+          "passed": true,
+          "threshold": 9
+        },
+        {
+          "comparator": "==",
+          "name": "structural_generic_leaf_dimension",
+          "observed": 8,
+          "passed": true,
+          "threshold": 8
+        },
+        {
+          "comparator": "==",
+          "name": "structural_pairwise_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T07:30:47.044269+00:00",
+      "prerequisites": {
+        "wp1_n3bp": {
+          "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+          "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+          "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+          "status": "PASS"
+        },
+        "wp2_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "results_sha256": "584a86ba5d21ccc426e3d15fbce131bc8edd9090d64239dd32b0e662cfe2c86f",
+      "schema_version": "1.0",
+      "spec_sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP2-3BRQ-v1",
+      "case_count": 5,
+      "case_ids": [
+        "hold_lagrange_spatial",
+        "hold_sjtu_34537",
+        "hold_sjtu_49352",
+        "hold_sjtu_54382",
+        "hold_sjtu_64422"
+      ],
+      "corpus_sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_roundtrip_scaled_max",
+          "observed": 3.6900631693514954e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_symplectic_error_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "jacobi_one_form_scaled_max",
+          "observed": 1.5495610536870251e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "energy_split_scaled_max",
+          "observed": 2.6645352591003757e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_split_scaled_max",
+          "observed": 1.0141255869272633e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_roundtrip_scaled_max",
+          "observed": 5.334462667764881e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_rigid_invariance_scaled_max",
+          "observed": 1.2545889021056204e-15,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "euclidean_energy_scaled_max",
+          "observed": 2.6645352591003757e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_roundtrip_scaled_max",
+          "observed": 4.3909509792155753e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_roundtrip_scaled_max",
+          "observed": 5.943305344578436e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_xi_abs_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_position_closure_scaled_max",
+          "observed": 6.583989533913104e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_velocity_closure_scaled_max",
+          "observed": 9.673728967522293e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_projection_scaled_max",
+          "observed": 4.3715054288890134e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "pairwise_s1_reconstruction_scaled_max",
+          "observed": 5.774376989119295e-16,
+          "passed": true,
+          "threshold": 3e-12
+        },
+        {
+          "comparator": ">=",
+          "name": "singular_classification_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "generic_sample_count",
+          "observed": 11,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "structural_translation_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_rotation_poisson_dimension",
+          "observed": 9,
+          "passed": true,
+          "threshold": 9
+        },
+        {
+          "comparator": "==",
+          "name": "structural_generic_leaf_dimension",
+          "observed": 8,
+          "passed": true,
+          "threshold": 8
+        },
+        {
+          "comparator": "==",
+          "name": "structural_pairwise_dimension",
+          "observed": 12,
+          "passed": true,
+          "threshold": 12
+        },
+        {
+          "comparator": "==",
+          "name": "structural_global_sundman_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-20T07:31:31.009556+00:00",
+      "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+      "prerequisites": {
+        "wp1_n3bp": {
+          "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+          "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+          "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+          "status": "PASS"
+        },
+        "wp2_ks": {
+          "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+          "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+          "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+          "status": "PASS"
+        }
+      },
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+      "results_sha256": "ce8cb280c7012b78708fe5f27dd51c0db914395192d80903fe0f7a42e3ea26dd",
+      "schema_version": "1.0",
+      "spec_sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "This qualification is a downstream algebraic and trajectory-conformance decision conditional on valid PASS records for WP1Q-N3BP-v1 and WP2KSQ-v1. It covers positive finite masses, collision-free source states, exact canonical momenta p_i=m_i*v_i, the generic non-collinear SO(3) chart, explicitly classified collinear singular strata, and the frozen N3BP source trajectories and random structural bounds. It does not qualify reduced Hamilton equations, a mechanical connection, a Darboux chart for the nine-dimensional Poisson quotient, collinear or collision charts, binary-collision passage, a simultaneous three-body Sundman transformation, three decoupled Kepler oscillators, a globally regularized N3BP Hamiltonian, orbit discovery, correction, stability, or a production periodic-orbit catalogue.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp2-threebody-validation/results/calibration_evaluation.json",
+      "sha256": "ea8fc4722ce5ce492d55ac1cf20ce01c8ad18b73bbe1247fb6893802aa713571"
+    },
+    "corpus": {
+      "path": "validation-external/wp2-threebody-validation/data/qualification_corpus.json",
+      "sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp2-threebody-validation/results/development_evaluation.json",
+      "sha256": "aa336d3cc25565bcf9013655ae1662bb11a37b90509cda8f61b98287a71e5e00"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp2-threebody-validation/results/holdout_evaluation.json",
+      "sha256": "d5280de7ea2029c38b47fd9060a1745718ddf76f16d9e924c6922d8b5a4da786"
+    },
+    "lock": {
+      "path": "validation-external/wp2-threebody-validation/reports/wp2_threebody_qualification_lock.json",
+      "sha256": "89a4138bbeaced1981605ba0cb967ffe2e1131e416a5bc1f0044eae84b292449"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp2-threebody-validation/sources/manifest.json",
+      "sha256": "7edad097b8ab4e758000c4eac8e4e444df46b3dd8acae120a08f7223303ed942"
+    },
+    "spec": {
+      "path": "validation-external/wp2-threebody-validation/qualification_spec.json",
+      "sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d"
+    }
+  },
+  "generated_utc": "2026-07-20T07:31:36.883744+00:00",
+  "holdout_ids_sha256": "a94dd77e2a67bdb6a02ff3103b0eed22cb0beca77cd35697990b60cf9edc97e9",
+  "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+  "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+  "record_payload_sha256": "4796c8164d1d64898765f675e8677751e42e77a04f8bbfd062fdf69620777428",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "7edad097b8ab4e758000c4eac8e4e444df46b3dd8acae120a08f7223303ed942",
+  "spec_sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d",
+  "status": "PASS"
+}
