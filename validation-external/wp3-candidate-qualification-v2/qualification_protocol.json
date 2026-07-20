@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-CANDIDATE-QUALIFICATION-v2",
+  "search_prerequisite": {
+    "qualification_id": "WP3-UP-CAND-v2-9f06dc7b2254",
+    "lock_sha256": "c1fa38a6ebb478887e6e47af7e35d89b2ca376ad6417efdab7375483cd8b5760",
+    "record_sha256": "f5d7c56033ab5387b518767bf8ade8fbf8d595288fbdb0144be181c50b7ea152",
+    "record_payload_sha256": "d7e9723b80ed544b88e7e942db71f036c72d8c276a562946325ee497854232ed",
+    "results_sha256": "5a6c7d416eca5645c2d9e283a47fc30297b1bfa0cc5877d6477bdaf7b87ca903",
+    "gate_sha256": "9a1db83a79d7350aebd7a07a777c3b27c565b34e09290af3403eb338bfc7f74a"
+  },
+  "publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+  "trigger": "SEARCH_READY=PASS, exactly one frozen mode has candidate_ready=true, CANDIDATE_READY=PASS, and SEALED_QUALIFICATION=REQUIRED.",
+  "required_if_triggered": [
+    "candidate expression and coefficient hash",
+    "candidate-specific model, domain, and singular-set declaration",
+    "covariance and exact S1 gauge falsification",
+    "functional independence from H, Xi, angular momentum, constraints, and their represented algebra",
+    "Poisson and variational tests",
+    "long-time and out-of-distribution tests",
+    "candidate-blind sealed reserve execution",
+    "independent implementation replication"
+  ],
+  "zero_candidate_policy": "Do not create a candidate lock, do not open the reserve, and do not invoke WP4 candidate interpretation."
+}

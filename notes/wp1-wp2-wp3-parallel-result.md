@@ -24,19 +24,18 @@ standalone publication package.
 `WP2-UPQ-v2-3baea4a70768` is the authoritative one-channel upstairs model
 qualification. See `notes/wp2-up-v2-assessment.md`.
 
-## WP3-UP-CAND-v1
+## WP3-UP-CAND-v2
 
-The locked degree-three upstairs search returned zero candidates. The
+The superseding parameter-aware degree-three upstairs search returned zero
+candidates. Three development-only near-null directions were rejected by
+disjoint calibration and family-fold gates. The
 candidate-specific gate records `NOT_TRIGGERED_NO_CANDIDATE`; the publication
-reserve remains sealed. See `notes/wp3-up-cand-v1-assessment.md`.
-
-This result is historical. `WP3-UP-CAND-v2` supersedes it with a
-parameter-aware grammar and stronger evidence binding.
+reserve remains sealed. See `notes/wp3-up-cand-v2-assessment.md`.
 
 ## Project Effect
 
 The catalogue track can continue independently from the invariant track. The
 central lift-integrability hypothesis has not received positive support from
-WP3-UP-CAND-v1. Any next discovery campaign must preregister a materially new
+WP3-UP-CAND-v2. Any next discovery campaign must preregister a materially new
 hypothesis class, such as rational/interaction-aware functions, higher-degree
 sparse forms, or a different qualified upstairs geometry.

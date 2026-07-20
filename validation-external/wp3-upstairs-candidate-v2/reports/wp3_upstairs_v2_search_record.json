@@ -1,0 +1,40 @@
+{
+  "campaign": "WP3-UP-CAND-v2",
+  "candidate_count": 0,
+  "candidate_ready": "NOT_TRIGGERED",
+  "claim_boundary": "A no-candidate result excludes only combined-total-degree-three-or-less polynomials containing at least one of the 14 dimensionless canonical upstairs variables and optionally the fixed energy and symmetric mass parameters s2 and s3, on the frozen development/calibration corpus, sampled gauges, and thresholds. Parameter-only constants are excluded as trivial. A numerical candidate is not a conserved quantity and only triggers a separately frozen candidate-specific qualification. This campaign cannot open the sealed publication reserve and cannot authorize a WP4 or integrability claim.",
+  "corpus_sha256": "c2c79191fc2dc9665b7c9ca15f68459680fa1ae2a55c86b5cb14f7c2d82b2059",
+  "feature_count": 1126,
+  "gate_sha256": "9a1db83a79d7350aebd7a07a777c3b27c565b34e09290af3403eb338bfc7f74a",
+  "generated_utc": "2026-07-20T19:08:52.579303+00:00",
+  "interpretation_status": "PROHIBITED",
+  "known_algebra_active_rank": 6,
+  "lock_sha256": "c1fa38a6ebb478887e6e47af7e35d89b2ca376ad6417efdab7375483cd8b5760",
+  "matrix_hashes": {
+    "calibration_lie_derivatives": "2bc2ed1a1981b22b305965380273331433ad9fa310350b431fbe00b1d11ce283",
+    "calibration_values": "3ded96f91d3fc45c21e1cbef6f862398be3db771cdc7492305d08ea186fa8e54",
+    "training_lie_derivatives": "05d41e3bc0c4658049e21d534ef213d83b82e491451f8eb4b5b71131f458e985",
+    "training_values": "de8bc3a6c6c0ecbd9df1611659f740e178f413cf069b1ec2bba9b998c31a53a9"
+  },
+  "numerical_nullity_at_candidate_threshold": 3,
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP3-UP-CAND-v2-9f06dc7b2254",
+  "record_payload_sha256": "d7e9723b80ed544b88e7e942db71f036c72d8c276a562946325ee497854232ed",
+  "results_sha256": "5a6c7d416eca5645c2d9e283a47fc30297b1bfa0cc5877d6477bdaf7b87ca903",
+  "schema_version": "1.0",
+  "sealed_qualification": "NOT_TRIGGERED",
+  "search_ready": "PASS",
+  "smallest_post_projection_singular_value": 1.015334425446391e-11,
+  "source_summary": {
+    "calibration_groups": 69,
+    "calibration_points": 783,
+    "gauge_count": 3,
+    "training_groups": 138,
+    "training_points": 1566
+  },
+  "spec_sha256": "67bd0af9f382c378954e785b6e4e8cfd361e932a1d3404225413077c7b0cf3c1",
+  "status": "COMPLETE_BOUNDED_NULL_RESULT",
+  "value_identity_nullity": 45,
+  "value_rank": 1081,
+  "wp4_ready": "BLOCKED"
+}

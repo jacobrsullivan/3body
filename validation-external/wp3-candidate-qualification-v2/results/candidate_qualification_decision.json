@@ -1,0 +1,18 @@
+{
+  "campaign": "WP3-CANDIDATE-QUALIFICATION-v2",
+  "candidate_count": 0,
+  "candidate_specific_lock": "NOT_CREATED",
+  "generated_utc": "2026-07-20T19:10:03.658366+00:00",
+  "publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "schema_version": "1.0",
+  "sealed_execution": "PROHIBITED",
+  "search_gate_sha256": "9a1db83a79d7350aebd7a07a777c3b27c565b34e09290af3403eb338bfc7f74a",
+  "search_lock_sha256": "c1fa38a6ebb478887e6e47af7e35d89b2ca376ad6417efdab7375483cd8b5760",
+  "search_qualification_id": "WP3-UP-CAND-v2-9f06dc7b2254",
+  "search_record_payload_sha256": "d7e9723b80ed544b88e7e942db71f036c72d8c276a562946325ee497854232ed",
+  "search_record_sha256": "f5d7c56033ab5387b518767bf8ade8fbf8d595288fbdb0144be181c50b7ea152",
+  "search_results_sha256": "5a6c7d416eca5645c2d9e283a47fc30297b1bfa0cc5877d6477bdaf7b87ca903",
+  "status": "NOT_TRIGGERED_NO_CANDIDATE",
+  "wp4_candidate_validation": "BLOCKED"
+}
