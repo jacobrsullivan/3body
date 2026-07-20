@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "corpus_id": "wp2-threebody-reduction-composition-v1",
+  "source_corpus": "validation-external/wp1-n3bp-validation/data/qualification_corpus.json",
+  "cases": [
+    {
+      "case_id": "dev_lagrange_unit",
+      "split": "development",
+      "source_case_id": "lagrange_unit_planar",
+      "sample_fractions": [0.0, 0.071, 0.233],
+      "evaluation_seed": 1103
+    },
+    {
+      "case_id": "dev_figure_eight",
+      "split": "development",
+      "source_case_id": "figure_eight_published_rounded",
+      "sample_fractions": [0.0, 0.083, 0.271],
+      "evaluation_seed": 1109
+    },
+    {
+      "case_id": "dev_sjtu_14",
+      "split": "development",
+      "source_case_id": "sjtu_line_14_m0800_m0756",
+      "sample_fractions": [0.0, 0.097, 0.241],
+      "evaluation_seed": 1117
+    },
+    {
+      "case_id": "cal_lagrange_spatial",
+      "split": "calibration",
+      "source_case_id": "lagrange_scaled_spatial",
+      "sample_fractions": [0.0, 0.119, 0.307],
+      "evaluation_seed": 2111
+    },
+    {
+      "case_id": "cal_sjtu_59402",
+      "split": "calibration",
+      "source_case_id": "sjtu_line_59402_m0930_m0890",
+      "sample_fractions": [0.0, 0.107, 0.293],
+      "evaluation_seed": 2113
+    },
+    {
+      "case_id": "cal_sjtu_69432",
+      "split": "calibration",
+      "source_case_id": "sjtu_line_69432_m0950_m0900",
+      "sample_fractions": [0.0, 0.127, 0.319],
+      "evaluation_seed": 2129
+    },
+    {
+      "case_id": "hold_lagrange_spatial",
+      "split": "holdout",
+      "source_case_id": "reserved_lagrange_spatial",
+      "sample_fractions": [0.0, 0.137, 0.347],
+      "evaluation_seed": 3109
+    },
+    {
+      "case_id": "hold_sjtu_34537",
+      "split": "holdout",
+      "source_case_id": "reserved_sjtu_line_34537_m0880_m0820",
+      "sample_fractions": [0.0, 0.131, 0.331],
+      "evaluation_seed": 3119
+    },
+    {
+      "case_id": "hold_sjtu_49352",
+      "split": "holdout",
+      "source_case_id": "reserved_sjtu_line_49352_m0910_m0860",
+      "sample_fractions": [0.0, 0.149, 0.359],
+      "evaluation_seed": 3121
+    },
+    {
+      "case_id": "hold_sjtu_54382",
+      "split": "holdout",
+      "source_case_id": "reserved_sjtu_line_54382_m0920_m0880",
+      "sample_fractions": [0.0, 0.157, 0.367],
+      "evaluation_seed": 3137
+    },
+    {
+      "case_id": "hold_sjtu_64422",
+      "split": "holdout",
+      "source_case_id": "reserved_sjtu_line_64422_m0940_m0900",
+      "sample_fractions": [0.0, 0.163, 0.379],
+      "evaluation_seed": 3163
+    }
+  ]
+}

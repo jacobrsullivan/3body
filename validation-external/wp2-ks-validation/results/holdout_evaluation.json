@@ -1,0 +1,134 @@
+{
+  "campaign": "WP2KSQ-v1",
+  "case_count": 5,
+  "case_ids": [
+    "reserved_high_e_retrograde",
+    "reserved_moderate_small_mu",
+    "reserved_near_circular_scaled",
+    "reserved_nonunit_mass_oblique",
+    "reserved_radial_collision"
+  ],
+  "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "analytic_state_error_max",
+      "observed": 8.881784197001252e-15,
+      "passed": true,
+      "threshold": 5e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "rebound_state_error_max",
+      "observed": 7.84017295529793e-12,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "closure_position_error_max",
+      "observed": 1.2695710970472183e-15,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "closure_velocity_error_max",
+      "observed": 2.2644195468014703e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "regularized_hamiltonian_abs_max",
+      "observed": 6.217248937900877e-15,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "momentum_map_abs_max",
+      "observed": 8.881784197001252e-16,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "physical_energy_abs_error_max",
+      "observed": 2.886579864025407e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "period_relative_error_max",
+      "observed": 5.50577475766116e-16,
+      "passed": true,
+      "threshold": 5e-13
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_radius_error_max",
+      "observed": 1.7763568394002505e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_s1_invariance_error_max",
+      "observed": 2.220446049250313e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_cotangent_roundtrip_error_max",
+      "observed": 1.3322676295501878e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "structural_poisson_error_max",
+      "observed": 2.7004084383547544e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "radial_collision_q_norm_max",
+      "observed": 1.0061500153042558e-16,
+      "passed": true,
+      "threshold": 2e-14
+    },
+    {
+      "comparator": "<=",
+      "name": "radial_symmetry_error_max",
+      "observed": 4.0186013394249464e-22,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "radial_regularized_hamiltonian_abs_max",
+      "observed": 2.220446049250313e-16,
+      "passed": true,
+      "threshold": 5e-12
+    }
+  ],
+  "generated_utc": "2026-07-20T07:14:44.832942+00:00",
+  "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+  "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+  "results_sha256": "0e502cc21ef72e58f5d179908d6e70515b1450e7b4d3b571f0470369fd2bf676",
+  "schema_version": "1.0",
+  "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+  "split": "holdout",
+  "status": "PASS"
+}

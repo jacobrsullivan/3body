@@ -1,0 +1,422 @@
+{
+  "base_git_commit": "cb3ac8e5e6580065b077cb0aeb3bc2487e04f55c",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2KSQ-v1 qualifies the declared canonical Kustaanheimo-Stiefel construction for isolated negative-energy Kepler motion: the Hopf position map, canonical cotangent lift, common-phase S1 action, Xi momentum map, zero-level quotient, fixed-energy Sundman rule dt/ds=|u|^2, regular four-dimensional isotropic oscillator, physical-time reconstruction, and smooth radial-collision passage in regular variables. Within the frozen corpus bounds, projected collision-free trajectories reproduce independently encoded analytic Kepler conics and the external REBOUND IAS15 implementation at the declared checkpoints.",
+  "code_snapshot_sha256": "dc4b342e3bd2f9fa3c234c6ee056aa4e2926d7d12bb6ea2a5604c99e9a268d93",
+  "corpus_case_counts": {
+    "calibration": 2,
+    "development": 2,
+    "holdout": 5
+  },
+  "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+  "downstream_policy": "This PASS is necessary but insufficient for full three-body reduction or pairwise KS. Those paths may be rebuilt only when this record and WP1Q-N3BP-v1 are both PASS with valid locks, and the rebuilt path must then satisfy its own downstream qualification.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP2KSQ-v1",
+      "case_count": 2,
+      "case_ids": [
+        "high_e_collision_free",
+        "low_e_inclined"
+      ],
+      "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "analytic_state_error_max",
+          "observed": 1.2434497875801753e-14,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "rebound_state_error_max",
+          "observed": 2.9316660210554346e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_error_max",
+          "observed": 4.041272810440265e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_error_max",
+          "observed": 3.953391794989626e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "regularized_hamiltonian_abs_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "momentum_map_abs_max",
+          "observed": 4.440892098500626e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "physical_energy_abs_error_max",
+          "observed": 3.552713678800501e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "period_relative_error_max",
+          "observed": 2.8271597168564594e-16,
+          "passed": true,
+          "threshold": 5e-13
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_radius_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_s1_invariance_error_max",
+          "observed": 1.790234627208065e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_cotangent_roundtrip_error_max",
+          "observed": 1.5543122344752192e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_poisson_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-11
+        }
+      ],
+      "generated_utc": "2026-07-20T06:41:08.752238+00:00",
+      "results_sha256": "d53fa4582874b87533a9ad3d62f9247d5f82a11c683fcdbf5272d0a6f27e0c9d",
+      "schema_version": "1.0",
+      "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP2KSQ-v1",
+      "case_count": 2,
+      "case_ids": [
+        "circular_unit",
+        "moderate_e_retrograde"
+      ],
+      "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "analytic_state_error_max",
+          "observed": 3.1086244689504383e-15,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "rebound_state_error_max",
+          "observed": 6.661338147750939e-15,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_error_max",
+          "observed": 1.9484335006297032e-15,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_error_max",
+          "observed": 2.4492935982947064e-16,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "regularized_hamiltonian_abs_max",
+          "observed": 1.1102230246251565e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "momentum_map_abs_max",
+          "observed": 1.1102230246251565e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "physical_energy_abs_error_max",
+          "observed": 3.3306690738754696e-16,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "period_relative_error_max",
+          "observed": 1.5683438684187899e-16,
+          "passed": true,
+          "threshold": 5e-13
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_radius_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_s1_invariance_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_cotangent_roundtrip_error_max",
+          "observed": 1.519617764955683e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_poisson_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-11
+        }
+      ],
+      "generated_utc": "2026-07-20T06:41:08.307065+00:00",
+      "results_sha256": "a0872078cd247c79b32ee2ccf4afd2faa83dec2123f9153d0d170fd811b445d7",
+      "schema_version": "1.0",
+      "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP2KSQ-v1",
+      "case_count": 5,
+      "case_ids": [
+        "reserved_high_e_retrograde",
+        "reserved_moderate_small_mu",
+        "reserved_near_circular_scaled",
+        "reserved_nonunit_mass_oblique",
+        "reserved_radial_collision"
+      ],
+      "corpus_sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "analytic_state_error_max",
+          "observed": 8.881784197001252e-15,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "rebound_state_error_max",
+          "observed": 7.84017295529793e-12,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_error_max",
+          "observed": 1.2695710970472183e-15,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_error_max",
+          "observed": 2.2644195468014703e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "regularized_hamiltonian_abs_max",
+          "observed": 6.217248937900877e-15,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "momentum_map_abs_max",
+          "observed": 8.881784197001252e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "physical_energy_abs_error_max",
+          "observed": 2.886579864025407e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "period_relative_error_max",
+          "observed": 5.50577475766116e-16,
+          "passed": true,
+          "threshold": 5e-13
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_radius_error_max",
+          "observed": 1.7763568394002505e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_s1_invariance_error_max",
+          "observed": 2.220446049250313e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_cotangent_roundtrip_error_max",
+          "observed": 1.3322676295501878e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_poisson_error_max",
+          "observed": 2.7004084383547544e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "radial_collision_q_norm_max",
+          "observed": 1.0061500153042558e-16,
+          "passed": true,
+          "threshold": 2e-14
+        },
+        {
+          "comparator": "<=",
+          "name": "radial_symmetry_error_max",
+          "observed": 4.0186013394249464e-22,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "radial_regularized_hamiltonian_abs_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 5e-12
+        }
+      ],
+      "generated_utc": "2026-07-20T07:14:44.832942+00:00",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "results_sha256": "0e502cc21ef72e58f5d179908d6e70515b1450e7b4d3b571f0470369fd2bf676",
+      "schema_version": "1.0",
+      "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "This qualification is limited to an isolated two-body Hamiltonian with reduced_mass>0, kappa>0, fixed E<0, Xi=0, elliptic eccentricity 0<=e<=0.97, the parameter ranges in the frozen corpus, and the explicitly tested radial-collision continuation. It does not qualify E>=0, nonzero-Xi magnetic reduction, perturbed Kepler motion, a pair embedded in a three-body field, pairwise or simultaneous three-body KS, full three-body reduction, orbit discovery, additional first integrals, or any WP3/WP4 claim.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp2-ks-validation/results/calibration_evaluation.json",
+      "sha256": "4242cc63f56557f34fe31435d59c36075ba2fb87ecc4edf830b66627740188d3"
+    },
+    "corpus": {
+      "path": "validation-external/wp2-ks-validation/data/qualification_corpus.json",
+      "sha256": "0afa4a9f754ac8b8018c3766be02b0791ddfc5ef4593f067fd88786518d5ad1e"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp2-ks-validation/results/development_evaluation.json",
+      "sha256": "572e093973ef560d34f2538062f5373c4f87854d356635c23d9e118c5f2c1365"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp2-ks-validation/results/holdout_evaluation.json",
+      "sha256": "2bd019cf6cc42dcb3c47dd86b3d57f72c9aa3b6a6a45b8e67d059597f379835f"
+    },
+    "lock": {
+      "path": "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_lock.json",
+      "sha256": "0f0d1bb48682aaea015ea043fbad9cd2762c9600004de97ee620c3eabba4fd2f"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp2-ks-validation/sources/manifest.json",
+      "sha256": "26a4c9ac358f6d66fc87eb1139a4dd40a6eb986e3405467da62fa562da4f8093"
+    },
+    "spec": {
+      "path": "validation-external/wp2-ks-validation/qualification_spec.json",
+      "sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336"
+    }
+  },
+  "generated_utc": "2026-07-20T07:14:55.919920+00:00",
+  "holdout_ids_sha256": "52fb28f4c2f8bcd1dd6d3efb903d166738bad0165deddf7496758e02c1aa68f6",
+  "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+  "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+  "record_payload_sha256": "4f6b50bb05a3b8b794869a3e55e033e77627fb5c1485b0e0fafe8d89f3595c6f",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "26a4c9ac358f6d66fc87eb1139a4dd40a6eb986e3405467da62fa562da4f8093",
+  "spec_sha256": "9107e11c73907d6ac7b03ac7b751b9ec1deb2ee4167ea1b605c5d3d6fa3f5336",
+  "status": "PASS"
+}

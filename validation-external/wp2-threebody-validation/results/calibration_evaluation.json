@@ -1,0 +1,200 @@
+{
+  "campaign": "WP2-3BRQ-v1",
+  "case_count": 3,
+  "case_ids": [
+    "cal_lagrange_spatial",
+    "cal_sjtu_59402",
+    "cal_sjtu_69432"
+  ],
+  "corpus_sha256": "b7be5a0e41c0fc0aef5d617d154aa5d1615d31df9bc8088482f28810f53b2d82",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "jacobi_roundtrip_scaled_max",
+      "observed": 3.307188887270012e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "jacobi_symplectic_error_max",
+      "observed": 2.220446049250313e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "jacobi_one_form_scaled_max",
+      "observed": 1.7763568394002505e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "energy_split_scaled_max",
+      "observed": 2.220446049250313e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "angular_momentum_split_scaled_max",
+      "observed": 1.1335697856308468e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "euclidean_roundtrip_scaled_max",
+      "observed": 6.644072814092945e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "euclidean_rigid_invariance_scaled_max",
+      "observed": 8.408461700880283e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "euclidean_energy_scaled_max",
+      "observed": 2.6645352591003757e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_position_roundtrip_scaled_max",
+      "observed": 3.930908870877335e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_velocity_roundtrip_scaled_max",
+      "observed": 5.571997654901249e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_xi_abs_max",
+      "observed": 3.552713678800501e-15,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_position_closure_scaled_max",
+      "observed": 5.263870075295065e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_velocity_closure_scaled_max",
+      "observed": 8.74414709243228e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_s1_projection_scaled_max",
+      "observed": 3.9407430091917656e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "pairwise_s1_reconstruction_scaled_max",
+      "observed": 6.415747697019396e-16,
+      "passed": true,
+      "threshold": 3e-12
+    },
+    {
+      "comparator": ">=",
+      "name": "singular_classification_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "generic_sample_count",
+      "observed": 7,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "structural_translation_dimension",
+      "observed": 12,
+      "passed": true,
+      "threshold": 12
+    },
+    {
+      "comparator": "==",
+      "name": "structural_rotation_poisson_dimension",
+      "observed": 9,
+      "passed": true,
+      "threshold": 9
+    },
+    {
+      "comparator": "==",
+      "name": "structural_generic_leaf_dimension",
+      "observed": 8,
+      "passed": true,
+      "threshold": 8
+    },
+    {
+      "comparator": "==",
+      "name": "structural_pairwise_dimension",
+      "observed": 12,
+      "passed": true,
+      "threshold": 12
+    },
+    {
+      "comparator": "==",
+      "name": "structural_global_sundman_qualified",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    }
+  ],
+  "generated_utc": "2026-07-20T07:30:48.070894+00:00",
+  "prerequisites": {
+    "wp1_n3bp": {
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+      "status": "PASS"
+    },
+    "wp2_ks": {
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+      "status": "PASS"
+    }
+  },
+  "results_sha256": "b11e5af9b50d97f673be9914bb38ff4ac6598693d542427e07285e45a281c495",
+  "schema_version": "1.0",
+  "spec_sha256": "7fde3f6836aba77fb365ea8715014f96990a13f6d2a974d55782386e0a98737d",
+  "split": "calibration",
+  "status": "PASS"
+}

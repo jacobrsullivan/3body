@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-3BRQ-v1",
+  "specification_status": "LOCKABLE",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP2-3BRQ-v1 qualifies the declared downstream composition of two prerequisite PASS artifacts: (1) the exact linear canonical Jacobi transformation and 12-dimensional zero-total-momentum translation quotient for the qualified 18D Newtonian three-body state, (2) a reconstruction-complete nine-coordinate body-frame chart on the generic non-collinear SO(3) Poisson quotient, with generic nonzero-angular-momentum symplectic-leaf dimension eight, and (3) a constrained kinematic lift of all three oriented relative phase states through the qualified zero-Xi canonical KS cotangent lift, including S1^3 gauge invariance, triangle position/velocity closure, and exact full-state reconstruction within the frozen corpus bounds.",
+  "evidence_boundary": "This qualification is a downstream algebraic and trajectory-conformance decision conditional on valid PASS records for WP1Q-N3BP-v1 and WP2KSQ-v1. It covers positive finite masses, collision-free source states, exact canonical momenta p_i=m_i*v_i, the generic non-collinear SO(3) chart, explicitly classified collinear singular strata, and the frozen N3BP source trajectories and random structural bounds. It does not qualify reduced Hamilton equations, a mechanical connection, a Darboux chart for the nine-dimensional Poisson quotient, collinear or collision charts, binary-collision passage, a simultaneous three-body Sundman transformation, three decoupled Kepler oscillators, a globally regularized N3BP Hamiltonian, orbit discovery, correction, stability, or a production periodic-orbit catalogue.",
+  "prerequisites": {
+    "wp2_ks": {
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "record_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    "wp1_n3bp": {
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "record_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27"
+    }
+  },
+  "model": {
+    "jacobi_coordinates": "R=sum(m_i*r_i)/M; rho=r2-r1; lambda=r3-(m1*r1+m2*r2)/(m1+m2)",
+    "jacobi_momenta": "P=sum(p_i); p_rho=mu12*(v2-v1); p_lambda=mu3_12*(v3-v12_com)",
+    "translation_quotient": "Drop (R,P) on P=0, leaving canonical (rho,lambda,p_rho,p_lambda) in dimension 12",
+    "rotation_quotient": "On rho!=0 and rho cross lambda!=0, use e1=rho/|rho|, e3=(rho cross lambda)/|rho cross lambda|, e2=e3 cross e1; body coordinates form a 9D Poisson quotient chart",
+    "pair_cycle": "x12=r2-r1; x23=r3-r2; x31=r1-r3; x12+x23+x31=0",
+    "pair_momenta": "pij=muij*(vj-vi)",
+    "pairwise_ks": "Apply the WP2KSQ-v1 cotangent section to each pair at Xi=0 and quotient by S1^3",
+    "pairwise_dimension": "24 - 3 Xi restrictions - 3 S1 gauges - 3 position closure - 3 velocity closure = 12",
+    "time_policy": "No common Sundman time or three-body regularized dynamics is defined"
+  },
+  "corpus": {
+    "path": "data/qualification_corpus.json",
+    "source": "Case definitions reference the immutable WP1Q-N3BP-v1 corpus; each case is sampled at frozen physical-time fractions using its qualified DOP853 production path.",
+    "holdout_interpretation": "The downstream holdout reserves transformation outputs, not previously unseen celestial initial conditions. It is a compositional conformance holdout and is not independent external scientific validation."
+  },
+  "execution": {
+    "production_rtol": 2e-12,
+    "production_atol": 2e-14,
+    "production_max_step_fraction_of_period": 0.002,
+    "chart_relative_tolerance": 1e-10,
+    "structural_random_cases_per_split": 256,
+    "structural_seed_by_split": {
+      "development": 31091,
+      "calibration": 88031,
+      "holdout": 64037
+    },
+    "holdout_rule": "The holdout runner verifies both prerequisite locks and records plus every downstream frozen file before selecting reserved cases. A failed holdout remains FAIL and requires a new campaign version."
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "prerequisite_pass_rate_min": 1.0,
+    "jacobi_roundtrip_scaled_max": 2e-12,
+    "jacobi_symplectic_error_max": 2e-12,
+    "jacobi_one_form_scaled_max": 2e-12,
+    "energy_split_scaled_max": 2e-12,
+    "angular_momentum_split_scaled_max": 2e-12,
+    "euclidean_roundtrip_scaled_max": 3e-12,
+    "euclidean_rigid_invariance_scaled_max": 3e-12,
+    "euclidean_energy_scaled_max": 2e-12,
+    "pairwise_position_roundtrip_scaled_max": 3e-12,
+    "pairwise_velocity_roundtrip_scaled_max": 3e-12,
+    "pairwise_xi_abs_max": 2e-12,
+    "pairwise_position_closure_scaled_max": 2e-12,
+    "pairwise_velocity_closure_scaled_max": 2e-12,
+    "pairwise_s1_projection_scaled_max": 3e-12,
+    "pairwise_s1_reconstruction_scaled_max": 3e-12,
+    "singular_classification_rate_min": 1.0,
+    "generic_sample_count_min": 1,
+    "structural_translation_dimension": 12,
+    "structural_rotation_poisson_dimension": 9,
+    "structural_generic_leaf_dimension": 8,
+    "structural_pairwise_dimension": 12,
+    "structural_global_sundman_qualified": 0
+  },
+  "downstream_policy": "This PASS, if achieved, authorizes the bounded reduction and kinematic pairwise-KS representation as qualified inputs to later WP2 research. It does not authorize a production periodic-orbit catalogue claim or any unimplemented three-body regularized dynamics. Any such extension requires a new model specification, independent evidence, frozen gates, and its own qualification record."
+}

@@ -1,0 +1,125 @@
+{
+  "campaign": "WP1Q-N3BP-v1",
+  "cases": [
+    {
+      "case_id": "reserved_lagrange_spatial",
+      "case_type": "lagrange",
+      "metrics": {
+        "angular_momentum_drift_scaled": 3.130466725635511e-16,
+        "center_of_mass_position_drift_scaled": 3.97185563566068e-16,
+        "center_of_mass_velocity_drift_scaled": 1.8194629825295568e-16,
+        "dop853_rebound_position_error_scaled": 6.644738469593883e-15,
+        "dop853_rebound_velocity_error_scaled": 5.657056504019584e-15,
+        "lagrange_analytic_position_error_scaled": 8.737382536028374e-15,
+        "lagrange_analytic_velocity_error_scaled": 6.859867192888931e-15,
+        "linear_momentum_drift_scaled": 1.8194629825295568e-16,
+        "minimum_pair_separation_scaled": 0.9999999999999912,
+        "periodic_closure_position_scaled": 8.606606335937916e-15,
+        "periodic_closure_velocity_scaled": 6.734582059370683e-15,
+        "relative_energy_drift": 1.37833810880334e-15
+      },
+      "period": 2.137935111742664,
+      "success": true
+    },
+    {
+      "case_id": "reserved_sjtu_line_34537_m0880_m0820",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 8.98076882400891e-14,
+        "center_of_mass_position_drift_scaled": 2.0800931995439517e-15,
+        "center_of_mass_velocity_drift_scaled": 1.2104241649090679e-15,
+        "dop853_rebound_position_error_scaled": 1.8554126639333696e-11,
+        "dop853_rebound_velocity_error_scaled": 5.59071397357655e-10,
+        "linear_momentum_drift_scaled": 1.210424164909068e-15,
+        "minimum_pair_separation_scaled": 0.06572045250883994,
+        "periodic_closure_position_scaled": 3.889946989352164e-12,
+        "periodic_closure_velocity_scaled": 5.675076904185706e-11,
+        "relative_energy_drift": 3.9218258638981304e-12
+      },
+      "period": 6.12298846844785,
+      "success": true
+    },
+    {
+      "case_id": "reserved_sjtu_line_49352_m0910_m0860",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 1.0362047899040681e-13,
+        "center_of_mass_position_drift_scaled": 6.6655588813840056e-15,
+        "center_of_mass_velocity_drift_scaled": 2.084087792415878e-15,
+        "dop853_rebound_position_error_scaled": 2.333873996405614e-11,
+        "dop853_rebound_velocity_error_scaled": 6.31743101571345e-10,
+        "linear_momentum_drift_scaled": 2.084087792415878e-15,
+        "minimum_pair_separation_scaled": 0.07359612150128188,
+        "periodic_closure_position_scaled": 1.0558745416763057e-11,
+        "periodic_closure_velocity_scaled": 8.003358054304414e-11,
+        "relative_energy_drift": 3.808794975016666e-12
+      },
+      "period": 6.45157133796456,
+      "success": true
+    },
+    {
+      "case_id": "reserved_sjtu_line_54382_m0920_m0880",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 1.516307435943267e-13,
+        "center_of_mass_position_drift_scaled": 6.12917919194319e-15,
+        "center_of_mass_velocity_drift_scaled": 1.2008759901346495e-15,
+        "dop853_rebound_position_error_scaled": 1.5290664307759247e-11,
+        "dop853_rebound_velocity_error_scaled": 3.6453253300567416e-10,
+        "linear_momentum_drift_scaled": 1.2008759901346495e-15,
+        "minimum_pair_separation_scaled": 0.07956359153429556,
+        "periodic_closure_position_scaled": 5.982713688838158e-12,
+        "periodic_closure_velocity_scaled": 3.490760159333481e-11,
+        "relative_energy_drift": 2.8883093740824352e-12
+      },
+      "period": 6.57739880747303,
+      "success": true
+    },
+    {
+      "case_id": "reserved_sjtu_line_64422_m0940_m0900",
+      "case_type": "sjtu_periodic",
+      "metrics": {
+        "angular_momentum_drift_scaled": 3.6344823661164055e-14,
+        "center_of_mass_position_drift_scaled": 3.244375536195444e-15,
+        "center_of_mass_velocity_drift_scaled": 9.553384260735888e-16,
+        "dop853_rebound_position_error_scaled": 1.8000938320334043e-11,
+        "dop853_rebound_velocity_error_scaled": 3.832855791619525e-10,
+        "linear_momentum_drift_scaled": 9.553384260735888e-16,
+        "minimum_pair_separation_scaled": 0.08805183918783721,
+        "periodic_closure_position_scaled": 8.703649187435228e-12,
+        "periodic_closure_velocity_scaled": 4.871995439083647e-11,
+        "relative_energy_drift": 3.0636092558304166e-12
+      },
+      "period": 6.78553486785149,
+      "success": true
+    }
+  ],
+  "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "generated_utc": "2026-07-20T07:14:50.081828+00:00",
+  "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+  "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+  "rebound_distribution_version": "4.5.1",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+  "split": "holdout",
+  "structural_metrics": {
+    "barycenter_residual_max": 5.922173069314377e-16,
+    "internal_force_balance_error_max": 1.3998331368471698e-15,
+    "permutation_error_max": 0.0,
+    "rotation_error_max": 4.471852856751646e-15,
+    "translation_boost_error_max": 8.460805750496922e-15
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-3BRQ-v1",
+  "composition_inputs": [
+    {
+      "name": "WP2KSQ-v1 final record",
+      "path": "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_record.json",
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    {
+      "name": "WP1Q-N3BP-v1 final record",
+      "path": "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_record.json",
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27"
+    },
+    {
+      "name": "WP1Q-N3BP-v1 canonical corpus",
+      "path": "validation-external/wp1-n3bp-validation/data/qualification_corpus.json",
+      "sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a"
+    }
+  ],
+  "published_foundations": [
+    {
+      "title": "Reduction and regularization of the Kepler problem",
+      "author": "J. C. van der Meer",
+      "doi": "10.1007/s10569-021-10029-5"
+    },
+    {
+      "title": "Gauge fields in the separation of rotations and internal motions in the n-body problem",
+      "authors": "R. G. Littlejohn and M. Reinsch",
+      "doi": "10.1103/RevModPhys.69.213"
+    }
+  ],
+  "independence_note": "The prerequisite campaigns carry the independent external REBOUND and analytic evidence. This downstream campaign tests frozen algebraic composition and trajectory conformance; it does not present its reserved transformation outputs as a new independent celestial benchmark."
+}

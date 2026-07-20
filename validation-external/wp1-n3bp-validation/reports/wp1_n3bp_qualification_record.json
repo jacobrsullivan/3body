@@ -1,0 +1,552 @@
+{
+  "base_git_commit": "cb3ac8e5e6580065b077cb0aeb3bc2487e04f55c",
+  "claim": "If and only if the final qualification record is PASS and its lock verifies, WP1Q-N3BP-v1 qualifies the declared float64 production path to propagate an 18-dimensional inertial Cartesian state for three positive Newtonian point masses, without softening, over the bounded collision-free intervals and mass/separation ranges in the frozen corpus. Qualification covers explicit state/parameter contracts, barycentric normalization, conservation diagnostics, three-dimensional Euclidean/Galilean/body-permutation covariance, analytic Lagrange relative equilibria, the published rounded figure-eight, pinned published unequal-mass full-state periodic-orbit seeds, and checkpoint agreement with the independently implemented external REBOUND IAS15 propagator.",
+  "code_snapshot_sha256": "892335b25187621c71e0433f2eb87088878e9dce66f2d6784951a669ec184718",
+  "corpus_case_counts": {
+    "calibration": 3,
+    "development": 5,
+    "holdout": 5
+  },
+  "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+  "downstream_policy": "This PASS is necessary but insufficient for full three-body reduction or pairwise KS. Those paths may be rebuilt only when this record and WP2KSQ-v1 are both PASS with valid locks, and the rebuilt path must then satisfy its own downstream qualification.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP1Q-N3BP-v1",
+      "case_count": 3,
+      "case_ids": [
+        "lagrange_scaled_spatial",
+        "sjtu_line_59402_m0930_m0890",
+        "sjtu_line_69432_m0950_m0900"
+      ],
+      "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 1.882061153738848e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 3.83140531310984e-10,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_position_error_scaled_max",
+          "observed": 6.525517428647043e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_velocity_error_scaled_max",
+          "observed": 5.7592163808629945e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_position_scaled_max",
+          "observed": 1.0006836326791986e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_velocity_scaled_max",
+          "observed": 5.60606386175759e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 2.965520832149684e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 2.1304559680060017e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 5.67390700080504e-14,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_position_drift_scaled_max",
+          "observed": 7.172335238201109e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_velocity_drift_scaled_max",
+          "observed": 2.1304559680060013e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.08400652068984002,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_translation_boost_error_max",
+          "observed": 7.812485400332793e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_rotation_error_max",
+          "observed": 4.687491240199676e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_permutation_error_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_internal_force_balance_error_max",
+          "observed": 7.892679204094883e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_barycenter_residual_max",
+          "observed": 4.600370576871214e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_position_scaled_max",
+          "observed": 1.0006836326791986e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_velocity_scaled_max",
+          "observed": 5.60606386175759e-11,
+          "passed": true,
+          "threshold": 2e-08
+        }
+      ],
+      "generated_utc": "2026-07-20T06:41:23.864710+00:00",
+      "results_sha256": "194423c10aa7235aa3f02b884712b91eeba1f7e7c79b6ebfe9e715a1ed730a49",
+      "schema_version": "1.0",
+      "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP1Q-N3BP-v1",
+      "case_count": 5,
+      "case_ids": [
+        "figure_eight_published_rounded",
+        "lagrange_unit_planar",
+        "sjtu_line_14_m0800_m0756",
+        "sjtu_line_29734_m0870_m0800",
+        "sjtu_line_44348_m0900_m0850"
+      ],
+      "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 2.704794674909374e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 1.1416844967347514e-08,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_position_error_scaled_max",
+          "observed": 1.8388943387034376e-14,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_velocity_error_scaled_max",
+          "observed": 1.4419940900886283e-14,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_position_scaled_max",
+          "observed": 2.0509608922741864e-08,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_velocity_scaled_max",
+          "observed": 3.2741145299154407e-08,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 4.224677261682367e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 1.9669736483251653e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 1.895213101419456e-13,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_position_drift_scaled_max",
+          "observed": 6.039570786544735e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_velocity_drift_scaled_max",
+          "observed": 1.9669736483251653e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.012923150070795343,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_translation_boost_error_max",
+          "observed": 2.220446049250313e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_rotation_error_max",
+          "observed": 2.736073038842762e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_permutation_error_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_internal_force_balance_error_max",
+          "observed": 5.321697283934277e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_barycenter_residual_max",
+          "observed": 3.5215265277871864e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_position_scaled_max",
+          "observed": 5.8199150837193796e-12,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_velocity_scaled_max",
+          "observed": 1.3044976244043302e-10,
+          "passed": true,
+          "threshold": 2e-08
+        }
+      ],
+      "generated_utc": "2026-07-20T06:41:23.019049+00:00",
+      "results_sha256": "33b3b3d080bc2a59b8e357e951f97a23af95602f866b07a3d94a085790f9dfd6",
+      "schema_version": "1.0",
+      "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP1Q-N3BP-v1",
+      "case_count": 5,
+      "case_ids": [
+        "reserved_lagrange_spatial",
+        "reserved_sjtu_line_34537_m0880_m0820",
+        "reserved_sjtu_line_49352_m0910_m0860",
+        "reserved_sjtu_line_54382_m0920_m0880",
+        "reserved_sjtu_line_64422_m0940_m0900"
+      ],
+      "corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 2.333873996405614e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 6.31743101571345e-10,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_position_error_scaled_max",
+          "observed": 8.737382536028374e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "lagrange_analytic_velocity_error_scaled_max",
+          "observed": 6.859867192888931e-15,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_position_scaled_max",
+          "observed": 1.0558745416763057e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "periodic_closure_velocity_scaled_max",
+          "observed": 8.003358054304414e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 3.9218258638981304e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 2.084087792415878e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 1.516307435943267e-13,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_position_drift_scaled_max",
+          "observed": 6.6655588813840056e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "center_of_mass_velocity_drift_scaled_max",
+          "observed": 2.084087792415878e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.06572045250883994,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_translation_boost_error_max",
+          "observed": 8.460805750496922e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_rotation_error_max",
+          "observed": 4.471852856751646e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_permutation_error_max",
+          "observed": 0.0,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_internal_force_balance_error_max",
+          "observed": 1.3998331368471698e-15,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "structural_barycenter_residual_max",
+          "observed": 5.922173069314377e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_position_scaled_max",
+          "observed": 1.0558745416763057e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "sjtu_closure_velocity_scaled_max",
+          "observed": 8.003358054304414e-11,
+          "passed": true,
+          "threshold": 2e-08
+        }
+      ],
+      "generated_utc": "2026-07-20T07:14:50.212108+00:00",
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "results_sha256": "a70f6f408ddb377f678b43bf949bca2fb66416fbb3916f655eeef4b78548dddd",
+      "schema_version": "1.0",
+      "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "This qualification establishes bounded full-state Newtonian propagation, not native periodic-orbit discovery or correction. The published external catalogue is planar; spatial numerical coverage is supplied only by rotated analytic Lagrange cases and 3D covariance tests. The claim excludes collisions, trajectories whose minimum pair separation is below the frozen bound, regularization, softened gravity, zero/negative masses, long-term stability classification, arbitrary-duration accuracy, catalogue completeness, CR3BP equivalence, KS reduction, pairwise KS, full symplectic three-body reduction, and WP3/WP4 claims.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp1-n3bp-validation/results/calibration_evaluation.json",
+      "sha256": "f72d5783c369ff940a3855fc6c24763a6075948fa0f74b89b0267889ee8007be"
+    },
+    "corpus": {
+      "path": "validation-external/wp1-n3bp-validation/data/qualification_corpus.json",
+      "sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp1-n3bp-validation/results/development_evaluation.json",
+      "sha256": "a0269b5618f64bf33597dd0199e320ec5d8ea50e4274afafbb0639b9547eb5fa"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp1-n3bp-validation/results/holdout_evaluation.json",
+      "sha256": "1e8b9df18edf0de828cfc8125629897846185321becc56a2b85ebed281e459f6"
+    },
+    "lock": {
+      "path": "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_lock.json",
+      "sha256": "a8e2a25ec2aab01c4006d983f84ca3cc5297bac1a58a29e924a6499e8d77e137"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp1-n3bp-validation/sources/manifest.json",
+      "sha256": "d697280bdab6b9517e608732f189a9175ef53cab87dc5779c230a9e4d270eb67"
+    },
+    "spec": {
+      "path": "validation-external/wp1-n3bp-validation/qualification_spec.json",
+      "sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621"
+    }
+  },
+  "generated_utc": "2026-07-20T07:14:56.067691+00:00",
+  "holdout_ids_sha256": "ffa1879075ae5f7a0e5e5a1453b51f6eb4935e8f90395afae04a55e43d94f72e",
+  "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+  "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+  "record_payload_sha256": "068b7674390fb54ce4fb97d94a16af2e02ebb9eb9665832ba7cb9e63ff41567b",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "d697280bdab6b9517e608732f189a9175ef53cab87dc5779c230a9e4d270eb67",
+  "spec_sha256": "1bef7b9a5f96f2f9376fa2c9469c5aa26ad1199baaa147522798751d0cf63621",
+  "status": "PASS"
+}
