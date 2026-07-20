@@ -77,6 +77,36 @@ def body_frame(rho: np.ndarray, lambda_vector: np.ndarray) -> np.ndarray:
     return np.column_stack((e1, e2, e3))
 
 
+def newtonian_energy_lie(
+    positions: np.ndarray,
+    velocities: np.ndarray,
+    accelerations: np.ndarray,
+    masses: np.ndarray,
+    gravitational_constant: float,
+) -> float:
+    """Differentiate inertial Newtonian energy without production helpers."""
+
+    positions = np.asarray(positions, dtype=float)
+    velocities = np.asarray(velocities, dtype=float)
+    accelerations = np.asarray(accelerations, dtype=float)
+    masses = np.asarray(masses, dtype=float)
+    kinetic_derivative = float(
+        np.sum(masses[:, None] * velocities * accelerations)
+    )
+    potential_derivative = 0.0
+    for first, second in ((0, 1), (0, 2), (1, 2)):
+        displacement = positions[second] - positions[first]
+        velocity = velocities[second] - velocities[first]
+        potential_derivative += (
+            gravitational_constant
+            * masses[first]
+            * masses[second]
+            * float(np.dot(displacement, velocity))
+            / np.linalg.norm(displacement) ** 3
+        )
+    return kinetic_derivative + potential_derivative
+
+
 def exact_canonical_residual() -> list[list[str]]:
     m1, m2, m3 = sp.symbols("m1 m2 m3", positive=True)
     m12 = m1 + m2

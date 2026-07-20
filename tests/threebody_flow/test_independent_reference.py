@@ -68,3 +68,23 @@ def test_clean_room_jacobi_roundtrip_and_production_agreement() -> None:
 def test_clean_room_symbolic_transform_is_exactly_canonical() -> None:
     residual = _module().exact_canonical_residual()
     assert residual == [["0"] * 6 for _ in range(6)]
+
+
+def test_clean_room_energy_lie_expression_vanishes_for_newtonian_flow() -> None:
+    module = _module()
+    masses = np.array([0.7, 1.1, 1.6])
+    parameters = SystemParameters(masses, 0.9)
+    state = InertialState.from_components(
+        [[-0.8, 0.2, 0.4], [0.9, -0.4, 0.1], [0.3, 1.2, -0.7]],
+        [[0.4, -0.3, 0.8], [-0.7, 0.2, -0.1], [0.1, 0.6, -0.5]],
+    )
+    from src.python.n3bp_qualification import newtonian_accelerations
+
+    residual = module.newtonian_energy_lie(
+        state.positions,
+        state.velocities,
+        newtonian_accelerations(state.positions, parameters),
+        masses,
+        parameters.gravitational_constant,
+    )
+    assert abs(residual) < 2e-15

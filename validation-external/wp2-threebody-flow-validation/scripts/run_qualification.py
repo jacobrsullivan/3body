@@ -42,7 +42,6 @@ from src.python.pairwise_ks import (  # noqa: E402
 from src.python.threebody_flow import (  # noqa: E402
     canonical_jacobi_flow,
     euclidean_reduced_flow,
-    jacobi_hamiltonian,
     pairwise_ks_flow,
 )
 from src.python.threebody_reduction import (  # noqa: E402
@@ -150,24 +149,30 @@ def _evaluate_state(
     canonical = canonical_jacobi_flow(production.quotient)
     full_rhs = newtonian_rhs(0.0, state.values, parameters)
     step = float(execution["finite_difference_step"])
-    plus_jacobi = JacobiPhaseState.from_inertial(
-        InertialState(state.values + step * full_rhs), parameters
-    ).quotient.as_canonical_vector()
-    minus_jacobi = JacobiPhaseState.from_inertial(
-        InertialState(state.values - step * full_rhs), parameters
-    ).quotient.as_canonical_vector()
-    tangent_fd = (plus_jacobi - minus_jacobi) / (2.0 * step)
-    canonical_error = _scale_error(canonical.derivative, tangent_fd)
+    clean_tangent = reference.jacobi_reduce(
+        full_rhs[:9].reshape(3, 3),
+        full_rhs[9:].reshape(3, 3),
+        masses,
+    )
+    clean_tangent_vector = np.concatenate(
+        (
+            clean_tangent["rho"],
+            clean_tangent["lambda"],
+            clean_tangent["p_rho"],
+            clean_tangent["p_lambda"],
+        )
+    )
+    canonical_error = _scale_error(canonical.derivative, clean_tangent_vector)
 
-    gradient = np.empty(12)
-    for index in range(12):
-        offset = np.zeros(12)
-        offset[index] = step
-        gradient[index] = (
-            jacobi_hamiltonian(canonical.state + offset, parameters)
-            - jacobi_hamiltonian(canonical.state - offset, parameters)
-        ) / (2.0 * step)
-    hamiltonian_lie = abs(float(np.dot(gradient, canonical.derivative))) / max(
+    hamiltonian_lie = abs(
+        reference.newtonian_energy_lie(
+            state.positions,
+            state.velocities,
+            full_rhs[9:].reshape(3, 3),
+            masses,
+            float(parameters.gravitational_constant),
+        )
+    ) / max(
         1.0, abs(canonical.hamiltonian)
     )
 

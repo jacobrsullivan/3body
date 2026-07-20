@@ -1,0 +1,144 @@
+{
+  "campaign": "WP1Q-N3BP-SPATIAL-v2",
+  "case_count": 24,
+  "case_ids": [
+    "brutus-equal_mass_plummer-00229",
+    "brutus-equal_mass_plummer-01922",
+    "brutus-equal_mass_plummer-02901",
+    "brutus-equal_mass_plummer-03370",
+    "brutus-equal_mass_plummer-03571",
+    "brutus-equal_mass_plummer-04330",
+    "brutus-equal_mass_plummer-04577",
+    "brutus-equal_mass_plummer-04717",
+    "brutus-equal_mass_plummer-06073",
+    "brutus-equal_mass_plummer-06097",
+    "brutus-equal_mass_plummer-07146",
+    "brutus-equal_mass_plummer-09771",
+    "brutus-mass_4_2_1_plummer-00196",
+    "brutus-mass_4_2_1_plummer-00767",
+    "brutus-mass_4_2_1_plummer-02470",
+    "brutus-mass_4_2_1_plummer-02819",
+    "brutus-mass_4_2_1_plummer-02908",
+    "brutus-mass_4_2_1_plummer-04524",
+    "brutus-mass_4_2_1_plummer-05232",
+    "brutus-mass_4_2_1_plummer-05901",
+    "brutus-mass_4_2_1_plummer-06554",
+    "brutus-mass_4_2_1_plummer-08338",
+    "brutus-mass_4_2_1_plummer-08489",
+    "brutus-mass_4_2_1_plummer-09994"
+  ],
+  "corpus_sha256": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "source_precision_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "spatial_rank_ratio_min",
+      "observed": 0.06193658556157044,
+      "passed": true,
+      "threshold": 0.05
+    },
+    {
+      "comparator": ">=",
+      "name": "positive_ftle_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.9
+    },
+    {
+      "comparator": ">=",
+      "name": "median_ftle",
+      "observed": 0.8544891927917736,
+      "passed": true,
+      "threshold": 0.02
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_position_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_velocity_scaled_max",
+      "observed": 3.9843562719025e-16,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_position_scaled_max",
+      "observed": 5.408130393023789e-10,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_velocity_scaled_max",
+      "observed": 3.7989348219900945e-08,
+      "passed": true,
+      "threshold": 1e-05
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_position_scaled_max",
+      "observed": 6.998654330845218e-11,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_velocity_scaled_max",
+      "observed": 6.353335330520071e-09,
+      "passed": true,
+      "threshold": 5e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_relative_energy_drift_max",
+      "observed": 1.5955314913323316e-30,
+      "passed": true,
+      "threshold": 1e-22
+    },
+    {
+      "comparator": "<=",
+      "name": "production_validation_horizon_max",
+      "observed": 0.5,
+      "passed": true,
+      "threshold": 0.5
+    },
+    {
+      "comparator": ">=",
+      "name": "minimum_pair_separation_scaled_min",
+      "observed": 0.004237360953483639,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "source_payload_hash_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    }
+  ],
+  "generated_utc": "2026-07-20T10:10:02.926000+00:00",
+  "results_sha256": "f4a8b4f04f0019cb778a4bb26e63b5914e477c3c84fa71c3a9bc2c4e1bed7351",
+  "schema_version": "1.0",
+  "spec_sha256": "26c47929e4371696670063937a57240f1ce903dde6b8b11693cae98c8730ec2a",
+  "split": "calibration",
+  "status": "PASS"
+}

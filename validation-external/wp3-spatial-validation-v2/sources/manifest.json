@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1Q-N3BP-SPATIAL-v2",
+  "citation": {
+    "authors": "Tjarda Boekholt and Simon Portegies Zwart",
+    "doi": "10.1186/s40668-014-0005-3",
+    "title": "On the reliability of N-body simulations",
+    "year": 2015
+  },
+  "license": "Creative Commons Attribution 4.0 International",
+  "sources": [
+    {
+      "family": "equal_mass_plummer",
+      "sha256": "373afad6cbb9d7d9e1c67d8bbb52e259cc6f71b35fa53b7f7203f5233894ce1b",
+      "url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40668-014-0005-3/MediaObjects/40668_2014_5_MOESM1_ESM.dat"
+    },
+    {
+      "family": "mass_4_2_1_plummer",
+      "sha256": "b3ef991242e84196c6aff1b8c37cd7c62bdc437059b59053507b30b18817a090",
+      "url": "https://static-content.springer.com/esm/art%3A10.1186%2Fs40668-014-0005-3/MediaObjects/40668_2014_5_MOESM2_ESM.dat"
+    }
+  ],
+  "source_contract": "Selected source rows preserve decimal strings verbatim. The v2 builder verifies and excludes the committed v1 selected rows and all HMAC-bound publication-reserve rows before deterministic selection."
+}

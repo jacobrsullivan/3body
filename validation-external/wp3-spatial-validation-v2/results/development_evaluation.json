@@ -1,0 +1,168 @@
+{
+  "campaign": "WP1Q-N3BP-SPATIAL-v2",
+  "case_count": 48,
+  "case_ids": [
+    "brutus-equal_mass_plummer-00196",
+    "brutus-equal_mass_plummer-00302",
+    "brutus-equal_mass_plummer-00438",
+    "brutus-equal_mass_plummer-00881",
+    "brutus-equal_mass_plummer-01534",
+    "brutus-equal_mass_plummer-01676",
+    "brutus-equal_mass_plummer-01678",
+    "brutus-equal_mass_plummer-01977",
+    "brutus-equal_mass_plummer-02464",
+    "brutus-equal_mass_plummer-02938",
+    "brutus-equal_mass_plummer-02939",
+    "brutus-equal_mass_plummer-03939",
+    "brutus-equal_mass_plummer-03975",
+    "brutus-equal_mass_plummer-04215",
+    "brutus-equal_mass_plummer-04568",
+    "brutus-equal_mass_plummer-04744",
+    "brutus-equal_mass_plummer-04849",
+    "brutus-equal_mass_plummer-05015",
+    "brutus-equal_mass_plummer-05189",
+    "brutus-equal_mass_plummer-07756",
+    "brutus-equal_mass_plummer-08233",
+    "brutus-equal_mass_plummer-08648",
+    "brutus-equal_mass_plummer-09190",
+    "brutus-equal_mass_plummer-09479",
+    "brutus-mass_4_2_1_plummer-00272",
+    "brutus-mass_4_2_1_plummer-00290",
+    "brutus-mass_4_2_1_plummer-01380",
+    "brutus-mass_4_2_1_plummer-01481",
+    "brutus-mass_4_2_1_plummer-01644",
+    "brutus-mass_4_2_1_plummer-02317",
+    "brutus-mass_4_2_1_plummer-02436",
+    "brutus-mass_4_2_1_plummer-03742",
+    "brutus-mass_4_2_1_plummer-03840",
+    "brutus-mass_4_2_1_plummer-03921",
+    "brutus-mass_4_2_1_plummer-04129",
+    "brutus-mass_4_2_1_plummer-04539",
+    "brutus-mass_4_2_1_plummer-05093",
+    "brutus-mass_4_2_1_plummer-06391",
+    "brutus-mass_4_2_1_plummer-06516",
+    "brutus-mass_4_2_1_plummer-06789",
+    "brutus-mass_4_2_1_plummer-06818",
+    "brutus-mass_4_2_1_plummer-07011",
+    "brutus-mass_4_2_1_plummer-07802",
+    "brutus-mass_4_2_1_plummer-08081",
+    "brutus-mass_4_2_1_plummer-08114",
+    "brutus-mass_4_2_1_plummer-09513",
+    "brutus-mass_4_2_1_plummer-09664",
+    "brutus-mass_4_2_1_plummer-09810"
+  ],
+  "corpus_sha256": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "source_precision_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "spatial_rank_ratio_min",
+      "observed": 0.053834521025927354,
+      "passed": true,
+      "threshold": 0.05
+    },
+    {
+      "comparator": ">=",
+      "name": "positive_ftle_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.9
+    },
+    {
+      "comparator": ">=",
+      "name": "median_ftle",
+      "observed": 0.8068937657500821,
+      "passed": true,
+      "threshold": 0.02
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_position_scaled_max",
+      "observed": 0.0,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_convergence_velocity_scaled_max",
+      "observed": 3.872504269302289e-18,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_position_scaled_max",
+      "observed": 5.017340599306143e-08,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_brutus_velocity_scaled_max",
+      "observed": 1.5677081494540525e-06,
+      "passed": true,
+      "threshold": 1e-05
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_position_scaled_max",
+      "observed": 1.079701648498688e-10,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "production_oracle_short_velocity_scaled_max",
+      "observed": 1.8165738605733938e-09,
+      "passed": true,
+      "threshold": 5e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "oracle_relative_energy_drift_max",
+      "observed": 1.4786883585783799e-30,
+      "passed": true,
+      "threshold": 1e-22
+    },
+    {
+      "comparator": "<=",
+      "name": "production_validation_horizon_max",
+      "observed": 0.5,
+      "passed": true,
+      "threshold": 0.5
+    },
+    {
+      "comparator": ">=",
+      "name": "minimum_pair_separation_scaled_min",
+      "observed": 0.0045381766660182255,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "source_payload_hash_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    }
+  ],
+  "generated_utc": "2026-07-20T10:11:35.677014+00:00",
+  "results_sha256": "3b535e05f8de8cc2d7d265fd330894e1f4d1b4c8ec9789263436ae7882ccf70f",
+  "schema_version": "1.0",
+  "spec_sha256": "26c47929e4371696670063937a57240f1ce903dde6b8b11693cae98c8730ec2a",
+  "split": "development",
+  "status": "PASS"
+}
