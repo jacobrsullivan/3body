@@ -1,0 +1,74 @@
+{
+  "base_git_commit": "374d5bc611e8e100f846cf6720859cf86675507d",
+  "candidate_input_present_at_freeze": false,
+  "code_snapshot_sha256": "9a29e65bd8d950384e1ca1b59a438759b6cb781035febaf52c74e58d9cd4dbc7",
+  "external_file_hashes": {
+    "src/python/upstairs_ks/QUALIFICATION_BOUNDARY.md": "4878fb93caa89b151a67c61f7d4bf1ff21f9b3bf084542a6f68e39a1fec0022d",
+    "src/python/upstairs_ks/__init__.py": "44c31881a85b56800c08c94a716dcfc05886fc83a2c508f99ce498fe944104c5",
+    "src/python/upstairs_ks/model.py": "ae533c6ad7d216abe3fb7e05e5f6894adbdc7be9e51da34a6fffed6cf2afd409",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_lock.json": "3f09719eca60c9cb4ad10b66d5d4002a7028246bec380131a1f0953121504eb1",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_record.json": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "validation-external/wp3-candidate-qualification-v2/results/candidate_qualification_decision.json": "69b16957a3213904c025316de6a77c16682f326ac2040809ef2a3f157e5c7df9",
+    "validation-external/wp3-upstairs-candidate-v2/reports/wp3_upstairs_v2_search_lock.json": "ed52d7cadd472850fa571fe1ecb3947689d21c98165d6fef1a72616f56e39cb9",
+    "validation-external/wp3-upstairs-candidate-v2/reports/wp3_upstairs_v2_search_record.json": "f5d7c56033ab5387b518767bf8ade8fbf8d595288fbdb0144be181c50b7ea152",
+    "validation-external/wp3-upstairs-candidate-v2/results/search_results.json": "5a6c7d416eca5645c2d9e283a47fc30297b1bfa0cc5877d6477bdaf7b87ca903",
+    "validation-external/wp3-upstairs-candidate-v2/results/staged_gate.json": "9a1db83a79d7350aebd7a07a777c3b27c565b34e09290af3403eb338bfc7f74a",
+    "validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "file_hashes": {
+    "notes/wp4-upstairs-v2-readiness-plan.md": "b10623d49fd99772fd151a10b3d2fed36e564363f3b37c2dcaf0c37308f8ca40",
+    "src/python/wp4_upstairs_v2/READINESS_BOUNDARY.md": "69abd76223fac0637abd5120539d4723877eff0a8d6194a572797837dcda4b06",
+    "src/python/wp4_upstairs_v2/__init__.py": "8504c70878ed20cf2f7b064093723eca6aef691fa2e9138f3109ebd6bf3c5831",
+    "src/python/wp4_upstairs_v2/cli.py": "c8f0968a858c2550759b5ab13db21764142d75b9dc0c6119d8305885dffb10e5",
+    "src/python/wp4_upstairs_v2/harness.py": "a00f22b327ab0bb89e0c075eb017b2e40b463da90e0418a158eea3c1c3d1b29d",
+    "src/python/wp4_upstairs_v2/integrity.py": "30f2199a4885dc043fe92162e7bea08e7bbb6fe67932476550d26c2f283e0186",
+    "tests/wp4_upstairs_v2/__init__.py": "8f2fb13d412bd41326cd9b46bd15662bb3263904cf71cedee6c727de5aa2d66c",
+    "tests/wp4_upstairs_v2/test_harness.py": "e7dcd65ff85e00cc829d50f6fba744d23823b9577416c9bef6d9c09f43d7bff0",
+    "validation-external/wp4-upstairs-readiness-v2/README.md": "f810d5ad6c3b01aab632c7704ab609b770c31ad4524c7a58ea02efad431237cf",
+    "validation-external/wp4-upstairs-readiness-v2/qualification_spec.json": "69d8bb8d608f3b811c517113ca940cea4995ec5e3a549f0ff76f282706c8c75c",
+    "validation-external/wp4-upstairs-readiness-v2/run_qualification.sh": "32e78224a429e6b198f2ef1e6c5347cb923f480ac3412d44772ce61778541976",
+    "validation-external/wp4-upstairs-readiness-v2/scripts/run_readiness.py": "a39548660daa21c99a4a10cf6ea0984d4cdb9c59d9b64e58b9ae33eea3b2b1ee"
+  },
+  "frozen_utc": "2026-07-20T19:13:13.528605+00:00",
+  "lock_sha256": "ef8caa3174c9f135d05249c1413df570b6cd78a2ed1385918d1411102a8aa224",
+  "publication_reserve_opened_at_freeze": false,
+  "qualification_id": "WP4-UP-READY-v2-9a29e65bd8d9",
+  "readiness_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "69d8bb8d608f3b811c517113ca940cea4995ec5e3a549f0ff76f282706c8c75c",
+  "wp2_upstairs_prerequisite": {
+    "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+    "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+    "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "status": "PASS"
+  },
+  "wp3_upstairs_state": {
+    "candidate_count": 0,
+    "candidate_decision_sha256": "69b16957a3213904c025316de6a77c16682f326ac2040809ef2a3f157e5c7df9",
+    "candidate_status": "NOT_TRIGGERED",
+    "lock_sha256": "c1fa38a6ebb478887e6e47af7e35d89b2ca376ad6417efdab7375483cd8b5760",
+    "publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "publication_reserve_status": "SEALED_UNEXECUTED",
+    "qualification_id": "WP3-UP-CAND-v2-9f06dc7b2254",
+    "sealed_qualification_status": "NOT_TRIGGERED",
+    "search_lock_file_sha256": "ed52d7cadd472850fa571fe1ecb3947689d21c98165d6fef1a72616f56e39cb9",
+    "search_record_payload_sha256": "d7e9723b80ed544b88e7e942db71f036c72d8c276a562946325ee497854232ed",
+    "search_record_sha256": "f5d7c56033ab5387b518767bf8ade8fbf8d595288fbdb0144be181c50b7ea152",
+    "search_results_sha256": "5a6c7d416eca5645c2d9e283a47fc30297b1bfa0cc5877d6477bdaf7b87ca903",
+    "search_status": "PASS",
+    "staged_gate_sha256": "9a1db83a79d7350aebd7a07a777c3b27c565b34e09290af3403eb338bfc7f74a",
+    "wp4_candidate_status": "BLOCKED"
+  }
+}

@@ -1,8 +1,17 @@
 # WP3-UP-CAND-v2 Assessment
 
+## Supersession Notice
+
+This result is invalidated as a finite-library null claim. The parameter-aware
+grammar contains exact represented controls `h Li`, `s2 Li`, and `s3 Li`, but
+the finite-sample value quotient distorted and rejected them instead of
+removing their coefficient-exact module. The immutable v2 artifacts remain as
+negative-control evidence; `WP3-UP-CAND-v3` is the corrective campaign.
+
 ## Decision
 
-`WP3-UP-CAND-v2-9f06dc7b2254` completed as a bounded null result.
+`WP3-UP-CAND-v2-9f06dc7b2254` originally recorded a bounded null result, which
+must not be cited as valid after the supersession notice above.
 
 - `SEARCH_READY=PASS`
 - `CANDIDATE_READY=NOT_TRIGGERED`

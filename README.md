@@ -23,16 +23,18 @@ This project systematically tests this hypothesis through:
 
 | Work Package | Description | Status | Completion |
 |--------------|-------------|--------|------------|
-| **WP1** | High-Precision Infrastructure | Qualified (scoped) | Separate CR3BP and full Newtonian N3BP propagation qualifications pass; native production-catalogue claim remains open |
-| **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | Canonical Kepler/KS and bounded three-body reduction/pairwise-KS composition qualifications pass; reduced N3BP dynamics and integrability claims remain open |
-| **WP3** | Invariant Discovery (ML + Symbolic) | Prototype | Imports and collection repaired; publication claims not validated |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Prototype | Validation criteria need regenerated evidence |
+| **WP1** | High-Precision Infrastructure | Qualified (scoped) | Propagation qualifications pass; WP1-CAT-v1 qualifies two bounded native Earth-Moon planar Lyapunov segments, while a general production catalogue remains open |
+| **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | Canonical Kepler/KS, one-channel perturbed upstairs KS, and bounded reduction/pairwise-KS qualifications pass; global regularization remains open |
+| **WP3** | Invariant Discovery (ML + Symbolic) | Remediation in progress | WP3-UP-CAND-v2 was invalidated by a known-module quotient defect; exact-module v3 is specified but not yet decision-bearing |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Requalification pending | The v2 control harness passed 30/30 gates, but its upstream WP3-v2 chain was invalidated; no candidate claim is active |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
 into a claim of integrability or native production-scale periodic-orbit catalogue
-generation. See `notes/wp1-wp2-model-boundary.md` for the exact boundaries.
+generation. See `notes/wp1-wp2-model-boundary.md`,
+`notes/wp3-up-cand-v2-assessment.md`, and
+`notes/wp4-upstairs-v2-readiness-result.md` for the exact boundaries.
 
 ### Current WP1 Evidence
 
@@ -50,6 +52,15 @@ Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
 - CR3BP rotating-frame reversibility now uses the correct reversing symmetry and passes the short-time `T=1` diagnostic with median position RMS `2.64e-16` and 100% Tier 1 pass rate.
 - The legacy native candidate comparison is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01` and median period error `8.90e-01`. The qualified representative corrector does not yet constitute family continuation or production-scale native generation.
 
+`WP1-CAT-v1-5dc7ad44b78f` separately qualifies an external-orbit-seed-free
+continuation component for fixed Earth-Moon planar L1/L2 Lyapunov grids. It
+generated 159 corrected, Floquet-labelled candidates with maximum one-period
+closure `4.25e-12`. All 300 partitioned JPL rows had a nearest-neighbor native
+match within frozen tolerances, selecting 138 distinct native members. This is
+sampled family-curve agreement, not one-to-one recovery or catalogue
+completeness; the disjoint holdout was execution-reserved, not independently
+blinded, and all comparison rows share one strongly-unstable class.
+
 The formal decision is in `validation-external/wp1-validation/reports/wp1_qualification_report.md` and `wp1_qualification_record.json`; downstream artifact evidence is in `wp1_qualified_artifact_audit.json`. The earlier Earth-Moon report remains at `wp1_external_validation_report.md`.
 
 ### Current Full-State and WP2 Evidence
@@ -66,6 +77,10 @@ The formal decision is in `validation-external/wp1-validation/reports/wp1_qualif
   canonical Jacobi translation reduction, a generic non-collinear SO(3)
   quotient chart, and a constrained kinematic pairwise-KS lift with `S1^3`
   gauge invariance and closure.
+- `WP2-UPQ-v2-3baea4a70768` is `PASS` for the canonical one-channel
+  fixed-energy KS lift of the translation-reduced N3BP. It verifies projection
+  of the upstairs Hamiltonian vector field, `S1`/`Xi` structure, projected
+  angular momentum, and regular passage through the selected binary collision.
 - A clean bobs-mini checkout independently verifies all three relevant locks,
   passes 160/160 focused tests under Python 3.11, and replays downstream
   development and calibration at 24/24 gates. The supplemental parity record
@@ -79,6 +94,19 @@ The machine-readable records and human reports are under
 `validation-external/wp1-n3bp-validation/reports/`,
 `validation-external/wp2-ks-validation/reports/`, and
 `validation-external/wp2-threebody-validation/reports/`.
+
+### Current WP3 and WP4 Evidence
+
+- `WP3-UP-CAND-v2` is retained as negative-control evidence only. It failed to
+  quotient exact parameter-weighted angular momenta and therefore does not
+  establish its advertised finite-library null result.
+- `WP3-UP-CAND-v3` replaces approximate value-identity removal with an exact
+  rank-30 coefficient quotient: 18 generators of the degree-three `Xi=0`
+  constraint ideal and 12 represented angular-momentum parameter-module
+  generators. Its decision remains pending until the clean pre-search freeze.
+- `WP4-UP-READY-v2` passed its numerical control harness, but its chain is not
+  authoritative because it consumed the invalid v2 null decision. WP4 will be
+  re-frozen only after corrected WP3 evidence and a new candidate gate exist.
 
 ---
 
@@ -136,7 +164,7 @@ WP1 (Trajectories) --> WP2 (Geometry) --> WP3 (Discovery) --> WP4 (Validation) -
 
 ### WP1: High-Precision Infrastructure
 
-Generates and validates CR3BP trajectory data. The scoped external qualification covers four physical systems, Lyapunov/Halo families, four stability regimes, independent high-precision propagation, analytic STM/Floquet stability, strict representative correction, and qualification-aware HDF5/Parquet output. Production-scale Tier 2 and native family generation/continuation remain outside the qualified claim.
+Generates and validates CR3BP trajectory data. The scoped external qualification covers four physical systems, Lyapunov/Halo families, four stability regimes, independent high-precision propagation, analytic STM/Floquet stability, strict representative correction, and qualification-aware HDF5/Parquet output. WP1-CAT-v1 additionally qualifies two fixed native Earth-Moon planar Lyapunov continuation segments. Production-scale Tier 2 and general native family discovery/continuation remain outside the qualified claim.
 
 - **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with precision guard), HeyokaTaylor (bounded arbitrary-precision Tier 2 smoke)
 - **Chaos Detection**: MEGNO, FLI indicators
@@ -163,6 +191,11 @@ The qualified foundation is deliberately narrower than the project hypothesis.
 
 Multi-method search for hidden conserved quantities.
 
+The prior parameter-aware campaign is invalidated: it failed a known-control
+recovery audit. The replacement campaign removes the exact represented known
+module before generalized Lie/value screening. No v3 result may be interpreted
+until its pre-search lock and staged gates complete.
+
 - **Symbolic Regression**: Spinor basis (~80 functions), elliptic functions (sn, cn, dn), theta functions
 - **Machine Learning**: Hamiltonian Neural Networks, SINDy
 - **Multi-Stage Pipeline**: Coordinates all discovery methods with automatic deduplication
@@ -170,6 +203,11 @@ Multi-method search for hidden conserved quantities.
 ### WP4: Rigorous Validation ("The Gauntlet")
 
 Three-stage validation pipeline for candidate integrals:
+
+The v2 readiness campaign demonstrated the control harness against known,
+false, and dependent controls, but its upstream null decision was invalidated.
+The harness must be re-frozen against corrected WP3 evidence before it is
+authoritative. Candidate-specific stages remain intentionally unexecuted.
 
 1. **Analytical Vetting (WP4.1)**: Poisson brackets {I, H} = 0, involution tests, functional independence
 2. **Morales-Ramis Test (WP4.2)**: Differential Galois theory obstruction

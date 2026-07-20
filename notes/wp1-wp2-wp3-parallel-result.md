@@ -26,16 +26,13 @@ qualification. See `notes/wp2-up-v2-assessment.md`.
 
 ## WP3-UP-CAND-v2
 
-The superseding parameter-aware degree-three upstairs search returned zero
-candidates. Three development-only near-null directions were rejected by
-disjoint calibration and family-fold gates. The
-candidate-specific gate records `NOT_TRIGGERED_NO_CANDIDATE`; the publication
-reserve remains sealed. See `notes/wp3-up-cand-v2-assessment.md`.
+The parameter-aware degree-three search is invalidated as a null claim because
+its approximate value quotient failed to preserve exact parameter-weighted
+angular-momentum controls. Its candidate gate and downstream WP4-v2 record are
+historical only. See `notes/wp3-up-cand-v2-assessment.md`.
 
 ## Project Effect
 
 The catalogue track can continue independently from the invariant track. The
-central lift-integrability hypothesis has not received positive support from
-WP3-UP-CAND-v2. Any next discovery campaign must preregister a materially new
-hypothesis class, such as rational/interaction-aware functions, higher-degree
-sparse forms, or a different qualified upstairs geometry.
+corrective `WP3-UP-CAND-v3` campaign must complete before the current polynomial
+hypothesis class can be assessed. No invariant interpretation is authorized.
