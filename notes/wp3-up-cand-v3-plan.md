@@ -16,9 +16,16 @@ candidates did not establish a library null result.
    of the three angular momenta.
 3. Solve the generalized Lie/value problem while optimizing finite-sample
    value-nuisance directions instead of discarding them as identities.
-4. Evaluate exact S1-generator derivatives and finite gauge-orbit spreads.
-5. Compare lowest-mode fold subspaces, not basis-dependent singular vectors.
-6. Require disjoint calibration, trajectory drift, and all known-module gates
+4. Treat repeated or numerically unresolved singular directions as complete
+   subspaces. A bounded null requires the backend-guarded lower bound on the
+   smallest generalized singular value to exceed the frozen training gate;
+   individual SVD basis vectors can never establish that null.
+5. Extend every fold-mode boundary through the complete singular cluster that
+   intersects it, so fold projections do not depend on an arbitrary basis
+   rotation.
+6. Evaluate exact S1-generator derivatives and finite gauge-orbit spreads.
+7. Compare lowest-mode fold subspaces, not basis-dependent singular vectors.
+8. Require disjoint calibration, trajectory drift, and all known-module gates
    before any candidate can trigger a separately sealed qualification.
 
 This remediation reuses previously examined development and calibration data.

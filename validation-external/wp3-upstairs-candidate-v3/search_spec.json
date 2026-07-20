@@ -3,7 +3,7 @@
   "campaign": "WP3-UP-CAND-v3",
   "specification_status": "LOCKABLE_BEFORE_SEARCH",
   "purpose": "Search the observable quotient of the complete parameter-aware degree-three polynomial library after coefficient-exact removal of the Xi constraint ideal and represented angular-momentum module.",
-  "evidence_boundary": "A no-candidate result states only that no observable generalized Lie/value mode in the complete combined-degree-three-or-less state/energy/symmetric-mass library passed every frozen development, calibration, exact S1, family-fold-subspace, and trajectory gate after exact coefficient-space removal of the represented Xi constraint ideal and angular-momentum parameter module. Parameter-only constants are excluded as trivial. Finite-sample value-nuisance directions are optimized, not discarded as identities. This is a locked remediation rerun on previously examined development/calibration data, not fresh confirmatory evidence, a proof that no first integral exists, or a non-integrability theorem.",
+  "evidence_boundary": "A no-candidate result states only that the backend-guarded lower bound on the smallest generalized Lie/value singular value exceeds the frozen training threshold in the observable quotient of the complete combined-degree-three-or-less state/energy/symmetric-mass library, after exact coefficient-space removal of the represented Xi constraint ideal and angular-momentum parameter module. Such a result excludes every training-eligible direction in this frozen finite library and therefore cannot depend on an arbitrary basis inside a repeated singular subspace. Any unresolved singular cluster blocks a null and requires candidate-specific resolution before sealed qualification. Parameter-only constants are excluded as trivial. Finite-sample value-nuisance directions are optimized, not discarded as identities. This is a locked remediation rerun on previously examined development/calibration data, not fresh confirmatory evidence, a proof that no first integral exists, or a non-integrability theorem.",
   "prerequisites": {
     "wp2_upstairs": {
       "qualification_id": "WP2-UPQ-v2-3baea4a70768",
@@ -35,15 +35,69 @@
   },
   "decision_runtime": {
     "python": "3.13.2",
+    "python_implementation": "CPython",
+    "platform": {
+      "system": "Darwin",
+      "release": "25.5.0",
+      "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:41:19 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T8122",
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "mac_version": "26.5.1",
+      "machine": "arm64",
+      "processor": "arm",
+      "architecture": ["64bit", "Mach-O"],
+      "pointer_bits": 64,
+      "byteorder": "little"
+    },
     "packages": {
       "numpy": "2.3.5",
       "scipy": "1.16.3"
+    },
+    "numpy_backend": {
+      "configuration": {
+        "blas": {
+          "name": "accelerate",
+          "found": true,
+          "version": "unknown",
+          "detection method": "system",
+          "openblas configuration": "unknown"
+        },
+        "lapack": {
+          "name": "accelerate",
+          "found": true,
+          "version": "unknown",
+          "detection method": "system",
+          "openblas configuration": "unknown"
+        },
+        "machine": {
+          "build": {
+            "system": "darwin",
+            "family": "aarch64",
+            "cpu": "aarch64",
+            "endian": "little"
+          },
+          "host": {
+            "system": "darwin",
+            "family": "aarch64",
+            "cpu": "aarch64",
+            "endian": "little"
+          }
+        },
+        "simd_extensions": {
+          "baseline": ["ASIMD", "NEON", "NEON_FP16", "NEON_VFPV4"],
+          "found": ["ASIMDHP"],
+          "not found": ["ASIMDFHM"]
+        }
+      },
+      "sha256": "32c863b8870aa8b07a5536f36adea164798728726304415e973eab201fb997ef"
     }
   },
   "search": {
     "mode_count": 20,
     "fold_mode_count": 40,
     "value_rank_relative_tolerance": 1e-11,
+    "singular_cluster_relative_tolerance": 1e-08,
+    "singular_cluster_absolute_tolerance": 1e-12,
+    "svd_backward_error_factor": 16.0,
     "candidate_lie_rms_max": 1e-10,
     "candidate_gauge_lie_rms_max": 1e-10,
     "calibration_ratio_floor": 1e-12,
@@ -59,8 +113,9 @@
   },
   "staged_policy": {
     "SEARCH_READY": "Requires both prerequisite locks and records, exact hashes for every consumed spatial corpus/result, an intact pre-search lock and reserve commitment, rank-30 exact known-module removal, and passing Xi/angular control diagnostics.",
-    "CANDIDATE_READY": "Requires every frozen train/calibration/family/gauge threshold. No interpretation is authorized.",
-    "SEALED_QUALIFICATION": "Can be triggered only by CANDIDATE_READY=PASS under a new candidate-specific lock.",
+    "NULL_RESULT_READY": "Requires the backend-guarded lower bound on the smallest generalized singular value to exceed the candidate training threshold. Individual SVD basis-vector failures cannot establish a null.",
+    "CANDIDATE_READY": "An unresolved training-eligible singular subspace blocks both a null and sealed execution until a specific direction or invariant subspace test is frozen using development/calibration data. No interpretation is authorized.",
+    "SEALED_QUALIFICATION": "Can be triggered only after candidate-specific resolution is frozen under a new lock.",
     "WP4_READY": "Can be triggered only by a passing candidate-specific sealed qualification and independent replication."
   }
 }

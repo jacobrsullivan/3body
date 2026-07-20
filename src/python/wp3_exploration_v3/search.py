@@ -74,12 +74,61 @@ class _Fit:
     value_null_derivative_rank: int
     known_module_rank: int
     known_projection_residual: float
+    generalized_clusters: tuple[tuple[int, int], ...]
+    generalized_spectral_uncertainty: float
+    full_mode_count: int
+    requested_mode_count: int | None
 
 
 def _svd_rank(values: FloatArray, relative_tolerance: float) -> int:
     if values.size == 0 or values[0] == 0.0:
         return 0
     return int(np.count_nonzero(values > values[0] * relative_tolerance))
+
+
+def _singular_clusters(
+    values: FloatArray,
+    *,
+    relative_tolerance: float,
+    absolute_tolerance: float,
+) -> tuple[tuple[int, int], ...]:
+    """Return half-open, rotation-invariant clusters for sorted singular values."""
+
+    singular = np.asarray(values, dtype=np.float64)
+    if singular.ndim != 1 or np.any(~np.isfinite(singular)) or np.any(np.diff(singular) < 0.0):
+        raise ValueError("singular values must be a sorted finite vector")
+    if relative_tolerance < 0.0 or absolute_tolerance < 0.0:
+        raise ValueError("singular cluster tolerances must be nonnegative")
+    if not singular.size:
+        return ()
+    clusters: list[tuple[int, int]] = []
+    start = 0
+    for index in range(1, singular.size):
+        local_scale = max(abs(float(singular[index - 1])), abs(float(singular[index])))
+        tolerance = max(absolute_tolerance, relative_tolerance * local_scale)
+        if float(singular[index] - singular[index - 1]) > tolerance:
+            clusters.append((start, index))
+            start = index
+    clusters.append((start, singular.size))
+    return tuple(clusters)
+
+
+def _cluster_complete_count(
+    clusters: tuple[tuple[int, int], ...],
+    requested_count: int | None,
+    full_count: int,
+) -> int:
+    """Extend a mode-count boundary through its complete singular cluster."""
+
+    if requested_count is None:
+        return full_count
+    if requested_count <= 0:
+        raise ValueError("requested mode count must be positive")
+    target = min(requested_count, full_count)
+    for start, end in clusters:
+        if start < target <= end:
+            return end
+    raise ArithmeticError("singular clusters do not cover the mode range")
 
 
 def _fit(
@@ -89,10 +138,15 @@ def _fit(
     known_module: Mapping[str, ArrayLike],
     *,
     value_rank_relative_tolerance: float,
+    singular_cluster_relative_tolerance: float,
+    singular_cluster_absolute_tolerance: float,
+    svd_backward_error_factor: float,
     return_mode_count: int | None,
     feature_scales: FloatArray | None = None,
 ) -> _Fit:
     feature_count = values.shape[1]
+    if not np.isfinite(svd_backward_error_factor) or svd_backward_error_factor <= 0.0:
+        raise ValueError("SVD backward-error factor must be finite and positive")
     if derivatives.shape != values.shape:
         raise ValueError("feature and derivative matrices differ")
     if feature_scales is None:
@@ -156,7 +210,7 @@ def _fit(
     _, generalized_singular, generalized_right = np.linalg.svd(
         generalized_operator, full_matrices=False
     )
-    order = np.argsort(generalized_singular)
+    order = np.argsort(generalized_singular, kind="stable")
     raw_coefficients: list[FloatArray] = []
     normalized_coefficients: list[FloatArray] = []
     reconstructed_lie_rms: list[float] = []
@@ -192,24 +246,36 @@ def _fit(
             _weighted_rms(_matrix_vector(derivatives, raw), weights)
         )
         selected_generalized.append(float(generalized_singular[index]))
-    reconstructed_order = np.argsort(reconstructed_lie_rms)
-    if return_mode_count is not None:
-        reconstructed_order = reconstructed_order[:return_mode_count]
+    sorted_generalized = np.asarray(selected_generalized, dtype=np.float64)
+    clusters = _singular_clusters(
+        sorted_generalized,
+        relative_tolerance=singular_cluster_relative_tolerance,
+        absolute_tolerance=singular_cluster_absolute_tolerance,
+    )
+    full_mode_count = len(raw_coefficients)
+    retained_count = _cluster_complete_count(clusters, return_mode_count, full_mode_count)
+    retained_clusters = tuple((start, end) for start, end in clusters if end <= retained_count)
+    spectral_uncertainty = float(
+        svd_backward_error_factor
+        * np.finfo(np.float64).eps
+        * max(generalized_operator.shape)
+        * (float(np.max(generalized_singular)) if generalized_singular.size else 0.0)
+    )
     return _Fit(
-        raw_coefficients=tuple(raw_coefficients[index] for index in reconstructed_order),
-        normalized_coefficients=tuple(normalized_coefficients[index] for index in reconstructed_order),
-        generalized_singular_values=np.asarray(
-            [selected_generalized[index] for index in reconstructed_order], dtype=np.float64
-        ),
-        reconstructed_training_lie_rms=np.asarray(
-            [reconstructed_lie_rms[index] for index in reconstructed_order], dtype=np.float64
-        ),
+        raw_coefficients=tuple(raw_coefficients[:retained_count]),
+        normalized_coefficients=tuple(normalized_coefficients[:retained_count]),
+        generalized_singular_values=sorted_generalized[:retained_count],
+        reconstructed_training_lie_rms=np.asarray(reconstructed_lie_rms[:retained_count]),
         feature_scales=feature_scales,
         value_rank=value_rank,
         value_nullity=complement.shape[1] - value_rank,
         value_null_derivative_rank=nuisance_rank,
         known_module_rank=known_rank,
         known_projection_residual=known_projection_residual,
+        generalized_clusters=retained_clusters,
+        generalized_spectral_uncertainty=spectral_uncertainty,
+        full_mode_count=full_mode_count,
+        requested_mode_count=return_mode_count,
     )
 
 
@@ -279,6 +345,9 @@ def search_quotient_modes(
     mode_count: int,
     fold_mode_count: int,
     value_rank_relative_tolerance: float,
+    singular_cluster_relative_tolerance: float,
+    singular_cluster_absolute_tolerance: float,
+    svd_backward_error_factor: float,
     candidate_lie_rms_max: float,
     candidate_gauge_lie_rms_max: float,
     calibration_ratio_floor: float,
@@ -317,6 +386,9 @@ def search_quotient_modes(
         training_weights,
         known_module,
         value_rank_relative_tolerance=value_rank_relative_tolerance,
+        singular_cluster_relative_tolerance=singular_cluster_relative_tolerance,
+        singular_cluster_absolute_tolerance=singular_cluster_absolute_tolerance,
+        svd_backward_error_factor=svd_backward_error_factor,
         return_mode_count=None,
     )
 
@@ -335,6 +407,9 @@ def search_quotient_modes(
             fold_weights,
             known_module,
             value_rank_relative_tolerance=value_rank_relative_tolerance,
+            singular_cluster_relative_tolerance=singular_cluster_relative_tolerance,
+            singular_cluster_absolute_tolerance=singular_cluster_absolute_tolerance,
+            svd_backward_error_factor=svd_backward_error_factor,
             return_mode_count=fold_mode_count,
             feature_scales=fit.feature_scales,
         )
@@ -345,6 +420,10 @@ def search_quotient_modes(
             "value_nuisance_nullity": fold.value_nullity,
             "value_nuisance_derivative_rank": fold.value_null_derivative_rank,
             "retained_subspace_mode_count": len(fold.normalized_coefficients),
+            "requested_subspace_mode_count": fold_mode_count,
+            "cluster_boundary_extension": len(fold.normalized_coefficients) - min(
+                fold_mode_count, fold.full_mode_count
+            ),
         }
 
     known_metrics: dict[str, dict[str, float]] = {}
@@ -370,7 +449,7 @@ def search_quotient_modes(
 
     calibration_families = np.asarray(calibration_family_ids, dtype=object)
     modes: list[dict[str, object]] = []
-    candidates: list[int] = []
+    basis_direction_candidates: list[int] = []
     for rank, (coefficients, normalized_coefficients) in enumerate(
         zip(fit.raw_coefficients, fit.normalized_coefficients, strict=True), start=1
     ):
@@ -413,7 +492,7 @@ def search_quotient_modes(
         )
         payload: dict[str, object] = {
             "rank": rank,
-            "candidate_ready": passed,
+            "basis_direction_passes_all_diagnostic_gates": passed,
             "training_lie_rms": training_lie_rms,
             "calibration_lie_rms": calibration_lie_rms,
             "training_gauge_lie_rms": training_gauge_rms,
@@ -436,7 +515,56 @@ def search_quotient_modes(
             ]
         modes.append(payload)
         if passed:
-            candidates.append(rank)
+            basis_direction_candidates.append(rank)
+
+    spectral_uncertainty = fit.generalized_spectral_uncertainty
+    candidate_subspaces: list[dict[str, object]] = []
+    candidate_subspace_mode_ranks: list[int] = []
+    for cluster_index, (start, end) in enumerate(fit.generalized_clusters, start=1):
+        minimum = float(fit.generalized_singular_values[start])
+        maximum = float(fit.generalized_singular_values[end - 1])
+        lower_bound = max(0.0, minimum - spectral_uncertainty)
+        if lower_bound <= candidate_lie_rms_max:
+            ranks = list(range(start + 1, end + 1))
+            candidate_subspace_mode_ranks.extend(ranks)
+            candidate_subspaces.append(
+                {
+                    "cluster": cluster_index,
+                    "first_rank": start + 1,
+                    "last_rank": end,
+                    "dimension": end - start,
+                    "generalized_singular_value_min": minimum,
+                    "generalized_singular_value_max": maximum,
+                    "backend_guarded_lower_bound": lower_bound,
+                    "mode_ranks": ranks,
+                    "status": "REQUIRES_CANDIDATE_SPECIFIC_RESOLUTION",
+                }
+            )
+            for mode_index in range(start, end):
+                if "coefficients" not in modes[mode_index]:
+                    coefficients = fit.raw_coefficients[mode_index]
+                    ordered_terms = np.argsort(np.abs(fit.feature_scales * coefficients))[::-1][:15]
+                    modes[mode_index]["coefficients"] = coefficients.tolist()
+                    modes[mode_index]["top_terms"] = [
+                        {
+                            "feature": str(feature_names[int(index)]),
+                            "coefficient": float(coefficients[index]),
+                        }
+                        for index in ordered_terms
+                    ]
+
+    smallest = float(fit.generalized_singular_values[0])
+    guarded_lower_bound = max(0.0, smallest - spectral_uncertainty)
+    null_certificate = {
+        "smallest_generalized_singular_value": smallest,
+        "svd_backend_uncertainty_bound": spectral_uncertainty,
+        "backend_guarded_lower_bound": guarded_lower_bound,
+        "candidate_training_threshold": candidate_lie_rms_max,
+        "certifies_no_training_eligible_direction": guarded_lower_bound > candidate_lie_rms_max,
+        "bound_formula": "max(0, sigma_min - factor*eps*max(shape)*sigma_max)",
+        "svd_backward_error_factor": svd_backward_error_factor,
+        "generalized_operator_shape": [train_values.shape[0], fit.value_rank],
+    }
     return {
         "feature_count": feature_count,
         "training_row_count": train_values.shape[0],
@@ -449,14 +577,28 @@ def search_quotient_modes(
         "value_nuisance_nullity": fit.value_nullity,
         "value_nuisance_derivative_rank": fit.value_null_derivative_rank,
         "generalized_lie_value_singular_values": fit.generalized_singular_values.tolist(),
+        "generalized_singular_clusters": [
+            {
+                "cluster": index,
+                "first_rank": start + 1,
+                "last_rank": end,
+                "dimension": end - start,
+                "minimum": float(fit.generalized_singular_values[start]),
+                "maximum": float(fit.generalized_singular_values[end - 1]),
+            }
+            for index, (start, end) in enumerate(fit.generalized_clusters, start=1)
+        ],
+        "generalized_spectral_uncertainty": spectral_uncertainty,
         "reconstructed_training_lie_rms": fit.reconstructed_training_lie_rms.tolist(),
         "evaluated_mode_count": len(fit.raw_coefficients),
         "reported_expression_count": sum("coefficients" in mode for mode in modes),
         "family_fold_summaries": fold_summaries,
-        "numerical_nullity_at_candidate_threshold": int(
-            np.count_nonzero(fit.reconstructed_training_lie_rms <= candidate_lie_rms_max)
-        ),
-        "candidate_mode_ranks": candidates,
-        "candidate_count": len(candidates),
+        "numerical_nullity_at_candidate_threshold": len(candidate_subspace_mode_ranks),
+        "null_result_spectral_certificate": null_certificate,
+        "candidate_subspaces": candidate_subspaces,
+        "candidate_subspace_mode_ranks": candidate_subspace_mode_ranks,
+        "basis_direction_candidate_ranks": basis_direction_candidates,
+        "basis_direction_candidate_count": len(basis_direction_candidates),
+        "candidate_count": len(candidate_subspaces),
         "modes": modes,
     }

@@ -6,8 +6,11 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.metadata
+import importlib.util
+import json
 from pathlib import Path
 import platform
+import struct
 import sys
 from typing import Any
 
@@ -26,7 +29,6 @@ from qualification_tools import (  # noqa: E402
 )
 from src.python.n3bp_qualification import InertialState, SystemParameters  # noqa: E402
 from src.python.upstairs_ks import lift_jacobi_state, upstairs_vector_field  # noqa: E402
-from src.python.wp3_exploration_v2.normalization import nondimensionalize  # noqa: E402
 from src.python.wp3_exploration_v3 import search_quotient_modes  # noqa: E402
 from src.python.wp3_upstairs_v3 import (  # noqa: E402
     evaluate_upstairs_v3_features, feature_names, known_module_coefficients,
@@ -40,6 +42,27 @@ SPATIAL_RECORD = SPATIAL_ROOT / "reports/wp3_spatial_v2_qualification_record.jso
 UP_ROOT = VALIDATION_ROOT / "wp2-up-validation-v2"
 UP_LOCK = UP_ROOT / "reports/wp2_up_v2_qualification_lock.json"
 UP_RECORD = UP_ROOT / "reports/wp2_up_v2_qualification_record.json"
+
+
+def _load_nondimensionalize():
+    """Load the frozen normalizer without executing its v2 package initializer."""
+
+    module_path = REPO_ROOT / "src/python/wp3_exploration_v2/normalization.py"
+    module_name = "_wp3_up_v3_frozen_normalization"
+    module_spec = importlib.util.spec_from_file_location(module_name, module_path)
+    if module_spec is None or module_spec.loader is None:
+        raise RuntimeError(f"cannot load frozen normalizer: {module_path}")
+    module = importlib.util.module_from_spec(module_spec)
+    sys.modules[module_name] = module
+    try:
+        module_spec.loader.exec_module(module)
+    except BaseException:
+        sys.modules.pop(module_name, None)
+        raise
+    return module.nondimensionalize
+
+
+nondimensionalize = _load_nondimensionalize()
 
 
 def _args() -> argparse.Namespace:
@@ -128,14 +151,84 @@ def _matrix_sha256(matrix: np.ndarray) -> str:
     return digest.hexdigest()
 
 
-def _verify_runtime(expected: dict[str, Any]) -> dict[str, Any]:
-    observed = {
+def _canonical_sha256(value: Any) -> str:
+    encoded = json.dumps(
+        value,
+        sort_keys=True,
+        separators=(",", ":"),
+        ensure_ascii=True,
+        allow_nan=False,
+    ).encode("ascii")
+    return hashlib.sha256(encoded).hexdigest()
+
+
+def _numpy_backend_fingerprint() -> dict[str, Any]:
+    config = np.show_config(mode="dicts")
+    if not isinstance(config, dict):
+        raise RuntimeError("NumPy did not expose a structured build configuration")
+
+    def dependency(name: str) -> dict[str, Any]:
+        source = config["Build Dependencies"][name]
+        fields = (
+            "name",
+            "found",
+            "version",
+            "detection method",
+            "openblas configuration",
+        )
+        return {field: source.get(field) for field in fields}
+
+    def machine(name: str) -> dict[str, Any]:
+        source = config["Machine Information"][name]
+        return {
+            field: source.get(field)
+            for field in ("system", "family", "cpu", "endian")
+        }
+
+    configuration = {
+        "blas": dependency("blas"),
+        "lapack": dependency("lapack"),
+        "machine": {
+            "build": machine("build"),
+            "host": machine("host"),
+        },
+        "simd_extensions": {
+            key: sorted(config["SIMD Extensions"][key])
+            for key in ("baseline", "found", "not found")
+        },
+    }
+    return {
+        "configuration": configuration,
+        "sha256": _canonical_sha256(configuration),
+    }
+
+
+def _decision_runtime(expected: dict[str, Any]) -> dict[str, Any]:
+    return {
         "python": platform.python_version(),
+        "python_implementation": platform.python_implementation(),
+        "platform": {
+            "system": platform.system(),
+            "release": platform.release(),
+            "version": platform.version(),
+            "platform": platform.platform(),
+            "mac_version": platform.mac_ver()[0],
+            "machine": platform.machine(),
+            "processor": platform.processor(),
+            "architecture": list(platform.architecture()),
+            "pointer_bits": struct.calcsize("P") * 8,
+            "byteorder": sys.byteorder,
+        },
         "packages": {
             name: importlib.metadata.version(name)
             for name in expected["packages"]
         },
+        "numpy_backend": _numpy_backend_fingerprint(),
     }
+
+
+def _verify_runtime(expected: dict[str, Any]) -> dict[str, Any]:
+    observed = _decision_runtime(expected)
     if observed != expected:
         raise RuntimeError(f"decision runtime mismatch: expected {expected}, observed {observed}")
     return observed
@@ -284,6 +377,9 @@ def main() -> None:
         mode_count=int(search_spec["mode_count"]),
         fold_mode_count=int(search_spec["fold_mode_count"]),
         value_rank_relative_tolerance=float(search_spec["value_rank_relative_tolerance"]),
+        singular_cluster_relative_tolerance=float(search_spec["singular_cluster_relative_tolerance"]),
+        singular_cluster_absolute_tolerance=float(search_spec["singular_cluster_absolute_tolerance"]),
+        svd_backward_error_factor=float(search_spec["svd_backward_error_factor"]),
         candidate_lie_rms_max=float(search_spec["candidate_lie_rms_max"]),
         candidate_gauge_lie_rms_max=float(search_spec["candidate_gauge_lie_rms_max"]),
         calibration_ratio_floor=float(search_spec["calibration_ratio_floor"]),
@@ -312,6 +408,20 @@ def main() -> None:
         abs(float(item["checkpoint_energy_difference"]))
         for item in (*train_metadata, *calibration_metadata)
     )
+    candidate_count = int(search["candidate_count"])
+    null_certified = bool(
+        search["null_result_spectral_certificate"][
+            "certifies_no_training_eligible_direction"
+        ]
+    )
+    spectral_partition_consistent = bool(
+        (candidate_count == 0) == null_certified
+        and candidate_count == len(search["candidate_subspaces"])
+        and sum(
+            int(cluster["dimension"])
+            for cluster in search["generalized_singular_clusters"]
+        ) == int(search["observable_value_rank"])
+    )
     search_ready_gates = [
         make_gate("prerequisite_pass_rate", 1.0, ">=", 1.0),
         make_gate("search_lock_verified", 1, "==", 1),
@@ -327,18 +437,26 @@ def main() -> None:
         make_gate("all_generalized_modes_evaluated", int(search["evaluated_mode_count"]), "==", int(search["observable_value_rank"])),
         make_gate("decision_runtime_exact", 1, "==", 1),
         make_gate("fixed_energy_checkpoint_abs_max", fixed_energy_checkpoint_abs_max, "<=", float(search_spec["fixed_energy_checkpoint_abs_max"])),
+        make_gate("spectral_decision_partition_consistent", int(spectral_partition_consistent), "==", 1),
     ]
     search_ready = "PASS" if all(gate["passed"] for gate in search_ready_gates) else "FAIL"
-    candidate_count = int(search["candidate_count"])
     if search_ready != "PASS":
+        null_result_ready = "BLOCKED"
         candidate_ready = "BLOCKED"
         sealed_qualification = "BLOCKED"
         status = "INVALID_SEARCH_NOT_READY"
     elif candidate_count:
-        candidate_ready = "PASS"
-        sealed_qualification = "REQUIRED"
-        status = "CANDIDATE_REQUIRES_SEPARATE_QUALIFICATION"
+        null_result_ready = "BLOCKED"
+        candidate_ready = "BLOCKED_PENDING_RESOLUTION"
+        sealed_qualification = "BLOCKED_PENDING_RESOLUTION"
+        status = "CANDIDATE_SUBSPACE_REQUIRES_RESOLUTION"
+    elif not null_certified:
+        null_result_ready = "FAIL"
+        candidate_ready = "BLOCKED"
+        sealed_qualification = "BLOCKED"
+        status = "INVALID_SPECTRAL_DECISION_INCONSISTENT"
     else:
+        null_result_ready = "PASS"
         candidate_ready = "NOT_TRIGGERED"
         sealed_qualification = "NOT_TRIGGERED"
         status = "COMPLETE_BOUNDED_NULL_RESULT"
@@ -371,7 +489,8 @@ def main() -> None:
     gate = {
         "schema_version": "1.0", "campaign": spec["campaign"],
         "qualification_id": lock["qualification_id"], "lock_sha256": lock["lock_sha256"],
-        "SEARCH_READY": search_ready, "CANDIDATE_READY": candidate_ready,
+        "SEARCH_READY": search_ready, "NULL_RESULT_READY": null_result_ready,
+        "CANDIDATE_READY": candidate_ready,
         "SEALED_QUALIFICATION": sealed_qualification,
         "WP4_READY": "BLOCKED", "publication_reserve_status": "SEALED_UNEXECUTED",
         "candidate_count": candidate_count, "search_ready_gates": search_ready_gates,

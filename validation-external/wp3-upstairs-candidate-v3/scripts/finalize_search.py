@@ -37,10 +37,21 @@ def main() -> None:
         raise RuntimeError("cannot finalize a search that was not ready")
     search = results["search"]
     candidate_count = int(search["candidate_count"])
-    expected_candidate_ready = "PASS" if candidate_count else "NOT_TRIGGERED"
-    expected_sealed = "REQUIRED" if candidate_count else "NOT_TRIGGERED"
+    null_certified = bool(
+        search["null_result_spectral_certificate"][
+            "certifies_no_training_eligible_direction"
+        ]
+    )
+    if (
+        (candidate_count == 0) != null_certified
+        or candidate_count != len(search["candidate_subspaces"])
+    ):
+        raise RuntimeError("spectral certificate and candidate subspaces disagree")
+    expected_candidate_ready = "BLOCKED_PENDING_RESOLUTION" if candidate_count else "NOT_TRIGGERED"
+    expected_sealed = "BLOCKED_PENDING_RESOLUTION" if candidate_count else "NOT_TRIGGERED"
+    expected_null_ready = "BLOCKED" if candidate_count else "PASS"
     expected_status = (
-        "CANDIDATE_REQUIRES_SEPARATE_QUALIFICATION"
+        "CANDIDATE_SUBSPACE_REQUIRES_RESOLUTION"
         if candidate_count
         else "COMPLETE_BOUNDED_NULL_RESULT"
     )
@@ -50,6 +61,7 @@ def main() -> None:
         or results.get("spec_sha256") != sha256_file(args.spec)
         or results.get("corpus_sha256") != sha256_file(args.corpus)
         or gate.get("candidate_count") != candidate_count
+        or gate.get("NULL_RESULT_READY") != expected_null_ready
         or gate.get("CANDIDATE_READY") != expected_candidate_ready
         or gate.get("SEALED_QUALIFICATION") != expected_sealed
         or gate.get("WP4_READY") != "BLOCKED"
@@ -65,7 +77,8 @@ def main() -> None:
         "spec_sha256": sha256_file(args.spec), "corpus_sha256": sha256_file(args.corpus),
         "results_sha256": sha256_file(args.results), "gate_sha256": sha256_file(args.gate),
         "candidate_count": candidate_count,
-        "search_ready": gate["SEARCH_READY"], "candidate_ready": gate["CANDIDATE_READY"],
+        "search_ready": gate["SEARCH_READY"], "null_result_ready": gate["NULL_RESULT_READY"],
+        "candidate_ready": gate["CANDIDATE_READY"],
         "sealed_qualification": gate["SEALED_QUALIFICATION"], "wp4_ready": gate["WP4_READY"],
         "publication_reserve_status": gate["publication_reserve_status"],
         "matrix_hashes": results["matrix_hashes"], "source_summary": results["source_summary"],
@@ -76,6 +89,12 @@ def main() -> None:
         "exact_known_module_rank": int(search["exact_known_module_rank"]),
         "exact_known_module_projection_residual": float(search["exact_known_module_projection_residual"]),
         "smallest_generalized_lie_value_singular_value": float(min(search["generalized_lie_value_singular_values"])),
+        "generalized_spectral_uncertainty": float(search["generalized_spectral_uncertainty"]),
+        "backend_guarded_spectral_lower_bound": float(
+            search["null_result_spectral_certificate"]["backend_guarded_lower_bound"]
+        ),
+        "null_result_spectral_certificate": search["null_result_spectral_certificate"],
+        "candidate_subspaces": search["candidate_subspaces"],
         "numerical_nullity_at_candidate_threshold": int(search["numerical_nullity_at_candidate_threshold"]),
     }
     record = dict(unsigned)

@@ -31,6 +31,7 @@ def main() -> None:
         "# WP3-UP-CAND-v3 Search Report", "", "## Decision", "",
         f"- Search status: **{results['status']}**",
         f"- `SEARCH_READY`: **{gate['SEARCH_READY']}**",
+        f"- `NULL_RESULT_READY`: **{gate['NULL_RESULT_READY']}**",
         f"- `CANDIDATE_READY`: **{gate['CANDIDATE_READY']}**",
         f"- `SEALED_QUALIFICATION`: **{gate['SEALED_QUALIFICATION']}**",
         f"- `WP4_READY`: **{gate['WP4_READY']}**",
@@ -47,11 +48,14 @@ def main() -> None:
         f"- Value-nuisance nullity: {search['value_nuisance_nullity']}",
         f"- Value-nuisance derivative rank retained in optimization: {search['value_nuisance_derivative_rank']}",
         f"- Smallest generalized Lie/value singular value: `{smallest:.16e}`",
+        f"- Backend-guarded spectral lower bound: `{search['null_result_spectral_certificate']['backend_guarded_lower_bound']:.16e}`",
+        f"- Frozen candidate training threshold: `{search['null_result_spectral_certificate']['candidate_training_threshold']:.16e}`",
         f"- Leading training weighted Lie RMS: `{leading['training_lie_rms']:.16e}`",
         f"- Leading calibration weighted Lie RMS: `{leading['calibration_lie_rms']:.16e}`",
-        f"- Numerical candidate count: {search['candidate_count']}", "",
+        f"- Training-eligible candidate-subspace count: {search['candidate_count']}",
+        f"- Basis-direction diagnostic pass count: {search['basis_direction_candidate_count']}", "",
         "## Claim Boundary", "",
-        "A null result means no mode in the declared observable quotient passed every frozen gate. This remediation reused previously examined development/calibration data; it is not fresh confirmation, a proof that the upstairs system has no additional first integral, or a non-integrability theorem. A candidate would still require a new lock, sealed holdout, independent replication, and WP4 proof-level checks.", "",
+        "A null result requires a backend-guarded spectral lower bound above the training threshold, excluding every training-eligible direction in the declared finite quotient without relying on an arbitrary SVD basis. Any unresolved singular subspace blocks that null and must be resolved under a new pre-sealed lock. This remediation reused previously examined development/calibration data; it is not fresh confirmation, a proof that the upstairs system has no additional first integral, or a non-integrability theorem. A candidate would still require a new lock, sealed holdout, independent replication, and WP4 proof-level checks.", "",
     ]
     Path(args.output).write_text("\n".join(lines), encoding="utf-8")
     print(f"wrote {args.output}")

@@ -31,13 +31,16 @@ case "${1:-}" in
       --repo-root "$REPO_ROOT" --prefix WP3-UP-CAND-v3 \
       --spec "$SPEC" --corpus "$CORPUS" --commitments "$COMMITMENTS" \
       --scope validation-external/qualification_tools.py \
+      --scope validation-external/verify_qualification.py \
       --scope validation-external/wp3-upstairs-candidate-v3 \
       --scope validation-external/wp3-spatial-validation-v2 \
       --scope validation-external/wp3-v2-exploration/data/exploration_corpus.json \
       --scope validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json \
-      --scope src/python/wp3_upstairs_v3 --scope src/python/upstairs_ks \
+      --scope src/python/ks --scope src/python/n3bp_qualification \
+      --scope src/python/pairwise_ks --scope src/python/threebody_flow \
+      --scope src/python/threebody_reduction --scope src/python/upstairs_ks \
       --scope src/python/wp3_exploration_v2/normalization.py \
-      --scope src/python/wp3_exploration_v3 \
+      --scope src/python/wp3_exploration_v3 --scope src/python/wp3_upstairs_v3 \
       --scope tests/wp3_upstairs_v3 --scope tests/wp3_exploration_v3 \
       --scope tests/wp3_upstairs_campaign_v3 \
       --output "$LOCK"

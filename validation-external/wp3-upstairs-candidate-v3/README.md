@@ -5,7 +5,14 @@ removing, in coefficient space, the complete degree-three part of the `Xi=0`
 constraint ideal and all represented fixed-parameter multiples of angular
 momentum. It preserves exact conserved directions when handling finite-sample
 value nuisance directions and compares invariant fold subspaces rather than
-individual singular vectors.
+individual singular vectors. Fold truncation includes the complete singular
+cluster at its boundary. A null decision is permitted only when a
+backend-guarded lower bound on the smallest generalized singular value exceeds
+the frozen training threshold; an unresolved cluster blocks the null and
+requires separately frozen candidate resolution.
+The recorded numerical guard is
+`factor * machine_epsilon * max(operator_shape) * sigma_max`, with the factor
+frozen in the search specification.
 
 The complete hypothesis class contains every combined-degree-three-or-less
 monomial with at least one of the 14 canonical state variables and optional
@@ -17,7 +24,8 @@ confirmation.
 The decision-bearing numerical runtime is pinned in
 `runtime_requirements.txt`; cross-runtime replay is supplemental evidence and
 cannot alter the frozen decision. The runner refuses to execute unless Python,
-NumPy, and SciPy match the frozen `decision_runtime` exactly.
+NumPy, SciPy, operating system, architecture, and NumPy numerical backend match
+the frozen `decision_runtime` exactly.
 
 The sealed 24-case publication reserve is commitment-only input.  This
 campaign cannot execute it.  A surviving mode can only trigger a new
