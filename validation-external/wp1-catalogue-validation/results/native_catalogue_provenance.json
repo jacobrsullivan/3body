@@ -1,0 +1,38 @@
+{
+  "campaign": "WP1-CAT-v1",
+  "candidate_count_after_deduplication": 159,
+  "candidate_count_before_deduplication": 159,
+  "catalogue_file_sha256": "64db02fd73ca7eae3180bbdabe6e670241cb1a0bfd331a777680c1e543ac6dce",
+  "catalogue_path": "results/native_catalogue.parquet",
+  "catalogue_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+  "corrected_orbits_per_second": 10.503469121848372,
+  "created_utc": "2026-07-20T18:37:34.518652+00:00",
+  "duplicate_count": 0,
+  "external_data_used_by_generation": false,
+  "generation_seconds": 12.381733208007063,
+  "model": {
+    "family": "planar Lyapunov",
+    "mu": 0.012150585609624,
+    "name": "normalized rotating-frame Earth-Moon CR3BP",
+    "state_order": [
+      "x",
+      "y",
+      "z",
+      "vx",
+      "vy",
+      "vz"
+    ],
+    "system": "earth-moon",
+    "time_unit": "normalized"
+  },
+  "rejected_duplicates": [],
+  "runtime": {
+    "machine": "arm64",
+    "numpy": "2.3.5",
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "scipy": "1.16.3"
+  },
+  "stability_seconds": 2.7561224999953993,
+  "total_seconds": 15.137855708002462
+}

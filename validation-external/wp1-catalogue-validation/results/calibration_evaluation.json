@@ -1,0 +1,183 @@
+{
+  "campaign": "WP1-CAT-v1",
+  "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+  "case_count": 60,
+  "case_counts_by_lpoint": {
+    "L1": 30,
+    "L2": 30
+  },
+  "executed_utc": "2026-07-20T18:37:38.982664+00:00",
+  "failed_gates": [],
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "native.candidate_count",
+      "observed": 159,
+      "passed": true,
+      "threshold": 159
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L1_members",
+      "observed": 80,
+      "passed": true,
+      "threshold": 80
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L2_members",
+      "observed": 79,
+      "passed": true,
+      "threshold": 79
+    },
+    {
+      "comparator": "<=",
+      "name": "native.duplicate_count",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "<=",
+      "name": "native.closure_error_p95",
+      "observed": 1.9564248705484975e-12,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "native.closure_error_max",
+      "observed": 4.2479548203952175e-12,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "native.symmetry_residual_p95",
+      "observed": 3.403795734511987e-14,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L1_jacobi_monotone_fraction",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L2_jacobi_monotone_fraction",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": "<=",
+      "name": "native.monodromy_determinant_error_max",
+      "observed": 1.1174747793774031e-09,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": "<=",
+      "name": "native.reciprocal_pair_error_max",
+      "observed": 2.36512565088276e-09,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "external.minimum_cases",
+      "observed": 60,
+      "passed": true,
+      "threshold": 60
+    },
+    {
+      "comparator": ">=",
+      "name": "external.recovery_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": "<=",
+      "name": "external.state_error_p95",
+      "observed": 0.0041177184472571005,
+      "passed": true,
+      "threshold": 0.006
+    },
+    {
+      "comparator": "<=",
+      "name": "external.state_error_max",
+      "observed": 0.004691708670316727,
+      "passed": true,
+      "threshold": 0.012
+    },
+    {
+      "comparator": "<=",
+      "name": "external.period_relative_error_p95",
+      "observed": 0.0040642403654584415,
+      "passed": true,
+      "threshold": 0.005
+    },
+    {
+      "comparator": "<=",
+      "name": "external.period_relative_error_max",
+      "observed": 0.004956397027223792,
+      "passed": true,
+      "threshold": 0.01
+    },
+    {
+      "comparator": "<=",
+      "name": "external.jacobi_error_p95",
+      "observed": 0.0018650864774472525,
+      "passed": true,
+      "threshold": 0.003
+    },
+    {
+      "comparator": "<=",
+      "name": "external.jacobi_error_max",
+      "observed": 0.0023262625137911996,
+      "passed": true,
+      "threshold": 0.006
+    },
+    {
+      "comparator": "<=",
+      "name": "external.stability_relative_error_p95",
+      "observed": 0.0196189411835531,
+      "passed": true,
+      "threshold": 0.1
+    },
+    {
+      "comparator": "<=",
+      "name": "external.stability_relative_error_max",
+      "observed": 0.0250052599255401,
+      "passed": true,
+      "threshold": 0.25
+    },
+    {
+      "comparator": ">=",
+      "name": "external.stability_label_accuracy",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    }
+  ],
+  "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+  "matches_sha256": "704f7d3364f55c3622d4b16176199b2c0b939eae29716033b2eb1c809207431b",
+  "native_candidate_counts": {
+    "L1": 80,
+    "L2": 79
+  },
+  "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+  "schema_version": "1.0",
+  "split": "calibration",
+  "status": "PASS",
+  "throughput": {
+    "corrected_orbits_per_second": 10.503469121848372,
+    "generation_seconds": 12.381733208007063,
+    "stability_seconds": 2.7561224999953993,
+    "total_seconds": 15.137855708002462
+  }
+}

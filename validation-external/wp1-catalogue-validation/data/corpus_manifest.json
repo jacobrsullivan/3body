@@ -1,0 +1,29 @@
+{
+  "campaign": "WP1-CAT-v1",
+  "corpus_path": "validation-external/wp1-catalogue-validation/data/corpus.parquet",
+  "corpus_sha256": "e4199ae9b21bcd6d771c37f6360cc5292a34d2ca6f1935252607ac9824b63c40",
+  "created_utc": "2026-07-20T18:37:17.711639+00:00",
+  "generation_inputs_include_external_rows": false,
+  "holdout_ids_path": "validation-external/wp1-catalogue-validation/data/holdout_ids.json",
+  "holdout_ids_sha256": "0194ea01c5f2ddd05f149f817f30eb688735c9f6405a715d99574a90258c1dc6",
+  "partition_disjoint": true,
+  "schema_version": "1.0",
+  "selected_rows": 300,
+  "source_path": "validation-external/wp1-validation/data/jpl/normalized.parquet",
+  "source_rows": 21938,
+  "source_sha256": "ef1dfd9d1528c40f970b99cc99761b99de871f66506499e60f74e6512a640d52",
+  "spec_sha256": "3a581030a71055f67ad431a3992d9aa2bdeb7a960af206b286e00b4d377a7445",
+  "split_counts": {
+    "calibration": 60,
+    "development": 180,
+    "holdout": 60
+  },
+  "split_lpoint_counts": {
+    "calibration|L1": 30,
+    "calibration|L2": 30,
+    "development|L1": 90,
+    "development|L2": 90,
+    "holdout|L1": 30,
+    "holdout|L2": 30
+  }
+}

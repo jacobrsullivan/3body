@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-UPQ-v2",
+  "external_states": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+  "canonical_ks": "WP2KSQ-v1-dc4b342e3bd2",
+  "physical_flow": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+  "independent_derivative_backend": "JAX x64 automatic differentiation of the scalar fixed-energy Hamiltonian",
+  "holdout_classification": "execution-reserved compositional conformance; upstream source states were already visible"
+}

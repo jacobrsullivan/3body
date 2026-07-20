@@ -1,0 +1,183 @@
+{
+  "campaign": "WP1-CAT-v1",
+  "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+  "case_count": 180,
+  "case_counts_by_lpoint": {
+    "L1": 90,
+    "L2": 90
+  },
+  "executed_utc": "2026-07-20T18:37:37.365180+00:00",
+  "failed_gates": [],
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "native.candidate_count",
+      "observed": 159,
+      "passed": true,
+      "threshold": 159
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L1_members",
+      "observed": 80,
+      "passed": true,
+      "threshold": 80
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L2_members",
+      "observed": 79,
+      "passed": true,
+      "threshold": 79
+    },
+    {
+      "comparator": "<=",
+      "name": "native.duplicate_count",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "<=",
+      "name": "native.closure_error_p95",
+      "observed": 1.9564248705484975e-12,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "native.closure_error_max",
+      "observed": 4.2479548203952175e-12,
+      "passed": true,
+      "threshold": 1e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "native.symmetry_residual_p95",
+      "observed": 3.403795734511987e-14,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L1_jacobi_monotone_fraction",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": ">=",
+      "name": "native.L2_jacobi_monotone_fraction",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": "<=",
+      "name": "native.monodromy_determinant_error_max",
+      "observed": 1.1174747793774031e-09,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": "<=",
+      "name": "native.reciprocal_pair_error_max",
+      "observed": 2.36512565088276e-09,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": ">=",
+      "name": "external.minimum_cases",
+      "observed": 180,
+      "passed": true,
+      "threshold": 180
+    },
+    {
+      "comparator": ">=",
+      "name": "external.recovery_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    },
+    {
+      "comparator": "<=",
+      "name": "external.state_error_p95",
+      "observed": 0.003977421771648425,
+      "passed": true,
+      "threshold": 0.006
+    },
+    {
+      "comparator": "<=",
+      "name": "external.state_error_max",
+      "observed": 0.005161435223114425,
+      "passed": true,
+      "threshold": 0.012
+    },
+    {
+      "comparator": "<=",
+      "name": "external.period_relative_error_p95",
+      "observed": 0.0034187476339850365,
+      "passed": true,
+      "threshold": 0.005
+    },
+    {
+      "comparator": "<=",
+      "name": "external.period_relative_error_max",
+      "observed": 0.005270294989478021,
+      "passed": true,
+      "threshold": 0.01
+    },
+    {
+      "comparator": "<=",
+      "name": "external.jacobi_error_p95",
+      "observed": 0.0015953975334227263,
+      "passed": true,
+      "threshold": 0.003
+    },
+    {
+      "comparator": "<=",
+      "name": "external.jacobi_error_max",
+      "observed": 0.0023292099625993323,
+      "passed": true,
+      "threshold": 0.006
+    },
+    {
+      "comparator": "<=",
+      "name": "external.stability_relative_error_p95",
+      "observed": 0.016986734626095148,
+      "passed": true,
+      "threshold": 0.1
+    },
+    {
+      "comparator": "<=",
+      "name": "external.stability_relative_error_max",
+      "observed": 0.027118999593599084,
+      "passed": true,
+      "threshold": 0.25
+    },
+    {
+      "comparator": ">=",
+      "name": "external.stability_label_accuracy",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 0.98
+    }
+  ],
+  "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+  "matches_sha256": "8f60c909f33797f834037d9ef8af9696835f7414dac542b0c2e0fe0ddc1c2b71",
+  "native_candidate_counts": {
+    "L1": 80,
+    "L2": 79
+  },
+  "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+  "schema_version": "1.0",
+  "split": "development",
+  "status": "PASS",
+  "throughput": {
+    "corrected_orbits_per_second": 10.503469121848372,
+    "generation_seconds": 12.381733208007063,
+    "stability_seconds": 2.7561224999953993,
+    "total_seconds": 15.137855708002462
+  }
+}

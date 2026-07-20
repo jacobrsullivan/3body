@@ -1,0 +1,610 @@
+{
+  "base_git_commit": "13d20836bcadbea15a37e0800609702002d76f75",
+  "campaign": "WP1-CAT-v1",
+  "candidate_count": 159,
+  "candidate_file_sha256": "64db02fd73ca7eae3180bbdabe6e670241cb1a0bfd331a777680c1e543ac6dce",
+  "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+  "claim": "WP1-CAT-v1 qualifies deterministic native generation of two bounded Earth-Moon planar Lyapunov family segments in normalized rotating-frame CR3BP: L1 amplitudes 0.001 through 0.080 and L2 amplitudes 0.001 through 0.040, where amplitude is x_L-x on the y=z=vx=vz=0, vy>0 canonical section. Seeds are derived only from the analytic collinear center mode, sequential members are differentially corrected without external orbit seeds, accepted members satisfy frozen closure and symmetry gates, phase-invariant (Jacobi constant, period) deduplication is applied, Floquet stability labels are attached, and recovery is evaluated against disjoint pinned NASA/JPL development, calibration, and holdout rows.",
+  "corpus_counts": {
+    "split": {
+      "calibration": 60,
+      "development": 180,
+      "holdout": 60
+    },
+    "split_lpoint": {
+      "calibration|L1": 30,
+      "calibration|L2": 30,
+      "development|L1": 90,
+      "development|L2": 90,
+      "holdout|L1": 30,
+      "holdout|L2": 30
+    }
+  },
+  "corpus_sha256": "e4199ae9b21bcd6d771c37f6360cc5292a34d2ca6f1935252607ac9824b63c40",
+  "created_utc": "2026-07-20T18:37:57.390823+00:00",
+  "design_snapshot_sha256": "5dc7ad44b78f27f02ecc1c19ba61d476620de5127922a3a09ee72feec8ff3512",
+  "downstream_policy": "Cite the qualification ID and exact evidence boundary; do not promote this bounded planar result to a complete or general three-body catalogue claim.",
+  "duplicate_count": 0,
+  "evaluation_sha256": {
+    "calibration": "0ba6e300b811c12cf7b5fc124dfa361b7730bc387154070096ae4cd78b5faabc",
+    "development": "aa788be0119db2488235a1113557e35b56fb954d67e5b6d18687db3d464a2318",
+    "holdout": "9dd99355c0876f5dec2a02154f344c422846df2cfd0d14e3042747594ddfce87"
+  },
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP1-CAT-v1",
+      "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+      "case_count": 60,
+      "case_counts_by_lpoint": {
+        "L1": 30,
+        "L2": 30
+      },
+      "executed_utc": "2026-07-20T18:37:38.982664+00:00",
+      "failed_gates": [],
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "native.candidate_count",
+          "observed": 159,
+          "passed": true,
+          "threshold": 159
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_members",
+          "observed": 80,
+          "passed": true,
+          "threshold": 80
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_members",
+          "observed": 79,
+          "passed": true,
+          "threshold": 79
+        },
+        {
+          "comparator": "<=",
+          "name": "native.duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_p95",
+          "observed": 1.9564248705484975e-12,
+          "passed": true,
+          "threshold": 1e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_max",
+          "observed": 4.2479548203952175e-12,
+          "passed": true,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "native.symmetry_residual_p95",
+          "observed": 3.403795734511987e-14,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "native.monodromy_determinant_error_max",
+          "observed": 1.1174747793774031e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": "<=",
+          "name": "native.reciprocal_pair_error_max",
+          "observed": 2.36512565088276e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "external.minimum_cases",
+          "observed": 60,
+          "passed": true,
+          "threshold": 60
+        },
+        {
+          "comparator": ">=",
+          "name": "external.recovery_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_p95",
+          "observed": 0.0041177184472571005,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_max",
+          "observed": 0.004691708670316727,
+          "passed": true,
+          "threshold": 0.012
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_p95",
+          "observed": 0.0040642403654584415,
+          "passed": true,
+          "threshold": 0.005
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_max",
+          "observed": 0.004956397027223792,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_p95",
+          "observed": 0.0018650864774472525,
+          "passed": true,
+          "threshold": 0.003
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_max",
+          "observed": 0.0023262625137911996,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_p95",
+          "observed": 0.0196189411835531,
+          "passed": true,
+          "threshold": 0.1
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_max",
+          "observed": 0.0250052599255401,
+          "passed": true,
+          "threshold": 0.25
+        },
+        {
+          "comparator": ">=",
+          "name": "external.stability_label_accuracy",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        }
+      ],
+      "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+      "matches_sha256": "704f7d3364f55c3622d4b16176199b2c0b939eae29716033b2eb1c809207431b",
+      "native_candidate_counts": {
+        "L1": 80,
+        "L2": 79
+      },
+      "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+      "schema_version": "1.0",
+      "split": "calibration",
+      "status": "PASS",
+      "throughput": {
+        "corrected_orbits_per_second": 10.503469121848372,
+        "generation_seconds": 12.381733208007063,
+        "stability_seconds": 2.7561224999953993,
+        "total_seconds": 15.137855708002462
+      }
+    },
+    "development": {
+      "campaign": "WP1-CAT-v1",
+      "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+      "case_count": 180,
+      "case_counts_by_lpoint": {
+        "L1": 90,
+        "L2": 90
+      },
+      "executed_utc": "2026-07-20T18:37:37.365180+00:00",
+      "failed_gates": [],
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "native.candidate_count",
+          "observed": 159,
+          "passed": true,
+          "threshold": 159
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_members",
+          "observed": 80,
+          "passed": true,
+          "threshold": 80
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_members",
+          "observed": 79,
+          "passed": true,
+          "threshold": 79
+        },
+        {
+          "comparator": "<=",
+          "name": "native.duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_p95",
+          "observed": 1.9564248705484975e-12,
+          "passed": true,
+          "threshold": 1e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_max",
+          "observed": 4.2479548203952175e-12,
+          "passed": true,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "native.symmetry_residual_p95",
+          "observed": 3.403795734511987e-14,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "native.monodromy_determinant_error_max",
+          "observed": 1.1174747793774031e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": "<=",
+          "name": "native.reciprocal_pair_error_max",
+          "observed": 2.36512565088276e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "external.minimum_cases",
+          "observed": 180,
+          "passed": true,
+          "threshold": 180
+        },
+        {
+          "comparator": ">=",
+          "name": "external.recovery_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_p95",
+          "observed": 0.003977421771648425,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_max",
+          "observed": 0.005161435223114425,
+          "passed": true,
+          "threshold": 0.012
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_p95",
+          "observed": 0.0034187476339850365,
+          "passed": true,
+          "threshold": 0.005
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_max",
+          "observed": 0.005270294989478021,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_p95",
+          "observed": 0.0015953975334227263,
+          "passed": true,
+          "threshold": 0.003
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_max",
+          "observed": 0.0023292099625993323,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_p95",
+          "observed": 0.016986734626095148,
+          "passed": true,
+          "threshold": 0.1
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_max",
+          "observed": 0.027118999593599084,
+          "passed": true,
+          "threshold": 0.25
+        },
+        {
+          "comparator": ">=",
+          "name": "external.stability_label_accuracy",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        }
+      ],
+      "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+      "matches_sha256": "8f60c909f33797f834037d9ef8af9696835f7414dac542b0c2e0fe0ddc1c2b71",
+      "native_candidate_counts": {
+        "L1": 80,
+        "L2": 79
+      },
+      "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+      "schema_version": "1.0",
+      "split": "development",
+      "status": "PASS",
+      "throughput": {
+        "corrected_orbits_per_second": 10.503469121848372,
+        "generation_seconds": 12.381733208007063,
+        "stability_seconds": 2.7561224999953993,
+        "total_seconds": 15.137855708002462
+      }
+    },
+    "holdout": {
+      "campaign": "WP1-CAT-v1",
+      "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+      "case_count": 60,
+      "case_counts_by_lpoint": {
+        "L1": 30,
+        "L2": 30
+      },
+      "executed_utc": "2026-07-20T18:37:56.231471+00:00",
+      "failed_gates": [],
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "native.candidate_count",
+          "observed": 159,
+          "passed": true,
+          "threshold": 159
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_members",
+          "observed": 80,
+          "passed": true,
+          "threshold": 80
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_members",
+          "observed": 79,
+          "passed": true,
+          "threshold": 79
+        },
+        {
+          "comparator": "<=",
+          "name": "native.duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_p95",
+          "observed": 1.9564248705484975e-12,
+          "passed": true,
+          "threshold": 1e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "native.closure_error_max",
+          "observed": 4.2479548203952175e-12,
+          "passed": true,
+          "threshold": 1e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "native.symmetry_residual_p95",
+          "observed": 3.403795734511987e-14,
+          "passed": true,
+          "threshold": 1e-10
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L1_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": ">=",
+          "name": "native.L2_jacobi_monotone_fraction",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "native.monodromy_determinant_error_max",
+          "observed": 1.1174747793774031e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": "<=",
+          "name": "native.reciprocal_pair_error_max",
+          "observed": 2.36512565088276e-09,
+          "passed": true,
+          "threshold": 0.0001
+        },
+        {
+          "comparator": ">=",
+          "name": "external.minimum_cases",
+          "observed": 60,
+          "passed": true,
+          "threshold": 60
+        },
+        {
+          "comparator": ">=",
+          "name": "external.recovery_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_p95",
+          "observed": 0.0030411374393169697,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.state_error_max",
+          "observed": 0.004741092724356829,
+          "passed": true,
+          "threshold": 0.012
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_p95",
+          "observed": 0.00291874211740949,
+          "passed": true,
+          "threshold": 0.005
+        },
+        {
+          "comparator": "<=",
+          "name": "external.period_relative_error_max",
+          "observed": 0.003913693223177726,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_p95",
+          "observed": 0.0010641472795962059,
+          "passed": true,
+          "threshold": 0.003
+        },
+        {
+          "comparator": "<=",
+          "name": "external.jacobi_error_max",
+          "observed": 0.0021801382884403253,
+          "passed": true,
+          "threshold": 0.006
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_p95",
+          "observed": 0.011979838841746384,
+          "passed": true,
+          "threshold": 0.1
+        },
+        {
+          "comparator": "<=",
+          "name": "external.stability_relative_error_max",
+          "observed": 0.022707213118773117,
+          "passed": true,
+          "threshold": 0.25
+        },
+        {
+          "comparator": ">=",
+          "name": "external.stability_label_accuracy",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.98
+        }
+      ],
+      "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+      "matches_sha256": "d1c5836a9b8fc2599e36f03a6c20b36b6f29e3b802af7d45561da220ff45441a",
+      "native_candidate_counts": {
+        "L1": 80,
+        "L2": 79
+      },
+      "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+      "schema_version": "1.0",
+      "split": "holdout",
+      "status": "PASS",
+      "throughput": {
+        "corrected_orbits_per_second": 10.503469121848372,
+        "generation_seconds": 12.381733208007063,
+        "stability_seconds": 2.7561224999953993,
+        "total_seconds": 15.137855708002462
+      }
+    }
+  },
+  "evidence_boundary": "This campaign does not qualify Halo, vertical, resonant, bifurcating, collision, or full three-body families; other mass systems; pseudo-arclength traversal through folds; completeness even inside the declared windows; discovery of disconnected families; long-horizon stability; catalogue uniqueness outside the canonical section; portable throughput guarantees; or a production catalogue of all CR3BP or three-body periodic orbits. External recovery establishes agreement with a sampled pinned JPL corpus only. Throughput is reported as host-specific evidence and is not a gate.",
+  "external_data_used_by_generation": false,
+  "external_source_sha256": "ef1dfd9d1528c40f970b99cc99761b99de871f66506499e60f74e6512a640d52",
+  "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+  "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+  "record_payload_sha256": "ad6978a061e65af021d33c0d663f5faf13a49a1841e5c8232ff8981f48a279d2",
+  "schema_version": "1.0",
+  "status": "PASS",
+  "throughput": {
+    "corrected_orbits_per_second": 10.503469121848372,
+    "generation_seconds": 12.381733208007063,
+    "runtime": {
+      "machine": "arm64",
+      "numpy": "2.3.5",
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "python": "3.13.2",
+      "scipy": "1.16.3"
+    },
+    "stability_seconds": 2.7561224999953993,
+    "total_seconds": 15.137855708002462
+  }
+}

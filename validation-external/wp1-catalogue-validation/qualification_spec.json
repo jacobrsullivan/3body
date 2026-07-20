@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1-CAT-v1",
+  "claim": "WP1-CAT-v1 qualifies deterministic native generation of two bounded Earth-Moon planar Lyapunov family segments in normalized rotating-frame CR3BP: L1 amplitudes 0.001 through 0.080 and L2 amplitudes 0.001 through 0.040, where amplitude is x_L-x on the y=z=vx=vz=0, vy>0 canonical section. Seeds are derived only from the analytic collinear center mode, sequential members are differentially corrected without external orbit seeds, accepted members satisfy frozen closure and symmetry gates, phase-invariant (Jacobi constant, period) deduplication is applied, Floquet stability labels are attached, and recovery is evaluated against disjoint pinned NASA/JPL development, calibration, and holdout rows.",
+  "evidence_boundary": "This campaign does not qualify Halo, vertical, resonant, bifurcating, collision, or full three-body families; other mass systems; pseudo-arclength traversal through folds; completeness even inside the declared windows; discovery of disconnected families; long-horizon stability; catalogue uniqueness outside the canonical section; portable throughput guarantees; or a production catalogue of all CR3BP or three-body periodic orbits. External recovery establishes agreement with a sampled pinned JPL corpus only. Throughput is reported as host-specific evidence and is not a gate.",
+  "model": {
+    "name": "normalized rotating-frame Earth-Moon CR3BP",
+    "mu": 0.012150585609624,
+    "system": "earth-moon",
+    "state_order": ["x", "y", "z", "vx", "vy", "vz"],
+    "time_unit": "normalized",
+    "family": "planar Lyapunov"
+  },
+  "external_source": {
+    "name": "NASA/JPL Three-Body Periodic Orbits API",
+    "documentation": "https://ssd-api.jpl.nasa.gov/doc/periodic_orbits.html",
+    "pinned_path": "validation-external/wp1-validation/data/jpl/normalized.parquet",
+    "required_rows": 21938,
+    "allowed_family": "lyapunov",
+    "allowed_lpoints": ["L1", "L2"],
+    "role": "evaluation-only; forbidden as a generation, continuation, or correction input"
+  },
+  "sampling": {
+    "salt": "WP1-CAT-v1-locked-20260720",
+    "selection": "SHA-256 rank within each L-point after analytic amplitude-window filtering",
+    "per_lpoint": {
+      "development": 90,
+      "calibration": 30,
+      "holdout": 30
+    },
+    "partition_policy": "development first, then calibration, then holdout in deterministic salted rank; no row occurs in more than one split"
+  },
+  "generation": {
+    "seed": "analytic planar center mode at the exact collinear equilibrium",
+    "continuation_parameter": "fixed canonical-section x=x_L-amplitude",
+    "branches": {
+      "L1": {
+        "amplitude_min": 0.001,
+        "amplitude_max": 0.08,
+        "amplitude_step": 0.001,
+        "expected_members": 80
+      },
+      "L2": {
+        "amplitude_min": 0.001,
+        "amplitude_max": 0.04,
+        "amplitude_step": 0.0005,
+        "expected_members": 79
+      }
+    },
+    "correction": {
+      "method": "bounded nonlinear least-squares symmetry correction",
+      "symmetry_residual_tolerance": 1e-10,
+      "closure_tolerance": 1e-8,
+      "max_nfev": 100
+    },
+    "deduplication": {
+      "canonical_section": "y=z=vx=vz=0,x<x_L,vy>0",
+      "phase_invariant_key": ["lpoint", "jacobi", "period"],
+      "jacobi_tolerance": 1e-11,
+      "period_relative_tolerance": 1e-10
+    }
+  },
+  "stability": {
+    "method": "analytic CR3BP variational equations over one corrected period",
+    "rtol": 3e-12,
+    "atol": 3e-14,
+    "classification_bins": {
+      "marginal_max": 1.0000001,
+      "weak_max": 10.0,
+      "moderate_max": 100.0
+    }
+  },
+  "external_recovery": {
+    "matching": "nearest same-L-point native x on the frozen canonical section; stability is not used to select a match",
+    "case_recovery": {
+      "state_error_max": 0.012,
+      "period_relative_error_max": 0.01,
+      "jacobi_error_max": 0.006,
+      "stability_relative_error_max": 0.25,
+      "require_stability_label_match": true
+    }
+  },
+  "gates": {
+    "native": {
+      "candidate_count_min": 159,
+      "L1_members_min": 80,
+      "L2_members_min": 79,
+      "duplicate_count_max": 0,
+      "closure_error_p95_max": 1e-9,
+      "closure_error_max": 1e-8,
+      "symmetry_residual_p95_max": 1e-10,
+      "jacobi_monotone_fraction_min": 0.98,
+      "monodromy_determinant_error_max": 0.0001,
+      "reciprocal_pair_error_max": 0.0001
+    },
+    "external": {
+      "minimum_cases": {
+        "development": 180,
+        "calibration": 60,
+        "holdout": 60
+      },
+      "recovery_rate_min": 0.98,
+      "state_error_p95_max": 0.006,
+      "state_error_max": 0.012,
+      "period_relative_error_p95_max": 0.005,
+      "period_relative_error_max": 0.01,
+      "jacobi_error_p95_max": 0.003,
+      "jacobi_error_max": 0.006,
+      "stability_relative_error_p95_max": 0.1,
+      "stability_relative_error_max": 0.25,
+      "stability_label_accuracy_min": 0.98
+    }
+  },
+  "execution_policy": {
+    "thresholds_frozen_before_external_evaluation": true,
+    "holdout_requires_verified_lock": true,
+    "holdout_requires_development_and_calibration_pass": true,
+    "holdout_result_is_immutable": true,
+    "failed_v1_is_not_rewritten": true
+  },
+  "throughput": {
+    "reported": [
+      "generation_seconds",
+      "stability_seconds",
+      "total_seconds",
+      "corrected_orbits_per_second",
+      "runtime_versions"
+    ],
+    "portable_gate": false
+  }
+}

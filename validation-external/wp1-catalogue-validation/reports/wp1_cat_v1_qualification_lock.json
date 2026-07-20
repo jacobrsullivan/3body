@@ -1,0 +1,39 @@
+{
+  "base_git_commit": "13d20836bcadbea15a37e0800609702002d76f75",
+  "campaign": "WP1-CAT-v1",
+  "candidate_file_sha256": "64db02fd73ca7eae3180bbdabe6e670241cb1a0bfd331a777680c1e543ac6dce",
+  "candidate_payload_sha256": "351a7ad407577fa43cf02998e2fcfef67ddeba235c2e5733f76bc7a35926d981",
+  "corpus_sha256": "e4199ae9b21bcd6d771c37f6360cc5292a34d2ca6f1935252607ac9824b63c40",
+  "created_utc": "2026-07-20T18:37:35.729254+00:00",
+  "design_snapshot_sha256": "5dc7ad44b78f27f02ecc1c19ba61d476620de5127922a3a09ee72feec8ff3512",
+  "external_source_sha256": "ef1dfd9d1528c40f970b99cc99761b99de871f66506499e60f74e6512a640d52",
+  "file_hashes": {
+    "src/python/orbits/differential_correction.py": "98a1f5e5f9b5edb7e018989657212f7cc7a522e517955531f91015e2aeb156cf",
+    "src/python/orbits/periodic_families.py": "62c19d3a69fd588c87b1a3b81f6c8f63bc2b56f5e562feb520036d6c7120a6e7",
+    "src/python/validation/cr3bp_variational.py": "cc2d5616d6d1b05e5c904ec94776fdbc8d974f0c0dd384e593a3765838a6120f",
+    "src/python/wp1_catalogue_v1/__init__.py": "3203d7b807aa306171830cb5a441b4b21f6d269a96258cd3447f6c62bcf55a0e",
+    "src/python/wp1_catalogue_v1/cli.py": "2151aad1a4c1bf3eccdeb7d126c6d1e7fad4d27c800545d0ad52f69366469737",
+    "src/python/wp1_catalogue_v1/core.py": "094ab02ea61e1f114d8d40fbc78897a57cf71d45fcce1304ab4fc749191faeeb",
+    "src/python/wp1_catalogue_v1/qualification.py": "cb1cc5e0139d7f2566f32cdaffa14a0a95380e7a7896fabf3de997f649208bd1",
+    "validation-external/wp1-catalogue-validation/data/corpus.parquet": "e4199ae9b21bcd6d771c37f6360cc5292a34d2ca6f1935252607ac9824b63c40",
+    "validation-external/wp1-catalogue-validation/data/corpus_manifest.json": "fad46c7fbeaf61fcd0f5b15e72d5a804e5181e55c254c8c9fb4bc3344ac54e09",
+    "validation-external/wp1-catalogue-validation/data/holdout_ids.json": "0194ea01c5f2ddd05f149f817f30eb688735c9f6405a715d99574a90258c1dc6",
+    "validation-external/wp1-catalogue-validation/qualification_spec.json": "3a581030a71055f67ad431a3992d9aa2bdeb7a960af206b286e00b4d377a7445",
+    "validation-external/wp1-catalogue-validation/results/native_catalogue.parquet": "64db02fd73ca7eae3180bbdabe6e670241cb1a0bfd331a777680c1e543ac6dce",
+    "validation-external/wp1-catalogue-validation/results/native_catalogue_provenance.json": "6f47868dab88e42c155c2b274b0da8920b70485be791e3709c08550a7492f6b7",
+    "validation-external/wp1-catalogue-validation/run_qualification.sh": "8e3827e7058261f37235afc685ba75d4ce894e8bbff9b5e38d05e4d2b74d93d5",
+    "validation-external/wp1-catalogue-validation/scripts/run_campaign.py": "9f7e521ab017e5b3cb5c5f3f5e0614b78d68014fcf291b41dbe2192042e1c29d",
+    "validation-external/wp1-validation/data/jpl/normalized.parquet": "ef1dfd9d1528c40f970b99cc99761b99de871f66506499e60f74e6512a640d52"
+  },
+  "holdout_ids_sha256": "0194ea01c5f2ddd05f149f817f30eb688735c9f6405a715d99574a90258c1dc6",
+  "lock_sha256": "31da65d3965b98c57c2e05c8906677710e570f996c1fca44f915a0584a75b4dd",
+  "policy": {
+    "candidate_generated_without_external_input": true,
+    "final_record_immutable": true,
+    "holdout_requires_preholdout_pass": true,
+    "thresholds_frozen_before_split_evaluation": true
+  },
+  "qualification_id": "WP1-CAT-v1-5dc7ad44b78f",
+  "schema_version": "1.0",
+  "spec_sha256": "3a581030a71055f67ad431a3992d9aa2bdeb7a960af206b286e00b4d377a7445"
+}
