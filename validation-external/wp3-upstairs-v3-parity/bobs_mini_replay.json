@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-UP-CAND-v3-SUPPLEMENTAL-PARITY",
+  "status": "SUPPLEMENTAL_NON_DECISION_BEARING_PASS",
+  "recorded_utc": "2026-07-20T20:37:23Z",
+  "source_commit": "e34c532ba738a756c01bc5e998868d942315168c",
+  "host": {
+    "ssh_alias": "bobs-mac-mini",
+    "hostname": "Mac",
+    "machine": "arm64",
+    "operating_system": "macOS 26.5.2 (25F84)"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "pytest": "8.4.1"
+  },
+  "authoritative_search": {
+    "qualification_id": "WP3-UP-CAND-v3-2979adbb0597",
+    "record_sha256": "e867493b2ee64f3a565745c17e2e2a04763dd1ac905e04ea6496f3419563fd83",
+    "status": "COMPLETE_BOUNDED_NULL_RESULT",
+    "guarded_lower_bound": 0.00016394931459667498,
+    "smallest_generalized_singular_value": 0.00016456129372731588
+  },
+  "supplemental_replay": {
+    "status": "COMPLETE_BOUNDED_NULL_RESULT",
+    "search_ready": "PASS",
+    "candidate_count": 0,
+    "matrix_hashes_equal": true,
+    "guarded_lower_bound": 0.00016394931463167159,
+    "smallest_generalized_singular_value": 0.00016456129376231948,
+    "guarded_lower_bound_absolute_difference": 3.499660955995354e-14,
+    "guarded_lower_bound_relative_difference": 2.134599320896661e-10
+  },
+  "verification": {
+    "applicable_tests_passed": 42,
+    "tests_failed": 0,
+    "tests_deselected": 1,
+    "deselected_reason": "The exact decision-runtime test intentionally rejects this supplemental Python/NumPy/SciPy stack.",
+    "wp1_cat_lock_verified": true,
+    "wp3_v3_lock_verified": true,
+    "wp4_v3_record_verified": true,
+    "wp1_acceptance_pytest_passed": 104,
+    "wp1_acceptance_ctest_passed": 2,
+    "wp1_acceptance_status": "PASS",
+    "full_pytest_collection_count": 1122,
+    "full_pytest_collection_status": "PASS_WITH_TWO_OPTIONAL_DEPENDENCY_WARNINGS",
+    "clean_checkout_after_replay": true
+  },
+  "warnings": {
+    "count": 15,
+    "focused_test_count": 12,
+    "full_replay_count": 3,
+    "kind": "NumPy matmul divide-by-zero/overflow/invalid RuntimeWarning on the older supplemental stack",
+    "decision_impact": "none; tests passed, input matrix hashes matched, and the qualitative search result matched"
+  },
+  "boundary": "This replay deliberately bypassed the exact decision-runtime guard and wrote only to /tmp on bobs-mac-mini. It is supplemental portability evidence and cannot replace, modify, or vote on the frozen WP3-UP-CAND-v3 decision."
+}

@@ -114,6 +114,11 @@ The machine-readable records and human reports are under
   It passes 30/30 gates while binding the exact WP2-UP-v2 and WP3-v3 records.
   It is harness-readiness evidence only; no candidate, Morales-Ramis, or
   integrability result was produced.
+- A clean bobs-mac-mini checkout verifies the WP1-CAT, WP3-v3, and WP4-v3
+  records and passes 42/42 applicable tests. Its explicitly non-decision full
+  WP3 replay has byte-identical input matrices, zero candidates, and a guarded
+  lower bound within `3.50e-14` of the authoritative run; older-stack NumPy
+  warnings are disclosed in `notes/wp3-up-cand-v3-bobs-parity.md`.
 
 ---
 
