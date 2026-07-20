@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-CANDIDATE-QUALIFICATION-v1",
+  "search_prerequisite": {
+    "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+    "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36"
+  },
+  "trigger": "Exactly one frozen WP3 mode must have candidate_ready=true and CANDIDATE_READY=PASS.",
+  "required_if_triggered": [
+    "candidate expression and coefficient hash",
+    "candidate-specific model/domain and singular-set declaration",
+    "covariance and S1 gauge falsification",
+    "functional independence from H, Xi, angular momentum, constraints, and their represented algebra",
+    "Poisson and variational tests",
+    "long-time and out-of-distribution tests",
+    "candidate-blind sealed reserve execution",
+    "independent implementation replication"
+  ],
+  "zero_candidate_policy": "Do not create a candidate lock, do not open the reserve, and do not invoke WP4 candidate interpretation."
+}

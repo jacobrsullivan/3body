@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-UP-READY-v1",
+  "specification_status": "LOCKABLE_CONTROL_ONLY",
+  "claim": "If and only if the frozen readiness record is HARNESS_READY and its lock verifies, the WP4 upstairs control gauntlet accepts the declared known integrals and rejects the declared false and functionally dependent controls on the qualified WP2-UPQ-v2 one-channel canonical model.",
+  "evidence_boundary": "This qualification covers deterministic numerical differentiation, canonical Poisson behavior, local functional-rank discrimination, S1 gauge behavior, and bounded fictitious-time integration for known controls on six declared collision-free zero-Xi states. It is a harness readiness result, not validation of an additional first integral. It excludes candidate qualification, sealed-reserve execution, Liouville integrability, non-integrability, Morales-Ramis analysis, collision passage, other KS channels, and global three-body regularization.",
+  "prerequisites": {
+    "wp2_upstairs": {
+      "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+      "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+      "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+      "lock_file_sha256": "3f09719eca60c9cb4ad10b66d5d4002a7028246bec380131a1f0953121504eb1",
+      "record_path": "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_record.json",
+      "lock_path": "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_lock.json"
+    },
+    "wp3_upstairs_search": {
+      "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+      "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36",
+      "staged_gate_sha256": "77dd2d44c9f650340eeaa1d2487456f35bf455cfb241f1b96ca4cf1d37462fe8",
+      "staged_gate_path": "validation-external/wp3-upstairs-candidate/results/staged_gate.json"
+    }
+  },
+  "controls": {
+    "positive": ["K_h", "Xi", "Lx", "Ly", "Lz"],
+    "negative_nonconserved": "q0_nonconserved",
+    "negative_dependent": "dependent_2K_minus_3Xi"
+  },
+  "execution": {
+    "finite_difference_relative_step": 0.00002,
+    "gauge_generator_step": 0.000002,
+    "rank_relative_tolerance": 1e-08,
+    "gauge_angles": [0.41, -0.93],
+    "integration_horizon": 0.025,
+    "integration_sample_count": 51,
+    "integration_rtol": 2e-12,
+    "integration_atol": 2e-13,
+    "integration_max_step": 0.00025
+  },
+  "gates": [
+    {"name": "wp2_prerequisite_verified", "metric": "wp2_prerequisite_verified", "comparator": "==", "threshold": 1},
+    {"name": "wp3_candidate_count", "metric": "wp3_candidate_count", "comparator": "==", "threshold": 0},
+    {"name": "wp3_candidate_not_triggered", "metric": "wp3_candidate_not_triggered", "comparator": "==", "threshold": 1},
+    {"name": "publication_reserve_sealed", "metric": "publication_reserve_sealed", "comparator": "==", "threshold": 1},
+    {"name": "deterministic_state_count", "metric": "deterministic_state_count", "comparator": ">=", "threshold": 6},
+    {"name": "initial_shell_abs_max", "metric": "initial_shell_abs_max", "comparator": "<=", "threshold": 5e-12},
+    {"name": "initial_xi_abs_max", "metric": "initial_xi_abs_max", "comparator": "<=", "threshold": 5e-12},
+    {"name": "positive_control_lie_scaled_max", "metric": "positive_control_lie_scaled_max", "comparator": "<=", "threshold": 2e-09},
+    {"name": "dependent_control_lie_scaled_max", "metric": "dependent_control_lie_scaled_max", "comparator": "<=", "threshold": 2e-09},
+    {"name": "negative_coordinate_lie_scaled_min", "metric": "negative_coordinate_lie_scaled_min", "comparator": ">=", "threshold": 0.0001},
+    {"name": "hamiltonian_vector_field_scaled_max", "metric": "hamiltonian_vector_field_scaled_max", "comparator": "<=", "threshold": 2e-08},
+    {"name": "poisson_antisymmetry_abs_max", "metric": "poisson_antisymmetry_abs_max", "comparator": "<=", "threshold": 2e-12},
+    {"name": "xi_generator_scaled_max", "metric": "xi_generator_scaled_max", "comparator": "<=", "threshold": 2e-08},
+    {"name": "momentum_commutation_abs_max", "metric": "momentum_commutation_abs_max", "comparator": "<=", "threshold": 2e-07},
+    {"name": "angular_momentum_so3_abs_max", "metric": "angular_momentum_so3_abs_max", "comparator": "<=", "threshold": 2e-07},
+    {"name": "known_functional_rank_min", "metric": "known_functional_rank_min", "comparator": ">=", "threshold": 5},
+    {"name": "dependent_rank_increment_max", "metric": "dependent_rank_increment_max", "comparator": "==", "threshold": 0},
+    {"name": "nonconserved_rank_increment_min", "metric": "nonconserved_rank_increment_min", "comparator": ">=", "threshold": 1},
+    {"name": "positive_gauge_residual_scaled_max", "metric": "positive_gauge_residual_scaled_max", "comparator": "<=", "threshold": 2e-11},
+    {"name": "dependent_control_gauge_residual_scaled_max", "metric": "dependent_control_gauge_residual_scaled_max", "comparator": "<=", "threshold": 2e-11},
+    {"name": "negative_coordinate_gauge_change_min", "metric": "negative_coordinate_gauge_change_min", "comparator": ">=", "threshold": 0.001},
+    {"name": "integration_success_rate", "metric": "integration_success_rate", "comparator": ">=", "threshold": 1.0},
+    {"name": "positive_trajectory_drift_scaled_max", "metric": "positive_trajectory_drift_scaled_max", "comparator": "<=", "threshold": 2e-09},
+    {"name": "dependent_control_trajectory_drift_scaled_max", "metric": "dependent_control_trajectory_drift_scaled_max", "comparator": "<=", "threshold": 2e-09},
+    {"name": "negative_coordinate_trajectory_drift_scaled_min", "metric": "negative_coordinate_trajectory_drift_scaled_min", "comparator": ">=", "threshold": 1e-05},
+    {"name": "positive_controls_accepted", "metric": "positive_controls_accepted", "comparator": "==", "threshold": 5},
+    {"name": "negative_controls_rejected", "metric": "negative_controls_rejected", "comparator": "==", "threshold": 2},
+    {"name": "candidate_validation_not_triggered", "metric": "candidate_validation_triggered", "comparator": "==", "threshold": 0},
+    {"name": "morales_ramis_not_triggered", "metric": "morales_ramis_triggered", "comparator": "==", "threshold": 0},
+    {"name": "publication_reserve_open_attempts", "metric": "publication_reserve_open_attempts", "comparator": "==", "threshold": 0}
+  ],
+  "staged_policy": {
+    "HARNESS_READY": "All frozen control gates pass against the exact WP2-UPQ-v2 prerequisite.",
+    "CANDIDATE_NOT_TRIGGERED": "Mandatory when the WP3 staged gate reports zero candidates.",
+    "MORALES_RAMIS_NOT_TRIGGERED": "Mandatory until a candidate passes a separately frozen candidate-specific sealed qualification."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "base_git_commit": "d3ecfe4e7260cf163a9312fd81545bd17190f8fb",
+  "code_snapshot_sha256": "0a9d72acbdba3a72313198d323151961608193350dee0d82c5b471173746f75e",
+  "corpus_sha256": "aa477a8d6186c527f8d3b76c616991c8dffcd40718c67af67041809d2fc59868",
+  "file_hashes": {
+    "environment.yml": "81597df0c8ff9a43b7664bffa82a1a39b12027a5bfd255c1b479e2a0fe277e48",
+    "poetry.lock": "0ea8c97cf93c9af78b6fcc8adaf82d2bdfe37a8c71176855fe73c3a29851d12a",
+    "pyproject.toml": "7d52d72c3aec46e96c5f691e1b865b297cda2647b13bd440d07c884f73cb3575",
+    "src/python/upstairs_ks/QUALIFICATION_BOUNDARY.md": "4878fb93caa89b151a67c61f7d4bf1ff21f9b3bf084542a6f68e39a1fec0022d",
+    "src/python/upstairs_ks/__init__.py": "44c31881a85b56800c08c94a716dcfc05886fc83a2c508f99ce498fe944104c5",
+    "src/python/upstairs_ks/model.py": "ae533c6ad7d216abe3fb7e05e5f6894adbdc7be9e51da34a6fffed6cf2afd409",
+    "src/python/wp3_exploration_v2/normalization.py": "beb5571bad5eac1dc1bf08519391f5532e1b5861950fd47b94c1872a941e09f1",
+    "src/python/wp3_exploration_v2/search.py": "6c1a9bc5459e35dded2ee127d3f4ab7e50aaf6868172f986ed00f0d3a84bc2f4",
+    "src/python/wp3_upstairs/SEARCH_BOUNDARY.md": "a83bf65413dd774577153b98bde829fb5330adfcd2d1dde0a99c202abff250d7",
+    "src/python/wp3_upstairs/__init__.py": "04cb0e21e34ca14329a2ebbb531bb9319ca107151858a820f001fa69b3db64ca",
+    "src/python/wp3_upstairs/features.py": "71894e8866df1c024343a0e5ac4269063959dc6c56f0167c76b00f33040fe1c6",
+    "tests/wp3_upstairs/test_features.py": "7ca278a3a32058f33c16b9d00ea34291e35b2031bf2ac2d64d005d8c15192927",
+    "tests/wp3_upstairs_campaign/__init__.py": "e27a16c439108306a10d0ce763d115598cfdd60d7f89b46c9e6b826c258d63c2",
+    "tests/wp3_upstairs_campaign/test_contract.py": "50a7cf33fdb0476232fd2de43a26d5854e7e5a6076e9760a27d5cd9acf7da625",
+    "validation-external/qualification_tools.py": "64cb7d731658eb5f5249b7dfdc50545fbe7ad140681e0ea14c057ba0e897aaee",
+    "validation-external/wp3-upstairs-candidate/README.md": "4e13e0557359ef930c3c774d8bc4e42cbf2b8722b60bcf2552d822ffe9df2bdd",
+    "validation-external/wp3-upstairs-candidate/data/search_corpus.json": "aa477a8d6186c527f8d3b76c616991c8dffcd40718c67af67041809d2fc59868",
+    "validation-external/wp3-upstairs-candidate/run_search.sh": "4f46f0b7cddf0eab0f5ac086ac3301bda8cd20a54484dfabd21a2cb4fdf788bf",
+    "validation-external/wp3-upstairs-candidate/scripts/build_corpus.py": "379add687d4559278266d4a65e5e2e0faefef086cd580780e7120d8de8eb0ad9",
+    "validation-external/wp3-upstairs-candidate/scripts/freeze_search.py": "a0e347c7b73dd448b3bcd1e58f2df956110bfb4b38d8f0a292c7d6a94449c680",
+    "validation-external/wp3-upstairs-candidate/scripts/render_report.py": "643d70ec966a806df55aba39b8f5cfbcb902f2a255dee8082bc0299c311453bf",
+    "validation-external/wp3-upstairs-candidate/scripts/run_search.py": "2ce1b29df867edd0b9930da058a27f1aae3c3f17eec37eac73dd56b7d4d6b3a9",
+    "validation-external/wp3-upstairs-candidate/search_spec.json": "5610084bde364799ff96387d5c3a451d73767e63b1a88a445575d3cff1129235",
+    "validation-external/wp3-v2-exploration/data/exploration_corpus.json": "2e94a99b6c48db9b871daeca23547b5f39c609888f18923f3bd7271c09ee5e0e",
+    "validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "frozen_utc": "2026-07-20T18:51:30.488849+00:00",
+  "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36",
+  "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "sealed_commitments_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+  "search_outputs_absent_at_freeze": true,
+  "spec_sha256": "5610084bde364799ff96387d5c3a451d73767e63b1a88a445575d3cff1129235",
+  "worktree_clean_at_freeze": true
+}

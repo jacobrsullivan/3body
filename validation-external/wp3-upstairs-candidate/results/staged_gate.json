@@ -1,0 +1,49 @@
+{
+  "CANDIDATE_READY": "NOT_TRIGGERED",
+  "SEALED_QUALIFICATION": "NOT_TRIGGERED",
+  "SEARCH_READY": "PASS",
+  "WP4_READY": "BLOCKED",
+  "campaign": "WP3-UP-CAND-v1",
+  "candidate_count": 0,
+  "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36",
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+  "schema_version": "1.0",
+  "search_ready_gates": [
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "search_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "sealed_reserve_intact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "feature_count",
+      "observed": 685,
+      "passed": true,
+      "threshold": 685
+    },
+    {
+      "comparator": "<=",
+      "name": "known_control_weighted_lie_rms_max",
+      "observed": 1.1722385149960548e-14,
+      "passed": true,
+      "threshold": 1e-10
+    }
+  ]
+}

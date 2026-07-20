@@ -1,0 +1,332 @@
+{
+  "campaign": "WP4-UP-READY-v1",
+  "candidate_count": 0,
+  "candidate_validation_status": "CANDIDATE_NOT_TRIGGERED",
+  "claim": "If and only if the frozen readiness record is HARNESS_READY and its lock verifies, the WP4 upstairs control gauntlet accepts the declared known integrals and rejects the declared false and functionally dependent controls on the qualified WP2-UPQ-v2 one-channel canonical model.",
+  "control_decisions": {
+    "negative": {
+      "dependent_2K_minus_3Xi": {
+        "conservation_precheck_passed": true,
+        "decision": "REJECT_FUNCTIONALLY_DEPENDENT"
+      },
+      "q0_nonconserved": {
+        "decision": "REJECT_NONCONSERVED_AND_GAUGE_VARIANT"
+      }
+    },
+    "positive": {
+      "K_h": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 1.7763568394002505e-15,
+        "lie_derivative_scaled_max": 2.807452170168617e-12,
+        "trajectory_drift_scaled_max": 7.993605777301127e-15
+      },
+      "Lx": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.220446049250313e-16,
+        "lie_derivative_scaled_max": 1.7039241718016697e-12,
+        "trajectory_drift_scaled_max": 9.992007221626409e-16
+      },
+      "Ly": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.220446049250313e-16,
+        "lie_derivative_scaled_max": 2.4567685249149113e-12,
+        "trajectory_drift_scaled_max": 1.6653345369377348e-15
+      },
+      "Lz": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 2.7755575615628914e-16,
+        "lie_derivative_scaled_max": 4.108521101135921e-12,
+        "trajectory_drift_scaled_max": 5.551115123125783e-16
+      },
+      "Xi": {
+        "decision": "ACCEPT_KNOWN_CONTROL",
+        "gauge_residual_scaled_max": 1.6132928326584306e-16,
+        "lie_derivative_scaled_max": 8.508881524829982e-13,
+        "trajectory_drift_scaled_max": 7.771561172376096e-16
+      }
+    }
+  },
+  "evidence_boundary": "This qualification covers deterministic numerical differentiation, canonical Poisson behavior, local functional-rank discrimination, S1 gauge behavior, and bounded fictitious-time integration for known controls on six declared collision-free zero-Xi states. It is a harness readiness result, not validation of an additional first integral. It excludes candidate qualification, sealed-reserve execution, Liouville integrability, non-integrability, Morales-Ramis analysis, collision passage, other KS channels, and global three-body regularization.",
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "wp2_prerequisite_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "wp3_candidate_count",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "==",
+      "name": "wp3_candidate_not_triggered",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "publication_reserve_sealed",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": ">=",
+      "name": "deterministic_state_count",
+      "observed": 6,
+      "passed": true,
+      "threshold": 6
+    },
+    {
+      "comparator": "<=",
+      "name": "initial_shell_abs_max",
+      "observed": 3.552713678800501e-15,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "initial_xi_abs_max",
+      "observed": 2.220446049250313e-16,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "positive_control_lie_scaled_max",
+      "observed": 4.108521101135921e-12,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "dependent_control_lie_scaled_max",
+      "observed": 2.091352013026709e-12,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": ">=",
+      "name": "negative_coordinate_lie_scaled_min",
+      "observed": 0.0026523977122992538,
+      "passed": true,
+      "threshold": 0.0001
+    },
+    {
+      "comparator": "<=",
+      "name": "hamiltonian_vector_field_scaled_max",
+      "observed": 1.0996836533007357e-11,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "poisson_antisymmetry_abs_max",
+      "observed": 1.4210854715202004e-14,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_generator_scaled_max",
+      "observed": 3.1894632071494924e-11,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "momentum_commutation_abs_max",
+      "observed": 1.3220624595078334e-10,
+      "passed": true,
+      "threshold": 2e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "angular_momentum_so3_abs_max",
+      "observed": 1.2507328506217164e-11,
+      "passed": true,
+      "threshold": 2e-07
+    },
+    {
+      "comparator": ">=",
+      "name": "known_functional_rank_min",
+      "observed": 5,
+      "passed": true,
+      "threshold": 5
+    },
+    {
+      "comparator": "==",
+      "name": "dependent_rank_increment_max",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": ">=",
+      "name": "nonconserved_rank_increment_min",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "<=",
+      "name": "positive_gauge_residual_scaled_max",
+      "observed": 1.7763568394002505e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "dependent_control_gauge_residual_scaled_max",
+      "observed": 3.3861802251067274e-15,
+      "passed": true,
+      "threshold": 2e-11
+    },
+    {
+      "comparator": ">=",
+      "name": "negative_coordinate_gauge_change_min",
+      "observed": 0.1460798640462211,
+      "passed": true,
+      "threshold": 0.001
+    },
+    {
+      "comparator": ">=",
+      "name": "integration_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "positive_trajectory_drift_scaled_max",
+      "observed": 7.993605777301127e-15,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "dependent_control_trajectory_drift_scaled_max",
+      "observed": 1.6986412276764895e-14,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": ">=",
+      "name": "negative_coordinate_trajectory_drift_scaled_min",
+      "observed": 0.00039602281581074816,
+      "passed": true,
+      "threshold": 1e-05
+    },
+    {
+      "comparator": "==",
+      "name": "positive_controls_accepted",
+      "observed": 5,
+      "passed": true,
+      "threshold": 5
+    },
+    {
+      "comparator": "==",
+      "name": "negative_controls_rejected",
+      "observed": 2,
+      "passed": true,
+      "threshold": 2
+    },
+    {
+      "comparator": "==",
+      "name": "candidate_validation_not_triggered",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "==",
+      "name": "morales_ramis_not_triggered",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "==",
+      "name": "publication_reserve_open_attempts",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    }
+  ],
+  "generated_utc": "2026-07-20T19:01:01.823584+00:00",
+  "harness_status": "HARNESS_READY",
+  "lock_file_sha256": "f00db5b0d9fe6fdb8e5f42a2fccf07d8b8af47b066f0e0540a3ed64eaf77d797",
+  "lock_sha256": "a39256385238b4e20c04bc608bdc1799a06bb99746ff0d2e3389f6f4e5c2d887",
+  "metrics": {
+    "angular_momentum_so3_abs_max": 1.2507328506217164e-11,
+    "candidate_validation_triggered": 0,
+    "dependent_control_gauge_residual_scaled_max": 3.3861802251067274e-15,
+    "dependent_control_lie_scaled_max": 2.091352013026709e-12,
+    "dependent_control_trajectory_drift_scaled_max": 1.6986412276764895e-14,
+    "dependent_rank_increment_max": 0,
+    "deterministic_state_count": 6,
+    "hamiltonian_vector_field_scaled_max": 1.0996836533007357e-11,
+    "initial_shell_abs_max": 3.552713678800501e-15,
+    "initial_xi_abs_max": 2.220446049250313e-16,
+    "integration_success_rate": 1.0,
+    "known_functional_rank_min": 5,
+    "momentum_commutation_abs_max": 1.3220624595078334e-10,
+    "morales_ramis_triggered": 0,
+    "negative_controls_rejected": 2,
+    "negative_coordinate_gauge_change_min": 0.1460798640462211,
+    "negative_coordinate_lie_scaled_min": 0.0026523977122992538,
+    "negative_coordinate_trajectory_drift_scaled_min": 0.00039602281581074816,
+    "nonconserved_rank_increment_min": 1,
+    "poisson_antisymmetry_abs_max": 1.4210854715202004e-14,
+    "positive_control_lie_scaled_max": 4.108521101135921e-12,
+    "positive_controls_accepted": 5,
+    "positive_gauge_residual_scaled_max": 1.7763568394002505e-15,
+    "positive_trajectory_drift_scaled_max": 7.993605777301127e-15,
+    "publication_reserve_open_attempts": 0,
+    "xi_generator_scaled_max": 3.1894632071494924e-11
+  },
+  "morales_ramis_status": "NOT_TRIGGERED",
+  "publication_reserve_open_attempts": 0,
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP4-UP-READY-v1-c902df008d70",
+  "record_payload_sha256": "5ac0c27db9a59ad0ec8e363981c87ae9f56fcdbaa89982282ccaa74aa4e9eccf",
+  "results_sha256": "44815b215b0533f5bc409421ea127d0600081536caac592e61e5239b14e621f9",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "sealed_qualification_status": "NOT_TRIGGERED",
+  "spec_sha256": "92814344bf3ff11348843c195ab6481252b2a1b213460e3e02181446c63655b0",
+  "wp2_upstairs_prerequisite": {
+    "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+    "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+    "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "status": "PASS"
+  },
+  "wp3_upstairs_state": {
+    "candidate_count": 0,
+    "candidate_status": "NOT_TRIGGERED",
+    "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36",
+    "publication_reserve_status": "SEALED_UNEXECUTED",
+    "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+    "sealed_qualification_status": "NOT_TRIGGERED",
+    "search_status": "PASS",
+    "staged_gate_sha256": "77dd2d44c9f650340eeaa1d2487456f35bf455cfb241f1b96ca4cf1d37462fe8",
+    "wp4_candidate_status": "BLOCKED"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "base_git_commit": "d3ecfe4e7260cf163a9312fd81545bd17190f8fb",
+  "candidate_input_present_at_freeze": false,
+  "code_snapshot_sha256": "c902df008d70d8240c59840639cb33cf6b771e3cc01b66959e7a756e981b4913",
+  "external_file_hashes": {
+    "src/python/upstairs_ks/QUALIFICATION_BOUNDARY.md": "4878fb93caa89b151a67c61f7d4bf1ff21f9b3bf084542a6f68e39a1fec0022d",
+    "src/python/upstairs_ks/__init__.py": "44c31881a85b56800c08c94a716dcfc05886fc83a2c508f99ce498fe944104c5",
+    "src/python/upstairs_ks/model.py": "ae533c6ad7d216abe3fb7e05e5f6894adbdc7be9e51da34a6fffed6cf2afd409",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_lock.json": "3f09719eca60c9cb4ad10b66d5d4002a7028246bec380131a1f0953121504eb1",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_record.json": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "validation-external/wp3-upstairs-candidate/results/staged_gate.json": "77dd2d44c9f650340eeaa1d2487456f35bf455cfb241f1b96ca4cf1d37462fe8"
+  },
+  "file_hashes": {
+    "notes/wp4-upstairs-readiness-audit.md": "5dce1504436d0f2c63a2543a351a81805dad631413ce0edb767ab3504973d521",
+    "src/python/wp4_upstairs/READINESS_BOUNDARY.md": "985ee66bf52e2fa89ad5b3f21ac69179ed93cc590a8ca929734f9a52d75be198",
+    "src/python/wp4_upstairs/__init__.py": "dab7824dbf86db52c766f02532b48098bfe27c2ecd79ce5c79a28e3f4b5906d6",
+    "src/python/wp4_upstairs/cli.py": "0bc052cc2cb89fd4083857d49faf9e1a120899bef981b20e0f9f3d563b2ba4bc",
+    "src/python/wp4_upstairs/harness.py": "a00f22b327ab0bb89e0c075eb017b2e40b463da90e0418a158eea3c1c3d1b29d",
+    "src/python/wp4_upstairs/integrity.py": "1fd6c7cbaf5848d4e8b388dd9919b9ca46bd146ba22f13bacfae9ae4ab40bf06",
+    "tests/wp4_upstairs/__init__.py": "8f2fb13d412bd41326cd9b46bd15662bb3263904cf71cedee6c727de5aa2d66c",
+    "tests/wp4_upstairs/test_harness.py": "41c56af63f12af65b85094cf6b710f8324d8d5072fea8842a92581228245f6f2",
+    "validation-external/wp4-upstairs-readiness/README.md": "131379900a7bca1d932a91270a736ea5a86c56c7796579b52c8e150ff1a3901b",
+    "validation-external/wp4-upstairs-readiness/qualification_spec.json": "92814344bf3ff11348843c195ab6481252b2a1b213460e3e02181446c63655b0",
+    "validation-external/wp4-upstairs-readiness/run_qualification.sh": "b293be051f2a6eaba8f6688a80d8660fd5ee7864ba08d140877e51b2cbc0ebd6",
+    "validation-external/wp4-upstairs-readiness/scripts/run_readiness.py": "5e8af12681a3bd4ac739fd0afce677f08fe1e659c2879e03984bb408b35464d8"
+  },
+  "frozen_utc": "2026-07-20T19:00:52.405147+00:00",
+  "lock_sha256": "a39256385238b4e20c04bc608bdc1799a06bb99746ff0d2e3389f6f4e5c2d887",
+  "publication_reserve_opened_at_freeze": false,
+  "qualification_id": "WP4-UP-READY-v1-c902df008d70",
+  "readiness_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "92814344bf3ff11348843c195ab6481252b2a1b213460e3e02181446c63655b0",
+  "wp2_upstairs_prerequisite": {
+    "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+    "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+    "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+    "status": "PASS"
+  },
+  "wp3_upstairs_state": {
+    "candidate_count": 0,
+    "candidate_status": "NOT_TRIGGERED",
+    "lock_sha256": "c09671074040254dd8afaf345beda59a2224d998f11d3b05501c78d24eeddc36",
+    "publication_reserve_status": "SEALED_UNEXECUTED",
+    "qualification_id": "WP3-UP-CAND-v1-0a9d72acbdba",
+    "sealed_qualification_status": "NOT_TRIGGERED",
+    "search_status": "PASS",
+    "staged_gate_sha256": "77dd2d44c9f650340eeaa1d2487456f35bf455cfb241f1b96ca4cf1d37462fe8",
+    "wp4_candidate_status": "BLOCKED"
+  }
+}
