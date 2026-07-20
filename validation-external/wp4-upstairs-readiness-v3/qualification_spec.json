@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-UP-READY-v3",
+  "specification_status": "LOCKABLE_CONTROL_ONLY",
+  "base_control_spec": {
+    "path": "validation-external/wp4-upstairs-readiness-v2/qualification_spec.json",
+    "sha256": "69d8bb8d608f3b811c517113ca940cea4995ec5e3a549f0ff76f282706c8c75c"
+  },
+  "claim": "If and only if the frozen readiness record is HARNESS_READY and its lock verifies, the WP4 upstairs control gauntlet accepts the declared known integrals and rejects the declared false and functionally dependent controls on the qualified WP2-UPQ-v2 one-channel canonical model, after verifying the authoritative WP3-UP-CAND-v3 bounded-null chain.",
+  "evidence_boundary": "This qualification covers deterministic numerical differentiation, canonical Poisson behavior, local functional-rank discrimination, S1 gauge behavior, and bounded fictitious-time integration for known controls on six declared collision-free zero-Xi states. It is a runtime-bound harness readiness result, not validation of an additional first integral. Because WP3-UP-CAND-v3 produced no training-eligible candidate subspace, candidate-specific sealed qualification and Morales-Ramis analysis are not triggered. It excludes sealed-reserve execution, Liouville integrability, non-integrability, collision passage, other KS channels, and global three-body regularization.",
+  "prerequisites": {
+    "wp2_upstairs": {
+      "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+      "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+      "record_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c",
+      "lock_file_sha256": "3f09719eca60c9cb4ad10b66d5d4002a7028246bec380131a1f0953121504eb1",
+      "record_path": "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_record.json",
+      "lock_path": "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_lock.json"
+    },
+    "wp3_upstairs_search": {
+      "qualification_id": "WP3-UP-CAND-v3-2979adbb0597",
+      "lock_sha256": "ec91c679d4b352f2c076e6b0e1c493c587ffc6f97a95984beb00a7dd67e55996",
+      "search_lock_file_sha256": "237a07457e48ed6b5dc399be25126be7cfe9d7a5cb3a8cc63a83233e01a0d972",
+      "search_lock_path": "validation-external/wp3-upstairs-candidate-v3/reports/wp3_upstairs_v3_search_lock.json",
+      "search_record_sha256": "e867493b2ee64f3a565745c17e2e2a04763dd1ac905e04ea6496f3419563fd83",
+      "search_record_payload_sha256": "f58385ca63305dd5a38382b4ec27f25d4843534b7bde4279836904c8dcd58e2b",
+      "search_record_path": "validation-external/wp3-upstairs-candidate-v3/reports/wp3_upstairs_v3_search_record.json",
+      "search_results_sha256": "f272257850ecf9248bd67e0c2fa64f98455baaae778cecc35490240a2d5fb379",
+      "search_results_path": "validation-external/wp3-upstairs-candidate-v3/results/search_results.json",
+      "staged_gate_sha256": "f4e4e37bdc350ef0a408657d60256573f7f9194e0c338b054daae66d3769a124",
+      "staged_gate_path": "validation-external/wp3-upstairs-candidate-v3/results/staged_gate.json",
+      "candidate_decision_sha256": "a32067353d3a387893c5c83c90c93b5189e8d8b43ead753cc7fe8a0c4aabbcb4",
+      "candidate_decision_path": "validation-external/wp3-candidate-qualification-v3/results/candidate_qualification_decision.json",
+      "candidate_protocol_sha256": "53b16ed382e8807080756149f106f519c93ff56993690f5c981dd4a672148637",
+      "candidate_protocol_path": "validation-external/wp3-candidate-qualification-v3/qualification_protocol.json",
+      "publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+      "publication_reserve_path": "validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json"
+    }
+  },
+  "staged_policy": {
+    "HARNESS_READY": "All frozen control gates pass against exact WP2-UPQ-v2 and the authoritative WP3-UP-CAND-v3 bounded-null chain on the runtime captured by the lock.",
+    "CANDIDATE_NOT_TRIGGERED": "Mandatory when the verified WP3-v3 spectral certificate excludes every training-eligible direction and the candidate decision reports zero candidate subspaces.",
+    "MORALES_RAMIS_NOT_TRIGGERED": "Mandatory because no candidate-specific sealed qualification was triggered."
+  }
+}

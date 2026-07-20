@@ -1,0 +1,120 @@
+{
+  "CANDIDATE_READY": "NOT_TRIGGERED",
+  "NULL_RESULT_READY": "PASS",
+  "SEALED_QUALIFICATION": "NOT_TRIGGERED",
+  "SEARCH_READY": "PASS",
+  "WP4_READY": "BLOCKED",
+  "campaign": "WP3-UP-CAND-v3",
+  "candidate_count": 0,
+  "lock_sha256": "ec91c679d4b352f2c076e6b0e1c493c587ffc6f97a95984beb00a7dd67e55996",
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP3-UP-CAND-v3-2979adbb0597",
+  "schema_version": "1.0",
+  "search_ready_gates": [
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "search_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "sealed_reserve_intact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "spatial_inputs_hash_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "feature_count",
+      "observed": 1120,
+      "passed": true,
+      "threshold": 1120
+    },
+    {
+      "comparator": "==",
+      "name": "exact_known_module_rank",
+      "observed": 30,
+      "passed": true,
+      "threshold": 30
+    },
+    {
+      "comparator": "==",
+      "name": "parameter_weighted_angular_control_count",
+      "observed": 9,
+      "passed": true,
+      "threshold": 9
+    },
+    {
+      "comparator": "<=",
+      "name": "known_module_lie_rms_max",
+      "observed": 1.0863288579672225e-12,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "known_module_gauge_lie_rms_max",
+      "observed": 4.2484302082518343e-16,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "constraint_value_abs_max",
+      "observed": 2.6922908347160046e-15,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "known_module_projection_residual",
+      "observed": 1.164062420605084e-16,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "==",
+      "name": "all_generalized_modes_evaluated",
+      "observed": 1090,
+      "passed": true,
+      "threshold": 1090
+    },
+    {
+      "comparator": "==",
+      "name": "decision_runtime_exact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "<=",
+      "name": "fixed_energy_checkpoint_abs_max",
+      "observed": 4.839462164341057e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "==",
+      "name": "spectral_decision_partition_consistent",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    }
+  ]
+}

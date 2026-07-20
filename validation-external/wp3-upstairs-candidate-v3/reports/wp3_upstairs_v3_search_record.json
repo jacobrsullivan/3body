@@ -1,0 +1,62 @@
+{
+  "backend_guarded_spectral_lower_bound": 0.00016394931459667498,
+  "campaign": "WP3-UP-CAND-v3",
+  "candidate_count": 0,
+  "candidate_ready": "NOT_TRIGGERED",
+  "candidate_subspaces": [],
+  "claim_boundary": "A no-candidate result states only that the backend-guarded lower bound on the smallest generalized Lie/value singular value exceeds the frozen training threshold in the observable quotient of the complete combined-degree-three-or-less state/energy/symmetric-mass library, after exact coefficient-space removal of the represented Xi constraint ideal and angular-momentum parameter module. Such a result excludes every training-eligible direction in this frozen finite library and therefore cannot depend on an arbitrary basis inside a repeated singular subspace. Any unresolved singular cluster blocks a null and requires candidate-specific resolution before sealed qualification. Parameter-only constants are excluded as trivial. Finite-sample value-nuisance directions are optimized, not discarded as identities. This is a locked remediation rerun on previously examined development/calibration data, not fresh confirmatory evidence, a proof that no first integral exists, or a non-integrability theorem.",
+  "corpus_sha256": "9e4d5f5bc621e5d8571711af1c3cd8683fa53207fbfe88d3194e91ef4f09227d",
+  "exact_known_module_projection_residual": 1.164062420605084e-16,
+  "exact_known_module_rank": 30,
+  "feature_count": 1120,
+  "gate_sha256": "f4e4e37bdc350ef0a408657d60256573f7f9194e0c338b054daae66d3769a124",
+  "generalized_spectral_uncertainty": 6.119791306408978e-07,
+  "generated_utc": "2026-07-20T20:24:37.618609+00:00",
+  "interpretation_status": "PROHIBITED",
+  "lock_sha256": "ec91c679d4b352f2c076e6b0e1c493c587ffc6f97a95984beb00a7dd67e55996",
+  "matrix_hashes": {
+    "calibration_gauge_lie_derivatives": "eca3450d595d9c61f9c234350bc703b49ab7b3f64c6ca631033c1e80f2366ac2",
+    "calibration_lie_derivatives": "b6676bc75cf49926ee170959a5f65e3c21e4c3521b510816cf3a4a58d283fd6d",
+    "calibration_values": "0e941d7842628144ab11a3d374dbecfbb43cad02315faf931dc085bd8f5ee695",
+    "training_gauge_lie_derivatives": "e9e01e4e9c53cc99126a2ad79a5e935654489ef4f41ba9a1803d9ee7ab6518ff",
+    "training_lie_derivatives": "4fcce6b23e17d67266d4618cf0b410a10fdd0e29be7be416e2b415bb362c6be8",
+    "training_values": "5fdebab1691b7aa83c4edceb83a7b27e28c32d703f4e6aea49b58ac8b8841573"
+  },
+  "null_result_ready": "PASS",
+  "null_result_spectral_certificate": {
+    "backend_guarded_lower_bound": 0.00016394931459667498,
+    "bound_formula": "max(0, sigma_min - factor*eps*max(shape)*sigma_max)",
+    "candidate_training_threshold": 1e-10,
+    "certifies_no_training_eligible_direction": true,
+    "generalized_operator_shape": [
+      1566,
+      1090
+    ],
+    "smallest_generalized_singular_value": 0.00016456129372731588,
+    "svd_backend_uncertainty_bound": 6.119791306408978e-07,
+    "svd_backward_error_factor": 16.0
+  },
+  "numerical_nullity_at_candidate_threshold": 0,
+  "observable_value_rank": 1090,
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP3-UP-CAND-v3-2979adbb0597",
+  "record_payload_sha256": "f58385ca63305dd5a38382b4ec27f25d4843534b7bde4279836904c8dcd58e2b",
+  "results_sha256": "f272257850ecf9248bd67e0c2fa64f98455baaae778cecc35490240a2d5fb379",
+  "schema_version": "1.0",
+  "sealed_qualification": "NOT_TRIGGERED",
+  "search_ready": "PASS",
+  "smallest_generalized_lie_value_singular_value": 0.00016456129372731588,
+  "source_summary": {
+    "calibration_groups": 69,
+    "calibration_points": 783,
+    "fixed_energy_checkpoint_abs_max": 4.839462164341057e-13,
+    "gauge_count": 3,
+    "training_groups": 138,
+    "training_points": 1566
+  },
+  "spec_sha256": "338dec59364315f3c4c74db70b331099508d909b4cf4bafb815514afdf1a8971",
+  "status": "COMPLETE_BOUNDED_NULL_RESULT",
+  "value_nuisance_derivative_rank": 0,
+  "value_nuisance_nullity": 0,
+  "wp4_ready": "BLOCKED"
+}
