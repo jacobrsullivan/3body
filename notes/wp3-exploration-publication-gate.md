@@ -55,3 +55,10 @@ The publication gate is `BLOCKED`: 3 of 11 evidence requirements pass. The
 three passing items are the existing WP1Q-N3BP-v1, WP2KSQ-v1, and WP2-3BRQ-v1
 records with verified locks. The remaining requirements are listed in the
 campaign report and must not be inferred from this exploratory result.
+
+A clean bobs-mini rerun on Python 3.11/SciPy 1.16.1 matches the local Python
+3.13/SciPy 1.16.3 feature and Lie-derivative matrices bit for bit. The largest
+sector singular-value delta is `2.22e-15`, the largest coefficient delta is
+`2.78e-16`, and the frozen parity record passes all 10 checks. This is
+implementation parity, not the independent scientific replication required by
+the publication gate.

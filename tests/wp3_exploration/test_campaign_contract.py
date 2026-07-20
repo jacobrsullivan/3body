@@ -87,3 +87,14 @@ def test_checked_exploration_result_remains_non_claim_bearing() -> None:
     )
     assert "makes no conservation" in report
     assert "does not advance an additional direction" in report
+
+
+def test_checked_bobs_mini_parity_record_passes() -> None:
+    parity = _load(CAMPAIGN / "reports" / "wp3_bobs_mini_parity.json")
+    assert parity["campaign"] == "WP3-EXP-PARITY-v1"
+    assert parity["status"] == "PASS"
+    assert parity["checks"]
+    assert all(check["passed"] for check in parity["checks"])
+    assert parity["implementation_sha256"] == _sha256(
+        CAMPAIGN / "scripts" / "compare_parity.py"
+    )

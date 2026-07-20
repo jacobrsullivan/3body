@@ -1,0 +1,95 @@
+{
+  "campaign": "WP3-EXP-PARITY-v1",
+  "checks": [
+    {
+      "name": "input_hashes",
+      "passed": true
+    },
+    {
+      "name": "implementation_snapshot",
+      "passed": true
+    },
+    {
+      "name": "provenance",
+      "passed": true
+    },
+    {
+      "name": "matrix_hashes",
+      "passed": true
+    },
+    {
+      "name": "publication_gate_boundary",
+      "passed": true
+    },
+    {
+      "name": "dimension_sector_layout",
+      "passed": true
+    },
+    {
+      "name": "numerical_nullity",
+      "passed": true
+    },
+    {
+      "comparator": "<=",
+      "name": "standardized_singular_value_max_abs_delta",
+      "observed": 2.220446049250313e-15,
+      "passed": true,
+      "threshold": 1e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "mode_coefficient_max_abs_delta",
+      "observed": 2.7755575615628914e-16,
+      "passed": true,
+      "threshold": 1e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "mode_metric_max_abs_delta",
+      "observed": 3.126388037344441e-13,
+      "passed": true,
+      "threshold": 1e-10
+    }
+  ],
+  "comparison": {
+    "label": "bobs-mini-macos-arm64-python-3.11",
+    "path": "/tmp/wp3-exploration-results-bobs.json",
+    "runtime": {
+      "machine": "arm64",
+      "packages": {
+        "numpy": "2.2.6",
+        "pytest": "8.4.1",
+        "rebound": "4.4.10",
+        "scipy": "1.16.1"
+      },
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "python": "3.11.15",
+      "python_executable": "/Users/bob/micromamba/envs/wp1_env/bin/python3.11",
+      "python_implementation": "CPython"
+    },
+    "sha256": "c55a317055e882e739f7309f38039f9e38be13c6f90523a46a8f7d25bde24c7b"
+  },
+  "generated_utc": "2026-07-20T09:10:10.523453+00:00",
+  "implementation_sha256": "0c636e3852b7b53a48252435bbcde87c58cf62dc1caf7cea0f9b0398cfd48939",
+  "reference": {
+    "label": "local-macos-arm64-python-3.13",
+    "path": "validation-external/wp3-exploration/results/exploration_results.json",
+    "runtime": {
+      "machine": "arm64",
+      "packages": {
+        "numpy": "2.3.5",
+        "pytest": "8.4.1",
+        "rebound": "4.5.1",
+        "scipy": "1.16.3"
+      },
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "python": "3.13.2",
+      "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+      "python_implementation": "CPython"
+    },
+    "sha256": "e6050277782f4c0ace63c9cee6a72af468f37827c04247fbc57bfd20318226ed"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "6ffedc0a33abe64a69d8bfe7edbc563b3b237d8f45ccf74f56744cea7dabb162",
+  "status": "PASS"
+}

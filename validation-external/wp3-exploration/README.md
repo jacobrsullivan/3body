@@ -22,3 +22,7 @@ Future `artifact` evidence must be a JSON evidence record with matching
 `evidence_id`, `status: PASS`, and a valid canonical `record_payload_sha256`.
 The evidence manifest must also pin the complete artifact file SHA-256. A text
 assertion or an unverified file cannot open the gate.
+
+The checked parity report compares the local record with a clean bobs-mini run
+under `parity_spec.json`. Exact matrix hashes are required; only LAPACK-level
+SVD deltas receive a numerical tolerance.

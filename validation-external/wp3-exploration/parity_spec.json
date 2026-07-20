@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-EXP-PARITY-v1",
+  "required_exact_matches": [
+    "input_hashes",
+    "implementation_snapshot",
+    "provenance",
+    "matrix_hashes",
+    "publication_gate_boundary",
+    "dimension_sector_layout",
+    "numerical_nullity"
+  ],
+  "thresholds": {
+    "standardized_singular_value_max_abs_delta": 1e-12,
+    "mode_coefficient_max_abs_delta": 1e-12,
+    "mode_metric_max_abs_delta": 1e-10
+  }
+}
