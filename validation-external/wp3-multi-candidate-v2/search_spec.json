@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_SEARCH",
+  "purpose": "Search the qualified WP2-MULTIQ-v1 model for additional first-integral candidates in a collision-adapted physical quotient library that is structurally invariant under rotations, body permutations, gauge actions, and atlas transitions.",
+  "evidence_boundary": "A no-candidate result states only that the backend-guarded lower bound on the smallest generalized Lie/value singular value exceeds the frozen threshold in the 285-function Reynolds-averaged library. Numerators are combined-degree-two-or-less monomials in the ten Gram scalars of two relative position and two canonical momentum vectors, with fixed-energy and symmetric-mass parameters, divided by one, the global pair-distance product, or barycentric moment of inertia. This reaches physical polynomial degree four and permits the declared rational poles. It excludes non-scalar SO(3) representations, higher numerator degree, other denominators, non-meromorphic functions, chart-asymmetric functions, nonzero-Xi dynamics, simultaneous or triple collision, and every general no-integral or non-integrability claim. The development and calibration data were used by earlier campaigns. Candidate interpretation remains prohibited until the staged publication gate passes and candidate resolution is separately frozen.",
+  "prerequisites": {
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+      "record_payload_sha256": "c8df63c81f0688eefeb4838a09c1e28091327ce46089fbcaabb4152fcf27a589"
+    },
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "lock_sha256": "fde5e484ada224c64083b5695750bf1ec780a99b5ccd61e7324fc89b0ee0f191",
+      "lock_file_sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+      "record_file_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+      "record_payload_sha256": "4d0a300ca34c8cce0d8653ea7a0134c39ca23723cc8c84a7e4a045746e0c703a",
+      "native_catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234"
+    },
+    "wp3_multi_v1": {
+      "qualification_id": "WP3-MULTI-CAND-v1-225359a13711",
+      "lock_sha256": "d1a8226dc9bfdd836f24389c8f0c0d6d6eaf56e82f6592f0a2c57140cd294be8",
+      "lock_file_sha256": "4e1a4aca3b17d0ab4ea76537a026da908a917da7b62b935d169eae0644b78abd",
+      "record_file_sha256": "db93ed5846d3d7edcb4efa0534a8cdedf904c41c55e4253c1731ee7c5cd4e6e1",
+      "record_payload_sha256": "9186457cb44650dee78bb043abc7c36f0947df0eaea92d4dcdc03130482a977f",
+      "publication_gate_sha256": "3ebbe1b48a78d6013db3123e1f0abed9461f99348f7f2393d89165a35a7e5329"
+    },
+    "v1_search_corpus_sha256": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "library": {
+    "local_vectors": ["X1", "X2", "W1", "W2"],
+    "gram_primitives": ["X1.X1", "X1.X2", "X1.W1", "X1.W2", "X2.X2", "X2.W1", "X2.W2", "W1.W1", "W1.W2", "W2.W2"],
+    "parameter_variables": ["fixed_energy", "mass_s2", "mass_s3"],
+    "numerator_combined_degree_max": 2,
+    "numerator_monomial_count": 95,
+    "denominators": ["one", "collision_product_r12_r23_r31", "barycentric_moment_of_inertia"],
+    "denominator_count": 3,
+    "search_feature_count": 285,
+    "physical_polynomial_degree_max": 4,
+    "reynolds_body_permutation_count": 6,
+    "rotation_invariant": true,
+    "structurally_gauge_invariant": true,
+    "structurally_chart_invariant": true,
+    "exact_known_module": ["angular_momentum_squared"],
+    "exact_known_module_rank": 1,
+    "charts": ["central-1", "central-2", "central-3"],
+    "torus_angle_pairs": [[0.0, 0.0], [0.61, -1.17], [-1.17, 0.61]]
+  },
+  "data": {
+    "source_corpus": "validation-external/wp3-multi-candidate-v1/data/search_corpus.json",
+    "expected_group_counts": {"development": 156, "calibration": 78},
+    "expected_physical_point_counts": {"development": 288, "calibration": 144},
+    "executable_splits": ["development", "calibration"],
+    "minimum_pair_separation_scaled_min": 1e-6,
+    "minimum_denominator_abs": 1e-10
+  },
+  "decision_runtime": {
+    "python": "3.13.2",
+    "python_implementation": "CPython",
+    "platform": {
+      "system": "Darwin",
+      "release": "25.5.0",
+      "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:41:19 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T8122",
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "mac_version": "26.5.1",
+      "machine": "arm64",
+      "processor": "arm",
+      "architecture": ["64bit", "Mach-O"],
+      "pointer_bits": 64,
+      "byteorder": "little"
+    },
+    "packages": {"numpy": "2.3.5", "scipy": "1.16.3"},
+    "numpy_backend_sha256": "32c863b8870aa8b07a5536f36adea164798728726304415e973eab201fb997ef"
+  },
+  "search": {
+    "mode_count": 30,
+    "fold_mode_count": 60,
+    "value_rank_relative_tolerance": 1e-11,
+    "singular_cluster_relative_tolerance": 1e-8,
+    "singular_cluster_absolute_tolerance": 1e-12,
+    "svd_backward_error_factor": 16.0,
+    "candidate_lie_rms_max": 1e-10,
+    "calibration_ratio_floor": 1e-12,
+    "calibration_to_training_max": 2.0,
+    "family_fold_subspace_projection_min": 0.9,
+    "calibration_trajectory_drift_max": 1e-8,
+    "known_module_lie_rms_max": 1e-10,
+    "known_module_projection_residual_max": 1e-10,
+    "energy_control_relative_lie_max": 1e-10,
+    "body_permutation_spread_max": 1e-12,
+    "rotation_spread_max": 1e-12,
+    "gauge_orbit_spread_max": 1e-10,
+    "chart_overlap_spread_max": 1e-10,
+    "fixed_energy_checkpoint_abs_max": 1e-10,
+    "chart_projection_state_scaled_max": 1e-10
+  },
+  "staged_policy": {
+    "SEARCH_READY": "Requires exact verification of WP1-CAT-N3BP-v1, WP2-MULTIQ-v1, and the completed WP3-MULTI-CAND-v1 chain; the untouched source corpus and reserve; the frozen implementation; rank-one exact L-squared removal; all declared symmetry controls; and exact decision runtime.",
+    "PUBLICATION_GATE": "Must be evaluated before candidate expressions or invariant interpretation. It verifies search readiness, spectral partition consistency, reserve status, and the frozen model boundary.",
+    "NULL_RESULT_READY": "Requires the backend-guarded lower bound on the smallest generalized Lie/value singular value to exceed the candidate threshold. The conclusion is only a bounded null in this frozen rational Reynolds library.",
+    "CANDIDATE_READY": "Any training-eligible singular subspace blocks null interpretation until candidate direction resolution is frozen using development and calibration only.",
+    "SEALED_QUALIFICATION": "Can be triggered only after candidate-specific resolution is frozen under a new lock; only then may the 24-case reserve be opened once.",
+    "WP4_READY": "Can be triggered only by passing candidate-specific sealed qualification and independent replication. The independent WP4-MR-NI-v1 theorem-application track is not candidate validation."
+  }
+}
