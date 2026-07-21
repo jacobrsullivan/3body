@@ -1,0 +1,21 @@
+{
+  "baseline_git_commit": "b32e0260b11767d473a99e1bbef0310d821dde50",
+  "campaign": "WP3-MULTI-CAND-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-21T05:01:43Z",
+  "prerequisite_file_hashes": {
+    "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+    "validation-external/wp3-spatial-validation-v2/reports/wp3_spatial_v2_qualification_lock.json": "afead1f27f1fa20aebab8e61e4ac10ecd0ef5b75396c1ad870d58d84c2ba04e5",
+    "validation-external/wp3-spatial-validation-v2/reports/wp3_spatial_v2_qualification_record.json": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+    "validation-external/wp3-v2-exploration/data/exploration_corpus.json": "2e94a99b6c48db9b871daeca23547b5f39c609888f18923f3bd7271c09ee5e0e",
+    "validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "schema_version": "1.0",
+  "spec_path": "validation-external/wp3-multi-candidate-v1/search_spec.json",
+  "spec_sha256": "624ab116ae579cf54d7371a2377267a957828cf341d8a2779dc874027d9a4fff",
+  "specification_lock_sha256": "0d8fd5fe966ae6170bb441949d36e42c693d3d64968f4289427f5deec7245eed"
+}
