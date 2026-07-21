@@ -1,0 +1,380 @@
+{
+  "aggregate_metrics": {
+    "calibration_relative_value_rms_max": 6.273148570610375e-13,
+    "challenge_relative_value_rms_max": 6.830542672500359e-13,
+    "held_scale_lie_abs_max": 7.2562265479419374e-09,
+    "held_scale_lie_rms_max": 7.147049727768985e-10,
+    "split_scale_relative_spread_max": 3.342786710599983e-13,
+    "training_relative_value_rms_max": 9.42976981107296e-13
+  },
+  "backend_replication": {
+    "centered_response_projection_min": 0.9999999999999998,
+    "metadata": [
+      {
+        "driver": "numpy",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "driver": "gesdd",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "driver": "gesvd",
+        "generalized_singular_value": 8.173061244118182e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      }
+    ],
+    "response_projections": [
+      {
+        "driver": "numpy",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "numpy",
+        "projection": 0.9999999999999999,
+        "split": "calibration"
+      },
+      {
+        "driver": "numpy",
+        "projection": 0.9999999999999998,
+        "split": "challenge"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 0.9999999999999999,
+        "split": "calibration"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 0.9999999999999998,
+        "split": "challenge"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0000000000000002,
+        "split": "calibration"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0,
+        "split": "challenge"
+      }
+    ]
+  },
+  "campaign": "WP3-MULTI-CAND-v2-RES-v2",
+  "candidate_access": {
+    "corrected_interpretation_after_implementation_lock": true,
+    "prior_access_disclosed": true,
+    "source_mode_rank": 1
+  },
+  "challenge_corpus_sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+  "claim_boundary": "A KNOWN_L2_FUNCTION_EQUIVALENCE result establishes only that the frozen numerical candidate and replicated rank-one directions evaluate as scalar multiples of the already known L^2 observable over the declared source and challenge domains. It does not prove a global symbolic coefficient identity, discover a new invariant, authorize publication-reserve access, or convert the original search into a bounded-null result. It requires a separately locked successor search that removes the observable L^2 equivalence class. An UNRESOLVED result preserves the original search as spectrally unresolved.",
+  "decision": "KNOWN_L2_FUNCTION_EQUIVALENCE",
+  "direction_summaries": {
+    "committed": {
+      "raw_coefficient_cosine_to_l2": 0.0010519715454380659,
+      "split_scale_relative_spread": 4.0748356784064696e-14,
+      "splits": {
+        "calibration": {
+          "candidate_value_std": 0.9381256415867878,
+          "fitted_scale": -7.498053921436356,
+          "held_scale_lie_abs_max": 1.8917489796876907e-10,
+          "held_scale_lie_rms": 2.2165369431239935e-11,
+          "held_scale_relative_value_rms": 6.273148570610375e-13
+        },
+        "challenge": {
+          "candidate_value_std": 102.22127310899103,
+          "fitted_scale": -7.498053921436638,
+          "held_scale_lie_abs_max": 3.5763614260206684e-09,
+          "held_scale_lie_rms": 5.208305142349945e-10,
+          "held_scale_relative_value_rms": 2.1037394048334756e-13
+        },
+        "training": {
+          "candidate_value_std": 0.9999999999999994,
+          "fitted_scale": -7.498053921436332,
+          "held_scale_lie_abs_max": 7.2562265479419374e-09,
+          "held_scale_lie_rms": 3.8360517277693907e-10,
+          "held_scale_relative_value_rms": 9.42976981107296e-13
+        }
+      },
+      "training_scale": -7.498053921436332
+    },
+    "gesdd": {
+      "raw_coefficient_cosine_to_l2": 0.0003012276679241294,
+      "split_scale_relative_spread": 3.342786710599983e-13,
+      "splits": {
+        "calibration": {
+          "candidate_value_std": 0.9381256415867494,
+          "fitted_scale": -7.498053921435776,
+          "held_scale_lie_abs_max": 1.373907646300909e-10,
+          "held_scale_lie_rms": 1.2903506400008064e-11,
+          "held_scale_relative_value_rms": 2.060379906534799e-13
+        },
+        "challenge": {
+          "candidate_value_std": 102.22127310899913,
+          "fitted_scale": -7.498053921438262,
+          "held_scale_lie_abs_max": 7.181370165199041e-09,
+          "held_scale_lie_rms": 7.147049727768985e-10,
+          "held_scale_relative_value_rms": 6.830542672500359e-13
+        },
+        "training": {
+          "candidate_value_std": 0.9999999999999839,
+          "fitted_scale": -7.498053921435756,
+          "held_scale_lie_abs_max": 1.9435404898187612e-10,
+          "held_scale_lie_rms": 1.4177496548438177e-11,
+          "held_scale_relative_value_rms": 2.0840321566560214e-13
+        }
+      },
+      "training_scale": -7.498053921435756
+    },
+    "gesvd": {
+      "raw_coefficient_cosine_to_l2": 0.0009065647205837278,
+      "split_scale_relative_spread": 7.059889721890957e-14,
+      "splits": {
+        "calibration": {
+          "candidate_value_std": 0.9381256415867778,
+          "fitted_scale": -7.498053921435595,
+          "held_scale_lie_abs_max": 1.4551915228366852e-10,
+          "held_scale_lie_rms": 1.3988019519512679e-11,
+          "held_scale_relative_value_rms": 1.226943880951256e-13
+        },
+        "challenge": {
+          "candidate_value_std": 102.22127310897808,
+          "fitted_scale": -7.4980539214350825,
+          "held_scale_lie_abs_max": 2.371962182223797e-09,
+          "held_scale_lie_rms": 2.3803007564273353e-10,
+          "held_scale_relative_value_rms": 2.0835788763457111e-13
+        },
+        "training": {
+          "candidate_value_std": 1.0000000000000109,
+          "fitted_scale": -7.498053921435612,
+          "held_scale_lie_abs_max": 1.2420919454242856e-09,
+          "held_scale_lie_rms": 6.652582420681305e-11,
+          "held_scale_relative_value_rms": 2.643029511616535e-13
+        }
+      },
+      "training_scale": -7.498053921435612
+    },
+    "numpy": {
+      "raw_coefficient_cosine_to_l2": 0.0003012276679241308,
+      "split_scale_relative_spread": 1.9900360289893575e-14,
+      "splits": {
+        "calibration": {
+          "candidate_value_std": 0.9381256415867654,
+          "fitted_scale": -7.498053921435894,
+          "held_scale_lie_abs_max": 1.4551915228366852e-10,
+          "held_scale_lie_rms": 1.7597417741540178e-11,
+          "held_scale_relative_value_rms": 3.160913139185955e-13
+        },
+        "challenge": {
+          "candidate_value_std": 102.22127310897945,
+          "fitted_scale": -7.498053921435613,
+          "held_scale_lie_abs_max": 1.6589183360338211e-09,
+          "held_scale_lie_rms": 2.753523924059886e-10,
+          "held_scale_relative_value_rms": 2.7254283912882403e-13
+        },
+        "training": {
+          "candidate_value_std": 0.9999999999999886,
+          "fitted_scale": -7.498053921435762,
+          "held_scale_lie_abs_max": 1.9508130368586288e-10,
+          "held_scale_lie_rms": 1.656697260162039e-11,
+          "held_scale_relative_value_rms": 3.387134239448231e-13
+        }
+      },
+      "training_scale": -7.498053921435762
+    }
+  },
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "implementation_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "superseded_v1_assessment_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_matrix_byte_identity",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "publication_reserve_intact_before",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "<=",
+      "name": "training_candidate_l2_relative_value_rms_max",
+      "observed": 9.42976981107296e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "calibration_candidate_l2_relative_value_rms_max",
+      "observed": 6.273148570610375e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "challenge_candidate_l2_relative_value_rms_max",
+      "observed": 6.830542672500359e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "split_scale_relative_spread_max",
+      "observed": 3.342786710599983e-13,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "held_scale_lie_rms_max",
+      "observed": 7.147049727768985e-10,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "held_scale_lie_abs_max",
+      "observed": 7.2562265479419374e-09,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": ">=",
+      "name": "backend_centered_response_projection_min",
+      "observed": 0.9999999999999998,
+      "passed": true,
+      "threshold": 0.999999999
+    },
+    {
+      "comparator": "<=",
+      "name": "backend_l2_relative_value_rms_max",
+      "observed": 9.42976981107296e-13,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "production_physical_l2_relative_difference_max",
+      "observed": 1.0547118733938987e-14,
+      "passed": true,
+      "threshold": 1e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "mpmath_feature_physical_l2_relative_difference_max",
+      "observed": 8.433758354584419e-80,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "mpmath_candidate_l2_relative_value_rms_max",
+      "observed": 2.180976795577622e-13,
+      "passed": true,
+      "threshold": 1e-10
+    }
+  ],
+  "generated_utc": "2026-07-21T08:45:56.126388+00:00",
+  "independent_precision": {
+    "candidate_l2_relative_value_rms": 2.180976795577622e-13,
+    "decimal_digits": 80,
+    "feature_l2_physical_relative_difference_max": 8.433758354584419e-80,
+    "physical_reference": "source-disjoint exact-rational mpmath q cross p",
+    "physical_reference_sha256": "5f635aeb46be5617bfccc9e618709cd41dcac916ffc8bdfb3163538d1e28cf3f",
+    "production_import_absent": true,
+    "production_mpmath_candidate_relative_difference_max": 9.47687067709424e-12
+  },
+  "lock_sha256": "1dfea7f42701b78e4ac5dfb871edef844b2b11bf105f7db941cfcf9a90448e8a",
+  "next_action": "Freeze and execute a successor search that removes the full observable L^2 equivalence class before making any bounded-null claim.",
+  "physical_l2": {
+    "challenge_case_count": 192,
+    "production_feature_physical_relative_difference_max": 1.0547118733938987e-14
+  },
+  "prerequisites": {
+    "assessment_sha256": "f5273646334e77330d5e60cc3c9e25df2618c6c63f37f9b519e75770db72446b",
+    "challenge_sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+    "source_qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+    "superseded_qualification_id": "WP3-MULTI-CAND-v2-RES-v1-31a9c87feb72"
+  },
+  "publication_reserve_accessed": false,
+  "publication_reserve_after": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "publication_reserve_before": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "qualification_id": "WP3-MULTI-CAND-v2-RES-v2-1277d77b2a25",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "scientific_gates_pass": true,
+  "source_matrix_hashes": {
+    "calibration_derivatives_full": "bfbc3accb4cc7f9961260adb785e311227c37876ffb4dd1546ee258d93919d12",
+    "calibration_values_full": "6203a86177a6b62b61d6125e3613d452dd849c5144f0efa4b266ea013205018f",
+    "training_derivatives_full": "821079793f795ed273b3c70c5b3a18b5a9d2687ee066375b02a227437110d0fd",
+    "training_values_full": "bfc67a9f9f2d437aef23b5af0fb7640f0c31c6ee3d3d51722564736c02b81f41"
+  },
+  "spec_sha256": "7f35e9acf9747dcc1184a17dea16f3605cd6c2c4190f9f63572e30b23409a259",
+  "specification_lock_sha256": "0420c3320dcde44ff41263e328564a2f356b82ca3a8b7b5d8611b1e2285c7675",
+  "status": "KNOWN_L2_FUNCTION_EQUIVALENCE"
+}
