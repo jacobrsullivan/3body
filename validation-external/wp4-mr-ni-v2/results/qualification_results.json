@@ -1,0 +1,2375 @@
+{
+  "authorized_claim": "Conditional on the two pinned published analyses, the declared positive-mass planar Newtonian three-body Hamiltonian is not completely integrable with meromorphic first integrals near the parabolic Lagrange solution. The exact project mass corpus satisfies the theorem's positive-mass hypothesis.",
+  "benchmark_results": [
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "generic-1-2-3",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": false,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "4"
+        ],
+        "masses": [
+          "1",
+          "2",
+          "3"
+        ],
+        "sigma": "11/36",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": false,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "4"
+        ],
+        "masses": [
+          "1",
+          "2",
+          "3"
+        ],
+        "sigma": "11/36",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    },
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "exception-equal",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "16"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1"
+        ],
+        "sigma": "1/3",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "16"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1"
+        ],
+        "sigma": "1/3",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    },
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "exception-eight-27-a",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "0"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1/4"
+        ],
+        "sigma": "8/27",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "0"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1/4"
+        ],
+        "sigma": "8/27",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    },
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "exception-eight-27-b",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "0"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "5/2"
+        ],
+        "sigma": "8/27",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "0"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "5/2"
+        ],
+        "sigma": "8/27",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    },
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "exception-two-9",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "-32"
+        ],
+        "masses": [
+          "1",
+          "2",
+          "15/2"
+        ],
+        "sigma": "2/9",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": true,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "-32"
+        ],
+        "masses": [
+          "1",
+          "2",
+          "15/2"
+        ],
+        "sigma": "2/9",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    },
+    {
+      "all_permutations_and_scales_exact": true,
+      "case_id": "near-exception-not-equal",
+      "exact_expected_result": true,
+      "production": {
+        "exceptional_linear_nve": false,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "-288000128/20250009000001"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "2500001/1000000"
+        ],
+        "sigma": "6000002000000/20250009000001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      "reference": {
+        "exceptional_linear_nve": false,
+        "exponent_polynomial": [
+          "16",
+          "-96",
+          "112",
+          "96",
+          "-288000128/20250009000001"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "2500001/1000000"
+        ],
+        "sigma": "6000002000000/20250009000001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    }
+  ],
+  "campaign": "WP4-MR-NI-v2",
+  "catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+  "claim_boundary": "A passing result verifies the source identities, exactly reproduces the published symmetric mass invariant and exceptional-set arithmetic, cross-checks an independent implementation, and applies two published non-complete-integrability theorems to the declared positive-mass planar model and project mass corpus. It is a theorem replication/application, not a new derivation of the 4x4 normal variational system, its factorization, local logarithms, monodromy generators, or differential Galois group. It establishes no obstruction for the spatial system as such, the zero-angular-momentum level in isolation, non-meromorphic or non-Liouville integrability, the regularized upstairs atlas, or any WP3 candidate. Exceptional first-variational-equation polynomial invariants are not nonlinear first integrals.",
+  "external_tools": {
+    "pdftohtml": "pdftohtml version 26.04.0",
+    "pdftotext": "pdftotext version 26.04.0"
+  },
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "invalidated_v1_is_not_executable",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_manifest_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_download_hashes_reverified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_text_contracts_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_power_notation_transcribed_exactly",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_benchmarks_exact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_permutations_and_common_scales_exact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "project_candidate_count",
+      "observed": 169,
+      "passed": true,
+      "threshold": 169
+    },
+    {
+      "comparator": "==",
+      "name": "production_reference_exact_agreement",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_project_masses_positive",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_project_cases_universally_obstructed",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "exceptional_cases_not_overinterpreted",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "legacy_placeholder_solver_excluded",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "claim_boundary_present",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    }
+  ],
+  "generated_utc": "2026-07-21T08:17:20.615700+00:00",
+  "independent_reference": {
+    "arithmetic": "SymPy Rational",
+    "path": "validation-external/wp4-mr-ni-v2/reference/sympy_reference.py",
+    "production_import_absent": true,
+    "sha256": "b9a85e44cf1f9685bf2afb8fe45a142ccd41e475e892117babd0b9b364c93b1c"
+  },
+  "invalidated_predecessor": {
+    "assessment_sha256": "53cdfff708b8b3fbc4399b076f8074af56b39f594e3a99c28b843c0961cda220",
+    "implementation_started": false,
+    "scientific_outputs_produced": false,
+    "status": "INVALIDATED_PREIMPLEMENTATION"
+  },
+  "legacy_placeholder": {
+    "included_in_qualification": false,
+    "loaded": false,
+    "path": "src/python/validation/kovacic.py"
+  },
+  "lock_sha256": "5a8fad5ae70435cfcc7912a6c481569a4df7adad9f4a272dceeb0cc9cb538ed6",
+  "project_application": {
+    "all_cases_universally_obstructed": true,
+    "all_project_masses_positive": true,
+    "candidate_count": 169,
+    "case_classifications": [
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.970",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "19477197942386698398349244136371/58437678550041190706983555690188",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.975",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "234525502247024257293853113505022/703639382210844092171562847752841",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.980",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "58831157296352033451878824343398/176507669575778656550153394019369",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.985",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "78707918707930670107059160414054/236142010292435296856984951085387",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.990",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "59230720765543971708709916277683/177706359983354471320646669822224",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-0.995",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "237722010000559763348501848979302/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.000",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "1",
+          "1"
+        ],
+        "sigma": "6625587137192878885060112023552/19878789652539001825825610497681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.005",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "59830065969331874657910921219172/179512001498319549468097471200625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.010",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "60029847703927848222372100146253/180115910244268291885504867990084",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.015",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "825063416966079750504565466758/2475627850831468725113299976257",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.020",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "60429411173119786479203192080538/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.025",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "6736576989746194574619233898638/20214857911666173440750591487025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.970-m2-1.030",
+        "masses_exact": [
+          "4368491638549381/4503599627370496",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "20276324880770574912011428004941/60847228810955011271841753858048",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.970",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "234525502247024257293853113505022/703639382210844092171562847752841",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.975",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "235326657426368498978160571800617/706030678303114626200613576077476",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.980",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "236127812605712740662468030096212/708426030877305890570954853256161",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.985",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "236928967785056982346775488391807/710825439933417885282586679288896",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.990",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "237730122964401224031082946687402/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-0.995",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "238531278143745465715390404982997/715636427491404065729721977916516",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.000",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "1",
+          "1"
+        ],
+        "sigma": "239332433323089707399697863278592/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.005",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "240133588502433931294786793460728/720463640977073113859111913704025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.010",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "240934743681778190768312779869782/722883332442788813960104042263321",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.015",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "241735898861122450241838766278836/725307080390425244582530704771489",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.020",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "242537054040466674136927696460972/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.025",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "243338209219810898032016626643108/730166745731460081218905517850625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.975-m2-1.030",
+        "masses_exact": [
+          "8782019273372467/9007199254740992",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "18779951107627319808118662542474/56354051009604515618872908616597",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.970",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "58831157296352033451878824343398/176507669575778656550153394019369",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.975",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "236127812605712740662468030096212/708426030877305890570954853256161",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.980",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "14808187251626084219838797676177/44426589995838617830161667455556",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.985",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "237734179446321954372373495541452/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.990",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "59634340716656640306831557066018/178909106872851016432430494479129",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-0.995",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "239340546286931168082278960986692/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.000",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "1",
+          "1"
+        ],
+        "sigma": "15008983106702235933576980856832/45028977561067072971376216997521",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.005",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "15059182070471272747370618877798/45180208277674297511695280716225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.010",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "60437524136961247161784289788638/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.015",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15159579998009350833521526016521/45483430301248896985829272833124",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.020",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15209778961778387647315164037487/45635421608216258453881315393536",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.025",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "15259977925547424461108802058453/45787666445303665557005018188900",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.980-m2-1.030",
+        "masses_exact": [
+          "2206763817411543/2251799813685248",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "61240707557265854016737022511258/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.970",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "78707918707930670107059160414054/236142010292435296856984951085387",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.975",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "236928967785056982346775488391807/710825439933417885282586679288896",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.980",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "237734179446321954372373495541452/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.985",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "26504376789731880710885722521233/79515158610156007303302441990724",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.990",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "239344602768851898423569509840742/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-0.995",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "34307116347159552921309645284341/102923377282439023934574210280048",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.000",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "1",
+          "1"
+        ],
+        "sigma": "80318342030460614158255174713344/240961110814262937986701347421107",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.005",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "241760237752646796621073010628808/725307080390425136856427618069225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.010",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "242565449413911786525961538439322/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.015",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "2508975887372956458050000682988/7527492224035672054693779121057",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.020",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "244175872736441730577157552738612/732602663124858703045347812015761",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.025",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "81660361465902228241155013075796/245014212333392648982181871016075",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.985-m2-1.030",
+        "masses_exact": [
+          "8872091265919877/9007199254740992",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "3901369778713836105211961381554/11706137577101873486281158571687",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.970",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "59230720765543971708709916277683/177706359983354471320646669822224",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.975",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "237730122964401224031082946687402/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.980",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "59634340716656640306831557066018/178909106872851016432430494479129",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.985",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "239344602768851898423569509840742/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.990",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "60037960667769308904953197854353/180115910244268291885504867990084",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-0.995",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "240959082573302572816056072994082/722883332442788813960104042263321",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.000",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "1",
+          "1"
+        ],
+        "sigma": "60441580618881977503074838642688/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.005",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "60643390594438307321054029803212/181933721204995560966755323383225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.010",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "60845200569994646101196479431023/182541686432865033815525261574144",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.015",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "61047010545550984881338929058834/183150665781214689294653833252281",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.020",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "61248820521107314699318120219358/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.025",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "61450630496663644517297311379882/184371666839354493830575370982025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.990-m2-1.030",
+        "masses_exact": [
+          "4458563631096791/4503599627370496",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "61652440472219983297439761007693/184983688549144697110707850574404",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.970",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "237722010000559763348501848979302/713228905471450610335509054175681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.975",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "238531278143745465715390404982997/715636427491404065729721977916516",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.980",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "239340546286931168082278960986692/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.985",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "34307116347159552921309645284341/102923377282439023934574210280048",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.990",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "240959082573302572816056072994082/722883332442788813960104042263321",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-0.995",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "241768350716488275182944628997777/725307080390425190719479161420356",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.000",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "1",
+          "1"
+        ],
+        "sigma": "242577618859673977549833185001472/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.005",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "243386887002859661947359227796888/730166745731460081218905517850625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.010",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "244196155146045382283610297008862/732602663124858703045347812015761",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.015",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "245005423289231102619861366220836/735042637000178055393224640129769",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.020",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "35116384490345255288198201288036/105355238193916861376530427145183",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.025",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "246623959575602471414913451811668/739934754196578734039347903662025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-0.995-m2-1.030",
+        "masses_exact": [
+          "8962163258467287/9007199254740992",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "247433227718788191751164521023642/742386897517660277591240363433001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.970",
+        "masses_exact": [
+          "1",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "6625587137192878885060112023552/19878789652539001825825610497681",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.975",
+        "masses_exact": [
+          "1",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "239332433323089707399697863278592/718048005993278251465225450511401",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.980",
+        "masses_exact": [
+          "1",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "15008983106702235933576980856832/45028977561067072971376216997521",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.985",
+        "masses_exact": [
+          "1",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "80318342030460614158255174713344/240961110814262937986701347421107",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.990",
+        "masses_exact": [
+          "1",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "60441580618881977503074838642688/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-0.995",
+        "masses_exact": [
+          "1",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "242577618859673977549833185001472/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.000",
+        "masses_exact": [
+          "1",
+          "1",
+          "1"
+        ],
+        "sigma": "1/3",
+        "single_additional_status": "LINEAR_NVE_EXCEPTION",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.005",
+        "masses_exact": [
+          "1",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "3815628306686970228289099005952/11446916611325916389251254547225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.010",
+        "masses_exact": [
+          "1",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "61252877003028045040608669073408/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.015",
+        "masses_exact": [
+          "1",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15363925274766141607147938512896/46092916709838630246820281006529",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.020",
+        "masses_exact": [
+          "1",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15414631298775269702343896072192/46245922137286174277676962643601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.025",
+        "masses_exact": [
+          "1",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "5155112440928132599179951210496/15466393698284587981201768171875",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.000-m2-1.030",
+        "masses_exact": [
+          "1",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "20688057795724704192714166501376/62070258110055208090078322785203",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.970",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "59830065969331874657910921219172/179512001498319549468097471200625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.975",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "240133588502433931294786793460728/720463640977073113859111913704025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.980",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "15059182070471272747370618877798/45180208277674297511695280716225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.985",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "241760237752646796621073010628808/725307080390425136856427618069225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.990",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "60643390594438307321054029803212/181933721204995560966755323383225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-0.995",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "243386887002859661947359227796888/730166745731460081218905517850625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.000",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "1",
+          "1"
+        ],
+        "sigma": "3815628306686970228289099005952/11446916611325916389251254547225",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.005",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "3828336503954257956472045925145/11485041203127779573800095304804",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.010",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "61456715219544739984197138387252/184371666839354493830575370982025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.015",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15415011593955338166210385493046/46245922137286174277676962643601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.020",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15465844383024489078942173169818/46399181094853763943605304515625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.025",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "15516677172093639991673960846590/46552693582541399244605306622601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.005-m2-1.030",
+        "masses_exact": [
+          "1131529406376837/1125899906842624",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "62270039844651172647340246971292/186825838401396348059557613997025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.970",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "60029847703927848222372100146253/180115910244268291885504867990084",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.975",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "240934743681778190768312779869782/722883332442788813960104042263321",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.980",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "60437524136961247161784289788638/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.985",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "242565449413911786525961538439322/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.990",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "60845200569994646101196479431023/182541686432865033815525261574144",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-0.995",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "244196155146045382283610297008862/732602663124858703045347812015761",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.000",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "1",
+          "1"
+        ],
+        "sigma": "61252877003028045040608669073408/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.005",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "61456715219544739984197138387252/184371666839354493830575370982025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.010",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "61660553436061443980020858715793/184983688549144697110707850574404",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.015",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "61864391652578147975844579044334/185596724379415083021198963654001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.020",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "62068229869094842919433048358178/186210774330165624270234968355609",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.025",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "62272068085611537863021517672022/186825838401396348059557613997025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.010-m2-1.030",
+        "masses_exact": [
+          "4548635623644201/4503599627370496",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "62475906302128241858845238000563/187441916593107281771052634990864",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.970",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "825063416966079750504565466758/2475627850831468725113299976257",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.975",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "241735898861122450241838766278836/725307080390425244582530704771489",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.980",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "15159579998009350833521526016521/45483430301248896985829272833124",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.985",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "2508975887372956458050000682988/7527492224035672054693779121057",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.990",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "61047010545550984881338929058834/183150665781214689294653833252281",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-0.995",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "245005423289231102619861366220836/735042637000178055393224640129769",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.000",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "1",
+          "1"
+        ],
+        "sigma": "15363925274766141607147938512896/46092916709838630246820281006529",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.005",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "15415011593955338166210385493046/46245922137286174277676962643601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.010",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "61864391652578147975844579044334/185596724379415083021198963654001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.015",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15517184232333735821711904029121/46552693582541412890512177555204",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.020",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15568270551522932380774351009271/46706459600349093849101838033984",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.025",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "15619356870712128939836797989421/46860479148276820442763158747716",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.015-m2-1.030",
+        "masses_exact": [
+          "2285576810890527/2251799813685248",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "4821674827661947005411556079218/14466077608099876777915868420917",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.970",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "60429411173119786479203192080538/181326770097606297679869790355089",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.975",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "242537054040466674136927696460972/727734884819982297820144829431441",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.980",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "15209778961778387647315164037487/45635421608216258453881315393536",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.985",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "244175872736441730577157552738612/732602663124858703045347812015761",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.990",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "61248820521107314699318120219358/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-0.995",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "35116384490345255288198201288036/105355238193916861376530427145183",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.000",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "1",
+          "1"
+        ],
+        "sigma": "15414631298775269702343896072192/46245922137286174277676962643601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.005",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "15465844383024489078942173169818/46399181094853763943605304515625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.010",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "62068229869094842919433048358178/186210774330165624270234968355609",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.015",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15568270551522932380774351009271/46706459600349093849101838033984",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.020",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15619483635772151757372628106897/46860479148276820442763158747716",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.025",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "15670696720021371133970905204523/47014752226324592671496139696400",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.020-m2-1.030",
+        "masses_exact": [
+          "2296835809958953/2251799813685248",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "8983948459583195877078282356714/26953873619709952801880121497167",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.970",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "6736576989746194574619233898638/20214857911666173440750591487025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.975",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "243338209219810898032016626643108/730166745731460081218905517850625",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.980",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "15259977925547424461108802058453/45787666445303665557005018188900",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.985",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "81660361465902228241155013075796/245014212333392648982181871016075",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.990",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "61450630496663644517297311379882/184371666839354493830575370982025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-0.995",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "246623959575602471414913451811668/739934754196578734039347903662025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.000",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "1",
+          "1"
+        ],
+        "sigma": "5155112440928132599179951210496/15466393698284587981201768171875",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.005",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "15516677172093639991673960846590/46552693582541399244605306622601",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.010",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "62272068085611537863021517672022/186825838401396348059557613997025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.015",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "15619356870712128939836797989421/46860479148276820442763158747716",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.020",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "15670696720021371133970905204523/47014752226324592671496139696400",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.025",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "5240678856443537776035004139875/15723092944830803511766926960012",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.025-m2-1.030",
+        "masses_exact": [
+          "2308094809027379/2251799813685248",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "344773255052237329009539475214/1034405660607219254938262581575",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.970",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "4368491638549381/4503599627370496",
+          "1"
+        ],
+        "sigma": "20276324880770574912011428004941/60847228810955011271841753858048",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.975",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "8782019273372467/9007199254740992",
+          "1"
+        ],
+        "sigma": "18779951107627319808118662542474/56354051009604515618872908616597",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.980",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "2206763817411543/2251799813685248",
+          "1"
+        ],
+        "sigma": "61240707557265854016737022511258/183760659250044500292471281647249",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.985",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "8872091265919877/9007199254740992",
+          "1"
+        ],
+        "sigma": "3901369778713836105211961381554/11706137577101873486281158571687",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.990",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "4458563631096791/4503599627370496",
+          "1"
+        ],
+        "sigma": "61652440472219983297439761007693/184983688549144697110707850574404",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-0.995",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "8962163258467287/9007199254740992",
+          "1"
+        ],
+        "sigma": "247433227718788191751164521023642/742386897517660277591240363433001",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.000",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "1",
+          "1"
+        ],
+        "sigma": "20688057795724704192714166501376/62070258110055208090078322785203",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.005",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "1131529406376837/1125899906842624",
+          "1"
+        ],
+        "sigma": "62270039844651172647340246971292/186825838401396348059557613997025",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.010",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "4548635623644201/4503599627370496",
+          "1"
+        ],
+        "sigma": "62475906302128241858845238000563/187441916593107281771052634990864",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.015",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "2285576810890527/2251799813685248",
+          "1"
+        ],
+        "sigma": "4821674827661947005411556079218/14466077608099876777915868420917",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.020",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "2296835809958953/2251799813685248",
+          "1"
+        ],
+        "sigma": "8983948459583195877078282356714/26953873619709952801880121497167",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.025",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "2308094809027379/2251799813685248",
+          "1"
+        ],
+        "sigma": "344773255052237329009539475214/1034405660607219254938262581575",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      },
+      {
+        "candidate_id": "n3bp-m1-1.030-m2-1.030",
+        "masses_exact": [
+          "4638707616191611/4503599627370496",
+          "4638707616191611/4503599627370496",
+          "1"
+        ],
+        "sigma": "7033263570226277824472301665937/21101818951639198644062179424836",
+        "single_additional_status": "OBSTRUCTED",
+        "universal_complete_meromorphic_integrability_obstructed": true
+      }
+    ],
+    "distinct_mass_triple_count": 169,
+    "exceptional_catalogue_case_count": 1,
+    "exceptional_mass_triple_count": 1,
+    "nonexceptional_mass_triple_count": 168,
+    "production_reference_exact_agreement": true
+  },
+  "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "be4e5861d04985e9e1c5332acd8d6e409e80f2b1fb7d5c306243629b0bf7643d",
+  "source_power_notation": {
+    "arithmetic": {
+      "2/3^2": "2/9",
+      "2^3/3^3": "8/27",
+      "5/2^4": "5/16"
+    },
+    "glyph_evidence": {
+      "2/3^2": [
+        {
+          "height": 16,
+          "left": 440,
+          "text": "/",
+          "top": 678
+        },
+        {
+          "height": 16,
+          "left": 448,
+          "text": "3",
+          "top": 678
+        },
+        {
+          "height": 9,
+          "left": 456,
+          "text": "2",
+          "top": 676
+        }
+      ],
+      "2^3/3^3": [
+        {
+          "height": 9,
+          "left": 375,
+          "text": "2",
+          "top": 460
+        },
+        {
+          "height": 6,
+          "left": 381,
+          "text": "3",
+          "top": 458
+        },
+        {
+          "height": 9,
+          "left": 375,
+          "text": "3",
+          "top": 473
+        },
+        {
+          "height": 6,
+          "left": 381,
+          "text": "3",
+          "top": 472
+        }
+      ],
+      "5/2^4": [
+        {
+          "height": 9,
+          "left": 444,
+          "text": "5",
+          "top": 460
+        },
+        {
+          "height": 9,
+          "left": 440,
+          "text": "2",
+          "top": 473
+        },
+        {
+          "height": 6,
+          "left": 447,
+          "text": "4",
+          "top": 472
+        }
+      ]
+    },
+    "passed": true
+  },
+  "source_records": [
+    {
+      "expected_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "observed_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "source_id": "tsygvintsev-2007-exceptional-cases",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "observed_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "source_id": "boucher-weil-morales-ramis-threebody",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "boucher_weil_nonzero_angular_momentum": true,
+    "boucher_weil_positive_mass_hypothesis": true,
+    "boucher_weil_theorem": true,
+    "boucher_weil_title": true,
+    "tsygvintsev_liouville_corollary": true,
+    "tsygvintsev_parabolic_lagrange_solution": true,
+    "tsygvintsev_positive_mass_model": true,
+    "tsygvintsev_title": true,
+    "tsygvintsev_universal_two_integral_obstruction": true
+  },
+  "spec_sha256": "62cc6a5dabbf8d7e0d156a1cc01b4a2031c1a1a8d89f5c760a75104bb7870b7c",
+  "specification_lock_sha256": "75a2fdb11354baa903bb1861d6fb7a9967f42b5428cdb877820a042a09ec8cd4",
+  "status": "PASS"
+}

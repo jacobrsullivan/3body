@@ -1,0 +1,25 @@
+{
+  "CANDIDATE_READY": "BLOCKED_PENDING_RESOLUTION_SPEC",
+  "INTERPRETATION_AUTHORIZATION": "PROHIBITED",
+  "NULL_RESULT_READY": "BLOCKED",
+  "PUBLICATION_GATE": "BLOCKED_PENDING_CANDIDATE_RESOLUTION",
+  "SEALED_QUALIFICATION": "BLOCKED_PENDING_RESOLUTION",
+  "SEARCH_READY": "PASS",
+  "WP4_CANDIDATE_READY": "BLOCKED",
+  "campaign": "WP3-MULTI-CAND-v2",
+  "candidate_subspace_count": 1,
+  "corpus_sha256": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+  "generated_utc": "2026-07-21T08:17:10.194295+00:00",
+  "lock_sha256": "f23005c9ba6c9bbd9948abb9354f95bf12757bd4020c9bfd7a7a0b331678f5ff",
+  "publication_reserve": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+  "results_sha256": "c5c3da9f3c30f7758bc6e90a7c751505e21acafe7485e8cdfb363fd59103da61",
+  "schema_version": "1.0",
+  "spec_sha256": "58d5f176170d5813f5f072826e55bb17cae51e4cd12e4cabb773a21a5d423c12",
+  "spectral_partition_consistent": true
+}
