@@ -1,0 +1,696 @@
+{
+  "base_git_commit": "40fe3fecaad56c9f96135698e573ae819c5489aa",
+  "claim": "If and only if the final qualification record is PASS and both the specification lock and full qualification lock verify, WP2-MULTIQ-v1 qualifies the declared fixed-energy extended-canonical three-chart, two-spinor KS atlas for the translation-reduced spatial Newtonian three-body problem. The qualified atlas has one T^2 gauge action per chart, one chart-independent Sundman law dt/ds=r12*r23*r31, canonical quotient transitions on collision-free chart overlaps, and smooth fictitious-time continuation through each isolated binary-collision divisor while the third body remains separated.",
+  "code_snapshot_sha256": "72c81d86644ab5a3c2855ab39ce8fc348ea50200afcc0e6ab6a697ad425f0dc8",
+  "corpus_case_counts": {
+    "calibration": 12,
+    "development": 21,
+    "holdout": 12
+  },
+  "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
+  "downstream_policy": "A PASS authorizes a separately locked WP3 search on this exact multi-chart model. It does not transfer the WP3-UP-v3 null result, authorize a candidate, open a publication reserve, or establish integrability.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP2-MULTIQ-v1",
+      "case_count": 12,
+      "category_counts": {
+        "exact_passage": 2,
+        "generic": 5,
+        "near_binary": 5
+      },
+      "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_identity_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_case_count",
+          "observed": 64,
+          "passed": true,
+          "threshold": 64
+        },
+        {
+          "comparator": ">=",
+          "name": "dimension_and_constraint_count_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_hamiltonian_scaled_max",
+          "observed": 6.41929001274355e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_vector_field_scaled_max",
+          "observed": 5.217862451236752e-16,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "shell_abs_max",
+          "observed": 4.1773782675724526e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_abs_max",
+          "observed": 6.245004513516506e-17,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_lie_abs_max",
+          "observed": 3.0749328864404513e-16,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_hamiltonian_scaled_max",
+          "observed": 3.2095094811002145e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_vector_covariance_scaled_max",
+          "observed": 2.0089743499630123e-15,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_roundtrip_scaled_max",
+          "observed": 2.7755575615628914e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_hamiltonian_scaled_max",
+          "observed": 5.477156027984195e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_time_rate_scaled_max",
+          "observed": 7.806255641895632e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_cocycle_scaled_max",
+          "observed": 4.162440955711033e-12,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "projected_sundman_field_scaled_max",
+          "observed": 7.477084199911093e-16,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "generic_trajectory_scaled_max",
+          "observed": 6.419212547678725e-16,
+          "passed": true,
+          "threshold": 1e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "near_binary_trajectory_scaled_max",
+          "observed": 1.6169910794423892e-14,
+          "passed": true,
+          "threshold": 5e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_limit_scaled_max",
+          "observed": 5.001413813336686e-05,
+          "passed": true,
+          "threshold": 0.0003
+        },
+        {
+          "comparator": ">=",
+          "name": "collision_passage_finite_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_hamiltonian_drift_scaled_max",
+          "observed": 5.616363503534973e-17,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_xi_drift_abs_max",
+          "observed": 1.6263032587282567e-19,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_reference_scaled_max",
+          "observed": 3.6289558448806567e-19,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": ">=",
+          "name": "triple_collision_rejection_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_unseen_scientific_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_triple_collision_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:29:48.341726+00:00",
+      "results_sha256": "eb396ff53e40e359bab6c8d0630080ef50da97699483d33820496119bcb6a800",
+      "schema_version": "1.0",
+      "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP2-MULTIQ-v1",
+      "case_count": 21,
+      "category_counts": {
+        "exact_passage": 3,
+        "generic": 9,
+        "near_binary": 9
+      },
+      "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_identity_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_case_count",
+          "observed": 64,
+          "passed": true,
+          "threshold": 64
+        },
+        {
+          "comparator": ">=",
+          "name": "dimension_and_constraint_count_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_hamiltonian_scaled_max",
+          "observed": 8.881784197001252e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_vector_field_scaled_max",
+          "observed": 5.883924580969339e-16,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "shell_abs_max",
+          "observed": 8.881784197001252e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_abs_max",
+          "observed": 1.942890293094024e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_lie_abs_max",
+          "observed": 3.3306690738754696e-16,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_hamiltonian_scaled_max",
+          "observed": 6.409803243734302e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_vector_covariance_scaled_max",
+          "observed": 1.1102230246251565e-15,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_roundtrip_scaled_max",
+          "observed": 3.3306690738754696e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_hamiltonian_scaled_max",
+          "observed": 2.23965599755252e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_time_rate_scaled_max",
+          "observed": 7.897328624384414e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_cocycle_scaled_max",
+          "observed": 1.1524278365702086e-11,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "projected_sundman_field_scaled_max",
+          "observed": 9.153406084827691e-16,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "generic_trajectory_scaled_max",
+          "observed": 1.2212453270876722e-15,
+          "passed": true,
+          "threshold": 1e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "near_binary_trajectory_scaled_max",
+          "observed": 2.514554937198685e-14,
+          "passed": true,
+          "threshold": 5e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_limit_scaled_max",
+          "observed": 5.1730751485276616e-05,
+          "passed": true,
+          "threshold": 0.0003
+        },
+        {
+          "comparator": ">=",
+          "name": "collision_passage_finite_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_hamiltonian_drift_scaled_max",
+          "observed": 5.406792916153185e-17,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_xi_drift_abs_max",
+          "observed": 8.131516293641283e-20,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_reference_scaled_max",
+          "observed": 3.723704518280297e-19,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": ">=",
+          "name": "triple_collision_rejection_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_unseen_scientific_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_triple_collision_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:29:30.726028+00:00",
+      "results_sha256": "d8073cc210b63c28cf5494c47f33152ca855e4a7026a1fc7259999b7db147d24",
+      "schema_version": "1.0",
+      "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP2-MULTIQ-v1",
+      "case_count": 12,
+      "category_counts": {
+        "exact_passage": 4,
+        "generic": 4,
+        "near_binary": 4
+      },
+      "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "prerequisite_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "symbolic_identity_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_case_count",
+          "observed": 64,
+          "passed": true,
+          "threshold": 64
+        },
+        {
+          "comparator": ">=",
+          "name": "dimension_and_constraint_count_pass_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_hamiltonian_scaled_max",
+          "observed": 1.3877787807814457e-16,
+          "passed": true,
+          "threshold": 5e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "independent_vector_field_scaled_max",
+          "observed": 7.330669404836953e-16,
+          "passed": true,
+          "threshold": 5e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "shell_abs_max",
+          "observed": 2.6288563207402223e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_abs_max",
+          "observed": 2.220446049250313e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "xi_lie_abs_max",
+          "observed": 2.9729162382731433e-16,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_hamiltonian_scaled_max",
+          "observed": 3.3306690738754696e-16,
+          "passed": true,
+          "threshold": 5e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "gauge_vector_covariance_scaled_max",
+          "observed": 5.992790753253216e-16,
+          "passed": true,
+          "threshold": 5e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_roundtrip_scaled_max",
+          "observed": 3.0531133177191805e-16,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_hamiltonian_scaled_max",
+          "observed": 2.059160459332021e-12,
+          "passed": true,
+          "threshold": 2e-10
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_time_rate_scaled_max",
+          "observed": 7.806255641895632e-16,
+          "passed": true,
+          "threshold": 2e-12
+        },
+        {
+          "comparator": "<=",
+          "name": "chart_cocycle_scaled_max",
+          "observed": 1.2883547481491155e-11,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "projected_sundman_field_scaled_max",
+          "observed": 8.363264560961526e-16,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "generic_trajectory_scaled_max",
+          "observed": 8.475899257409416e-16,
+          "passed": true,
+          "threshold": 1e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "near_binary_trajectory_scaled_max",
+          "observed": 3.695456725847327e-14,
+          "passed": true,
+          "threshold": 5e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_limit_scaled_max",
+          "observed": 6.772612422956126e-05,
+          "passed": true,
+          "threshold": 0.0003
+        },
+        {
+          "comparator": ">=",
+          "name": "collision_passage_finite_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_hamiltonian_drift_scaled_max",
+          "observed": 3.806613336873102e-17,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_xi_drift_abs_max",
+          "observed": 1.8973538018496328e-19,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "collision_passage_reference_scaled_max",
+          "observed": 8.069907452901402e-19,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": ">=",
+          "name": "triple_collision_rejection_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_unseen_scientific_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_triple_collision_qualified",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:43:25.278856+00:00",
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "results_sha256": "74c96e9ee8f77426a914158cf20ffe35fcf4025e243097c52dd3faef9594caba",
+      "schema_version": "1.0",
+      "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "The claim covers positive finite masses, zero Xi levels, three central-body charts, collision-free projection to the qualified Newtonian flow, bounded near-collision trajectories, and local passage through every isolated binary channel. It excludes triple collision, any state with two simultaneous pair collisions, nonzero-Xi magnetic reduction, SO(3) reduction, a single unconstrained 24-dimensional three-pair phase space, arbitrary-duration accuracy, completeness outside the frozen corpus, additional first integrals, Liouville or B-integrability, and every WP3/WP4 claim.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp2-multi-validation/results/calibration_evaluation.json",
+      "sha256": "875fde245dadfd0274ad051162ace0dca652b198e3326ff2fc665dcd379c19bd"
+    },
+    "corpus": {
+      "path": "validation-external/wp2-multi-validation/data/qualification_corpus.json",
+      "sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp2-multi-validation/results/development_evaluation.json",
+      "sha256": "028d4fd6d93402f0e79e378966b591da124fa433bc1ebefc900bda7434bcc0e2"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp2-multi-validation/results/holdout_evaluation.json",
+      "sha256": "e479fbcc96849391e40fe004c801daef1845ce0a739aa8a4d748cb5eb8ca25b9"
+    },
+    "lock": {
+      "path": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json",
+      "sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp2-multi-validation/sources/manifest.json",
+      "sha256": "28cf6c726ea4cff306efaa8d18f2e15e76875eea84eff891721aa9892552e262"
+    },
+    "spec": {
+      "path": "validation-external/wp2-multi-validation/qualification_spec.json",
+      "sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81"
+    }
+  },
+  "evidence_git_commit": "4d41cf119e42146ffd3e733985722cd4a907ab13",
+  "generated_utc": "2026-07-21T04:43:50.880570+00:00",
+  "holdout_ids_sha256": "e8bb99a37862cd3668737241483743c76555cd5d7fe3112b99dac0a8c9addcfb",
+  "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+  "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+  "record_payload_sha256": "c8df63c81f0688eefeb4838a09c1e28091327ce46089fbcaabb4152fcf27a589",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "28cf6c726ea4cff306efaa8d18f2e15e76875eea84eff891721aa9892552e262",
+  "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+  "status": "PASS"
+}
