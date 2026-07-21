@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-MULTIQ-v1",
+  "mathematical_sources": [
+    {
+      "title": "A global regularization of the gravitational N-body problem",
+      "author": "D. C. Heggie",
+      "year": 1974,
+      "doi": "10.1007/BF01227791",
+      "consumed_identity": "The global product-distance time transform and increased canonical relative-coordinate phase space."
+    },
+    {
+      "title": "A regularization of the three-body problem",
+      "authors": "S. J. Aarseth and K. Zare",
+      "year": 1974,
+      "doi": "10.1007/BF01227619",
+      "consumed_identity": "Two canonical relative vectors, their KS lifts, and the mixed kinetic term."
+    },
+    {
+      "title": "Interpreting the Kustaanheimo-Stiefel transform in gravitational dynamics",
+      "author": "J. M. H. Peters",
+      "year": 2009,
+      "doi": "10.1111/j.1365-2966.2009.15315.x",
+      "consumed_identity": "Modern derivation of canonical KS momentum and three-body mixed terms."
+    }
+  ],
+  "independent_derivative_backend": "JAX x64 automatic differentiation of a separately encoded scalar Hamiltonian",
+  "external_physical_backend": "REBOUND IAS15 inherited only through explicit replayed checkpoints; no collision regularization claim is inherited.",
+  "collision_boundary": "Heggie's result excludes simultaneous collisions of more than one pair; for three bodies this is triple collision."
+}

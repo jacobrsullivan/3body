@@ -1,0 +1,200 @@
+{
+  "campaign": "WP2-MULTIQ-v1",
+  "case_count": 21,
+  "category_counts": {
+    "exact_passage": 3,
+    "generic": 9,
+    "near_binary": 9
+  },
+  "corpus_sha256": "eef6bddd26de3e0e1bccefe3187ac9ba95abc5511afcb8ff133f0a77d7a5bca2",
+  "gates": [
+    {
+      "comparator": ">=",
+      "name": "case_success_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "prerequisite_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "symbolic_identity_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": ">=",
+      "name": "dimension_and_constraint_count_pass_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "independent_hamiltonian_scaled_max",
+      "observed": 8.881784197001252e-16,
+      "passed": true,
+      "threshold": 5e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "independent_vector_field_scaled_max",
+      "observed": 5.883924580969339e-16,
+      "passed": true,
+      "threshold": 5e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "shell_abs_max",
+      "observed": 8.881784197001252e-16,
+      "passed": true,
+      "threshold": 5e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_abs_max",
+      "observed": 4.440892098500626e-16,
+      "passed": true,
+      "threshold": 5e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "xi_lie_abs_max",
+      "observed": 3.3306690738754696e-16,
+      "passed": true,
+      "threshold": 5e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "gauge_hamiltonian_scaled_max",
+      "observed": 1.1102230246251565e-15,
+      "passed": true,
+      "threshold": 5e-11
+    },
+    {
+      "comparator": "<=",
+      "name": "gauge_vector_covariance_scaled_max",
+      "observed": 1.481789262378286e-15,
+      "passed": true,
+      "threshold": 5e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "chart_roundtrip_scaled_max",
+      "observed": 3.3306690738754696e-16,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "chart_hamiltonian_scaled_max",
+      "observed": 4.874789984112178e-12,
+      "passed": true,
+      "threshold": 2e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "chart_time_rate_scaled_max",
+      "observed": 7.897328624384414e-16,
+      "passed": true,
+      "threshold": 2e-12
+    },
+    {
+      "comparator": "<=",
+      "name": "chart_cocycle_scaled_max",
+      "observed": 5.551115123125783e-16,
+      "passed": true,
+      "threshold": 2e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "projected_sundman_field_scaled_max",
+      "observed": 9.153406084827691e-16,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "generic_trajectory_scaled_max",
+      "observed": 1.2212453270876722e-15,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "near_binary_trajectory_scaled_max",
+      "observed": 5.5782982431830976e-14,
+      "passed": true,
+      "threshold": 5e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "collision_limit_scaled_max",
+      "observed": 7.386708122608856e-05,
+      "passed": true,
+      "threshold": 0.0003
+    },
+    {
+      "comparator": ">=",
+      "name": "collision_passage_finite_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "<=",
+      "name": "collision_passage_hamiltonian_drift_scaled_max",
+      "observed": 5.406792916153185e-17,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "collision_passage_xi_drift_abs_max",
+      "observed": 1.3552527156068805e-19,
+      "passed": true,
+      "threshold": 2e-08
+    },
+    {
+      "comparator": "<=",
+      "name": "collision_passage_reference_scaled_max",
+      "observed": 3.737834253284247e-19,
+      "passed": true,
+      "threshold": 2e-07
+    },
+    {
+      "comparator": ">=",
+      "name": "triple_collision_rejection_rate",
+      "observed": 1.0,
+      "passed": true,
+      "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "structural_unseen_scientific_holdout",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "==",
+      "name": "structural_triple_collision_qualified",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    }
+  ],
+  "generated_utc": "2026-07-21T04:01:22.331490+00:00",
+  "results_sha256": "d60d0a71e35f79a884b2b791be0917e6632aac1d7b885add03c72b98404b821c",
+  "schema_version": "1.0",
+  "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+  "split": "development",
+  "status": "PASS"
+}
