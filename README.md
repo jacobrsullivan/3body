@@ -158,6 +158,12 @@ multi-chart records are under
   WP3 replay has byte-identical input matrices, zero candidates, and a guarded
   lower bound within `3.50e-14` of the authoritative run; older-stack NumPy
   warnings are disclosed in `notes/wp3-up-cand-v3-bobs-parity.md`.
+- The same host verifies the WP1-CAT-N3BP-v1, WP2-MULTIQ-v1, and
+  WP3-MULTI-CAND-v1 locks and passes the 235/235 multi-chart dependency-chain
+  tests. Its Python 3.11/NumPy 2.2 runtime does not match the frozen decision
+  runtime, so the search was not replayed and this is non-voting portability
+  evidence. Thirty older-stack matmul warnings are disclosed in
+  `notes/wp3-multi-cand-v1-bobs-parity.md`.
 
 ---
 

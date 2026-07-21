@@ -61,3 +61,7 @@ created, sealed execution is prohibited, and WP4 candidate validation is
 
 The WP1, WP2, and WP3 locks all verify after finalization. A 235-test local
 dependency-chain regression suite passed under the exact decision runtime.
+Supplemental bobs-mini parity verifies the same locks and passes the same
+235-test suite without replaying the numerical decision; its runtime mismatch
+and older-stack warnings are recorded in
+`notes/wp3-multi-cand-v1-bobs-parity.md`.
