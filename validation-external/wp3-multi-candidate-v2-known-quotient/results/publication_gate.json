@@ -1,0 +1,22 @@
+{
+  "CANDIDATE_READY": "NOT_TRIGGERED",
+  "INTERPRETATION_AUTHORIZATION": "BOUNDED_NULL_ONLY",
+  "NULL_RESULT_READY": "PASS",
+  "PUBLICATION_GATE": "PASS_BOUNDED_NULL_ONLY",
+  "SEARCH_READY": "PASS",
+  "all_domains_certify_no_eligible_direction": true,
+  "campaign": "WP3-MULTI-CAND-v2-KQ-v1",
+  "candidate_subspace_count": 0,
+  "generated_utc": "2026-07-21T08:57:38.707640+00:00",
+  "lock_sha256": "c06fda96cd54574aa3a19b1a519268960450ea0b967c134516fed3ea67fcd9a7",
+  "publication_reserve": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "qualification_id": "WP3-MULTI-CAND-v2-KQ-v1-514be9de7232",
+  "results_sha256": "240b9daef5afa087aae911691966fb1428e1d0edaa920f10abdac027806ecbcc",
+  "schema_version": "1.0",
+  "spec_sha256": "21fa173e9f45196be51be1fe861180875c7f7b84363cda13876a866e7edb67b5"
+}
