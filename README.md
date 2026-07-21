@@ -25,15 +25,15 @@ This project systematically tests this hypothesis through:
 |--------------|-------------|--------|------------|
 | **WP1** | High-Precision Infrastructure | Qualified (scoped) | WP1-CAT-N3BP-v1 qualifies native production of one 169-member planar N3BP family in full 18D states; other families and a general catalogue remain open |
 | **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | WP2-MULTIQ-v1 qualifies a three-chart fixed-energy KS atlas with continuation through every isolated binary-collision channel; triple collision and broader reductions remain open |
-| **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-UP-CAND-v3 excludes training-eligible directions in its frozen degree-three quotient; this is not a no-integral or non-integrability theorem |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Harness qualified | WP4-UP-READY-v3 passes 30/30 known/false/dependent control gates; candidate and Morales-Ramis stages were not triggered |
+| **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-MULTI-CAND-v1 excludes training-eligible directions in its frozen shared multi-chart degree-three quotient; this is not a no-integral or non-integrability theorem |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Harness qualified; new-model run not triggered | WP4-UP-READY-v3 passes 30/30 old-model control gates; WP3-MULTI-CAND-v1 produced no candidate, so candidate-specific qualification and WP4 were not triggered on WP2-MULTIQ-v1 |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
 into a claim of integrability or a complete/general periodic-orbit catalogue.
 See `notes/wp2-multi-wp1-cat-n3bp-result.md`, `notes/wp1-wp2-model-boundary.md`,
-`notes/wp3-up-cand-v3-result.md`, and
+`notes/wp3-multi-cand-v1-result.md`, and
 `notes/wp4-upstairs-v3-readiness-result.md` for the exact boundaries.
 
 ### Current WP1 Evidence
@@ -128,24 +128,31 @@ multi-chart records are under
 - `WP3-UP-CAND-v2` is retained as negative-control evidence only. It failed to
   quotient exact parameter-weighted angular momenta and therefore does not
   establish its advertised finite-library null result.
-- `WP3-UP-CAND-v3` replaces approximate value-identity removal with an exact
+- `WP3-UP-CAND-v3` replaced approximate value-identity removal with an exact
   rank-30 coefficient quotient: 18 generators of the degree-three `Xi=0`
   constraint ideal and 12 represented angular-momentum parameter-module
   generators. `WP3-UP-CAND-v3-2979adbb0597` passed 15/15 readiness gates and
   produced a basis-invariant bounded null: its backend-guarded minimum
   generalized singular value is `1.63949e-4`, versus the `1e-10` candidate
   threshold, across all 1,090 observable quotient directions.
-- That bounded-null search is tied to `WP2-UPQ-v2`, the older one-channel
-  model. It is not evidence about `WP2-MULTIQ-v1`; a separately locked
-  multi-chart WP3 campaign is required before interpreting invariants on the
-  newly qualified atlas.
-- The v3 candidate gate is `NOT_TRIGGERED_NO_CANDIDATE`; the 24-case
-  publication reserve remains sealed and no candidate interpretation is
-  authorized.
+- That older bounded-null search remains tied to `WP2-UPQ-v2`, the one-channel
+  model. It is retained as scoped historical evidence rather than transferred
+  to the newer atlas.
+- `WP3-MULTI-CAND-v1-225359a13711` is the authoritative search on
+  `WP2-MULTIQ-v1-72c81d86644a`. It passed 21/21 readiness gates and evaluated
+  all 1,468 directions left after exact removal of the rank-52 represented
+  known module from a 1,520-feature shared three-chart library. Its smallest
+  generalized singular value is `8.98980e-2`; the backend-guarded lower bound
+  is `8.98479e-2`, versus the frozen `1e-10` candidate threshold.
+- The multi-chart publication gate is `PASS_BOUNDED_NULL_ONLY`. It authorizes
+  only the finite-library bounded null: zero candidate subspaces survived, the
+  24-case reserve remains `SEALED_UNEXECUTED`, candidate-specific qualification
+  is `NOT_TRIGGERED_NO_CANDIDATE`, and WP4 is likewise not triggered.
 - `WP4-UP-READY-v3-696827675bff` is the authoritative control-harness result.
   It passes 30/30 gates while binding the exact WP2-UP-v2 and WP3-v3 records.
-  It is harness-readiness evidence only; no candidate, Morales-Ramis, or
-  integrability result was produced.
+  It is harness-readiness evidence only and is not a WP4 result on
+  `WP2-MULTIQ-v1`; no candidate, Morales-Ramis, or integrability result was
+  produced.
 - A clean bobs-mac-mini checkout verifies the WP1-CAT, WP3-v3, and WP4-v3
   records and passes 42/42 applicable tests. Its explicitly non-decision full
   WP3 replay has byte-identical input matrices, zero candidates, and a guarded
@@ -247,13 +254,14 @@ The qualified foundation is deliberately narrower than the project hypothesis.
 
 Multi-method search for hidden conserved quantities.
 
-The prior parameter-aware campaign is invalidated: it failed a known-control
-recovery audit. The authoritative v3 campaign removes the exact represented
-known module before generalized Lie/value screening and uses a guarded
-minimum-singular-value certificate, so a null cannot depend on an arbitrary
-SVD basis. It found no training-eligible direction in the frozen degree-three
-quotient. That bounded finite-library null does not imply that no additional
-first integral exists.
+The prior parameter-aware campaign is invalidated because it failed a
+known-control recovery audit. The authoritative multi-chart campaign removes
+the exact represented known module before generalized Lie/value screening,
+requires both gauge generators and chart-overlap agreement, and uses a guarded
+minimum-singular-value certificate so a null cannot depend on an arbitrary SVD
+basis. It found no training-eligible direction in the frozen shared
+degree-three quotient. That bounded finite-library null does not imply that no
+additional first integral exists.
 
 - **Symbolic Regression**: Spinor basis (~80 functions), elliptic functions (sn, cn, dn), theta functions
 - **Machine Learning**: Hamiltonian Neural Networks, SINDy
@@ -263,10 +271,11 @@ first integral exists.
 
 Three-stage validation pipeline for candidate integrals:
 
-The authoritative v3 readiness campaign verifies the control harness against
-known, false, and dependent controls while binding the corrected WP3-v3 null
-chain. Candidate-specific and Morales-Ramis stages remain intentionally
-unexecuted because WP3 produced no candidate subspace.
+The authoritative v3 readiness campaign verifies the old-model control harness
+against known, false, and dependent controls while binding the corrected
+one-channel WP3-v3 null chain. The newer multi-chart WP3 campaign also produced
+no candidate subspace, so no candidate-specific or Morales-Ramis stage was
+triggered for the qualified multi-chart model.
 
 1. **Analytical Vetting (WP4.1)**: Poisson brackets {I, H} = 0, involution tests, functional independence
 2. **Morales-Ramis Test (WP4.2)**: Differential Galois theory obstruction
