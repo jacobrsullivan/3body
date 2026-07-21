@@ -1,0 +1,726 @@
+{
+  "base_git_commit": "3418eebbf4f14a48a9cae9d4cddd586f5f87f92a",
+  "claim": "If and only if the final qualification record is PASS and both the specification lock and full qualification lock verify, WP1-CAT-N3BP-v1 qualifies the declared native correction-and-continuation path to generate a 169-member catalogue of one connected planar bABabaBAba Newtonian three-body family on the frozen two-dimensional mass grid. Every member is stored in the qualified full 18-dimensional barycentric inertial state contract, closes over one corrected period, carries bounded invariant and reduced-planar Floquet diagnostics, and is evaluated one-to-one at the same masses against the pinned Li-Li-Liao/SJTU catalogue without using those evaluation rows as continuation seeds.",
+  "code_snapshot_sha256": "605c6dbd59d1b30b7fb174b0b4d59451bb6027bb49452e7c5b3de925102d5429",
+  "corpus_case_counts": {
+    "calibration": 42,
+    "development": 84,
+    "holdout": 42
+  },
+  "corpus_sha256": "e97a0a51f363e2fe2aee1f3db90e2751a4d0bc79483333cecbc908447c2c9374",
+  "downstream_policy": "A PASS supplies a bounded full-state periodic trajectory family for future WP2/WP3 experiments. It does not widen WP2's model qualification and must not be cited as evidence for catalogue completeness or root discovery.",
+  "evaluation_status": {
+    "calibration": "PASS",
+    "development": "PASS",
+    "holdout": "PASS"
+  },
+  "evaluations": {
+    "calibration": {
+      "campaign": "WP1-CAT-N3BP-v1",
+      "case_count": 42,
+      "corpus_sha256": "e97a0a51f363e2fe2aee1f3db90e2751a4d0bc79483333cecbc908447c2c9374",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "rebound_case_count",
+          "observed": 4,
+          "passed": true,
+          "threshold": 4
+        },
+        {
+          "comparator": "==",
+          "name": "candidate_count",
+          "observed": 169,
+          "passed": true,
+          "threshold": 169
+        },
+        {
+          "comparator": ">=",
+          "name": "candidate_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "external_seed_count",
+          "observed": 1,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "evaluation_row_used_as_seed_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_scaled_max",
+          "observed": 3.122304023033764e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_scaled_max",
+          "observed": 1.4279911420821732e-10,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 3.83045031087027e-11,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 2.9617814647228818e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 1.961343098207472e-12,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.1113346374564718,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": ">=",
+          "name": "exact_mass_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_p95",
+          "observed": 2.961694545422022e-11,
+          "passed": true,
+          "threshold": 2e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_max",
+          "observed": 3.2063843195189743e-11,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_p95",
+          "observed": 1.672939073196248e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_max",
+          "observed": 2.23686481538045e-11,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_classified_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.95
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_label_agreement",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_symplectic_defect_max",
+          "observed": 1.0125300089495577e-06,
+          "passed": true,
+          "threshold": 2e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_reciprocal_pair_error_max",
+          "observed": 8.090058060591203e-09,
+          "passed": true,
+          "threshold": 0.0002
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 2.768890652439981e-10,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 4.1655532181512615e-09,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": ">=",
+          "name": "partition_disjoint_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "one_to_one_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_blind_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_independent_root_discovery",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_general_n3bp_catalogue",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:42:22.154240+00:00",
+      "rebound_case_count": 4,
+      "results_sha256": "c2a71e6e4602933e18751aff4db53358f79f1138588a2918e3d73f3bafc99621",
+      "schema_version": "1.0",
+      "spec_sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14",
+      "split": "calibration",
+      "status": "PASS"
+    },
+    "development": {
+      "campaign": "WP1-CAT-N3BP-v1",
+      "case_count": 84,
+      "corpus_sha256": "e97a0a51f363e2fe2aee1f3db90e2751a4d0bc79483333cecbc908447c2c9374",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "rebound_case_count",
+          "observed": 4,
+          "passed": true,
+          "threshold": 4
+        },
+        {
+          "comparator": "==",
+          "name": "candidate_count",
+          "observed": 169,
+          "passed": true,
+          "threshold": 169
+        },
+        {
+          "comparator": ">=",
+          "name": "candidate_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "external_seed_count",
+          "observed": 1,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "evaluation_row_used_as_seed_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_scaled_max",
+          "observed": 3.822159518183265e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_scaled_max",
+          "observed": 1.469823373546388e-10,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 4.095624908381995e-11,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 3.034648883026856e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 2.5805832542901526e-12,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.11189125511325924,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": ">=",
+          "name": "exact_mass_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_p95",
+          "observed": 2.973034028716322e-11,
+          "passed": true,
+          "threshold": 2e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_max",
+          "observed": 3.0810440064853975e-11,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_p95",
+          "observed": 1.5572692785842272e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_max",
+          "observed": 2.1989121098784164e-11,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_classified_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.95
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_label_agreement",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_symplectic_defect_max",
+          "observed": 1.0125300089495577e-06,
+          "passed": true,
+          "threshold": 2e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_reciprocal_pair_error_max",
+          "observed": 8.090058060591203e-09,
+          "passed": true,
+          "threshold": 0.0002
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 3.601707660500728e-10,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 5.481512005834723e-09,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": ">=",
+          "name": "partition_disjoint_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "one_to_one_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_blind_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_independent_root_discovery",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_general_n3bp_catalogue",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:42:12.626735+00:00",
+      "rebound_case_count": 4,
+      "results_sha256": "b46d633d6fda55bf75dd0cbda5a266b78b9b1a7335bf1c19fd029dd43f65db24",
+      "schema_version": "1.0",
+      "spec_sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14",
+      "split": "development",
+      "status": "PASS"
+    },
+    "holdout": {
+      "campaign": "WP1-CAT-N3BP-v1",
+      "case_count": 42,
+      "corpus_sha256": "e97a0a51f363e2fe2aee1f3db90e2751a4d0bc79483333cecbc908447c2c9374",
+      "gates": [
+        {
+          "comparator": ">=",
+          "name": "case_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "rebound_case_count",
+          "observed": 4,
+          "passed": true,
+          "threshold": 4
+        },
+        {
+          "comparator": "==",
+          "name": "candidate_count",
+          "observed": 169,
+          "passed": true,
+          "threshold": 169
+        },
+        {
+          "comparator": ">=",
+          "name": "candidate_success_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "==",
+          "name": "external_seed_count",
+          "observed": 1,
+          "passed": true,
+          "threshold": 1
+        },
+        {
+          "comparator": "==",
+          "name": "evaluation_row_used_as_seed_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_position_scaled_max",
+          "observed": 3.1111156009989807e-11,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "closure_velocity_scaled_max",
+          "observed": 1.4279911420821732e-10,
+          "passed": true,
+          "threshold": 2e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "relative_energy_drift_max",
+          "observed": 4.2141808682313195e-11,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": "<=",
+          "name": "linear_momentum_drift_scaled_max",
+          "observed": 2.9160062719695132e-15,
+          "passed": true,
+          "threshold": 2e-11
+        },
+        {
+          "comparator": "<=",
+          "name": "angular_momentum_drift_scaled_max",
+          "observed": 2.198218457508102e-12,
+          "passed": true,
+          "threshold": 2e-09
+        },
+        {
+          "comparator": ">=",
+          "name": "minimum_pair_separation_scaled_min",
+          "observed": 0.11220981972575439,
+          "passed": true,
+          "threshold": 0.01
+        },
+        {
+          "comparator": ">=",
+          "name": "exact_mass_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_p95",
+          "observed": 2.7925420091104674e-11,
+          "passed": true,
+          "threshold": 2e-06
+        },
+        {
+          "comparator": "<=",
+          "name": "external_parameter_error_max",
+          "observed": 3.759151004361935e-11,
+          "passed": true,
+          "threshold": 1e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_p95",
+          "observed": 1.8893079617603686e-11,
+          "passed": true,
+          "threshold": 2e-07
+        },
+        {
+          "comparator": "<=",
+          "name": "external_period_relative_error_max",
+          "observed": 2.0090750495351858e-11,
+          "passed": true,
+          "threshold": 1e-06
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_classified_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 0.95
+        },
+        {
+          "comparator": ">=",
+          "name": "planar_stability_label_agreement",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_symplectic_defect_max",
+          "observed": 1.0125300089495577e-06,
+          "passed": true,
+          "threshold": 2e-05
+        },
+        {
+          "comparator": "<=",
+          "name": "monodromy_reciprocal_pair_error_max",
+          "observed": 8.090058060591203e-09,
+          "passed": true,
+          "threshold": 0.0002
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_position_error_scaled_max",
+          "observed": 3.3008395389963224e-10,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": "<=",
+          "name": "dop853_rebound_velocity_error_scaled_max",
+          "observed": 4.890270387874036e-09,
+          "passed": true,
+          "threshold": 3e-08
+        },
+        {
+          "comparator": ">=",
+          "name": "partition_disjoint_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": ">=",
+          "name": "one_to_one_match_rate",
+          "observed": 1.0,
+          "passed": true,
+          "threshold": 1.0
+        },
+        {
+          "comparator": "<=",
+          "name": "duplicate_count",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_blind_holdout",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_independent_root_discovery",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        },
+        {
+          "comparator": "==",
+          "name": "structural_general_n3bp_catalogue",
+          "observed": 0,
+          "passed": true,
+          "threshold": 0
+        }
+      ],
+      "generated_utc": "2026-07-21T04:43:37.751645+00:00",
+      "lock_sha256": "fde5e484ada224c64083b5695750bf1ec780a99b5ccd61e7324fc89b0ee0f191",
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "rebound_case_count": 4,
+      "results_sha256": "f98de23f1a2eade70c7e6a0a243525c761f97638010b7932d0bc1a895f747287",
+      "schema_version": "1.0",
+      "spec_sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14",
+      "split": "holdout",
+      "status": "PASS"
+    }
+  },
+  "evidence_boundary": "Generation starts from one explicitly disclosed rounded equal-mass root published by Li, Li, and Liao; v1 therefore qualifies native correction, two-parameter continuation, full-state catalogue production, and external family-surface conformance, not independent discovery of the root. The external table is public and the holdout is execution-reserved rather than blind. The claim excludes other topologies or disconnected families, spatial orbit generation, relative-periodic orbits, collision passage, folds or bifurcations, pseudo-arclength continuation, nonlinear or spatial stability, completeness, arbitrary masses or scale, and a general production catalogue for the full three-body problem.",
+  "evidence_files": {
+    "calibration_evaluation": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/results/calibration_evaluation.json",
+      "sha256": "e04c914c8b781eb709bd904c05572bc392706871adb2ba2c9acd085c80d2956b"
+    },
+    "corpus": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/data/qualification_corpus.json",
+      "sha256": "e97a0a51f363e2fe2aee1f3db90e2751a4d0bc79483333cecbc908447c2c9374"
+    },
+    "development_evaluation": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/results/development_evaluation.json",
+      "sha256": "f60c6a329b2e70021f21eab9a4925b9202da37b1a111f1e863274397a55cbd0c"
+    },
+    "holdout_evaluation": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/results/holdout_evaluation.json",
+      "sha256": "4021efda4d93c7e868d317f28d5dfa79fe858de03a235e292e6d92015e759e82"
+    },
+    "lock": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json",
+      "sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998"
+    },
+    "source_manifest": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/sources/manifest.json",
+      "sha256": "7c8f8806edeecd9ddd28de644a590abc4521e49756091967451913dc028f9f95"
+    },
+    "spec": {
+      "path": "validation-external/wp1-catalogue-n3bp-validation/qualification_spec.json",
+      "sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14"
+    }
+  },
+  "evidence_git_commit": "0418166f8bef699850c72b0c8acdec0c8cebb54e",
+  "generated_utc": "2026-07-21T04:44:06.833846+00:00",
+  "holdout_ids_sha256": "5c51f0f0cabf776e48cc478397911cf69a3cd0dcd2a239667c14d773cee776b0",
+  "lock_sha256": "fde5e484ada224c64083b5695750bf1ec780a99b5ccd61e7324fc89b0ee0f191",
+  "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+  "record_payload_sha256": "4d0a300ca34c8cce0d8653ea7a0134c39ca23723cc8c84a7e4a045746e0c703a",
+  "runtime_at_freeze": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "7c8f8806edeecd9ddd28de644a590abc4521e49756091967451913dc028f9f95",
+  "spec_sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14",
+  "status": "PASS"
+}
