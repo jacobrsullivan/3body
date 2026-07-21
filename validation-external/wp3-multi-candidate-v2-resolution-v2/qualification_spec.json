@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2-RES-v2",
+  "specification_status": "LOCKABLE_CORRECTIVE_PROTOCOL_AFTER_DISCLOSED_CANDIDATE_ACCESS",
+  "purpose": "Determine whether the single WP3-MULTI-CAND-v2 spectral direction is an alternate feature representation of the known total-angular-momentum-squared function, without opening the publication reserve.",
+  "post_access_disclosure": "WP3-MULTI-CAND-v2-RES-v1 lawfully accessed the candidate after its specification and implementation locks. Its result exposed that raw coefficient projection is not representation-invariant in a library with a 173-dimensional value-nuisance kernel. Exploratory diagnostics then found a candidate/L^2 value scale near -7.498053921436332. This corrected protocol is confirmatory, not blind discovery, and predeclares held-out and independent-precision tests before implementation.",
+  "evidence_boundary": "A KNOWN_L2_FUNCTION_EQUIVALENCE result establishes only that the frozen numerical candidate and replicated rank-one directions evaluate as scalar multiples of the already known L^2 observable over the declared source and challenge domains. It does not prove a global symbolic coefficient identity, discover a new invariant, authorize publication-reserve access, or convert the original search into a bounded-null result. It requires a separately locked successor search that removes the observable L^2 equivalence class. An UNRESOLVED result preserves the original search as spectrally unresolved.",
+  "prerequisites": {
+    "wp3_multi_v2": {
+      "qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+      "results_file": "validation-external/wp3-multi-candidate-v2/results/search_results.json",
+      "results_sha256": "c5c3da9f3c30f7758bc6e90a7c751505e21acafe7485e8cdfb363fd59103da61",
+      "publication_gate_file": "validation-external/wp3-multi-candidate-v2/results/publication_gate.json",
+      "publication_gate_sha256": "3a4ac1ad72dfab88d15d5f3497dc9a3c119a53abd6ff0cf2e26039cb1baeaada"
+    },
+    "superseded_resolution_v1": {
+      "qualification_id": "WP3-MULTI-CAND-v2-RES-v1-31a9c87feb72",
+      "assessment_file": "validation-external/wp3-multi-candidate-v2-resolution-v2/reports/wp3_multi_v2_resolution_v1_protocol_assessment.json",
+      "expected_status": "SUPERSEDED_PROTOCOL_NONCONFORMANT",
+      "result_file": "validation-external/wp3-multi-candidate-v2-resolution/results/resolution_results.json",
+      "result_sha256": "fa631e9d09384036df869af9eccf21ee8bc4e4d396bd9f4acacb89bad8500c9b"
+    },
+    "challenge_corpus": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/data/challenge_corpus.json",
+      "sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+      "case_count": 192,
+      "development_count": 128,
+      "calibration_count": 64,
+      "planar_count": 96,
+      "spatial_count": 96
+    },
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "candidate_access_policy": {
+    "prior_coefficient_access": "DISCLOSED_AND_PINNED_IN_SUPERSEDED_V1_RESULT",
+    "corrected_interpretation": "AUTHORIZED_ONLY_AFTER_THIS_SPECIFICATION_AND_ITS_IMPLEMENTATION_ARE_LOCKED",
+    "publication_reserve_access": "PROHIBITED",
+    "morales_ramis_track_use": "PROHIBITED_AS_CANDIDATE_VALIDATION"
+  },
+  "resolution_protocol": {
+    "integrity": "Verify every pinned prerequisite and byte-rebuild all four frozen source matrices.",
+    "training_fit": "Fit one zero-intercept scalar from the candidate value response to the analytic L^2 value response using only frozen training weights.",
+    "held_scale": "Hold the training scalar fixed for calibration and challenge value and Lie-response residuals; report independently fitted split scales only as a stability diagnostic.",
+    "backend_equivalence": "Recompute the rank-one direction with NumPy SVD and SciPy LAPACK gesdd and gesvd, then compare centered observable response vectors, not coefficient representatives, on training, calibration, and challenge states.",
+    "physical_reference": "Compute L^2 independently from sum_i q_i cross (m_i v_i), both in binary64 and from exact-rational challenge inputs with a source-disjoint mpmath implementation at 80 decimal digits.",
+    "known_direction_decision": "Require the committed and every replicated response to satisfy the same held-out L^2 equivalence gates. Raw coefficient cosines are reported but are never gates.",
+    "reserve": "Do not read, materialize, or execute any publication-reserve source row."
+  },
+  "thresholds": {
+    "matrix_byte_identity_required": true,
+    "training_candidate_l2_relative_value_rms_max": 1e-10,
+    "calibration_candidate_l2_relative_value_rms_max": 1e-10,
+    "challenge_candidate_l2_relative_value_rms_max": 1e-10,
+    "split_scale_relative_spread_max": 1e-10,
+    "held_scale_lie_rms_max": 1e-9,
+    "held_scale_lie_abs_max": 1e-7,
+    "backend_centered_response_projection_min": 0.999999999,
+    "backend_l2_relative_value_rms_max": 1e-9,
+    "production_physical_l2_relative_difference_max": 1e-12,
+    "mpmath_feature_physical_l2_relative_difference_max": 1e-10,
+    "mpmath_candidate_l2_relative_value_rms_max": 1e-10
+  },
+  "decision_policy": {
+    "KNOWN_L2_FUNCTION_EQUIVALENCE": "Every integrity, held-scale, backend-response, physical-reference, and independent-precision gate passes. Freeze a successor observable-known-quotient search before drawing a null conclusion.",
+    "UNRESOLVED": "Any scientific equivalence gate fails. Preserve the original spectral candidate and open no reserve.",
+    "INVALID": "Any prerequisite, lock, matrix-integrity, implementation, or reserve-integrity check fails."
+  }
+}

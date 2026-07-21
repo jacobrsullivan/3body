@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2-RES-v1",
+  "status": "SUPERSEDED_PROTOCOL_NONCONFORMANT",
+  "assessed_utc": "2026-07-21T08:38:08Z",
+  "qualification_id": "WP3-MULTI-CAND-v2-RES-v1-31a9c87feb72",
+  "reported_decision": "REJECTED_NUMERICAL_OR_GENERALIZATION_ARTIFACT",
+  "claim_authorization": "NONE",
+  "scientific_result_may_not_be_used": true,
+  "publication_reserve_accessed": false,
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "pinned_files": {
+    "specification": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/qualification_spec.json",
+      "sha256": "2afc2856c5e8cac11115b8f9b49289f12c9edf7d3e92824b3ec9c222bcfdde97"
+    },
+    "specification_lock": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/reports/wp3_multi_v2_resolution_specification_lock.json",
+      "sha256": "deb72cbc029b1d43fd0298b323e8e842bd3bdcd0142307b6821bd44f86c7ca21"
+    },
+    "implementation_lock": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/reports/wp3_multi_v2_resolution_lock.json",
+      "sha256": "75173473dcf37e353bf6562755e11cd00b8967240d72886c61dd8c8985c723f5"
+    },
+    "result": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/results/resolution_results.json",
+      "sha256": "fa631e9d09384036df869af9eccf21ee8bc4e4d396bd9f4acacb89bad8500c9b"
+    },
+    "implementation": {
+      "path": "validation-external/wp3-multi-candidate-v2-resolution/scripts/run_resolution.py",
+      "sha256": "3c51c6704931f5ea4b703dc8f857fb74551229dd6cff965831e7a40d18a38f11"
+    }
+  },
+  "nonconformities": [
+    {
+      "id": "NONUNIQUE_COEFFICIENT_REPRESENTATIVE",
+      "detail": "The implementation compared raw normalized coefficient vectors even though the frozen result reports a 173-dimensional value-nuisance nullspace. Coefficient projection is therefore not invariant under feature representations of the same observable function."
+    },
+    {
+      "id": "INCOMPLETE_KNOWN_DIRECTION_TEST",
+      "detail": "The locked specification required tests against angular momentum squared, exact Reynolds identities, constants on the fixed-energy surface, and any reconstructed exact formula. The implementation tested only Euclidean coefficient projection against one angular-momentum-squared representative."
+    },
+    {
+      "id": "NONINVARIANT_CARRIED_DIAGNOSTIC",
+      "detail": "The carried family-fold diagnostic also projected coefficient representatives rather than observable response subspaces, so its failure cannot distinguish a new direction from a nullspace-shifted known direction."
+    }
+  ],
+  "nonqualifying_trigger_observation": {
+    "purpose": "Motivate a corrected predeclared protocol; these values are not themselves qualification evidence.",
+    "candidate_to_angular_momentum_squared_scale": -7.498053921436332,
+    "training_relative_value_rms": 9.42976981107296e-13,
+    "calibration_relative_value_rms": 6.273056935949041e-13,
+    "challenge_relative_value_rms": 2.0636929317250664e-13,
+    "raw_coefficient_cosine": 0.0010519715454380659
+  },
+  "successor": "WP3-MULTI-CAND-v2-RES-v2",
+  "required_remediation": "Resolve the candidate in observable function space with a training-only fitted scale, held-out response checks, source-disjoint high-precision physical angular momentum, and backend comparisons modulo the full value-nuisance representation kernel."
+}

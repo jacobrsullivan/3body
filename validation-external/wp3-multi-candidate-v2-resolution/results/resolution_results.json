@@ -1,0 +1,1321 @@
+{
+  "backend_replication": {
+    "generalized_singular_relative_spread": 0.1720424717525292,
+    "subspace_projection_min": 0.06532661371746817,
+    "summaries": [
+      {
+        "committed_subspace_projection": 0.06532661371746817,
+        "driver": "numpy",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "committed_subspace_projection": 0.06532661371747216,
+        "driver": "gesdd",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "committed_subspace_projection": 0.21555935122929834,
+        "driver": "gesvd",
+        "generalized_singular_value": 8.173061244118182e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      }
+    ]
+  },
+  "campaign": "WP3-MULTI-CAND-v2-RES-v1",
+  "candidate_expression_access": {
+    "accessed_after_specification_lock": true,
+    "committed_top_terms": [
+      {
+        "coefficient": 31.574817028904242,
+        "feature": "(W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": -29.746258839714212,
+        "feature": "(W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": 103.92530366387881,
+        "feature": "X1.X1*fixed_energy"
+      },
+      {
+        "coefficient": -76.48253879587436,
+        "feature": "X2.X2*fixed_energy"
+      },
+      {
+        "coefficient": 826.911953420524,
+        "feature": "(W2.W2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": -773.9565579651698,
+        "feature": "(W1.W1*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": -689.0329541494228,
+        "feature": "X1.X2*mass_s3"
+      },
+      {
+        "coefficient": 32.56577011893242,
+        "feature": "(W2.W2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": -50.02606565453635,
+        "feature": "X2.W1*X2.W1"
+      },
+      {
+        "coefficient": -84.14170989404722,
+        "feature": "(W2.W2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": 137.9028778406776,
+        "feature": "(X1.X1*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": 56.11344287964723,
+        "feature": "(X1.W2*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": -126.35213190708613,
+        "feature": "(X1.W2*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": 38.40795950930163,
+        "feature": "X1.W2*X1.W2"
+      },
+      {
+        "coefficient": -76.198397766576,
+        "feature": "X2.W1*X2.W2"
+      }
+    ],
+    "interpreted_after_implementation_lock": true,
+    "mode_rank": 1
+  },
+  "candidate_metadata": {
+    "backend_uncertainty": 8.832165358133346e-13,
+    "candidate_dimension": 1,
+    "candidate_subspace_count": 1,
+    "generalized_singular_value": 7.081552551265169e-13,
+    "interpretation_authorization": "PROHIBITED",
+    "mode_rank": 1,
+    "publication_gate": "BLOCKED_PENDING_CANDIDATE_RESOLUTION",
+    "qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010"
+  },
+  "challenge_corpus_sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+  "challenge_summary": {
+    "calibration_count": 64,
+    "case_count": 192,
+    "development_count": 128,
+    "direction_metrics": {
+      "committed": {
+        "calibration_challenge": {
+          "lie_abs_max": 3.5797711461782455e-09,
+          "lie_rms": 7.198142262570535e-10,
+          "value_std": 107.74434530424568
+        },
+        "development_challenge": {
+          "lie_abs_max": 2.0081643015146255e-09,
+          "lie_rms": 3.8500530401746253e-10,
+          "value_std": 99.3179043565989
+        }
+      },
+      "gesdd": {
+        "calibration_challenge": {
+          "lie_abs_max": 1.979060471057892e-09,
+          "lie_rms": 5.561705978921031e-10,
+          "value_std": 107.74434530426115
+        },
+        "development_challenge": {
+          "lie_abs_max": 7.181370165199041e-09,
+          "lie_rms": 7.81924419512415e-10,
+          "value_std": 99.31790435660312
+        }
+      },
+      "gesvd": {
+        "calibration_challenge": {
+          "lie_abs_max": 1.0186340659856796e-09,
+          "lie_rms": 2.0557078417094122e-10,
+          "value_std": 107.74434530421905
+        },
+        "development_challenge": {
+          "lie_abs_max": 2.371962182223797e-09,
+          "lie_rms": 2.52960434980041e-10,
+          "value_std": 99.31790435659323
+        }
+      },
+      "numpy": {
+        "calibration_challenge": {
+          "lie_abs_max": 1.57160684466362e-09,
+          "lie_rms": 3.349568626631989e-10,
+          "value_std": 107.74434530423227
+        },
+        "development_challenge": {
+          "lie_abs_max": 1.6589183360338211e-09,
+          "lie_rms": 2.404821087336913e-10,
+          "value_std": 99.31790435658824
+        }
+      }
+    },
+    "lie_abs_max": 7.181370165199041e-09,
+    "lie_rms_max": 7.81924419512415e-10,
+    "planar_count": 96,
+    "spatial_count": 96,
+    "value_std_min": 99.31790435658824
+  },
+  "claim_boundary": "A REJECTED result establishes only that the v2 spectral subspace failed this frozen backend, diagnostic, or independent challenge protocol; it does not convert the original search into a backend-guarded bounded-null certificate and does not prove absence of integrals. An EXACT_KNOWN_DIRECTION result requires a newly locked search with the enlarged exact module. A SURVIVES result authorizes only a new candidate-specific qualification specification; it does not authorize reserve access, invariant interpretation as a theorem, WP4 work, or a publication claim. The 24-case publication reserve remains sealed throughout this campaign.",
+  "decision": "REJECTED_NUMERICAL_OR_GENERALIZATION_ARTIFACT",
+  "formula_resolution": {
+    "dominant_coefficient_scale": 5824.417196112133,
+    "maximum_denominator": 1000000,
+    "nonzero_term_count": 248,
+    "normalized_coefficient_residual_max": 1.819280075482196e-07,
+    "terms": [
+      {
+        "coefficient": "-255/767209",
+        "feature": "X1.X1"
+      },
+      {
+        "coefficient": "10121/567224",
+        "feature": "X1.X1*fixed_energy"
+      },
+      {
+        "coefficient": "1018/708085",
+        "feature": "X1.X1*mass_s2"
+      },
+      {
+        "coefficient": "23775/773267",
+        "feature": "X1.X1*mass_s3"
+      },
+      {
+        "coefficient": "188/545675",
+        "feature": "X1.X2"
+      },
+      {
+        "coefficient": "-8353/886415",
+        "feature": "X1.X2*fixed_energy"
+      },
+      {
+        "coefficient": "-3110/812177",
+        "feature": "X1.X2*mass_s2"
+      },
+      {
+        "coefficient": "-92647/783148",
+        "feature": "X1.X2*mass_s3"
+      },
+      {
+        "coefficient": "-245/345186",
+        "feature": "X1.W1"
+      },
+      {
+        "coefficient": "-35751/654821",
+        "feature": "X1.W1*fixed_energy"
+      },
+      {
+        "coefficient": "1635/957733",
+        "feature": "X1.W1*mass_s2"
+      },
+      {
+        "coefficient": "30323/267232",
+        "feature": "X1.W1*mass_s3"
+      },
+      {
+        "coefficient": "142/886891",
+        "feature": "X2.X2"
+      },
+      {
+        "coefficient": "-7652/582727",
+        "feature": "X2.X2*fixed_energy"
+      },
+      {
+        "coefficient": "442/926767",
+        "feature": "X2.X2*mass_s2"
+      },
+      {
+        "coefficient": "14933/525732",
+        "feature": "X2.X2*mass_s3"
+      },
+      {
+        "coefficient": "245/345186",
+        "feature": "X2.W2"
+      },
+      {
+        "coefficient": "35751/654821",
+        "feature": "X2.W2*fixed_energy"
+      },
+      {
+        "coefficient": "-1635/957733",
+        "feature": "X2.W2*mass_s2"
+      },
+      {
+        "coefficient": "-30323/267232",
+        "feature": "X2.W2*mass_s3"
+      },
+      {
+        "coefficient": "11158/965219",
+        "feature": "W1.W1"
+      },
+      {
+        "coefficient": "-12069/778246",
+        "feature": "W1.W1*fixed_energy"
+      },
+      {
+        "coefficient": "18475/67587",
+        "feature": "W1.W1*mass_s2"
+      },
+      {
+        "coefficient": "-648791/718579",
+        "feature": "W1.W1*mass_s3"
+      },
+      {
+        "coefficient": "34731/649318",
+        "feature": "W1.W2"
+      },
+      {
+        "coefficient": "10971/210245",
+        "feature": "W1.W2*fixed_energy"
+      },
+      {
+        "coefficient": "176765/879643",
+        "feature": "W1.W2*mass_s2"
+      },
+      {
+        "coefficient": "-1",
+        "feature": "W1.W2*mass_s3"
+      },
+      {
+        "coefficient": "1523/100302",
+        "feature": "W2.W2"
+      },
+      {
+        "coefficient": "27665/665041",
+        "feature": "W2.W2*fixed_energy"
+      },
+      {
+        "coefficient": "-159875/924796",
+        "feature": "W2.W2*mass_s2"
+      },
+      {
+        "coefficient": "395839/982522",
+        "feature": "W2.W2*mass_s3"
+      },
+      {
+        "coefficient": "1/275261",
+        "feature": "X1.X1*X1.X2"
+      },
+      {
+        "coefficient": "343/496862",
+        "feature": "X1.X1*X1.W1"
+      },
+      {
+        "coefficient": "-1/1000000",
+        "feature": "X1.X1*X2.X2"
+      },
+      {
+        "coefficient": "-23/218256",
+        "feature": "X1.X1*X2.W1"
+      },
+      {
+        "coefficient": "-95/494543",
+        "feature": "X1.X1*X2.W2"
+      },
+      {
+        "coefficient": "-9/7592",
+        "feature": "X1.X1*W1.W1"
+      },
+      {
+        "coefficient": "-927/865244",
+        "feature": "X1.X1*W1.W2"
+      },
+      {
+        "coefficient": "904/796441",
+        "feature": "X1.X1*W2.W2"
+      },
+      {
+        "coefficient": "-1/611193",
+        "feature": "X1.X2*X1.X2"
+      },
+      {
+        "coefficient": "24/145427",
+        "feature": "X1.X2*X1.W1"
+      },
+      {
+        "coefficient": "69/745565",
+        "feature": "X1.X2*X1.W2"
+      },
+      {
+        "coefficient": "-3/811516",
+        "feature": "X1.X2*X2.X2"
+      },
+      {
+        "coefficient": "-106/876645",
+        "feature": "X1.X2*X2.W1"
+      },
+      {
+        "coefficient": "-464/718205",
+        "feature": "X1.X2*X2.W2"
+      },
+      {
+        "coefficient": "145/188008",
+        "feature": "X1.X2*W1.W1"
+      },
+      {
+        "coefficient": "3226/827607",
+        "feature": "X1.X2*W1.W2"
+      },
+      {
+        "coefficient": "397/407392",
+        "feature": "X1.X2*W2.W2"
+      },
+      {
+        "coefficient": "1147/633880",
+        "feature": "X1.W1*X1.W1"
+      },
+      {
+        "coefficient": "-1238/501057",
+        "feature": "X1.W1*X1.W2"
+      },
+      {
+        "coefficient": "135/439852",
+        "feature": "X1.W1*X2.X2"
+      },
+      {
+        "coefficient": "169/102961",
+        "feature": "X1.W1*X2.W1"
+      },
+      {
+        "coefficient": "1292/717525",
+        "feature": "X1.W1*X2.W2"
+      },
+      {
+        "coefficient": "-3634/176193",
+        "feature": "X1.W1*W1.W1"
+      },
+      {
+        "coefficient": "5835/48994",
+        "feature": "X1.W1*W1.W2"
+      },
+      {
+        "coefficient": "40920/436913",
+        "feature": "X1.W1*W2.W2"
+      },
+      {
+        "coefficient": "551/83557",
+        "feature": "X1.W2*X1.W2"
+      },
+      {
+        "coefficient": "41/333640",
+        "feature": "X1.W2*X2.X2"
+      },
+      {
+        "coefficient": "3860/882219",
+        "feature": "X1.W2*X2.W1"
+      },
+      {
+        "coefficient": "-831/106492",
+        "feature": "X1.W2*X2.W2"
+      },
+      {
+        "coefficient": "-308475/866888",
+        "feature": "X1.W2*W1.W1"
+      },
+      {
+        "coefficient": "180243/988147",
+        "feature": "X1.W2*W1.W2"
+      },
+      {
+        "coefficient": "1/811329",
+        "feature": "X2.X2*X2.X2"
+      },
+      {
+        "coefficient": "-527/933329",
+        "feature": "X2.X2*X2.W2"
+      },
+      {
+        "coefficient": "1834/946439",
+        "feature": "X2.X2*W1.W1"
+      },
+      {
+        "coefficient": "-511/684771",
+        "feature": "X2.X2*W1.W2"
+      },
+      {
+        "coefficient": "-3939/851569",
+        "feature": "X2.X2*W2.W2"
+      },
+      {
+        "coefficient": "-8051/937359",
+        "feature": "X2.W1*X2.W1"
+      },
+      {
+        "coefficient": "-10989/839972",
+        "feature": "X2.W1*X2.W2"
+      },
+      {
+        "coefficient": "8518/221853",
+        "feature": "X2.W1*W1.W2"
+      },
+      {
+        "coefficient": "360685/690459",
+        "feature": "X2.W1*W2.W2"
+      },
+      {
+        "coefficient": "-514/496413",
+        "feature": "X2.W2*X2.W2"
+      },
+      {
+        "coefficient": "-21206/506333",
+        "feature": "X2.W2*W1.W1"
+      },
+      {
+        "coefficient": "-16946/826291",
+        "feature": "X2.W2*W1.W2"
+      },
+      {
+        "coefficient": "17551/967349",
+        "feature": "X2.W2*W2.W2"
+      },
+      {
+        "coefficient": "-6522/440165",
+        "feature": "W1.W1*W1.W1"
+      },
+      {
+        "coefficient": "-5393/543789",
+        "feature": "W1.W1*W1.W2"
+      },
+      {
+        "coefficient": "2815/942219",
+        "feature": "W1.W1*W2.W2"
+      },
+      {
+        "coefficient": "4921/823563",
+        "feature": "W1.W2*W1.W2"
+      },
+      {
+        "coefficient": "-33358/972905",
+        "feature": "W1.W2*W2.W2"
+      },
+      {
+        "coefficient": "-6329/537883",
+        "feature": "W2.W2*W2.W2"
+      },
+      {
+        "coefficient": "1081/576854",
+        "feature": "(X1.X1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-509/821069",
+        "feature": "(X1.X1*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "2507/789724",
+        "feature": "(X1.X1*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "22942/957725",
+        "feature": "(X1.X1*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-303/406807",
+        "feature": "(X1.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "304/64527",
+        "feature": "(X1.X2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1723/915605",
+        "feature": "(X1.X2*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-14007/691193",
+        "feature": "(X1.X2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-871/864883",
+        "feature": "(X1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "463/97593",
+        "feature": "(X1.W1*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-305/930722",
+        "feature": "(X1.W1*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "71405/341057",
+        "feature": "(X1.W1*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1031/686626",
+        "feature": "(X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-789/454577",
+        "feature": "(X2.X2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1037/464269",
+        "feature": "(X2.X2*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-5487/396970",
+        "feature": "(X2.X2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "871/864883",
+        "feature": "(X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-463/97593",
+        "feature": "(X2.W2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "305/930722",
+        "feature": "(X2.W2*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-71405/341057",
+        "feature": "(X2.W2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "3431/632896",
+        "feature": "(W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-567/340952",
+        "feature": "(W1.W1*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1490/781737",
+        "feature": "(W1.W1*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-60880/458153",
+        "feature": "(W1.W1*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "617/982650",
+        "feature": "(W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "799/101699",
+        "feature": "(W1.W2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "282/876857",
+        "feature": "(W1.W2*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "12998/714807",
+        "feature": "(W1.W2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-4236/829423",
+        "feature": "(W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "892/159535",
+        "feature": "(W2.W2*fixed_energy)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "153/74027",
+        "feature": "(W2.W2*mass_s2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "36029/253773",
+        "feature": "(W2.W2*mass_s3)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-2/36057",
+        "feature": "(X1.X1*X1.X1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "127/846197",
+        "feature": "(X1.X1*X1.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1637/821929",
+        "feature": "(X1.X1*X1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "41/950754",
+        "feature": "(X1.X1*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "8848/373701",
+        "feature": "(X1.X1*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "1894/300711",
+        "feature": "(X1.X1*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "2370/875129",
+        "feature": "(X1.X1*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-848/475507",
+        "feature": "(X1.X1*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-435/636701",
+        "feature": "(X1.X1*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "73/846403",
+        "feature": "(X1.X2*X1.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "2896/686137",
+        "feature": "(X1.X2*X1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-167/970408",
+        "feature": "(X1.X2*X1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-44/479019",
+        "feature": "(X1.X2*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-19/492644",
+        "feature": "(X1.X2*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1203/837199",
+        "feature": "(X1.X2*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "617/797267",
+        "feature": "(X1.X2*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-911/954680",
+        "feature": "(X1.X2*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1259/902589",
+        "feature": "(X1.X2*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-2189/963955",
+        "feature": "(X1.W1*X1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "3313/537770",
+        "feature": "(X1.W1*X1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-3751/614102",
+        "feature": "(X1.W1*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-5545/943609",
+        "feature": "(X1.W1*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "761/367518",
+        "feature": "(X1.W1*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-2795/995866",
+        "feature": "(X1.W1*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "23493/422315",
+        "feature": "(X1.W1*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-18934/643301",
+        "feature": "(X1.W1*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "1447/992941",
+        "feature": "(X1.W2*X1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-21105/972871",
+        "feature": "(X1.W2*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "761/367518",
+        "feature": "(X1.W2*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "2909/301946",
+        "feature": "(X1.W2*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "284/22717",
+        "feature": "(X1.W2*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "4027/868376",
+        "feature": "(X1.W2*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-19/495667",
+        "feature": "(X2.X2*X2.X2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "378/923173",
+        "feature": "(X2.X2*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-424/343955",
+        "feature": "(X2.X2*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-614/495917",
+        "feature": "(X2.X2*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1475/661124",
+        "feature": "(X2.X2*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "59/315184",
+        "feature": "(X2.W1*X2.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1884/353749",
+        "feature": "(X2.W1*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-1527/442405",
+        "feature": "(X2.W1*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "137/11309",
+        "feature": "(X2.W1*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "200/998971",
+        "feature": "(X2.W2*X2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "2203/237662",
+        "feature": "(X2.W2*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-66218/740517",
+        "feature": "(X2.W2*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "5671/933714",
+        "feature": "(X2.W2*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-272/148861",
+        "feature": "(W1.W1*W1.W1)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "461/569287",
+        "feature": "(W1.W1*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "931/719683",
+        "feature": "(W1.W1*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "1862/719683",
+        "feature": "(W1.W2*W1.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-199/910006",
+        "feature": "(W1.W2*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "131/718506",
+        "feature": "(W2.W2*W2.W2)/collision_product_r12_r23_r31"
+      },
+      {
+        "coefficient": "-319/582432",
+        "feature": "(X1.X1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-19/755052",
+        "feature": "(X1.X1*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "2150/513437",
+        "feature": "(X1.X1*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "16543/541877",
+        "feature": "(X1.X1*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "2034/676733",
+        "feature": "(X1.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "7981/980405",
+        "feature": "(X1.X2*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "577/627468",
+        "feature": "(X1.X2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "8783/916662",
+        "feature": "(X1.X2*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-3439/394938",
+        "feature": "(X1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "4773/878110",
+        "feature": "(X1.W1*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-27093/584846",
+        "feature": "(X1.W1*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-679089/818569",
+        "feature": "(X1.W1*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-928/971621",
+        "feature": "(X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-61/15080",
+        "feature": "(X2.X2*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-4337/933240",
+        "feature": "(X2.X2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-28777/814755",
+        "feature": "(X2.X2*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "3439/394938",
+        "feature": "(X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-4773/878110",
+        "feature": "(X2.W2*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "27093/584846",
+        "feature": "(X2.W2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "679089/818569",
+        "feature": "(X2.W2*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-139/500861",
+        "feature": "(W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1543/498754",
+        "feature": "(W1.W1*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "2201/201286",
+        "feature": "(W1.W1*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "10819/192273",
+        "feature": "(W1.W1*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "4667/933346",
+        "feature": "(W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-1057/710504",
+        "feature": "(W1.W2*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-6063/863261",
+        "feature": "(W1.W2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "2054/85047",
+        "feature": "(W1.W2*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "2710/975639",
+        "feature": "(W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-2305/600644",
+        "feature": "(W2.W2*fixed_energy)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-11737/812453",
+        "feature": "(W2.W2*mass_s2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-41317/934916",
+        "feature": "(W2.W2*mass_s3)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-13/768453",
+        "feature": "(X1.X1*X1.X1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "37/576428",
+        "feature": "(X1.X1*X1.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1059/576370",
+        "feature": "(X1.X1*X1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "17/865009",
+        "feature": "(X1.X1*X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1576/127583",
+        "feature": "(X1.X1*X2.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "3891/944980",
+        "feature": "(X1.X1*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "4957/470749",
+        "feature": "(X1.X1*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-9541/576355",
+        "feature": "(X1.X1*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-659/367886",
+        "feature": "(X1.X1*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "34/865009",
+        "feature": "(X1.X2*X1.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "3227/577047",
+        "feature": "(X1.X2*X1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-4876/930443",
+        "feature": "(X1.X2*X1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "42/780827",
+        "feature": "(X1.X2*X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "3482/798589",
+        "feature": "(X1.X2*X2.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-3272/898175",
+        "feature": "(X1.X2*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "7584/997733",
+        "feature": "(X1.X2*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "615/997222",
+        "feature": "(X1.X2*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-15709/856256",
+        "feature": "(X1.X2*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "15819/724070",
+        "feature": "(X1.W1*X1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1975/320043",
+        "feature": "(X1.W1*X1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-4832/673831",
+        "feature": "(X1.W1*X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-62049/776450",
+        "feature": "(X1.W1*X2.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-2533/497136",
+        "feature": "(X1.W1*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "34657/838764",
+        "feature": "(X1.W1*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "62794/528693",
+        "feature": "(X1.W1*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "7059/110803",
+        "feature": "(X1.W1*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "9799/954071",
+        "feature": "(X1.W2*X1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-13305/801287",
+        "feature": "(X1.W2*X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-2533/497136",
+        "feature": "(X1.W2*X2.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "58943/883503",
+        "feature": "(X1.W2*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "3052/25209",
+        "feature": "(X1.W2*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "37005/917891",
+        "feature": "(X1.W2*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-48/670849",
+        "feature": "(X2.X2*X2.X2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "233/965334",
+        "feature": "(X2.X2*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1500/756053",
+        "feature": "(X2.X2*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1446/274415",
+        "feature": "(X2.X2*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-10477/966657",
+        "feature": "(X2.X2*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-6693/618773",
+        "feature": "(X2.W1*X2.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-4227/816689",
+        "feature": "(X2.W1*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-75151/984995",
+        "feature": "(X2.W1*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-63641/280914",
+        "feature": "(X2.W1*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-3031/180932",
+        "feature": "(X2.W2*X2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-982/340739",
+        "feature": "(X2.W2*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-9091/628178",
+        "feature": "(X2.W2*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-49108/982263",
+        "feature": "(X2.W2*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-2874/989159",
+        "feature": "(W1.W1*W1.W1)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-533/686672",
+        "feature": "(W1.W1*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "726/237101",
+        "feature": "(W1.W1*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "1452/237101",
+        "feature": "(W1.W2*W1.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "290/127263",
+        "feature": "(W1.W2*W2.W2)/barycentric_moment_of_inertia"
+      },
+      {
+        "coefficient": "-67/71565",
+        "feature": "(W2.W2*W2.W2)/barycentric_moment_of_inertia"
+      }
+    ]
+  },
+  "formula_resolved": false,
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "implementation_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "candidate_metadata_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "source_matrix_byte_identity",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "publication_reserve_intact_before",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "existing_basis_direction_passes_all_diagnostics",
+      "observed": 0,
+      "passed": false,
+      "threshold": 1
+    },
+    {
+      "comparator": ">=",
+      "name": "backend_rank_one_subspace_projection_min",
+      "observed": 0.06532661371746817,
+      "passed": false,
+      "threshold": 0.999
+    },
+    {
+      "comparator": "<=",
+      "name": "backend_generalized_singular_relative_spread",
+      "observed": 0.1720424717525292,
+      "passed": false,
+      "threshold": 0.1
+    },
+    {
+      "comparator": ">=",
+      "name": "challenge_weighted_value_std_min",
+      "observed": 99.31790435658824,
+      "passed": true,
+      "threshold": 1e-06
+    },
+    {
+      "comparator": "<=",
+      "name": "challenge_lie_rms_max",
+      "observed": 7.81924419512415e-10,
+      "passed": true,
+      "threshold": 1e-09
+    },
+    {
+      "comparator": "<=",
+      "name": "challenge_lie_abs_max",
+      "observed": 7.181370165199041e-09,
+      "passed": true,
+      "threshold": 1e-07
+    },
+    {
+      "comparator": "<=",
+      "name": "production_mpmath_value_relative_difference_max",
+      "observed": 1.0557665852672926e-11,
+      "passed": true,
+      "threshold": 1e-10
+    },
+    {
+      "comparator": "<=",
+      "name": "production_mpmath_lie_relative_difference_max",
+      "observed": 3.908153568002765e-10,
+      "passed": true,
+      "threshold": 1e-09
+    }
+  ],
+  "generated_utc": "2026-07-21T08:34:13.361649+00:00",
+  "independent_precision": {
+    "decimal_digits": 80,
+    "implementation": "source-disjoint mpmath feature evaluator",
+    "lie_relative_difference_max": 3.908153568002765e-10,
+    "production_import_absent": true,
+    "reference_sha256": "680afbc4910f03096d5aab2de2862e9f8db00cb55211734cdc33ccf36bcaa8fa",
+    "value_relative_difference_max": 1.0557665852672926e-11
+  },
+  "known_direction_test": {
+    "angular_momentum_squared_projection_scale": -3.6595741561553923,
+    "coefficient_projection_residual": 0.9999994466777806,
+    "identified_as_known": false
+  },
+  "lock_sha256": "87f0c4f06bfb33773a59a2d0aab9fc582edb8e00995bae1274335e732ab3648a",
+  "next_action": "Do not promote the direction; preserve the original search as spectrally unresolved and the reserve as sealed.",
+  "numeric_gates_pass": false,
+  "publication_reserve_accessed": false,
+  "publication_reserve_after": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "publication_reserve_before": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "qualification_id": "WP3-MULTI-CAND-v2-RES-v1-31a9c87feb72",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_matrix_hashes": {
+    "calibration_derivatives_full": "bfbc3accb4cc7f9961260adb785e311227c37876ffb4dd1546ee258d93919d12",
+    "calibration_values_full": "6203a86177a6b62b61d6125e3613d452dd849c5144f0efa4b266ea013205018f",
+    "training_derivatives_full": "821079793f795ed273b3c70c5b3a18b5a9d2687ee066375b02a227437110d0fd",
+    "training_values_full": "bfc67a9f9f2d437aef23b5af0fb7640f0c31c6ee3d3d51722564736c02b81f41"
+  },
+  "spec_sha256": "2afc2856c5e8cac11115b8f9b49289f12c9edf7d3e92824b3ec9c222bcfdde97",
+  "specification_lock_sha256": "39f56af330d4ebccd3afc4d41b9d4133d7bac78f13bf383b4a7b156229c202ca",
+  "status": "REJECTED_NUMERICAL_OR_GENERALIZATION_ARTIFACT"
+}
