@@ -1,0 +1,143 @@
+{
+  "all_project_cases_universally_obstructed": true,
+  "all_project_masses_positive": true,
+  "authorized_claim": "Conditional on the two pinned published analyses, the declared positive-mass planar Newtonian three-body Hamiltonian is not completely integrable with meromorphic first integrals near the parabolic Lagrange solution. The exact project mass corpus satisfies the theorem's positive-mass hypothesis.",
+  "benchmark_count": 6,
+  "campaign": "WP4-MR-NI-v2",
+  "catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+  "claim_boundary": "A passing result verifies the source identities, exactly reproduces the published symmetric mass invariant and exceptional-set arithmetic, cross-checks an independent implementation, and applies two published non-complete-integrability theorems to the declared positive-mass planar model and project mass corpus. It is a theorem replication/application, not a new derivation of the 4x4 normal variational system, its factorization, local logarithms, monodromy generators, or differential Galois group. It establishes no obstruction for the spatial system as such, the zero-angular-momentum level in isolation, non-meromorphic or non-Liouville integrability, the regularized upstairs atlas, or any WP3 candidate. Exceptional first-variational-equation polynomial invariants are not nonlinear first integrals.",
+  "distinct_mass_triple_count": 169,
+  "evidence_git_commit": "076ababc3aefdf9afcdd264049b58330bcd41e14",
+  "exceptional_mass_triple_count": 1,
+  "generated_utc": "2026-07-21T08:18:50.367619+00:00",
+  "independent_reference": {
+    "arithmetic": "SymPy Rational",
+    "path": "validation-external/wp4-mr-ni-v2/reference/sympy_reference.py",
+    "production_import_absent": true,
+    "sha256": "b9a85e44cf1f9685bf2afb8fe45a142ccd41e475e892117babd0b9b364c93b1c"
+  },
+  "invalidated_predecessor": {
+    "assessment_sha256": "53cdfff708b8b3fbc4399b076f8074af56b39f594e3a99c28b843c0961cda220",
+    "implementation_started": false,
+    "scientific_outputs_produced": false,
+    "status": "INVALIDATED_PREIMPLEMENTATION"
+  },
+  "legacy_placeholder": {
+    "included_in_qualification": false,
+    "loaded": false,
+    "path": "src/python/validation/kovacic.py"
+  },
+  "lock_sha256": "5a8fad5ae70435cfcc7912a6c481569a4df7adad9f4a272dceeb0cc9cb538ed6",
+  "nonexceptional_mass_triple_count": 168,
+  "production_reference_exact_agreement": true,
+  "project_candidate_count": 169,
+  "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+  "record_payload_sha256": "8c94b28d89b6390e672bec9dfaa3f1c6998c279293c41f734a3630eb2db163c9",
+  "results_sha256": "c8fe232f515d61df3e42a7136d3a11e22720bb5dbb04e21f623d99e33b54a5a9",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "be4e5861d04985e9e1c5332acd8d6e409e80f2b1fb7d5c306243629b0bf7643d",
+  "source_power_notation": {
+    "arithmetic": {
+      "2/3^2": "2/9",
+      "2^3/3^3": "8/27",
+      "5/2^4": "5/16"
+    },
+    "glyph_evidence": {
+      "2/3^2": [
+        {
+          "height": 16,
+          "left": 440,
+          "text": "/",
+          "top": 678
+        },
+        {
+          "height": 16,
+          "left": 448,
+          "text": "3",
+          "top": 678
+        },
+        {
+          "height": 9,
+          "left": 456,
+          "text": "2",
+          "top": 676
+        }
+      ],
+      "2^3/3^3": [
+        {
+          "height": 9,
+          "left": 375,
+          "text": "2",
+          "top": 460
+        },
+        {
+          "height": 6,
+          "left": 381,
+          "text": "3",
+          "top": 458
+        },
+        {
+          "height": 9,
+          "left": 375,
+          "text": "3",
+          "top": 473
+        },
+        {
+          "height": 6,
+          "left": 381,
+          "text": "3",
+          "top": 472
+        }
+      ],
+      "5/2^4": [
+        {
+          "height": 9,
+          "left": 444,
+          "text": "5",
+          "top": 460
+        },
+        {
+          "height": 9,
+          "left": 440,
+          "text": "2",
+          "top": 473
+        },
+        {
+          "height": 6,
+          "left": 447,
+          "text": "4",
+          "top": 472
+        }
+      ]
+    },
+    "passed": true
+  },
+  "source_records": [
+    {
+      "expected_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "observed_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "source_id": "tsygvintsev-2007-exceptional-cases",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "observed_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "source_id": "boucher-weil-morales-ramis-threebody",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "boucher_weil_nonzero_angular_momentum": true,
+    "boucher_weil_positive_mass_hypothesis": true,
+    "boucher_weil_theorem": true,
+    "boucher_weil_title": true,
+    "tsygvintsev_liouville_corollary": true,
+    "tsygvintsev_parabolic_lagrange_solution": true,
+    "tsygvintsev_positive_mass_model": true,
+    "tsygvintsev_title": true,
+    "tsygvintsev_universal_two_integral_obstruction": true
+  },
+  "spec_sha256": "62cc6a5dabbf8d7e0d156a1cc01b4a2031c1a1a8d89f5c760a75104bb7870b7c",
+  "specification_lock_sha256": "75a2fdb11354baa903bb1861d6fb7a9967f42b5428cdb877820a042a09ec8cd4",
+  "status": "PASS"
+}
