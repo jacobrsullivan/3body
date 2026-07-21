@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2-KQ-v1",
+  "specification_status": "LOCKABLE_SUCCESSOR_AFTER_QUALIFIED_KNOWN_FUNCTION_EQUIVALENCE",
+  "purpose": "Repeat the complete WP3-MULTI-CAND-v2 finite-library search after removing the full observable-function equivalence class of total angular momentum squared rather than one non-unique coefficient representative.",
+  "preimplementation_disclosure": "The qualified corrective resolution established that the sole v2 spectral direction evaluates as a scalar multiple of L^2 despite near-orthogonal raw coefficient representatives. The previously reported second generalized singular value was 2.9052393610131956e-4, but that value came from the superseded quotient order and is not an acceptance target for this successor. No successor implementation or successor spectrum has been executed before this specification lock.",
+  "evidence_boundary": "A COMPLETE_BOUNDED_NULL_RESULT states only that every frozen backend-guarded lower bound on the smallest generalized Lie/value singular value exceeds 1e-10 after quotienting the known L^2 observable in the declared 285-function Reynolds library, on the frozen development, calibration, and 192-state challenge domains. The library and exclusions are identical to WP3-MULTI-CAND-v2: combined-degree-two-or-less Gram/parameter numerators, the three declared denominators, physical polynomial degree at most four, scalar SO(3) representations, nonzero-separation states, and the qualified zero-Xi physical model. It is not a general no-integral or non-integrability theorem and does not cover higher degree, other denominators, non-meromorphic functions, non-scalar representations, nonzero Xi, or collision strata. Any candidate result remains uninterpretable until a separately locked candidate-resolution campaign passes.",
+  "prerequisites": {
+    "wp3_multi_v2": {
+      "qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+      "results_path": "validation-external/wp3-multi-candidate-v2/results/search_results.json",
+      "results_sha256": "c5c3da9f3c30f7758bc6e90a7c751505e21acafe7485e8cdfb363fd59103da61"
+    },
+    "known_function_resolution": {
+      "qualification_id": "WP3-MULTI-CAND-v2-RES-v2-1277d77b2a25",
+      "expected_status": "KNOWN_L2_FUNCTION_EQUIVALENCE",
+      "spec_sha256": "7f35e9acf9747dcc1184a17dea16f3605cd6c2c4190f9f63572e30b23409a259",
+      "implementation_lock_file_sha256": "02c2ddb76305743ff1eeb480acbf70fc771ec1c09484199bc8b233297a44ac4a",
+      "results_path": "validation-external/wp3-multi-candidate-v2-resolution-v2/results/resolution_results.json",
+      "results_sha256": "aa2468f4947a8f2f40e14564bfd1f80673503b6bc0f219e219f063ce718ce62c",
+      "record_path": "validation-external/wp3-multi-candidate-v2-resolution-v2/reports/wp3_multi_v2_resolution_v2_record.json",
+      "record_sha256": "30138e55af7a3e7bc279486503a5b5435e4e9a5bd14cd690203ca1a56f4db9b5"
+    },
+    "source_inputs": {
+      "wp3_v1_corpus_sha256": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+      "spatial_corpus_sha256": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff",
+      "spatial_development_sha256": "3b535e05f8de8cc2d7d265fd330894e1f4d1b4c8ec9789263436ae7882ccf70f",
+      "spatial_calibration_sha256": "f4a8b4f04f0019cb778a4bb26e63b5914e477c3c84fa71c3a9bc2c4e1bed7351",
+      "wp1_catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+      "challenge_corpus_sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496"
+    },
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "model_and_library": {
+    "source_model": "WP2-MULTIQ-v1 qualified zero-Xi physical quotient",
+    "declared_feature_count": 285,
+    "exact_structural_zero_count": 36,
+    "active_feature_count": 249,
+    "known_observable_module": [
+      "total_angular_momentum_squared"
+    ],
+    "known_observable_rank": 1,
+    "numerator_combined_degree_max": 2,
+    "physical_polynomial_degree_max": 4,
+    "denominators": [
+      "one",
+      "collision_product_r12_r23_r31",
+      "barycentric_moment_of_inertia"
+    ]
+  },
+  "data_domains": {
+    "development": {
+      "group_count": 156,
+      "physical_point_count": 288,
+      "weighting": "equal family, equal group within family, equal point within group"
+    },
+    "calibration": {
+      "group_count": 78,
+      "physical_point_count": 144,
+      "weighting": "equal family, equal group within family, equal point within group"
+    },
+    "challenge": {
+      "case_count": 192,
+      "planar_count": 96,
+      "spatial_count": 96,
+      "weighting": "uniform"
+    }
+  },
+  "observable_known_quotient_protocol": {
+    "column_normalization": "Use development weighted RMS scales for all source and challenge searches.",
+    "value_map": "Center the normalized feature-value matrix with frozen split weights and compute its complete SVD before any known-module quotient.",
+    "value_rank": "Retain singular directions greater than 1e-11 times the largest value singular value; all remaining coefficient directions form the value-nuisance representation kernel.",
+    "known_response": "Map the analytic L^2 coefficient vector into standardized observable coordinates z = Sigma A^T c_normalized, verify its direct response, and remove its rank-one orthogonal complement in z-space.",
+    "nuisance_cancellation": "For each retained observable direction, minimize its Lie response over the complete value-nuisance kernel using a 1e-12 relative derivative-rank tolerance.",
+    "generalized_search": "SVD the nuisance-projected Lie operator divided by observable value singular values and restricted to the L^2 response complement. Evaluate the complete remaining spectrum.",
+    "backend_replication": "Execute the complete protocol independently with NumPy SVD and SciPy LAPACK gesdd and gesvd on development, calibration, and challenge matrices.",
+    "candidate_partition": "A singular cluster is a candidate if its backend-guarded lower bound is at most 1e-10. Preserve complete clusters under 1e-8 relative or 1e-12 absolute gaps.",
+    "candidate_access": "Store coefficients only for successor candidate clusters. Interpretation is prohibited until the publication gate and a new candidate-resolution specification are locked.",
+    "publication_reserve": "Do not read, materialize, or execute any sealed publication-reserve source row."
+  },
+  "thresholds": {
+    "value_rank_relative_tolerance": 1e-11,
+    "nuisance_derivative_rank_relative_tolerance": 1e-12,
+    "singular_cluster_relative_tolerance": 1e-8,
+    "singular_cluster_absolute_tolerance": 1e-12,
+    "svd_backward_error_factor": 16.0,
+    "candidate_lie_rms_max": 1e-10,
+    "known_observable_rank_required": 1,
+    "known_response_projection_residual_max": 1e-10,
+    "known_lie_rms_per_coefficient_scale_max": 1e-10,
+    "backend_value_rank_consistency_required": true,
+    "backend_smallest_generalized_relative_spread_max": 1e-6,
+    "backend_guarded_lower_bound_must_exceed_candidate_threshold": true,
+    "source_matrix_byte_identity_required": true,
+    "challenge_feature_physical_l2_relative_difference_max": 1e-12,
+    "minimum_pair_separation_scaled_min": 0.001,
+    "minimum_denominator_abs": 0.001,
+    "energy_control_relative_lie_max": 1e-10,
+    "body_permutation_spread_max": 1e-12,
+    "rotation_spread_max": 1e-12,
+    "gauge_orbit_spread_max": 1e-10,
+    "chart_overlap_spread_max": 1e-10,
+    "wp2_pushforward_tangent_relative_error_max": 1e-10,
+    "wp2_time_rate_relative_error_max": 1e-10
+  },
+  "decision_policy": {
+    "COMPLETE_BOUNDED_NULL_RESULT": "Every integrity and readiness gate passes, every backend agrees on split value ranks, every smallest-spectrum relative spread is within tolerance, and every development, calibration, and challenge backend-guarded lower bound exceeds 1e-10. The publication gate may authorize only the frozen bounded-null statement.",
+    "CANDIDATE_SUBSPACE_REQUIRES_RESOLUTION": "At least one complete successor singular cluster has a backend-guarded lower bound at or below 1e-10 while all integrity gates pass. Freeze a candidate-specific resolution before inspecting or interpreting coefficients.",
+    "INVALID_SEARCH_NOT_READY": "Any prerequisite, integrity, source-control, backend-consistency, or implementation gate fails. No spectral conclusion is authorized."
+  },
+  "publication_gate_policy": {
+    "bounded_null": "PASS_BOUNDED_NULL_ONLY",
+    "candidate": "BLOCKED_PENDING_CANDIDATE_RESOLUTION",
+    "invalid": "FAIL_INVALID_SEARCH",
+    "publication_reserve": "SEALED_UNEXECUTED"
+  },
+  "decision_runtime": {
+    "python": "3.13.2",
+    "implementation": "CPython",
+    "machine": "arm64",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3"
+  }
+}
