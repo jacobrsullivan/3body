@@ -18,21 +18,25 @@ over three fixed denominators: one, the global collision product, and
 barycentric moment of inertia. The resulting 285 functions reach physical
 polynomial degree four and include declared collision-adapted rational forms.
 
-The exact represented known module is angular-momentum squared. Energy is an
-external known control but is not represented by the frozen numerator and
-denominator grammar. The existing development/calibration corpus and sealed
-24-case reserve remain unchanged. Candidate expressions cannot be interpreted
-before the staged gate, and the reserve can be opened only after a separately
-locked candidate-resolution stage.
+The Reynolds projection has 36 exact zero identities, leaving 249 active
+columns while preserving the locked 285-column declaration. The exact
+represented known module is angular-momentum squared. Energy is an external
+known control but is not represented by the frozen numerator and denominator
+grammar. The existing development/calibration corpus and sealed 24-case
+reserve remain unchanged. Candidate expressions cannot be interpreted before
+the staged gate, and the reserve can be opened only after a separately locked
+candidate-resolution stage.
 
-## WP4-MR-NI-v1
+## WP4-MR-NI-v2
 
-The independent track excludes the repository's incomplete legacy Kovacic
-implementation. It pins two primary published analyses of the parabolic
-Lagrange normal variational system, reproduces their exact symmetric mass
-invariant and exceptional-set arithmetic with two source-disjoint exact
-implementations, and applies the published theorem to every mass triple in the
-qualified WP1 catalogue.
+`WP4-MR-NI-v1` was invalidated before implementation after its locked source
+transcription flattened `5/(2^4)` to `5/24`. The corrected v2 track preserves
+that invalidation record and independently locks `5/16`. It excludes the
+repository's incomplete legacy Kovacic implementation, pins two primary
+published analyses of the parabolic Lagrange normal variational system,
+reproduces their exact symmetric mass invariant and exceptional-set arithmetic
+with two source-disjoint exact implementations, and applies the published
+theorem to every mass triple in the qualified WP1 catalogue.
 
 Its authorized conclusion is conditional on the published NVE and monodromy
 analysis. It is not presented as an independent re-derivation, does not extend
