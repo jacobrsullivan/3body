@@ -1,0 +1,115 @@
+{
+  "aggregate_metrics": {
+    "calibration_relative_value_rms_max": 6.273148570610375e-13,
+    "challenge_relative_value_rms_max": 6.830542672500359e-13,
+    "held_scale_lie_abs_max": 7.2562265479419374e-09,
+    "held_scale_lie_rms_max": 7.147049727768985e-10,
+    "split_scale_relative_spread_max": 3.342786710599983e-13,
+    "training_relative_value_rms_max": 9.42976981107296e-13
+  },
+  "backend_replication": {
+    "centered_response_projection_min": 0.9999999999999998,
+    "metadata": [
+      {
+        "driver": "numpy",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "driver": "gesdd",
+        "generalized_singular_value": 6.766947585895288e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      },
+      {
+        "driver": "gesvd",
+        "generalized_singular_value": 8.173061244118182e-13,
+        "value_nuisance_derivative_rank": 173,
+        "value_nuisance_nullity": 173,
+        "value_rank": 75
+      }
+    ],
+    "response_projections": [
+      {
+        "driver": "numpy",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "numpy",
+        "projection": 0.9999999999999999,
+        "split": "calibration"
+      },
+      {
+        "driver": "numpy",
+        "projection": 0.9999999999999998,
+        "split": "challenge"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 0.9999999999999999,
+        "split": "calibration"
+      },
+      {
+        "driver": "gesdd",
+        "projection": 0.9999999999999998,
+        "split": "challenge"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0,
+        "split": "training"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0000000000000002,
+        "split": "calibration"
+      },
+      {
+        "driver": "gesvd",
+        "projection": 1.0,
+        "split": "challenge"
+      }
+    ]
+  },
+  "campaign": "WP3-MULTI-CAND-v2-RES-v2",
+  "challenge_corpus_sha256": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+  "claim_boundary": "A KNOWN_L2_FUNCTION_EQUIVALENCE result establishes only that the frozen numerical candidate and replicated rank-one directions evaluate as scalar multiples of the already known L^2 observable over the declared source and challenge domains. It does not prove a global symbolic coefficient identity, discover a new invariant, authorize publication-reserve access, or convert the original search into a bounded-null result. It requires a separately locked successor search that removes the observable L^2 equivalence class. An UNRESOLVED result preserves the original search as spectrally unresolved.",
+  "decision": "KNOWN_L2_FUNCTION_EQUIVALENCE",
+  "evidence_git_commit": "3c082ba10c9ca49c9641b61fdac099cd19ffa0cc",
+  "generated_utc": "2026-07-21T08:46:27.321814+00:00",
+  "independent_precision": {
+    "candidate_l2_relative_value_rms": 2.180976795577622e-13,
+    "decimal_digits": 80,
+    "feature_l2_physical_relative_difference_max": 8.433758354584419e-80,
+    "physical_reference": "source-disjoint exact-rational mpmath q cross p",
+    "physical_reference_sha256": "5f635aeb46be5617bfccc9e618709cd41dcac916ffc8bdfb3163538d1e28cf3f",
+    "production_import_absent": true,
+    "production_mpmath_candidate_relative_difference_max": 9.47687067709424e-12
+  },
+  "lock_sha256": "1dfea7f42701b78e4ac5dfb871edef844b2b11bf105f7db941cfcf9a90448e8a",
+  "next_action": "Freeze and execute a successor search that removes the full observable L^2 equivalence class before making any bounded-null claim.",
+  "physical_l2": {
+    "challenge_case_count": 192,
+    "production_feature_physical_relative_difference_max": 1.0547118733938987e-14
+  },
+  "publication_reserve_accessed": false,
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "qualification_id": "WP3-MULTI-CAND-v2-RES-v2-1277d77b2a25",
+  "record_payload_sha256": "71134308e2bafdaa0f74302d6029d8c0c3e6d625202793a34f759e374bd0d23e",
+  "results_sha256": "aa2468f4947a8f2f40e14564bfd1f80673503b6bc0f219e219f063ce718ce62c",
+  "schema_version": "1.0",
+  "scientific_gates_pass": true,
+  "spec_sha256": "7f35e9acf9747dcc1184a17dea16f3605cd6c2c4190f9f63572e30b23409a259",
+  "specification_lock_sha256": "0420c3320dcde44ff41263e328564a2f356b82ca3a8b7b5d8611b1e2285c7675",
+  "status": "KNOWN_L2_FUNCTION_EQUIVALENCE",
+  "superseded_assessment_sha256": "f5273646334e77330d5e60cc3c9e25df2618c6c63f37f9b519e75770db72446b"
+}
