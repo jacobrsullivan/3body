@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-NI-v2",
+  "supersedes": "WP4-MR-NI-v1 invalidated before implementation because 5/(2^4) was transcribed as 5/24",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Qualify an exact, independently implemented application of published Morales-Ramis/monodromy obstructions for the positive-mass planar Newtonian three-body problem near the parabolic Lagrange solution.",
+  "evidence_boundary": "A passing result verifies the source identities, exactly reproduces the published symmetric mass invariant and exceptional-set arithmetic, cross-checks an independent implementation, and applies two published non-complete-integrability theorems to the declared positive-mass planar model and project mass corpus. It is a theorem replication/application, not a new derivation of the 4x4 normal variational system, its factorization, local logarithms, monodromy generators, or differential Galois group. It establishes no obstruction for the spatial system as such, the zero-angular-momentum level in isolation, non-meromorphic or non-Liouville integrability, the regularized upstairs atlas, or any WP3 candidate. Exceptional first-variational-equation polynomial invariants are not nonlinear first integrals.",
+  "prerequisites": {
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "lock_file_sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+      "record_file_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+      "native_catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234"
+    },
+    "wp3_multi_v1": {
+      "qualification_id": "WP3-MULTI-CAND-v1-225359a13711",
+      "lock_file_sha256": "4e1a4aca3b17d0ab4ea76537a026da908a917da7b62b935d169eae0644b78abd",
+      "record_file_sha256": "db93ed5846d3d7edcb4efa0534a8cdedf904c41c55e4253c1731ee7c5cd4e6e1"
+    },
+    "invalidated_predecessor_assessment": "validation-external/wp4-mr-ni-v1/reports/wp4_mr_v1_specification_assessment.json",
+    "source_manifest_sha256": "be4e5861d04985e9e1c5332acd8d6e409e80f2b1fb7d5c306243629b0bf7643d"
+  },
+  "published_contract": {
+    "model": "positive-mass planar Newtonian three-body Hamiltonian after the reductions declared by the sources",
+    "particular_solution": "parabolic Lagrange equilateral solution with fixed nonzero angular momentum",
+    "mass_invariant": "sigma=(m1*m2+m2*m3+m3*m1)/(m1+m2+m3)^2",
+    "universal_result": "No two additional independent meromorphic first integrals exist near the declared solution; therefore the planar system is not completely meromorphically integrable in the Liouville-Arnold sense.",
+    "single_additional_exceptional_sigma": ["1/3", "8/27", "2/9"],
+    "exception_interpretation": "The first normal variational equation has a polynomial invariant. This does not establish an additional nonlinear integral or complete integrability.",
+    "resolved_nonexceptional_sigma_checks": ["7/48", "5/16"],
+    "source_notation_checks": {
+      "2^3/3^3": "8/27",
+      "2/3^2": "2/9",
+      "5/2^4": "5/16"
+    },
+    "exponent_formula": "lambda_{1,2}=3/2+(1/2)*sqrt(13 +/- sqrt(144*(1-3*sigma)))"
+  },
+  "exact_benchmarks": [
+    {"case_id": "generic-1-2-3", "masses": ["1", "2", "3"], "sigma": "11/36", "single_additional": "OBSTRUCTED"},
+    {"case_id": "exception-equal", "masses": ["1", "1", "1"], "sigma": "1/3", "single_additional": "LINEAR_NVE_EXCEPTION"},
+    {"case_id": "exception-eight-27-a", "masses": ["1", "1", "1/4"], "sigma": "8/27", "single_additional": "LINEAR_NVE_EXCEPTION"},
+    {"case_id": "exception-eight-27-b", "masses": ["1", "1", "5/2"], "sigma": "8/27", "single_additional": "LINEAR_NVE_EXCEPTION"},
+    {"case_id": "exception-two-9", "masses": ["1", "2", "15/2"], "sigma": "2/9", "single_additional": "LINEAR_NVE_EXCEPTION"},
+    {"case_id": "near-exception-not-equal", "masses": ["1", "1", "2500001/1000000"], "sigma": "NOT_EXCEPTIONAL", "single_additional": "OBSTRUCTED"}
+  ],
+  "project_application": {
+    "catalogue": "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json",
+    "expected_candidate_count": 169,
+    "mass_parsing": "Every hexadecimal or decimal input is converted to its exact rational value; exceptional-set membership uses equality, never tolerance.",
+    "required_outputs": ["distinct_mass_triple_count", "exceptional_mass_triple_count", "nonexceptional_mass_triple_count", "case_classifications"]
+  },
+  "independent_reference": {
+    "production_arithmetic": "Python fractions.Fraction with exact parsing",
+    "reference_arithmetic": "SymPy Rational in a source-disjoint module",
+    "required_exact_agreement": true,
+    "required_symmetries": ["positive common mass scaling", "all six body permutations"]
+  },
+  "gates": {
+    "invalidated_v1_is_not_executable": true,
+    "source_manifest_verified": true,
+    "source_download_hashes_reverified": true,
+    "source_power_notation_transcribed_exactly": true,
+    "all_benchmarks_exact": true,
+    "production_reference_exact_agreement": true,
+    "all_project_masses_positive": true,
+    "all_project_cases_universally_obstructed_from_complete_meromorphic_integrability": true,
+    "exceptional_cases_not_overinterpreted": true,
+    "legacy_placeholder_solver_excluded": true,
+    "claim_boundary_present": true
+  },
+  "decision_policy": {
+    "PASS": "All source, exact arithmetic, independent-reference, project-corpus, and boundary gates pass under the frozen implementation.",
+    "FAIL": "Any source mismatch, transcription error, arithmetic disagreement, nonpositive mass, classification error, missing case, placeholder-solver dependency, or boundary violation fails the qualification.",
+    "AUTHORIZED_CLAIM": "Conditional on the two pinned published analyses, the declared positive-mass planar Newtonian three-body Hamiltonian is not completely integrable with meromorphic first integrals near the parabolic Lagrange solution. The exact project mass corpus satisfies the theorem's positive-mass hypothesis."
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-NI-v1",
+  "status": "INVALIDATED_PREIMPLEMENTATION",
+  "specification_lock_sha256": "c85e6f68c73d06bba5c291609fbcddd43524e0f62613fd6f9b1eebbf74aace1e",
+  "reason": "The locked specification transcribed the published resolved value 5/(2^4)=5/16 as 5/24.",
+  "scientific_outputs_produced": false,
+  "implementation_started": false,
+  "successor": "WP4-MR-NI-v2",
+  "claim_authorization": "NONE"
+}

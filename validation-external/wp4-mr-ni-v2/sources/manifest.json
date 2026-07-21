@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-NI-v2",
+  "retrieved_utc": "2026-07-21T06:00:00Z",
+  "sources": [
+    {
+      "source_id": "tsygvintsev-2007-exceptional-cases",
+      "title": "On some exceptional cases in the integrability of the three-body problem",
+      "authors": ["Alexei V. Tsygvintsev"],
+      "publication": "Celestial Mechanics and Dynamical Astronomy 99 (2007), 23-29",
+      "doi": "10.1007/s10569-007-9086-5",
+      "arxiv": "math/0610951",
+      "download_url": "https://arxiv.org/pdf/math/0610951",
+      "download_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "qualified_use": "Published monodromy/NVE theorem for the planar positive-mass Newtonian three-body problem near the parabolic Lagrange orbit, including the exact mass invariant sigma and exceptional set."
+    },
+    {
+      "source_id": "boucher-weil-morales-ramis-threebody",
+      "title": "Application of the Morales-Ramis theorem to test the non-complete integrability of the planar three-body problem",
+      "authors": ["Delphine Boucher", "Jacques-Arthur Weil"],
+      "publication": "Author-hosted primary manuscript",
+      "download_url": "https://www.unilim.fr/pages_perso/jacques-arthur.weil/Papers/boucher_weil_3b_thomann.pdf",
+      "download_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "qualified_use": "Independent Morales-Ramis proof that the planar positive-mass three-body Hamiltonian is not completely integrable with meromorphic first integrals, using the normal variational system along the parabolic Lagrange solution."
+    }
+  ],
+  "copyright_boundary": "The repository records bibliographic metadata and download hashes only. It does not redistribute either paper."
+}
