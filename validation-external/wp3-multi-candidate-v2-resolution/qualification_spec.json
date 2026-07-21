@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2-RES-v1",
+  "specification_status": "LOCKABLE_BEFORE_CANDIDATE_COEFFICIENT_ACCESS_OR_INTERPRETATION",
+  "purpose": "Resolve the single one-dimensional WP3-MULTI-CAND-v2 spectral subspace without opening the publication reserve and without promoting a backend-uncertain singular direction to an invariant claim.",
+  "prelock_disclosure": "Before this specification was locked, only campaign status and expression-free spectral metadata were read: one dimension-one cluster at mode rank one, generalized singular value 7.081552551265169e-13, backend uncertainty 8.832165358133346e-13, guarded lower bound zero, and candidate threshold 1e-10. No coefficient, top-term, or candidate-expression field was inspected.",
+  "evidence_boundary": "A REJECTED result establishes only that the v2 spectral subspace failed this frozen backend, diagnostic, or independent challenge protocol; it does not convert the original search into a backend-guarded bounded-null certificate and does not prove absence of integrals. An EXACT_KNOWN_DIRECTION result requires a newly locked search with the enlarged exact module. A SURVIVES result authorizes only a new candidate-specific qualification specification; it does not authorize reserve access, invariant interpretation as a theorem, WP4 work, or a publication claim. The 24-case publication reserve remains sealed throughout this campaign.",
+  "prerequisites": {
+    "wp3_multi_v2": {
+      "qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+      "lock_sha256": "f23005c9ba6c9bbd9948abb9354f95bf12757bd4020c9bfd7a7a0b331678f5ff",
+      "record_payload_sha256": "c6d050e987b63b5fff7b2165d1e79000e305c687e6d8148f34c611a360494cee",
+      "specification_lock_file_sha256": "6a2be46ce51886120a36b9fe81972e868253573feeec243aca2cb5501502b621",
+      "search_lock_file_sha256": "7712800aa5f34dee9ee7341da1205bd935fa6a36c244bfc605e394143d915ed5",
+      "results_file_sha256": "c5c3da9f3c30f7758bc6e90a7c751505e21acafe7485e8cdfb363fd59103da61",
+      "publication_gate_file_sha256": "3a4ac1ad72dfab88d15d5f3497dc9a3c119a53abd6ff0cf2e26039cb1baeaada",
+      "record_file_sha256": "d6aff40dfad5b39749db200939c5831c885ea7dcfd9daf3444f625dfc997c561",
+      "candidate_decision_file_sha256": "710a3b914bcde7015a8200c0a50923d0246bda9fbee6a690b4a916dad15bb89f",
+      "expected_status": "CANDIDATE_SUBSPACE_REQUIRES_RESOLUTION",
+      "expected_candidate_subspace_count": 1,
+      "expected_candidate_dimension": 1,
+      "expected_mode_rank": 1
+    },
+    "v1_search_corpus_sha256": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "candidate_access_policy": {
+    "coefficients_and_top_terms_before_specification_lock": "PROHIBITED",
+    "coefficients_after_specification_lock": "AUTHORIZED_FOR_FROZEN_RESOLUTION_ONLY",
+    "human_or_machine_interpretation_before_resolution_implementation_lock": "PROHIBITED",
+    "publication_reserve_access": "PROHIBITED",
+    "morales_ramis_track_use": "PROHIBITED_AS_CANDIDATE_VALIDATION"
+  },
+  "challenge_corpus": {
+    "generator": "deterministic exact-rational barycentric three-body states converted once to binary64",
+    "seed": 20260721,
+    "development_challenge_count": 128,
+    "calibration_challenge_count": 64,
+    "mass_numerator_range": [7, 19],
+    "mass_denominator": 13,
+    "state_component_numerator_range": [-31, 31],
+    "state_component_denominator": 17,
+    "minimum_pair_separation": 0.25,
+    "minimum_collision_product": 0.05,
+    "spatial_fraction_min": 0.5,
+    "required_zero_center_of_mass_and_momentum": true,
+    "publication_reserve_overlap": "NONE"
+  },
+  "resolution_protocol": {
+    "committed_candidate_integrity": "Extract exactly the rank-one coefficient vector from the prerequisite result only after this specification lock verifies.",
+    "existing_diagnostics": "Require the committed basis direction to pass its frozen training, calibration, family-fold, trajectory-drift, and gauge diagnostics.",
+    "backend_replication": [
+      "Rebuild the frozen development and calibration matrices byte-identically.",
+      "Recompute the generalized subspace with NumPy SVD and SciPy LAPACK gesdd and gesvd drivers.",
+      "Compare rank-one coefficient subspaces after the same exact-zero and angular-momentum-squared quotient."
+    ],
+    "independent_evaluation": "Evaluate the committed and replicated directions on the frozen challenge corpus with both production binary64 code and a source-disjoint mpmath implementation at 80 decimal digits.",
+    "formula_resolution": "After the implementation lock, inspect top terms and attempt bounded rational reconstruction relative to the dominant coefficient. Test any reconstructed expression on every frozen and challenge point.",
+    "known_direction_test": "Test coefficient projection against angular momentum squared, exact Reynolds identities, constants on the fixed-energy surface, and any exact formula identified by rational reconstruction.",
+    "reserve": "Do not read, materialize, or execute any sealed publication-reserve source row."
+  },
+  "thresholds": {
+    "matrix_byte_identity_required": true,
+    "existing_basis_direction_passes_all_diagnostics_required": true,
+    "backend_rank_one_subspace_projection_min": 0.999,
+    "backend_generalized_singular_relative_spread_max": 0.1,
+    "challenge_weighted_value_std_min": 1e-6,
+    "challenge_lie_rms_max": 1e-9,
+    "challenge_lie_abs_max": 1e-7,
+    "production_mpmath_value_relative_difference_max": 1e-10,
+    "production_mpmath_lie_relative_difference_max": 1e-9,
+    "rational_reconstruction_max_denominator": 1000000,
+    "rational_reconstruction_normalized_coefficient_residual_max": 1e-8,
+    "known_direction_projection_residual_max": 1e-10
+  },
+  "decision_policy": {
+    "REJECTED_NUMERICAL_OR_GENERALIZATION_ARTIFACT": "Any required existing diagnostic, backend stability, independent challenge, or precision agreement gate fails. No candidate claim is authorized; the original search remains spectrally unresolved rather than becoming a bounded null.",
+    "EXACT_KNOWN_DIRECTION": "All numeric gates pass and the direction is identified as an exact known or identity direction. A successor search specification with an enlarged exact module is required before any null claim.",
+    "SURVIVES_RESOLUTION": "All numeric gates pass and the direction is nontrivial and reproducible. Freeze a new candidate-specific qualification specification before any reserve access or substantive invariant claim.",
+    "SURVIVES_NUMERICALLY_FORMULA_UNRESOLVED": "All numeric gates pass but no exact expression meets the reconstruction gate. Further unsealed resolution is required; reserve access and interpretation remain prohibited.",
+    "INVALID": "Any prerequisite, lock, corpus, candidate-count, dimension, implementation, or reserve-integrity check fails."
+  }
+}
