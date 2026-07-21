@@ -23,16 +23,16 @@ This project systematically tests this hypothesis through:
 
 | Work Package | Description | Status | Completion |
 |--------------|-------------|--------|------------|
-| **WP1** | High-Precision Infrastructure | Qualified (scoped) | Propagation qualifications pass; WP1-CAT-v1 qualifies two bounded native Earth-Moon planar Lyapunov segments, while a general production catalogue remains open |
-| **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | Canonical Kepler/KS, one-channel perturbed upstairs KS, and bounded reduction/pairwise-KS qualifications pass; global regularization remains open |
+| **WP1** | High-Precision Infrastructure | Qualified (scoped) | WP1-CAT-N3BP-v1 qualifies native production of one 169-member planar N3BP family in full 18D states; other families and a general catalogue remain open |
+| **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | WP2-MULTIQ-v1 qualifies a three-chart fixed-energy KS atlas with continuation through every isolated binary-collision channel; triple collision and broader reductions remain open |
 | **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-UP-CAND-v3 excludes training-eligible directions in its frozen degree-three quotient; this is not a no-integral or non-integrability theorem |
 | **WP4** | Rigorous Validation ("The Gauntlet") | Harness qualified | WP4-UP-READY-v3 passes 30/30 known/false/dependent control gates; candidate and Morales-Ramis stages were not triggered |
 | **WP5** | Consolidation & Publication | Designed | Pending validated results |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
-into a claim of integrability or native production-scale periodic-orbit catalogue
-generation. See `notes/wp1-wp2-model-boundary.md`,
+into a claim of integrability or a complete/general periodic-orbit catalogue.
+See `notes/wp2-multi-wp1-cat-n3bp-result.md`, `notes/wp1-wp2-model-boundary.md`,
 `notes/wp3-up-cand-v3-result.md`, and
 `notes/wp4-upstairs-v3-readiness-result.md` for the exact boundaries.
 
@@ -50,7 +50,9 @@ Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
 - JPL-seeded validation catalogue generated from the same 300 sampled external seeds: 284 accepted rows under closure `<= 1e-8` and absolute Jacobi drift `<= 1e-12`; accepted-catalogue closure median `2.01e-11`, 95th percentile `9.73e-10`, max `6.23e-09`.
 - Small-amplitude native Lyapunov seeds now use a guarded differential corrector; the corrected Lyapunov convergence/closure diagnostic reports median closure `1.02e-12` and median Jacobi drift about `1.5e-16`.
 - CR3BP rotating-frame reversibility now uses the correct reversing symmetry and passes the short-time `T=1` diagnostic with median position RMS `2.64e-16` and 100% Tier 1 pass rate.
-- The legacy native candidate comparison is still not publication-ready as a broad generated catalogue: median state distance `8.37e-01` and median period error `8.90e-01`. The qualified representative corrector does not yet constitute family continuation or production-scale native generation.
+- The legacy native candidate comparison remains non-qualifying and is retained
+  as historical evidence. It is superseded for the bounded N3BP family claim by
+  `WP1-CAT-N3BP-v1` below.
 
 `WP1-CAT-v1-5dc7ad44b78f` separately qualifies an external-orbit-seed-free
 continuation component for fixed Earth-Moon planar L1/L2 Lyapunov grids. It
@@ -60,6 +62,17 @@ match within frozen tolerances, selecting 138 distinct native members. This is
 sampled family-curve agreement, not one-to-one recovery or catalogue
 completeness; the disjoint holdout was execution-reserved, not independently
 blinded, and all comparison rows share one strongly-unstable class.
+
+`WP1-CAT-N3BP-v1-605c6dbd59d1` is `PASS` for a native 169-member
+`bABabaBAba` planar N3BP family on the frozen two-dimensional mass grid. The
+source-free candidate was frozen before restoring the selected external rows.
+All 168 exact-mass comparison cases passed their locked development,
+calibration, and first-execution holdout gates (84/42/42), including full-state
+closure, invariant drift, reduced-planar Floquet diagnostics, one-to-one
+Li-Li-Liao/SJTU conformance, and REBOUND cross-integration. This is native
+correction and continuation from one disclosed published equal-mass root, not
+independent root discovery, completeness, spatial-family production, or a
+general N3BP catalogue.
 
 The formal decision is in `validation-external/wp1-validation/reports/wp1_qualification_report.md` and `wp1_qualification_record.json`; downstream artifact evidence is in `wp1_qualified_artifact_audit.json`. The earlier Earth-Moon report remains at `wp1_external_validation_report.md`.
 
@@ -81,19 +94,29 @@ The formal decision is in `validation-external/wp1-validation/reports/wp1_qualif
   fixed-energy KS lift of the translation-reduced N3BP. It verifies projection
   of the upstairs Hamiltonian vector field, `S1`/`Xi` structure, projected
   angular momentum, and regular passage through the selected binary collision.
+- `WP2-MULTIQ-v1-72c81d86644a` is `PASS` for the fixed-energy extended-
+  canonical three-chart, two-spinor KS atlas. It qualifies the `T^2` gauge
+  action in each chart, the chart-independent product Sundman law, canonical
+  quotient transitions, automatic smallest-pair chart switching, and smooth
+  fictitious-time continuation through each isolated binary-collision channel.
+  Triple collision, simultaneous pair collisions, nonzero-`Xi` magnetic
+  reduction, SO(3) reduction, and additional integrals remain outside scope.
 - A clean bobs-mini checkout independently verifies all three relevant locks,
   passes 160/160 focused tests under Python 3.11, and replays downstream
   development and calibration at 24/24 gates. The supplemental parity record
   discloses a non-decision-bearing NumPy/Accelerate warning.
-- The downstream result does not implement or qualify reduced Hamilton
-  equations, a global three-body Sundman time, three decoupled Kepler
-  oscillators, collision passage for the full N3BP, or a periodic-orbit
-  catalogue.
+- The earlier pairwise-KS composition record remains only a constrained
+  kinematic result. The newer multi-chart record supersedes it for the declared
+  atlas and isolated-collision claims, but does not claim three decoupled Kepler
+  oscillators, triple-collision regularization, or integrability.
 
 The machine-readable records and human reports are under
 `validation-external/wp1-n3bp-validation/reports/`,
 `validation-external/wp2-ks-validation/reports/`, and
-`validation-external/wp2-threebody-validation/reports/`.
+`validation-external/wp2-threebody-validation/reports/`. The new catalogue and
+multi-chart records are under
+`validation-external/wp1-catalogue-n3bp-validation/reports/` and
+`validation-external/wp2-multi-validation/reports/`.
 
 ### Current WP3 and WP4 Evidence
 
@@ -107,6 +130,10 @@ The machine-readable records and human reports are under
   produced a basis-invariant bounded null: its backend-guarded minimum
   generalized singular value is `1.63949e-4`, versus the `1e-10` candidate
   threshold, across all 1,090 observable quotient directions.
+- That bounded-null search is tied to `WP2-UPQ-v2`, the older one-channel
+  model. It is not evidence about `WP2-MULTIQ-v1`; a separately locked
+  multi-chart WP3 campaign is required before interpreting invariants on the
+  newly qualified atlas.
 - The v3 candidate gate is `NOT_TRIGGERED_NO_CANDIDATE`; the 24-case
   publication reserve remains sealed and no candidate interpretation is
   authorized.
@@ -176,7 +203,15 @@ WP1 (Trajectories) --> WP2 (Geometry) --> WP3 (Discovery) --> WP4 (Validation) -
 
 ### WP1: High-Precision Infrastructure
 
-Generates and validates CR3BP trajectory data. The scoped external qualification covers four physical systems, Lyapunov/Halo families, four stability regimes, independent high-precision propagation, analytic STM/Floquet stability, strict representative correction, and qualification-aware HDF5/Parquet output. WP1-CAT-v1 additionally qualifies two fixed native Earth-Moon planar Lyapunov continuation segments. Production-scale Tier 2 and general native family discovery/continuation remain outside the qualified claim.
+Generates and validates CR3BP and bounded N3BP trajectory data. The scoped
+external qualification covers four CR3BP physical systems, Lyapunov/Halo
+families, four stability regimes, independent high-precision propagation,
+analytic STM/Floquet stability, strict representative correction, and
+qualification-aware HDF5/Parquet output. WP1-CAT-v1 additionally qualifies two
+fixed native Earth-Moon planar Lyapunov continuation segments.
+WP1-CAT-N3BP-v1 qualifies one 169-member planar N3BP family in full 18D states.
+General family discovery, other topologies, spatial families, and catalogue
+completeness remain outside the qualified claims.
 
 - **Integrators**: IAS15 (adaptive Radau), Yoshida8 (symplectic), AdaptiveSymplectic (float64 prototype with precision guard), HeyokaTaylor (bounded arbitrary-precision Tier 2 smoke)
 - **Chaos Detection**: MEGNO, FLI indicators
@@ -196,8 +231,12 @@ The qualified foundation is deliberately narrower than the project hypothesis.
 - **Pairwise KS composition**: qualified 12D constrained kinematic lift of the
   three relative phase states, without a global Sundman or regularized N3BP
   dynamics claim
+- **Multi-chart KS atlas**: qualified fixed-energy three-chart dynamics with a
+  product Sundman law, canonical overlap maps, smallest-pair switching, and
+  isolated binary-collision continuation in all three physical channels
 - **Still exploratory**: mechanical-connection dynamics, cohomological lifts,
-  singular rotation charts, and hidden-integrability constructions
+  singular rotation charts, triple collision, and hidden-integrability
+  constructions
 
 ### WP3: Invariant Discovery
 
