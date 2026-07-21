@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v1",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_SEARCH",
+  "purpose": "Search for atlas-compatible additional first-integral candidates on the qualified WP2-MULTIQ-v1 model in a shared chart-local degree-three polynomial library, after exact removal of the two Xi constraint ideals and represented angular-momentum module.",
+  "evidence_boundary": "A no-candidate result states only that the backend-guarded lower bound on the smallest generalized combined-constraint/value singular value exceeds the frozen training threshold in the shared chart-local, body-permutation-symmetric, combined-degree-three-or-less polynomial library over the 16 non-time canonical two-spinor variables and the fixed-energy and symmetric-mass parameters. The combined constraint requires vanishing fictitious-time Lie derivative in all three WP2-MULTIQ-v1 charts, invariance under both independent gauge circles, and equal values on collision-free chart overlaps, after coefficient-exact removal of the complete represented degree-three Xi1/Xi2 ideal and angular-momentum parameter module. The result excludes chart-asymmetric expressions, higher-degree or nonpolynomial functions, parameter-only constants, nonzero-Xi magnetic dynamics, simultaneous or triple collision, unrepresented known-integral modules, and every general no-integral or non-integrability claim. Development and calibration sources have been examined in earlier campaigns, so this is a locked model-rebaseline search rather than fresh blind confirmation. Candidate interpretation is prohibited until the staged publication gate passes and a candidate-specific resolution specification is frozen.",
+  "prerequisites": {
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+      "record_payload_sha256": "c8df63c81f0688eefeb4838a09c1e28091327ce46089fbcaabb4152fcf27a589"
+    },
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "lock_sha256": "fde5e484ada224c64083b5695750bf1ec780a99b5ccd61e7324fc89b0ee0f191",
+      "lock_file_sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+      "record_file_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+      "record_payload_sha256": "4d0a300ca34c8cce0d8653ea7a0134c39ca23723cc8c84a7e4a045746e0c703a",
+      "native_catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234"
+    },
+    "wp1_spatial_n3bp": {
+      "qualification_id": "WP1Q-N3BP-SPATIAL-v2-294429ca5655",
+      "lock_sha256": "9b974df4a808e82e36f1c5fd4ab3fc4e8fc32f6668a969dda257ef347d45a0f0",
+      "lock_file_sha256": "afead1f27f1fa20aebab8e61e4ac10ecd0ef5b75396c1ad870d58d84c2ba04e5",
+      "record_file_sha256": "201ce9154e28521543d9eb68b7d0e1cab61a75de72b7cd55758f38c50aa22e7a",
+      "record_payload_sha256": "a964dc6647ed5ac851daa4e32a629c3523c795a9b5f1a1280501769f90963670"
+    },
+    "source_exploration_corpus_sha256": "2e94a99b6c48db9b871daeca23547b5f39c609888f18923f3bd7271c09ee5e0e",
+    "sealed_publication_reserve_sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "library": {
+    "canonical_state_variables": [
+      "q1_1", "q1_2", "q1_3", "q1_4",
+      "q2_1", "q2_2", "q2_3", "q2_4",
+      "P1_1", "P1_2", "P1_3", "P1_4",
+      "P2_1", "P2_2", "P2_3", "P2_4"
+    ],
+    "excluded_extended_variables": ["physical_time", "p_t"],
+    "parameter_variables": ["fixed_energy", "mass_s2", "mass_s3"],
+    "polynomial_total_degree_max": 3,
+    "shared_coefficient_vector_across_charts": true,
+    "body_permutation_symmetric_parameterization": true,
+    "monomial_count": 1520,
+    "search_feature_count": 1520,
+    "exact_constraint_ideal_count": 40,
+    "exact_angular_module_count": 12,
+    "exact_known_module_rank": 52,
+    "charts": ["central-1", "central-2", "central-3"],
+    "torus_angle_pairs": [[0.0, 0.0], [0.61, -1.17], [-1.17, 0.61]]
+  },
+  "data": {
+    "source_exploration_corpus": "validation-external/wp3-v2-exploration/data/exploration_corpus.json",
+    "source_case_count": 207,
+    "external_checkpoint_indices": [0, 4, 8],
+    "wp1_catalogue": "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json",
+    "wp1_selection_salt": "WP3-MULTI-CAND-v1|wp1-cat|2026-07-21",
+    "wp1_selection": {
+      "development": {"S": 12, "U": 6},
+      "calibration": {"S": 6, "U": 3}
+    },
+    "wp1_checkpoint_fractions": [0.0, 0.37, 0.73],
+    "expected_group_counts": {"development": 156, "calibration": 78},
+    "executable_splits": ["development", "calibration"],
+    "minimum_pair_separation_scaled_min": 1e-6
+  },
+  "decision_runtime": {
+    "python": "3.13.2",
+    "python_implementation": "CPython",
+    "platform": {
+      "system": "Darwin",
+      "release": "25.5.0",
+      "version": "Darwin Kernel Version 25.5.0: Mon Apr 27 20:41:19 PDT 2026; root:xnu-12377.121.6~2/RELEASE_ARM64_T8122",
+      "platform": "macOS-26.5.1-arm64-arm-64bit-Mach-O",
+      "mac_version": "26.5.1",
+      "machine": "arm64",
+      "processor": "arm",
+      "architecture": ["64bit", "Mach-O"],
+      "pointer_bits": 64,
+      "byteorder": "little"
+    },
+    "packages": {"numpy": "2.3.5", "scipy": "1.16.3"},
+    "numpy_backend_sha256": "32c863b8870aa8b07a5536f36adea164798728726304415e973eab201fb997ef"
+  },
+  "search": {
+    "mode_count": 20,
+    "fold_mode_count": 40,
+    "value_rank_relative_tolerance": 1e-11,
+    "singular_cluster_relative_tolerance": 1e-8,
+    "singular_cluster_absolute_tolerance": 1e-12,
+    "svd_backward_error_factor": 16.0,
+    "constraint_block_weights": {
+      "physical_lie": 1.0,
+      "gauge_generator_1": 1.0,
+      "gauge_generator_2": 1.0,
+      "chart_overlap": 1.0
+    },
+    "candidate_combined_constraint_rms_max": 1e-10,
+    "candidate_physical_lie_rms_max": 1e-10,
+    "candidate_gauge_lie_rms_max": 1e-10,
+    "candidate_chart_overlap_rms_max": 1e-10,
+    "calibration_ratio_floor": 1e-12,
+    "calibration_to_training_max": 2.0,
+    "family_fold_subspace_projection_min": 0.9,
+    "calibration_trajectory_drift_max": 1e-8,
+    "gauge_orbit_spread_max": 1e-10,
+    "chart_overlap_spread_max": 1e-10,
+    "known_module_combined_constraint_rms_max": 1e-10,
+    "constraint_value_abs_max": 1e-10,
+    "known_module_projection_residual_max": 1e-10,
+    "fixed_energy_checkpoint_abs_max": 1e-10,
+    "chart_projection_state_scaled_max": 1e-10
+  },
+  "staged_policy": {
+    "SEARCH_READY": "Requires exact verification of all three prerequisite qualifications, source hashes, an intact sealed reserve, the pre-search implementation lock, rank-52 exact known-module removal, all three charts, both gauge generators, overlap constraints, and passing known controls.",
+    "PUBLICATION_GATE": "Must be evaluated before any candidate expression or invariant interpretation. It verifies search readiness, spectral partition consistency, reserve status, and the model/claim boundary.",
+    "NULL_RESULT_READY": "Requires the backend-guarded lower bound on the smallest generalized combined-constraint/value singular value to exceed the candidate threshold. The conclusion is only a bounded null in the frozen shared symmetric library.",
+    "CANDIDATE_READY": "A training-eligible singular subspace blocks both a null and interpretation until a candidate-specific direction or invariant-subspace test is frozen using development and calibration data.",
+    "SEALED_QUALIFICATION": "Can be triggered only after candidate-specific resolution is frozen under a new lock; only then may the 24-case reserve be opened once.",
+    "WP4_READY": "Can be triggered only by a passing candidate-specific sealed qualification and independent replication on the exact WP2-MULTIQ-v1 model."
+  }
+}
