@@ -1,0 +1,22 @@
+{
+  "baseline_git_commit": "c23da43b4fb3afaeb4498b062d8ebc8219e56e13",
+  "campaign": "WP2-MULTIQ-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-21T03:52:42.118510+00:00",
+  "prerequisite_file_hashes": {
+    "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_lock.json": "a8e2a25ec2aab01c4006d983f84ca3cc5297bac1a58a29e924a6499e8d77e137",
+    "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_record.json": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+    "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_lock.json": "0f0d1bb48682aaea015ea043fbad9cd2762c9600004de97ee620c3eabba4fd2f",
+    "validation-external/wp2-ks-validation/reports/wp2_ks_qualification_record.json": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75",
+    "validation-external/wp2-threebody-flow-validation/reports/wp2_threebody_flow_qualification_lock.json": "be33644c6868ed39cce2eeba75483b691616e4a5f35ed53b01f2a98f95fd0e8d",
+    "validation-external/wp2-threebody-flow-validation/reports/wp2_threebody_flow_qualification_record.json": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9",
+    "validation-external/wp2-threebody-validation/reports/wp2_threebody_qualification_lock.json": "89a4138bbeaced1981605ba0cb967ffe2e1131e416a5bc1f0044eae84b292449",
+    "validation-external/wp2-threebody-validation/reports/wp2_threebody_qualification_record.json": "b0a0afa4d93e886323295db6ba4135cc3a13f2013c0c5edc91b366c8e3ed5041",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_lock.json": "3f09719eca60c9cb4ad10b66d5d4002a7028246bec380131a1f0953121504eb1",
+    "validation-external/wp2-up-validation-v2/reports/wp2_up_v2_qualification_record.json": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c"
+  },
+  "schema_version": "1.0",
+  "spec_path": "validation-external/wp2-multi-validation/qualification_spec.json",
+  "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+  "specification_lock_sha256": "accb88314c9ff32842a97a1a852e4eefe7e6976aaea736414de3a93bbc9b2506"
+}

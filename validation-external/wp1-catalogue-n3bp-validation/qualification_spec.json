@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1-CAT-N3BP-v1",
+  "specification_status": "LOCKED_BY_SEPARATE_RECORD",
+  "specification_lock": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_specification_lock.json",
+  "claim": "If and only if the final qualification record is PASS and both the specification lock and full qualification lock verify, WP1-CAT-N3BP-v1 qualifies the declared native correction-and-continuation path to generate a 169-member catalogue of one connected planar bABabaBAba Newtonian three-body family on the frozen two-dimensional mass grid. Every member is stored in the qualified full 18-dimensional barycentric inertial state contract, closes over one corrected period, carries bounded invariant and reduced-planar Floquet diagnostics, and is evaluated one-to-one at the same masses against the pinned Li-Li-Liao/SJTU catalogue without using those evaluation rows as continuation seeds.",
+  "evidence_boundary": "Generation starts from one explicitly disclosed rounded equal-mass root published by Li, Li, and Liao; v1 therefore qualifies native correction, two-parameter continuation, full-state catalogue production, and external family-surface conformance, not independent discovery of the root. The external table is public and the holdout is execution-reserved rather than blind. The claim excludes other topologies or disconnected families, spatial orbit generation, relative-periodic orbits, collision passage, folds or bifurcations, pseudo-arclength continuation, nonlinear or spatial stability, completeness, arbitrary masses or scale, and a general production catalogue for the full three-body problem.",
+  "prerequisites": {
+    "wp1_n3bp": {
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "record_file_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27"
+    }
+  },
+  "model": {
+    "equations": "Unsoftened Newtonian three-body equations with G=1 and three finite positive masses.",
+    "state_order": ["r1x", "r1y", "r1z", "r2x", "r2y", "r2z", "r3x", "r3y", "r3z", "v1x", "v1y", "v1z", "v2x", "v2y", "v2z", "v3x", "v3y", "v3z"],
+    "family": "The connected planar family identified by the source free-group word bABabaBAba.",
+    "masses": "m3=1; m1 and m2 independently take 13 values from 0.970 through 1.030 in increments of 0.005.",
+    "canonical_section": "Before barycentric translation: r1=(x1,0,0), r2=(1,0,0), r3=(0,0,0), v1=(0,v1,0), v2=(0,v2,0), and v3=(0,-(m1*v1+m2*v2)/m3,0).",
+    "equivalence": "Translation and boost are fixed barycentrically; rotation, scale, phase, and body labels are fixed by the canonical section. Distinct mass triples are distinct catalogue models and are never deduplicated against one another.",
+    "periodicity": "Inertial periodicity of the complete labelled 18D state after one positive physical period; relative periodicity is out of scope."
+  },
+  "generation": {
+    "published_root": {
+      "masses": [1.0, 1.0, 1.0],
+      "x1": -0.37200864,
+      "v1": 1.21800411,
+      "v2": 0.45310805,
+      "period": 7.53971451,
+      "provenance": "Rounded from Li, Li, and Liao, arXiv:2007.10184; the exact SJTU row is excluded from external qualification metrics."
+    },
+    "output_grid": {"m1_min": 0.97, "m1_max": 1.03, "m2_min": 0.97, "m2_max": 1.03, "step": 0.005},
+    "internal_initial_step": 0.001,
+    "predictor": "Secant prediction in (x1,v1,v2,T) after the first corrected step in each signed mass direction.",
+    "corrector": "Damped nonlinear least squares on the complete planar one-period closure residual, with fixed masses and canonical section.",
+    "correction_rtol": 2e-12,
+    "correction_atol": 2e-14,
+    "correction_max_step_fraction": 0.0078125,
+    "correction_max_nfev": 24,
+    "external_data_policy": "The generator API accepts no external catalogue. Only the disclosed root constants may enter generation. Candidate payload and provenance are frozen before any split evaluation is accepted."
+  },
+  "stability": {
+    "method": "Integrate the analytic planar inertial variational equations, project the 12D STM to the canonical 8D translation quotient, and apply the Kapela-Simo trace/minor criterion used by the source to the nontrivial reciprocal pairs.",
+    "qualified_label": "Planar linear S/U only. Out-of-plane multipliers are reported but not qualified.",
+    "boundary_guard": 0.0002,
+    "integration_rtol": 2e-11,
+    "integration_atol": 2e-13,
+    "integration_max_step_fraction": 0.00390625
+  },
+  "external_source": {
+    "repository": "https://github.com/sjtu-liao/three-body",
+    "commit": "b96b0193579a9952299d710ed616f529bb7cf898",
+    "path": "non-hierarchical-3b-supplementary_data.txt",
+    "sha256": "9c06eedc41b537b2ed926217cdf149d9f808a21866148ea3d89b9eb3c6069fd4",
+    "eligible_rows": "Exact mass matches on the 13x13 output grid, excluding the disclosed (1,1,1) root row.",
+    "matching": "One native candidate to one external row at identical ordered masses; nearest-neighbour reuse and source-seeded correction are prohibited.",
+    "split_policy": "Deterministic salted stratification by source S/U label into development, calibration, and execution-reserved holdout after candidate freeze.",
+    "split_salt": "WP1-CAT-N3BP-v1|sjtu-exact-mass|2026-07-21",
+    "holdout_classification": "Public, disjoint, execution-reserved evidence; not custodian-blind."
+  },
+  "execution": {
+    "expected_candidate_count": 169,
+    "expected_external_case_count": 168,
+    "split_fractions": {"development": 0.5, "calibration": 0.25, "holdout": 0.25},
+    "checkpoint_count": 65,
+    "rebound_cases_per_split": 4,
+    "rebound_epsilon": 1e-12,
+    "holdout_rule": "The holdout runner verifies both locks and every frozen hash, refuses an existing output, and evaluates the reserved rows exactly once."
+  },
+  "gates": {
+    "candidate_count": 169,
+    "candidate_success_rate_min": 1.0,
+    "external_seed_count": 1,
+    "evaluation_row_used_as_seed_count": 0,
+    "closure_position_scaled_max": 2e-8,
+    "closure_velocity_scaled_max": 2e-8,
+    "relative_energy_drift_max": 2e-9,
+    "linear_momentum_drift_scaled_max": 2e-11,
+    "angular_momentum_drift_scaled_max": 2e-9,
+    "minimum_pair_separation_scaled_min": 0.01,
+    "exact_mass_match_rate_min": 1.0,
+    "external_parameter_error_p95_max": 2e-6,
+    "external_parameter_error_max": 1e-5,
+    "external_period_relative_error_p95_max": 2e-7,
+    "external_period_relative_error_max": 1e-6,
+    "planar_stability_classified_rate_min": 0.95,
+    "planar_stability_label_agreement_min": 1.0,
+    "monodromy_symplectic_defect_max": 2e-5,
+    "monodromy_reciprocal_pair_error_max": 2e-4,
+    "dop853_rebound_position_error_scaled_max": 3e-8,
+    "dop853_rebound_velocity_error_scaled_max": 3e-8,
+    "partition_disjoint_rate_min": 1.0,
+    "one_to_one_match_rate_min": 1.0,
+    "duplicate_count_max": 0,
+    "structural_blind_holdout": 0,
+    "structural_independent_root_discovery": 0,
+    "structural_general_n3bp_catalogue": 0
+  },
+  "invalidation": "Any changed root, grid, family identity, section, corrector, continuation rule, stability rule, threshold, split, source hash, code path, prerequisite record, or post-lock decision input invalidates v1. A failed holdout remains FAIL and requires a new campaign version.",
+  "downstream_policy": "A PASS supplies a bounded full-state periodic trajectory family for future WP2/WP3 experiments. It does not widen WP2's model qualification and must not be cited as evidence for catalogue completeness or root discovery."
+}

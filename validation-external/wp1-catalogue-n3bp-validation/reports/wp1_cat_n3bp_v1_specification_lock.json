@@ -1,0 +1,15 @@
+{
+  "baseline_git_commit": "c23da43b4fb3afaeb4498b062d8ebc8219e56e13",
+  "campaign": "WP1-CAT-N3BP-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-21T03:52:42.120664+00:00",
+  "prerequisite_file_hashes": {
+    "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_lock.json": "a8e2a25ec2aab01c4006d983f84ca3cc5297bac1a58a29e924a6499e8d77e137",
+    "validation-external/wp1-n3bp-validation/reports/wp1_n3bp_qualification_record.json": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27",
+    "validation-external/wp1-n3bp-validation/sources/manifest.json": "d697280bdab6b9517e608732f189a9175ef53cab87dc5779c230a9e4d270eb67"
+  },
+  "schema_version": "1.0",
+  "spec_path": "validation-external/wp1-catalogue-n3bp-validation/qualification_spec.json",
+  "spec_sha256": "17f00a4caece8bcf7e1028f2c98e43db3890e2e7b8ef0354e6f1dc21fd399a14",
+  "specification_lock_sha256": "22d16ea712138513b33ef11417872425a86be3e74735b58f9051b3f15aaa0df4"
+}

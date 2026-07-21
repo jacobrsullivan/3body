@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-MULTIQ-v1",
+  "specification_status": "LOCKED_BY_SEPARATE_RECORD",
+  "specification_lock": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_specification_lock.json",
+  "claim": "If and only if the final qualification record is PASS and both the specification lock and full qualification lock verify, WP2-MULTIQ-v1 qualifies the declared fixed-energy extended-canonical three-chart, two-spinor KS atlas for the translation-reduced spatial Newtonian three-body problem. The qualified atlas has one T^2 gauge action per chart, one chart-independent Sundman law dt/ds=r12*r23*r31, canonical quotient transitions on collision-free chart overlaps, and smooth fictitious-time continuation through each isolated binary-collision divisor while the third body remains separated.",
+  "evidence_boundary": "The claim covers positive finite masses, zero Xi levels, three central-body charts, collision-free projection to the qualified Newtonian flow, bounded near-collision trajectories, and local passage through every isolated binary channel. It excludes triple collision, any state with two simultaneous pair collisions, nonzero-Xi magnetic reduction, SO(3) reduction, a single unconstrained 24-dimensional three-pair phase space, arbitrary-duration accuracy, completeness outside the frozen corpus, additional first integrals, Liouville or B-integrability, and every WP3/WP4 claim.",
+  "prerequisites": {
+    "wp1_n3bp": {
+      "qualification_id": "WP1Q-N3BP-v1-892335b25187",
+      "lock_sha256": "99b69816fa7096e059d6cb965c2b5eacea191f6af234cb9dc320f7a2dd9fd937",
+      "record_file_sha256": "ef37446a21ffc7949338b401a207d537165752ccf005fa0a85e5f940a9fa9c27"
+    },
+    "wp2_kepler_ks": {
+      "qualification_id": "WP2KSQ-v1-dc4b342e3bd2",
+      "lock_sha256": "6224c0167ec264695e5c1a9cceb635f710444b6da8b35841967c86f0ca7586bd",
+      "record_file_sha256": "b8d52e4b437dc5e20167e2e303583a3f069b96ce88c59e28d00b00852f2e9e75"
+    },
+    "wp2_threebody_reduction": {
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+      "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+      "record_file_sha256": "b0a0afa4d93e886323295db6ba4135cc3a13f2013c0c5edc91b366c8e3ed5041"
+    },
+    "wp2_threebody_flow": {
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "record_file_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9"
+    },
+    "wp2_one_channel": {
+      "qualification_id": "WP2-UPQ-v2-3baea4a70768",
+      "lock_sha256": "b75a581be8e01a10682f5e4fa552af02d625a73c1675db64578d701291f0fd54",
+      "record_file_sha256": "e85d68a2781fd440746846412809966c7f1e5408283b1e2844af7decd050053c"
+    }
+  },
+  "model": {
+    "physical_space": "The 12-dimensional translation quotient at total momentum zero, with canonical inertial momenta p_i=m_i*v_i.",
+    "charts": [
+      {"chart": "central-1", "local_order": [1, 2, 0]},
+      {"chart": "central-2", "local_order": [2, 0, 1]},
+      {"chart": "central-3", "local_order": [0, 1, 2]}
+    ],
+    "chart_coordinates": "For local bodies (a,b,c), X1=r_a-r_c and X2=r_b-r_c with canonical W1=p_a and W2=p_b on total momentum zero. Each (Xk,Wk) is lifted by the qualified KS cotangent convention to (qk,Pk).",
+    "extended_phase_space": "T*(R4 x R4 x R), ordered (q1,q2,t,P1,P2,p_t), dimension 18 before constraints.",
+    "gauge_group": "T2=S1xS1 acts independently and cotangently on (q1,P1) and (q2,P2). Xi1=Xi2=0 are first-class momentum-map levels. The quotient has dimension 14 and projects to the physical 12D translation quotient plus (t,p_t).",
+    "physical_distances": "R1=|X1|=|q1|^2, R2=|X2|=|q2|^2, R3=|X1-X2|.",
+    "time_law": "dt/ds=g=R1*R2*R3 in every chart.",
+    "hamiltonian": "K=g*(H+p_t)=R3*F-k3*R1*R2, where F=R2*(|P1|^2/(8*mu1)-k1)+R1*(|P2|^2/(8*mu2)-k2)+dot(DK(q1)P1,DK(q2)P2)/(16*m_c)+p_t*R1*R2, mu1=m_a*m_c/(m_a+m_c), mu2=m_b*m_c/(m_b+m_c), k1=G*m_a*m_c, k2=G*m_b*m_c, and k3=G*m_a*m_b.",
+    "fixed_energy_shell": "p_t=-h and K=0. On a collision-free shell the projected field equals g*X_H. At qk=0 with the other two distances nonzero, |Pk|^2=8*mu_k*k_k and the canonical field is finite.",
+    "transition": "Project a zero-Xi state to the physical translation quotient, reconstruct the target chart's two canonical pairs, and apply the target KS cotangent section. Transitions are defined only on collision-free overlaps and preserve t and p_t.",
+    "switch_policy": "Use a chart in which the smallest pair is one of the two KS-regularized edges. Switch only on a collision-free overlap; chart selection never changes g or the physical dynamics.",
+    "triple_collision_policy": "If two pair distances are simultaneously below the frozen collision floor, classify OUT_OF_SCOPE_TRIPLE_COLLISION and do not continue."
+  },
+  "corpus": {
+    "generic_cases": 18,
+    "near_binary_cases": 18,
+    "exact_passage_cases": 9,
+    "splits": {"development": 21, "calibration": 12, "holdout": 12},
+    "channel_balance": "Every split contains all three collision channels; exact-passage cases are balanced 3 per channel over the full corpus.",
+    "holdout_classification": "Execution-reserved compositional and collision-passage evidence. Public upstream physical states are not a blind scientific holdout.",
+    "minimum_noncolliding_distance": 0.2,
+    "near_collision_selected_distances": [0.01, 0.001, 0.0001],
+    "triple_collision_floor": 1e-10
+  },
+  "execution": {
+    "gauge_angles": [[0.0, 0.0], [0.37, -0.91], [-1.17, 1.43]],
+    "integration_rtol": 2e-12,
+    "integration_atol": 2e-13,
+    "integration_max_step": 0.0002,
+    "generic_s_horizon": 0.01,
+    "near_collision_s_horizon": 0.002,
+    "passage_s_horizon": 0.001,
+    "structural_cases_per_split": 64,
+    "structural_seed_by_split": {"development": 314159, "calibration": 271828, "holdout": 161803},
+    "independent_reference": "A separately encoded JAX x64 scalar Hamiltonian differentiated automatically, plus REBOUND IAS15 physical checkpoints and published Heggie/Aarseth-Zare identities.",
+    "holdout_rule": "The holdout runner verifies the specification lock and every full-lock file hash, refuses an existing output, and writes the holdout exactly once."
+  },
+  "gates": {
+    "case_success_rate_min": 1.0,
+    "prerequisite_pass_rate_min": 1.0,
+    "symbolic_identity_pass_rate_min": 1.0,
+    "dimension_and_constraint_count_pass_rate_min": 1.0,
+    "independent_hamiltonian_scaled_max": 5e-12,
+    "independent_vector_field_scaled_max": 5e-10,
+    "shell_abs_max": 5e-11,
+    "xi_abs_max": 5e-11,
+    "xi_lie_abs_max": 5e-9,
+    "gauge_hamiltonian_scaled_max": 5e-11,
+    "gauge_vector_covariance_scaled_max": 5e-9,
+    "chart_roundtrip_scaled_max": 2e-10,
+    "chart_hamiltonian_scaled_max": 2e-10,
+    "chart_time_rate_scaled_max": 2e-12,
+    "chart_cocycle_scaled_max": 2e-9,
+    "projected_sundman_field_scaled_max": 2e-8,
+    "generic_trajectory_scaled_max": 1e-7,
+    "near_binary_trajectory_scaled_max": 5e-6,
+    "collision_limit_scaled_max": 3e-4,
+    "collision_passage_finite_rate_min": 1.0,
+    "collision_passage_hamiltonian_drift_scaled_max": 2e-8,
+    "collision_passage_xi_drift_abs_max": 2e-8,
+    "collision_passage_reference_scaled_max": 2e-7,
+    "triple_collision_rejection_rate_min": 1.0,
+    "structural_unseen_scientific_holdout": 0,
+    "structural_triple_collision_qualified": 0
+  },
+  "invalidation": "Any changed model formula, time law, chart convention, threshold, corpus eligibility rule, code path, source payload, prerequisite record, or post-lock decision input invalidates v1. A failed holdout remains FAIL and requires a new campaign version.",
+  "downstream_policy": "A PASS authorizes a separately locked WP3 search on this exact multi-chart model. It does not transfer the WP3-UP-v3 null result, authorize a candidate, open a publication reserve, or establish integrability."
+}
