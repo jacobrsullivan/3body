@@ -1,0 +1,14 @@
+{
+  "campaign": "WP3-MULTI-CAND-v1-CANDIDATE-GATE",
+  "candidate_specific_lock": "NOT_CREATED",
+  "candidate_subspace_count": 0,
+  "generated_utc": "2026-07-21T05:21:53.312841+00:00",
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "schema_version": "1.0",
+  "sealed_execution": "PROHIBITED",
+  "search_lock_sha256": "d1a8226dc9bfdd836f24389c8f0c0d6d6eaf56e82f6592f0a2c57140cd294be8",
+  "search_qualification_id": "WP3-MULTI-CAND-v1-225359a13711",
+  "search_record_payload_sha256": "9186457cb44650dee78bb043abc7c36f0947df0eaea92d4dcdc03130482a977f",
+  "status": "NOT_TRIGGERED_NO_CANDIDATE",
+  "wp4_candidate_validation": "NOT_TRIGGERED_NO_CANDIDATE"
+}
