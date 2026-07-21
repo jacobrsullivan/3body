@@ -6,7 +6,7 @@
     "generic": 9,
     "near_binary": 9
   },
-  "corpus_sha256": "eef6bddd26de3e0e1bccefe3187ac9ba95abc5511afcb8ff133f0a77d7a5bca2",
+  "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
   "gates": [
     {
       "comparator": ">=",
@@ -28,6 +28,13 @@
       "observed": 1.0,
       "passed": true,
       "threshold": 1.0
+    },
+    {
+      "comparator": "==",
+      "name": "structural_case_count",
+      "observed": 64,
+      "passed": true,
+      "threshold": 64
     },
     {
       "comparator": ">=",
@@ -60,7 +67,7 @@
     {
       "comparator": "<=",
       "name": "xi_abs_max",
-      "observed": 4.440892098500626e-16,
+      "observed": 1.942890293094024e-16,
       "passed": true,
       "threshold": 5e-11
     },
@@ -74,14 +81,14 @@
     {
       "comparator": "<=",
       "name": "gauge_hamiltonian_scaled_max",
-      "observed": 1.1102230246251565e-15,
+      "observed": 6.409803243734302e-16,
       "passed": true,
       "threshold": 5e-11
     },
     {
       "comparator": "<=",
       "name": "gauge_vector_covariance_scaled_max",
-      "observed": 1.481789262378286e-15,
+      "observed": 1.1102230246251565e-15,
       "passed": true,
       "threshold": 5e-09
     },
@@ -95,7 +102,7 @@
     {
       "comparator": "<=",
       "name": "chart_hamiltonian_scaled_max",
-      "observed": 4.874789984112178e-12,
+      "observed": 2.23965599755252e-12,
       "passed": true,
       "threshold": 2e-10
     },
@@ -109,7 +116,7 @@
     {
       "comparator": "<=",
       "name": "chart_cocycle_scaled_max",
-      "observed": 5.551115123125783e-16,
+      "observed": 1.1524278365702086e-11,
       "passed": true,
       "threshold": 2e-09
     },
@@ -130,14 +137,14 @@
     {
       "comparator": "<=",
       "name": "near_binary_trajectory_scaled_max",
-      "observed": 5.5782982431830976e-14,
+      "observed": 2.514554937198685e-14,
       "passed": true,
       "threshold": 5e-06
     },
     {
       "comparator": "<=",
       "name": "collision_limit_scaled_max",
-      "observed": 7.386708122608856e-05,
+      "observed": 5.1730751485276616e-05,
       "passed": true,
       "threshold": 0.0003
     },
@@ -158,14 +165,14 @@
     {
       "comparator": "<=",
       "name": "collision_passage_xi_drift_abs_max",
-      "observed": 1.3552527156068805e-19,
+      "observed": 8.131516293641283e-20,
       "passed": true,
       "threshold": 2e-08
     },
     {
       "comparator": "<=",
       "name": "collision_passage_reference_scaled_max",
-      "observed": 3.737834253284247e-19,
+      "observed": 3.723704518280297e-19,
       "passed": true,
       "threshold": 2e-07
     },
@@ -191,8 +198,8 @@
       "threshold": 0
     }
   ],
-  "generated_utc": "2026-07-21T04:01:22.331490+00:00",
-  "results_sha256": "d60d0a71e35f79a884b2b791be0917e6632aac1d7b885add03c72b98404b821c",
+  "generated_utc": "2026-07-21T04:29:30.726028+00:00",
+  "results_sha256": "d8073cc210b63c28cf5494c47f33152ca855e4a7026a1fc7259999b7db147d24",
   "schema_version": "1.0",
   "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
   "split": "development",

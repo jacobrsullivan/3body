@@ -42,6 +42,7 @@ case "${1:-}" in
       --scope validation-external/freeze_qualification.py \
       --scope validation-external/verify_qualification.py \
       --scope validation-external/finalize_qualification.py \
+      --scope validation-external/finalize_committed_qualification.py \
       --scope validation-external/wp2-multi-validation \
       --scope validation-external/wp1-n3bp-validation \
       --scope validation-external/wp2-ks-validation/reports \
@@ -57,7 +58,7 @@ case "${1:-}" in
       --prefix WP2-MULTIQ-v1 --lock "$LOCK"
     run_split holdout ;;
   finalize)
-    python "$VALIDATION/finalize_qualification.py" --repo-root "$ROOT" \
+    python "$VALIDATION/finalize_committed_qualification.py" --repo-root "$ROOT" \
       --prefix WP2-MULTIQ-v1 --spec "$SPEC" --corpus "$CORPUS" \
       --source-manifest "$WS_DIR/sources/manifest.json" --lock "$LOCK" \
       --development "$RESULTS/development_evaluation.json" \

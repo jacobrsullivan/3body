@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1-CAT-N3BP-v1",
+  "external_snapshot": {
+    "repository": "https://github.com/sjtu-liao/three-body",
+    "commit": "b96b0193579a9952299d710ed616f529bb7cf898",
+    "path": "non-hierarchical-3b-supplementary_data.txt",
+    "raw_url": "https://raw.githubusercontent.com/sjtu-liao/three-body/b96b0193579a9952299d710ed616f529bb7cf898/non-hierarchical-3b-supplementary_data.txt",
+    "upstream_sha256": "9c06eedc41b537b2ed926217cdf149d9f808a21866148ea3d89b9eb3c6069fd4",
+    "upstream_row_count": 135445,
+    "selected_rows_path": "sjtu_mass_patch.txt",
+    "selected_rows_sha256": "4921e7eeece78fb2e8ca016ee6fcf514936f6fbafeb309e3aab0a2d5249d6528",
+    "selected_row_count": 169,
+    "source_convention": "r1=(x1,0), r2=(1,0), r3=(0,0), v1=(0,v1), v2=(0,v2), v3=(0,-(m1*v1+m2*v2)/m3), G=1"
+  },
+  "publication": {
+    "title": "One family of 13315 stable periodic orbits of non-hierarchical unequal-mass triple systems",
+    "authors": "X. Li, X. Li, and S. Liao",
+    "doi": "10.1007/s11433-020-1624-7",
+    "arxiv": "2007.10184"
+  },
+  "external_implementation": {
+    "name": "REBOUND IAS15",
+    "url": "https://rebound.readthedocs.io/",
+    "version_policy": "The installed distribution version is recorded in each split result and the qualification lock."
+  },
+  "redistribution_note": "The local numerical snapshot contains only the locked 13 by 13 mass patch. The complete upstream payload is identified by immutable commit, path, URL, and SHA-256."
+}

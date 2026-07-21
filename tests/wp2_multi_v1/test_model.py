@@ -14,10 +14,12 @@ from src.python.n3bp_qualification import (
 )
 from src.python.wp2_multi_v1 import (
     CHART_LOCAL_ORDER,
+    DEFAULT_COLLISION_FLOOR,
     ChartDomainError,
     MultiKSState,
     TripleCollisionOutOfScope,
     collision_shell_state,
+    choose_regularizing_chart,
     global_time_rate,
     lift_inertial_state,
     ordered_pair_distances,
@@ -25,6 +27,9 @@ from src.python.wp2_multi_v1 import (
     project_positions,
     project_state,
     regularized_hamiltonian,
+    regularized_channels,
+    selected_physical_channel,
+    switch_to_regularizing_chart,
     torus_action,
     transition_chart,
     vector_field,
@@ -247,3 +252,69 @@ def test_unregularized_edge_and_triple_collision_fail_closed() -> None:
     )
     with pytest.raises(TripleCollisionOutOfScope):
         vector_field(triple, orbit.parameters)
+
+
+def test_locked_floor_rejects_two_small_pairs_but_not_one_selected_pair() -> None:
+    orbit = figure_eight_choreography()
+    scale = np.sqrt(0.5 * DEFAULT_COLLISION_FLOOR)
+    double = MultiKSState(
+        "central-3",
+        np.array([scale, 0.0, 0.0, 0.0]),
+        np.array([0.0, scale, 0.0, 0.0]),
+        0.0,
+        np.ones(4),
+        np.ones(4),
+        1.0,
+    )
+    with pytest.raises(TripleCollisionOutOfScope):
+        vector_field(double, orbit.parameters)
+
+    isolated = collision_shell_state(
+        orbit.parameters,
+        "central-3",
+        1,
+        other_q=np.array([0.8, 0.0, 0.25, -0.1]),
+        collision_direction=np.array([1.0, -0.3, 0.2, 0.4]),
+        energy=-1.7,
+    )
+    assert np.all(np.isfinite(vector_field(isolated, orbit.parameters).derivative))
+
+
+def test_physical_channel_mapping_and_smallest_pair_switch_policy() -> None:
+    assert {
+        selected_physical_channel(chart, edge)
+        for chart in CHART_LOCAL_ORDER
+        for edge in (1, 2)
+    } == {"12", "23", "31"}
+    assert all(len(set(regularized_channels(chart))) == 2 for chart in CHART_LOCAL_ORDER)
+
+    orbit = figure_eight_choreography()
+    physical = orbit.initial_state
+    distances = {
+        "12": np.linalg.norm(physical.positions[0] - physical.positions[1]),
+        "23": np.linalg.norm(physical.positions[1] - physical.positions[2]),
+        "31": np.linalg.norm(physical.positions[2] - physical.positions[0]),
+    }
+    smallest = min(distances, key=distances.get)
+    bad_chart = next(
+        chart for chart in CHART_LOCAL_ORDER if smallest not in regularized_channels(chart)
+    )
+    bad = lift_inertial_state(physical, orbit.parameters, bad_chart)
+    target = choose_regularizing_chart(bad)
+    assert target != bad_chart
+    assert smallest in regularized_channels(target)
+    switched = switch_to_regularizing_chart(bad, orbit.parameters)
+    assert switched.chart == target
+    assert project_state(switched, orbit.parameters).values == pytest.approx(
+        physical.values, abs=8e-14
+    )
+
+
+def test_transition_requires_collision_free_overlap() -> None:
+    orbit = figure_eight_choreography()
+    same = np.array([0.7, 0.1, -0.2, 0.3])
+    unregularized = MultiKSState(
+        "central-3", same, same, 0.0, np.zeros(4), np.zeros(4), 1.0
+    )
+    with pytest.raises(ChartDomainError):
+        transition_chart(unregularized, orbit.parameters, "central-1")

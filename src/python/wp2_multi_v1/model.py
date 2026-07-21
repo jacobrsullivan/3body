@@ -49,6 +49,8 @@ CHART_LOCAL_ORDER: Mapping[str, tuple[int, int, int]] = {
     "central-2": (2, 0, 1),
     "central-3": (0, 1, 2),
 }
+DEFAULT_COLLISION_FLOOR = 1.0e-10
+PHYSICAL_CHANNELS = ("12", "23", "31")
 
 
 class ChartDomainError(ValueError):
@@ -198,24 +200,35 @@ def _chart_data(chart: str, parameters: SystemParameters) -> _ChartData:
     )
 
 
-def _configuration(
+def _raw_configuration(
     state: MultiKSState,
-    *,
-    unregularized_floor: float = 0.0,
 ) -> tuple[FloatArray, FloatArray, FloatArray, float, float, float]:
-    if unregularized_floor < 0.0 or not np.isfinite(unregularized_floor):
-        raise ValueError("unregularized_floor must be finite and non-negative")
     X1 = ks_position(state.q1)
     X2 = ks_position(state.q2)
     difference = X1 - X2
-    r1 = state.ks1.radius
-    r2 = state.ks2.radius
-    r3 = float(np.linalg.norm(difference))
-    if r3 <= unregularized_floor:
-        if r1 <= unregularized_floor or r2 <= unregularized_floor:
-            raise TripleCollisionOutOfScope(
-                "two simultaneous pair collisions are an out-of-scope triple collision"
-            )
+    return (
+        X1,
+        X2,
+        difference,
+        state.ks1.radius,
+        state.ks2.radius,
+        float(np.linalg.norm(difference)),
+    )
+
+
+def _configuration(
+    state: MultiKSState,
+    *,
+    collision_floor: float = DEFAULT_COLLISION_FLOOR,
+) -> tuple[FloatArray, FloatArray, FloatArray, float, float, float]:
+    if collision_floor < 0.0 or not np.isfinite(collision_floor):
+        raise ValueError("collision_floor must be finite and non-negative")
+    X1, X2, difference, r1, r2, r3 = _raw_configuration(state)
+    if sum(distance <= collision_floor for distance in (r1, r2, r3)) >= 2:
+        raise TripleCollisionOutOfScope(
+            "two simultaneous pair collisions are an out-of-scope triple collision"
+        )
+    if r3 <= collision_floor:
         raise ChartDomainError(
             "the active chart does not regularize its a-b edge; transition charts first"
         )
@@ -232,6 +245,63 @@ def pair_distances(state: MultiKSState) -> dict[str, float]:
         "23": _edge_distance({1, 2}, a, b, c, r1, r2, r3),
         "31": _edge_distance({0, 2}, a, b, c, r1, r2, r3),
     }
+
+
+def regularized_channels(chart: str) -> tuple[str, str]:
+    """Return the two original-body channels regularized by one chart."""
+
+    a, b, c = _chart_order(chart)
+    channels = []
+    for pair in ({a, c}, {b, c}):
+        if pair == {0, 1}:
+            channels.append("12")
+        elif pair == {1, 2}:
+            channels.append("23")
+        else:
+            channels.append("31")
+    return tuple(channels)  # type: ignore[return-value]
+
+
+def selected_physical_channel(chart: str, selected_edge: int) -> str:
+    """Resolve chart-local selected edge 1 or 2 to a physical pair label."""
+
+    if selected_edge not in (1, 2):
+        raise ValueError("selected_edge must be 1 or 2")
+    return regularized_channels(chart)[selected_edge - 1]
+
+
+def _raw_pair_distances(state: MultiKSState) -> dict[str, float]:
+    _, _, _, r1, r2, r3 = _raw_configuration(state)
+    a, b, c = _chart_order(state.chart)
+    return {
+        "12": _edge_distance({0, 1}, a, b, c, r1, r2, r3),
+        "23": _edge_distance({1, 2}, a, b, c, r1, r2, r3),
+        "31": _edge_distance({0, 2}, a, b, c, r1, r2, r3),
+    }
+
+
+def choose_regularizing_chart(
+    state: MultiKSState,
+    *,
+    collision_floor: float = DEFAULT_COLLISION_FLOOR,
+) -> str:
+    """Choose a deterministic chart that regularizes the smallest pair."""
+
+    if collision_floor < 0.0 or not np.isfinite(collision_floor):
+        raise ValueError("collision_floor must be finite and non-negative")
+    distances = _raw_pair_distances(state)
+    if sum(value <= collision_floor for value in distances.values()) >= 2:
+        raise TripleCollisionOutOfScope(
+            "two simultaneous pair collisions are an out-of-scope triple collision"
+        )
+    smallest = min(PHYSICAL_CHANNELS, key=lambda channel: (distances[channel], channel))
+    if smallest in regularized_channels(state.chart):
+        return state.chart
+    return next(
+        chart
+        for chart in CHART_LOCAL_ORDER
+        if smallest in regularized_channels(chart)
+    )
 
 
 def _edge_distance(
@@ -496,11 +566,17 @@ def transition_chart(
     target_chart: str,
     *,
     angles: Sequence[float] = (0.0, 0.0),
+    collision_floor: float = DEFAULT_COLLISION_FLOOR,
 ) -> MultiKSState:
     """Change atlas charts through the common physical quotient."""
 
     if target_chart == state.chart:
         return torus_action(state, angles)
+    distances = _raw_pair_distances(state)
+    if min(distances.values()) <= collision_floor:
+        raise ChartDomainError(
+            "chart transitions require a collision-free overlap above the floor"
+        )
     physical = project_state(state, parameters)
     return lift_inertial_state(
         physical,
@@ -509,6 +585,27 @@ def transition_chart(
         angles=angles,
         physical_time=state.physical_time,
         p_t=state.p_t,
+    )
+
+
+def switch_to_regularizing_chart(
+    state: MultiKSState,
+    parameters: SystemParameters,
+    *,
+    angles: Sequence[float] = (0.0, 0.0),
+    collision_floor: float = DEFAULT_COLLISION_FLOOR,
+) -> MultiKSState:
+    """Apply the locked smallest-pair switch policy on a valid overlap."""
+
+    target = choose_regularizing_chart(state, collision_floor=collision_floor)
+    if target == state.chart:
+        return state
+    return transition_chart(
+        state,
+        parameters,
+        target,
+        angles=angles,
+        collision_floor=collision_floor,
     )
 
 

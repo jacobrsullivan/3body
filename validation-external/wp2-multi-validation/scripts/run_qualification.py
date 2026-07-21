@@ -29,7 +29,7 @@ from qualification_tools import (  # noqa: E402
     utc_now,
     verify_lock,
 )
-from src.python.ks import KSPhaseState, s1_action  # noqa: E402
+from src.python.ks import KSPhaseState, fiber_generator, s1_action  # noqa: E402
 from src.python.n3bp_qualification import (  # noqa: E402
     IAS15Config,
     InertialState,
@@ -39,17 +39,24 @@ from src.python.n3bp_qualification import (  # noqa: E402
     newtonian_rhs,
     normalize_center_of_mass,
     propagate_rebound_ias15,
+    total_energy,
 )
 from src.python.wp2_multi_v1 import (  # noqa: E402
     CHART_LOCAL_ORDER,
+    DEFAULT_COLLISION_FLOOR,
+    PHYSICAL_CHANNELS,
     MultiKSState,
     TripleCollisionOutOfScope,
     collision_shell_state,
     global_time_rate,
     lift_inertial_state,
+    pair_distances,
     project_derivative,
     project_state,
     regularized_hamiltonian,
+    regularized_channels,
+    selected_physical_channel,
+    switch_to_regularizing_chart,
     torus_action,
     transition_chart,
     vector_field,
@@ -257,6 +264,39 @@ def _common_metrics(state, parameters, reference, spec):
     }
 
 
+def _switch_trajectory_metric(state, parameters, horizon, execution):
+    physical = project_state(state, parameters)
+    distances = pair_distances(state)
+    smallest = min(PHYSICAL_CHANNELS, key=lambda channel: (distances[channel], channel))
+    bad_chart = next(
+        chart for chart in CHART_LOCAL_ORDER if smallest not in regularized_channels(chart)
+    )
+    bad = lift_inertial_state(
+        physical,
+        parameters,
+        bad_chart,
+        angles=(0.23, -0.47),
+        physical_time=state.physical_time,
+        p_t=state.p_t,
+    )
+    switched = switch_to_regularizing_chart(
+        bad, parameters, angles=(-0.31, 0.59)
+    )
+    if switched.chart == bad_chart or smallest not in regularized_channels(switched.chart):
+        raise RuntimeError("smallest-pair switch policy selected an invalid chart")
+
+    _, baseline = _integrate_chart(switched, parameters, horizon, execution)
+    _, midpoint = _integrate_chart(bad, parameters, 0.5 * horizon, execution)
+    transitioned = transition_chart(
+        midpoint, parameters, switched.chart, angles=(0.71, -0.37)
+    )
+    _, mixed = _integrate_chart(transitioned, parameters, 0.5 * horizon, execution)
+    return _scaled(
+        project_state(mixed, parameters).values,
+        project_state(baseline, parameters).values,
+    )
+
+
 def _integrate_chart(state, parameters, horizon, execution, rhs_kind="production"):
     reference = _reference() if rhs_kind == "reference" else None
     order = CHART_LOCAL_ORDER[state.chart]
@@ -295,13 +335,13 @@ def _trajectory_metric(state, parameters, horizon, execution):
     return _scaled(project_state(final, parameters).values, reference.states[-1])
 
 
-def _collision_probe(exact, parameters, selected_edge, epsilon):
+def _collision_probe(exact, parameters, selected_edge, physical_distance):
     vector = exact.as_vector().copy()
     q_slice = slice(0, 4) if selected_edge == 1 else slice(4, 8)
     P_slice = slice(9, 13) if selected_edge == 1 else slice(13, 17)
     direction = exact.as_vector()[P_slice]
     direction /= np.linalg.norm(direction)
-    vector[q_slice] = epsilon * direction
+    vector[q_slice] = np.sqrt(physical_distance) * direction
     base = vector[P_slice].copy()
 
     def shell(scale):
@@ -328,18 +368,46 @@ def _collision_metrics(case, parameters, reference, spec):
         collision_direction=np.array([1.0, -0.3, 0.2, 0.4]),
         energy=-1.7,
     )
+    if selected_physical_channel(case["chart"], selected) != case["physical_channel"]:
+        raise RuntimeError("exact-passage corpus channel does not match chart edge")
     production = vector_field(exact, parameters)
     order = CHART_LOCAL_ORDER[exact.chart]
     ref_h, ref_v = reference.evaluate(exact.as_vector(), parameters.masses[list(order)], parameters.gravitational_constant)
-    errors = []
-    for epsilon in spec["corpus"]["near_collision_selected_distances"]:
-        probe = _collision_probe(exact, parameters, selected, float(epsilon))
-        errors.append(_scaled(vector_field(probe, parameters).derivative, production.derivative))
+    distances = np.asarray(
+        spec["corpus"]["near_collision_selected_distances"], dtype=np.float64
+    )
+    probes = [
+        _collision_probe(exact, parameters, selected, float(distance))
+        for distance in distances
+    ]
+    probe_fields = np.stack(
+        [vector_field(probe, parameters).derivative for probe in probes]
+    )
+    raw_errors = [
+        _scaled(field, production.derivative) for field in probe_fields
+    ]
+    q_norms = np.sqrt(distances)
+    vandermonde = np.vander(q_norms, N=3, increasing=True)
+    extrapolated = np.linalg.solve(vandermonde, probe_fields)[0]
+    collision_limit = _scaled(extrapolated, production.derivative)
+    convergence = float(
+        all(
+            later <= earlier
+            for earlier, later in zip(raw_errors, raw_errors[1:])
+        )
+    )
+
+    gauge_angles = (0.731, -1.127)
+    moved = torus_action(exact, gauge_angles)
+    moved_flow = vector_field(moved, parameters)
     horizon = float(spec["execution"]["passage_s_horizon"])
     maximum_h = 0.0
     maximum_xi = 0.0
     maximum_reference = 0.0
     passage = True
+    crossing = True
+    selected_q = slice(0, 4) if selected == 1 else slice(4, 8)
+    collision_tangent = production.derivative[selected_q]
     for sign in (-1.0, 1.0):
         result, final = _integrate_chart(exact, parameters, sign * horizon, spec["execution"])
         _, final_reference = _integrate_chart(exact, parameters, sign * horizon, spec["execution"], rhs_kind="reference")
@@ -347,10 +415,22 @@ def _collision_metrics(case, parameters, reference, spec):
         maximum_h = max(maximum_h, abs(regularized_hamiltonian(final, parameters) - production.hamiltonian) / max(1.0, abs(exact.p_t)))
         maximum_xi = max(maximum_xi, float(np.max(np.abs(final.momentum_maps - exact.momentum_maps))))
         maximum_reference = max(maximum_reference, _scaled(final.as_vector(), final_reference.as_vector()))
+        crossing = crossing and bool(
+            sign * float(np.dot(final.as_vector()[selected_q], collision_tangent)) > 0.0
+        )
     triple_rejected = 0.0
+    small = np.sqrt(0.5 * float(spec["corpus"]["triple_collision_floor"]))
     try:
         vector_field(
-            MultiKSState(case["chart"], np.zeros(4), np.zeros(4), 0.0, np.ones(4), np.ones(4), 1.0),
+            MultiKSState(
+                case["chart"],
+                np.array([small, 0.0, 0.0, 0.0]),
+                np.array([0.0, small, 0.0, 0.0]),
+                0.0,
+                np.ones(4),
+                np.ones(4),
+                1.0,
+            ),
             parameters,
         )
     except TripleCollisionOutOfScope:
@@ -361,10 +441,15 @@ def _collision_metrics(case, parameters, reference, spec):
         "shell_abs": abs(production.hamiltonian),
         "xi_abs": float(np.max(np.abs(exact.momentum_maps))),
         "xi_lie_abs": float(np.max(np.abs(production.momentum_map_derivatives))),
-        "gauge_hamiltonian_scaled": 0.0,
-        "gauge_vector_covariance_scaled": 0.0,
-        "collision_limit_scaled": errors[-1],
-        "collision_passage_finite": float(passage),
+        "gauge_hamiltonian_scaled": _scaled(moved_flow.hamiltonian, production.hamiltonian),
+        "gauge_vector_covariance_scaled": _scaled(
+            moved_flow.derivative, _rotate_tangent(production, gauge_angles)
+        ),
+        "collision_limit_scaled": collision_limit,
+        "collision_probe_raw_scaled_max": max(raw_errors),
+        "collision_probe_convergence": convergence,
+        "collision_spinor_crossing": float(crossing),
+        "collision_passage_finite": float(passage and crossing and convergence == 1.0),
         "collision_passage_hamiltonian_drift_scaled": maximum_h,
         "collision_passage_xi_drift_abs": maximum_xi,
         "collision_passage_reference_scaled": maximum_reference,
@@ -376,7 +461,152 @@ def _symbolic_identity_rate() -> float:
     q = sp.symbols("q0:4", real=True)
     x = sp.Matrix([2 * (q[0] * q[2] + q[1] * q[3]), 2 * (q[0] * q[3] - q[1] * q[2]), q[0] ** 2 + q[1] ** 2 - q[2] ** 2 - q[3] ** 2])
     radius = sum(value * value for value in q)
-    return float(sp.expand(x.dot(x) - radius**2) == 0)
+    jacobian = x.jacobian(q)
+    norm_identity = sp.expand(x.dot(x) - radius**2) == 0
+    jacobian_identity = all(
+        sp.expand(value) == 0
+        for value in (jacobian * jacobian.T - 4 * radius * sp.eye(3))
+    )
+    mu, kappa, r2, r3, momentum_squared = sp.symbols(
+        "mu kappa r2 r3 momentum_squared", nonzero=True
+    )
+    collision_shell = r3 * r2 * (momentum_squared / (8 * mu) - kappa)
+    collision_identity = (
+        sp.simplify(collision_shell.subs(momentum_squared, 8 * mu * kappa)) == 0
+    )
+    return sum((norm_identity, jacobian_identity, collision_identity)) / 3.0
+
+
+def _physical_chart_transition_matrix(source_chart: str, target_chart: str) -> np.ndarray:
+    source_order = CHART_LOCAL_ORDER[source_chart]
+    target_order = CHART_LOCAL_ORDER[target_chart]
+
+    def transform(vector):
+        X1, X2 = vector[:3], vector[3:6]
+        W1, W2 = vector[6:9], vector[9:12]
+        positions = np.zeros((3, 3))
+        momenta = np.zeros((3, 3))
+        a, b, c = source_order
+        positions[a], positions[b], positions[c] = X1, X2, 0.0
+        momenta[a], momenta[b], momenta[c] = W1, W2, -W1 - W2
+        ta, tb, tc = target_order
+        return np.concatenate(
+            (
+                positions[ta] - positions[tc],
+                positions[tb] - positions[tc],
+                momenta[ta],
+                momenta[tb],
+            )
+        )
+
+    identity = np.eye(12)
+    return np.column_stack([transform(identity[:, index]) for index in range(12)])
+
+
+def _constraint_gradient(state: MultiKSState, edge: int) -> np.ndarray:
+    gradient = np.zeros(18)
+    if edge == 1:
+        gradient[:4] = -fiber_generator(state.P1)
+        gradient[9:13] = fiber_generator(state.q1)
+    else:
+        gradient[4:8] = -fiber_generator(state.P2)
+        gradient[13:17] = fiber_generator(state.q2)
+    return gradient
+
+
+def _gauge_tangent(state: MultiKSState, edge: int) -> np.ndarray:
+    tangent = np.zeros(18)
+    if edge == 1:
+        tangent[:4] = fiber_generator(state.q1)
+        tangent[9:13] = fiber_generator(state.P1)
+    else:
+        tangent[4:8] = fiber_generator(state.q2)
+        tangent[13:17] = fiber_generator(state.P2)
+    return tangent
+
+
+def _structural_metrics(spec, split):
+    count = int(spec["execution"]["structural_cases_per_split"])
+    seed = int(spec["execution"]["structural_seed_by_split"][split])
+    rng = np.random.default_rng(seed)
+    passes = 0
+    rank_min = 2
+    generator_error = 0.0
+    transition_defect = 0.0
+    identity_error = 0.0
+    symplectic = np.block(
+        [[np.zeros((6, 6)), np.eye(6)], [-np.eye(6), np.zeros((6, 6))]]
+    )
+    charts = tuple(CHART_LOCAL_ORDER)
+    for index in range(count):
+        while True:
+            positions = rng.normal(size=(3, 3))
+            if min(
+                np.linalg.norm(positions[first] - positions[second])
+                for first, second in ((0, 1), (0, 2), (1, 2))
+            ) > float(spec["corpus"]["minimum_noncolliding_distance"]):
+                break
+        masses = rng.uniform(0.35, 2.5, size=3)
+        momenta = rng.normal(size=(3, 3))
+        momenta -= np.sum(momenta, axis=0) / 3.0
+        parameters = SystemParameters(masses, gravitational_constant=1.0)
+        physical = normalize_center_of_mass(
+            InertialState.from_components(positions, momenta / masses[:, None]),
+            parameters,
+        )
+        chart = charts[index % len(charts)]
+        state = lift_inertial_state(
+            physical, parameters, chart, angles=rng.uniform(-np.pi, np.pi, size=2)
+        )
+        gradients = np.stack(
+            (_constraint_gradient(state, 1), _constraint_gradient(state, 2))
+        )
+        tangents = np.column_stack(
+            (_gauge_tangent(state, 1), _gauge_tangent(state, 2))
+        )
+        constraint_rank = int(np.linalg.matrix_rank(gradients, tol=1e-11))
+        gauge_rank = int(np.linalg.matrix_rank(tangents, tol=1e-11))
+        rank_min = min(rank_min, constraint_rank, gauge_rank)
+        hamiltonian_tangents = np.column_stack(
+            [np.concatenate((gradient[9:], -gradient[:9])) for gradient in gradients]
+        )
+        generator_error = max(
+            generator_error, _scaled(hamiltonian_tangents, tangents)
+        )
+
+        target = charts[(index + 1) % len(charts)]
+        matrix = _physical_chart_transition_matrix(chart, target)
+        transition_defect = max(
+            transition_defect,
+            float(np.linalg.norm(matrix.T @ symplectic @ matrix - symplectic, ord=np.inf)),
+        )
+        vector = state.as_vector().copy()
+        vector[17] += 0.173
+        off_shell = MultiKSState.from_vector(chart, vector)
+        expected = global_time_rate(off_shell) * (
+            total_energy(project_state(off_shell, parameters), parameters)
+            + off_shell.p_t
+        )
+        identity_error = max(
+            identity_error, _scaled(regularized_hamiltonian(off_shell, parameters), expected)
+        )
+        passed = bool(
+            constraint_rank == 2
+            and gauge_rank == 2
+            and 18 - constraint_rank - gauge_rank == 14
+            and generator_error <= 5e-12
+            and transition_defect <= 5e-12
+            and identity_error <= 5e-12
+        )
+        passes += passed
+    return {
+        "case_count": count,
+        "dimension_and_constraint_count_pass_rate": passes / count,
+        "constraint_and_gauge_rank_min": rank_min,
+        "hamiltonian_generator_scaled_max": generator_error,
+        "physical_transition_symplectic_defect_max": transition_defect,
+        "heggie_identity_scaled_max": identity_error,
+    }
 
 
 def _evaluate_case(case, source_definitions, reference, spec):
@@ -398,13 +628,31 @@ def _evaluate_case(case, source_definitions, reference, spec):
         )
         metrics = _common_metrics(state, parameters, reference, spec)
         metrics["trajectory_scaled"] = _trajectory_metric(state, parameters, horizon, spec["execution"])
+        switched = _switch_trajectory_metric(
+            state, parameters, horizon, spec["execution"]
+        )
+        metrics["chart_cocycle_scaled"] = max(
+            metrics["chart_cocycle_scaled"], switched
+        )
+        metrics["switched_trajectory_scaled"] = switched
+        metrics["switch_policy_pass"] = 1.0
+    required_flags = (
+        "switch_policy_pass",
+        "collision_probe_convergence",
+        "collision_spinor_crossing",
+    )
+    success = bool(
+        all(np.isfinite(value) for value in metrics.values())
+        and all(metrics.get(name, 1.0) == 1.0 for name in required_flags)
+    )
     return {
         "case_id": case["case_id"],
         "category": case["category"],
         "source_case_id": case["source_case_id"],
         "chart": case["chart"],
         "selected_edge": case["selected_edge"],
-        "success": bool(all(np.isfinite(value) for value in metrics.values())),
+        "physical_channel": case["physical_channel"],
+        "success": success,
         "metrics": metrics,
     }
 
@@ -427,6 +675,8 @@ def main() -> None:
         if output.exists():
             raise RuntimeError("refusing to execute the WP2-MULTI holdout twice")
         full_lock = verify_lock(args.lock, ROOT, expected_prefix=spec["campaign"])
+        if runtime_fingerprint() != full_lock["runtime"]:
+            raise RuntimeError("holdout runtime differs from the frozen WP2-MULTI runtime")
     prerequisites = _verify_prerequisites(spec)
     definitions = {str(case["case_id"]): case for case in source_corpus["cases"]}
     reference = _reference()
@@ -444,11 +694,13 @@ def main() -> None:
                     "source_case_id": case["source_case_id"],
                     "chart": case["chart"],
                     "selected_edge": case["selected_edge"],
+                    "physical_channel": case["physical_channel"],
                     "success": False,
                     "error": f"{type(error).__name__}: {error}",
                     "metrics": {},
                 }
             )
+    structural = _structural_metrics(spec, args.split)
     payload: dict[str, Any] = {
         "schema_version": "1.0",
         "campaign": spec["campaign"],
@@ -462,7 +714,7 @@ def main() -> None:
         "runtime": runtime_fingerprint(),
         "structural": {
             "symbolic_identity_pass_rate": _symbolic_identity_rate(),
-            "dimension_and_constraint_count_pass_rate": 1.0,
+            **structural,
             "unseen_scientific_holdout": 0,
             "triple_collision_qualified": 0,
         },

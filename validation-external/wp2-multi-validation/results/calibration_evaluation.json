@@ -6,7 +6,7 @@
     "generic": 5,
     "near_binary": 5
   },
-  "corpus_sha256": "eef6bddd26de3e0e1bccefe3187ac9ba95abc5511afcb8ff133f0a77d7a5bca2",
+  "corpus_sha256": "e81e993dc10695e6782ccb2a8d8605353c1dd92b25014eb27b082a1e2ba6afb9",
   "gates": [
     {
       "comparator": ">=",
@@ -30,6 +30,13 @@
       "threshold": 1.0
     },
     {
+      "comparator": "==",
+      "name": "structural_case_count",
+      "observed": 64,
+      "passed": true,
+      "threshold": 64
+    },
+    {
       "comparator": ">=",
       "name": "dimension_and_constraint_count_pass_rate",
       "observed": 1.0,
@@ -46,7 +53,7 @@
     {
       "comparator": "<=",
       "name": "independent_vector_field_scaled_max",
-      "observed": 3.723048536130592e-16,
+      "observed": 5.217862451236752e-16,
       "passed": true,
       "threshold": 5e-10
     },
@@ -67,35 +74,35 @@
     {
       "comparator": "<=",
       "name": "xi_lie_abs_max",
-      "observed": 8.881784197001252e-16,
+      "observed": 3.0749328864404513e-16,
       "passed": true,
       "threshold": 5e-09
     },
     {
       "comparator": "<=",
       "name": "gauge_hamiltonian_scaled_max",
-      "observed": 6.41929001274355e-16,
+      "observed": 3.2095094811002145e-16,
       "passed": true,
       "threshold": 5e-11
     },
     {
       "comparator": "<=",
       "name": "gauge_vector_covariance_scaled_max",
-      "observed": 5.920285166436887e-16,
+      "observed": 2.0089743499630123e-15,
       "passed": true,
       "threshold": 5e-09
     },
     {
       "comparator": "<=",
       "name": "chart_roundtrip_scaled_max",
-      "observed": 2.8692971770119785e-16,
+      "observed": 2.7755575615628914e-16,
       "passed": true,
       "threshold": 2e-10
     },
     {
       "comparator": "<=",
       "name": "chart_hamiltonian_scaled_max",
-      "observed": 3.776643331832724e-12,
+      "observed": 5.477156027984195e-12,
       "passed": true,
       "threshold": 2e-10
     },
@@ -109,7 +116,7 @@
     {
       "comparator": "<=",
       "name": "chart_cocycle_scaled_max",
-      "observed": 4.27668308650331e-16,
+      "observed": 4.162440955711033e-12,
       "passed": true,
       "threshold": 2e-09
     },
@@ -123,21 +130,21 @@
     {
       "comparator": "<=",
       "name": "generic_trajectory_scaled_max",
-      "observed": 8.558950063571633e-16,
+      "observed": 6.419212547678725e-16,
       "passed": true,
       "threshold": 1e-07
     },
     {
       "comparator": "<=",
       "name": "near_binary_trajectory_scaled_max",
-      "observed": 2.1983663084171138e-14,
+      "observed": 1.6169910794423892e-14,
       "passed": true,
       "threshold": 5e-06
     },
     {
       "comparator": "<=",
       "name": "collision_limit_scaled_max",
-      "observed": 7.010315360329061e-05,
+      "observed": 5.001413813336686e-05,
       "passed": true,
       "threshold": 0.0003
     },
@@ -151,7 +158,7 @@
     {
       "comparator": "<=",
       "name": "collision_passage_hamiltonian_drift_scaled_max",
-      "observed": 4.8198946240398575e-17,
+      "observed": 5.616363503534973e-17,
       "passed": true,
       "threshold": 2e-08
     },
@@ -165,7 +172,7 @@
     {
       "comparator": "<=",
       "name": "collision_passage_reference_scaled_max",
-      "observed": 2.2321809433525094e-19,
+      "observed": 3.6289558448806567e-19,
       "passed": true,
       "threshold": 2e-07
     },
@@ -191,8 +198,8 @@
       "threshold": 0
     }
   ],
-  "generated_utc": "2026-07-21T04:01:24.956624+00:00",
-  "results_sha256": "72c9a382655854687815cad5104ce60c6ff2c611646e77f3c7e665ce158fdbdf",
+  "generated_utc": "2026-07-21T04:29:48.341726+00:00",
+  "results_sha256": "eb396ff53e40e359bab6c8d0630080ef50da97699483d33820496119bcb6a800",
   "schema_version": "1.0",
   "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
   "split": "calibration",

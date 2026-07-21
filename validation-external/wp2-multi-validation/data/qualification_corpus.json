@@ -1,4 +1,5 @@
 {
+  "campaign": "WP2-MULTIQ-v1",
   "cases": [
     {
       "case_id": "multi-dev-generic-00-000",
@@ -10,6 +11,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 1,
       "source_case_id": "figure_eight_published_rounded",
       "split": "development"
@@ -24,34 +26,37 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 2,
+      "physical_channel": "23",
+      "selected_edge": 1,
       "source_case_id": "lagrange_scaled_spatial",
       "split": "development"
     },
     {
       "case_id": "multi-dev-generic-02-002",
       "category": "generic",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 2,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "31",
+      "selected_edge": 2,
       "source_case_id": "lagrange_unit_planar",
       "split": "development"
     },
     {
       "case_id": "multi-dev-generic-03-003",
       "category": "generic",
-      "chart": "central-1",
+      "chart": "central-2",
       "checkpoint_index": 3,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 2,
       "source_case_id": "reserved_lagrange_spatial",
       "split": "development"
@@ -59,14 +64,15 @@
     {
       "case_id": "multi-dev-generic-04-004",
       "category": "generic",
-      "chart": "central-2",
+      "chart": "central-3",
       "checkpoint_index": 4,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 1,
+      "physical_channel": "23",
+      "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_34537_m0880_m0820",
       "split": "development"
     },
@@ -80,7 +86,8 @@
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 2,
+      "physical_channel": "31",
+      "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_49352_m0910_m0860",
       "split": "development"
     },
@@ -94,6 +101,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_54382_m0920_m0880",
       "split": "development"
@@ -108,21 +116,23 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 2,
+      "physical_channel": "23",
+      "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_64422_m0940_m0900",
       "split": "development"
     },
     {
       "case_id": "multi-dev-generic-08-008",
       "category": "generic",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 3,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "31",
+      "selected_edge": 2,
       "source_case_id": "sjtu_line_14_m0800_m0756",
       "split": "development"
     },
@@ -136,7 +146,8 @@
         0.0
       ],
       "near_distance": 0.01,
-      "selected_edge": 2,
+      "physical_channel": "12",
+      "selected_edge": 1,
       "source_case_id": "sjtu_line_29734_m0870_m0800",
       "split": "development"
     },
@@ -150,6 +161,7 @@
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "23",
       "selected_edge": 1,
       "source_case_id": "sjtu_line_44348_m0900_m0850",
       "split": "development"
@@ -157,13 +169,14 @@
     {
       "case_id": "multi-dev-near_binary-02-011",
       "category": "near_binary",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 1,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
+      "physical_channel": "31",
       "selected_edge": 2,
       "source_case_id": "sjtu_line_59402_m0930_m0890",
       "split": "development"
@@ -171,27 +184,29 @@
     {
       "case_id": "multi-dev-near_binary-03-012",
       "category": "near_binary",
-      "chart": "central-1",
+      "chart": "central-2",
       "checkpoint_index": 2,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
-      "selected_edge": 1,
+      "physical_channel": "12",
+      "selected_edge": 2,
       "source_case_id": "sjtu_line_69432_m0950_m0900",
       "split": "development"
     },
     {
       "case_id": "multi-dev-near_binary-04-013",
       "category": "near_binary",
-      "chart": "central-2",
+      "chart": "central-3",
       "checkpoint_index": 3,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "23",
       "selected_edge": 2,
       "source_case_id": "figure_eight_published_rounded",
       "split": "development"
@@ -206,6 +221,7 @@
         1.43
       ],
       "near_distance": 0.0001,
+      "physical_channel": "31",
       "selected_edge": 1,
       "source_case_id": "lagrange_scaled_spatial",
       "split": "development"
@@ -220,7 +236,8 @@
         0.0
       ],
       "near_distance": 0.01,
-      "selected_edge": 2,
+      "physical_channel": "12",
+      "selected_edge": 1,
       "source_case_id": "lagrange_unit_planar",
       "split": "development"
     },
@@ -234,6 +251,7 @@
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "23",
       "selected_edge": 1,
       "source_case_id": "reserved_lagrange_spatial",
       "split": "development"
@@ -241,13 +259,14 @@
     {
       "case_id": "multi-dev-near_binary-08-017",
       "category": "near_binary",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 2,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
+      "physical_channel": "31",
       "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_34537_m0880_m0820",
       "split": "development"
@@ -262,6 +281,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_49352_m0910_m0860",
       "split": "development"
@@ -276,34 +296,37 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 2,
+      "physical_channel": "23",
+      "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_54382_m0920_m0880",
       "split": "development"
     },
     {
       "case_id": "multi-dev-exact_passage-02-020",
       "category": "exact_passage",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 0,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "31",
+      "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_64422_m0940_m0900",
       "split": "development"
     },
     {
       "case_id": "multi-cal-generic-00-021",
       "category": "generic",
-      "chart": "central-1",
+      "chart": "central-2",
       "checkpoint_index": 1,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 2,
       "source_case_id": "sjtu_line_14_m0800_m0756",
       "split": "calibration"
@@ -311,14 +334,15 @@
     {
       "case_id": "multi-cal-generic-01-022",
       "category": "generic",
-      "chart": "central-2",
+      "chart": "central-3",
       "checkpoint_index": 2,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 1,
+      "physical_channel": "23",
+      "selected_edge": 2,
       "source_case_id": "sjtu_line_29734_m0870_m0800",
       "split": "calibration"
     },
@@ -332,7 +356,8 @@
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 2,
+      "physical_channel": "31",
+      "selected_edge": 1,
       "source_case_id": "sjtu_line_44348_m0900_m0850",
       "split": "calibration"
     },
@@ -346,6 +371,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 1,
       "source_case_id": "sjtu_line_59402_m0930_m0890",
       "split": "calibration"
@@ -360,34 +386,37 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 2,
+      "physical_channel": "23",
+      "selected_edge": 1,
       "source_case_id": "sjtu_line_69432_m0950_m0900",
       "split": "calibration"
     },
     {
       "case_id": "multi-cal-near_binary-00-026",
       "category": "near_binary",
-      "chart": "central-3",
+      "chart": "central-2",
       "checkpoint_index": 1,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "12",
+      "selected_edge": 2,
       "source_case_id": "figure_eight_published_rounded",
       "split": "calibration"
     },
     {
       "case_id": "multi-cal-near_binary-01-027",
       "category": "near_binary",
-      "chart": "central-1",
+      "chart": "central-3",
       "checkpoint_index": 2,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "23",
       "selected_edge": 2,
       "source_case_id": "lagrange_scaled_spatial",
       "split": "calibration"
@@ -395,13 +424,14 @@
     {
       "case_id": "multi-cal-near_binary-02-028",
       "category": "near_binary",
-      "chart": "central-2",
+      "chart": "central-3",
       "checkpoint_index": 3,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "31",
       "selected_edge": 1,
       "source_case_id": "lagrange_unit_planar",
       "split": "calibration"
@@ -409,27 +439,29 @@
     {
       "case_id": "multi-cal-near_binary-03-029",
       "category": "near_binary",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 4,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 2,
+      "physical_channel": "12",
+      "selected_edge": 1,
       "source_case_id": "reserved_lagrange_spatial",
       "split": "calibration"
     },
     {
       "case_id": "multi-cal-near_binary-04-030",
       "category": "near_binary",
-      "chart": "central-1",
+      "chart": "central-2",
       "checkpoint_index": 0,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "23",
       "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_34537_m0880_m0820",
       "split": "calibration"
@@ -444,6 +476,7 @@
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "12",
       "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_49352_m0910_m0860",
       "split": "calibration"
@@ -458,7 +491,8 @@
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "23",
+      "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_54382_m0920_m0880",
       "split": "calibration"
     },
@@ -472,6 +506,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "31",
       "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_64422_m0940_m0900",
       "split": "holdout"
@@ -486,7 +521,8 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 1,
+      "physical_channel": "12",
+      "selected_edge": 2,
       "source_case_id": "sjtu_line_14_m0800_m0756",
       "split": "holdout"
     },
@@ -500,6 +536,7 @@
         1.43
       ],
       "near_distance": 0.0001,
+      "physical_channel": "23",
       "selected_edge": 2,
       "source_case_id": "sjtu_line_29734_m0870_m0800",
       "split": "holdout"
@@ -507,13 +544,14 @@
     {
       "case_id": "multi-hol-generic-03-036",
       "category": "generic",
-      "chart": "central-1",
+      "chart": "central-3",
       "checkpoint_index": 1,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "31",
       "selected_edge": 1,
       "source_case_id": "sjtu_line_44348_m0900_m0850",
       "split": "holdout"
@@ -521,13 +559,14 @@
     {
       "case_id": "multi-hol-near_binary-00-037",
       "category": "near_binary",
-      "chart": "central-2",
+      "chart": "central-1",
       "checkpoint_index": 2,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "31",
       "selected_edge": 2,
       "source_case_id": "sjtu_line_59402_m0930_m0890",
       "split": "holdout"
@@ -535,27 +574,29 @@
     {
       "case_id": "multi-hol-near_binary-01-038",
       "category": "near_binary",
-      "chart": "central-3",
+      "chart": "central-2",
       "checkpoint_index": 3,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "12",
+      "selected_edge": 2,
       "source_case_id": "sjtu_line_69432_m0950_m0900",
       "split": "holdout"
     },
     {
       "case_id": "multi-hol-near_binary-02-039",
       "category": "near_binary",
-      "chart": "central-1",
+      "chart": "central-3",
       "checkpoint_index": 4,
       "gauge_angles": [
         0.0,
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "23",
       "selected_edge": 2,
       "source_case_id": "figure_eight_published_rounded",
       "split": "holdout"
@@ -563,13 +604,14 @@
     {
       "case_id": "multi-hol-near_binary-03-040",
       "category": "near_binary",
-      "chart": "central-2",
+      "chart": "central-3",
       "checkpoint_index": 0,
       "gauge_angles": [
         0.37,
         -0.91
       ],
       "near_distance": 0.001,
+      "physical_channel": "31",
       "selected_edge": 1,
       "source_case_id": "lagrange_scaled_spatial",
       "split": "holdout"
@@ -584,7 +626,8 @@
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 2,
+      "physical_channel": "31",
+      "selected_edge": 1,
       "source_case_id": "lagrange_unit_planar",
       "split": "holdout"
     },
@@ -598,6 +641,7 @@
         0.0
       ],
       "near_distance": 0.01,
+      "physical_channel": "12",
       "selected_edge": 1,
       "source_case_id": "reserved_lagrange_spatial",
       "split": "holdout"
@@ -612,21 +656,23 @@
         -0.91
       ],
       "near_distance": 0.001,
-      "selected_edge": 2,
+      "physical_channel": "23",
+      "selected_edge": 1,
       "source_case_id": "reserved_sjtu_line_34537_m0880_m0820",
       "split": "holdout"
     },
     {
       "case_id": "multi-hol-exact_passage-03-044",
       "category": "exact_passage",
-      "chart": "central-3",
+      "chart": "central-1",
       "checkpoint_index": 4,
       "gauge_angles": [
         -1.17,
         1.43
       ],
       "near_distance": 0.0001,
-      "selected_edge": 1,
+      "physical_channel": "31",
+      "selected_edge": 2,
       "source_case_id": "reserved_sjtu_line_49352_m0910_m0860",
       "split": "holdout"
     }
@@ -637,6 +683,11 @@
     "near_binary": 18
   },
   "corpus_id": "wp2-multi-v1-45-case-atlas",
+  "exact_passage_channel_counts": {
+    "12": 3,
+    "23": 3,
+    "31": 3
+  },
   "n3bp_corpus_sha256": "041129a2b3d3d2f8007652b4bd5e49d2e724a5b6bc02f477b2ae2ae5d085a51a",
   "schema_version": "1.0",
   "spec_sha256": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
