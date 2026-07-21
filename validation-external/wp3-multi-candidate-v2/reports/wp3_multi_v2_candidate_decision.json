@@ -1,0 +1,15 @@
+{
+  "campaign": "WP3-MULTI-CAND-v2-CANDIDATE-GATE",
+  "candidate_specific_lock": "BLOCKED_PENDING_RESOLUTION",
+  "candidate_subspace_count": 1,
+  "generated_utc": "2026-07-21T08:18:08.493318+00:00",
+  "morales_ramis_track_relationship": "INDEPENDENT_NOT_CANDIDATE_VALIDATION",
+  "publication_reserve_status": "SEALED_UNEXECUTED",
+  "schema_version": "1.0",
+  "sealed_execution": "PROHIBITED",
+  "search_lock_sha256": "f23005c9ba6c9bbd9948abb9354f95bf12757bd4020c9bfd7a7a0b331678f5ff",
+  "search_qualification_id": "WP3-MULTI-CAND-v2-ab9626e19010",
+  "search_record_payload_sha256": "c6d050e987b63b5fff7b2165d1e79000e305c687e6d8148f34c611a360494cee",
+  "status": "REQUIRES_CANDIDATE_RESOLUTION_SPEC",
+  "wp4_candidate_validation": "BLOCKED"
+}
