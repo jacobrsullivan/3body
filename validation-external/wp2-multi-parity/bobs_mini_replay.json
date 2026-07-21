@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-MULTIQ-v1-WP1-CAT-N3BP-v1-SUPPLEMENTAL-PARITY",
+  "generated_utc": "2026-07-21T04:51:18Z",
+  "status": "SUPPLEMENTAL_PARITY_PASS",
+  "git_commit": "3d1296c591be4a1d63b02a9f94381351fed8fc71",
+  "host": "bobs-mac-mini",
+  "checkout": "/Users/bob/Desktop/3body",
+  "worktree_clean": true,
+  "locks": [
+    {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "frozen_file_count": 66,
+      "verified": true
+    },
+    {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "frozen_file_count": 52,
+      "verified": true
+    }
+  ],
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "pytest": "8.4.1",
+    "rebound": "4.4.10",
+    "jax": "0.9.0.1",
+    "jaxlib": "0.9.0.1"
+  },
+  "tests": {
+    "focused": {
+      "collected": 46,
+      "passed": 46,
+      "failed": 0
+    },
+    "relevant_regression": {
+      "collected": 192,
+      "passed": 192,
+      "failed": 0,
+      "warnings": 9,
+      "elapsed_seconds": 9.74
+    }
+  },
+  "sealed_evidence_regenerated": false,
+  "dependency_caveat": "JAX/JAXLIB 0.9.0.1 was installed explicitly because the frozen repository environment does not declare the independent autodiff reference dependency. A superseding qualification version should freeze this dependency and include it in the runtime fingerprint.",
+  "boundary": "Supplemental portability evidence only; this replay cannot replace, modify, or vote on either frozen qualification decision."
+}

@@ -1,0 +1,4 @@
+jax==0.9.0.1
+jaxlib==0.9.0.1
+ml_dtypes==0.5.4
+opt_einsum==3.4.0

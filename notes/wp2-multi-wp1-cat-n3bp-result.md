@@ -68,3 +68,7 @@ The next scientific step is a new locked WP3 search specification bound to
 candidate interpretation. A discovered candidate must then pass a separate
 sealed candidate-specific qualification before WP4; a null result remains only
 a bounded null for the frozen observable library and corpus.
+
+Supplemental clean-checkout parity on `bobs-mac-mini` verifies both locks and
+passes 192/192 relevant tests. The exact runtime and its disclosed dependency
+caveat are recorded in `notes/wp2-multi-wp1-cat-n3bp-bobs-parity.md`.

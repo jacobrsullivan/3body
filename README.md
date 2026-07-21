@@ -38,7 +38,7 @@ See `notes/wp2-multi-wp1-cat-n3bp-result.md`, `notes/wp1-wp2-model-boundary.md`,
 
 ### Current WP1 Evidence
 
-Latest clean-checkout validation on `bobs-mac-mini`: 2026-07-19.
+Latest clean-checkout qualification parity on `bobs-mac-mini`: 2026-07-21.
 
 - Qualification `WP1Q-v1-937694ba58a8` is `PASS`; development, calibration, and first-execution holdout each passed 39/39 locked gates.
 - The pinned JPL source contains 67,218 records across Sun-Earth, Jupiter-Europa, Saturn-Titan, and Earth-Moon. The 400-record corpus covers Lyapunov/Halo families and four stability regimes, split 240/80/80 for development/calibration/holdout.
@@ -101,10 +101,15 @@ The formal decision is in `validation-external/wp1-validation/reports/wp1_qualif
   fictitious-time continuation through each isolated binary-collision channel.
   Triple collision, simultaneous pair collisions, nonzero-`Xi` magnetic
   reduction, SO(3) reduction, and additional integrals remain outside scope.
-- A clean bobs-mini checkout independently verifies all three relevant locks,
-  passes 160/160 focused tests under Python 3.11, and replays downstream
-  development and calibration at 24/24 gates. The supplemental parity record
-  discloses a non-decision-bearing NumPy/Accelerate warning.
+- Earlier one-channel bobs-mini parity verifies the WP1-N3BP, WP2-KS, and
+  WP2-UP-v2 locks, passes 160/160 focused tests under Python 3.11, and replays
+  development and calibration at 24/24 gates.
+- The 2026-07-21 clean checkout also verifies the WP1-CAT-N3BP-v1 and
+  WP2-MULTIQ-v1 locks and passes 192/192 relevant tests. This is supplemental
+  portability evidence: JAX 0.9.0.1 had to be installed explicitly because the
+  frozen repository environment omits that independent-reference dependency.
+  Nine older-NumPy matmul warnings are disclosed in
+  `notes/wp2-multi-wp1-cat-n3bp-bobs-parity.md`.
 - The earlier pairwise-KS composition record remains only a constrained
   kinematic result. The newer multi-chart record supersedes it for the declared
   atlas and isolated-collision claims, but does not claim three decoupled Kepler
