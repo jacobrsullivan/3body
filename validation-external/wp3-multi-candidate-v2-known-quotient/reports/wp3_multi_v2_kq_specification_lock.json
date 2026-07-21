@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP3-MULTI-CAND-v2-KQ-v1",
+  "lock_type": "observable_known_quotient_search_specification",
+  "locked_utc": "2026-07-21T08:49:24Z",
+  "baseline_git_commit": "3fccbeb54845a5460ef7f98d246f1d14b8663953",
+  "successor_spectrum_executed_before_lock": false,
+  "spec_path": "validation-external/wp3-multi-candidate-v2-known-quotient/search_spec.json",
+  "spec_sha256": "21fa173e9f45196be51be1fe861180875c7f7b84363cda13876a866e7edb67b5",
+  "prerequisite_file_hashes": {
+    "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+    "validation-external/wp3-multi-candidate-v1/data/search_corpus.json": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+    "validation-external/wp3-multi-candidate-v2-resolution-v2/reports/wp3_multi_v2_resolution_v2_record.json": "30138e55af7a3e7bc279486503a5b5435e4e9a5bd14cd690203ca1a56f4db9b5",
+    "validation-external/wp3-multi-candidate-v2-resolution-v2/results/resolution_results.json": "aa2468f4947a8f2f40e14564bfd1f80673503b6bc0f219e219f063ce718ce62c",
+    "validation-external/wp3-multi-candidate-v2-resolution/data/challenge_corpus.json": "485417f2a8adfb6a3c9abde4b37b10724345e39ca0dc286590ff47c23a2b0496",
+    "validation-external/wp3-multi-candidate-v2/results/search_results.json": "c5c3da9f3c30f7758bc6e90a7c751505e21acafe7485e8cdfb363fd59103da61",
+    "validation-external/wp3-spatial-validation-v2/data/qualification_corpus.json": "ca73d1378c71f9d386dd00b10b63b0f845497ff583e3d0739ea6e0849a8bd3ff",
+    "validation-external/wp3-spatial-validation-v2/results/calibration.json": "f4a8b4f04f0019cb778a4bb26e63b5914e477c3c84fa71c3a9bc2c4e1bed7351",
+    "validation-external/wp3-spatial-validation-v2/results/development.json": "3b535e05f8de8cc2d7d265fd330894e1f4d1b4c8ec9789263436ae7882ccf70f",
+    "validation-external/wp3-v2-exploration/sealed/publication_holdout_commitments.json": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd"
+  },
+  "specification_lock_sha256": "719e59217178581b8af502129e151d6cfe6ed8f8d7d074211a71f7866d797c6f"
+}
