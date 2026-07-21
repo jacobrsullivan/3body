@@ -1,0 +1,25 @@
+{
+  "CANDIDATE_READY": "NOT_TRIGGERED",
+  "INTERPRETATION_AUTHORIZATION": "BOUNDED_NULL_ONLY",
+  "NULL_RESULT_READY": "PASS",
+  "PUBLICATION_GATE": "PASS_BOUNDED_NULL_ONLY",
+  "SEALED_QUALIFICATION": "NOT_TRIGGERED",
+  "SEARCH_READY": "PASS",
+  "WP4_READY": "NOT_TRIGGERED_NO_CANDIDATE",
+  "campaign": "WP3-MULTI-CAND-v1",
+  "candidate_subspace_count": 0,
+  "corpus_sha256": "44dacb5bfbdbaa1f771e245342210ec2a17ae29faf270c3099edc4e833e6954b",
+  "generated_utc": "2026-07-21T05:20:18.919703+00:00",
+  "lock_sha256": "d1a8226dc9bfdd836f24389c8f0c0d6d6eaf56e82f6592f0a2c57140cd294be8",
+  "publication_reserve": {
+    "case_count": 24,
+    "sha256": "9b2ba04206e891eb1de331d98bbd1a02b2db5170a3a70c739b791a18982302fd",
+    "source_rows_present": false,
+    "status": "SEALED_UNEXECUTED"
+  },
+  "qualification_id": "WP3-MULTI-CAND-v1-225359a13711",
+  "results_sha256": "63b44017bc0fef52a1d41475f14d63aea384c80d39f4f942befe36683c709e13",
+  "schema_version": "1.0",
+  "spec_sha256": "624ab116ae579cf54d7371a2377267a957828cf341d8a2779dc874027d9a4fff",
+  "spectral_partition_consistent": true
+}
