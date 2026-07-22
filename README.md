@@ -25,16 +25,16 @@ This project systematically tests this hypothesis through:
 |--------------|-------------|--------|------------|
 | **WP1** | High-Precision Infrastructure | Qualified (scoped) | WP1-CAT-N3BP-v1 qualifies native production of one 169-member planar N3BP family in full 18D states; other families and a general catalogue remain open |
 | **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | WP2-MULTIQ-v1 qualifies a three-chart fixed-energy KS atlas with continuation through every isolated binary-collision channel; triple collision and broader reductions remain open |
-| **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-MULTI-CAND-v1 excludes training-eligible directions in its frozen shared multi-chart degree-three quotient; this is not a no-integral or non-integrability theorem |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Harness qualified; new-model run not triggered | WP4-UP-READY-v3 passes 30/30 old-model control gates; WP3-MULTI-CAND-v1 produced no candidate, so candidate-specific qualification and WP4 were not triggered on WP2-MULTIQ-v1 |
-| **WP5** | Consolidation & Publication | Designed | Pending validated results |
+| **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-MULTI-CAND-v2-KQ-v1 finds no eligible direction after quotienting known `L^2` in its frozen 285-function physical library; this is not a general no-integral theorem |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Qualified (conditional, scoped) | WP4-MR-NI-v2 qualifies the pinned planar obstruction; WP4-LIFT-NI-v2 transfers it to the spatial model and rules out shell-regular physically admissible meromorphic Liouville families on the qualified KS atlas |
+| **WP5** | Consolidation & Publication | Evidence chain ready | Manuscript synthesis, external peer review, and archival release remain pending |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
 into a claim of integrability or a complete/general periodic-orbit catalogue.
 See `notes/wp2-multi-wp1-cat-n3bp-result.md`, `notes/wp1-wp2-model-boundary.md`,
-`notes/wp3-multi-cand-v1-result.md`, and
-`notes/wp4-upstairs-v3-readiness-result.md` for the exact boundaries.
+`notes/wp3-v2-wp4-mr-parallel-plan.md`, and
+`notes/wp4-lift-ni-v2-result.md` for the exact boundaries.
 
 ### Current WP1 Evidence
 
@@ -138,21 +138,27 @@ multi-chart records are under
 - That older bounded-null search remains tied to `WP2-UPQ-v2`, the one-channel
   model. It is retained as scoped historical evidence rather than transferred
   to the newer atlas.
-- `WP3-MULTI-CAND-v1-225359a13711` is the authoritative search on
-  `WP2-MULTIQ-v1-72c81d86644a`. It passed 21/21 readiness gates and evaluated
-  all 1,468 directions left after exact removal of the rank-52 represented
-  known module from a 1,520-feature shared three-chart library. Its smallest
-  generalized singular value is `8.98980e-2`; the backend-guarded lower bound
-  is `8.98479e-2`, versus the frozen `1e-10` candidate threshold.
-- The multi-chart publication gate is `PASS_BOUNDED_NULL_ONLY`. It authorizes
-  only the finite-library bounded null: zero candidate subspaces survived, the
-  24-case reserve remains `SEALED_UNEXECUTED`, candidate-specific qualification
-  is `NOT_TRIGGERED_NO_CANDIDATE`, and WP4 is likewise not triggered.
-- `WP4-UP-READY-v3-696827675bff` is the authoritative control-harness result.
-  It passes 30/30 gates while binding the exact WP2-UP-v2 and WP3-v3 records.
-  It is harness-readiness evidence only and is not a WP4 result on
-  `WP2-MULTIQ-v1`; no candidate, Morales-Ramis, or integrability result was
-  produced.
+- `WP3-MULTI-CAND-v1-225359a13711` is the first qualified search on
+  `WP2-MULTIQ-v1-72c81d86644a`. It passed 21/21 readiness gates and found no
+  candidate in its frozen shared degree-three quotient.
+- The successor physical-library search produced one apparent direction.
+  `WP3-MULTI-CAND-v2-RES-v2-1277d77b2a25` proved that it was exactly the known
+  total-angular-momentum-squared class. After removing that complete observable
+  equivalence class, `WP3-MULTI-CAND-v2-KQ-v1-514be9de7232` found zero further
+  candidate subspaces in the frozen 285-function library. Its publication gate
+  is `PASS_BOUNDED_NULL_ONLY`; this is not a general nonintegrability theorem.
+- `WP4-UP-READY-v3-696827675bff` remains the qualified historical one-channel
+  control harness. It did not validate a candidate or establish integrability.
+- `WP4-MR-NI-v2-4eb909c77a41` conditionally applies two pinned published
+  analyses to the positive-mass planar problem near the nonzero-angular-
+  momentum parabolic Lagrange solution. It consumes rather than independently
+  rederives the published 4x4 NVE and Galois/monodromy computation.
+- `WP4-LIFT-NI-v2-8d553cb1fa7f` passes 19/19 gates, 10/10 theorem
+  obligations, and 6/6 negative controls. It proves the spatial variational
+  subquotient and the KS quotient, Sundman, chart, involution, and shell-rank
+  transfers. Conditional on the pinned planar result, it rules out complete
+  shell-regular physically admissible meromorphic Liouville families on any
+  qualified atlas domain containing the obstructed regular neighborhood.
 - A clean bobs-mac-mini checkout verifies the WP1-CAT, WP3-v3, and WP4-v3
   records and passes 42/42 applicable tests. Its explicitly non-decision full
   WP3 replay has byte-identical input matrices, zero candidates, and a guarded
@@ -261,13 +267,12 @@ The qualified foundation is deliberately narrower than the project hypothesis.
 Multi-method search for hidden conserved quantities.
 
 The prior parameter-aware campaign is invalidated because it failed a
-known-control recovery audit. The authoritative multi-chart campaign removes
-the exact represented known module before generalized Lie/value screening,
-requires both gauge generators and chart-overlap agreement, and uses a guarded
-minimum-singular-value certificate so a null cannot depend on an arbitrary SVD
-basis. It found no training-eligible direction in the frozen shared
-degree-three quotient. That bounded finite-library null does not imply that no
-additional first integral exists.
+known-control recovery audit. Qualified searches remove represented known
+modules before generalized Lie/value screening, require gauge and chart
+agreement, and guard backend-dependent singular values. The latest physical
+quotient search resolved its apparent direction as known `L^2`, then found no
+further eligible direction in the frozen 285-function library. That bounded
+finite-library null does not imply that no additional first integral exists.
 
 - **Symbolic Regression**: Spinor basis (~80 functions), elliptic functions (sn, cn, dn), theta functions
 - **Machine Learning**: Hamiltonian Neural Networks, SINDy
@@ -277,16 +282,18 @@ additional first integral exists.
 
 Three-stage validation pipeline for candidate integrals:
 
-The authoritative v3 readiness campaign verifies the old-model control harness
-against known, false, and dependent controls while binding the corrected
-one-channel WP3-v3 null chain. The newer multi-chart WP3 campaign also produced
-no candidate subspace, so no candidate-specific or Morales-Ramis stage was
-triggered for the qualified multi-chart model.
+The v3 readiness campaign verifies the historical one-channel candidate
+control harness. No WP3 candidate survived the qualified multi-chart searches,
+so candidate-specific qualification remains untriggered. A separately locked
+Morales-Ramis and transfer track has qualified a conditional nonintegrability
+result for the physical model and for shell-regular physically admissible
+families on the KS atlas.
 
 1. **Analytical Vetting (WP4.1)**: Poisson brackets {I, H} = 0, involution tests, functional independence
 2. **Morales-Ramis Test (WP4.2)**: Differential Galois theory obstruction
-   - Phase I (Downstairs): Expects non-abelian Galois group (classical non-integrability)
-   - Phase II (Upstairs): Seeks abelian Galois group (validates lift-integrability)
+   - Downstairs: `WP4-MR-NI-v2` conditionally qualifies the published planar obstruction
+   - Transfer: `WP4-LIFT-NI-v2` proves the spatial subquotient and shell-regular KS descent obstruction
+   - An Abelian variational Galois identity component is necessary for meromorphic Liouville integrability, not sufficient evidence of integrability
 3. **Numerical Robustness (WP4.3)**: Monte Carlo (10^5 samples), stress tests, long-time validation
 
 ### WP5: Consolidation & Publication
