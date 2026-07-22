@@ -347,3 +347,7 @@ def test_jacobi_roundtrip(
         "mean_error": np.mean(errors) if errors else 0,
         "std_error": np.std(errors) if errors else 0,
     }
+
+
+# Public diagnostic helper, not a pytest test when imported into test modules.
+test_jacobi_roundtrip.__test__ = False

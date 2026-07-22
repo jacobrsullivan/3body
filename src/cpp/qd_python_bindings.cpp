@@ -11,10 +11,19 @@
 #include <qd/dd_real.h>
 #include <sstream>
 #include <iomanip>
+#include <stdexcept>
 
 namespace py = pybind11;
 
 PYBIND11_MODULE(qd_python, m) {
+#ifndef QD_PYTHON_VERSION
+#define QD_PYTHON_VERSION "unknown"
+#endif
+#ifndef QD_LIBRARY_VERSION
+#define QD_LIBRARY_VERSION "unknown"
+#endif
+    m.attr("__version__") = QD_PYTHON_VERSION;
+    m.attr("__qd_version__") = QD_LIBRARY_VERSION;
     m.doc() = "QD Library Python bindings for high-precision arithmetic (~31 decimal digits)";
 
     // dd_real class binding
@@ -48,13 +57,30 @@ PYBIND11_MODULE(qd_python, m) {
         .def(py::self * py::self, "Multiplication")
         .def(py::self * double(), "Multiplication with float")
         .def(double() * py::self, "Multiplication with float (reversed)")
-        .def(py::self / py::self, "Division")
-        .def(py::self / double(), "Division with float")
-        .def(double() / py::self, "Division with float (reversed)")
+        .def("__truediv__", [](const dd_real &a, const dd_real &b) {
+            if (b.is_zero()) {
+                throw std::domain_error("dd_real division by zero");
+            }
+            return a / b;
+        }, py::is_operator(), "Division")
+        .def("__truediv__", [](const dd_real &a, double b) {
+            if (b == 0.0) {
+                throw std::domain_error("dd_real division by zero");
+            }
+            return a / b;
+        }, py::is_operator(), "Division with float")
+        .def("__rtruediv__", [](const dd_real &a, double b) {
+            if (a.is_zero()) {
+                throw std::domain_error("dd_real division by zero");
+            }
+            return b / a;
+        }, py::is_operator(), "Division with float (reversed)")
 
         // Unary operators
         .def(-py::self, "Unary negation")
         .def("__pos__", [](const dd_real &a) { return a; }, "Unary plus")
+        .def("__abs__", [](const dd_real &a) { return abs(a); },
+             "Absolute value")
 
         // In-place operators
         .def(py::self += py::self, "In-place addition")
@@ -104,6 +130,8 @@ PYBIND11_MODULE(qd_python, m) {
 
         // Special methods
         .def("is_zero", &dd_real::is_zero, "Check if value is zero")
+        .def("is_one", [](const dd_real &a) { return a == dd_real(1.0); },
+             "Check if value is one")
         .def("is_positive", &dd_real::is_positive, "Check if value is positive")
         .def("is_negative", &dd_real::is_negative, "Check if value is negative")
 
@@ -115,7 +143,12 @@ PYBIND11_MODULE(qd_python, m) {
     // Mathematical functions
     m.def("abs", [](const dd_real &x) { return abs(x); }, py::arg("x"),
           "Absolute value");
-    m.def("sqrt", [](const dd_real &x) { return sqrt(x); }, py::arg("x"),
+    m.def("sqrt", [](const dd_real &x) {
+        if (x.is_negative()) {
+            throw std::domain_error("sqrt domain requires x >= 0");
+        }
+        return sqrt(x);
+    }, py::arg("x"),
           "Square root");
     m.def("pow", [](const dd_real &x, const dd_real &y) { return pow(x, y); },
           py::arg("x"), py::arg("y"), "Power function");
@@ -129,9 +162,19 @@ PYBIND11_MODULE(qd_python, m) {
           "Cosine function");
     m.def("tan", [](const dd_real &x) { return tan(x); }, py::arg("x"),
           "Tangent function");
-    m.def("asin", [](const dd_real &x) { return asin(x); }, py::arg("x"),
+    m.def("asin", [](const dd_real &x) {
+        if (x < dd_real(-1.0) || x > dd_real(1.0)) {
+            throw std::domain_error("asin domain requires -1 <= x <= 1");
+        }
+        return asin(x);
+    }, py::arg("x"),
           "Arcsine function");
-    m.def("acos", [](const dd_real &x) { return acos(x); }, py::arg("x"),
+    m.def("acos", [](const dd_real &x) {
+        if (x < dd_real(-1.0) || x > dd_real(1.0)) {
+            throw std::domain_error("acos domain requires -1 <= x <= 1");
+        }
+        return acos(x);
+    }, py::arg("x"),
           "Arccosine function");
     m.def("atan", [](const dd_real &x) { return atan(x); }, py::arg("x"),
           "Arctangent function");
@@ -155,24 +198,43 @@ PYBIND11_MODULE(qd_python, m) {
     // Exponential and logarithmic functions
     m.def("exp", [](const dd_real &x) { return exp(x); }, py::arg("x"),
           "Exponential function (e^x)");
-    m.def("log", [](const dd_real &x) { return log(x); }, py::arg("x"),
+    m.def("log", [](const dd_real &x) {
+        if (!x.is_positive()) {
+            throw std::domain_error("log domain requires x > 0");
+        }
+        return log(x);
+    }, py::arg("x"),
           "Natural logarithm");
-    m.def("log10", [](const dd_real &x) { return log10(x); }, py::arg("x"),
+    m.def("log10", [](const dd_real &x) {
+        if (!x.is_positive()) {
+            throw std::domain_error("log10 domain requires x > 0");
+        }
+        return log10(x);
+    }, py::arg("x"),
           "Base-10 logarithm");
+    m.def("log2", [](const dd_real &x) {
+        if (!x.is_positive()) {
+            throw std::domain_error("log2 domain requires x > 0");
+        }
+        return log(x) / dd_real::_log2;
+    }, py::arg("x"), "Base-2 logarithm");
 
     // Rounding and remainder functions
     m.def("floor", [](const dd_real &x) { return floor(x); }, py::arg("x"),
           "Floor function (largest integer <= x)");
     m.def("ceil", [](const dd_real &x) { return ceil(x); }, py::arg("x"),
           "Ceiling function (smallest integer >= x)");
+    m.def("round", [](const dd_real &x) {
+        return x.is_negative() ? ceil(x - dd_real(0.5)) : floor(x + dd_real(0.5));
+    }, py::arg("x"), "Round to the nearest integer, with ties away from zero");
     m.def("fmod", [](const dd_real &x, const dd_real &y) { return fmod(x, y); },
           py::arg("x"), py::arg("y"), "Floating-point remainder");
 
     // Special values and constants
     m.attr("pi") = dd_real::_pi;
     m.attr("e") = dd_real::_e;
-    m.attr("log2") = dd_real::_log2;
-    m.attr("log10") = dd_real::_log10;
+    m.attr("ln2") = dd_real::_log2;
+    m.attr("ln10") = dd_real::_log10;
 
     // Utility functions
     m.def("max", [](const dd_real &x, const dd_real &y) { return x < y ? y : x; },
@@ -181,7 +243,8 @@ PYBIND11_MODULE(qd_python, m) {
           py::arg("x"), py::arg("y"), "Minimum of two values");
 
     // Version information
-    m.attr("__version__") = "1.0.0";
     m.def("precision_digits", []() { return 31; },
           "Return the approximate number of decimal digits of precision");
+    m.def("machine_epsilon", []() { return dd_real::_eps; },
+          "Return the double-double machine epsilon");
 }

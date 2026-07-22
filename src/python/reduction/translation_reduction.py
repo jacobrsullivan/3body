@@ -444,3 +444,7 @@ def enforce_barycenter(
     reducer = TranslationReduction()
     reduced = reducer.reduce(state, masses)
     return reduced.state
+
+
+# Public diagnostic helper, not a pytest test when imported into test modules.
+test_translation_invariance.__test__ = False

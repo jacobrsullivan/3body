@@ -6,38 +6,48 @@ Builds the qd_python extension module using pybind11.
 
 import os
 import sys
+from pathlib import Path
 
 from pybind11.setup_helpers import Pybind11Extension, build_ext
 from setuptools import setup
 
-# Try to find QD library paths
-# First check conda environment, then fall back to system paths
-conda_prefix = os.environ.get("CONDA_PREFIX", "")
+QD_PYTHON_VERSION = "1.0.0"
+QD_LIBRARY_VERSION = "2.3.22"
 
-if conda_prefix:
-    # Using conda environment
-    qd_include_dir = os.path.join(conda_prefix, "include")
-    qd_lib_dir = os.path.join(conda_prefix, "lib")
-else:
-    # Try system-wide installation
-    qd_include_dir = "/usr/include"
-    qd_lib_dir = "/usr/lib/x86_64-linux-gnu"
 
-    # Also try /usr/local for manual installations
-    if not os.path.exists(os.path.join(qd_include_dir, "qd", "dd_real.h")):
-        qd_include_dir = "/usr/local/include"
-        qd_lib_dir = "/usr/local/lib"
+def find_qd_prefix() -> Path:
+    """Find one prefix containing both QD headers and a linkable library."""
+    candidates = [
+        os.environ.get("QD_ROOT"),
+        os.environ.get("CONDA_PREFIX"),
+        sys.prefix,
+        "/opt/homebrew",
+        "/usr/local",
+        "/usr",
+    ]
+    searched = []
+    for value in candidates:
+        if not value:
+            continue
+        prefix = Path(value).resolve()
+        if prefix in searched:
+            continue
+        searched.append(prefix)
+        header = prefix / "include" / "qd" / "dd_real.h"
+        libraries = tuple((prefix / "lib").glob("libqd.*"))
+        if header.is_file() and libraries:
+            return prefix
 
-# Verify QD library is available
-qd_header = os.path.join(qd_include_dir, "qd", "dd_real.h")
-if not os.path.exists(qd_header):
-    print(f"ERROR: QD library header not found at {qd_header}", file=sys.stderr)
-    print("Searched paths:", file=sys.stderr)
-    print("  - /usr/include/qd/dd_real.h", file=sys.stderr)
-    print("  - /usr/local/include/qd/dd_real.h", file=sys.stderr)
-    if conda_prefix:
-        print(f"  - {conda_prefix}/include/qd/dd_real.h", file=sys.stderr)
-    raise RuntimeError(f"QD library header not found at {qd_header}")
+    locations = "\n  - ".join(str(path) for path in searched)
+    raise RuntimeError(
+        "QD headers and library were not found under any candidate prefix:\n"
+        f"  - {locations}"
+    )
+
+
+qd_prefix = find_qd_prefix()
+qd_include_dir = str(qd_prefix / "include")
+qd_lib_dir = str(qd_prefix / "lib")
 
 # Define the extension module
 ext_modules = [
@@ -49,6 +59,10 @@ ext_modules = [
         ],
         libraries=["qd"],
         library_dirs=[qd_lib_dir],
+        define_macros=[
+            ("QD_PYTHON_VERSION", f'"{QD_PYTHON_VERSION}"'),
+            ("QD_LIBRARY_VERSION", f'"{QD_LIBRARY_VERSION}"'),
+        ],
         language="c++",
         cxx_std=11,
     ),
@@ -56,7 +70,7 @@ ext_modules = [
 
 setup(
     name="qd_python",
-    version="1.0.0",
+    version=QD_PYTHON_VERSION,
     author="Three-Body Problem Research Team",
     author_email="research@example.com",
     description="Python bindings for QD Library high-precision arithmetic",

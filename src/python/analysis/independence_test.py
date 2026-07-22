@@ -432,3 +432,8 @@ def _assess_integrability(
         return f"SUPERINTEGRABLE ({num_independent} > n integrals)"
     else:
         return "UNKNOWN STATUS"
+
+
+# Public analysis helpers, not pytest tests when imported into test modules.
+test_functional_independence.__test__ = False
+test_involution.__test__ = False

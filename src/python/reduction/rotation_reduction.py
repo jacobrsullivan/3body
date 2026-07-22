@@ -694,3 +694,7 @@ def test_angular_momentum_conservation(
         'passed': max_L_error < tolerance,
         'n_timesteps': len(L_errors)
     }
+
+
+# Public diagnostic helper, not a pytest test when imported into test modules.
+test_rotation_invariance.__test__ = False

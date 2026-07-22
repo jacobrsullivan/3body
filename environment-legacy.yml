@@ -1,0 +1,28 @@
+name: 3body-legacy
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11.15
+  - poetry=2.4.1
+  # Heyoka's conda ABI requires 3.x; Poetry installs the project-locked 2.13.6
+  # headers before qd_python is compiled.
+  - pybind11=3.0.3
+  - qd=2.3.22
+  - numpy=2.2.6
+  - scipy=1.16.1
+  - pytest=8.4.1
+  - heyoka.py=7.12.0
+  - sympy=1.14.0
+  - mpmath=1.4.1
+  - pip
+  - compilers
+  - cmake
+  - make
+  - git
+  - curl
+  - wget
+  - pip:
+      - jax==0.9.0.1
+      - jaxlib==0.9.0.1
+      - ml_dtypes==0.5.4
+      - opt_einsum==3.4.0

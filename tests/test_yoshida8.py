@@ -239,9 +239,6 @@ class TestYoshida8Timestep:
             assert result.success
             assert np.isclose(result.times[-1], duration, atol=dt)
 
-    @pytest.mark.xfail(
-        reason="Known: Numerical overflow with extreme timestep in long run"
-    )
     def test_small_timestep_more_accurate(self):
         """Test that smaller timestep gives better accuracy."""
         mu = 0.012150
@@ -268,7 +265,6 @@ class TestYoshida8Timestep:
 class TestYoshida8Comparison:
     """Comparison tests between Yoshida-8 and other methods."""
 
-    @pytest.mark.xfail(reason="Known: dt=0.01 too large for Yoshida8/IAS15 convergence")
     def test_compare_with_ias15_short(self):
         """Compare Yoshida-8 with IAS15 on short integration."""
         from src.python.integrators.ias15 import IAS15Integrator
@@ -304,9 +300,6 @@ class TestYoshida8Comparison:
 class TestYoshida8Performance:
     """Performance and stress tests (marked as slow)."""
 
-    @pytest.mark.xfail(
-        reason="Known: Numerical overflow in ultra-long integration (1000+ periods)"
-    )
     def test_very_long_integration(self):
         """Test very long integration (1000 periods)."""
         mu = 0.012150
@@ -333,9 +326,6 @@ class TestYoshida8Performance:
 class TestOptimalTimestep:
     """Test optimal timestep finder."""
 
-    @pytest.mark.xfail(
-        reason="Known: Optimal timestep finder needs tuning for extreme targets"
-    )
     def test_find_optimal_timestep_basic(self):
         """Test basic optimal timestep finding."""
         mu = 0.012150

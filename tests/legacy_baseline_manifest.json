@@ -1,0 +1,395 @@
+{
+  "schema_version": 1,
+  "runtime": {
+    "python": "3.11.15",
+    "qd": "2.3.22",
+    "qd_python": "1.0.0",
+    "pybind11": "2.13.6",
+    "numpy": "2.2.6",
+    "scipy": "1.16.1",
+    "pytest": "8.4.1",
+    "heyoka": "7.12.0",
+    "rebound": "4.4.10",
+    "sympy": "1.14.0",
+    "mpmath": "1.4.1",
+    "jax": "0.9.0.1",
+    "jaxlib": "0.9.0.1",
+    "ml_dtypes": "0.5.4",
+    "opt_einsum": "3.4.0"
+  },
+  "slow_selectors": [
+    "tests/regularization/test_threebody_time_regularized.py::TestIntegration",
+    "tests/regularization/test_threebody_time_regularized.py::TestTrajectory",
+    "tests/regularization/test_time_regularized_dynamics.py::TestIntegration",
+    "tests/regularization/test_time_regularized_dynamics.py::TestKeplerValidation",
+    "tests/regularization/test_time_regularized_dynamics.py::TestTrajectory",
+    "tests/test_kepler_dp.py",
+    "tests/validation/test_kovacic.py",
+    "tests/validation/test_chaos_indicators.py::TestMEGNOIndicator",
+    "tests/validation/test_chaos_indicators.py::TestFLIIndicator",
+    "tests/validation/test_chaos_indicators.py::TestChaosAnalyzer",
+    "tests/validation/test_chaos_indicators.py::TestCR3BPChaos::test_cr3bp_regular_prograde_orbit",
+    "tests/validation/test_chaos_indicators.py::TestCR3BPChaos::test_cr3bp_escape_trajectory",
+    "tests/validation/test_chaos_indicators.py::TestNumericalStability",
+    "tests/validation/test_chaos_indicators.py::test_megno_convergence_time",
+    "tests/validation/test_chaos_indicators.py::test_chaos_analyzer_quick_classify"
+  ],
+  "quarantines": [
+    {
+      "nodeid": "tests/integration/reduction/test_full_reduction.py::TestFullReductionWorkflow::test_full_reduction_equal_masses",
+      "reason": "Legacy rotation reduction does not preserve the expected kinetic-energy reconstruction."
+    },
+    {
+      "nodeid": "tests/integration/reduction/test_full_reduction.py::TestFullReductionWorkflow::test_full_reduction_unequal_masses",
+      "reason": "Legacy unequal-mass reduction does not preserve the expected kinetic-energy reconstruction."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestIntegration::test_energy_conservation",
+      "reason": "Legacy three-body time-regularization prototype fails its historical energy-conservation assertion after a full slow simulation."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestIntegration::test_short_integration",
+      "reason": "Legacy three-body time-regularization prototype fails its historical short-integration assertion."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestIntegration::test_time_advancement",
+      "reason": "Legacy three-body time-regularization prototype fails its historical physical-time advancement assertion."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestTrajectory::test_get_energies",
+      "reason": "Legacy three-body time-regularization trajectory fails its historical energy extraction assertion."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestTrajectory::test_get_pairwise_separations",
+      "reason": "Legacy three-body time-regularization trajectory fails its historical pairwise-separation assertion."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestTrajectory::test_get_time_dilations",
+      "reason": "Legacy three-body time-regularization trajectory fails its historical time-dilation assertion."
+    },
+    {
+      "nodeid": "tests/regularization/test_threebody_time_regularized.py::TestTrajectory::test_validate_conservation",
+      "reason": "Legacy three-body time-regularization trajectory fails its historical conservation validation."
+    },
+    {
+      "nodeid": "tests/regularization/test_rattle_integrator.py::TestConstraintSatisfaction::test_constraint_violation_warning",
+      "reason": "Legacy RATTLE warning expectation no longer matches the solver behavior."
+    },
+    {
+      "nodeid": "tests/regularization/test_rattle_integrator.py::TestEnergyConservation::test_energy_conservation_short_term",
+      "reason": "Legacy RATTLE prototype does not meet its historical energy bound."
+    },
+    {
+      "nodeid": "tests/regularization/test_rattle_integrator.py::TestRoundtripAccuracy::test_roundtrip_preserves_state",
+      "reason": "Legacy RATTLE prototype does not meet its historical roundtrip bound."
+    },
+    {
+      "nodeid": "tests/symbolic_lifts/test_ks_symbolic.py::TestBilinearRelation::test_verify_bilinear_relation",
+      "reason": "Superseded symbolic KS prototype uses a bilinear/sign convention inconsistent with the qualified canonical KS implementation."
+    },
+    {
+      "nodeid": "tests/symbolic_lifts/test_ks_symbolic.py::TestKSPairwiseHamiltonian::test_pairwise_hamiltonian_structure",
+      "reason": "Superseded symbolic KS prototype uses a bilinear/sign convention inconsistent with the qualified canonical KS implementation."
+    },
+    {
+      "nodeid": "tests/symbolic_lifts/test_ks_symbolic.py::TestKSSpinorHamiltonian::test_bilinear_constraint_ks",
+      "reason": "Superseded symbolic KS prototype uses a bilinear/sign convention inconsistent with the qualified canonical KS implementation."
+    },
+    {
+      "nodeid": "tests/symbolic_lifts/test_ks_symbolic.py::TestSymbolicIdentities::test_bilinear_identity_general_u",
+      "reason": "Superseded symbolic KS prototype uses a bilinear/sign convention inconsistent with the qualified canonical KS implementation."
+    },
+    {
+      "nodeid": "tests/test_phase1_diagrams.py::TestAbstractionRules::test_erd_no_physical_schema",
+      "reason": "Historical architecture lint forbids the audit timestamp columns now present in the Phase 1 ERD."
+    },
+    {
+      "nodeid": "tests/test_yoshida8.py::TestOptimalTimestep::test_find_optimal_timestep_basic",
+      "reason": "Legacy Yoshida-8 optimal-timestep prototype does not meet its historical extreme target."
+    },
+    {
+      "nodeid": "tests/test_yoshida8.py::TestYoshida8Comparison::test_compare_with_ias15_short",
+      "reason": "Legacy Yoshida-8/IAS15 comparison does not meet its historical final-state bound at dt=0.01."
+    },
+    {
+      "nodeid": "tests/test_yoshida8.py::TestYoshida8Performance::test_very_long_integration",
+      "reason": "Legacy Yoshida-8 stress integration overflows across the historical 1000-period fixture."
+    },
+    {
+      "nodeid": "tests/test_yoshida8.py::TestYoshida8Timestep::test_small_timestep_more_accurate",
+      "reason": "Legacy Yoshida-8 timestep comparison overflows during the historical long extreme-timestep fixture."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestComposedReduction::test_full_reduction_preserves_energy",
+      "reason": "Superseded rotation-reduction prototype violates its historical energy contract; canonical reduction is qualified separately."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestComposedReduction::test_full_reduction_to_shape_space",
+      "reason": "Superseded rotation-reduction prototype violates its historical shape-space contract; canonical reduction is qualified separately."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestOrientationConventions::test_align_angular_momentum_spatial",
+      "reason": "Superseded rotation-reduction prototype does not satisfy its historical spatial orientation convention."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestOrientationConventions::test_align_axis_12_planar",
+      "reason": "Superseded rotation-reduction prototype rejects the historical planar orientation fixture."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestRotationInvariance::test_rotation_invariance_planar",
+      "reason": "Superseded rotation-reduction prototype rejects the historical planar invariance fixture."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestRotationReduction::test_reduce_fixes_orientation",
+      "reason": "Superseded rotation-reduction prototype does not satisfy its historical orientation contract."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_rotation_reduction.py::TestRotationReduction::test_reduce_preserves_angular_momentum",
+      "reason": "Superseded rotation-reduction prototype does not satisfy its historical angular-momentum contract."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_translation_reduction.py::TestEnforceBarycenter::test_enforce_barycenter_preserves_energy",
+      "reason": "Superseded translation-reduction prototype removes center-of-mass kinetic energy contrary to this historical expectation."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_translation_reduction.py::TestTranslationInvariance::test_translation_invariance_planar",
+      "reason": "Superseded translation-reduction prototype rejects the historical planar invariance fixture."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_translation_reduction.py::TestTranslationReducedState::test_dimension_planar",
+      "reason": "Superseded translation-reduction prototype rejects the historical planar-state fixture."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_translation_reduction.py::TestTranslationReduction::test_reduce_preserves_angular_momentum",
+      "reason": "Superseded translation-reduction prototype does not satisfy its historical angular-momentum contract."
+    },
+    {
+      "nodeid": "tests/unit/reduction/test_translation_reduction.py::TestTranslationReduction::test_reduce_preserves_energy",
+      "reason": "Superseded translation-reduction prototype removes center-of-mass kinetic energy contrary to this historical expectation."
+    },
+    {
+      "nodeid": "tests/validation/test_chaos_indicators.py::TestChaosAnalyzer::test_chaotic_classification_duffing",
+      "reason": "Legacy chaos prototype does not classify its Duffing fixture as expected after the full slow simulation."
+    },
+    {
+      "nodeid": "tests/validation/test_chaos_indicators.py::TestCR3BPChaos::test_cr3bp_escape_trajectory",
+      "reason": "Legacy CR3BP escape simulation remained at full CPU without completing for more than 11 minutes on the pinned bobs-mini host.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_chaos_indicators.py::TestMEGNOIndicator::test_harmonic_oscillator_regular",
+      "reason": "Legacy MEGNO prototype misses its historical harmonic-oscillator regularity threshold after the full slow simulation."
+    },
+    {
+      "nodeid": "tests/validation/test_chaos_indicators.py::TestMEGNOIndicator::test_megno_converges",
+      "reason": "Legacy MEGNO prototype misses its historical convergence threshold after the full slow simulation."
+    },
+    {
+      "nodeid": "tests/validation/test_chaos_indicators.py::test_megno_convergence_time[200.0]",
+      "reason": "Legacy MEGNO prototype misses its historical long-time convergence threshold at t_final=200."
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestClassifyGaloisGroup::test_classify_harmonic_oscillator",
+      "reason": "Legacy Kovacic classification did not complete within 60 seconds on the pinned bobs-mini host; WP4-MR-v2 is qualified independently.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestClassifyGaloisGroup::test_classify_with_verbose",
+      "reason": "Legacy Kovacic classification did not complete within 60 seconds on the pinned bobs-mini host; WP4-MR-v2 is qualified independently.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestKnownIntegrableEquations::test_constant_coefficient_homogeneous",
+      "reason": "Legacy Kovacic solver did not complete a constant-coefficient equation within 60 seconds on the pinned bobs-mini host.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestKnownIntegrableEquations::test_exponential_solutions",
+      "reason": "Legacy Kovacic solver did not complete a constant-coefficient exponential equation within 60 seconds on the pinned bobs-mini host.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestKnownNonIntegrableEquations::test_airy_equation",
+      "reason": "Legacy Kovacic fallback classifies the Airy equation as finite, contrary to the historical non-abelian expectation."
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestKovacicIntegration::test_full_pipeline_simple_ode",
+      "reason": "Legacy Kovacic full pipeline did not complete a simple constant-coefficient equation within 60 seconds on the pinned bobs-mini host.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestMoralesRamisTest::test_morales_ramis_result_structure",
+      "reason": "Legacy Morales-Ramis wrapper did not complete its exponential equation within 60 seconds on the pinned bobs-mini host.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestMoralesRamisTest::test_morales_ramis_integrable_case",
+      "reason": "Legacy Morales-Ramis wrapper passed in 29.5 seconds alone but exceeded 120 seconds in the full slow lane, so its runtime is not gate-stable.",
+      "outcome": "skip"
+    },
+    {
+      "nodeid": "tests/validation/test_kovacic.py::TestSingularityAnalysis::test_find_singularities_at_infinity",
+      "reason": "Legacy infinity singularity analysis raises a SymPy PolynomialError for the reciprocal coordinate."
+    },
+    {
+      "nodeid": "tests/validation/test_lagrange_equilibrium.py::TestLagrangeEquilateralConfiguration::test_energy_conservation_short_integration",
+      "reason": "Superseded Lagrange validation targets legacy integrator result semantics; current N3BP dynamics are qualified separately."
+    },
+    {
+      "nodeid": "tests/validation/test_lagrange_equilibrium.py::TestLagrangeEquilateralConfiguration::test_jacobi_coordinates_rigid_rotation",
+      "reason": "Superseded Lagrange validation targets legacy Jacobi-coordinate semantics; current N3BP dynamics are qualified separately."
+    },
+    {
+      "nodeid": "tests/validation/test_lagrange_equilibrium.py::TestLagrangeEquilateralConfiguration::test_periodic_return",
+      "reason": "Superseded Lagrange validation does not meet its historical periodic-return bound; current N3BP dynamics are qualified separately."
+    },
+    {
+      "nodeid": "tests/validation/test_lagrange_equilibrium.py::TestLagrangeEquilateralConfiguration::test_shape_space_constant",
+      "reason": "Superseded Lagrange validation does not meet its historical shape-space bound; current N3BP dynamics are qualified separately."
+    },
+    {
+      "nodeid": "tests/wp3/test_elliptic_basis.py::TestEllipticBasisConstruction::test_basis_construction_basic",
+      "reason": "Pre-publication WP3 elliptic-basis prototype references an undefined symbolic coordinate and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_elliptic_basis.py::TestEllipticBasisConstruction::test_basis_evaluation",
+      "reason": "Pre-publication WP3 elliptic-basis prototype references an undefined symbolic coordinate and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_elliptic_basis.py::TestEllipticBasisConstruction::test_basis_multiple_m_values",
+      "reason": "Pre-publication WP3 elliptic-basis prototype references an undefined symbolic coordinate and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_elliptic_basis.py::TestEllipticBasisConstruction::test_basis_sn_function",
+      "reason": "Pre-publication WP3 elliptic-basis prototype references an undefined symbolic coordinate and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_elliptic_basis.py::TestEllipticBasisIntegration::test_basis_library_matrix",
+      "reason": "Pre-publication WP3 elliptic-basis prototype references an undefined symbolic coordinate and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_end_to_end_known_cases.py::test_zero_initial_conditions",
+      "reason": "Pre-publication WP3 end-to-end prototype does not satisfy its historical zero-state assertion and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_enhanced_validation.py::TestIntegratedWorkflow::test_full_validation_pipeline",
+      "reason": "Pre-publication WP3 validation workflow targets superseded candidate semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_enhanced_validation.py::TestQuasiPeriodicDetection::test_two_incommensurable_frequencies",
+      "reason": "Pre-publication WP3 frequency classifier misses its historical quasi-periodic fixture and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_exponential_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_mixed_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_polynomial_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_radical_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_rational_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestFunctionTypeClassification::test_trigonometric_classification",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestIntegrationWithRanking::test_full_scoring_workflow",
+      "reason": "Pre-publication WP3 interpretability workflow targets superseded scoring semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestIntegrationWithRanking::test_score_comparison",
+      "reason": "Pre-publication WP3 interpretability workflow targets superseded scoring semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestInterpretabilityScoring::test_elliptic_interpretability",
+      "reason": "Pre-publication WP3 interpretability prototype targets superseded scoring semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestInterpretabilityScoring::test_polynomial_interpretability",
+      "reason": "Pre-publication WP3 interpretability prototype calls the removed sympy.log10 API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestInterpretabilityScoring::test_spinor_interpretability",
+      "reason": "Pre-publication WP3 interpretability prototype targets superseded scoring semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_interpretability.py::TestInterpretabilityScoring::test_theta_interpretability",
+      "reason": "Pre-publication WP3 interpretability prototype targets superseded scoring semantics and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_lifted_jm_metric.py::TestMetricComparison::test_strong_connection_regime",
+      "reason": "Pre-publication WP3 lifted Jacobi-Maupertuis metric prototype misses its historical connection bound and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_polynomial_stage",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_recommendation_exists",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_returns_result",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_verbose_output",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_with_candidates",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_with_elliptic_stage",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestMultiStagePipeline::test_pipeline_with_spinor_stage",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestPipelineEdgeCases::test_pipeline_with_short_trajectory",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestPipelineIntegration::test_pipeline_completes_without_error",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_multi_stage_pipeline.py::TestPipelineIntegration::test_pipeline_with_close_encounters",
+      "reason": "Pre-publication WP3 pipeline targets the superseded basis-construction API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_specialized_search.py::TestSearchIntegration::test_elliptic_and_spinor_search_independent",
+      "reason": "Pre-publication WP3 specialized-search prototype depends on undeclared sklearn behavior and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_specialized_search.py::TestSpinorSearch::test_spinor_search_on_spinor_integral",
+      "reason": "Pre-publication WP3 spinor search targets a superseded validation API and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_specialized_search.py::TestSpinorSearch::test_spinor_search_returns_result",
+      "reason": "Pre-publication WP3 specialized-search prototype depends on undeclared sklearn behavior and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3/test_spinor_basis.py::TestSpinorBasisPhysics::test_spinor_norm_basis_functions",
+      "reason": "Pre-publication WP3 spinor-basis prototype misses its historical normalization assertion and is outside sealed qualification."
+    },
+    {
+      "nodeid": "tests/wp3_upstairs_campaign_v3/test_contract_v3.py::test_v3_decision_runtime_matches_and_rejects_platform_drift",
+      "reason": "WP3-UP-v3 is sealed to its Python 3.13 decision runtime and correctly rejects the pinned Python 3.11 legacy host."
+    }
+  ]
+}

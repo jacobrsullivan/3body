@@ -85,7 +85,9 @@ class TestCompilers:
         """Verify conda environment is active."""
         conda_prefix = os.environ.get("CONDA_PREFIX")
         assert conda_prefix is not None, "CONDA_PREFIX not set"
-        assert "wp1_env" in conda_prefix, "Not in correct conda environment"
+        assert os.path.realpath(conda_prefix) == os.path.realpath(sys.prefix), (
+            "CONDA_PREFIX does not match the running Python environment"
+        )
 
 
 class TestQDLibrary:
