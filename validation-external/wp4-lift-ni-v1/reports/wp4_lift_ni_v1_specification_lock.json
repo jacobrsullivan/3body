@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-LIFT-NI-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-22T06:56:12Z",
+  "baseline_git_commit": "563a2aa3a539a780fb77cef56cb8305ff3a58bef",
+  "implementation_existed_before_lock": false,
+  "qualification_outputs_existed_before_lock": false,
+  "spec_path": "validation-external/wp4-lift-ni-v1/qualification_spec.json",
+  "spec_sha256": "a2a0bf9e84c769733290fb566f602fa5a5527f3c1deb40e1186c17e65a30dece",
+  "prerequisite_file_hashes": {
+    "src/python/ks/canonical.py": "106d54d893c6952467a9ddb073c698207f84a9adb5d57c9e6893c35c03ded552",
+    "src/python/wp2_multi_v1/QUALIFICATION_BOUNDARY.md": "a11a0588d66b2a433d5c4b6e763bec8e71f8598866f01a0cced033a25fa668b3",
+    "src/python/wp2_multi_v1/model.py": "6e38c378a60418c97556339627bca8d93d5d2f9e84fd881a7005a94cce8df8c5",
+    "src/python/wp4_mr_v2/QUALIFICATION_BOUNDARY.md": "bf1e9c63495901c03a614a50104078614334a895e9eb96701e42d598129fd8ce",
+    "validation-external/wp2-multi-validation/qualification_spec.json": "f172543e0ba56cd5ba77fb761a831d856473e462d5e297896457942890923c81",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_specification_lock.json": "bd0cba4ee1a595bc2e7d497cd463228ecf6cfce52327a6b53f3c886e75d8ea83",
+    "validation-external/wp4-lift-ni-v1/sources/manifest.json": "1d1da3349e79b9ead99d3d5cde4c02ab14657fa40714fcc62134cbac6f3182f8",
+    "validation-external/wp4-mr-ni-v2/qualification_spec.json": "62cc6a5dabbf8d7e0d156a1cc01b4a2031c1a1a8d89f5c760a75104bb7870b7c",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_lock.json": "f3e1e59cc743ea22a9881f677ed717c8e3cdeb33cc90d9ec1256ffc916bb04ef",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_specification_lock.json": "3d391bc72cba98eab12e714fbca75f3851842247cfd1d914ebf1eaf8bb947549",
+    "validation-external/wp4-mr-ni-v2/sources/manifest.json": "be4e5861d04985e9e1c5332acd8d6e409e80f2b1fb7d5c306243629b0bf7643d"
+  },
+  "specification_lock_sha256": "0177e9f2def144d6a280eabd6deba5619e3eeebb2b1adbaaa39eba77c97a08b3"
+}
