@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-LIFT-NI-v2",
+  "retrieved_utc": "2026-07-22T06:55:50Z",
+  "sources": [
+    {
+      "source_id": "marsden-weinstein-1974",
+      "title": "Reduction of symplectic manifolds with symmetry",
+      "authors": ["Jerrold Marsden", "Alan Weinstein"],
+      "publication": "Reports on Mathematical Physics 5 (1974), 121-130",
+      "doi": "10.1016/0034-4877(74)90021-4",
+      "download_url": "https://www.cds.caltech.edu/~marsden/bib/1974/01-MaWe1974/MaWe1974.pdf",
+      "download_sha256": "be53e1d80b0305ec13682c03d4d0d938cf1a77ee911f8ca6e5bb6f94df88e371",
+      "qualified_use": "Foundational regular-level symplectic reduction and quotient theory for Hamiltonian group actions."
+    },
+    {
+      "source_id": "tsygvintsev-2007-exceptional-cases",
+      "title": "On some exceptional cases in the integrability of the three-body problem",
+      "authors": ["Alexei V. Tsygvintsev"],
+      "publication": "Celestial Mechanics and Dynamical Astronomy 99 (2007), 23-29",
+      "doi": "10.1007/s10569-007-9086-5",
+      "arxiv": "math/0610951",
+      "download_url": "https://arxiv.org/pdf/math/0610951",
+      "download_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "qualified_use": "Published positive-mass planar, fixed-nonzero-angular-momentum, parabolic-Lagrange monodromy and normal-variational nonintegrability result."
+    },
+    {
+      "source_id": "boucher-weil-morales-ramis-threebody",
+      "title": "Application of the Morales-Ramis theorem to test the non-complete integrability of the planar three-body problem",
+      "authors": ["Delphine Boucher", "Jacques-Arthur Weil"],
+      "publication": "Author-hosted primary manuscript",
+      "download_url": "https://www.unilim.fr/pages_perso/jacques-arthur.weil/Papers/boucher_weil_3b_thomann.pdf",
+      "download_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "qualified_use": "Independent Morales-Ramis proof of planar non-complete meromorphic integrability and permission to use the normal variational system."
+    },
+    {
+      "source_id": "dullin-montgomery-2025",
+      "title": "The N-Body Problem on Coadjoint Orbits",
+      "authors": ["Holger Dullin", "Richard Montgomery"],
+      "publication": "arXiv primary manuscript",
+      "arxiv": "2504.01272",
+      "download_url": "https://arxiv.org/pdf/2504.01272",
+      "download_sha256": "2df532fcee684033950fc5b37e85b07bfe685cb309f56d53a76cb92dbbe52e69",
+      "qualified_use": "Contextual independent description of translation and spatial rotational reduction and the planar stratum; not a nonintegrability theorem."
+    }
+  ],
+  "predecessor_source_manifest": {
+    "path": "validation-external/wp4-lift-ni-v1/sources/manifest.json",
+    "sha256": "1d1da3349e79b9ead99d3d5cde4c02ab14657fa40714fcc62134cbac6f3182f8"
+  },
+  "upstream_source_inheritance": {
+    "wp2_multi_source_manifest": "validation-external/wp2-multi-validation/sources/manifest.json",
+    "wp4_mr_source_manifest": "validation-external/wp4-mr-ni-v2/sources/manifest.json"
+  },
+  "copyright_boundary": "The repository stores metadata and download hashes only and does not redistribute the source PDFs."
+}

@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-LIFT-NI-v2",
+  "supersedes": "WP4-LIFT-NI-v1, invalidated before freeze because ambient generic rank does not imply rank on J=0, K=0",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Prove and qualify a precise transfer obstruction for shell-regular, physically admissible meromorphic Liouville integrability of the qualified WP2-MULTIQ-v1 KS atlas, including the spatial-to-planar variational subquotient needed by that transfer.",
+  "goal": "Conditional on the pinned published planar Morales-Ramis and monodromy result, prove that the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian is not completely meromorphically integrable near the embedded nonzero-angular-momentum parabolic Lagrange phase curve, and prove that any shell-regular complete physically admissible integrable family on the qualified KS atlas would descend to a forbidden complete physical family. A PASS rules out such a family on every atlas domain containing that regular neighborhood.",
+  "evidence_boundary": "A passing result is a conditional theorem extension and transfer proof. It independently checks exact KS quotient identities, two-spinor product reduction, chart compatibility inherited from frozen WP2 evidence, fixed-energy Sundman conservation and Poisson identities, shell-relative functional-rank descent, collision-free restriction, reflection splitting, fixed-nonzero-angular-momentum planar reduction, and the planar normal variational subquotient. It consumes, but does not rederive, the published 4x4 planar normal variational equation or its non-virtually-Abelian differential Galois or monodromy group. It excludes ambient-only rank that disappears on J=0 or K=0, gauge-dependent or chart-dependent upstairs functions, explicit clock-dependent functions, non-meromorphic and non-Liouville notions, nonzero-Xi magnetic dynamics, a general SO(3) quotient, triple-collision regularization, and an independent new derivation of the published planar obstruction.",
+  "prerequisites": {
+    "invalidated_predecessor": {
+      "campaign": "WP4-LIFT-NI-v1",
+      "assessment_file": "validation-external/wp4-lift-ni-v1/reports/wp4_lift_ni_v1_specification_assessment.json",
+      "assessment_file_sha256": "a68af83a76e90ff59b1349da23d44e281c8435186f6dcfa8c06c1ff2a23f88a0",
+      "required_status": "INVALIDATED_PREFREEZE"
+    },
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    "wp4_mr": {
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "lock_file": "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_lock.json",
+      "lock_file_sha256": "f3e1e59cc743ea22a9881f677ed717c8e3cdeb33cc90d9ec1256ffc916bb04ef",
+      "record_file": "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json",
+      "record_file_sha256": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02"
+    },
+    "source_manifest": "validation-external/wp4-lift-ni-v2/sources/manifest.json"
+  },
+  "model": {
+    "physical_phase_space": "The regular collision-free part U of the 12-dimensional total-linear-momentum-zero translation quotient of the spatial Newtonian three-body phase space, complexified on the standard algebraic distance cover used by Morales-Ramis analyses.",
+    "physical_hamiltonian": "H on U with three strictly positive finite masses and positive gravitational constant.",
+    "extended_physical_space": "U_ext=U x T*R with coordinates (z,t,p_t), canonical form omega_U+d p_t wedge d t, dimension 14.",
+    "upstairs_chart": "Each WP2-MULTIQ-v1 chart is T*(R4 x R4 x R), dimension 18, with two commuting cotangent S1 actions and momentum map J=(Xi1,Xi2).",
+    "regular_domain": "J^-1(0) with both selected spinors nonzero and the third pair distance nonzero. The T2 action is free there and its quotient is U_ext.",
+    "regularized_hamiltonian": "K=g*(H+p_t) after quotient, where g=r12*r23*r31 is positive on the real collision-free domain and nonzero on the complex regular domain under consideration.",
+    "physical_shell": "S is J=0 and K=0. On the regular domain K=0 is equivalent to p_t=-H.",
+    "atlas": "Three quotient-induced charts with canonical transitions on collision-free overlaps, exactly as frozen by WP2-MULTIQ-v1.",
+    "variational_reduction_chain": "Along the nonzero-angular-momentum planar Lagrange phase curve: spatial translation-reduced VE dimension 12; reflection-fixed planar VE dimension 8; tangent-to-L_z=k quotient by the rotational generator dimension 6; normal quotient by the phase-flow and energy directions dimension 4. The pinned published NVE is the final differential subquotient, up to meromorphic gauge equivalence."
+  },
+  "admissible_integrability": {
+    "name": "shell-regular physically admissible meromorphic Liouville family",
+    "definition": "On a connected T2-invariant regular open neighborhood N in an 18-dimensional lifted chart containing the physical lifted parabolic Lagrange phase curve, a family (K,p_t,Xi1,Xi2,F1,...,F5) of nine meromorphic first integrals is admissible when all nine are pairwise Poisson commuting; the nine ambient covectors are linearly independent at a relative dense-open subset of S intersect N; every Fi commutes with p_t, Xi1, and Xi2; and the restrictions of every Fi to J=0 agree under every frozen WP2 chart transition.",
+    "consequences_of_definition": [
+      "Commutation with p_t makes every Fi independent of the clock coordinate t.",
+      "Commutation with Xi1 and Xi2 makes the J=0 restriction T2-invariant and therefore projectable.",
+      "Chart compatibility makes each projected function single-valued on the physical atlas.",
+      "Shell-relative ambient rank excludes integrability whose only fifth horizontal direction is multiplied by Xi or H+p_t and disappears on the physical shell.",
+      "Dependence on p_t or Xi away from their frozen levels remains allowed when the shell-relative rank condition is met."
+    ],
+    "not_admissible": [
+      "A gauge-dependent spinor function.",
+      "A function that changes across two representatives of one physical chart overlap.",
+      "A function with explicit physical-clock dependence.",
+      "A family with ambient generic rank nine whose rank is below nine everywhere on S.",
+      "A collection that is conserved but lacks pairwise involution or shell-relative functional independence."
+    ]
+  },
+  "theorem_obligations": {
+    "T1_single_ks_reduction": "For q != 0, prove the Hopf/KS radius identity, identify the vertical kernel with the S1 generator, prove Xi is its cotangent momentum map, and prove the projected canonical Poisson brackets on Xi=0.",
+    "T2_product_and_extended_reduction": "Prove that the product of two regular zero-Xi quotients, with the untouched (t,p_t) pair, has dimensions 18 -> 16 -> 14 and is locally the qualified physical extended phase space.",
+    "T3_chart_gluing": "Use the verified WP2 projection-transition identity to prove that projectable functions descend consistently and that quotient Poisson brackets are chart-independent.",
+    "T4_sundman_transfer": "For every clock-independent projectable F, prove {F,K}=g*{F,H}+(H+p_t)*{F,g} on J=0, hence conservation equivalence on K=0 wherever g != 0.",
+    "T5_involution_transfer": "Prove that pairwise upstairs involution implies pairwise involution of the shell restrictions f_i(z)=F_i(z,-H(z),0), including possible p_t dependence.",
+    "T6_shell_rank_transfer": "In momentum-map adapted local coordinates, prove pointwise that rank nine of (K,p_t,Xi1,Xi2,F1,...,F5) at S implies rank six of (H,f1,...,f5), and therefore transfer relative dense-open shell rank. Explicitly reject ambient-only rank as insufficient.",
+    "T7_collision_domain": "Prove that a global meromorphic family on any atlas extension containing the regular domain restricts to the regular collision-free domain; binary-collision extension cannot evade an obstruction on that open set. No triple-collision regularization premise is used.",
+    "T8_spatial_variational_subquotient": "Along the planar parabolic Lagrange solution embedded in the spatial translation quotient, prove exact reflection invariance of in-plane and vertical variational subspaces; identify the fixed-nonzero-L_z rotational reduction as a differential quotient of the planar block; and identify the published 4x4 planar NVE as the subsequent normal differential quotient.",
+    "T9_galois_quotient": "Prove that virtual Abelianity of the full spatial variational differential Galois group would force virtual Abelianity of every differential subquotient; combine its contrapositive with the pinned non-virtually-Abelian planar normal quotient.",
+    "T10_global_implication": "Prove only that a global shell-regular admissible family would restrict to the locally obstructed regular neighborhood. Do not interpret the local theorem as an orbit classification or a statement about arbitrary regularity classes."
+  },
+  "independent_validation": {
+    "production": "Exact integer and rational matrix identities and polynomial-structure checks implemented without SymPy in src/python/wp4_lift_ni_v2.",
+    "reference": "A source-disjoint SymPy module that differentiates the defining KS, transfer, rotational-momentum, and Newtonian expressions directly and does not import the production implementation.",
+    "required_exact_agreement": true,
+    "required_controls": [
+      "A deliberately wrong KS momentum factor fails the canonical Poisson identity.",
+      "A nonzero-Xi probe exposes the magnetic Poisson residual and is not classified as physical zero-level reduction.",
+      "A clock-dependent probe fails the p_t commutation gate.",
+      "A gauge-variant probe fails projectability.",
+      "An exact commuting family with rank supplied only by I1 away from S is rejected by the shell-rank gate.",
+      "Removing one genuine shell-horizontal rank direction fails the rank-transfer control."
+    ]
+  },
+  "source_policy": {
+    "download_hashes_must_verify": true,
+    "published_planar_nve_and_nonabelianity_are_consumed_not_rederived": true,
+    "marsden_weinstein_reduction_is_consumed_as_foundational_theory": true,
+    "spatial_reflection_embedding_fixed_momentum_quotient_and_transfer_theorem_are_project_derivations": true,
+    "dullin_montgomery_spatial_reduction_is_contextual_not_a_nonintegrability_source": true
+  },
+  "gates": {
+    "specification_lock_verified": true,
+    "invalidated_v1_verified": true,
+    "all_prerequisite_locks_and_records_verified": true,
+    "all_source_download_hashes_verified": true,
+    "source_text_contracts_verified": true,
+    "all_T1_exact_identities_pass": true,
+    "all_T2_dimension_and_rank_checks_pass": true,
+    "all_T3_chart_contract_checks_pass": true,
+    "all_T4_sundman_identities_pass": true,
+    "all_T5_involution_checks_pass": true,
+    "all_T6_shell_rank_checks_pass": true,
+    "all_T7_domain_checks_pass": true,
+    "all_T8_spatial_subquotient_checks_pass": true,
+    "all_T9_galois_logic_checks_pass": true,
+    "all_T10_global_logic_checks_pass": true,
+    "production_reference_exact_agreement": true,
+    "all_negative_controls_rejected": true,
+    "proof_document_covers_every_obligation": true,
+    "claim_boundary_present": true
+  },
+  "decision_policy": {
+    "PASS": "Every theorem obligation, shell-relative rank premise, prerequisite, source, exact-identity, independent-reference, negative-control, proof-coverage, and boundary gate passes under a frozen implementation.",
+    "FAIL": "Any missing implication, source mismatch, exact-identity failure, reference disagreement, negative-control escape, shell-rank gap, chart gap, spatial-subquotient gap, or boundary violation fails v2 and requires a new campaign version.",
+    "AUTHORIZED_CLAIM": "Conditional on the pinned published planar normal-variational nonintegrability result, the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian is not completely integrable by meromorphic first integrals near the embedded nonzero-angular-momentum parabolic Lagrange phase curve. Consequently, the qualified WP2-MULTIQ-v1 atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing that regular neighborhood.",
+    "PROHIBITED_SHORT_CLAIM": "The three-body problem has no integrals.",
+    "PROHIBITED_RAW_UPSTAIRS_CLAIM": "The unreduced KS Hamiltonian admits no complete family without the shell-regularity, gauge, chart, and clock conditions."
+  },
+  "invalidation": "Any change to the theorem statement, shell-relative admissibility definition, model boundary, prerequisite identity, source payload, proof obligation, negative control, decision rule, or frozen implementation invalidates v2. A failed frozen execution remains FAIL."
+}
