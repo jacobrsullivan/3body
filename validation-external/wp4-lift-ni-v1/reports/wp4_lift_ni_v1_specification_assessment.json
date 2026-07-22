@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-LIFT-NI-v1",
+  "status": "INVALIDATED_PREFREEZE",
+  "specification_lock_sha256": "0177e9f2def144d6a280eabd6deba5619e3eeebb2b1adbaaa39eba77c97a08b3",
+  "reason": "The locked T6 premise required rank nine only on a dense open subset of the ambient 18-dimensional chart. That does not imply rank nine anywhere on the physical shell J=0, K=0, so the claimed rank-six descent is false without a shell-relative independence condition.",
+  "counterexample": "In adapted canonical coordinates take g=1, H=p1, K=p1+p_t, and the commuting family (K,p_t,I1,I2,p2,p3,p4,p5,I1*p6). It has ambient rank nine where I1 is nonzero, while on I1=I2=K=0 its fifth projected member vanishes and the physical family has rank five rather than six.",
+  "implementation_started": true,
+  "qualification_lock_created": false,
+  "frozen_execution_started": false,
+  "scientific_outputs_produced": false,
+  "successor": "WP4-LIFT-NI-v2",
+  "claim_authorization": "NONE"
+}
