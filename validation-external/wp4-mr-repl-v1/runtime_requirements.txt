@@ -1,0 +1,4 @@
+sympy==1.14.0
+pytest==8.4.1
+pdftotext (Poppler)
+
