@@ -1,0 +1,50 @@
+{
+  "base_git_commit": "c81982b9eaa5cd04bb926ff1799aefcf3734d716",
+  "catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+  "code_snapshot_sha256": "9526e09d01badf74c89dd533777148104cffad519ab748f0fc6bd9c92429ecfe",
+  "file_hashes": {
+    "src/python/wp1_residual_map_v1/QUALIFICATION_BOUNDARY.md": "2d761b9dcf7138de91cd25232e359fba3dcd8f29d7dae2195e72b81b186f906f",
+    "src/python/wp1_residual_map_v1/__init__.py": "b0b335b13fc05f638d4bdce8a7b1c19427d773c310fafc0f88039f04eed1d150",
+    "src/python/wp1_residual_map_v1/model.py": "2e5b25893aa7c02b6454df213f901bd1fe84fccc60fc91d5060a12a4ba4e1bf8",
+    "tests/wp1_residual_map_v1/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "tests/wp1_residual_map_v1/test_campaign_contract.py": "53b3efbb6461f9c1436267312056d72714ff188f906139904be1c965a118ec09",
+    "tests/wp1_residual_map_v1/test_model.py": "9f9d9c7ebb499a3ff67bb2af250464b4c2b3d1e637d8c858406f2490757fa99c",
+    "validation-external/qualification_tools.py": "64cb7d731658eb5f5249b7dfdc50545fbe7ad140681e0ea14c057ba0e897aaee",
+    "validation-external/validation_external_import.py": "5a7ae77558ed03d8b7d347a01ddb6cf0703ef333ea96606de356543ef7d98942",
+    "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+    "validation-external/wp1-residual-map-v1/README.md": "d3612b774379a09674d4a76a79a08494f70b800b3000f28859995863d38f668c",
+    "validation-external/wp1-residual-map-v1/qualification_spec.json": "4757d455f69eccd71900bace20deaf1138462eeb1c4fc71bbe998bc879ef1d59",
+    "validation-external/wp1-residual-map-v1/reference/sympy_reference.py": "e358c227d1b2a6d4c49511610d7f2afdd1479c7ca37947be5b291ad9119a33e3",
+    "validation-external/wp1-residual-map-v1/reports/wp1_residual_map_v1_specification_lock.json": "4d57873d4a962b33fbb96050092c68cb79396456c49262314c52238d6175125f",
+    "validation-external/wp1-residual-map-v1/run_qualification.sh": "7f397fffd6f034b3d5273a43263914058870f8b213e21798ce2afe5fd18d6558",
+    "validation-external/wp1-residual-map-v1/runtime_requirements.txt": "12f8f7d6a2b2d6036bc58718c6f1f9eb029a046e6e67dacb22b27b2589d8a50a",
+    "validation-external/wp1-residual-map-v1/scripts/campaign_common.py": "fbe628884c2859980bfb54149e395b814cd79f765d5a21e6bc94ec88160afa70",
+    "validation-external/wp1-residual-map-v1/scripts/finalize_qualification.py": "0a1d14416ab7ecb23f1c2a5c461033ee3a1f3833f85d3669c55c20c47c031928",
+    "validation-external/wp1-residual-map-v1/scripts/freeze_qualification.py": "c02fc2db9d9d118a269edc21e86365e1f1e62612d20e62a6933c99e1452ecbbd",
+    "validation-external/wp1-residual-map-v1/scripts/run_qualification.py": "824ff91643e78754d0a40da4787403b6e3b316d1ab1019cb2bcc00021cda2f4a",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02"
+  },
+  "frozen_utc": "2026-07-23T09:25:34.201241+00:00",
+  "lock_sha256": "da58537b9e904fa702580f244f6d928e72e5be07a6d10ba63965a6ff019c321e",
+  "qualification_id": "WP1-RESIDUAL-MAP-v1-9526e09d01ba",
+  "qualification_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "4757d455f69eccd71900bace20deaf1138462eeb1c4fc71bbe998bc879ef1d59",
+  "specification_lock_sha256": "ece69d3228dc85673e3940f51d05696ca00c27f94b1bc050d53eb10800112239",
+  "worktree_clean_at_freeze": true
+}
