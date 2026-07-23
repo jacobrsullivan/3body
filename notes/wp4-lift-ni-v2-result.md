@@ -64,3 +64,9 @@ non-meromorphic or non-Liouville notions, nonzero-`Xi` magnetic dynamics, a
 general `SO(3)` quotient, or triple-collision regularization. The published
 4x4 planar NVE and its Galois/monodromy calculation are consumed conditionally,
 not independently rederived here.
+
+## Reproducibility And Audit
+
+- `notes/wp4-lift-ni-v2-bobs-parity.md` records the clean pinned host replay.
+- `notes/wp4-lift-ni-v2-completion-audit.md` maps every requested obligation
+  to frozen evidence and its final status.
