@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1-RESIDUAL-MAP-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-23T08:22:55.014188+00:00",
+  "baseline_git_commit": "1418c2f1c2d66bedc3ae9026017cb9085eeecdfe",
+  "spec_path": "validation-external/wp1-residual-map-v1/qualification_spec.json",
+  "spec_sha256": "4757d455f69eccd71900bace20deaf1138462eeb1c4fc71bbe998bc879ef1d59",
+  "implementation_present_at_lock": false,
+  "qualification_outputs_present_at_lock": false,
+  "prerequisite_file_hashes": {
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+    "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+    "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02"
+  },
+  "specification_lock_sha256": "ece69d3228dc85673e3940f51d05696ca00c27f94b1bc050d53eb10800112239"
+}

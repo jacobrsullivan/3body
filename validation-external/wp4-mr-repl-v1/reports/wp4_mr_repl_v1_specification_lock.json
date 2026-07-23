@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-REPL-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-23T08:22:55.014188+00:00",
+  "baseline_git_commit": "1418c2f1c2d66bedc3ae9026017cb9085eeecdfe",
+  "spec_path": "validation-external/wp4-mr-repl-v1/qualification_spec.json",
+  "spec_sha256": "92761ecb9b7df2f80d446afd99947d730f2df2403cea04843f7b017e9a1e1e17",
+  "implementation_present_at_lock": false,
+  "qualification_outputs_present_at_lock": false,
+  "prerequisite_file_hashes": {
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+    "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_lock.json": "f3e1e59cc743ea22a9881f677ed717c8e3cdeb33cc90d9ec1256ffc916bb04ef",
+    "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02",
+    "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_lock.json": "aca1daef73326e7ef0e18dc0c032e4617b6e7df624c26c0e5fe45d0cbf3f2b24",
+    "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_record.json": "1635d6e79e01b1ae5b68adcc9487fb7baf3cac7ed06fbf6b8de7ca8557c98f3d",
+    "validation-external/wp4-mr-repl-v1/sources/manifest.json": "bc5802def756b64597494de6f70c208658713a78b85e9364ef9c06e9611b733f"
+  },
+  "specification_lock_sha256": "41f136825eb50a17074935c1776b860e8fa2fb3dd8aa040b31e959e5e96f6d0e"
+}
+
