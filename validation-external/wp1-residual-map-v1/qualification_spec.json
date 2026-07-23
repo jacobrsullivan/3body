@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP1-RESIDUAL-MAP-v1",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Produce a deterministic, publication-gated follow-on research map from the qualified WP1 periodic-orbit catalogue without interpreting numerical structure as a new invariant.",
+  "evidence_boundary": "A PASS verifies one-to-one ingestion of all 169 frozen catalogue candidates, exact preservation of masses and qualified planar S/U labels, deterministic evidence-quality ordering, bounded track assignment, and explicit publication gates. It does not discover an invariant, establish KAM stability, construct a normal form or invariant manifold, qualify spatial stability, infer non-meromorphic integrability, or widen the WP1 catalogue claim.",
+  "prerequisites": {
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "lock_file": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json",
+      "lock_file_sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+      "record_file": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json",
+      "record_file_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+      "catalogue_file": "validation-external/wp1-catalogue-n3bp-validation/data/native_catalogue.json",
+      "catalogue_file_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234"
+    },
+    "wp4_mr_v2_boundary": {
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "record_file": "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json",
+      "record_file_sha256": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02",
+      "role": "Bounds permitted targets; the map does not depend on or reproduce its theorem proof."
+    }
+  },
+  "classification": {
+    "S": "LOCAL_STABLE_NORMAL_FORM",
+    "U": "ASYMPTOTIC_MANIFOLD",
+    "all_candidates": "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC",
+    "first_nve_exception_overlay": "HIGHER_VARIATIONAL_EXCEPTION when exact sigma is one of 1/3, 8/27, 2/9"
+  },
+  "quality_order": {
+    "purpose": "Prioritize numerically best-qualified representatives within a track, not scientific importance.",
+    "key": ["correction.residual_linf", "stability.symplectic_defect", "stability.reciprocal_pair_error", "candidate_id"],
+    "numeric_parsing": "Repository hexadecimal floats are parsed exactly as binary64 values; ordering has no tolerance."
+  },
+  "expected_counts": {
+    "candidate_count": 169,
+    "stable_track_count": 118,
+    "unstable_track_count": 51,
+    "first_nve_exception_overlay_count": 1
+  },
+  "candidate_protocol": {
+    "required_fields": ["candidate_id", "masses_exact", "sigma", "qualified_planar_label", "primary_track", "overlays", "quality_metrics", "track_rank", "publication_gate", "authorized_next_test", "prohibited_interpretation"],
+    "publication_gate": "No candidate output may be interpreted as an invariant before a separately named and locked candidate-specific qualification passes.",
+    "allowed_target_classes": ["local", "partial", "approximate", "asymptotic", "higher-variational", "non-meromorphic", "domain-restricted"]
+  },
+  "independent_validation": {
+    "production": "Pure-Python exact mass arithmetic and deterministic tuple ordering.",
+    "reference": "A source-disjoint SymPy Rational implementation recomputes sigma, overlays, counts, and ordering.",
+    "required_exact_agreement": true
+  },
+  "adversarial_controls": [
+    "Reject a missing or duplicated candidate.",
+    "Reject any changed candidate mass or S/U label.",
+    "Reject an unknown stability label.",
+    "Reject tolerance-based exceptional-set membership.",
+    "Reject any output that uses invariant-discovery language.",
+    "Reject any output lacking a candidate-specific publication gate.",
+    "Reject a ranking that changes under input row permutation."
+  ],
+  "gates": {
+    "specification_lock_verified": true,
+    "all_prerequisite_hashes_verified": true,
+    "all_169_candidates_mapped_once": true,
+    "expected_track_counts_exact": true,
+    "exact_exception_overlay_count": true,
+    "deterministic_ordering_verified": true,
+    "production_reference_exact_agreement": true,
+    "all_adversarial_controls_rejected": true,
+    "publication_gate_present_on_every_row": true,
+    "no_invariant_interpretation_present": true,
+    "claim_boundary_present": true
+  },
+  "decision_policy": {
+    "PASS": "Every frozen input, one-to-one mapping, exact classification, deterministic-order, independent-reference, adversarial, publication-gate, and boundary check passes.",
+    "FAIL": "Any changed prerequisite, missing candidate, classification disagreement, nondeterminism, overinterpretation, or gate omission fails v1 and requires a successor.",
+    "AUTHORIZED_CLAIM": "The project has a deterministic, evidence-ranked and publication-gated work map for all 169 qualified WP1 catalogue members, partitioned into bounded local-normal-form and asymptotic-manifold tracks with exact higher-variational overlays.",
+    "PROHIBITED_CLAIM": "WP1 catalogue residuals reveal a new invariant or establish any form of integrability."
+  },
+  "invalidation": "Any changed prerequisite, classification, quality key, expected count, output schema, publication rule, control, decision rule, or frozen implementation invalidates v1."
+}

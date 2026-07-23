@@ -1,0 +1,121 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-REPL-v1",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Independently reproduce and qualify the planar parabolic-Lagrange normal-variational nonintegrability obstruction that WP4-LIFT-NI-v2 previously consumed as an external premise.",
+  "goal": "Starting from the declared translation- and rotation-reduced positive-mass Newtonian Hamiltonian at normalized nonzero angular momentum, derive the exact parabolic Lagrange phase curve, variational system, Whittaker energy-shell reduction, 4x4 Fuchsian normal variational equation, residue spectra, and a non-Abelian differential-Galois identity-component certificate for the complete positive-mass parameter domain.",
+  "evidence_boundary": "A PASS is a project-owned exact reproduction of the local planar Morales-Ramis obstruction. It starts from the explicitly declared reduced Newtonian Hamiltonian and independently differentiates it; it does not independently reconstruct every canonical translation/rotation coordinate map from the unreduced 18-dimensional state. It proves no absence of individual additional first integrals, no non-meromorphic obstruction, no zero-angular-momentum theorem, no spatial theorem without the separately qualified WP4-LIFT-NI-v3 transfer, no global orbit classification, no catalogue completeness, and no statement about triple collision.",
+  "prerequisites": {
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    "wp4_mr_v2": {
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "lock_file": "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_lock.json",
+      "lock_file_sha256": "f3e1e59cc743ea22a9881f677ed717c8e3cdeb33cc90d9ec1256ffc916bb04ef",
+      "record_file": "validation-external/wp4-mr-ni-v2/reports/wp4_mr_v2_qualification_record.json",
+      "record_file_sha256": "8cf03f4e62c4e4bb38f8a9b2832cc1d86a0357e42360081da4e59d1d9ad97d02",
+      "role": "Completed external theorem application retained as comparison evidence, not used as the reproduction proof."
+    },
+    "wp4_lift_v2": {
+      "qualification_id": "WP4-LIFT-NI-v2-8d553cb1fa7f",
+      "lock_file": "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_lock.json",
+      "lock_file_sha256": "aca1daef73326e7ef0e18dc0c032e4617b6e7df624c26c0e5fe45d0cbf3f2b24",
+      "record_file": "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_record.json",
+      "record_file_sha256": "1635d6e79e01b1ae5b68adcc9487fb7baf3cac7ed06fbf6b8de7ca8557c98f3",
+      "role": "Identifies the external premise to be replaced; its completed evidence remains unchanged."
+    },
+    "source_manifest": "validation-external/wp4-mr-repl-v1/sources/manifest.json"
+  },
+  "model": {
+    "masses": "m1>0, m2>0, m3=1 after positive common-mass scaling; all finite positive triples are represented.",
+    "gravity_and_momentum": "G=1 and fixed nonzero angular momentum k=1 after the standard nonzero scaling used in the pinned reduced Hamiltonian.",
+    "coordinates": ["q1", "q2", "q3", "p1", "p2", "p3"],
+    "reduced_hamiltonian": "H=(M1/2)*(p1^2+P^2/q1^2)+(M2/2)*(p2^2+p3^2)+p1*p2-p3*P/q1-m1/q1-m2/sqrt(q2^2+q3^2)-m1*m2/sqrt((q1-q2)^2+q3^2), with M1=1+1/m1, M2=1+1/m2, P=p3*q2-p2*q3-1.",
+    "particular_solution": "The zero-energy parabolic Lagrange equilateral phase curve in the source convention, parametrized by q and p or w=p*q.",
+    "normal_system": "The four-dimensional Whittaker energy-shell normal variational equation in y=(q2,q3,p2,p3), transformed by the declared rational Fuchs gauge.",
+    "mass_invariant": "sigma=(m1*m2+m1+m2)/(m1+m2+1)^2, equivalently the symmetric three-mass invariant before m3 normalization."
+  },
+  "theorem_obligations": {
+    "R1_reduced_hamiltonian": "Represent the declared reduced Newtonian Hamiltonian exactly and verify its source convention term by term.",
+    "R2_lagrange_phase_curve": "Derive the equilateral configuration and momentum parametrization, verify H=0 and all six Hamilton equations, and derive q(w) and dq/dw exactly.",
+    "R3_whittaker_reduction": "Derive the implicit energy-shell Hamiltonian K=-p1 and its exact Hessian formula from H=0; obtain the 4x4 normal variational system without importing a published coefficient matrix.",
+    "R4_fuchs_gauge": "Apply the declared meromorphic gauge and prove that the transformed system has exactly one real turning singularity, two complex collision singularities, and infinity, with only simple poles.",
+    "R5_finite_residues": "Prove the real turning residue characteristic polynomial is lambda^2*(lambda+1)^2 and each complex collision residue characteristic polynomial is lambda*(lambda-1)*(lambda+1)*(lambda+2).",
+    "R6_infinity_residue": "Prove the infinity residue characteristic polynomial is lambda^4-6*lambda^3+7*lambda^2+6*lambda+(27*sigma-8), exactly for symbolic positive masses.",
+    "R7_positive_mass_domain": "Prove 0<sigma<=1/3 for every finite positive mass triple and audit all boundary and equality cases without numerical tolerance.",
+    "R8_nonabelian_certificate": "Use integer finite exponents, finite unipotent monodromies, identity-component containment, the fundamental-group product relation, and the infinity spectrum to prove the differential-Galois identity component is non-Abelian for every 0<sigma<=1/3.",
+    "R9_morales_ramis_application": "Apply the pinned Morales-Ramis necessary condition only to the declared complex meromorphic Liouville-integrability model and local phase-curve neighborhood.",
+    "R10_source_equivalence_and_boundary": "Prove exact equivalence of variables, singular points, residue spectra, infinity exponent polynomial, and conclusion to the pinned primary evidence; state every nonclaim."
+  },
+  "independent_validation": {
+    "production": "A pure-Python exact rational certificate over Fraction proves the mass-domain, residue-polynomial, integer-exponent, infinity non-unipotence, and group-theoretic implication without importing SymPy or the reference implementation.",
+    "reference": "A source-disjoint SymPy program differentiates the reduced Hamiltonian, constructs the Lagrange curve and Whittaker Hessian, performs the Fuchs gauge, and computes exact residues and characteristic polynomials.",
+    "generic_replay": "At least one exact computation over Q(sqrt(3),i)(m1,m2) must prove the generic residue identities as rational-function identities.",
+    "specializations": "At least two distinct exact positive rational mass pairs, including equal masses, must independently reproduce all residue spectra.",
+    "required_exact_agreement": true
+  },
+  "domain_certificate": {
+    "sigma_range": "0<sigma<=1/3",
+    "infinity_exponent_equation": "((2*lambda-3)^2-13)^2=144*(1-3*sigma)",
+    "unipotence_contradiction": "If all infinity monodromy eigenvalues were one, two exponent roots would be integers. Their odd transforms x=2*lambda1-3 and y=2*lambda2-3 would satisfy x^2+y^2=26. The only odd-square decomposition is {1,25}, which forces sigma=0, contradicting positive masses.",
+    "exceptional_set_for_complete_integrability": [],
+    "separate_first_nve_polynomial_invariant_set": ["1/3", "8/27", "2/9"],
+    "exception_policy": "The separate set concerns possible polynomial invariants of the first NVE and never suspends the complete-integrability obstruction."
+  },
+  "exact_benchmarks": [
+    {"case_id": "equal", "masses": ["1", "1", "1"], "sigma": "1/3"},
+    {"case_id": "generic-a", "masses": ["1/2", "3/4", "1"], "sigma": "26/81"},
+    {"case_id": "generic-b", "masses": ["2", "3", "1"], "sigma": "11/36"},
+    {"case_id": "first-nve-exception", "masses": ["1", "1", "1/4"], "sigma": "8/27"}
+  ],
+  "adversarial_controls": [
+    "Reject zero, negative, nonfinite, and malformed masses.",
+    "Detect a changed turning-residue exponent.",
+    "Detect a changed collision-residue exponent.",
+    "Detect any changed coefficient in the infinity polynomial.",
+    "Reject sigma=0 as a positive-mass case.",
+    "Reject a proof with the identity-component containment premise removed.",
+    "Reject a proof with the finite-monodromy commutation implication removed.",
+    "Reject a changed primary-source hash.",
+    "Reject importing the production implementation from the reference derivation."
+  ],
+  "source_policy": {
+    "download_hashes_must_verify": true,
+    "source_text_contracts_must_verify": true,
+    "original_nve_source": "Tsygvintsev 2001 supplies the reduced Hamiltonian convention, parabolic Lagrange curve, Fuchsian NVE, and residue/exponent comparison target.",
+    "independent_published_application": "Boucher-Weil supplies a separately published planar three-body Morales-Ramis conclusion for comparison only.",
+    "foundational_theorem": "Morales-Ruiz and Ramis 2001 supplies the necessary Abelian identity-component condition.",
+    "no_published_matrix_import": true,
+    "copyright_boundary": "Only metadata, hashes, and short machine-checked text contracts are stored; source PDFs are not redistributed."
+  },
+  "gates": {
+    "specification_lock_verified": true,
+    "all_prerequisite_locks_and_records_verified": true,
+    "all_source_download_hashes_verified": true,
+    "all_source_text_contracts_verified": true,
+    "all_R1_through_R10_obligations_pass": true,
+    "generic_symbolic_replay_exact": true,
+    "all_exact_specializations_pass": true,
+    "production_reference_exact_agreement": true,
+    "full_positive_mass_domain_proved": true,
+    "complete_integrability_exceptional_set_empty": true,
+    "all_adversarial_controls_rejected": true,
+    "proof_document_covers_every_obligation": true,
+    "claim_boundary_present": true
+  },
+  "decision_policy": {
+    "PASS": "Every locked source, prerequisite, derivation, exact-identity, domain, group-theoretic, independent-reference, adversarial-control, proof-coverage, and boundary gate passes under a frozen implementation.",
+    "FAIL": "Any source mismatch, imported published coefficient matrix, symbolic mismatch, unresolved positive-mass case, group implication gap, implementation coupling, negative-control escape, or boundary violation fails v1 and requires a successor.",
+    "AUTHORIZED_CLAIM": "The project independently reproduces, from the declared reduced Newtonian Hamiltonian and exact parabolic Lagrange phase curve, a 4x4 Fuchsian normal variational equation whose differential-Galois identity component is non-Abelian for every finite positive mass triple. By the pinned Morales-Ramis theorem, the declared translation- and rotation-reduced planar positive-mass Newtonian three-body Hamiltonian at fixed nonzero angular momentum is not completely integrable by meromorphic first integrals in a complex neighborhood of that phase curve.",
+    "PROHIBITED_SHORT_CLAIM": "The three-body problem has no integrals.",
+    "PROHIBITED_INDEPENDENCE_CLAIM": "The project independently rederived every canonical reduction from the unreduced 18-dimensional Hamiltonian.",
+    "PROHIBITED_GLOBAL_CLAIM": "The local phase-curve obstruction classifies all trajectories or all regularity classes."
+  },
+  "invalidation": "Any changed theorem statement, Hamiltonian convention, phase curve, gauge, source payload, prerequisite, domain argument, proof obligation, control, decision rule, or frozen implementation invalidates v1. A failed frozen execution remains FAIL."
+}
+

@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-MR-REPL-v1",
+  "retrieved_utc": "2026-07-23T00:00:00Z",
+  "sources": [
+    {
+      "source_id": "tsygvintsev-2001-nve",
+      "title": "The meromorphic non-integrability of the three-body problem",
+      "authors": ["Alexei V. Tsygvintsev"],
+      "publication": "Journal de Mathematiques Pures et Appliquees 81 (2002), preprint submitted 2001",
+      "arxiv": "math/0009218",
+      "download_url": "https://arxiv.org/pdf/math/0009218",
+      "download_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef",
+      "qualified_use": "Primary comparison target for the reduced Hamiltonian, parabolic Lagrange solution, four-dimensional Fuchsian NVE, finite residue spectra, and infinity exponents."
+    },
+    {
+      "source_id": "boucher-weil-planar-threebody",
+      "title": "Application of the Morales-Ramis theorem to test the non-complete integrability of the planar three-body problem",
+      "authors": ["Delphine Boucher", "Jacques-Arthur Weil"],
+      "publication": "Author-hosted primary manuscript",
+      "download_url": "https://www.unilim.fr/pages_perso/jacques-arthur.weil/Papers/boucher_weil_3b_thomann.pdf",
+      "download_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "qualified_use": "Independent published planar three-body Morales-Ramis application used only for conclusion-level comparison."
+    },
+    {
+      "source_id": "morales-ramis-2001-foundation",
+      "title": "Galoisian obstructions to integrability of Hamiltonian systems I",
+      "authors": ["Juan J. Morales-Ruiz", "Jean-Pierre Ramis"],
+      "publication": "Methods and Applications of Analysis 8 (2001), 33-96",
+      "download_url": "https://intlpress.com/site/pub/files/_fulltext/journals/maa/2001/0008/0001/MAA-2001-0008-0001-a003.pdf",
+      "download_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6",
+      "qualified_use": "Foundational necessary condition: meromorphic complete Liouville integrability requires an Abelian identity component of the variational differential Galois group."
+    }
+  ],
+  "copyright_boundary": "The repository records bibliographic metadata and download hashes only. It does not redistribute the papers."
+}
+
