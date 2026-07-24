@@ -64,3 +64,12 @@ caps or repeating numerical orbit searches does not address the observed W5
 failure.
 
 The previously qualified WP1-WP6 chain remains unchanged.
+
+## Integrity and regression
+
+- Qualification lock verification: 28/28 frozen files verified.
+- Focused campaign tests: 13 passed.
+- Pinned Python 3.11 fast lane: 1,250 passed, 2 skipped,
+  134 deselected, 19 warnings.
+- Slow simulations and historical quarantines remain in their existing
+  separate lanes and were not reinterpreted by this campaign.
