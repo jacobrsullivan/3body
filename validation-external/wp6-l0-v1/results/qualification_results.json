@@ -1,0 +1,269 @@
+{
+  "allowed_spectrum_reference": [
+    "-1",
+    "0",
+    "2",
+    "5",
+    "9",
+    "14",
+    "20",
+    "27",
+    "35",
+    "44",
+    "54",
+    "65",
+    "77",
+    "90",
+    "104",
+    "119",
+    "135",
+    "152",
+    "170",
+    "189",
+    "209",
+    "230",
+    "252",
+    "275",
+    "299",
+    "324",
+    "350",
+    "377",
+    "405",
+    "434"
+  ],
+  "authorized_claim": "For arbitrary finite positive masses and every finite nonzero energy h, the planar Newtonian three-body problem restricted to the common level (H,C)=(h,0) is not rationally integrable in the locked restricted-integrability sense.",
+  "benchmarks": [
+    {
+      "case_id": "equal-mass-euler",
+      "passed": true,
+      "spectral": {
+        "allowed_spectrum_minimum": "-1",
+        "identity_component_non_solvable": true,
+        "longitudinal_eigenvalue": "24/5",
+        "pacella_strict_bound_lambda_gt_2": true,
+        "scalar_nve_galois_group": "SL(2,C)",
+        "transverse_below_allowed_spectrum": true,
+        "transverse_eigenvalue": "-12/5"
+      }
+    },
+    {
+      "case_id": "abstract-lower-edge",
+      "passed": true,
+      "spectral": {
+        "allowed_spectrum_minimum": "-1",
+        "identity_component_non_solvable": true,
+        "longitudinal_eigenvalue": "2000001/1000000",
+        "pacella_strict_bound_lambda_gt_2": true,
+        "scalar_nve_galois_group": "SL(2,C)",
+        "transverse_below_allowed_spectrum": true,
+        "transverse_eigenvalue": "-2000001/2000000"
+      }
+    },
+    {
+      "case_id": "boundary-negative-control",
+      "passed": true,
+      "spectral": {
+        "allowed_spectrum_minimum": "-1",
+        "identity_component_non_solvable": false,
+        "longitudinal_eigenvalue": "2",
+        "pacella_strict_bound_lambda_gt_2": false,
+        "scalar_nve_galois_group": "NOT_CERTIFIED",
+        "transverse_below_allowed_spectrum": false,
+        "transverse_eigenvalue": "-1"
+      }
+    }
+  ],
+  "campaign": "WP6-L0-v1",
+  "claim_boundary": "A PASS qualifies failure of restricted rational complete integrability for the planar positive-mass three-body problem on every common level (H,C)=(h,0) with h nonzero. It does not cover (0,0), the spatial problem, non-rational regularity classes, absence of one additional integral, or a collision-regularized extension.",
+  "equal_mass_reference": {
+    "central_direction_eigenvalue": true,
+    "longitudinal_lambda": "24/5",
+    "longitudinal_matrix": [
+      [
+        "9/5",
+        "-8/5",
+        "-1/5"
+      ],
+      [
+        "-8/5",
+        "16/5",
+        "-8/5"
+      ],
+      [
+        "-1/5",
+        "-8/5",
+        "9/5"
+      ]
+    ],
+    "longitudinal_spectrum": [
+      "0",
+      "2",
+      "24/5"
+    ],
+    "nonclassical_direction_eigenvalue": true,
+    "transverse_lambda": "-12/5",
+    "transverse_matrix": [
+      [
+        "-9/10",
+        "4/5",
+        "1/10"
+      ],
+      [
+        "4/5",
+        "-8/5",
+        "4/5"
+      ],
+      [
+        "1/10",
+        "4/5",
+        "-9/10"
+      ]
+    ],
+    "transverse_spectrum": [
+      "-12/5",
+      "-1",
+      "0"
+    ]
+  },
+  "gates": [
+    {
+      "name": "all_source_hashes_verified",
+      "passed": true
+    },
+    {
+      "name": "all_source_text_contracts_verified",
+      "passed": true
+    },
+    {
+      "name": "all_prerequisites_verified",
+      "passed": true
+    },
+    {
+      "name": "all_theorem_obligations_pass",
+      "passed": true
+    },
+    {
+      "name": "production_reference_agreement",
+      "passed": true
+    },
+    {
+      "name": "all_adversarial_controls_rejected",
+      "passed": true
+    },
+    {
+      "name": "proof_coverage_complete",
+      "passed": true
+    },
+    {
+      "name": "implementation_independence",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-24T09:36:45.808851+00:00",
+  "implementation_independence": {
+    "reference_is_source_disjoint": true
+  },
+  "lock_sha256": "dc240c374d3a594e7798ec81ce919a17d1855e228c929b41f996d74f027ecab7",
+  "negative_controls": {
+    "h_zero_rejected": true,
+    "lambda_two_rejected": true,
+    "nonzero_C_rejected": true,
+    "reference_is_source_disjoint": true,
+    "solvability_not_abelian_substitution": true,
+    "transverse_factor_detected": true
+  },
+  "prerequisites": {},
+  "production_reference_agreement": true,
+  "prohibited_claims": {
+    "PROHIBITED_DOUBLE_ZERO_CLAIM": "The same witness proves nonintegrability on (H,C)=(0,0).",
+    "PROHIBITED_ONE_INTEGRAL_CLAIM": "No one additional integral exists on the zero-angular-momentum level.",
+    "PROHIBITED_SPATIAL_CLAIM": "The spatial zero-angular-momentum problem is qualified by this track."
+  },
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_claim": true,
+    "model_boundary": true,
+    "nonclaims": true
+  },
+  "proof_sha256": "f2842ee937eb85889c95d8d731fbe8355ad59fa8997b6ac667f4bca74d2c31be",
+  "qualification_id": "WP6-L0-v1-27f160d029ca",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "5e312b3124637ccf2ab3d6124913e0b363f37d219e2f037f97279c60f28526fa",
+  "source_records": [
+    {
+      "expected_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "observed_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "verified": true
+    },
+    {
+      "expected_sha256": "2c63db0c00558c01e10aed5d2d55e022789255f54dbbbcba3c4ca4ed634b62dd",
+      "observed_sha256": "2c63db0c00558c01e10aed5d2d55e022789255f54dbbbcba3c4ca4ed634b62dd",
+      "source_id": "combot-2015",
+      "verified": true
+    },
+    {
+      "expected_sha256": "d15a82f18af7ebc489ec08d02c0571c4093ae7e5f319ad5cf6589770a0878e8b",
+      "observed_sha256": "d15a82f18af7ebc489ec08d02c0571c4093ae7e5f319ad5cf6589770a0878e8b",
+      "source_id": "maciejewski-przybylska-2011",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "combot_pacella_spectrum": true,
+    "combot_transverse_obstruction": true,
+    "common_level_theorem": true,
+    "mp_positive_mass_nonintegrability": true,
+    "restricted_integrability_definition": true,
+    "solvability_condition": true,
+    "zero_momentum_nonzero_energy_branch": true
+  },
+  "spec_sha256": "7348b350d6196e88c0d49bc0aa85f95ba078bb5cb501e3882f78fb7fe5aef89c",
+  "specification_lock_sha256": "d331540b30452ccaafc7a7d2a947e5f16a651f10e9f70bbb3f29a1b2c9bc3bb6",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  },
+  "universal_certificate": {
+    "H_zero_C_zero_obstructed_by_this_witness": false,
+    "SL2_identity_component_is_not_solvable": true,
+    "all_planar_positive_mass_h_nonzero_C_zero_levels_obstructed": true,
+    "allowed_spectrum_formula": "(k-1)*(k+2)/2, k in N_0",
+    "allowed_spectrum_minimum": "-1",
+    "first_allowed_values": [
+      "-1",
+      "0",
+      "2",
+      "5",
+      "9",
+      "14",
+      "20",
+      "27"
+    ],
+    "forbidden_transverse_mode_has_SL2_galois_group": true,
+    "one_additional_integral_excluded": false,
+    "pacella_longitudinal_spectrum": "{0,2,lambda_i}, lambda_i>2",
+    "restricted_integrability_requires_solvable_identity_component": true,
+    "spatial_transfer_claimed": false,
+    "transverse_map": "-lambda_i/2",
+    "transverse_strict_bound": "<-1"
+  }
+}

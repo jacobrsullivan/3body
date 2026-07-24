@@ -1,0 +1,272 @@
+{
+  "authorized_claim": "For every finite positive mass triple and every integer d>=2, the pinned Morales-Ruiz--Simon theorem, with the project-owned exact branch reproduction, excludes a meromorphic first integral of the Newtonian three-body vector field that is functionally independent of the classical first integrals. For each mass triple the proof supplies an obstruction near at least one of its declared homothetic Lagrange witness curves.",
+  "benchmarks": [
+    {
+      "case_id": "equal",
+      "passed": true,
+      "production": {
+        "Q": "1/3",
+        "fixed_reduced_leaf_transfer_claimed": false,
+        "legacy_first_nve_exception": true,
+        "legacy_first_nve_exceptional_set": [
+          "1/3",
+          "8/27",
+          "2/9"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1"
+        ],
+        "meromorphic_first_integral_independent_of_classical_integrals_obstructed": true,
+        "nonmeromorphic_integrals_excluded": false,
+        "real_witness": {
+          "pair_equivalence_candidate": true,
+          "table_membership_candidate": false
+        },
+        "selected_witness": "complex_lagrange",
+        "selected_witness_checks": {
+          "a_squared_i_sqrt3_coefficient": "1/6",
+          "a_squared_nonreal": true,
+          "a_squared_real": "1/6",
+          "branch": "Q=1/3",
+          "equal_masses_forced": true,
+          "pair_equivalence_rejected": true,
+          "table_membership_rejected": true
+        }
+      },
+      "reference": {
+        "Q": "1/3",
+        "center_of_mass_zero": true,
+        "exact_match": true,
+        "expected_charpoly": "lambda**2*(lambda - 1)*(lambda + 2)*(2*lambda + 1)**2/4",
+        "observed_charpoly": "lambda**2*(lambda - 1)*(lambda + 2)*(2*lambda + 1)**2/4"
+      }
+    },
+    {
+      "case_id": "eight-over-twenty-seven",
+      "passed": true,
+      "production": {
+        "Q": "8/27",
+        "fixed_reduced_leaf_transfer_claimed": false,
+        "legacy_first_nve_exception": true,
+        "legacy_first_nve_exceptional_set": [
+          "1/3",
+          "8/27",
+          "2/9"
+        ],
+        "masses": [
+          "1",
+          "1",
+          "1/4"
+        ],
+        "meromorphic_first_integral_independent_of_classical_integrals_obstructed": true,
+        "nonmeromorphic_integrals_excluded": false,
+        "real_witness": {
+          "pair_equivalence_candidate": false,
+          "table_membership_candidate": true
+        },
+        "selected_witness": "complex_lagrange",
+        "selected_witness_checks": {
+          "a_squared_i_sqrt3_coefficient": "0",
+          "a_squared_nonreal": false,
+          "a_squared_real": "-1/27",
+          "branch": "Q=8/27, real a_squared",
+          "forced_a_squared_minus_one_over_27": true,
+          "imaginary_vanishing_condition": true,
+          "integer_pair_relation_left_side": "-4/3",
+          "integer_pair_relation_right_side_is_integer": true,
+          "pair_equivalence_rejected": true,
+          "table_membership_rejected": true,
+          "table_scale_condition": false
+        }
+      },
+      "reference": {
+        "Q": "8/27",
+        "center_of_mass_zero": true,
+        "exact_match": true,
+        "expected_charpoly": "lambda**3*(lambda - 1)*(lambda + 1)*(lambda + 2)",
+        "observed_charpoly": "lambda**3*(lambda - 1)*(lambda + 1)*(lambda + 2)"
+      }
+    },
+    {
+      "case_id": "generic",
+      "passed": true,
+      "production": {
+        "Q": "11/36",
+        "fixed_reduced_leaf_transfer_claimed": false,
+        "legacy_first_nve_exception": false,
+        "legacy_first_nve_exceptional_set": [
+          "1/3",
+          "8/27",
+          "2/9"
+        ],
+        "masses": [
+          "2",
+          "3",
+          "1"
+        ],
+        "meromorphic_first_integral_independent_of_classical_integrals_obstructed": true,
+        "nonmeromorphic_integrals_excluded": false,
+        "real_witness": {
+          "pair_equivalence_candidate": false,
+          "table_membership_candidate": false
+        },
+        "selected_witness": "real_lagrange",
+        "selected_witness_checks": {
+          "pair_equivalence_rejected": true,
+          "table_membership_rejected": true
+        }
+      },
+      "reference": {
+        "Q": "11/36",
+        "center_of_mass_zero": true,
+        "exact_match": true,
+        "expected_charpoly": "lambda**2*(lambda - 1)*(lambda + 2)*(16*lambda**2 + 16*lambda + 1)/16",
+        "observed_charpoly": "lambda**2*(lambda - 1)*(lambda + 2)*(16*lambda**2 + 16*lambda + 1)/16"
+      }
+    }
+  ],
+  "campaign": "WP6-FI1-v1",
+  "claim_boundary": "A PASS qualifies a pinned published theorem plus a project-owned exact audit of its mass algebra and independent Hessian specializations. The theorem concerns meromorphic first integrals of the unreduced Newtonian vector field that are independent with all classical first integrals. It does not automatically become a theorem about a function defined only on one fixed-momentum reduced leaf, does not exclude non-meromorphic integrals, and does not say that the same single witness curve obstructs every mass triple.",
+  "gates": [
+    {
+      "name": "all_source_hashes_verified",
+      "passed": true
+    },
+    {
+      "name": "all_source_text_contracts_verified",
+      "passed": true
+    },
+    {
+      "name": "all_prerequisites_verified",
+      "passed": true
+    },
+    {
+      "name": "all_theorem_obligations_pass",
+      "passed": true
+    },
+    {
+      "name": "production_reference_agreement",
+      "passed": true
+    },
+    {
+      "name": "all_adversarial_controls_rejected",
+      "passed": true
+    },
+    {
+      "name": "proof_coverage_complete",
+      "passed": true
+    },
+    {
+      "name": "implementation_independence",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-24T09:36:32.870643+00:00",
+  "implementation_independence": {
+    "reference_is_source_disjoint": true
+  },
+  "lock_sha256": "9c1952c0dfae458b862256a7a5f22c7bfbd1c53cdd0f905b6696c6a6c8cb1a4b",
+  "negative_controls": {
+    "changed_q_formula_detected": true,
+    "fixed_leaf_transfer_rejected": true,
+    "invalid_masses_rejected": true,
+    "legacy_invariant_not_treated_as_integral": true,
+    "reference_is_source_disjoint": true,
+    "second_witness_required_at_1_3": true,
+    "second_witness_required_at_8_27": true
+  },
+  "prerequisites": {},
+  "production_reference_agreement": true,
+  "prohibited_claims": {
+    "PROHIBITED_FIXED_LEAF_CLAIM": "No additional first integral exists on every fixed-energy or fixed-angular-momentum reduced leaf.",
+    "PROHIBITED_REGULARITY_CLAIM": "No additional continuous, smooth, real-analytic, or non-meromorphic first integral exists.",
+    "PROHIBITED_UNIFORM_WITNESS_CLAIM": "One named Lagrange curve obstructs all masses without branch selection."
+  },
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_claim": true,
+    "model_boundary": true,
+    "nonclaims": true
+  },
+  "proof_sha256": "a61f281bc34260f5d4f7793d87f08e0f592279ed16bb08d826cacf75e531a877",
+  "qualification_id": "WP6-FI1-v1-c9099f7494b1",
+  "reference_branch_identities": {
+    "incompatible_with_8_over_27": true,
+    "pair_relation_elimination_identity": true,
+    "second_table_conditions_force_16_over_63": true
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "fc8acd37e76ef8a26d47cb0b6ab762f2293f1a1b03939014f913ccd68a5bd72a",
+  "source_records": [
+    {
+      "expected_sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "observed_sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "source_id": "morales-ruiz-simon-2009",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "observed_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "source_id": "tsygvintsev-2006",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "mr_completes_exceptions": true,
+    "mr_positive_masses": true,
+    "mr_theorem_arbitrary_dimension": true,
+    "mr_title": true,
+    "mr_two_lagrange_solutions": true,
+    "tsyg_local_additional_integral": true,
+    "tsyg_polynomial_invariant_not_integral": true,
+    "tsyg_title": true
+  },
+  "spec_sha256": "687548927dc7bf4f6fa6aed49b40ac318edc66ec69b3b8fd440d12dfa947b25c",
+  "specification_lock_sha256": "11c55d868e4334ff034e5719ab127e048e462065ecb25259928cce4986cbcb86",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  },
+  "universal_certificate": {
+    "Q_1_3_complex_witness_a_squared_nonreal": true,
+    "Q_1_3_forces_equal_masses": true,
+    "Q_8_27_complex_table_conditions_force_Q": "16/63",
+    "Q_8_27_pair_relation_would_equate_noninteger_to_integer": "-4/3",
+    "Q_8_27_real_a_squared_subbranch": "-1/27",
+    "Q_8_27_table_contradiction": true,
+    "all_positive_mass_branches_obstructed": true,
+    "arbitrary_dimension_extension_is_published_theorem_input": true,
+    "candidate_union": [
+      "8/27",
+      "1/3"
+    ],
+    "fixed_reduced_leaf_transfer_claimed": false,
+    "positive_mass_domain": "0<Q<=1/3",
+    "real_witness_pair_candidate_set": [
+      "1/3"
+    ],
+    "real_witness_table_candidate_set": [
+      "8/27"
+    ]
+  }
+}

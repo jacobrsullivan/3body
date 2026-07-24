@@ -1,0 +1,376 @@
+{
+  "authorized_claim": "The project has an independently qualified explicit Hamiltonian model of the regular non-collinear SO(3) Poisson quotient, including every nonzero angular-momentum symplectic leaf and the regular zero-angular-momentum leaf, in the declared body-frame chart.",
+  "benchmarks": [
+    {
+      "case_index": 0,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 1,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 2,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 3,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 4,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 5,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 6,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 7,
+      "mass_strings": [
+        "1",
+        "1",
+        "1"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 0,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 1,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 2,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 3,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 4,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 5,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 6,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 7,
+      "mass_strings": [
+        "2",
+        "3",
+        "5"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 0,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 1,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 2,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 3,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 4,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 5,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    },
+    {
+      "case_index": 6,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 6,
+      "zero_leaf": true
+    },
+    {
+      "case_index": 7,
+      "mass_strings": [
+        "1/2",
+        "7/5",
+        "11/4"
+      ],
+      "poisson_rank": 8,
+      "zero_leaf": false
+    }
+  ],
+  "campaign": "WP2-SO3-LEAF-v1",
+  "claim_boundary": "A PASS qualifies one orientation-fixed chart on the regular non-collinear translation-reduced quotient. Nonzero |ell| leaves are eight-dimensional and the ell=0 leaf is six-dimensional. The chart excludes rho=0, collinearity y=0, all collision singularities, singular orbit types, and any claim of a global Darboux atlas.",
+  "gates": [
+    {
+      "name": "all_source_hashes_verified",
+      "passed": true
+    },
+    {
+      "name": "all_source_text_contracts_verified",
+      "passed": true
+    },
+    {
+      "name": "all_prerequisites_verified",
+      "passed": true
+    },
+    {
+      "name": "all_theorem_obligations_pass",
+      "passed": true
+    },
+    {
+      "name": "production_reference_agreement",
+      "passed": true
+    },
+    {
+      "name": "all_adversarial_controls_rejected",
+      "passed": true
+    },
+    {
+      "name": "proof_coverage_complete",
+      "passed": true
+    },
+    {
+      "name": "implementation_independence",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-24T09:36:39.835480+00:00",
+  "implementation_independence": {
+    "reference_is_source_disjoint": true
+  },
+  "lock_sha256": "f8a10bc93bd471e0cb3bdb6e6bc4562e07b7075101d9051411412bde91e31f0e",
+  "maximum_errors": {
+    "casimir_derivative": 3.219646771412954e-15,
+    "energy": 0.0,
+    "flow": 3.552713678800501e-15,
+    "gradient": 3.749242694084387e-09,
+    "roundtrip": 5.551115123125783e-16
+  },
+  "negative_controls": {
+    "body_poisson_sign_detected": true,
+    "nonzero_leaf_rank_is_eight": true,
+    "poisson_tensor_antisymmetric": true,
+    "reference_is_source_disjoint": true,
+    "singular_charts_rejected": true,
+    "zero_leaf_rank_is_six": true
+  },
+  "prerequisites": {
+    "wp2_threebody_flow": {
+      "lock_sha256": "e7c5cdb2f23daa6796340bbccb3412be6ec9c1dea241cfeff7144649b2f05c81",
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp2_threebody_reduction": {
+      "lock_sha256": "7374fb2bd14fcfd9737bf03965703de4ca15e3c14293b91c20a1ce1f4f376049",
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production_reference_agreement": true,
+  "prohibited_claims": {
+    "PROHIBITED_DARBOUX_CLAIM": "All nine quotient coordinates form one canonical Darboux chart.",
+    "PROHIBITED_GLOBAL_CLAIM": "The implementation is a global SO(3) reduction including collinear configurations and collisions."
+  },
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_claim": true,
+    "model_boundary": true,
+    "nonclaims": true
+  },
+  "proof_sha256": "632cf1dbffb52eb4f7c3532d9f1e6c68437125bb92e95071e8bfb7351dae1ea2",
+  "qualification_id": "WP2-SO3-LEAF-v1-837d711e7074",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "3eb3e677cd40ce8dd694e94289122e28ccba853cb92102169c90f59cc97436ce",
+  "source_records": [
+    {
+      "expected_sha256": "fcb715df4a26ce98c805c17dfd07f1d9be093cc63839a2b49c5b9b0ea1ddfece",
+      "observed_sha256": "fcb715df4a26ce98c805c17dfd07f1d9be093cc63839a2b49c5b9b0ea1ddfece",
+      "source_id": "ciftci-waalkens-2010",
+      "verified": true
+    },
+    {
+      "expected_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "observed_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "source_id": "moeckel-montgomery-2012",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "ciftci_free_so3_action": true,
+    "ciftci_shape_space": true,
+    "ciftci_title": true,
+    "ciftci_zero_and_nonzero_momentum": true,
+    "mm_symplectic_reduction": true,
+    "mm_zero_momentum_collision_boundary": true
+  },
+  "spec_sha256": "99ef140255d4c5c072e0a4c8f6fe52225210d77a354cb10cd9e41fd6d5055c37",
+  "specification_lock_sha256": "e06471c07926fb15f993953c2f4fc11433418090c0d1be11d2f46241f5994ec7",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  }
+}
