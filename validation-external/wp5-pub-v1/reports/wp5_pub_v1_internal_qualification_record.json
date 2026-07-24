@@ -1,0 +1,109 @@
+{
+  "adversarial_controls": {
+    "changed_manifest_hash_rejected": true,
+    "qualified_nonclaim_permitted": true,
+    "self_review_rejected": true,
+    "status_only_predecessor_rejected": true,
+    "unconfirmed_metadata_blocks_release": true,
+    "unqualified_no_integrals_claim_rejected": true,
+    "wp3_theorem_dependency_rejected": true
+  },
+  "artifact_manifest_payload_sha256": "53529d0698cba9e4047af0ffc229c5c54d661657aecb07721fa0e6ecc967c9d9",
+  "artifact_manifest_sha256": "cf42a6eb25259a031440a50d26493da6150b5ea2688c9893d66142c214cb0053",
+  "authorized_claim": "The project-owned WP4-MR-REPL-v1 planar obstruction transfers to the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian: it is not completely integrable by meromorphic first integrals near the embedded fixed-nonzero-angular-momentum parabolic Lagrange phase curve. Consequently, the qualified WP2-MULTIQ-v1 atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing that regular neighborhood.",
+  "campaign": "WP5-PUB-v1",
+  "claim_boundary": "The result is local, complete, and meromorphic near the declared fixed-nonzero-angular-momentum phase curve. It does not exclude one additional integral and is not a global, zero-angular-momentum, non-meromorphic, nonzero-Xi, or triple-collision claim.",
+  "core_report_payload_sha256": "acd1611d4265dc76c2263abc129a5e671de3972362d5c7c98c780a573eb79321",
+  "evidence_git_commit": "cd4c3460838ffbb5328d02eaf3a70121775b2c8a",
+  "external_evidence_count": 0,
+  "external_gates": {
+    "archive_identifiers_complete": false,
+    "author_metadata": {
+      "affiliation_status": false,
+      "ai_assistance": false,
+      "author_name": false,
+      "conflicts": false,
+      "contact": false,
+      "contributions": false,
+      "funding": false,
+      "licenses": false,
+      "orcid_status": false
+    },
+    "author_metadata_complete": false,
+    "collective_expertise": [],
+    "collective_scope": [],
+    "distinct_reviewer_count": 0,
+    "external_clean_room": false,
+    "human_reviews": false,
+    "licenses_complete": false,
+    "receipt_count": 0,
+    "receipt_ids": [],
+    "release_authorized": false,
+    "review_count": 0,
+    "review_ids": []
+  },
+  "generated_utc": "2026-07-24T07:49:49.831655+00:00",
+  "generic_replay": {
+    "all_exact_derivation_checks_pass": true,
+    "elapsed_seconds": 685.0969439170003,
+    "exactly_matches_frozen_payload": true,
+    "field_count": 32,
+    "normalized_payload_sha256": "4f8f9774e9ff486a056ce96f48ed2791e74b57dfa87e2d0ea8ca6682c2085678"
+  },
+  "internal_status": "PASS",
+  "manuscript_pdf_pages": 9,
+  "manuscript_pdf_sha256": "7470d73612278377f3fd25f4a1bafc8caa6215160aff04f0fc9a35bef050585d",
+  "next_gate": "Two independent consenting human mathematical reviews, at least one external clean-room core replay, resolved findings, confirmed author metadata and licenses, then explicit release authorization.",
+  "prerequisite_records": {
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "record_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8",
+      "status": "PASS"
+    },
+    "wp1_residual_map": {
+      "qualification_id": "WP1-RESIDUAL-MAP-v1-9526e09d01ba",
+      "record_sha256": "0459f265dac39afc6da30821b63e1d814859547f8fb083ba11b4adbbc97aa676",
+      "status": "PASS"
+    },
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "record_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085",
+      "status": "PASS"
+    },
+    "wp3_bounded_null": {
+      "qualification_id": "WP3-MULTI-CAND-v2-KQ-v1-514be9de7232",
+      "record_sha256": "57651802d13c808763790dfa22146790516dbee7bfa4ff0d334156ffcfac0b86",
+      "status": "COMPLETE_BOUNDED_NULL_RESULT"
+    },
+    "wp4_planar": {
+      "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+      "record_sha256": "1835133b7b018a95c51565dc1a6ebcc7f605e0192d7ed88e0754d73411e86a3f",
+      "status": "PASS"
+    },
+    "wp4_transfer": {
+      "qualification_id": "WP4-LIFT-NI-v3-9ba955931b23",
+      "record_sha256": "04c13c93dd2fcb0e298152f1f8cddf24f4bb2fcc7298bb73e912c02234d921a3",
+      "status": "PASS"
+    }
+  },
+  "publication_authorized": false,
+  "publication_tests": {
+    "command": [
+      "/Users/jacobsullivan/miniconda3/bin/python",
+      "-m",
+      "pytest",
+      "tests/wp5_pub_v1",
+      "-q"
+    ],
+    "passed": true
+  },
+  "qualification_id": "WP5-PUB-v1-5c0fb6c94077",
+  "record_payload_sha256": "12fb70df68962c4bff0b56daeac6b62bc5a010503511937a3b77191e32df085e",
+  "results_sha256": "d082383b7c1e01ca980f2f062b9959c9dc4edb4dda92dabfbf0837770ed3a2ab",
+  "schema_version": "1.0",
+  "spec_sha256": "a2ee32d5a0c4a4c5e2334180c3dc3aa748ff7e3ee0f2a548a0507663ea214e63",
+  "specification_lock_sha256": "7018cffcc795b6772e1c1090d88280db95ede3187b08d1a90963ee26a6177fac",
+  "status": "READY_FOR_EXTERNAL_REVIEW",
+  "submission_authorized": false,
+  "visual_inspection_sha256": "51b9522b594108214e6ca76b90b4b8ee86ae1f4b496ad7b641a5f7140307e8b5"
+}
