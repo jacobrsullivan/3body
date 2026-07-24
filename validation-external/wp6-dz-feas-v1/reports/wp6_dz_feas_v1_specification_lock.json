@@ -1,0 +1,43 @@
+{
+  "base_git_commit": "0fb34cdf145935b31724453440b7f5d0069cb2a3",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "candidate_ledger_present_at_lock": false,
+  "discovery_implementation_present_at_lock": false,
+  "discovery_source_manifest_present_at_lock": false,
+  "discovery_started_at_lock": false,
+  "legacy_negative_control": {
+    "path": "src/python/validation/periodic_orbits.py",
+    "sha256": "74391677df342a9082ec609d68b5c83fff588238725a0e7338359db3cec9771e"
+  },
+  "lock_type": "pre_discovery_feasibility_specification",
+  "locked_counts": {
+    "candidate_family_cap": 16,
+    "citation_expansion_cap": 12,
+    "mandatory_candidate_classes": 8,
+    "queries": 12,
+    "source_cap": 32,
+    "witness_requirements": 12
+  },
+  "locked_utc": "2026-07-24T12:34:16.835416+00:00",
+  "plan_sha256": "fdceaee505ea225c88b157b4d903917f96464e1bdddb447dd8425baf8e0deeef",
+  "prerequisite_file_hashes": {
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_lock.json": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_record.json": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb",
+    "validation-external/wp6-common-level-v1/reports/wp6_common_level_v1_qualification_lock.json": "f981c1db013606e6e27a2300d52190d99e6351b1925e76ad3aefc4e292cc5803",
+    "validation-external/wp6-common-level-v1/reports/wp6_common_level_v1_qualification_record.json": "5eb1b935308e4e5989fcf5817d89bf6fefca2fbb5f475a48f3c7d8a03615ddd6",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_lock.json": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_record.json": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_lock.json": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_record.json": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942"
+  },
+  "protocol_path": "validation-external/wp6-dz-feas-v1/discovery_protocol.json",
+  "protocol_sha256": "ce8a4faaee78486cffad3107e56540fa432e4f89e8c90e04e778ff4b63a0a9ed",
+  "qualification_outputs_present_at_lock": false,
+  "schema_version": "1.0",
+  "seed_manifest_path": "validation-external/wp6-dz-feas-v1/sources/seed_manifest.json",
+  "seed_manifest_sha256": "38573663353313b439bf92cfe2fb7c610381b7ce21b2bb541d8992c6d390bb63",
+  "spec_path": "validation-external/wp6-dz-feas-v1/qualification_spec.json",
+  "spec_sha256": "0f064dfd199907bd1c9f6d80d091f71549253e7f2b3b01ef784eacf8eff12819",
+  "specification_lock_sha256": "84ee337b27eb9ca9c748f189cdb284f2cf3840ba3ee931f3ae0930879607e04c",
+  "wp6_dz_mr_campaign_present_at_lock": false
+}
