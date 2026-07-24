@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-L0-v1",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Extend the qualified nonintegrability evidence to the planar zero-angular-momentum common levels with nonzero energy.",
+  "goal": "Reproduce the exact Pacella/Combot Euler-Moulton spectral obstruction and bind it to the pinned 2025 theorem on restricted rational integrability of M_(h,0), h nonzero.",
+  "evidence_boundary": "A PASS qualifies failure of restricted rational complete integrability for the planar positive-mass three-body problem on every common level (H,C)=(h,0) with h nonzero. It does not cover (0,0), the spatial problem, non-rational regularity classes, absence of one additional integral, or a collision-regularized extension.",
+  "model": {
+    "phase_space": "planar algebraic-distance extension after center-of-mass reduction",
+    "common_level": "M_(h,0) with finite h nonzero",
+    "integrability": "restricted rational integrability as defined by Maciejewski--Przybylska--Combot 2025",
+    "witness": "homothetic Euler-Moulton collinear central-configuration orbit",
+    "spectral_input": "Pacella longitudinal eigenvalue lambda>2 and transverse eigenvalue -lambda/2"
+  },
+  "theorem_obligations": {
+    "R1": "Pin and machine-check the 2025 common-level theorem, its definition of restricted integrability, and its explicit c=0,h!=0 branch.",
+    "R2": "Pin and machine-check the Combot reproduction of Pacella's spectrum {0,2,lambda_i} with lambda_i>2.",
+    "R3": "Prove exactly that the transverse eigenvalue -lambda_i/2 is strictly below -1.",
+    "R4": "Reproduce the degree-minus-one Morales-Ramis allowed spectrum {((k-1)(k+2))/2:k in N_0} and prove every member is at least -1.",
+    "R5": "Conclude the transverse scalar NVE has differential Galois group SL(2,C), hence non-solvable identity component.",
+    "R6": "Apply the weaker solvability necessary condition for restricted integrability on M_(h,0), not the stronger Abelian condition by substitution.",
+    "R7": "Independently reproduce the exact equal-mass three-body Euler benchmark lambda=24/5 and transverse eigenvalue -12/5.",
+    "R8": "Keep the collinear witness separate from the non-collinear WP2-SO3-LEAF-v1 chart.",
+    "R9": "Record why the homothetic first variational equation supplies no obstruction on (H,C)=(0,0).",
+    "R10": "Reject any conclusion about one additional integral, spatial zero momentum, non-rational integrals, or global collision regularity."
+  },
+  "exact_benchmarks": [
+    {"case_id": "equal-mass-euler", "masses": ["1", "1", "1"], "longitudinal_lambda": "24/5", "transverse_lambda": "-12/5"},
+    {"case_id": "abstract-lower-edge", "longitudinal_lambda": "2000001/1000000", "obstructed": true},
+    {"case_id": "boundary-negative-control", "longitudinal_lambda": "2", "obstructed": false}
+  ],
+  "independent_validation": {
+    "production": "Exact Fraction spectral and common-level decision certificates.",
+    "reference": "A source-disjoint exact matrix construction for the equal-mass Euler central configuration and independent generation of the allowed spectrum.",
+    "required_exact_agreement": true
+  },
+  "adversarial_controls": [
+    "Reject h=0 as qualified by this track.",
+    "Reject nonzero angular momentum as a zero-L case.",
+    "Reject lambda<=2 as satisfying the Pacella premise.",
+    "Detect a changed transverse factor or allowed-spectrum formula.",
+    "Detect replacement of solvability by an unproved fixed-leaf Abelian condition.",
+    "Reject a changed primary-source hash.",
+    "Reject a reference implementation that imports production."
+  ],
+  "decision_policy": {
+    "PASS": "Every source, spectral, exact benchmark, common-level implication, adversarial, proof-coverage, and boundary gate passes under a frozen implementation.",
+    "AUTHORIZED_CLAIM": "For arbitrary finite positive masses and every finite nonzero energy h, the planar Newtonian three-body problem restricted to the common level (H,C)=(h,0) is not rationally integrable in the locked restricted-integrability sense.",
+    "PROHIBITED_DOUBLE_ZERO_CLAIM": "The same witness proves nonintegrability on (H,C)=(0,0).",
+    "PROHIBITED_ONE_INTEGRAL_CLAIM": "No one additional integral exists on the zero-angular-momentum level.",
+    "PROHIBITED_SPATIAL_CLAIM": "The spatial zero-angular-momentum problem is qualified by this track."
+  },
+  "gates": {
+    "specification_lock_verified": true,
+    "source_hashes_and_text_contracts_verified": true,
+    "all_R1_through_R10_pass": true,
+    "production_reference_exact_agreement": true,
+    "all_adversarial_controls_rejected": true,
+    "claim_boundary_present": true
+  },
+  "invalidation": "Any changed common-level definition, source, spectral premise, energy domain, obligation, decision rule, or frozen implementation invalidates v1."
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-L0-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-24T09:06:55Z",
+  "baseline_git_commit": "e04390652793b602bdb91df2f5fb239492b74a3c",
+  "spec_path": "validation-external/wp6-l0-v1/qualification_spec.json",
+  "spec_sha256": "7348b350d6196e88c0d49bc0aa85f95ba078bb5cb501e3882f78fb7fe5aef89c",
+  "implementation_present_at_lock": false,
+  "qualification_outputs_present_at_lock": false,
+  "prerequisite_file_hashes": {
+    "validation-external/wp6-l0-v1/sources/manifest.json": "5e312b3124637ccf2ab3d6124913e0b363f37d219e2f037f97279c60f28526fa"
+  },
+  "specification_lock_sha256": "d331540b30452ccaafc7a7d2a947e5f16a651f10e9f70bbb3f29a1b2c9bc3bb6"
+}

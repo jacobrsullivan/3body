@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-FI1-v1",
+  "retrieved_utc": "2026-07-24T00:00:00Z",
+  "sources": [
+    {
+      "source_id": "morales-ruiz-simon-2009",
+      "title": "On the meromorphic non-integrability of some N-body problems",
+      "authors": ["Juan J. Morales-Ruiz", "Sergi Simon"],
+      "publication": "Discrete and Continuous Dynamical Systems 24 (2009), 1225-1273",
+      "download_url": "https://www.maia.ub.es/dsg/2008/0801simon.pdf",
+      "download_sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "qualified_use": "Primary theorem and proof target for absence of one additional meromorphic integral for arbitrary positive masses and d>=2."
+    },
+    {
+      "source_id": "tsygvintsev-2006",
+      "title": "On some exceptional cases in the integrability of the three-body problem",
+      "authors": ["Alexei V. Tsygvintsev"],
+      "publication": "Celestial Mechanics and Dynamical Astronomy 99 (2007), arXiv preprint 2006",
+      "arxiv": "math/0610951",
+      "download_url": "https://arxiv.org/pdf/math/0610951",
+      "download_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "qualified_use": "Independent predecessor evidence for the first-NVE exceptional mass set and its distinction from existence of an actual nonlinear first integral."
+    }
+  ],
+  "copyright_boundary": "The repository records metadata and hashes only and does not redistribute the papers."
+}

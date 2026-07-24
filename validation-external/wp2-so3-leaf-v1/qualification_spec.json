@@ -1,0 +1,87 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-SO3-LEAF-v1",
+  "specification_status": "LOCKABLE_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Turn the qualified generic nine-dimensional SO(3) Poisson quotient into an explicit Hamiltonian leaf model for nonzero and zero angular momentum.",
+  "goal": "Implement and independently qualify the regular non-collinear body-frame coordinates (r,x,y,pr,px,py,ell_x,ell_y,ell_z), their Poisson tensor, Newtonian Hamiltonian, analytic gradient, and reduced flow.",
+  "evidence_boundary": "A PASS qualifies one orientation-fixed chart on the regular non-collinear translation-reduced quotient. Nonzero |ell| leaves are eight-dimensional and the ell=0 leaf is six-dimensional. The chart excludes rho=0, collinearity y=0, all collision singularities, singular orbit types, and any claim of a global Darboux atlas.",
+  "prerequisites": {
+    "wp2_threebody_reduction": {
+      "qualification_id": "WP2-3BRQ-v1-d4c0d5d7e2e3",
+      "lock_file": "validation-external/wp2-threebody-validation/reports/wp2_threebody_qualification_lock.json",
+      "lock_file_sha256": "89a4138bbeaced1981605ba0cb967ffe2e1131e416a5bc1f0044eae84b292449",
+      "record_file": "validation-external/wp2-threebody-validation/reports/wp2_threebody_qualification_record.json",
+      "record_file_sha256": "b0a0afa4d93e886323295db6ba4135cc3a13f2013c0c5edc91b366c8e3ed5041"
+    },
+    "wp2_threebody_flow": {
+      "qualification_id": "WP2-3BFLOWQ-v1-90fab6dac1ca",
+      "lock_file": "validation-external/wp2-threebody-flow-validation/reports/wp2_threebody_flow_qualification_lock.json",
+      "lock_file_sha256": "be33644c6868ed39cce2eeba75483b691616e4a5f35ed53b01f2a98f95fd0e8d",
+      "record_file": "validation-external/wp2-threebody-flow-validation/reports/wp2_threebody_flow_qualification_record.json",
+      "record_file_sha256": "c175837cea61aea2b7e37bf3815519f9e09181c239ea38264164cece62e1b6d9"
+    }
+  },
+  "model": {
+    "chart": "rho=(r,0,0), lambda=(x,y,0), r>0, y>0",
+    "coordinates": ["r", "x", "y", "pr", "px", "py", "ell_x", "ell_y", "ell_z"],
+    "momentum_map": "ell=rho cross p_rho + lambda cross p_lambda in the moving body frame",
+    "poisson_structure": "canonical on (r,x,y,pr,px,py) and minus body Lie-Poisson on ell, so ell_dot=ell cross dH/dell",
+    "leaves": "T*B times S^2_mu for mu>0; T*B at ell=0",
+    "hamiltonian": "translation-reduced Newtonian kinetic plus pair potential for arbitrary finite positive masses and G>0"
+  },
+  "theorem_obligations": {
+    "R1": "Derive and implement the exact forward and inverse cotangent momentum maps.",
+    "R2": "Prove coordinate roundtrip and angular-momentum preservation on the declared chart.",
+    "R3": "Implement the antisymmetric rank-eight/rank-six Poisson tensor and prove its Casimir |ell|^2.",
+    "R4": "Derive the reduced Hamiltonian and prove energy equality with the qualified 12D Jacobi model.",
+    "R5": "Derive every analytic Hamiltonian-gradient component and compare with source-disjoint finite differences.",
+    "R6": "Prove the Hamiltonian vector field equals the pushed independently qualified quotient flow.",
+    "R7": "Prove nonzero-leaf Casimir tangency and exact invariance of ell=0.",
+    "R8": "Prove the zero leaf reduces to the canonical six-dimensional planar shape Hamiltonian in this chart.",
+    "R9": "Reject chart singularities, collisions, invalid masses, invalid G, and off-leaf declarations.",
+    "R10": "State the regular-stratum, local-chart, and no-global-atlas boundary."
+  },
+  "benchmark_policy": {
+    "deterministic_seed": 60231,
+    "mass_triples": [["1", "1", "1"], ["2", "3", "5"], ["1/2", "7/5", "11/4"]],
+    "minimum_states_per_mass": 8,
+    "include_nonzero_and_zero_leaves": true
+  },
+  "tolerances": {
+    "roundtrip_absolute": 2e-12,
+    "energy_absolute": 3e-12,
+    "gradient_absolute": 3e-6,
+    "flow_absolute": 2e-10,
+    "casimir_derivative_absolute": 2e-12
+  },
+  "independent_validation": {
+    "production": "Analytic NumPy implementation in src/python/so3_reduction_v1.",
+    "reference": "Source-disjoint finite-difference Hamiltonian and direct coordinate differentiation that must not import production.",
+    "qualified_flow_comparison": "Existing WP2-3BFLOWQ-v1 quotient flow.",
+    "required_agreement": true
+  },
+  "adversarial_controls": [
+    "Detect a sign reversal in the body Lie-Poisson block.",
+    "Detect each changed inverse-momentum term.",
+    "Detect each changed Hamiltonian-gradient component.",
+    "Reject y=0, r=0, a binary collision, invalid masses, and invalid G.",
+    "Detect falsely assigning an eight-dimensional leaf to ell=0.",
+    "Reject a reference implementation that imports production."
+  ],
+  "decision_policy": {
+    "PASS": "Every prerequisite, source, transform, Poisson, Hamiltonian, gradient, flow, leaf, adversarial, and boundary gate passes under a frozen implementation.",
+    "AUTHORIZED_CLAIM": "The project has an independently qualified explicit Hamiltonian model of the regular non-collinear SO(3) Poisson quotient, including every nonzero angular-momentum symplectic leaf and the regular zero-angular-momentum leaf, in the declared body-frame chart.",
+    "PROHIBITED_GLOBAL_CLAIM": "The implementation is a global SO(3) reduction including collinear configurations and collisions.",
+    "PROHIBITED_DARBOUX_CLAIM": "All nine quotient coordinates form one canonical Darboux chart."
+  },
+  "gates": {
+    "specification_lock_verified": true,
+    "all_prerequisites_verified": true,
+    "source_hashes_and_text_contracts_verified": true,
+    "all_R1_through_R10_pass": true,
+    "production_reference_agreement": true,
+    "all_adversarial_controls_rejected": true,
+    "claim_boundary_present": true
+  },
+  "invalidation": "Any changed chart, sign convention, source, prerequisite, Hamiltonian, tolerance, obligation, decision rule, or frozen implementation invalidates v1."
+}

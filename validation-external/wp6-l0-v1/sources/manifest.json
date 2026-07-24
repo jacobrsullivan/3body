@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-L0-v1",
+  "retrieved_utc": "2026-07-24T00:00:00Z",
+  "sources": [
+    {
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "title": "Non-integrability of the planar n-body problem on common levels of the first integrals",
+      "authors": ["Andrzej J. Maciejewski", "Maria Przybylska", "Thierry Combot"],
+      "publication": "arXiv preprint 2025",
+      "arxiv": "2502.01426",
+      "download_url": "https://arxiv.org/pdf/2502.01426",
+      "download_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "qualified_use": "Primary common-level theorem, restricted-integrability definition, zero-angular-momentum nonzero-energy branch, and explicit doubly-zero exclusion."
+    },
+    {
+      "source_id": "combot-2015",
+      "title": "Integrability and non integrability of some n body problems",
+      "authors": ["Thierry Combot"],
+      "publication": "Preprint corresponding to the 2016 book chapter",
+      "arxiv": "1509.08233",
+      "download_url": "https://arxiv.org/pdf/1509.08233",
+      "download_sha256": "2c63db0c00558c01e10aed5d2d55e022789255f54dbbbcba3c4ca4ed634b62dd",
+      "qualified_use": "Primary accessible reproduction of Pacella's longitudinal spectrum and the transverse Morales-Ramis obstruction."
+    },
+    {
+      "source_id": "maciejewski-przybylska-2011",
+      "title": "Non-integrability of the three-body problem",
+      "authors": ["Andrzej J. Maciejewski", "Maria Przybylska"],
+      "publication": "Celestial Mechanics and Dynamical Astronomy 110 (2011), 17-30",
+      "doi": "10.1007/s10569-010-9333-z",
+      "download_url": "https://link.springer.com/content/pdf/10.1007/s10569-010-9333-z.pdf",
+      "download_sha256": "d15a82f18af7ebc489ec08d02c0571c4093ae7e5f319ad5cf6589770a0878e8b",
+      "qualified_use": "Independent positive-mass Newtonian three-body homogeneous-potential nonintegrability comparison."
+    }
+  ],
+  "copyright_boundary": "The repository records metadata and hashes only and does not redistribute the papers."
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP2-SO3-LEAF-v1",
+  "retrieved_utc": "2026-07-24T00:00:00Z",
+  "sources": [
+    {
+      "source_id": "ciftci-waalkens-2010",
+      "title": "Holonomy reduced dynamics of triatomic molecular systems",
+      "authors": ["Unver Ciftci", "Holger Waalkens"],
+      "publication": "Journal of Mathematical Physics 52 (2011), arXiv preprint 2010",
+      "arxiv": "1009.0641",
+      "download_url": "https://arxiv.org/pdf/1009.0641",
+      "download_sha256": "fcb715df4a26ce98c805c17dfd07f1d9be093cc63839a2b49c5b9b0ea1ddfece",
+      "qualified_use": "Primary comparison for rotational phase-space reduction, reduced dimensions, and body angular momentum."
+    },
+    {
+      "source_id": "moeckel-montgomery-2012",
+      "title": "Symmetric regularization, reduction and blow-up of the planar three-body problem",
+      "authors": ["Richard Moeckel", "Richard Montgomery"],
+      "publication": "Pacific Journal of Mathematics 262 (2013), arXiv preprint 2012",
+      "arxiv": "1202.0972",
+      "download_url": "https://arxiv.org/pdf/1202.0972",
+      "download_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "qualified_use": "Independent comparison for reduction strata and the special zero-angular-momentum geometry."
+    }
+  ],
+  "copyright_boundary": "The repository records metadata and hashes only and does not redistribute the papers."
+}
