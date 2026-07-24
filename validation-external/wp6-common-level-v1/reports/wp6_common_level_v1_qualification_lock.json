@@ -1,0 +1,52 @@
+{
+  "base_git_commit": "171eec558add929e86804f327eae74d79de4abf4",
+  "code_snapshot_sha256": "502728e5b811ad146b92167088574bae40ce2887820be60a242e66f85cdbc13f",
+  "file_hashes": {
+    "notes/wp6-common-level-v1-plan.md": "61f3ec36fb60a22a772513ab77b5bf42a66907c20437c50214b0644b7b685946",
+    "src/python/wp6_common_level_v1/QUALIFICATION_BOUNDARY.md": "7855b5351c65a86a5fdc16ddf8077a789101af673f1ae309a6662eeb22df9144",
+    "src/python/wp6_common_level_v1/__init__.py": "0b774f582632759cd155110a065ffc7660b420b1b50d5fe0fd8dbd39f4fa5ab7",
+    "src/python/wp6_common_level_v1/model.py": "2f625baf1c33ed237bbcb4bc3d3d2ba7048712cb89cdaee5052abd7e496da942",
+    "tests/wp6_common_level_v1/__init__.py": "d466c4ebfaea4db077d0ffc721e50a653b60c8e25efbd96b8848ffdccef9807f",
+    "tests/wp6_common_level_v1/test_campaign_contract.py": "bd381253b251bf0a3de1a13be5704cf16155d98a354f0ae32f72ab5911b9abc9",
+    "tests/wp6_common_level_v1/test_model.py": "1a920385364a615a375466c441a7b61369c1beb2bb9e28054de5db2ae3c6a93c",
+    "validation-external/qualification_tools.py": "64cb7d731658eb5f5249b7dfdc50545fbe7ad140681e0ea14c057ba0e897aaee",
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_lock.json": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_record.json": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb",
+    "validation-external/wp6-common-level-v1/README.md": "ec44548221e8071490730eabbfafd626bfb6a0f65274016c23e2b0dbc704e160",
+    "validation-external/wp6-common-level-v1/proof/WP6-COMMON-v1-proof.md": "10946a4f1cfd7fc595e7056e494c60f59fa85914e45602ca92e66c3512227946",
+    "validation-external/wp6-common-level-v1/qualification_spec.json": "421de0e784edbbdebe77b1fafc69b793ced658125a5e38b00a0b42203432935b",
+    "validation-external/wp6-common-level-v1/reference/euler_conic.py": "21cd9b751c98c076d2814d3bbdf3d76c3fda39900f991115a138efedadfb712c",
+    "validation-external/wp6-common-level-v1/reports/wp6_common_level_v1_specification_lock.json": "d21e0c0819dcec47bf3683ea71a5d4f19f2bbd1ae20e42ff5ffd51d3fa2f64bf",
+    "validation-external/wp6-common-level-v1/run_qualification.sh": "3d3c48e122a2ccafa718d273f8561b740b012fe582691876687a0b8338893baf",
+    "validation-external/wp6-common-level-v1/sources/SOURCE_STATUS.md": "75e7fc6d1edf340398037e5fc2041668e0a51ae6d57185354b45e5693c6a0ea6",
+    "validation-external/wp6-common-level-v1/sources/manifest.json": "69138ca2e2e9d5df755ed0ea1052117ccd8a4775beff4c1ca5cbef0f4dfeb5a2",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_lock.json": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_record.json": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_lock.json": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_record.json": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942",
+    "validation-external/wp6_common_level_qualification.py": "63e9153de96734b070e1e24769ada65c7a514281557de0ab7b264b2e6113a4f1"
+  },
+  "frozen_utc": "2026-07-24T11:14:46.984789+00:00",
+  "lock_sha256": "835cbe6631d20345a5274be8546c8125ec5ee4c58ed5fa30b7d6816dfcf6fb5c",
+  "proof_sha256": "10946a4f1cfd7fc595e7056e494c60f59fa85914e45602ca92e66c3512227946",
+  "qualification_id": "WP6-COMMON-v1-502728e5b811",
+  "qualification_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "69138ca2e2e9d5df755ed0ea1052117ccd8a4775beff4c1ca5cbef0f4dfeb5a2",
+  "spec_sha256": "421de0e784edbbdebe77b1fafc69b793ced658125a5e38b00a0b42203432935b",
+  "specification_lock_sha256": "8da589c82647d5c2f6b34b04911cf8ab41e0ce8cbf32c86c97080c8901bf7c1e",
+  "worktree_clean_at_freeze": true
+}
