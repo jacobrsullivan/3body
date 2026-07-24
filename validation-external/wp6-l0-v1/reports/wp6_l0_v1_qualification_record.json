@@ -1,0 +1,92 @@
+{
+  "authorized_claim": "For arbitrary finite positive masses and every finite nonzero energy h, the planar Newtonian three-body problem restricted to the common level (H,C)=(h,0) is not rationally integrable in the locked restricted-integrability sense.",
+  "benchmark_case_count": 3,
+  "campaign": "WP6-L0-v1",
+  "claim_boundary": "A PASS qualifies failure of restricted rational complete integrability for the planar positive-mass three-body problem on every common level (H,C)=(h,0) with h nonzero. It does not cover (0,0), the spatial problem, non-rational regularity classes, absence of one additional integral, or a collision-regularized extension.",
+  "evidence_git_commit": "4b363dff37da6b4324fd8a7830a550162eec2c7f",
+  "generated_utc": "2026-07-24T09:38:20.918508+00:00",
+  "implementation_independence": {
+    "reference_is_source_disjoint": true
+  },
+  "lock_sha256": "dc240c374d3a594e7798ec81ce919a17d1855e228c929b41f996d74f027ecab7",
+  "negative_controls": {
+    "h_zero_rejected": true,
+    "lambda_two_rejected": true,
+    "nonzero_C_rejected": true,
+    "reference_is_source_disjoint": true,
+    "solvability_not_abelian_substitution": true,
+    "transverse_factor_detected": true
+  },
+  "prerequisites": {},
+  "production_reference_agreement": true,
+  "prohibited_claims": {
+    "PROHIBITED_DOUBLE_ZERO_CLAIM": "The same witness proves nonintegrability on (H,C)=(0,0).",
+    "PROHIBITED_ONE_INTEGRAL_CLAIM": "No one additional integral exists on the zero-angular-momentum level.",
+    "PROHIBITED_SPATIAL_CLAIM": "The spatial zero-angular-momentum problem is qualified by this track."
+  },
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_claim": true,
+    "model_boundary": true,
+    "nonclaims": true
+  },
+  "proof_sha256": "f2842ee937eb85889c95d8d731fbe8355ad59fa8997b6ac667f4bca74d2c31be",
+  "qualification_id": "WP6-L0-v1-27f160d029ca",
+  "record_payload_sha256": "c9be2d6a8132cd41773778dc3ecbb74b869b2f589718b3b3bbf7c6e4d74e051a",
+  "results_sha256": "d51b2d8d5d2a4374b716049872ed18b6211d7b523b29330849546133d6a920ab",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "5e312b3124637ccf2ab3d6124913e0b363f37d219e2f037f97279c60f28526fa",
+  "source_records": [
+    {
+      "expected_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "observed_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "verified": true
+    },
+    {
+      "expected_sha256": "2c63db0c00558c01e10aed5d2d55e022789255f54dbbbcba3c4ca4ed634b62dd",
+      "observed_sha256": "2c63db0c00558c01e10aed5d2d55e022789255f54dbbbcba3c4ca4ed634b62dd",
+      "source_id": "combot-2015",
+      "verified": true
+    },
+    {
+      "expected_sha256": "d15a82f18af7ebc489ec08d02c0571c4093ae7e5f319ad5cf6589770a0878e8b",
+      "observed_sha256": "d15a82f18af7ebc489ec08d02c0571c4093ae7e5f319ad5cf6589770a0878e8b",
+      "source_id": "maciejewski-przybylska-2011",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "combot_pacella_spectrum": true,
+    "combot_transverse_obstruction": true,
+    "common_level_theorem": true,
+    "mp_positive_mass_nonintegrability": true,
+    "restricted_integrability_definition": true,
+    "solvability_condition": true,
+    "zero_momentum_nonzero_energy_branch": true
+  },
+  "spec_sha256": "7348b350d6196e88c0d49bc0aa85f95ba078bb5cb501e3882f78fb7fe5aef89c",
+  "specification_lock_sha256": "d331540b30452ccaafc7a7d2a947e5f16a651f10e9f70bbb3f29a1b2c9bc3bb6",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  }
+}
