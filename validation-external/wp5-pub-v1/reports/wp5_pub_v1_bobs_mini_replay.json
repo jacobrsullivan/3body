@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "evidence_type": "project_controlled_second_host_portability",
+  "counts_as_external_clean_room": false,
+  "counts_as_independent_human_review": false,
+  "recorded_utc": "2026-07-24T08:05:20Z",
+  "host": {
+    "hostname": "Mac",
+    "declared_name": "bobs-mini",
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "project_controlled": true
+  },
+  "checkout": {
+    "path": "/Users/bob/Desktop/3body-wp5-pub-v1",
+    "git_commit": "900119268a81345eae3e7573f3693fe6c1099460",
+    "branch_source": "origin/wp5/pub-v1",
+    "isolated_clean_clone": true,
+    "worktree_clean_after_replay": true
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "sympy": "1.14.0",
+    "pytest": "8.4.1",
+    "tectonic": "0.16.9",
+    "poppler": "26.07.0"
+  },
+  "execution": {
+    "command": "WP5_PYTHON=/Users/bob/micromamba/envs/3body-legacy-v1/bin/python ./scripts/reproduce_wp5_pub_v1.sh --core",
+    "exit_code": 0,
+    "status": "READY_FOR_EXTERNAL_REVIEW",
+    "internal_gates_pass": true,
+    "elapsed_seconds": 582.6455916250125,
+    "generic_elapsed_seconds": 580.6407766249613,
+    "generic_field_count": 32,
+    "generic_exactly_matches_frozen_payload": true,
+    "normalized_generic_payload_sha256": "4f8f9774e9ff486a056ce96f48ed2791e74b57dfa87e2d0ea8ca6682c2085678",
+    "report_payload_sha256": "16967b412e2360086b7d28fa6aa8d363d026d993ff6fb4b7a48e8b9aac481eeb",
+    "report_file_sha256": "2bcddd4b4b58cba8bd6e1b073e04abe0a7fcac76b71f3f9365e15b123c2def89"
+  },
+  "artifacts": {
+    "artifact_count": 28,
+    "artifact_manifest_sha256": "cf42a6eb25259a031440a50d26493da6150b5ea2688c9893d66142c214cb0053",
+    "artifact_manifest_payload_sha256": "53529d0698cba9e4047af0ffc229c5c54d661657aecb07721fa0e6ecc967c9d9",
+    "manuscript_pdf_sha256": "7470d73612278377f3fd25f4a1bafc8caa6215160aff04f0fc9a35bef050585d",
+    "manuscript_pdf_bytes": 86928,
+    "manuscript_pdf_pages": 9
+  },
+  "status": "SUPPLEMENTAL_PASS",
+  "evidence_boundary": "This replay demonstrates deterministic packaging and cross-runtime portability on a second clean host. Because bobs-mini is project-controlled hardware and no independent human reviewed the mathematics, it satisfies neither the locked external clean-room gate nor either human-review gate."
+}
