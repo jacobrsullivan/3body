@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "publication_title": "Exact reproduction and KS-atlas transfer of a Morales-Ramis obstruction near the parabolic Lagrange solution",
+  "claim_policy": "Only claims marked authorized may appear as results. Context claims may appear only with their stated boundary. Prohibited claims must not appear as assertions.",
+  "claims": [
+    {
+      "claim_id": "C1-PRIOR-ART",
+      "kind": "attribution",
+      "status": "AUTHORIZED",
+      "wording": "The local planar complete-meromorphic-integrability obstruction near the parabolic Lagrange solution is published prior art due to Tsygvintsev and independently supported at theorem level by Boucher and Weil, on the Morales-Ramis foundation.",
+      "manuscript_locations": [
+        "Abstract",
+        "Scope and prior art"
+      ],
+      "dependencies": [
+        "SRC-TSYGVINTSEV",
+        "SRC-BOUCHER-WEIL",
+        "SRC-MORALES-RAMIS"
+      ],
+      "boundary": "No discovery, first-proof, or novelty claim is authorized before an independent literature review."
+    },
+    {
+      "claim_id": "C2-EXACT-REPRODUCTION",
+      "kind": "computational_reproduction",
+      "status": "AUTHORIZED",
+      "wording": "A source-disjoint exact implementation reconstructs the phase curve, full planar variational equation, Whittaker normal reduction, Fuchs gauge, and residue characteristic polynomials from the declared reduced Hamiltonian.",
+      "manuscript_locations": [
+        "Reduced planar model",
+        "Exact normal variational equation",
+        "Computational qualification"
+      ],
+      "dependencies": [
+        "REC-WP4-MR",
+        "PROOF-WP4-MR",
+        "GENERIC-REPLAY"
+      ],
+      "boundary": "The reconstruction starts from the published reduced Hamiltonian convention and does not independently derive every canonical reduction map from the unreduced state."
+    },
+    {
+      "claim_id": "C3-POSITIVE-MASS-GALOIS",
+      "kind": "mathematical_result",
+      "status": "AUTHORIZED",
+      "wording": "For every finite positive mass triple, the differential-Galois identity component of the reproduced four-dimensional normal variational equation is non-Abelian.",
+      "manuscript_locations": [
+        "Positive-mass Galois obstruction"
+      ],
+      "dependencies": [
+        "C2-EXACT-REPRODUCTION",
+        "SRC-TSYGVINTSEV",
+        "PROOF-WP4-MR"
+      ],
+      "boundary": "This is a statement about the declared normal variational equation along one phase curve."
+    },
+    {
+      "claim_id": "C4-PLANAR-LOCAL-OBSTRUCTION",
+      "kind": "mathematical_result",
+      "status": "AUTHORIZED",
+      "wording": "For every finite positive mass triple, the declared translation- and rotation-reduced planar Hamiltonian at fixed nonzero angular momentum is not completely integrable by meromorphic first integrals near the parabolic Lagrange phase curve.",
+      "manuscript_locations": [
+        "Positive-mass Galois obstruction"
+      ],
+      "dependencies": [
+        "C3-POSITIVE-MASS-GALOIS",
+        "SRC-MORALES-RAMIS"
+      ],
+      "boundary": "Local, complete, meromorphic, fixed-nonzero-angular-momentum statement only."
+    },
+    {
+      "claim_id": "C5-SPATIAL-TRANSFER",
+      "kind": "mathematical_result",
+      "status": "AUTHORIZED",
+      "wording": "The reproduced planar normal variational module is a differential subquotient of the spatial variational module, so the local complete-meromorphic-integrability obstruction transfers to the translation-reduced spatial Hamiltonian.",
+      "manuscript_locations": [
+        "Spatial and KS-atlas transfer"
+      ],
+      "dependencies": [
+        "C4-PLANAR-LOCAL-OBSTRUCTION",
+        "REC-WP4-LIFT",
+        "PROOF-WP4-LIFT",
+        "SRC-MARSDEN-WEINSTEIN"
+      ],
+      "boundary": "The argument uses the embedded planar phase curve at fixed nonzero angular momentum; it does not infer an ambient result merely from an invariant subsystem."
+    },
+    {
+      "claim_id": "C6-KS-ATLAS-CONSEQUENCE",
+      "kind": "mathematical_result",
+      "status": "AUTHORIZED",
+      "wording": "The qualified KS atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing the regular lift of the obstructed neighborhood.",
+      "manuscript_locations": [
+        "Spatial and KS-atlas transfer"
+      ],
+      "dependencies": [
+        "C5-SPATIAL-TRANSFER",
+        "REC-WP2-MULTI",
+        "REC-WP4-LIFT",
+        "PROOF-WP4-LIFT"
+      ],
+      "boundary": "Requires shell regularity, Xi=0, gauge projectability, chart compatibility, and clock independence."
+    },
+    {
+      "claim_id": "C7-WP3-BOUNDED-NULL",
+      "kind": "context",
+      "status": "CONTEXT_ONLY",
+      "wording": "No promoted invariant survived WP3-MULTI-CAND-v2-KQ-v1 within its frozen 285-function library after quotienting the known L^2 class.",
+      "manuscript_locations": [
+        "Bounded discovery context"
+      ],
+      "dependencies": [
+        "REC-WP3-KQ",
+        "GATE-WP3-KQ"
+      ],
+      "boundary": "Not a no-integral theorem, not a complete function search, and not a premise of C3 through C6."
+    },
+    {
+      "claim_id": "C8-WP1-EXTERNAL-CATALOGUE",
+      "kind": "context",
+      "status": "CONTEXT_ONLY",
+      "wording": "WP1 validates the project orbit pipeline against a frozen external unequal-mass periodic-orbit dataset under its declared convention and tolerance contract.",
+      "manuscript_locations": [
+        "Bounded discovery context"
+      ],
+      "dependencies": [
+        "REC-WP1-CAT",
+        "REC-WP1-RESIDUAL"
+      ],
+      "boundary": "Numerical efficacy evidence only; not a premise of the nonintegrability theorem and not a completeness claim for all periodic orbits."
+    }
+  ],
+  "required_nonclaims": [
+    {
+      "nonclaim_id": "NC1",
+      "wording": "The result does not exclude one additional integral."
+    },
+    {
+      "nonclaim_id": "NC2",
+      "wording": "The result does not exclude non-meromorphic integrability."
+    },
+    {
+      "nonclaim_id": "NC3",
+      "wording": "The result does not cover zero angular momentum."
+    },
+    {
+      "nonclaim_id": "NC4",
+      "wording": "The result does not classify all trajectories or all phase-space domains."
+    },
+    {
+      "nonclaim_id": "NC5",
+      "wording": "The result does not qualify nonzero-Xi dynamics or triple collision."
+    }
+  ],
+  "prohibited_assertions": [
+    "the three-body problem has no integrals",
+    "no additional integral exists",
+    "global nonintegrability of the three-body problem",
+    "complete search of all possible integrals",
+    "first proof",
+    "novel proof",
+    "solves the three-body problem"
+  ]
+}

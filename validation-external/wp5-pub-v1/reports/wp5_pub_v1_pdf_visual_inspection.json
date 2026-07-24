@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "inspection_type": "project_internal_visual_qa",
+  "independent_external_review": false,
+  "inspected_utc": "2026-07-24T07:28:33Z",
+  "artifact": {
+    "path": "publication/wp5-pub-v1/manuscript/main.pdf",
+    "sha256": "7470d73612278377f3fd25f4a1bafc8caa6215160aff04f0fc9a35bef050585d",
+    "bytes": 86928,
+    "pages": 9,
+    "page_size": "612 x 792 pts (letter)",
+    "pdf_version": "1.5"
+  },
+  "build": {
+    "tectonic_version": "0.16.9",
+    "source_date_epoch": 1784851200,
+    "tex_log_has_overfull_boxes": false,
+    "tex_log_has_underfull_boxes": false,
+    "tex_log_has_undefined_references": false
+  },
+  "render": {
+    "command": "pdftoppm -png -r 130 publication/wp5-pub-v1/manuscript/main.pdf tmp/pdfs/wp5-pub-v1/page",
+    "dpi": 130,
+    "pages_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "checks": {
+    "all_pages_nonblank": true,
+    "title_and_author_legible": true,
+    "section_hierarchy_consistent": true,
+    "equations_within_margins": true,
+    "tables_within_margins": true,
+    "no_clipped_text": true,
+    "no_overlapping_elements": true,
+    "page_numbers_present": true,
+    "proof_endmarks_rendered": true,
+    "bibliography_legible": true,
+    "source_links_visible": true,
+    "ks_subscripts_positioned_correctly": true
+  },
+  "status": "PASS",
+  "evidence_boundary": "This is project-internal visual layout inspection. It satisfies the internal render gate only and cannot count as either independent human mathematical review or external clean-room reproduction."
+}

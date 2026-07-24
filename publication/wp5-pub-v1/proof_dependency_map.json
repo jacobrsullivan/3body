@@ -1,0 +1,223 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "root_claim": "C6-KS-ATLAS-CONSEQUENCE",
+  "nodes": [
+    {
+      "node_id": "C1-PRIOR-ART",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "C2-EXACT-REPRODUCTION",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "C3-POSITIVE-MASS-GALOIS",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "C4-PLANAR-LOCAL-OBSTRUCTION",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "C5-SPATIAL-TRANSFER",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "C6-KS-ATLAS-CONSEQUENCE",
+      "node_type": "claim",
+      "authority": "publication/wp5-pub-v1/claims/claim_ledger.json"
+    },
+    {
+      "node_id": "REC-WP2-MULTI",
+      "node_type": "immutable_pass_record",
+      "authority": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json",
+      "sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    {
+      "node_id": "REC-WP4-MR",
+      "node_type": "immutable_pass_record",
+      "authority": "validation-external/wp4-mr-repl-v1/reports/wp4_mr_repl_v1_qualification_record.json",
+      "sha256": "1835133b7b018a95c51565dc1a6ebcc7f605e0192d7ed88e0754d73411e86a3f"
+    },
+    {
+      "node_id": "PROOF-WP4-MR",
+      "node_type": "proof",
+      "authority": "validation-external/wp4-mr-repl-v1/proof/WP4-MR-REPL-v1-proof.md",
+      "sha256": "3cf75bd36925c296c69d302c2d7e229b1eb9da5928aa9690a7f06545c77104cc"
+    },
+    {
+      "node_id": "GENERIC-REPLAY",
+      "node_type": "executable_check",
+      "authority": "validation-external/wp4-mr-repl-v1/reference/sympy_derivation.py"
+    },
+    {
+      "node_id": "REC-WP4-LIFT",
+      "node_type": "immutable_pass_record",
+      "authority": "validation-external/wp4-lift-ni-v3/reports/wp4_lift_ni_v3_qualification_record.json",
+      "sha256": "04c13c93dd2fcb0e298152f1f8cddf24f4bb2fcc7298bb73e912c02234d921a3"
+    },
+    {
+      "node_id": "PROOF-WP4-LIFT",
+      "node_type": "proof_chain",
+      "authority": "validation-external/wp4-lift-ni-v2/proof/WP4-LIFT-NI-v2-proof.md",
+      "sha256": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781"
+    },
+    {
+      "node_id": "ADDENDUM-WP4-LIFT",
+      "node_type": "proof_addendum",
+      "authority": "validation-external/wp4-lift-ni-v3/proof/WP4-LIFT-NI-v3-addendum.md",
+      "sha256": "a65be646914a06dc369dabe0e1ce343ec2a7dab788b60573492375a5e15ca406"
+    },
+    {
+      "node_id": "SRC-MORALES-RAMIS",
+      "node_type": "primary_source",
+      "authority": "validation-external/wp4-mr-repl-v1/sources/manifest.json",
+      "download_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6"
+    },
+    {
+      "node_id": "SRC-TSYGVINTSEV",
+      "node_type": "primary_source",
+      "authority": "validation-external/wp4-mr-repl-v1/sources/manifest.json",
+      "download_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef"
+    },
+    {
+      "node_id": "SRC-BOUCHER-WEIL",
+      "node_type": "primary_source",
+      "authority": "validation-external/wp4-mr-repl-v1/sources/manifest.json",
+      "download_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236"
+    },
+    {
+      "node_id": "SRC-MARSDEN-WEINSTEIN",
+      "node_type": "primary_source",
+      "authority": "publication/wp5-pub-v1/manuscript/references.bib",
+      "doi": "10.1016/0034-4877(74)90021-4"
+    },
+    {
+      "node_id": "REC-WP1-CAT",
+      "node_type": "context_pass_record",
+      "authority": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json",
+      "sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8"
+    },
+    {
+      "node_id": "REC-WP1-RESIDUAL",
+      "node_type": "context_pass_record",
+      "authority": "validation-external/wp1-residual-map-v1/reports/wp1_residual_map_v1_qualification_record.json",
+      "sha256": "0459f265dac39afc6da30821b63e1d814859547f8fb083ba11b4adbbc97aa676"
+    },
+    {
+      "node_id": "REC-WP3-KQ",
+      "node_type": "context_pass_record",
+      "authority": "validation-external/wp3-multi-candidate-v2-known-quotient/reports/wp3_multi_v2_kq_search_record.json",
+      "sha256": "57651802d13c808763790dfa22146790516dbee7bfa4ff0d334156ffcfac0b86"
+    },
+    {
+      "node_id": "GATE-WP3-KQ",
+      "node_type": "context_publication_gate",
+      "authority": "validation-external/wp3-multi-candidate-v2-known-quotient/results/publication_gate.json",
+      "sha256": "925372c32c390bd17725cb8ea30481a435ee5bf1df23254178c4428e4ce26be2"
+    }
+  ],
+  "edges": [
+    {
+      "from": "C1-PRIOR-ART",
+      "to": "SRC-TSYGVINTSEV",
+      "relation": "attributed_to"
+    },
+    {
+      "from": "C1-PRIOR-ART",
+      "to": "SRC-BOUCHER-WEIL",
+      "relation": "corroborated_by"
+    },
+    {
+      "from": "C1-PRIOR-ART",
+      "to": "SRC-MORALES-RAMIS",
+      "relation": "founded_on"
+    },
+    {
+      "from": "C2-EXACT-REPRODUCTION",
+      "to": "REC-WP4-MR",
+      "relation": "qualified_by"
+    },
+    {
+      "from": "C2-EXACT-REPRODUCTION",
+      "to": "PROOF-WP4-MR",
+      "relation": "proved_in"
+    },
+    {
+      "from": "C2-EXACT-REPRODUCTION",
+      "to": "GENERIC-REPLAY",
+      "relation": "reproduced_by"
+    },
+    {
+      "from": "C3-POSITIVE-MASS-GALOIS",
+      "to": "C2-EXACT-REPRODUCTION",
+      "relation": "depends_on"
+    },
+    {
+      "from": "C3-POSITIVE-MASS-GALOIS",
+      "to": "PROOF-WP4-MR",
+      "relation": "proved_in"
+    },
+    {
+      "from": "C4-PLANAR-LOCAL-OBSTRUCTION",
+      "to": "C3-POSITIVE-MASS-GALOIS",
+      "relation": "depends_on"
+    },
+    {
+      "from": "C4-PLANAR-LOCAL-OBSTRUCTION",
+      "to": "SRC-MORALES-RAMIS",
+      "relation": "uses_theorem"
+    },
+    {
+      "from": "C5-SPATIAL-TRANSFER",
+      "to": "C4-PLANAR-LOCAL-OBSTRUCTION",
+      "relation": "transfers"
+    },
+    {
+      "from": "C5-SPATIAL-TRANSFER",
+      "to": "REC-WP4-LIFT",
+      "relation": "qualified_by"
+    },
+    {
+      "from": "C5-SPATIAL-TRANSFER",
+      "to": "PROOF-WP4-LIFT",
+      "relation": "proved_in"
+    },
+    {
+      "from": "C5-SPATIAL-TRANSFER",
+      "to": "ADDENDUM-WP4-LIFT",
+      "relation": "deconditionalized_by"
+    },
+    {
+      "from": "C6-KS-ATLAS-CONSEQUENCE",
+      "to": "C5-SPATIAL-TRANSFER",
+      "relation": "depends_on"
+    },
+    {
+      "from": "C6-KS-ATLAS-CONSEQUENCE",
+      "to": "REC-WP2-MULTI",
+      "relation": "model_supplied_by"
+    },
+    {
+      "from": "C6-KS-ATLAS-CONSEQUENCE",
+      "to": "REC-WP4-LIFT",
+      "relation": "qualified_by"
+    }
+  ],
+  "context_isolation": {
+    "context_nodes": [
+      "REC-WP1-CAT",
+      "REC-WP1-RESIDUAL",
+      "REC-WP3-KQ",
+      "GATE-WP3-KQ"
+    ],
+    "forbidden_paths_to_root_claim": true,
+    "explanation": "WP1 and WP3 may support context statements only. No directed edge from a theorem claim may depend on these nodes."
+  }
+}

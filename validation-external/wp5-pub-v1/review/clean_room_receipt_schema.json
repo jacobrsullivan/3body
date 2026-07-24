@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jacobrsullivan/3body/wp5-pub-v1-clean-room-receipt.schema.json",
+  "title": "WP5-PUB-v1 external clean-room reproduction receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "campaign",
+    "receipt_id",
+    "reproducer",
+    "independence",
+    "artifacts",
+    "environment",
+    "execution",
+    "signed_utc",
+    "signature"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "campaign": {
+      "const": "WP5-PUB-v1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^WP5-PUB-v1-CR-[A-Za-z0-9._-]+$"
+    },
+    "reproducer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "human",
+        "identity_publication_consent"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "affiliation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "human": {
+          "const": true
+        },
+        "identity_publication_consent": {
+          "const": true
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "not_author",
+        "not_implementation_contributor",
+        "hardware_not_project_controlled",
+        "account_not_project_controlled",
+        "conflicts_disclosed"
+      ],
+      "properties": {
+        "not_author": {
+          "const": true
+        },
+        "not_implementation_contributor": {
+          "const": true
+        },
+        "hardware_not_project_controlled": {
+          "const": true
+        },
+        "account_not_project_controlled": {
+          "const": true
+        },
+        "conflicts_disclosed": {
+          "const": true
+        },
+        "conflict_statement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "git_commit",
+        "artifact_manifest_sha256",
+        "manuscript_pdf_sha256"
+      ],
+      "properties": {
+        "git_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "artifact_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "manuscript_pdf_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform",
+        "machine",
+        "python",
+        "sympy",
+        "pytest",
+        "tectonic"
+      ],
+      "properties": {
+        "platform": {
+          "type": "string"
+        },
+        "machine": {
+          "type": "string"
+        },
+        "python": {
+          "type": "string"
+        },
+        "sympy": {
+          "const": "1.14.0"
+        },
+        "pytest": {
+          "const": "8.4.1"
+        },
+        "tectonic": {
+          "const": "0.16.9"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "command",
+        "exit_code",
+        "status",
+        "started_utc",
+        "completed_utc",
+        "report_sha256",
+        "normalized_generic_payload_sha256"
+      ],
+      "properties": {
+        "command": {
+          "const": "./scripts/reproduce_wp5_pub_v1.sh --core"
+        },
+        "exit_code": {
+          "const": 0
+        },
+        "status": {
+          "const": "PASS"
+        },
+        "started_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completed_utc": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "report_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "normalized_generic_payload_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "signed_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "artifact_path",
+        "artifact_sha256"
+      ],
+      "properties": {
+        "method": {
+          "enum": [
+            "detached_pgp",
+            "signed_pdf",
+            "institutional_email_archive"
+          ]
+        },
+        "artifact_path": {
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

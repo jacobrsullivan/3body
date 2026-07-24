@@ -1,0 +1,640 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!45!black,
+  citecolor=blue!45!black,
+  urlcolor=blue!45!black,
+  pdftitle={Exact reproduction and KS-atlas transfer of a Morales-Ramis obstruction near the parabolic Lagrange solution},
+  pdfauthor={Jacob Sullivan}
+}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\XiMap}{\Xi}
+\newcommand{\Id}{\mathrm{I}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\title{\textbf{Exact reproduction and KS-atlas transfer of a
+Morales--Ramis obstruction near the parabolic Lagrange solution}}
+\author{Jacob Sullivan\\
+\small Affiliation and ORCID to be confirmed before submission}
+\date{24 July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an exact, machine-qualified reproduction of the planar
+Morales--Ramis obstruction near the parabolic Lagrange phase curve for every
+finite positive mass triple.  Starting from the declared
+translation- and rotation-reduced Hamiltonian, an implementation disjoint
+from the production certificate differentiates the Hamiltonian, verifies the
+phase curve, constructs the full six-dimensional variational equation,
+performs the Whittaker energy-shell reduction, and derives a four-dimensional
+Fuchsian normal variational equation.  Its finite residue spectra and
+infinity characteristic polynomial imply that the differential-Galois
+identity component is non-Abelian throughout the positive-mass domain.  We
+then transfer that local obstruction to the translation-reduced spatial
+Hamiltonian by an explicit variational subquotient and to a qualified
+two-chart Kustaanheimo--Stiefel (KS) atlas by exact cotangent reduction,
+fixed-energy Sundman equivalence, and a shell-relative rank argument.
+The resulting theorem concerns complete meromorphic Liouville integrability
+locally near one fixed-nonzero-angular-momentum phase curve.  It does not
+exclude one additional integral or make a global assertion.  The planar
+theorem is a reproduction of published work, not an asserted original
+discovery.  All decision-bearing formulas, source hashes, negative controls,
+and qualification records are included in a one-command reproducibility
+package.
+\end{abstract}
+
+\section{Scope and prior art}
+\label{sec:scope}
+
+Differential Galois theory supplies necessary conditions for the meromorphic
+Liouville integrability of Hamiltonian systems.  In the form used here, the
+Morales--Ramis theorem requires the identity component of the differential
+Galois group of the variational equation, and hence of the relevant normal
+variational equation, to be Abelian near a non-equilibrium phase curve
+\cite{moralesramis2001}.  Tsygvintsev applied this framework to the
+parabolic Lagrange solution of the planar three-body problem and derived the
+Fuchsian normal system reproduced below \cite{tsygvintsev2002}.
+Boucher and Weil gave an independent published application at the theorem
+level \cite{boucherweil}.
+
+The scientific contribution qualified in this paper has four deliberately
+separated parts:
+\begin{enumerate}
+  \item an exact project-owned reconstruction of the planar normal
+    variational equation from the reduced Hamiltonian;
+  \item a source-equivalence audit against hash-pinned primary papers;
+  \item an exact transfer of the obstruction to the spatial variational
+    module; and
+  \item an exact transfer to a previously qualified multi-chart KS
+    regularization.
+\end{enumerate}
+The planar nonintegrability result itself is prior art.  We do not claim its
+discovery, its first proof, or novelty of its mathematical conclusion.
+
+The word ``integrability'' will always mean complete Liouville integrability
+by meromorphic first integrals on a complex neighborhood unless another
+meaning is explicitly stated.  For the translation-reduced spatial
+Hamiltonian, which has six degrees of freedom, completeness requires six
+functionally independent commuting integrals including the Hamiltonian.
+The result is local to the neighborhood of a specified phase curve.  It is
+not an assertion about every trajectory or every phase-space domain.
+
+\subsection{Models and normalizations}
+
+All masses are finite and strictly positive.  In the planar reproduction we
+set the gravitational constant and the fixed angular-momentum scale to one,
+and normalize the third mass to \(m_3=1\).  Positive common scaling recovers
+every positive mass triple.  The spatial theorem is stated on the regular
+collision-free portion of the translation-reduced phase space.  Binary
+collision extensions enter only through restriction back to that open set;
+triple collision is outside the qualified model.
+
+\section{Reduced planar model}
+\label{sec:planar-model}
+
+Let
+\[
+  M_1=1+\frac{1}{m_1},\qquad
+  M_2=1+\frac{1}{m_2},\qquad
+  P=p_3q_2-p_2q_3-1.
+\]
+The declared reduced Hamiltonian is
+\begin{align}
+H={}&\frac{M_1}{2}\left(p_1^2+\frac{P^2}{q_1^2}\right)
+  +\frac{M_2}{2}(p_2^2+p_3^2)+p_1p_2-\frac{p_3P}{q_1}
+  \nonumber\\
+ &-\frac{m_1}{q_1}
+  -\frac{m_2}{\sqrt{q_2^2+q_3^2}}
+  -\frac{m_1m_2}{\sqrt{(q_1-q_2)^2+q_3^2}} .
+\label{eq:reduced-H}
+\end{align}
+The implementation reconstructs every derivative used below from
+\eqref{eq:reduced-H}; it does not import a published variational matrix.
+
+Put
+\[
+ S_1=m_1+m_2+1,\qquad
+ S_2=m_1m_2+m_1+m_2,\qquad
+ S_3=m_2+2.
+\]
+The equilateral parabolic phase curve is parametrized by
+\begin{align}
+ q_1&=q,&q_2&=\frac q2,&q_3&=\frac{\sqrt3\,q}{2},\nonumber\\
+ p_1&=p,&p_2&=Ap+\frac Bq,&p_3&=Cp+\frac Dq,
+\label{eq:lagrange-curve}
+\end{align}
+where
+\begin{align*}
+A&=\frac{m_2(1-m_1)}{m_1S_3},&
+B&=-\frac{\sqrt3\,S_1m_2}{S_2S_3},\\
+C&=\frac{\sqrt3\,m_2(m_1+1)}{m_1S_3},&
+D&=-\frac{m_2(S_2+m_1m_2-1)}{S_2S_3}.
+\end{align*}
+On the zero-energy surface let \(w=pq\).  Then
+\begin{equation}
+ q(w)=-\frac{aw^2+bw+d}{c},\qquad p(w)=\frac{w}{q(w)},
+\label{eq:q-of-w}
+\end{equation}
+with
+\[
+ a=\frac{2S_1S_2}{m_1^2S_3^2},\quad
+ b=-\frac{2\sqrt3\,m_2S_1}{m_1S_3^2},\quad
+ c=-S_2,\quad
+ d=\frac{2S_1(m_2^2+m_2+1)}{S_3^2S_2}.
+\]
+
+\begin{proposition}[Exact phase-curve check]
+\label{prop:phase}
+For every positive \(m_1,m_2\), equations
+\eqref{eq:lagrange-curve}--\eqref{eq:q-of-w} define a non-equilibrium
+zero-energy integral phase curve of \eqref{eq:reduced-H} away from its
+isolated singular parameter values.
+\end{proposition}
+
+\begin{proof}
+Direct substitution gives \(H=0\).  The exact reference calculation also
+verifies that all six components of \(J_6\nabla H\) equal the corresponding
+components of \(dz/dw\) multiplied by one common rational expression
+\(dw/dt\).  This stronger tangent identity rules out the weaker possibility
+that the displayed parametrization merely lies on the energy shell.
+\end{proof}
+
+\section{Exact normal variational equation}
+\label{sec:nve}
+
+The full planar variational equation along the phase curve is
+\[
+ \frac{d\,\delta z}{dt}
+   =J_6 H_{zz}(\Gamma(w))\,\delta z .
+\]
+The reference implementation forms this \(6\) by \(6\) matrix by exact
+differentiation and verifies its Hamiltonian-matrix identity.
+
+To remove the energy/flow pair, solve \(H=0\) locally for \(p_1\) and put
+\(K=-p_1\).  For \(y=(q_2,q_3,p_2,p_3)\), implicit differentiation gives
+\begin{equation}
+ K_{ij}=\frac{H_{ij}}{H_p}
+ -\frac{H_{ip}H_j}{H_p^2}
+ -\frac{H_iH_{pj}}{H_p^2}
+ +\frac{H_iH_{pp}H_j}{H_p^3},
+\label{eq:whittaker-hessian}
+\end{equation}
+where \(p=p_1\).  After substituting the phase curve and changing the
+independent variable from \(q_1\) to \(w\), the four-dimensional normal
+system is
+\begin{equation}
+ A_{\mathrm{NVE}}
+   =J_4\,\frac{dq}{dw}\,\operatorname{Hess}_y(K).
+\label{eq:nve-matrix}
+\end{equation}
+Symmetry of the Hessian and the Hamiltonian identity for
+\eqref{eq:nve-matrix} are exact qualification gates.
+
+Define
+\begin{align}
+ L&=2S_2w-\sqrt3\,m_1m_2,\nonumber\\
+ Z&=S_2^2w^2-\sqrt3\,m_1m_2S_2w
+      +m_1^2(m_2^2+m_2+1),\nonumber\\
+ C&=\operatorname{diag}(LZ,LZ,1,1).
+\label{eq:gauge}
+\end{align}
+The gauge-transformed system is
+\[
+ A_F=C^{-1}A_{\mathrm{NVE}}C-C^{-1}\frac{dC}{dw}.
+\]
+Exact denominator valuations show that it is Fuchsian, with three distinct
+finite singularities
+\begin{align}
+t_0&=\frac{\sqrt3\,m_1m_2}{2S_2},\nonumber\\
+t_1&=\frac{m_1(\sqrt3\,m_2+iS_3)}{2S_2},&
+t_2&=\overline{t_1}.
+\label{eq:singularities}
+\end{align}
+The residues are computed from the generated matrix.  Their characteristic
+polynomials are
+\begin{align}
+\chi_{t_0}(\lambda)&=\lambda^2(\lambda+1)^2,\nonumber\\
+\chi_{t_1}(\lambda)
+  =\chi_{t_2}(\lambda)
+  &=\lambda(\lambda-1)(\lambda+1)(\lambda+2).
+\label{eq:finite-charpoly}
+\end{align}
+The residue at infinity is minus the finite-residue sum, and
+\begin{equation}
+\chi_\infty(\lambda)
+ =\lambda^4-6\lambda^3+7\lambda^2+6\lambda+(27\sigma-8),
+\qquad
+\sigma=\frac{S_2}{S_1^2}.
+\label{eq:infinity-charpoly}
+\end{equation}
+These identities are obtained in one generic exact computation over
+\(\mathbb{Q}(\sqrt3,i)(m_1,m_2)\).  Specialized rational mass cases are
+regressions, not substitutes for the generic derivation.
+
+\section{Positive-mass Galois obstruction}
+\label{sec:galois}
+
+Before the normalization \(m_3=1\),
+\[
+\sigma=
+\frac{m_1m_2+m_2m_3+m_3m_1}{(m_1+m_2+m_3)^2}.
+\]
+Positivity gives \(\sigma>0\), while
+\begin{equation}
+\frac13-\sigma=
+\frac{(m_1-m_2)^2+(m_2-m_3)^2+(m_3-m_1)^2}
+     {6(m_1+m_2+m_3)^2}\geq0.
+\label{eq:sigma-domain}
+\end{equation}
+Thus \(0<\sigma\leq1/3\), with equality only at equal masses.
+
+\begin{lemma}[Non-Abelian identity component]
+\label{lem:nonabelian}
+For every finite positive mass triple, the identity component of the
+differential Galois group of the normal variational equation
+\eqref{eq:nve-matrix} is non-Abelian.
+\end{lemma}
+
+\begin{proof}
+The spectra in \eqref{eq:finite-charpoly} are integral, so every finite local
+monodromy has all eigenvalues equal to one and is unipotent.  Each unipotent
+element of a complex linear algebraic group lies in its identity component.
+Assume that identity component is Abelian.  The finite monodromies then
+commute, and their product is unipotent.  The fundamental-group relation
+would make the monodromy at infinity unipotent as well.
+
+The infinity exponents obtained from \eqref{eq:infinity-charpoly} obey
+\begin{equation}
+ \big((2\lambda-3)^2-13\big)^2=144(1-3\sigma).
+\label{eq:exponent-relation}
+\end{equation}
+Unipotent infinity monodromy would require all four exponents to be integers.
+For two nested-radical roots put \(x=2\lambda_1-3\) and
+\(y=2\lambda_2-3\).  Then \(x,y\) are odd integers with
+\(x^2+y^2=26\).  The only odd-square decomposition is \(1+25\), which
+forces the inner square root in \eqref{eq:exponent-relation} to be \(12\)
+and hence \(\sigma=0\).  This contradicts \eqref{eq:sigma-domain}.
+Therefore infinity monodromy is not unipotent and the assumed Abelian
+identity component is impossible.
+\end{proof}
+
+\begin{proposition}[Reproduced planar obstruction]
+\label{prop:planar}
+For every finite positive mass triple, the declared translation- and
+rotation-reduced planar Newtonian Hamiltonian at the fixed nonzero angular
+momentum is not completely integrable by meromorphic first integrals in a
+complex neighborhood of the parabolic Lagrange phase curve.
+\end{proposition}
+
+\begin{proof}
+Complete meromorphic Liouville integrability would, by the
+Morales--Ramis necessary condition, make the identity component of the
+normal variational differential Galois group Abelian
+\cite{moralesramis2001}.  Lemma~\ref{lem:nonabelian} gives the contradiction.
+\end{proof}
+
+The first-normal-variational polynomial-invariant values
+\(\{1/3,8/27,2/9\}\) are not exceptions to this complete-integrability
+obstruction.  The positive-mass exceptional set for Proposition
+\ref{prop:planar} is empty.
+
+\section{Spatial and KS-atlas transfer}
+\label{sec:transfer}
+
+\subsection{Spatial variational subquotient}
+
+Let \(U\) be the collision-free regular part of the twelve-dimensional
+translation-reduced spatial phase space.  In pair coordinates its Hamiltonian
+has the form
+\begin{equation}
+H_{\mathrm{sp}}=
+\frac{|W_1|^2}{2\mu_1}+\frac{|W_2|^2}{2\mu_2}
++\frac{W_1\cdot W_2}{m_c}
+-\frac{k_1}{|X_1|}-\frac{k_2}{|X_2|}
+-\frac{k_3}{|X_1-X_2|}.
+\label{eq:spatial-H}
+\end{equation}
+Reflection across the physical plane is a symplectic involution preserving
+\eqref{eq:spatial-H}.  Along a planar solution, the in-plane and vertical
+variational subspaces are invariant.  The in-plane block is the
+translation-reduced planar variational equation.
+
+The planar rotation momentum is
+\[
+L_z=X_{1x}W_{1y}-X_{1y}W_{1x}
+   +X_{2x}W_{2y}-X_{2y}W_{2x}.
+\]
+Rotational invariance gives \(\{H_{\mathrm{sp}},L_z\}=0\).
+At the regular fixed nonzero momentum of the phase curve, the invariant
+tangent space \(\ker dL_z\), quotiented by the rotation generator
+\(X_{L_z}\), gives the reduced planar variational equation
+\cite{marsdenweinstein1974}.  Energy restriction and flow quotient then
+give the four-dimensional normal module:
+\[
+\begin{aligned}
+\text{spatial VE }12
+&\longrightarrow \text{planar submodule }8
+\longrightarrow \text{fixed-}L_z\text{ tangent }7\\
+&\longrightarrow \text{rotation quotient }6
+\longrightarrow \text{energy tangent }5
+\longrightarrow \text{normal quotient }4.
+\end{aligned}
+\]
+The Galois representation of a differential subquotient is an algebraic
+image of the full representation.  An Abelian identity component has only
+Abelian algebraic images.  Lemma~\ref{lem:nonabelian} therefore makes the
+identity component of the spatial variational Galois group non-Abelian.
+
+\subsection{KS cotangent reduction}
+
+For one KS spinor \(q=(q_1,q_2,q_3,q_4)\), use the convention
+\cite{kustaanheimostiefel1965}
+\begin{align}
+\kappa(q)&=\bigl(
+  2(q_1q_3+q_2q_4),
+  2(q_1q_4-q_2q_3),
+  q_1^2+q_2^2-q_3^2-q_4^2
+\bigr),\nonumber\\
+r&=q\cdot q,\qquad
+Y(q)=(-q_2,q_1,-q_4,q_3).
+\label{eq:ks-map}
+\end{align}
+The exact identities
+\[
+|\kappa(q)|^2=r^2,\quad
+D\kappa D\kappa^{T}=4r\Id_3,\quad
+D\kappa^{T}D\kappa=4r\Id_4-4YY^{T},\quad
+D\kappa\,Y=0
+\]
+show that the configuration kernel is the circle direction generated by
+\(Y\).  The cotangent momentum map and physical projection are
+\begin{equation}
+\XiMap(q,P)=Y(q)\cdot P,\qquad
+x=\kappa(q),\qquad
+p=\frac{D\kappa(q)P}{4r}.
+\label{eq:cotangent-projection}
+\end{equation}
+Direct differentiation gives canonical projected brackets on
+\(\XiMap=0\); away from that level, the momentum brackets have the expected
+magnetic terms proportional to \(\XiMap\).  Applying
+\eqref{eq:cotangent-projection} to two spinors gives the regular dimension
+chain
+\[
+18\longrightarrow16\longrightarrow14
+\]
+for zero-level restriction and quotient by \(\T^2\), including the temporal
+canonical pair.
+
+The regularized extended Hamiltonian is
+\begin{equation}
+\mathcal K=g(H_{\mathrm{sp}}+p_t),\qquad
+g=r_{12}r_{23}r_{31},\qquad
+\frac{dt}{ds}=g.
+\label{eq:sundman}
+\end{equation}
+For a projectable function \(F\) with no explicit \(t\)-dependence,
+\[
+\{F,\mathcal K\}
+=g\{F,H_{\mathrm{sp}}\}
+ +(H_{\mathrm{sp}}+p_t)\{F,g\}.
+\]
+On \(\mathcal K=0\), with \(g\ne0\), conservation for \(\mathcal K\) is
+equivalent to conservation for \(H_{\mathrm{sp}}\).  No off-shell equivalence
+is claimed.
+
+\begin{definition}[Physically admissible KS family]
+A complete candidate family consists of
+\[
+(\mathcal K,p_t,\XiMap_1,\XiMap_2,F_1,\ldots,F_5).
+\]
+It must be pairwise commuting, have rank nine on a relative dense-open subset
+of \(\{\mathcal K=\XiMap_1=\XiMap_2=0\}\), be invariant under both circle
+actions, agree on qualified chart overlaps, and be independent of the
+regularizing clock.
+\end{definition}
+
+The shell-relative rank condition is essential.  In adapted canonical
+coordinates, a candidate containing \(\XiMap_1p_6\) can have ambient rank
+nine away from \(\XiMap_1=0\) while losing its physical direction on the
+shell.  The qualification contains this exact negative control.
+
+\begin{lemma}[KS shell transfer]
+\label{lem:ks-transfer}
+Every physically admissible KS family descends on the regular shell to six
+independent commuting physical functions
+\((H_{\mathrm{sp}},f_1,\ldots,f_5)\).
+\end{lemma}
+
+\begin{proof}
+Commutation with \(p_t,\XiMap_1,\XiMap_2\) removes the temporal-angle
+components of \(dF_i\).  On the shell write
+\[
+dF_i=A_i+b_i\,dp_t+c_i^a\,d\XiMap_a,\qquad
+d\mathcal K=g(dH_{\mathrm{sp}}+dp_t)+k^a\,d\XiMap_a.
+\]
+If the descended covectors
+\(dH_{\mathrm{sp}},d(A_i-b_iH_{\mathrm{sp}})\) were dependent, the displayed
+identities would lift that dependence to one among
+\[
+d\mathcal K,\ dp_t,\ d\XiMap_1,\ d\XiMap_2,\ dF_1,\ldots,dF_5,
+\]
+contradicting shell-relative rank nine.  The Poisson product rule from
+\eqref{eq:sundman} similarly transfers conservation and involution.  Circle
+invariance and overlap equality make the descended functions single-valued
+on the physical quotient.
+\end{proof}
+
+\begin{theorem}[Qualified spatial and KS obstruction]
+\label{thm:main}
+For every finite positive mass triple, the complexified
+translation-reduced spatial Newtonian three-body Hamiltonian is not
+completely integrable by meromorphic first integrals in a neighborhood of
+the embedded parabolic Lagrange phase curve at fixed nonzero angular
+momentum.
+Consequently, the qualified multi-chart KS atlas admits no complete
+shell-regular physically admissible meromorphic Liouville family on any
+domain containing the regular lift of that neighborhood.
+\end{theorem}
+
+\begin{proof}
+The normal module in Lemma~\ref{lem:nonabelian} is a differential subquotient
+of the spatial variational module.  The Morales--Ramis condition therefore
+rules out complete local meromorphic Liouville integrability of the spatial
+Hamiltonian.  If a physically admissible KS family existed on a domain
+containing the regular lifted neighborhood, Lemma~\ref{lem:ks-transfer}
+would descend its restriction to a complete physical family there,
+contradicting the spatial obstruction.
+\end{proof}
+
+The KS consequence requires shell regularity, zero \(\XiMap\), gauge
+projectability, chart compatibility, and clock independence.  Omitting any
+one of these conditions changes the model and is outside Theorem
+\ref{thm:main}.
+
+\section{Computational qualification}
+\label{sec:qualification}
+
+The proof package separates scientific inputs, production certificates, and
+a source-disjoint symbolic reconstruction.  Each predecessor is accepted
+only by qualification identifier and exact SHA-256 hash.  Status-only
+records are rejected.  The principal records are summarized in
+Table~\ref{tab:records}.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Campaign & Role & Qualified status\\
+\midrule
+WP2-MULTIQ-v1 & Two-chart KS model and transitions & PASS\\
+WP4-MR-REPL-v1 & Generic planar NVE reproduction & PASS\\
+WP4-LIFT-NI-v3 & Spatial and KS transfer & PASS\\
+WP1-CAT-N3BP-v1 & External periodic-orbit catalogue validation & PASS\\
+WP1-RESIDUAL-MAP-v1 & Follow-on residual allocation & PASS\\
+WP3-MULTI-CAND-v2-KQ-v1 & Frozen-library bounded null search & BOUNDED NULL\\
+\bottomrule
+\end{tabular}
+\caption{Qualified inputs.  The last three rows provide computational
+context only and are not premises of Theorem~\ref{thm:main}.}
+\label{tab:records}
+\end{table}
+
+The generic symbolic replay performs the following decision-bearing checks:
+\begin{enumerate}
+  \item exact zero-energy and Hamilton-equation tangency of the phase curve;
+  \item construction and Hamiltonian identities of the six- and
+    four-dimensional variational systems;
+  \item symmetry of the Whittaker Hessian;
+  \item Fuchsian pole support and simple-pole valuations;
+  \item exact finite and infinity characteristic polynomials;
+  \item the positive-mass sum-of-squares identity; and
+  \item byte-independent equality of the complete normalized result payload.
+\end{enumerate}
+Elapsed time is excluded from the payload comparison.  Four exact rational
+mass cases and a dependency-free production implementation provide
+additional convention and regression checks.
+
+Adversarial controls mutate residue polynomials, source hashes, theorem
+wording, phase-curve scope, and prerequisite records.  They also attempt to
+promote bounded discovery evidence into a theorem premise, accept an
+ambient-only KS rank family, accept an internal or anonymous review as
+independent, and authorize submission with incomplete metadata.  Every such
+mutation must be rejected.
+
+The broader legacy suite is partitioned into deterministic fast tests, slow
+simulations, and explicitly quarantined historical prototypes.  That suite
+is software-regression evidence only; it does not establish the theorem.
+
+\section{Bounded discovery context}
+\label{sec:context}
+
+The WP1 catalogue track validates the project orbit pipeline against an
+external unequal-mass periodic-orbit dataset derived from the catalogue of
+Li, Li, and Liao \cite{lililiao2021}.  This supports the numerical efficacy
+of the orbit tooling under a frozen convention and tolerance contract.  It is
+not evidence for the differential-Galois conclusion.
+
+WP3 searched a frozen library of \(285\) candidate functions after quotienting
+the known \(L^2\) class.  No promoted invariant survived the locked
+qualification.  The WP3 result is bounded to its frozen library and is not
+used in the proof.  It does not constitute a search over all functions and
+does not support an absence-of-integrals claim.
+
+The two tracks answer different questions.  WP1 tests whether the numerical
+pipeline reproduces external orbit evidence.  WP3 allocates a finite
+candidate search.  Theorem~\ref{thm:main} instead follows from an exact local
+normal-variational obstruction.
+
+\section{Limitations and nonclaims}
+\label{sec:limitations}
+
+The theorem concerns complete meromorphic Liouville integrability locally
+near one phase curve.  The result does not exclude one additional integral.
+It does not exclude non-meromorphic first integrals, integrability on a
+domain disjoint from the obstructed neighborhood, or a different notion of
+integrability.  It does not cover zero angular momentum, nonzero
+\(\XiMap\) magnetic dynamics, gauge-dependent or clock-dependent functions,
+or triple-collision regularization.
+
+The computation begins with a published reduced Hamiltonian convention.  It
+checks exact equivalence to that convention but does not independently
+reconstruct every canonical translation and rotation map from the
+unreduced eighteen-dimensional state.  The spatial transfer is an explicit
+differential subquotient argument; it is not the invalid inference that
+nonintegrability of an invariant subsystem alone implies nonintegrability of
+the ambient system.
+
+No global orbit classification follows.  The only domain-level corollary is
+by restriction: a complete admissible family on a larger domain containing
+the obstructed regular neighborhood would restrict to a forbidden local
+family.
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+The repository contains the manuscript source, bibliography, claim ledger,
+proof-dependency graph, canonical artifact manifest, exact predecessor
+hashes, and the source-disjoint SymPy reconstruction.  From a clean checkout,
+the core package is exercised by
+\begin{verbatim}
+./scripts/reproduce_wp5_pub_v1.sh --core
+\end{verbatim}
+The command verifies the specification lock and all pinned inputs, rebuilds
+the PDF, reruns the generic symbolic derivation, compares its complete
+decision-bearing payload after removing elapsed time, executes the
+publication-specific adversarial tests, and emits a machine-readable report.
+A full mode additionally runs the partitioned legacy baseline.
+
+Primary papers are identified by bibliographic metadata, URL, and SHA-256
+download hash but are not redistributed.  External review is a separate,
+fail-closed gate: two independent human reviewers must collectively cover
+the planar/differential-Galois and symplectic-reduction/KS arguments, and at
+least one clean-room reproduction must occur outside project-controlled
+hardware.  No internal process, automated agent, or self-review is treated
+as that evidence.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+The package reproduces the published planar Morales--Ramis calculation from
+the reduced Hamiltonian and verifies its positive-mass non-Abelian Galois
+obstruction with exact arithmetic.  A separately qualified subquotient,
+cotangent-reduction, Sundman, and shell-rank argument transfers that
+obstruction to the translation-reduced spatial Hamiltonian and to the
+declared KS atlas.  This establishes the local, complete-meromorphic
+nonintegrability statement in Theorem~\ref{thm:main}, subject to every stated
+model boundary.  External mathematical review, independent clean-room
+reproduction, author metadata, license choices, and release authorization
+remain publication gates rather than inferred facts.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

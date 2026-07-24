@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "version_state": "internal_review_draft",
+  "title": "Exact reproduction and KS-atlas transfer of a Morales-Ramis obstruction near the parabolic Lagrange solution",
+  "author": {
+    "name": "Jacob Sullivan",
+    "name_confirmed_by_author": false,
+    "affiliation": null,
+    "affiliation_status_confirmed": false,
+    "orcid": null,
+    "orcid_status_confirmed": false,
+    "contact": null,
+    "contact_confirmed": false
+  },
+  "contributions": {
+    "draft_statement": "Conceptualization, software, formal analysis, validation, evidence curation, and manuscript preparation.",
+    "confirmed_by_author": false
+  },
+  "conflicts": {
+    "statement": null,
+    "confirmed_by_author": false
+  },
+  "funding": {
+    "statement": null,
+    "confirmed_by_author": false
+  },
+  "ai_assistance": {
+    "draft_disclosure": "AI-assisted tools were used in code development, evidence organization, verification scripting, and manuscript drafting. All mathematical claims, source attributions, generated artifacts, and release decisions require human author review and responsibility.",
+    "confirmed_by_author": false
+  },
+  "licenses": {
+    "code": null,
+    "evidence_data": null,
+    "manuscript_text": null,
+    "confirmed_by_author": false
+  },
+  "external_review": {
+    "required_review_count": 2,
+    "accepted_review_ids": [],
+    "clean_room_receipt_ids": [],
+    "all_blockers_resolved": false,
+    "all_majors_resolved": false
+  },
+  "archives": {
+    "software_doi": null,
+    "preprint_identifier": null,
+    "publication_identifier": null
+  },
+  "release": {
+    "ready_for_submission": false,
+    "authorized_by_author": false,
+    "authorization_utc": null
+  },
+  "current_gate": "READY_FOR_EXTERNAL_REVIEW_PENDING_INTERNAL_QUALIFICATION",
+  "fail_closed_reason": "Author metadata, contribution/conflict/funding/AI disclosures, licenses, two independent human reviews, external clean-room reproduction, and release authorization are not yet confirmed."
+}

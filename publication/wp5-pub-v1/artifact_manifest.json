@@ -1,0 +1,150 @@
+{
+  "artifact_count": 28,
+  "artifacts": [
+    {
+      "bytes": 2655,
+      "path": "notes/wp5-pub-v1-plan.md",
+      "sha256": "c7f6512e018ca26434c66e0521c27229b1808e8fba9b67469ce85b7b548ab631"
+    },
+    {
+      "bytes": 86928,
+      "path": "output/pdf/wp5-pub-v1-manuscript.pdf",
+      "sha256": "7470d73612278377f3fd25f4a1bafc8caa6215160aff04f0fc9a35bef050585d"
+    },
+    {
+      "bytes": 1359,
+      "path": "publication/wp5-pub-v1/README.md",
+      "sha256": "37651e631e32e20893efa299f36144dd22081c33ceff5ab3a89187c83760d098"
+    },
+    {
+      "bytes": 3054,
+      "path": "publication/wp5-pub-v1/REPRODUCING.md",
+      "sha256": "21cdbe42525c4a2d0c43c10e05334c6a94f34e9c9ca7e519060ddd9179d5ad74"
+    },
+    {
+      "bytes": 6709,
+      "path": "publication/wp5-pub-v1/claims/claim_ledger.json",
+      "sha256": "c54a7cb3cb8c3ca36b84765fa8f4d1d54c2fc6cf830176e2630d42731cf9840c"
+    },
+    {
+      "bytes": 86928,
+      "path": "publication/wp5-pub-v1/manuscript/main.pdf",
+      "sha256": "7470d73612278377f3fd25f4a1bafc8caa6215160aff04f0fc9a35bef050585d"
+    },
+    {
+      "bytes": 25272,
+      "path": "publication/wp5-pub-v1/manuscript/main.tex",
+      "sha256": "49976c4db117155c4310d81607f5afab5264c9fefe2f0f3151c0e27db6a75868"
+    },
+    {
+      "bytes": 2748,
+      "path": "publication/wp5-pub-v1/manuscript/references.bib",
+      "sha256": "5fd735bfb306716a9955fde503278b4c0eb4930cf7a865e2b86d04f7eb36fe01"
+    },
+    {
+      "bytes": 7255,
+      "path": "publication/wp5-pub-v1/proof_dependency_map.json",
+      "sha256": "4ad932b92eb641ddada448c686fbf4119e5fe3231489a495b17e60d3c145f891"
+    },
+    {
+      "bytes": 2528,
+      "path": "publication/wp5-pub-v1/proof_dependency_map.md",
+      "sha256": "75f60b2ed8c581ffd890ef88b582ce88f030e024942d95b885844d59aaec5428"
+    },
+    {
+      "bytes": 2044,
+      "path": "publication/wp5-pub-v1/release/SUBMISSION_CHECKLIST.md",
+      "sha256": "42b48746b13e8e7d8762221184e7a526624bc18db6fb7ffcdbf3ee4d6dfe5471"
+    },
+    {
+      "bytes": 2026,
+      "path": "publication/wp5-pub-v1/release/metadata.json",
+      "sha256": "c2cc3f6f21fdc463c06e8d25f37035dbebd2ed62cc65f24283a27367a70a9e62"
+    },
+    {
+      "bytes": 28,
+      "path": "publication/wp5-pub-v1/requirements-publication.txt",
+      "sha256": "8608beeb4dcf6494a9d917d491d24ef7ed1d71ef616af4113dc92b41581fae5f"
+    },
+    {
+      "bytes": 2668,
+      "path": "publication/wp5-pub-v1/review/EXTERNAL_REVIEW_GATE.md",
+      "sha256": "ceb5f31ac657c7b055946961284c2684df3ab813c2f77bdf1e815343b2d4322d"
+    },
+    {
+      "bytes": 3507,
+      "path": "publication/wp5-pub-v1/review/REVIEWER_PACKET.md",
+      "sha256": "5d163e4f69fee84a0d2b32d4690f498133e3c6b91b6d76cc8907168567be442e"
+    },
+    {
+      "bytes": 1352,
+      "path": "publication/wp5-pub-v1/review/REVIEW_FORM.md",
+      "sha256": "02714717621acedcb881491b8500b7aee8f5373af3b8fa3b9abf88f3f15f23b8"
+    },
+    {
+      "bytes": 1490,
+      "path": "scripts/reproduce_wp5_pub_v1.sh",
+      "sha256": "aa03b9e754de000599f8688434a58484b3cbecb9795cee060d5fcf49d4a99bc7"
+    },
+    {
+      "bytes": 5807,
+      "path": "tests/wp5_pub_v1/test_wp5_pub_v1.py",
+      "sha256": "f992b602988a3d37731b6843f1fcb5efddfc8271a7b893d89108b579f077473e"
+    },
+    {
+      "bytes": 467,
+      "path": "validation-external/wp5-pub-v1/README.md",
+      "sha256": "c659973b309e7fbf40e3c3ef9da89f132a601406e2be174b73bce91e741e996b"
+    },
+    {
+      "bytes": 13540,
+      "path": "validation-external/wp5-pub-v1/qualification_spec.json",
+      "sha256": "a2ee32d5a0c4a4c5e2334180c3dc3aa748ff7e3ee0f2a548a0507663ea214e63"
+    },
+    {
+      "bytes": 1626,
+      "path": "validation-external/wp5-pub-v1/reports/wp5_pub_v1_pdf_visual_inspection.json",
+      "sha256": "51b9522b594108214e6ca76b90b4b8ee86ae1f4b496ad7b641a5f7140307e8b5"
+    },
+    {
+      "bytes": 4203,
+      "path": "validation-external/wp5-pub-v1/reports/wp5_pub_v1_specification_lock.json",
+      "sha256": "f585461422ba9a411a6b51bb072912e1e26aa4f129199b4105479e4d7dd17202"
+    },
+    {
+      "bytes": 4802,
+      "path": "validation-external/wp5-pub-v1/review/clean_room_receipt_schema.json",
+      "sha256": "4e7565f21fcf79fbb84bfacb658aed127602a00bf769f4b0a2f931a1ade5db1a"
+    },
+    {
+      "bytes": 4526,
+      "path": "validation-external/wp5-pub-v1/review/external_review_schema.json",
+      "sha256": "e5f3a7b3a3715a89374dc4a58a177b8c6c9ea07cb9d1178916b94a61f8cc0cae"
+    },
+    {
+      "bytes": 3725,
+      "path": "validation-external/wp5-pub-v1/scripts/build_artifact_manifest.py",
+      "sha256": "2ec0f98160eb4ccf1a8b836ce592e4ccbb7c1732bdc011461255fd2945ca138c"
+    },
+    {
+      "bytes": 3655,
+      "path": "validation-external/wp5-pub-v1/scripts/lock_specification.py",
+      "sha256": "03517d64400347c995bdc1c2f667d44c03e1a7b20a98f5c7f56b26534f52dbc8"
+    },
+    {
+      "bytes": 38544,
+      "path": "validation-external/wp5-pub-v1/scripts/verify_package.py",
+      "sha256": "2d685442a7ac2556f01e8bc05ebeff095ed179502506c5ed0894e5d790abefee"
+    },
+    {
+      "bytes": 2029,
+      "path": "validation-external/wp5-pub-v1/sources/manifest.json",
+      "sha256": "e0c3375be662496f08a76ed4912fb1afacf76cedf42a526d2513a29c0acc80e7"
+    }
+  ],
+  "campaign": "WP5-PUB-v1",
+  "manifest_payload_sha256": "53529d0698cba9e4047af0ffc229c5c54d661657aecb07721fa0e6ecc967c9d9",
+  "manifest_policy": "The manifest excludes itself and generated replay reports. External records pin the manifest file hash and git commit.",
+  "schema_version": "1.0",
+  "source_date_epoch": 1784851200
+}

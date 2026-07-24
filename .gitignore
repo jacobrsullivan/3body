@@ -56,6 +56,11 @@ results/
 *.hdf5
 *.parquet
 build_external/
+/tmp/pdfs/
+
+# WP5 publication build intermediates; the PDF itself is versioned.
+/publication/wp5-pub-v1/manuscript/main.log
+/publication/wp5-pub-v1/manuscript/main.blg
 
 # Root build artifacts (should be in build/)
 /qd_*
