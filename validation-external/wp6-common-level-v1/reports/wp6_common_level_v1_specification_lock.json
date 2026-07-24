@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-COMMON-v1",
+  "lock_type": "claim_specification",
+  "locked_utc": "2026-07-24T11:00:43Z",
+  "baseline_git_commit": "692c36be3f323108c6c5c8e9dc8a2442f99bbf86",
+  "spec_path": "validation-external/wp6-common-level-v1/qualification_spec.json",
+  "spec_sha256": "421de0e784edbbdebe77b1fafc69b793ced658125a5e38b00a0b42203432935b",
+  "implementation_present_at_lock": false,
+  "qualification_outputs_present_at_lock": false,
+  "prerequisite_file_hashes": {
+    "validation-external/wp6-common-level-v1/sources/manifest.json": "69138ca2e2e9d5df755ed0ea1052117ccd8a4775beff4c1ca5cbef0f4dfeb5a2",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_lock.json": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_record.json": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_lock.json": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+    "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_record.json": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_lock.json": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+    "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_record.json": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb"
+  },
+  "specification_lock_sha256": "8da589c82647d5c2f6b34b04911cf8ab41e0ce8cbf32c86c97080c8901bf7c1e"
+}

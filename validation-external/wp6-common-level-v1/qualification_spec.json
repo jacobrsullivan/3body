@@ -1,0 +1,148 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-COMMON-v1",
+  "specification_status": "LOCKED_BEFORE_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Qualify a direct non-Lagrange fixed-common-level theorem instead of transferring the unreduced WP6-FI1-v1 conclusion by implication.",
+  "goal": "Audit and qualify the Maciejewski-Przybylska-Combot rational nonintegrability theorem for the planar positive-mass three-body problem on every common level M_(h,c) with (h,c)!=(0,0), using Euler-Moulton homographic witnesses.",
+  "evidence_boundary": "A PASS qualifies a pinned published theorem plus a project-owned exact audit of its common-level branch partition, Euler-Moulton spectral parameter, Kepler energy-angular-momentum relation, and representative normal-variational coefficients. It does not independently reproduce the universal differential-Galois proofs in the source appendices, does not transfer WP6-FI1-v1 to one reduced leaf, and does not cover (h,c)=(0,0), spatial motion, non-rational regularity classes, or a regular SO(3) chart through collinearity.",
+  "prerequisites": {
+    "wp6_l0": {
+      "qualification_id": "WP6-L0-v1-27f160d029ca",
+      "lock_file": "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_lock.json",
+      "lock_file_sha256": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+      "record_file": "validation-external/wp6-l0-v1/reports/wp6_l0_v1_qualification_record.json",
+      "record_file_sha256": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942",
+      "role": "Qualified predecessor for the c=0, h!=0 branch."
+    },
+    "wp6_fi1": {
+      "qualification_id": "WP6-FI1-v1-c9099f7494b1",
+      "lock_file": "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_lock.json",
+      "lock_file_sha256": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+      "record_file": "validation-external/wp6-fi1-v1/reports/wp6_fi1_v1_qualification_record.json",
+      "record_file_sha256": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+      "role": "Pins the global-unreduced one-integral theorem and its prohibited fixed-leaf transfer."
+    },
+    "wp2_so3_leaf": {
+      "qualification_id": "WP2-SO3-LEAF-v1-837d711e7074",
+      "lock_file": "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_lock.json",
+      "lock_file_sha256": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+      "record_file": "validation-external/wp2-so3-leaf-v1/reports/wp2_so3_leaf_v1_qualification_record.json",
+      "record_file_sha256": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb",
+      "role": "Pins the regular noncollinear SO(3) chart boundary; the Euler-Moulton witness is not inserted into that chart."
+    }
+  },
+  "model": {
+    "system": "Planar Newtonian three-body problem with finite positive masses after center-of-mass reduction and algebraic complexification of mutual distances.",
+    "known_integrals": [
+      "Hamiltonian H",
+      "planar angular momentum C"
+    ],
+    "common_level": "M_(h,c)={(r,p,d):H=h,C=c} in the source algebraic phase model.",
+    "integrability_class": "Restricted rational complete integrability in the precise source definition.",
+    "witness": "Euler-Moulton collinear central configuration and its Kepler homographic phase curve.",
+    "branches": {
+      "zero_momentum": "c=0 and h!=0; inherited from qualified WP6-L0-v1.",
+      "noncircular_nonzero_momentum": "c!=0 and 2*h*c^2!=-mu^2; use the noncircular Kepler homographic solution and source Lemma 5.1.",
+      "circular_relation": "c!=0 and 2*h*c^2=-mu^2; the real circular orbit gives no obstruction, so use the declared complex homographic solution and source Lemma 5.3.",
+      "excluded": "h=0 and c=0."
+    },
+    "kepler_relation": "2*h*c^2=mu^2*(e^2-1).",
+    "spectral_parameter": "For n=3, the tangent variational equation contains one physical four-dimensional block with delta=lambda-1>0 by the Euler-Moulton/Conley spectrum."
+  },
+  "theorem_obligations": {
+    "R1": "Verify the two source payloads and exact theorem/title text contracts.",
+    "R2": "Verify every pinned predecessor lock and PASS record by content hash and qualification identity.",
+    "R3": "Represent the direct common-level theorem without deriving it from WP6-FI1-v1.",
+    "R4": "Partition every finite real pair (h,c)!=(0,0) into exactly one declared proof branch.",
+    "R5": "Reproduce the exact Kepler relation 2*h*c^2=mu^2*(e^2-1) and branch invariant.",
+    "R6": "Reproduce the exact equal-mass Euler-Moulton matrix spectrum {0,1,12/5} and delta=7/5.",
+    "R7": "Audit the noncircular block discriminant Delta^2=4*e^4+4*e^2*(delta+1)*(delta+4)+(delta+1)*(3*delta+4)^2*(9*delta+1), including strict positivity for delta>0 and e>0.",
+    "R8": "Audit the circular block discriminant Delta^2=9*delta^2+10*delta+1 and the requirement to replace the obstruction-free real circular orbit by the declared complex witness.",
+    "R9": "Match representative generic normal-variational coefficients against a source-disjoint exact implementation.",
+    "R10": "Reject the double-zero level, one-additional-integral transfer, spatial transfer, non-rational regularity claims, and global regular-chart claims."
+  },
+  "exact_benchmarks": [
+    {
+      "case_id": "zero-momentum-negative-energy",
+      "h": "-3/2",
+      "c": "0",
+      "mu": "1",
+      "expected_branch": "ZERO_MOMENTUM_NONZERO_ENERGY"
+    },
+    {
+      "case_id": "parabolic-nonzero-momentum",
+      "h": "0",
+      "c": "1",
+      "mu": "1",
+      "expected_branch": "NONCIRCULAR_NONZERO_MOMENTUM",
+      "expected_e_squared": "1"
+    },
+    {
+      "case_id": "elliptic-noncircular",
+      "h": "-3/8",
+      "c": "1",
+      "mu": "1",
+      "expected_branch": "NONCIRCULAR_NONZERO_MOMENTUM",
+      "expected_e_squared": "1/4"
+    },
+    {
+      "case_id": "circular-relation",
+      "h": "-1/2",
+      "c": "1",
+      "mu": "1",
+      "expected_branch": "CIRCULAR_RELATION_COMPLEX_WITNESS",
+      "expected_e_squared": "0"
+    },
+    {
+      "case_id": "double-zero-control",
+      "h": "0",
+      "c": "0",
+      "mu": "1",
+      "expected_branch": "UNQUALIFIED_DOUBLE_ZERO"
+    },
+    {
+      "case_id": "equal-mass-euler",
+      "masses": [
+        "1",
+        "1",
+        "1"
+      ],
+      "expected_C_spectrum": [
+        "0",
+        "1",
+        "12/5"
+      ],
+      "expected_delta": "7/5",
+      "generic_e": "1",
+      "expected_generic_Delta": "1186/25",
+      "expected_circular_Delta_squared": "816/25"
+    }
+  ],
+  "independent_validation": {
+    "production": "A pure-Python exact Fraction implementation classifies levels, proves branch identities and positivity certificates, constructs the equal-mass Euler matrix, and evaluates a generic normal-variational coefficient sample.",
+    "reference": "A source-disjoint SymPy implementation derives the Kepler relation from the conic orbit, constructs and diagonalizes the equal-mass Euler matrix, and evaluates the same coefficient sample without production imports.",
+    "required_exact_agreement": true
+  },
+  "adversarial_controls": [
+    "Reject h=0,c=0 as qualified.",
+    "Reject c=0,h!=0 if the WP6-L0-v1 predecessor is missing or changed.",
+    "Reject the real circular orbit as the obstruction witness for the circular relation.",
+    "Reject delta<=0 as satisfying the strict Euler-Moulton spectral premise.",
+    "Reject a claim about absence of one additional reduced-leaf integral.",
+    "Reject a spatial three-body conclusion.",
+    "Reject a meromorphic or non-rational regularity conclusion.",
+    "Reject insertion of the collinear witness into the regular noncollinear SO(3) chart.",
+    "Reject a reference implementation importing production code."
+  ],
+  "decision_policy": {
+    "PASS": "Every source, predecessor, branch, exact identity, independent-reference, adversarial-control, proof-coverage, and frozen-scope gate passes.",
+    "FAIL": "Any source or predecessor mismatch, uncovered nonzero common level, branch overlap, exact mismatch, escaped negative control, implementation coupling, or claim-boundary violation fails v1.",
+    "AUTHORIZED_CLAIM": "For arbitrary finite positive masses and every finite real common level (H,C)=(h,c) with (h,c)!=(0,0), the pinned Maciejewski-Przybylska-Combot theorem, with the project-owned exact branch and benchmark audit, proves that the planar Newtonian three-body problem is not rationally integrable in the locked restricted-integrability sense. The proof uses Euler-Moulton homographic witnesses and is direct on each common level rather than transferred from WP6-FI1-v1.",
+    "PROHIBITED_DOUBLE_ZERO_CLAIM": "The same campaign proves nonintegrability on (H,C)=(0,0).",
+    "PROHIBITED_ONE_INTEGRAL_CLAIM": "No one additional first integral exists on each common level.",
+    "PROHIBITED_SPATIAL_CLAIM": "The spatial common-level problem is qualified.",
+    "PROHIBITED_REGULARITY_CLAIM": "The theorem excludes all meromorphic, smooth, analytic, or non-rational integrability notions.",
+    "PROHIBITED_DOMAIN_CLAIM": "Every open phase-space domain outside the Lagrange neighborhood is pointwise nonintegrable."
+  },
+  "invalidation": "Any changed theorem statement, source payload, predecessor, common-level definition, branch relation, benchmark, obligation, control, decision rule, or frozen implementation invalidates v1."
+}

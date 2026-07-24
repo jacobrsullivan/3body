@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-COMMON-v1",
+  "retrieved_utc": "2026-07-24T00:00:00Z",
+  "sources": [
+    {
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "title": "Non-integrability of the planar n-body problem on common levels of the first integrals",
+      "authors": [
+        "Andrzej J. Maciejewski",
+        "Maria Przybylska",
+        "Thierry Combot"
+      ],
+      "publication": "arXiv preprint 2025",
+      "arxiv": "2502.01426",
+      "download_url": "https://arxiv.org/pdf/2502.01426",
+      "download_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "qualified_use": "Primary theorem for rational nonintegrability on every common level M_(h,c) except (0,0), including the Euler-Moulton branch construction and non-solvable variational subsystems."
+    },
+    {
+      "source_id": "combot-2011",
+      "title": "Non integrability of the n body problem with non zero angular momentum",
+      "authors": [
+        "Thierry Combot"
+      ],
+      "publication": "arXiv:1112.1889; published in Celestial Mechanics and Dynamical Astronomy 114 (2012), 319-340",
+      "arxiv": "1112.1889",
+      "download_url": "https://arxiv.org/pdf/1112.1889",
+      "download_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "qualified_use": "Independent predecessor for fixed-energy and fixed-angular-momentum integrability criteria, conic central-configuration witnesses, and the explicit double-zero limitation."
+    }
+  ],
+  "copyright_boundary": "The repository records bibliographic metadata and hashes only and does not redistribute the papers."
+}
