@@ -1,0 +1,505 @@
+{
+  "audit_coverage": {
+    "## Bounded Result": true,
+    "## Candidate Results": true,
+    "## Exact Controls": true,
+    "## MR Promotion": true,
+    "## Pre-Discovery Lock": true,
+    "## Source Frontier": true,
+    "## W1-W12 Outcome": true
+  },
+  "audit_sha256": "030e80e94bb6066bf539a90415ef47f19e7c129a78ed8a39700d231c7c4b8947",
+  "authorized_claim": "Under the locked WP6-DZ-FEAS-v1 primary-source and exact-audit protocol, no explicit non-equilibrium algebraic phase curve satisfying every W1-W12 requirement was found.",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "candidate_ledger_sha256": "520a2718c7427e9a7287599a673fdedc41fb8d3ae7e322c41427815d7cdf2e8a",
+  "claim_boundary": "A QUALIFIED_WITNESS result certifies only that one explicit phase curve satisfies every locked witness-suitability requirement. It is not a differential-Galois obstruction and is not a nonintegrability theorem. A COMPLETE_BOUNDED_NULL_RESULT certifies only that the declared search protocol found no qualifying witness; it is not a proof that no witness exists.",
+  "gates": [
+    {
+      "name": "all_source_hashes_and_sizes_verified",
+      "passed": true
+    },
+    {
+      "name": "all_source_text_contracts_verified",
+      "passed": true
+    },
+    {
+      "name": "all_prerequisites_verified",
+      "passed": true
+    },
+    {
+      "name": "locked_search_protocol_complete",
+      "passed": true
+    },
+    {
+      "name": "candidate_ledger_derives_bounded_null",
+      "passed": true
+    },
+    {
+      "name": "production_reference_exact_agreement",
+      "passed": true
+    },
+    {
+      "name": "all_adversarial_controls_rejected",
+      "passed": true
+    },
+    {
+      "name": "audit_coverage_complete",
+      "passed": true
+    },
+    {
+      "name": "mr_campaign_not_opened",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-24T13:01:10.845065+00:00",
+  "independent": {
+    "corrected": {
+      "angular_momentum": "0",
+      "derived_outer_acceleration_coefficient": "5/4",
+      "energy": "0",
+      "equations_hold": true,
+      "force_outer_acceleration_coefficient": "5/4",
+      "kappa_squared": "5/2",
+      "kinetic": "5/2",
+      "known_homothetic_curve": true,
+      "positive_potential": "5/2",
+      "qualifying_witness": false
+    },
+    "free_fall": {
+      "energy": "-5/2",
+      "energy_is_strictly_negative": true,
+      "kinetic": "0",
+      "positive_potential": "5/2"
+    },
+    "legacy": {
+      "angular_momentum": "0",
+      "energy": "-1",
+      "kinetic": "3/2",
+      "positive_potential": "5/2",
+      "stated_zero_energy_is_false": true
+    },
+    "periodic": {
+      "average_positive_potential": "14/5",
+      "energy": "-7/5",
+      "energy_is_strictly_negative": true
+    },
+    "scaling": {
+      "original_energy": "-7/3",
+      "scaled_energy": "-35/33",
+      "sign_preserved": true
+    },
+    "triple_collision": {
+      "delta_over_r_squared": "3/4",
+      "equal_masses_only": true,
+      "homothetic": true,
+      "qualifying_witness": false,
+      "released_from_rest_energy_is_negative": true,
+      "shared_time_factor": true
+    }
+  },
+  "ledger_decision": {
+    "all_candidates_have_failure": true,
+    "all_requirements_decided": true,
+    "candidate_count": 12,
+    "mr_promotion_authorized": false,
+    "outcome": "COMPLETE_BOUNDED_NULL_RESULT",
+    "qualifying_candidate_ids": []
+  },
+  "lock_sha256": "9db6ccb72a0f3efd6a959ea7f41a7aef38a92abf93f249356c8e4ffc939fd008",
+  "mr_promotion_authorized": false,
+  "mr_promotion_rule": "Create WP6-DZ-MR-v1 only when the signed feasibility record status is QUALIFIED_WITNESS and names exactly one frozen witness payload. Every other status prohibits promotion.",
+  "negative_controls": {
+    "corrected_homothetic_rejected": true,
+    "formal_collision_formula_rejected": true,
+    "free_fall_rejected_at_H_zero": true,
+    "independent_reference_source_disjoint": true,
+    "legacy_control_hash_unchanged": true,
+    "legacy_fixture_rejected": true,
+    "mr_promotion_prohibited": true,
+    "no_candidate_passes_W1_W12": true,
+    "periodic_orbits_rejected_at_H_zero": true,
+    "scaling_cannot_zero_nonzero_energy": true
+  },
+  "outcome": "COMPLETE_BOUNDED_NULL_RESULT",
+  "prerequisites": {
+    "wp2_so3_leaf": {
+      "identity_match": true,
+      "lock_file_sha256": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+      "lock_hash_match": true,
+      "qualification_id": "WP2-SO3-LEAF-v1-837d711e7074",
+      "record_file_sha256": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    },
+    "wp6_common": {
+      "identity_match": true,
+      "lock_file_sha256": "f981c1db013606e6e27a2300d52190d99e6351b1925e76ad3aefc4e292cc5803",
+      "lock_hash_match": true,
+      "qualification_id": "WP6-COMMON-v1-502728e5b811",
+      "record_file_sha256": "5eb1b935308e4e5989fcf5817d89bf6fefca2fbb5f475a48f3c7d8a03615ddd6",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    },
+    "wp6_fi1": {
+      "identity_match": true,
+      "lock_file_sha256": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+      "lock_hash_match": true,
+      "qualification_id": "WP6-FI1-v1-c9099f7494b1",
+      "record_file_sha256": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    },
+    "wp6_l0": {
+      "identity_match": true,
+      "lock_file_sha256": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+      "lock_hash_match": true,
+      "qualification_id": "WP6-L0-v1-27f160d029ca",
+      "record_file_sha256": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production": {
+    "corrected": {
+      "angular_momentum": "0",
+      "angular_momentum_identically_zero": true,
+      "central_multiplier": "5/4",
+      "dense_open_condition": "s!=0",
+      "derived_outer_acceleration_coefficient": "5/4",
+      "differential_base_field": "C(s,kappa), kappa^2=5/2",
+      "energy": "0",
+      "energy_identically_zero": true,
+      "energy_sign": "zero",
+      "equations_hold": true,
+      "failed_requirements": [
+        "W3",
+        "W9"
+      ],
+      "force_outer_acceleration_coefficient": "5/4",
+      "gradient_certificate": "dH has a nonzero p_x component while dC has a nonzero p_y component and zero p_x components on s!=0",
+      "gradients_H_C_generically_independent": true,
+      "kappa_squared": "5/2",
+      "kinetic": "5/2",
+      "known_homothetic_curve": true,
+      "known_tangent_ve_obstruction": false,
+      "phase_parameter": "s",
+      "positions_x": [
+        "-s^2",
+        "0",
+        "s^2"
+      ],
+      "positive_potential": "5/2",
+      "qualifying_witness": false,
+      "time_derivation": "d/dt=(-kappa/(2*s^2))*d/ds",
+      "velocities_x": [
+        "kappa/s",
+        "0",
+        "-kappa/s"
+      ]
+    },
+    "free_fall": {
+      "energy": "-5/2",
+      "energy_sign": "negative",
+      "finite_collision_free_free_fall_H_zero_impossible": true,
+      "kinetic": "0",
+      "positive_potential": "5/2",
+      "released_from_rest": true
+    },
+    "legacy": {
+      "angular_momentum": "0",
+      "energy": "-1",
+      "energy_sign": "negative",
+      "kinetic": "3/2",
+      "outer_speed_squared": "3/2",
+      "positions_x": [
+        "-1",
+        "0",
+        "1"
+      ],
+      "positive_potential": "5/2",
+      "qualifying_witness": false,
+      "stated_zero_energy_is_false": true
+    },
+    "periodic": {
+      "average_positive_potential": "14/5",
+      "energy": "-7/5",
+      "energy_sign": "negative",
+      "lagrange_jacobi_identity": "<I''>=4H+2<U>=0",
+      "nonstationary_collision_free_periodic_H_zero_impossible": true
+    },
+    "scaling": {
+      "length_scale": "11/5",
+      "nonzero_energy_cannot_scale_to_zero": true,
+      "original_energy": "-7/3",
+      "original_sign": "negative",
+      "scaled_energy": "-35/33",
+      "scaled_sign": "negative",
+      "sign_preserved": true
+    },
+    "triple_collision": {
+      "constant_shape": true,
+      "delta_factor": "cos^2(pi*u/(2*u1))",
+      "delta_over_r_squared": "3/4",
+      "energy_sign": "negative",
+      "energy_zero": false,
+      "failed_requirements": [
+        "W1",
+        "W2",
+        "W3",
+        "W4",
+        "W5",
+        "W10"
+      ],
+      "finite_distinct_initial_configuration": true,
+      "formal_regularization_only": true,
+      "homothetic": true,
+      "initial_velocity": "zero",
+      "mass_scope": "m0=m1=m2=1",
+      "published_ratio_is_constant": true,
+      "qualifying_witness": false,
+      "r_factor": "cos^2(pi*u/(2*u1))"
+    }
+  },
+  "production_reference_agreement": {
+    "corrected_energy": true,
+    "corrected_equations": true,
+    "corrected_homothetic_rejection": true,
+    "free_fall_energy": true,
+    "legacy_energy": true,
+    "legacy_invariant": true,
+    "periodic_energy": true,
+    "scaling_energy": true,
+    "triple_collision_energy_and_scope": true,
+    "triple_collision_shape": true
+  },
+  "prohibited_claims": {
+    "PROHIBITED_MR_CLAIM": "A differential-Galois or Ziglin obstruction has been proved.",
+    "PROHIBITED_NONEXISTENCE_CLAIM": "No suitable witness exists.",
+    "PROHIBITED_NONINTEGRABILITY_CLAIM": "The planar Newtonian three-body problem is nonintegrable on (H,C)=(0,0).",
+    "PROHIBITED_SPECIAL_MASS_PROMOTION": "A special-mass-only candidate closes the arbitrary-positive-mass gap."
+  },
+  "protocol_sha256": "ce8a4faaee78486cffad3107e56540fa432e4f89e8c90e04e778ff4b63a0a9ed",
+  "qualification_gate_status": "PASS",
+  "qualification_id": "WP6-DZ-FEAS-v1-8609fd37a8d6",
+  "reference_sha256": "cf87918f28ce1a24b54be54671c9bbcc6630ccae851a847051a39ec0215b5c07",
+  "schema_version": "1.0",
+  "search_details": {
+    "candidate_count": 12,
+    "mandatory_class_count": 8,
+    "query_ids": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "result_page_count": 40,
+    "source_count": 16,
+    "source_role_counts": {
+      "CITATION_EXPANSION": 12,
+      "PRELOCK_SEED": 4
+    }
+  },
+  "search_integrity": {
+    "all_plausible_results_audited": true,
+    "candidate_count_within_cap": true,
+    "candidate_sources_known": true,
+    "citation_expansion_at_locked_cap": true,
+    "citation_expansion_exhausted": true,
+    "mandatory_classes_complete": true,
+    "query_ids_match": true,
+    "query_texts_match": true,
+    "query_windows_complete": true,
+    "receipt_counts_consistent": true,
+    "search_completed_before_cutoff": true,
+    "search_frontier_exhausted": true,
+    "search_started_after_prelock": true,
+    "seed_sources_preserved": true,
+    "source_candidate_links_known": true,
+    "source_count_within_cap": true
+  },
+  "search_receipt_sha256": "96dd3b887d742a9e44ae52c36b0ca1922f7eb7200ad704577d5162d25cc9a01e",
+  "seed_manifest_sha256": "38573663353313b439bf92cfe2fb7c610381b7ce21b2bb541d8992c6d390bb63",
+  "source_manifest_sha256": "0d0cf5363430cfedd4463794dac8edb66ef04b88f5bf7c03fed1c28701e95f95",
+  "source_records": [
+    {
+      "expected_bytes": 302104,
+      "expected_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "observed_bytes": 302104,
+      "observed_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "payload_filename": "maciejewski-przybylska-combot-2025.pdf",
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "verified": true
+    },
+    {
+      "expected_bytes": 253436,
+      "expected_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "observed_bytes": 253436,
+      "observed_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "payload_filename": "combot-2011.pdf",
+      "source_id": "combot-2011",
+      "verified": true
+    },
+    {
+      "expected_bytes": 601608,
+      "expected_sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "observed_bytes": 601608,
+      "observed_sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "payload_filename": "morales-ruiz-simon-2009.pdf",
+      "source_id": "morales-ruiz-simon-2009",
+      "verified": true
+    },
+    {
+      "expected_bytes": 128681,
+      "expected_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "observed_bytes": 128681,
+      "observed_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "payload_filename": "tsygvintsev-2006.pdf",
+      "source_id": "tsygvintsev-2006",
+      "verified": true
+    },
+    {
+      "expected_bytes": 423193,
+      "expected_sha256": "8b3ab6061dd55c643ce29dbbd2cfdd2c0594e0eb3e98dc6f973867233cc8cd9f",
+      "observed_bytes": 423193,
+      "observed_sha256": "8b3ab6061dd55c643ce29dbbd2cfdd2c0594e0eb3e98dc6f973867233cc8cd9f",
+      "payload_filename": "chenciner-1997.pdf",
+      "source_id": "chenciner-1997",
+      "verified": true
+    },
+    {
+      "expected_bytes": 239107,
+      "expected_sha256": "e80d5483d9108e2f8434038de636257d4ab79af3caf8a3b08a6ae5f37df5576d",
+      "observed_bytes": 239107,
+      "observed_sha256": "e80d5483d9108e2f8434038de636257d4ab79af3caf8a3b08a6ae5f37df5576d",
+      "payload_filename": "chenciner-montgomery-2000.pdf",
+      "source_id": "chenciner-montgomery-2000",
+      "verified": true
+    },
+    {
+      "expected_bytes": 2919670,
+      "expected_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "observed_bytes": 2919670,
+      "observed_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "payload_filename": "moeckel-montgomery-2012.pdf",
+      "source_id": "moeckel-montgomery-2012",
+      "verified": true
+    },
+    {
+      "expected_bytes": 317242,
+      "expected_sha256": "1d97c53fc0258c4e9da7401fb57d92204dde18703ffc72428d7eae9025149f04",
+      "observed_bytes": 317242,
+      "observed_sha256": "1d97c53fc0258c4e9da7401fb57d92204dde18703ffc72428d7eae9025149f04",
+      "payload_filename": "percino-figueroa-2017.pdf",
+      "source_id": "percino-figueroa-2017",
+      "verified": true
+    },
+    {
+      "expected_bytes": 807719,
+      "expected_sha256": "fe08652e2cf88bc81ae13ebe1f24cf517199bd7ab8d346e8738cfb9255973cd3",
+      "observed_bytes": 807719,
+      "observed_sha256": "fe08652e2cf88bc81ae13ebe1f24cf517199bd7ab8d346e8738cfb9255973cd3",
+      "payload_filename": "moeckel-montgomery-sanchez-2018.pdf",
+      "source_id": "moeckel-montgomery-sanchez-2018",
+      "verified": true
+    },
+    {
+      "expected_bytes": 1911525,
+      "expected_sha256": "df6c04e41dc41c394359d92e61e70580ca0f5a1530b0e08f000d6b1869835e32",
+      "observed_bytes": 1911525,
+      "observed_sha256": "df6c04e41dc41c394359d92e61e70580ca0f5a1530b0e08f000d6b1869835e32",
+      "payload_filename": "moeckel-minimal-isosceles-2019.pdf",
+      "source_id": "moeckel-2019",
+      "verified": true
+    },
+    {
+      "expected_bytes": 438206,
+      "expected_sha256": "29c6745f3fdb9def4537e4dc021c0ee25236add73afe0fde4df2319ba4aff1f8",
+      "observed_bytes": 438206,
+      "observed_sha256": "29c6745f3fdb9def4537e4dc021c0ee25236add73afe0fde4df2319ba4aff1f8",
+      "payload_filename": "diacu-fujiwara-perez-santoprete-2008.pdf",
+      "source_id": "diacu-fujiwara-perezchavela-santoprete-2008",
+      "verified": true
+    },
+    {
+      "expected_bytes": 615800,
+      "expected_sha256": "8cd030ee877dd84d4de3620511a22a6cade68801a2c6a7464c810ab8b1799b10",
+      "observed_bytes": 615800,
+      "observed_sha256": "8cd030ee877dd84d4de3620511a22a6cade68801a2c6a7464c810ab8b1799b10",
+      "payload_filename": "rose-dullin-2013.pdf",
+      "source_id": "rose-dullin-2013",
+      "verified": true
+    },
+    {
+      "expected_bytes": 1340325,
+      "expected_sha256": "d4016af120861695b89bef7154580cf91f119cd5d289dedac8e749ce38482d5b",
+      "observed_bytes": 1340325,
+      "observed_sha256": "d4016af120861695b89bef7154580cf91f119cd5d289dedac8e749ce38482d5b",
+      "payload_filename": "li-jing-liao-2017.pdf",
+      "source_id": "li-jing-liao-2017",
+      "verified": true
+    },
+    {
+      "expected_bytes": 664470,
+      "expected_sha256": "0b8e85e5ef74d686dfa4a69c798ba4409da3c3ed9aa8934083802eac014c6947",
+      "observed_bytes": 664470,
+      "observed_sha256": "0b8e85e5ef74d686dfa4a69c798ba4409da3c3ed9aa8934083802eac014c6947",
+      "payload_filename": "mercati-reichert-2021.pdf",
+      "source_id": "mercati-reichert-2021",
+      "verified": true
+    },
+    {
+      "expected_bytes": 21674,
+      "expected_sha256": "6d0816286d272aecb1a503145078c1fa0cbd0f3cc6ac7d1282761bdae7a25469",
+      "observed_bytes": 21674,
+      "observed_sha256": "6d0816286d272aecb1a503145078c1fa0cbd0f3cc6ac7d1282761bdae7a25469",
+      "payload_filename": "hey-werkhausen-2024-inpe.html",
+      "source_id": "hey-werkhausen-2024",
+      "verified": true
+    },
+    {
+      "expected_bytes": 4354,
+      "expected_sha256": "7ade3a8f1fc375a9cf7db94d0b3246c36df959614b0630f704d21a9aab96c8fe",
+      "observed_bytes": 4354,
+      "observed_sha256": "7ade3a8f1fc375a9cf7db94d0b3246c36df959614b0630f704d21a9aab96c8fe",
+      "payload_filename": "delgado-vidal-2019-crossref.json",
+      "source_id": "delgado-vidal-2019",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "chenciner_collision_manifold": true,
+    "combot_all_orders_and_new_orbit": true,
+    "figure_eight_equal_mass_zero_c": true,
+    "formal_explicit_triple_collision": true,
+    "free_time_minimizer_existence": true,
+    "isosceles_zero_energy_nonexplicit": true,
+    "morales_simon_homothetic_scope": true,
+    "mpc_current_gap": true,
+    "periodic_catalogue_zero_c": true,
+    "regularized_examples_h_minus_one": true,
+    "restricted_collinear_identity": true,
+    "saari_nonnegative_zero_c": true,
+    "symmetric_blowup_method": true,
+    "total_collision_essential": true,
+    "tsygvintsev_parabolic_lagrange": true,
+    "weak_kam_zero_c_family": true
+  },
+  "spec_sha256": "0f064dfd199907bd1c9f6d80d091f71549253e7f2b3b01ef784eacf8eff12819",
+  "specification_lock_sha256": "84ee337b27eb9ca9c748f189cdb284f2cf3840ba3ee931f3ae0930879607e04c"
+}
