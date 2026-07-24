@@ -1,0 +1,132 @@
+{
+  "authorized_claim": "For arbitrary finite positive masses and every finite real common level (H,C)=(h,c) with (h,c)!=(0,0), the pinned Maciejewski-Przybylska-Combot theorem, with the project-owned exact branch and benchmark audit, proves that the planar Newtonian three-body problem is not rationally integrable in the locked restricted-integrability sense. The proof uses Euler-Moulton homographic witnesses and is direct on each common level rather than transferred from WP6-FI1-v1.",
+  "benchmark_case_count": 6,
+  "campaign": "WP6-COMMON-v1",
+  "claim_boundary": "A PASS qualifies a pinned published theorem plus a project-owned exact audit of its common-level branch partition, Euler-Moulton spectral parameter, Kepler energy-angular-momentum relation, and representative normal-variational coefficients. It does not independently reproduce the universal differential-Galois proofs in the source appendices, does not transfer WP6-FI1-v1 to one reduced leaf, and does not cover (h,c)=(0,0), spatial motion, non-rational regularity classes, or a regular SO(3) chart through collinearity.",
+  "evidence_git_commit": "9b689fa22b8dc7a284547d2d9734053d2af13394",
+  "generated_utc": "2026-07-24T11:15:27.305812+00:00",
+  "implementation_independence": {
+    "reference_is_source_disjoint": true
+  },
+  "lock_sha256": "835cbe6631d20345a5274be8546c8125ec5ee4c58ed5fa30b7d6816dfcf6fb5c",
+  "negative_controls": {
+    "altered_discriminant_root_rejected": true,
+    "coefficient_pole_rejected": true,
+    "double_zero_rejected": true,
+    "non_rational_transfer_rejected": true,
+    "nonpositive_circular_delta_rejected": true,
+    "nonpositive_generic_delta_rejected": true,
+    "one_integral_transfer_rejected": true,
+    "pointwise_domain_claim_rejected": true,
+    "real_circular_orbit_rejected_as_witness": true,
+    "reference_is_source_disjoint": true,
+    "regular_so3_chart_transfer_rejected": true,
+    "spatial_transfer_rejected": true,
+    "zero_momentum_predecessor_required": true
+  },
+  "prerequisites": {
+    "wp2_so3_leaf": {
+      "identity_match": true,
+      "lock_file_sha256": "4c883bd4f583110b4436aa0c2f4c65afbf869be8778b8f4291a22c5ee45bd87e",
+      "lock_hash_match": true,
+      "qualification_id": "WP2-SO3-LEAF-v1-837d711e7074",
+      "record_file_sha256": "d8900f0d254fccf5a3b0d8e5fec7d73fc655314cb528938a53dbb6f6b321fabb",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    },
+    "wp6_fi1": {
+      "identity_match": true,
+      "lock_file_sha256": "fe3c4597b5e536953dbeb6d6e2dcaada9f75956a04718cba5da7c8023e82ebe5",
+      "lock_hash_match": true,
+      "qualification_id": "WP6-FI1-v1-c9099f7494b1",
+      "record_file_sha256": "a53f219cdb8c265b9fd1b4eb848d97dfe709d346db6c4aeb5a3c2b45cd4f1c34",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    },
+    "wp6_l0": {
+      "identity_match": true,
+      "lock_file_sha256": "8a0ad5c218950326d500d1950006eef4dec9cddbbf030f165ae6f36795ba3c37",
+      "lock_hash_match": true,
+      "qualification_id": "WP6-L0-v1-27f160d029ca",
+      "record_file_sha256": "53818fc24996ef945fbfc954b7ff2cf8f7614fca8e46b5afb5086b548394e942",
+      "record_hash_match": true,
+      "record_signature_valid": true,
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production_reference_agreement": true,
+  "prohibited_claims": {
+    "PROHIBITED_DOMAIN_CLAIM": "Every open phase-space domain outside the Lagrange neighborhood is pointwise nonintegrable.",
+    "PROHIBITED_DOUBLE_ZERO_CLAIM": "The same campaign proves nonintegrability on (H,C)=(0,0).",
+    "PROHIBITED_ONE_INTEGRAL_CLAIM": "No one additional first integral exists on each common level.",
+    "PROHIBITED_REGULARITY_CLAIM": "The theorem excludes all meromorphic, smooth, analytic, or non-rational integrability notions.",
+    "PROHIBITED_SPATIAL_CLAIM": "The spatial common-level problem is qualified."
+  },
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_claim": true,
+    "model_boundary": true,
+    "nonclaims": true
+  },
+  "proof_sha256": "10946a4f1cfd7fc595e7056e494c60f59fa85914e45602ca92e66c3512227946",
+  "qualification_id": "WP6-COMMON-v1-502728e5b811",
+  "record_payload_sha256": "35d26fe23c008e214efd3dad74db471ba45b52782342a05181f83ae72579a630",
+  "results_sha256": "f9ba90dc61716fa5c40cc99b426c332a8e41a54565a00b8d4d3f58868acd18ff",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "69138ca2e2e9d5df755ed0ea1052117ccd8a4775beff4c1ca5cbef0f4dfeb5a2",
+  "source_records": [
+    {
+      "expected_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "observed_sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "verified": true
+    },
+    {
+      "expected_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "observed_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "source_id": "combot-2011",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "predecessor_common_surface": true,
+    "predecessor_double_zero_limitation": true,
+    "predecessor_exact_title": true,
+    "primary_circular_complex_branch": true,
+    "primary_exact_title": true,
+    "primary_noncircular_branch": true,
+    "primary_restricted_integrability_definition": true,
+    "primary_solvable_necessary_condition": true,
+    "primary_theorem_1_1_common_level": true,
+    "primary_zero_momentum_branch": true
+  },
+  "spec_sha256": "421de0e784edbbdebe77b1fafc69b793ced658125a5e38b00a0b42203432935b",
+  "specification_lock_sha256": "8da589c82647d5c2f6b34b04911cf8ab41e0ce8cbf32c86c97080c8901bf7c1e",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  }
+}
