@@ -1,0 +1,185 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "specification_status": "LOCKABLE_BEFORE_MANUSCRIPT_OR_EVALUATOR_IMPLEMENTATION",
+  "purpose": "Package the completed project-owned Morales-Ramis reproduction, spatial/KS transfer, bounded WP3 null result, and WP1 follow-on map into a claim-bounded manuscript and independently reproducible evidence release.",
+  "publication_title": "Exact reproduction and KS-atlas transfer of a Morales-Ramis obstruction near the parabolic Lagrange solution",
+  "primary_result": "The project-owned WP4-MR-REPL-v1 planar obstruction transfers to the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian: it is not completely integrable by meromorphic first integrals near the embedded fixed-nonzero-angular-momentum parabolic Lagrange phase curve. Consequently, the qualified WP2-MULTIQ-v1 atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing that regular neighborhood.",
+  "prior_art_policy": "The planar local meromorphic complete-integrability obstruction is attributed to Tsygvintsev and to Boucher-Weil, with the Morales-Ramis theorem as its Galoisian foundation. WP5 may claim an exact project-owned reproduction, explicit convention equivalence, qualification, and the separately proved spatial/KS transfer. It may not claim discovery or novelty of the published planar theorem before independent literature review.",
+  "context_policy": {
+    "wp1": "WP1-CAT-N3BP-v1 and WP1-RESIDUAL-MAP-v1 are bounded computational context and future-work allocation. They are not evidence for the nonintegrability theorem.",
+    "wp2": "WP2-MULTIQ-v1 supplies the exact qualified KS atlas consumed by the transfer theorem. Its exclusions remain in force.",
+    "wp3": "WP3-MULTI-CAND-v2-KQ-v1 is a bounded null result only in its frozen 285-function library after quotienting the known L^2 class. It is not a no-integral theorem and is not used to prove WP4.",
+    "legacy": "The disjoint legacy baseline is software-regression and portability evidence only. Quarantined historical prototypes have no publication claim authority."
+  },
+  "prerequisites": {
+    "wp1_catalogue": {
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "lock_file": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_lock.json",
+      "lock_file_sha256": "6ad6187772ed923e4dd7e3b80309e8451e61def522171a4bb812508f7a165998",
+      "record_file": "validation-external/wp1-catalogue-n3bp-validation/reports/wp1_cat_n3bp_v1_qualification_record.json",
+      "record_file_sha256": "ab418bdeb13cf4f31040f6d1b45ca603bf854fe69c7b3b22dbe012c5226e56e8"
+    },
+    "wp1_residual_map": {
+      "qualification_id": "WP1-RESIDUAL-MAP-v1-9526e09d01ba",
+      "lock_file": "validation-external/wp1-residual-map-v1/reports/wp1_residual_map_v1_qualification_lock.json",
+      "lock_file_sha256": "abb10912bbcf5adb2a92caf369ff8fc1efae62ff2cd72fa04c3bda0d9a78c35e",
+      "record_file": "validation-external/wp1-residual-map-v1/reports/wp1_residual_map_v1_qualification_record.json",
+      "record_file_sha256": "0459f265dac39afc6da30821b63e1d814859547f8fb083ba11b4adbbc97aa676"
+    },
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    "wp3_bounded_null": {
+      "qualification_id": "WP3-MULTI-CAND-v2-KQ-v1-514be9de7232",
+      "lock_file": "validation-external/wp3-multi-candidate-v2-known-quotient/reports/wp3_multi_v2_kq_search_lock.json",
+      "lock_file_sha256": "225ae6689133328ed8cefe3ed24bf3736abcd4514a5e2c098fc2ce27ac069b0b",
+      "record_file": "validation-external/wp3-multi-candidate-v2-known-quotient/reports/wp3_multi_v2_kq_search_record.json",
+      "record_file_sha256": "57651802d13c808763790dfa22146790516dbee7bfa4ff0d334156ffcfac0b86",
+      "publication_gate_file": "validation-external/wp3-multi-candidate-v2-known-quotient/results/publication_gate.json",
+      "publication_gate_file_sha256": "925372c32c390bd17725cb8ea30481a435ee5bf1df23254178c4428e4ce26be2"
+    },
+    "wp4_planar": {
+      "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+      "lock_file": "validation-external/wp4-mr-repl-v1/reports/wp4_mr_repl_v1_qualification_lock.json",
+      "lock_file_sha256": "cad8fd0b72491e7dc19bb7c2b6fda7b06d1a4cf45246670d98657158a28b162c",
+      "record_file": "validation-external/wp4-mr-repl-v1/reports/wp4_mr_repl_v1_qualification_record.json",
+      "record_file_sha256": "1835133b7b018a95c51565dc1a6ebcc7f605e0192d7ed88e0754d73411e86a3f",
+      "proof_file": "validation-external/wp4-mr-repl-v1/proof/WP4-MR-REPL-v1-proof.md",
+      "proof_file_sha256": "3cf75bd36925c296c69d302c2d7e229b1eb9da5928aa9690a7f06545c77104cc"
+    },
+    "wp4_transfer": {
+      "qualification_id": "WP4-LIFT-NI-v3-9ba955931b23",
+      "lock_file": "validation-external/wp4-lift-ni-v3/reports/wp4_lift_ni_v3_qualification_lock.json",
+      "lock_file_sha256": "96d2a319b1a047761193be6cb097ac09caef8852b208203e4f25172eccd4275a",
+      "record_file": "validation-external/wp4-lift-ni-v3/reports/wp4_lift_ni_v3_qualification_record.json",
+      "record_file_sha256": "04c13c93dd2fcb0e298152f1f8cddf24f4bb2fcc7298bb73e912c02234d921a3",
+      "inherited_proof_file": "validation-external/wp4-lift-ni-v2/proof/WP4-LIFT-NI-v2-proof.md",
+      "inherited_proof_file_sha256": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781",
+      "addendum_file": "validation-external/wp4-lift-ni-v3/proof/WP4-LIFT-NI-v3-addendum.md",
+      "addendum_file_sha256": "a65be646914a06dc369dabe0e1ce343ec2a7dab788b60573492375a5e15ca406"
+    },
+    "legacy_baseline": {
+      "manifest_file": "tests/legacy_baseline_manifest.json",
+      "manifest_file_sha256": "2a23a92528dfa540834456450c93ade75294e3da6b38be888f76f6227b81ac80",
+      "runner_file": "scripts/run_legacy_baseline.sh",
+      "runner_file_sha256": "4d60bf3b0bdb78d1d04d5894c499af4db22c1e3f29c3d9bc132b8a380a9f535d",
+      "environment_file": "environment-legacy.yml",
+      "environment_file_sha256": "529757e1cd5e2ef404e1d89cda5a7e51b0d896390c5e61e11e17bd9a2a829538",
+      "bobs_lock_file": "environment-locks/bobs-osx-arm64.lock",
+      "bobs_lock_file_sha256": "4535436197c1358f049720219a9fcb0a25612980b2286767cf7c51fd20056d2f"
+    }
+  },
+  "scientific_source_manifest": {
+    "path": "validation-external/wp4-mr-repl-v1/sources/manifest.json",
+    "sha256": "bc5802def756b64597494de6f70c208658713a78b85e9364ef9c06e9611b733f",
+    "policy": "Primary papers are cited and compared by hash; they are not redistributed."
+  },
+  "required_artifacts": {
+    "manuscript": [
+      "publication/wp5-pub-v1/manuscript/main.tex",
+      "publication/wp5-pub-v1/manuscript/references.bib",
+      "publication/wp5-pub-v1/manuscript/main.pdf"
+    ],
+    "audit": [
+      "publication/wp5-pub-v1/claims/claim_ledger.json",
+      "publication/wp5-pub-v1/proof_dependency_map.json",
+      "publication/wp5-pub-v1/proof_dependency_map.md"
+    ],
+    "reproducibility": [
+      "publication/wp5-pub-v1/REPRODUCING.md",
+      "publication/wp5-pub-v1/requirements-publication.txt",
+      "scripts/reproduce_wp5_pub_v1.sh",
+      "validation-external/wp5-pub-v1/scripts/verify_package.py"
+    ],
+    "review": [
+      "publication/wp5-pub-v1/review/REVIEWER_PACKET.md",
+      "publication/wp5-pub-v1/review/REVIEW_FORM.md",
+      "publication/wp5-pub-v1/review/EXTERNAL_REVIEW_GATE.md"
+    ],
+    "release": [
+      "publication/wp5-pub-v1/release/metadata.json",
+      "publication/wp5-pub-v1/release/SUBMISSION_CHECKLIST.md",
+      "publication/wp5-pub-v1/artifact_manifest.json"
+    ]
+  },
+  "manuscript_requirements": {
+    "required_sections": [
+      "Abstract",
+      "Scope and prior art",
+      "Reduced planar model",
+      "Exact normal variational equation",
+      "Positive-mass Galois obstruction",
+      "Spatial and KS-atlas transfer",
+      "Computational qualification",
+      "Bounded discovery context",
+      "Limitations and nonclaims",
+      "Reproducibility",
+      "Conclusion"
+    ],
+    "required_statements": [
+      "The planar theorem is a reproduction of published work, not an asserted original discovery.",
+      "The WP3 result is bounded to its frozen library and is not used in the proof.",
+      "The theorem concerns complete meromorphic Liouville integrability locally near one phase curve.",
+      "The result does not exclude one additional integral.",
+      "The KS consequence requires shell regularity, zero Xi, gauge projectability, chart compatibility, and clock independence."
+    ],
+    "forbidden_unqualified_phrases": [
+      "the three-body problem has no integrals",
+      "no additional integral exists",
+      "global nonintegrability of the three-body problem",
+      "complete search of all possible integrals",
+      "first proof",
+      "novel proof",
+      "solves the three-body problem"
+    ],
+    "format": "Venue-neutral PDFLaTeX using only arXiv-supported standard packages, with all bibliography inputs included and a visually inspected PDF."
+  },
+  "internal_gates": [
+    "The specification lock and every prerequisite hash verify.",
+    "Every required artifact exists and is included in a canonical SHA-256 manifest.",
+    "The manuscript theorem and abstract conform to the claim ledger.",
+    "Every theorem dependency has a path to an immutable PASS record or a primary source.",
+    "The prior-art and bounded-WP3 policies are stated explicitly.",
+    "The source-disjoint generic derivation reruns and exactly matches the frozen payload after excluding elapsed time.",
+    "All publication-specific tests and adversarial controls pass.",
+    "The LaTeX source compiles without errors and the rendered PDF passes visual inspection.",
+    "The one-command reproducer succeeds from a clean checkout.",
+    "No external-review evidence is fabricated or inferred."
+  ],
+  "external_gates": {
+    "human_reviews": "Two distinct, consenting human reviewers independent of the author and implementation chain are required. Collectively they must cover differential-Galois/planar mathematics and symplectic-reduction/KS-transfer mathematics.",
+    "clean_room_reproduction": "At least one reviewer or separate independent person must execute the frozen core reproducer outside project-controlled hardware and submit a receipt pinning the commit and artifact manifest.",
+    "findings": "No blocker or unresolved major finding may remain.",
+    "author_metadata": "Author name, affiliation status, contact, contribution statement, conflicts, funding, ORCID status, and AI-assistance disclosure must be explicitly confirmed by the author.",
+    "licenses": "The author must choose and record licenses for code, data/evidence, and manuscript text.",
+    "release_authorization": "Preprint submission and archival release require explicit author authorization."
+  },
+  "negative_controls": [
+    "Replace the local complete-meromorphic-integrability obstruction with a no-integrals claim.",
+    "Remove the fixed-nonzero-angular-momentum or neighborhood restriction.",
+    "Use the bounded WP3 null result as proof of nonintegrability.",
+    "Describe the published planar theorem as a project discovery or first proof.",
+    "Accept status-only predecessor records without exact hashes.",
+    "Accept a source PDF or proof whose hash changed.",
+    "Accept an internally generated, AI-generated, anonymous, or self-authored review as independent human review.",
+    "Accept a clean-room receipt from project-controlled hardware.",
+    "Authorize submission with unconfirmed author metadata or licenses.",
+    "Accept a PDF that is not reproducible from the frozen manuscript source.",
+    "Accept a generic symbolic replay that matches only its final status rather than its complete decision-bearing payload."
+  ],
+  "decision_policy": {
+    "FAIL": "Any integrity mismatch, manuscript overclaim, missing required internal artifact, derivation disagreement, failed adversarial control, or unresolved internal blocker fails the campaign.",
+    "READY_FOR_EXTERNAL_REVIEW": "Every internal gate passes, but one or more external, author, license, archive, or release-authorization gates remain unsatisfied.",
+    "READY_FOR_SUBMISSION": "Every internal gate and all independent human review, external clean-room, finding-resolution, author-metadata, and license gates pass; explicit release authorization may still be pending.",
+    "PUBLISHED": "READY_FOR_SUBMISSION holds, the author explicitly authorizes release, and immutable preprint and software-archive identifiers pin the qualified commit.",
+    "PROHIBITED_SHORT_CLAIM": "The three-body problem has no integrals.",
+    "PROHIBITED_NOVELTY_CLAIM": "The project discovered or first proved the published planar nonintegrability theorem.",
+    "PROHIBITED_GLOBAL_CLAIM": "The local phase-curve obstruction covers every phase-space domain, every trajectory, or every regularity class."
+  },
+  "invalidation": "Any changed scientific prerequisite, source manifest, theorem wording, review rule, artifact requirement, negative control, or decision rule invalidates WP5-PUB-v1 and requires a successor."
+}

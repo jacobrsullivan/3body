@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jacobrsullivan/3body/wp5-pub-v1-external-review.schema.json",
+  "title": "WP5-PUB-v1 external human review record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "campaign",
+    "review_id",
+    "reviewer",
+    "independence",
+    "scope",
+    "artifacts",
+    "findings",
+    "recommendation",
+    "signed_utc",
+    "signature"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "campaign": {
+      "const": "WP5-PUB-v1"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^WP5-PUB-v1-EXT-[A-Za-z0-9._-]+$"
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "human", "identity_publication_consent", "expertise"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 3
+        },
+        "orcid": {
+          "type": ["string", "null"]
+        },
+        "affiliation": {
+          "type": ["string", "null"]
+        },
+        "human": {
+          "const": true
+        },
+        "identity_publication_consent": {
+          "const": true
+        },
+        "expertise": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "differential_galois",
+              "hamiltonian_integrability",
+              "symplectic_reduction",
+              "ks_regularization",
+              "computational_reproducibility"
+            ]
+          }
+        }
+      }
+    },
+    "independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "not_author",
+        "not_implementation_contributor",
+        "not_project_controlled_agent",
+        "conflicts_disclosed"
+      ],
+      "properties": {
+        "not_author": {
+          "const": true
+        },
+        "not_implementation_contributor": {
+          "const": true
+        },
+        "not_project_controlled_agent": {
+          "const": true
+        },
+        "conflicts_disclosed": {
+          "const": true
+        },
+        "conflict_statement": {
+          "type": ["string", "null"]
+        }
+      }
+    },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "planar_derivation",
+          "differential_galois_argument",
+          "positive_mass_domain",
+          "spatial_subquotient",
+          "ks_sundman_transfer",
+          "claim_boundary",
+          "clean_room_reproduction"
+        ]
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "git_commit",
+        "artifact_manifest_sha256",
+        "manuscript_pdf_sha256"
+      ],
+      "properties": {
+        "git_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "artifact_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "manuscript_pdf_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "clean_room_receipt_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["finding_id", "severity", "location", "description"],
+        "properties": {
+          "finding_id": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": ["blocker", "major", "minor", "editorial"]
+          },
+          "location": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recommendation": {
+      "enum": ["APPROVE", "REVISE", "REJECT"]
+    },
+    "signed_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["method", "artifact_path", "artifact_sha256"],
+      "properties": {
+        "method": {
+          "enum": ["detached_pgp", "signed_pdf", "institutional_email_archive"]
+        },
+        "artifact_path": {
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

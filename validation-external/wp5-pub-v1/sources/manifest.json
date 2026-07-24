@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP5-PUB-v1",
+  "retrieved_utc": "2026-07-24T00:00:00Z",
+  "scientific_sources": {
+    "manifest_path": "validation-external/wp4-mr-repl-v1/sources/manifest.json",
+    "manifest_sha256": "bc5802def756b64597494de6f70c208658713a78b85e9364ef9c06e9611b733f",
+    "source_count": 3,
+    "policy": "Use the three hash-pinned primary sources and their qualified equivalence checks. Do not redistribute their PDFs."
+  },
+  "publication_guidance": [
+    {
+      "source_id": "arxiv-tex-guidance",
+      "title": "Submit TeX/LaTeX",
+      "publisher": "arXiv",
+      "url": "https://info.arxiv.org/help/submit_tex.html",
+      "qualified_use": "Requires complete TeX inputs, included bibliography files, standard supported packages, and author inspection of the generated PDF."
+    },
+    {
+      "source_id": "github-citable-archive-guidance",
+      "title": "Referencing and citing content",
+      "publisher": "GitHub",
+      "url": "https://docs.github.com/en/repositories/archiving-a-github-repository/referencing-and-citing-content",
+      "qualified_use": "Documents release-based Zenodo archiving, DOI issuance, and the need for a repository license."
+    },
+    {
+      "source_id": "zenodo-github-guidance",
+      "title": "Enable a repository",
+      "publisher": "Zenodo",
+      "url": "https://help.zenodo.org/docs/github/enable-repository/",
+      "qualified_use": "Documents GitHub repository connection and automatic ingestion of new releases."
+    },
+    {
+      "source_id": "crossref-versioning-guidance",
+      "title": "Version control, corrections, and retractions",
+      "publisher": "Crossref",
+      "url": "https://www.crossref.org/documentation/principles-practices/best-practices/versioning/",
+      "qualified_use": "Supports explicit distinction among draft, preprint, accepted manuscript, version of record, and corrected versions."
+    }
+  ],
+  "guidance_boundary": "Publication guidance controls packaging metadata only and supplies no mathematical evidence."
+}
