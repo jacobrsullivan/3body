@@ -1,0 +1,1010 @@
+{
+  "authorized_claim": "The project-owned WP4-MR-REPL-v1 planar obstruction transfers to the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian: it is not completely integrable by meromorphic first integrals near the embedded fixed-nonzero-angular-momentum parabolic Lagrange phase curve. Consequently, the qualified WP2-MULTIQ-v1 atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing that regular neighborhood.",
+  "campaign": "WP4-LIFT-NI-v3",
+  "claim_boundary": "A PASS reruns and hash-identifies the exact v2 KS quotient, two-spinor product reduction, chart compatibility, fixed-energy Sundman conservation, shell-relative rank descent, collision-free restriction, reflection splitting, fixed-nonzero-angular-momentum planar reduction, normal differential subquotient, Galois quotient, and global-restriction arguments. It replaces the unreplicated planar premise with the independently qualified WP4-MR-REPL-v1 result. It does not establish ambient-only rank, gauge-dependent or chart-dependent integrals, explicit clock-dependent integrals, non-meromorphic or non-Liouville obstructions, nonzero-Xi magnetic dynamics, a general SO(3) quotient, zero angular momentum, triple-collision regularization, absence of individual additional integrals, or a classification of all trajectories.",
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_prerequisite_locks_and_records_verified",
+      "observed": 3,
+      "passed": true,
+      "threshold": 3
+    },
+    {
+      "comparator": "==",
+      "name": "inherited_source_manifest_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_source_download_hashes_verified",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "source_text_contracts_verified",
+      "observed": 10,
+      "passed": true,
+      "threshold": 10
+    },
+    {
+      "comparator": "==",
+      "name": "v2_transfer_implementation_identity_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "mr_reproduced_premise_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T1_exact_identities_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T2_dimension_and_rank_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T3_chart_contract_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T4_sundman_identities_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T5_involution_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T6_shell_rank_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T7_domain_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T8_spatial_subquotient_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T9_galois_logic_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_T10_global_logic_checks_pass",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "production_reference_exact_agreement",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_negative_controls_rejected",
+      "observed": 8,
+      "passed": true,
+      "threshold": 8
+    },
+    {
+      "comparator": "==",
+      "name": "proof_document_covers_every_obligation",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "claim_boundary_present",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    }
+  ],
+  "generated_utc": "2026-07-24T05:19:38.660636+00:00",
+  "implementation_identity": {
+    "all_match": true,
+    "expected_sha256": {
+      "production": "0b1ed0af1a0276ba104eb3e1ec3dab1c9595f7b9e42d0c92fcf87053f6223a21",
+      "proof": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781",
+      "reference": "4f3ab2fa5495afac9037134b2fcc192c168b730249d47c12bd016e8f6643e4b9"
+    },
+    "observed_sha256": {
+      "production": "0b1ed0af1a0276ba104eb3e1ec3dab1c9595f7b9e42d0c92fcf87053f6223a21",
+      "proof": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781",
+      "reference": "4f3ab2fa5495afac9037134b2fcc192c168b730249d47c12bd016e8f6643e4b9"
+    },
+    "paths": {
+      "production": "src/python/wp4_lift_ni_v2/model.py",
+      "proof": "validation-external/wp4-lift-ni-v2/proof/WP4-LIFT-NI-v2-proof.md",
+      "reference": "validation-external/wp4-lift-ni-v2/reference/sympy_reference.py"
+    },
+    "reference_source_disjoint": true,
+    "wrapper_delegates_to_v2": true
+  },
+  "independent_reference": {
+    "certificates": {
+      "hamiltonian_factor": {
+        "nonzero_level_control_rejected": true,
+        "nonzero_level_factor_residual": "7/40",
+        "nonzero_level_xi": "1",
+        "xi1_zero": "0",
+        "xi2_zero": "0",
+        "zero_level_factor_identity": true,
+        "zero_level_factor_residual": "0"
+      },
+      "logic": {
+        "abelian_group_has_only_abelian_algebraic_quotients": true,
+        "binary_collision_extension_does_not_remove_regular_open_restriction": true,
+        "global_family_restricts_to_every_regular_open_subset": true,
+        "nonabelian_quotient_obstructs_abelian_full_group": true
+      },
+      "nonzero_xi_control": {
+        "canonical_on_zero_level": false,
+        "projected_poisson": [
+          [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0",
+            "11/900",
+            "-11/4500"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "-11/900",
+            "0",
+            "-121/9000"
+          ],
+          [
+            "0",
+            "0",
+            "-1",
+            "11/4500",
+            "121/9000",
+            "0"
+          ]
+        ],
+        "rejected": true,
+        "xi": "-33"
+      },
+      "product_reduction": {
+        "constraint_projection_rank": 16,
+        "constraint_rank": 2,
+        "first_gauge_kernel": true,
+        "gauge_generators_independent": true,
+        "projection_rank": 14,
+        "quotient_dimension": 14,
+        "regular_level_dimension": 16,
+        "second_gauge_kernel": true,
+        "upstairs_dimension": 18
+      },
+      "single_ks_zero_level": {
+        "canonical_on_zero_level": true,
+        "constraint_projection_rank": 7,
+        "gauge_tangent_to_level_identity": true,
+        "horizontal_projector_identity": true,
+        "jacobian_metric_identity": true,
+        "phase_gauge_kernel_identity": true,
+        "projected_poisson": [
+          [
+            "0",
+            "0",
+            "0",
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          [
+            "-1",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-1",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "-1",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "projection_rank": 6,
+        "radius": "30",
+        "radius_identity": true,
+        "vertical_kernel_identity": true,
+        "xi": "0"
+      },
+      "spatial_subquotient": {
+        "angular_momentum": "-3",
+        "angular_momentum_conservation_residual": "0",
+        "angular_momentum_conserved": true,
+        "angular_momentum_nonzero": true,
+        "energy_momentum_gradient_rank": 2,
+        "flow_tangent_to_fixed_momentum_level": true,
+        "planar_block": [
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "7/10",
+            "0",
+            "1/5",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "7/10",
+            "0",
+            "1/5"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "1/5",
+            "0",
+            "8/15",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "1/5",
+            "0",
+            "8/15"
+          ],
+          [
+            "4879/56250",
+            "504/3125",
+            "-7/90",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "504/3125",
+            "7217/112500",
+            "0",
+            "7/180",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "-7/90",
+            "0",
+            "5131/56250",
+            "-756/3125",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "7/180",
+            "-756/3125",
+            "13013/112500",
+            "0",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "planar_block_exact": true,
+        "planar_energy_tangent_dimension": 5,
+        "planar_fixed_momentum_tangent_dimension": 7,
+        "planar_normal_quotient_dimension": 4,
+        "planar_reflection_block_dimension": 8,
+        "planar_rotation_quotient_dimension": 6,
+        "planar_variational_rank": 8,
+        "planar_vertical_cross_zero": true,
+        "published_nve_chain_dimension_exact": true,
+        "reflection_commutes_with_variational_matrix": true,
+        "rotation_generator_identity": true,
+        "rotation_tangent_to_energy_level": true,
+        "spatial_variational_rank": 12,
+        "spatial_ve_dimension": 12,
+        "vertical_variational_rank": 4
+      },
+      "transfer": {
+        "clock_dependent_control_rejected": true,
+        "clock_pt_bracket": "1",
+        "descended_family_involution": true,
+        "descended_family_rank": 6,
+        "full_family_involution": true,
+        "full_family_rank_on_shell": 9,
+        "gauge_variant_control_rejected": true,
+        "gauge_xi1_bracket": "1",
+        "off_shell_only_ambient_rank": 9,
+        "off_shell_only_control_rejected": true,
+        "off_shell_only_descended_rank": 5,
+        "off_shell_only_family_involution": true,
+        "off_shell_only_shell_rank": 8,
+        "off_shell_product_rule_residual": "0",
+        "rank_loss_control_full_rank": 8,
+        "rank_loss_control_reduced_rank": 5,
+        "rank_loss_control_rejected": true,
+        "shell_sundman_residual": "0",
+        "sundman_identity_exact": true
+      },
+      "wrong_momentum_factor_control": {
+        "canonical_on_zero_level": false,
+        "projected_poisson": [
+          [
+            "0",
+            "0",
+            "0",
+            "2",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "2",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "2"
+          ],
+          [
+            "-2",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "-2",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "-2",
+            "0",
+            "0",
+            "0"
+          ]
+        ],
+        "rejected": true
+      }
+    },
+    "path": "validation-external/wp4-lift-ni-v2/reference/sympy_reference.py",
+    "sha256": "4f3ab2fa5495afac9037134b2fcc192c168b730249d47c12bd016e8f6643e4b9",
+    "source_disjoint": true
+  },
+  "inherited_v2_proof_sha256": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781",
+  "lock_sha256": "9e16fbdbf65744ebb69641323e1b657f260390f4ef7938194a9259fb96a1d0a6",
+  "mr_reproduced_premise_verified": true,
+  "mr_reproduction_summary": {
+    "authorized_claim": "The project independently reproduces, from the declared reduced Newtonian Hamiltonian and exact parabolic Lagrange phase curve, a 4x4 Fuchsian normal variational equation whose differential-Galois identity component is non-Abelian for every finite positive mass triple. By the pinned Morales-Ramis theorem, the declared translation- and rotation-reduced planar positive-mass Newtonian three-body Hamiltonian at fixed nonzero angular momentum is not completely integrable by meromorphic first integrals in a complex neighborhood of that phase curve.",
+    "complete_integrability_exceptional_set": [],
+    "generic_derivation": {
+      "all_exact_derivation_checks_pass": true,
+      "collision_charpoly": [
+        "1",
+        "2",
+        "-1",
+        "-2",
+        "0"
+      ],
+      "elapsed_seconds": 695.7387241660017,
+      "infinity_charpoly": [
+        "1",
+        "-6",
+        "7",
+        "6",
+        "-(8*m1**2 - 11*m1*m2 - 11*m1 + 8*m2**2 - 11*m2 + 8)/(m1 + m2 + 1)**2"
+      ],
+      "mode": "generic",
+      "sigma": "(m1*m2 + m1 + m2)/(m1 + m2 + 1)**2",
+      "turning_charpoly": [
+        "1",
+        "2",
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    "implementation_independence": {
+      "production_does_not_import_sympy": true,
+      "reference_does_not_import_production": true
+    }
+  },
+  "negative_controls": {
+    "changed_v2_identity_rejected": true,
+    "clock_dependent": true,
+    "gauge_variant": true,
+    "nonzero_xi": true,
+    "off_shell_only_rank": true,
+    "rank_loss": true,
+    "status_only_mr_record_rejected": true,
+    "wrong_ks_momentum_factor": true
+  },
+  "prerequisites": {
+    "wp2_multi": {
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "status": "PASS"
+    },
+    "wp4_lift_v2": {
+      "lock_sha256": "ead00fca45a4328bbe4534c3fb85e457b990a94a020ef47e7f0651b9bafaead1",
+      "qualification_id": "WP4-LIFT-NI-v2-8d553cb1fa7f",
+      "status": "PASS"
+    },
+    "wp4_mr_repl": {
+      "lock_sha256": "35f7dcfe223dbe87775f11c6e31043c1b1ead02850d6f21ccb8e84a3b4406abb",
+      "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+      "status": "PASS"
+    }
+  },
+  "production_certificates": {
+    "hamiltonian_factor": {
+      "nonzero_level_control_rejected": true,
+      "nonzero_level_factor_residual": "7/40",
+      "nonzero_level_xi": "1",
+      "xi1_zero": "0",
+      "xi2_zero": "0",
+      "zero_level_factor_identity": true,
+      "zero_level_factor_residual": "0"
+    },
+    "logic": {
+      "abelian_group_has_only_abelian_algebraic_quotients": true,
+      "binary_collision_extension_does_not_remove_regular_open_restriction": true,
+      "global_family_restricts_to_every_regular_open_subset": true,
+      "nonabelian_quotient_obstructs_abelian_full_group": true
+    },
+    "nonzero_xi_control": {
+      "canonical_on_zero_level": false,
+      "projected_poisson": [
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        [
+          "-1",
+          "0",
+          "0",
+          "0",
+          "11/900",
+          "-11/4500"
+        ],
+        [
+          "0",
+          "-1",
+          "0",
+          "-11/900",
+          "0",
+          "-121/9000"
+        ],
+        [
+          "0",
+          "0",
+          "-1",
+          "11/4500",
+          "121/9000",
+          "0"
+        ]
+      ],
+      "rejected": true,
+      "xi": "-33"
+    },
+    "product_reduction": {
+      "constraint_projection_rank": 16,
+      "constraint_rank": 2,
+      "first_gauge_kernel": true,
+      "gauge_generators_independent": true,
+      "projection_rank": 14,
+      "quotient_dimension": 14,
+      "regular_level_dimension": 16,
+      "second_gauge_kernel": true,
+      "upstairs_dimension": 18
+    },
+    "single_ks_zero_level": {
+      "canonical_on_zero_level": true,
+      "constraint_projection_rank": 7,
+      "gauge_tangent_to_level_identity": true,
+      "horizontal_projector_identity": true,
+      "jacobian_metric_identity": true,
+      "phase_gauge_kernel_identity": true,
+      "projected_poisson": [
+        [
+          "0",
+          "0",
+          "0",
+          "1",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1"
+        ],
+        [
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "-1",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "projection_rank": 6,
+      "radius": "30",
+      "radius_identity": true,
+      "vertical_kernel_identity": true,
+      "xi": "0"
+    },
+    "spatial_subquotient": {
+      "angular_momentum": "-3",
+      "angular_momentum_conservation_residual": "0",
+      "angular_momentum_conserved": true,
+      "angular_momentum_nonzero": true,
+      "energy_momentum_gradient_rank": 2,
+      "flow_tangent_to_fixed_momentum_level": true,
+      "planar_block": [
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "7/10",
+          "0",
+          "1/5",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "7/10",
+          "0",
+          "1/5"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/5",
+          "0",
+          "8/15",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "1/5",
+          "0",
+          "8/15"
+        ],
+        [
+          "4879/56250",
+          "504/3125",
+          "-7/90",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "504/3125",
+          "7217/112500",
+          "0",
+          "7/180",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "-7/90",
+          "0",
+          "5131/56250",
+          "-756/3125",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "7/180",
+          "-756/3125",
+          "13013/112500",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "planar_block_exact": true,
+      "planar_energy_tangent_dimension": 5,
+      "planar_fixed_momentum_tangent_dimension": 7,
+      "planar_normal_quotient_dimension": 4,
+      "planar_reflection_block_dimension": 8,
+      "planar_rotation_quotient_dimension": 6,
+      "planar_variational_rank": 8,
+      "planar_vertical_cross_zero": true,
+      "published_nve_chain_dimension_exact": true,
+      "reflection_commutes_with_variational_matrix": true,
+      "rotation_generator_identity": true,
+      "rotation_tangent_to_energy_level": true,
+      "spatial_variational_rank": 12,
+      "spatial_ve_dimension": 12,
+      "vertical_variational_rank": 4
+    },
+    "transfer": {
+      "clock_dependent_control_rejected": true,
+      "clock_pt_bracket": "1",
+      "descended_family_involution": true,
+      "descended_family_rank": 6,
+      "full_family_involution": true,
+      "full_family_rank_on_shell": 9,
+      "gauge_variant_control_rejected": true,
+      "gauge_xi1_bracket": "1",
+      "off_shell_only_ambient_rank": 9,
+      "off_shell_only_control_rejected": true,
+      "off_shell_only_descended_rank": 5,
+      "off_shell_only_family_involution": true,
+      "off_shell_only_shell_rank": 8,
+      "off_shell_product_rule_residual": "0",
+      "rank_loss_control_full_rank": 8,
+      "rank_loss_control_reduced_rank": 5,
+      "rank_loss_control_rejected": true,
+      "shell_sundman_residual": "0",
+      "sundman_identity_exact": true
+    },
+    "wrong_momentum_factor_control": {
+      "canonical_on_zero_level": false,
+      "projected_poisson": [
+        [
+          "0",
+          "0",
+          "0",
+          "2",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "2",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "2"
+        ],
+        [
+          "-2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "-2",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "-2",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "rejected": true
+    }
+  },
+  "production_reference_exact_agreement": true,
+  "prohibited_global_claim": "The local phase-curve obstruction proves nonintegrability in every regularity class or classifies every trajectory.",
+  "prohibited_raw_upstairs_claim": "The unreduced KS Hamiltonian admits no complete family without the shell-regularity, gauge, chart, and clock conditions.",
+  "prohibited_short_claim": "The three-body problem has no integrals.",
+  "proof_addendum_sha256": "a65be646914a06dc369dabe0e1ce343ec2a7dab788b60573492375a5e15ca406",
+  "qualification_id": "WP4-LIFT-NI-v3-9ba955931b23",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3",
+      "sympy": "1.14.0"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "5bb0d6c0ca72a597e39e53c08b33be2e5401148e9021b9e2e325614a3277138e",
+  "source_records": [
+    {
+      "expected_sha256": "be53e1d80b0305ec13682c03d4d0d938cf1a77ee911f8ca6e5bb6f94df88e371",
+      "observed_sha256": "be53e1d80b0305ec13682c03d4d0d938cf1a77ee911f8ca6e5bb6f94df88e371",
+      "source_id": "marsden-weinstein-1974",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "observed_sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "source_id": "tsygvintsev-2007-exceptional-cases",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "observed_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "source_id": "boucher-weil-morales-ramis-threebody",
+      "verified": true
+    },
+    {
+      "expected_sha256": "2df532fcee684033950fc5b37e85b07bfe685cb309f56d53a76cb92dbbe52e69",
+      "observed_sha256": "2df532fcee684033950fc5b37e85b07bfe685cb309f56d53a76cb92dbbe52e69",
+      "source_id": "dullin-montgomery-2025",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "boucher_weil_normal_variational_permission": true,
+    "boucher_weil_planar_theorem": true,
+    "boucher_weil_reduced_four_dimensional_nve": true,
+    "dullin_montgomery_planar_frontier": true,
+    "dullin_montgomery_spatial_reduction": true,
+    "tsygvintsev_complete_meromorphic_obstruction": true,
+    "tsygvintsev_fixed_nonzero_angular_momentum": true,
+    "tsygvintsev_parabolic_lagrange_solution": true,
+    "tsygvintsev_planar_positive_mass_model": true,
+    "tsygvintsev_reduced_three_degrees_of_freedom": true
+  },
+  "spec_sha256": "bf03c1b485c9aac8f568e3dffbdca024faf80d7b51b0d08e30206f3b1733765d",
+  "specification_lock_sha256": "67c4245c5984e86b59d56b4478e0adb9907aa9fbe49b3d3a30e926ed6b14ab59",
+  "status": "PASS",
+  "theorem_obligations": {
+    "T1": true,
+    "T10": true,
+    "T2": true,
+    "T3": true,
+    "T4": true,
+    "T5": true,
+    "T6": true,
+    "T7": true,
+    "T8": true,
+    "T9": true
+  },
+  "v2_proof_coverage": {
+    "T1": true,
+    "T10": true,
+    "T2": true,
+    "T3": true,
+    "T4": true,
+    "T5": true,
+    "T6": true,
+    "T7": true,
+    "T8": true,
+    "T9": true,
+    "authorized_conclusion": true,
+    "fixed_momentum_subquotient": true,
+    "galois_subquotient": true,
+    "global_restriction": true,
+    "nonclaims": true,
+    "off_shell_counterexample": true,
+    "rank_argument": true
+  },
+  "v3_addendum_coverage": {
+    "T1": true,
+    "T10": true,
+    "T2": true,
+    "T3": true,
+    "T4": true,
+    "T5": true,
+    "T6": true,
+    "T7": true,
+    "T8": true,
+    "T9": true,
+    "authorized_conclusion": true,
+    "empty_exceptional_set": true,
+    "evidence_identity": true,
+    "nonabelian_identity_component": true,
+    "nonclaims": true,
+    "reproduced_generic_nve": true
+  },
+  "wp2_chart_contract_verified": true
+}
