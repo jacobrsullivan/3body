@@ -1,0 +1,1093 @@
+{
+  "authorized_claim": "The project independently reproduces, from the declared reduced Newtonian Hamiltonian and exact parabolic Lagrange phase curve, a 4x4 Fuchsian normal variational equation whose differential-Galois identity component is non-Abelian for every finite positive mass triple. By the pinned Morales-Ramis theorem, the declared translation- and rotation-reduced planar positive-mass Newtonian three-body Hamiltonian at fixed nonzero angular momentum is not completely integrable by meromorphic first integrals in a complex neighborhood of that phase curve.",
+  "benchmarks": [
+    {
+      "case_id": "equal",
+      "masses": [
+        "1",
+        "1",
+        "1"
+      ],
+      "passed": true,
+      "production": {
+        "collision_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_exponents": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "complete_integrability_exceptional_set": [],
+        "first_nve_polynomial_exception": true,
+        "galois": {
+          "abelian_identity_component_assumption_contradicted": true,
+          "complete_meromorphic_liouville_integrability_obstructed": true,
+          "differential_galois_identity_component_nonabelian": true,
+          "infinity": {
+            "contradicts_positive_sigma": true,
+            "forced_inner_square_root": "12",
+            "forced_sigma": "0",
+            "infinity_monodromy_not_unipotent": true,
+            "integer_exponents_imply_odd_square_sum": 26,
+            "odd_square_decompositions": [
+              [
+                "1",
+                "25"
+              ]
+            ],
+            "only_decomposition_is_1_plus_25": true,
+            "sigma": "1/3"
+          },
+          "premises": {
+            "abelian_G0_would_make_finite_monodromies_commute": true,
+            "finite_local_monodromies_unipotent": true,
+            "finite_residue_exponents_integral": true,
+            "fundamental_group_product_relation": true,
+            "infinity_monodromy_not_unipotent": true,
+            "product_of_commuting_unipotents_is_unipotent": true,
+            "unipotents_in_identity_component": true
+          },
+          "sigma": "1/3"
+        },
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "1"
+        ],
+        "infinity_nonunipotence": {
+          "contradicts_positive_sigma": true,
+          "forced_inner_square_root": "12",
+          "forced_sigma": "0",
+          "infinity_monodromy_not_unipotent": true,
+          "integer_exponents_imply_odd_square_sum": 26,
+          "odd_square_decompositions": [
+            [
+              "1",
+              "25"
+            ]
+          ],
+          "only_decomposition_is_1_plus_25": true,
+          "sigma": "1/3"
+        },
+        "masses": [
+          "1",
+          "1",
+          "1"
+        ],
+        "normalized_masses_m3_one": [
+          "1",
+          "1",
+          "1"
+        ],
+        "sigma": "1/3",
+        "sigma_range": {
+          "equality_if_and_only_if_equal_masses": true,
+          "positive": true,
+          "sigma": "1/3",
+          "sum_of_squared_differences": "0",
+          "sum_of_squares_identity": true,
+          "upper_bound": true,
+          "upper_bound_gap": "0"
+        },
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_exponents": [
+          -1,
+          -1,
+          0,
+          0
+        ]
+      },
+      "reference": {
+        "all_exact_derivation_checks_pass": true,
+        "collision_minus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_minus_charpoly_matches": true,
+        "collision_plus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_plus_charpoly_matches": true,
+        "elapsed_seconds": 3.8273226669989526,
+        "fuchs_only_simple_finite_poles_and_no_polynomial_part": true,
+        "fuchs_singular_points_distinct": true,
+        "hamilton_equation_tangent_residuals": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "hamilton_equation_tangent_residuals_zero": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hamiltonian_on_phase_curve": "0",
+        "hamiltonian_term_count": 9,
+        "hamiltonian_zero_on_phase_curve": true,
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "1"
+        ],
+        "infinity_charpoly_matches": true,
+        "infinity_determinant": "1",
+        "infinity_trace": "6",
+        "mode": "specialized",
+        "normal_system_hamiltonian": true,
+        "normalized_masses": [
+          "1",
+          "1",
+          "1"
+        ],
+        "planar_variational_equation_dimension": 6,
+        "planar_variational_matrix_constructed_from_hessian": true,
+        "planar_variational_matrix_hamiltonian": true,
+        "planar_variational_phase_substitution_complete": true,
+        "pole_diagnostics": [],
+        "real_coefficient_conjugation_contract": true,
+        "schema_version": "1.0",
+        "sigma": "1/3",
+        "sigma_upper_bound_sum_of_squares_identity": true,
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_charpoly_matches": true,
+        "whittaker_energy_shell_normal_dimension": 4,
+        "whittaker_hessian_symmetric": true
+      },
+      "residue_polynomials_exactly_agree": true
+    },
+    {
+      "case_id": "generic-a",
+      "masses": [
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "passed": true,
+      "production": {
+        "collision_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_exponents": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "complete_integrability_exceptional_set": [],
+        "first_nve_polynomial_exception": false,
+        "galois": {
+          "abelian_identity_component_assumption_contradicted": true,
+          "complete_meromorphic_liouville_integrability_obstructed": true,
+          "differential_galois_identity_component_nonabelian": true,
+          "infinity": {
+            "contradicts_positive_sigma": true,
+            "forced_inner_square_root": "12",
+            "forced_sigma": "0",
+            "infinity_monodromy_not_unipotent": true,
+            "integer_exponents_imply_odd_square_sum": 26,
+            "odd_square_decompositions": [
+              [
+                "1",
+                "25"
+              ]
+            ],
+            "only_decomposition_is_1_plus_25": true,
+            "sigma": "26/81"
+          },
+          "premises": {
+            "abelian_G0_would_make_finite_monodromies_commute": true,
+            "finite_local_monodromies_unipotent": true,
+            "finite_residue_exponents_integral": true,
+            "fundamental_group_product_relation": true,
+            "infinity_monodromy_not_unipotent": true,
+            "product_of_commuting_unipotents_is_unipotent": true,
+            "unipotents_in_identity_component": true
+          },
+          "sigma": "26/81"
+        },
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "2/3"
+        ],
+        "infinity_nonunipotence": {
+          "contradicts_positive_sigma": true,
+          "forced_inner_square_root": "12",
+          "forced_sigma": "0",
+          "infinity_monodromy_not_unipotent": true,
+          "integer_exponents_imply_odd_square_sum": 26,
+          "odd_square_decompositions": [
+            [
+              "1",
+              "25"
+            ]
+          ],
+          "only_decomposition_is_1_plus_25": true,
+          "sigma": "26/81"
+        },
+        "masses": [
+          "1/2",
+          "3/4",
+          "1"
+        ],
+        "normalized_masses_m3_one": [
+          "1/2",
+          "3/4",
+          "1"
+        ],
+        "sigma": "26/81",
+        "sigma_range": {
+          "equality_if_and_only_if_equal_masses": true,
+          "positive": true,
+          "sigma": "26/81",
+          "sum_of_squared_differences": "3/8",
+          "sum_of_squares_identity": true,
+          "upper_bound": true,
+          "upper_bound_gap": "1/81"
+        },
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_exponents": [
+          -1,
+          -1,
+          0,
+          0
+        ]
+      },
+      "reference": {
+        "all_exact_derivation_checks_pass": true,
+        "collision_minus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_minus_charpoly_matches": true,
+        "collision_plus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_plus_charpoly_matches": true,
+        "elapsed_seconds": 5.899293707998368,
+        "fuchs_only_simple_finite_poles_and_no_polynomial_part": true,
+        "fuchs_singular_points_distinct": true,
+        "hamilton_equation_tangent_residuals": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "hamilton_equation_tangent_residuals_zero": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hamiltonian_on_phase_curve": "0",
+        "hamiltonian_term_count": 9,
+        "hamiltonian_zero_on_phase_curve": true,
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "2/3"
+        ],
+        "infinity_charpoly_matches": true,
+        "infinity_determinant": "2/3",
+        "infinity_trace": "6",
+        "mode": "specialized",
+        "normal_system_hamiltonian": true,
+        "normalized_masses": [
+          "1/2",
+          "3/4",
+          "1"
+        ],
+        "planar_variational_equation_dimension": 6,
+        "planar_variational_matrix_constructed_from_hessian": true,
+        "planar_variational_matrix_hamiltonian": true,
+        "planar_variational_phase_substitution_complete": true,
+        "pole_diagnostics": [],
+        "real_coefficient_conjugation_contract": true,
+        "schema_version": "1.0",
+        "sigma": "26/81",
+        "sigma_upper_bound_sum_of_squares_identity": true,
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_charpoly_matches": true,
+        "whittaker_energy_shell_normal_dimension": 4,
+        "whittaker_hessian_symmetric": true
+      },
+      "residue_polynomials_exactly_agree": true
+    },
+    {
+      "case_id": "generic-b",
+      "masses": [
+        "2",
+        "3",
+        "1"
+      ],
+      "passed": true,
+      "production": {
+        "collision_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_exponents": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "complete_integrability_exceptional_set": [],
+        "first_nve_polynomial_exception": false,
+        "galois": {
+          "abelian_identity_component_assumption_contradicted": true,
+          "complete_meromorphic_liouville_integrability_obstructed": true,
+          "differential_galois_identity_component_nonabelian": true,
+          "infinity": {
+            "contradicts_positive_sigma": true,
+            "forced_inner_square_root": "12",
+            "forced_sigma": "0",
+            "infinity_monodromy_not_unipotent": true,
+            "integer_exponents_imply_odd_square_sum": 26,
+            "odd_square_decompositions": [
+              [
+                "1",
+                "25"
+              ]
+            ],
+            "only_decomposition_is_1_plus_25": true,
+            "sigma": "11/36"
+          },
+          "premises": {
+            "abelian_G0_would_make_finite_monodromies_commute": true,
+            "finite_local_monodromies_unipotent": true,
+            "finite_residue_exponents_integral": true,
+            "fundamental_group_product_relation": true,
+            "infinity_monodromy_not_unipotent": true,
+            "product_of_commuting_unipotents_is_unipotent": true,
+            "unipotents_in_identity_component": true
+          },
+          "sigma": "11/36"
+        },
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "1/4"
+        ],
+        "infinity_nonunipotence": {
+          "contradicts_positive_sigma": true,
+          "forced_inner_square_root": "12",
+          "forced_sigma": "0",
+          "infinity_monodromy_not_unipotent": true,
+          "integer_exponents_imply_odd_square_sum": 26,
+          "odd_square_decompositions": [
+            [
+              "1",
+              "25"
+            ]
+          ],
+          "only_decomposition_is_1_plus_25": true,
+          "sigma": "11/36"
+        },
+        "masses": [
+          "2",
+          "3",
+          "1"
+        ],
+        "normalized_masses_m3_one": [
+          "2",
+          "3",
+          "1"
+        ],
+        "sigma": "11/36",
+        "sigma_range": {
+          "equality_if_and_only_if_equal_masses": true,
+          "positive": true,
+          "sigma": "11/36",
+          "sum_of_squared_differences": "6",
+          "sum_of_squares_identity": true,
+          "upper_bound": true,
+          "upper_bound_gap": "1/36"
+        },
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_exponents": [
+          -1,
+          -1,
+          0,
+          0
+        ]
+      },
+      "reference": {
+        "all_exact_derivation_checks_pass": true,
+        "collision_minus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_minus_charpoly_matches": true,
+        "collision_plus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_plus_charpoly_matches": true,
+        "elapsed_seconds": 5.771069833999718,
+        "fuchs_only_simple_finite_poles_and_no_polynomial_part": true,
+        "fuchs_singular_points_distinct": true,
+        "hamilton_equation_tangent_residuals": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "hamilton_equation_tangent_residuals_zero": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hamiltonian_on_phase_curve": "0",
+        "hamiltonian_term_count": 9,
+        "hamiltonian_zero_on_phase_curve": true,
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "1/4"
+        ],
+        "infinity_charpoly_matches": true,
+        "infinity_determinant": "1/4",
+        "infinity_trace": "6",
+        "mode": "specialized",
+        "normal_system_hamiltonian": true,
+        "normalized_masses": [
+          "2",
+          "3",
+          "1"
+        ],
+        "planar_variational_equation_dimension": 6,
+        "planar_variational_matrix_constructed_from_hessian": true,
+        "planar_variational_matrix_hamiltonian": true,
+        "planar_variational_phase_substitution_complete": true,
+        "pole_diagnostics": [],
+        "real_coefficient_conjugation_contract": true,
+        "schema_version": "1.0",
+        "sigma": "11/36",
+        "sigma_upper_bound_sum_of_squares_identity": true,
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_charpoly_matches": true,
+        "whittaker_energy_shell_normal_dimension": 4,
+        "whittaker_hessian_symmetric": true
+      },
+      "residue_polynomials_exactly_agree": true
+    },
+    {
+      "case_id": "first-nve-exception",
+      "masses": [
+        "1",
+        "1",
+        "1/4"
+      ],
+      "passed": true,
+      "production": {
+        "collision_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_exponents": [
+          -2,
+          -1,
+          0,
+          1
+        ],
+        "complete_integrability_exceptional_set": [],
+        "first_nve_polynomial_exception": true,
+        "galois": {
+          "abelian_identity_component_assumption_contradicted": true,
+          "complete_meromorphic_liouville_integrability_obstructed": true,
+          "differential_galois_identity_component_nonabelian": true,
+          "infinity": {
+            "contradicts_positive_sigma": true,
+            "forced_inner_square_root": "12",
+            "forced_sigma": "0",
+            "infinity_monodromy_not_unipotent": true,
+            "integer_exponents_imply_odd_square_sum": 26,
+            "odd_square_decompositions": [
+              [
+                "1",
+                "25"
+              ]
+            ],
+            "only_decomposition_is_1_plus_25": true,
+            "sigma": "8/27"
+          },
+          "premises": {
+            "abelian_G0_would_make_finite_monodromies_commute": true,
+            "finite_local_monodromies_unipotent": true,
+            "finite_residue_exponents_integral": true,
+            "fundamental_group_product_relation": true,
+            "infinity_monodromy_not_unipotent": true,
+            "product_of_commuting_unipotents_is_unipotent": true,
+            "unipotents_in_identity_component": true
+          },
+          "sigma": "8/27"
+        },
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "0"
+        ],
+        "infinity_nonunipotence": {
+          "contradicts_positive_sigma": true,
+          "forced_inner_square_root": "12",
+          "forced_sigma": "0",
+          "infinity_monodromy_not_unipotent": true,
+          "integer_exponents_imply_odd_square_sum": 26,
+          "odd_square_decompositions": [
+            [
+              "1",
+              "25"
+            ]
+          ],
+          "only_decomposition_is_1_plus_25": true,
+          "sigma": "8/27"
+        },
+        "masses": [
+          "1",
+          "1",
+          "1/4"
+        ],
+        "normalized_masses_m3_one": [
+          "4",
+          "4",
+          "1"
+        ],
+        "sigma": "8/27",
+        "sigma_range": {
+          "equality_if_and_only_if_equal_masses": true,
+          "positive": true,
+          "sigma": "8/27",
+          "sum_of_squared_differences": "9/8",
+          "sum_of_squares_identity": true,
+          "upper_bound": true,
+          "upper_bound_gap": "1/27"
+        },
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_exponents": [
+          -1,
+          -1,
+          0,
+          0
+        ]
+      },
+      "reference": {
+        "all_exact_derivation_checks_pass": true,
+        "collision_minus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_minus_charpoly_matches": true,
+        "collision_plus_charpoly": [
+          "1",
+          "2",
+          "-1",
+          "-2",
+          "0"
+        ],
+        "collision_plus_charpoly_matches": true,
+        "elapsed_seconds": 5.7656109999988985,
+        "fuchs_only_simple_finite_poles_and_no_polynomial_part": true,
+        "fuchs_singular_points_distinct": true,
+        "hamilton_equation_tangent_residuals": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "hamilton_equation_tangent_residuals_zero": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "hamiltonian_on_phase_curve": "0",
+        "hamiltonian_term_count": 9,
+        "hamiltonian_zero_on_phase_curve": true,
+        "infinity_charpoly": [
+          "1",
+          "-6",
+          "7",
+          "6",
+          "0"
+        ],
+        "infinity_charpoly_matches": true,
+        "infinity_determinant": "0",
+        "infinity_trace": "6",
+        "mode": "specialized",
+        "normal_system_hamiltonian": true,
+        "normalized_masses": [
+          "4",
+          "4",
+          "1"
+        ],
+        "planar_variational_equation_dimension": 6,
+        "planar_variational_matrix_constructed_from_hessian": true,
+        "planar_variational_matrix_hamiltonian": true,
+        "planar_variational_phase_substitution_complete": true,
+        "pole_diagnostics": [],
+        "real_coefficient_conjugation_contract": true,
+        "schema_version": "1.0",
+        "sigma": "8/27",
+        "sigma_upper_bound_sum_of_squares_identity": true,
+        "turning_charpoly": [
+          "1",
+          "2",
+          "1",
+          "0",
+          "0"
+        ],
+        "turning_charpoly_matches": true,
+        "whittaker_energy_shell_normal_dimension": 4,
+        "whittaker_hessian_symmetric": true
+      },
+      "residue_polynomials_exactly_agree": true
+    }
+  ],
+  "campaign": "WP4-MR-REPL-v1",
+  "claim_boundary": "A PASS is a project-owned exact reproduction of the local planar Morales-Ramis obstruction. It starts from the explicitly declared reduced Newtonian Hamiltonian and independently differentiates it; it does not independently reconstruct every canonical translation/rotation coordinate map from the unreduced 18-dimensional state. It proves no absence of individual additional first integrals, no non-meromorphic obstruction, no zero-angular-momentum theorem, no spatial theorem without the separately qualified WP4-LIFT-NI-v3 transfer, no global orbit classification, no catalogue completeness, and no statement about triple collision.",
+  "complete_integrability_exceptional_set": [],
+  "first_nve_polynomial_exceptional_set": [
+    "1/3",
+    "8/27",
+    "2/9"
+  ],
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_prerequisite_locks_and_records_verified",
+      "observed": 3,
+      "passed": true,
+      "threshold": 3
+    },
+    {
+      "comparator": "==",
+      "name": "all_source_download_hashes_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_source_text_contracts_verified",
+      "observed": 13,
+      "passed": true,
+      "threshold": 13
+    },
+    {
+      "comparator": "==",
+      "name": "all_R1_through_R10_obligations_pass",
+      "observed": 10,
+      "passed": true,
+      "threshold": 10
+    },
+    {
+      "comparator": "==",
+      "name": "generic_symbolic_replay_exact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_exact_specializations_pass",
+      "observed": 4,
+      "passed": true,
+      "threshold": 4
+    },
+    {
+      "comparator": "==",
+      "name": "production_reference_exact_agreement",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "full_positive_mass_domain_proved",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "complete_integrability_exceptional_set_empty",
+      "observed": 0,
+      "passed": true,
+      "threshold": 0
+    },
+    {
+      "comparator": "==",
+      "name": "all_adversarial_controls_rejected",
+      "observed": 9,
+      "passed": true,
+      "threshold": 9
+    },
+    {
+      "comparator": "==",
+      "name": "proof_document_covers_every_obligation",
+      "observed": 12,
+      "passed": true,
+      "threshold": 12
+    },
+    {
+      "comparator": "==",
+      "name": "claim_boundary_present",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    }
+  ],
+  "generated_utc": "2026-07-24T05:09:00.284621+00:00",
+  "generic_derivation": {
+    "all_exact_derivation_checks_pass": true,
+    "collision_minus_charpoly": [
+      "1",
+      "2",
+      "-1",
+      "-2",
+      "0"
+    ],
+    "collision_minus_charpoly_matches": true,
+    "collision_plus_charpoly": [
+      "1",
+      "2",
+      "-1",
+      "-2",
+      "0"
+    ],
+    "collision_plus_charpoly_matches": true,
+    "elapsed_seconds": 695.7387241660017,
+    "fuchs_only_simple_finite_poles_and_no_polynomial_part": true,
+    "fuchs_singular_points_distinct": true,
+    "hamilton_equation_tangent_residuals": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "hamilton_equation_tangent_residuals_zero": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "hamiltonian_on_phase_curve": "0",
+    "hamiltonian_term_count": 9,
+    "hamiltonian_zero_on_phase_curve": true,
+    "infinity_charpoly": [
+      "1",
+      "-6",
+      "7",
+      "6",
+      "-(8*m1**2 - 11*m1*m2 - 11*m1 + 8*m2**2 - 11*m2 + 8)/(m1 + m2 + 1)**2"
+    ],
+    "infinity_charpoly_matches": true,
+    "infinity_determinant": "-(8*m1**2 - 11*m1*m2 - 11*m1 + 8*m2**2 - 11*m2 + 8)/(m1 + m2 + 1)**2",
+    "infinity_trace": "6",
+    "mode": "generic",
+    "normal_system_hamiltonian": true,
+    "normalized_masses": [
+      "m1",
+      "m2",
+      "1"
+    ],
+    "planar_variational_equation_dimension": 6,
+    "planar_variational_matrix_constructed_from_hessian": true,
+    "planar_variational_matrix_hamiltonian": true,
+    "planar_variational_phase_substitution_complete": true,
+    "pole_diagnostics": [],
+    "real_coefficient_conjugation_contract": true,
+    "schema_version": "1.0",
+    "sigma": "(m1*m2 + m1 + m2)/(m1 + m2 + 1)**2",
+    "sigma_upper_bound_sum_of_squares_identity": true,
+    "turning_charpoly": [
+      "1",
+      "2",
+      "1",
+      "0",
+      "0"
+    ],
+    "turning_charpoly_matches": true,
+    "whittaker_energy_shell_normal_dimension": 4,
+    "whittaker_hessian_symmetric": true
+  },
+  "implementation_independence": {
+    "production_does_not_import_sympy": true,
+    "reference_does_not_import_production": true
+  },
+  "lock_sha256": "35f7dcfe223dbe87775f11c6e31043c1b1ead02850d6f21ccb8e84a3b4406abb",
+  "negative_controls": {
+    "changed_collision_residue_rejected": true,
+    "changed_infinity_polynomial_rejected": true,
+    "changed_source_hash_rejected": true,
+    "changed_turning_residue_rejected": true,
+    "commutation_premise_required": true,
+    "identity_component_premise_required": true,
+    "invalid_masses_rejected": true,
+    "reference_does_not_import_production": true,
+    "sigma_zero_rejected": true
+  },
+  "prerequisites": {
+    "wp2_multi": {
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp4_lift_v2": {
+      "lock_sha256": "ead00fca45a4328bbe4534c3fb85e457b990a94a020ef47e7f0651b9bafaead1",
+      "qualification_id": "WP4-LIFT-NI-v2-8d553cb1fa7f",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp4_mr_v2": {
+      "lock_sha256": "5a8fad5ae70435cfcc7912a6c481569a4df7adad9f4a272dceeb0cc9cb538ed6",
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production_reference_exact_agreement": true,
+  "prohibited_global_claim": "The local phase-curve obstruction classifies all trajectories or all regularity classes.",
+  "prohibited_independence_claim": "The project independently rederived every canonical reduction from the unreduced 18-dimensional Hamiltonian.",
+  "prohibited_short_claim": "The three-body problem has no integrals.",
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_boundary": true,
+    "group_contradiction": true
+  },
+  "proof_sha256": "3cf75bd36925c296c69d302c2d7e229b1eb9da5928aa9690a7f06545c77104cc",
+  "published_source_equivalence": {
+    "finite_residue_spectra": true,
+    "fuchs_gauge_and_singular_points": true,
+    "infinity_exponent_polynomial": true,
+    "morales_ramis_conclusion": true,
+    "parabolic_lagrange_phase_curve": true,
+    "planar_variational_and_whittaker_reduction": true,
+    "reduced_hamiltonian_convention": true
+  },
+  "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "bc5802def756b64597494de6f70c208658713a78b85e9364ef9c06e9611b733f",
+  "source_records": [
+    {
+      "expected_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef",
+      "observed_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef",
+      "source_id": "tsygvintsev-2001-nve",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "observed_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "source_id": "boucher-weil-planar-threebody",
+      "verified": true
+    },
+    {
+      "expected_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6",
+      "observed_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6",
+      "source_id": "morales-ramis-2001-foundation",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "boucher_weil_conclusion": true,
+    "boucher_weil_title": true,
+    "morales_ramis_necessary_condition": true,
+    "morales_ramis_nve_quotient": true,
+    "morales_ramis_title": true,
+    "tsygvintsev_finite_spectra": true,
+    "tsygvintsev_fuchs_gauge": true,
+    "tsygvintsev_infinity_spectrum": true,
+    "tsygvintsev_local_conclusion": true,
+    "tsygvintsev_parabolic_curve": true,
+    "tsygvintsev_reduced_hamiltonian": true,
+    "tsygvintsev_title": true,
+    "tsygvintsev_whittaker_reduction": true
+  },
+  "spec_sha256": "92761ecb9b7df2f80d446afd99947d730f2df2403cea04843f7b017e9a1e1e17",
+  "specification_lock_sha256": "41f136825eb50a17074935c1776b860e8fa2fb3dd8aa040b31e959e5e96f6d0e",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  },
+  "universal_positive_mass_domain_certificate": {
+    "all_positive_mass_triples_have_nonabelian_identity_component": true,
+    "complete_integrability_exceptional_set": [],
+    "forced_inner_square_root": "12",
+    "forced_sigma": "0",
+    "odd_square_decompositions": [
+      [
+        "1",
+        "25"
+      ]
+    ],
+    "premises": {
+      "abelian_identity_component_makes_them_commute": true,
+      "commuting_unipotent_product_is_unipotent": true,
+      "finite_exponents_are_integers": true,
+      "fundamental_group_product_relates_infinity": true,
+      "only_odd_square_decomposition_of_26_is_1_plus_25": true,
+      "positive_mass_domain_excludes_sigma_zero": true,
+      "unipotent_elements_lie_in_identity_component": true,
+      "unit_infinity_spectrum_forces_sigma_zero": true
+    },
+    "sigma_domain": "0 < sigma <= 1/3"
+  }
+}
