@@ -1,0 +1,160 @@
+{
+  "authorized_claim": "The project independently reproduces, from the declared reduced Newtonian Hamiltonian and exact parabolic Lagrange phase curve, a 4x4 Fuchsian normal variational equation whose differential-Galois identity component is non-Abelian for every finite positive mass triple. By the pinned Morales-Ramis theorem, the declared translation- and rotation-reduced planar positive-mass Newtonian three-body Hamiltonian at fixed nonzero angular momentum is not completely integrable by meromorphic first integrals in a complex neighborhood of that phase curve.",
+  "benchmark_case_count": 4,
+  "campaign": "WP4-MR-REPL-v1",
+  "claim_boundary": "A PASS is a project-owned exact reproduction of the local planar Morales-Ramis obstruction. It starts from the explicitly declared reduced Newtonian Hamiltonian and independently differentiates it; it does not independently reconstruct every canonical translation/rotation coordinate map from the unreduced 18-dimensional state. It proves no absence of individual additional first integrals, no non-meromorphic obstruction, no zero-angular-momentum theorem, no spatial theorem without the separately qualified WP4-LIFT-NI-v3 transfer, no global orbit classification, no catalogue completeness, and no statement about triple collision.",
+  "complete_integrability_exceptional_set": [],
+  "evidence_git_commit": "17f34f83bc914332fb468497ee9401018c9bbda8",
+  "first_nve_polynomial_exceptional_set": [
+    "1/3",
+    "8/27",
+    "2/9"
+  ],
+  "generated_utc": "2026-07-24T05:09:38.642763+00:00",
+  "generic_derivation": {
+    "all_exact_derivation_checks_pass": true,
+    "collision_charpoly": [
+      "1",
+      "2",
+      "-1",
+      "-2",
+      "0"
+    ],
+    "elapsed_seconds": 695.7387241660017,
+    "infinity_charpoly": [
+      "1",
+      "-6",
+      "7",
+      "6",
+      "-(8*m1**2 - 11*m1*m2 - 11*m1 + 8*m2**2 - 11*m2 + 8)/(m1 + m2 + 1)**2"
+    ],
+    "mode": "generic",
+    "sigma": "(m1*m2 + m1 + m2)/(m1 + m2 + 1)**2",
+    "turning_charpoly": [
+      "1",
+      "2",
+      "1",
+      "0",
+      "0"
+    ]
+  },
+  "implementation_independence": {
+    "production_does_not_import_sympy": true,
+    "reference_does_not_import_production": true
+  },
+  "lock_sha256": "35f7dcfe223dbe87775f11c6e31043c1b1ead02850d6f21ccb8e84a3b4406abb",
+  "negative_controls": {
+    "changed_collision_residue_rejected": true,
+    "changed_infinity_polynomial_rejected": true,
+    "changed_source_hash_rejected": true,
+    "changed_turning_residue_rejected": true,
+    "commutation_premise_required": true,
+    "identity_component_premise_required": true,
+    "invalid_masses_rejected": true,
+    "reference_does_not_import_production": true,
+    "sigma_zero_rejected": true
+  },
+  "prerequisites": {
+    "wp2_multi": {
+      "lock_sha256": "4a7dccfff2f457d67aa587680f1f6a8b262a8b70ebf595c9019bdbe00d6b94dd",
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp4_lift_v2": {
+      "lock_sha256": "ead00fca45a4328bbe4534c3fb85e457b990a94a020ef47e7f0651b9bafaead1",
+      "qualification_id": "WP4-LIFT-NI-v2-8d553cb1fa7f",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp4_mr_v2": {
+      "lock_sha256": "5a8fad5ae70435cfcc7912a6c481569a4df7adad9f4a272dceeb0cc9cb538ed6",
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production_reference_exact_agreement": true,
+  "prohibited_global_claim": "The local phase-curve obstruction classifies all trajectories or all regularity classes.",
+  "prohibited_independence_claim": "The project independently rederived every canonical reduction from the unreduced 18-dimensional Hamiltonian.",
+  "prohibited_short_claim": "The three-body problem has no integrals.",
+  "proof_coverage": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true,
+    "authorized_boundary": true,
+    "group_contradiction": true
+  },
+  "proof_sha256": "3cf75bd36925c296c69d302c2d7e229b1eb9da5928aa9690a7f06545c77104cc",
+  "published_source_equivalence": {
+    "finite_residue_spectra": true,
+    "fuchs_gauge_and_singular_points": true,
+    "infinity_exponent_polynomial": true,
+    "morales_ramis_conclusion": true,
+    "parabolic_lagrange_phase_curve": true,
+    "planar_variational_and_whittaker_reduction": true,
+    "reduced_hamiltonian_convention": true
+  },
+  "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+  "record_payload_sha256": "2bfad5976b806d89d075bbbefe08f50680a8e677193b3b82cc3488e82082b951",
+  "results_sha256": "a2934f78647ad31bd91dfc72ed3f5f7ad78a7278dd807f1d0d424148db506ff0",
+  "schema_version": "1.0",
+  "source_manifest_sha256": "bc5802def756b64597494de6f70c208658713a78b85e9364ef9c06e9611b733f",
+  "source_records": [
+    {
+      "expected_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef",
+      "observed_sha256": "728e96008ddd270d18cf6297e4f5c68c6bd8d01ec0b545e6969b51630f2be6ef",
+      "source_id": "tsygvintsev-2001-nve",
+      "verified": true
+    },
+    {
+      "expected_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "observed_sha256": "cf2e115a03b5ad7a77c95f50cde1e5384daa6cfd299eefb2b0ad8ff2c1f5b236",
+      "source_id": "boucher-weil-planar-threebody",
+      "verified": true
+    },
+    {
+      "expected_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6",
+      "observed_sha256": "83693041118fc1d58c8298948d19276193af95cd7b200a2266b831ae53e0fbb6",
+      "source_id": "morales-ramis-2001-foundation",
+      "verified": true
+    }
+  ],
+  "source_text_checks": {
+    "boucher_weil_conclusion": true,
+    "boucher_weil_title": true,
+    "morales_ramis_necessary_condition": true,
+    "morales_ramis_nve_quotient": true,
+    "morales_ramis_title": true,
+    "tsygvintsev_finite_spectra": true,
+    "tsygvintsev_fuchs_gauge": true,
+    "tsygvintsev_infinity_spectrum": true,
+    "tsygvintsev_local_conclusion": true,
+    "tsygvintsev_parabolic_curve": true,
+    "tsygvintsev_reduced_hamiltonian": true,
+    "tsygvintsev_title": true,
+    "tsygvintsev_whittaker_reduction": true
+  },
+  "spec_sha256": "92761ecb9b7df2f80d446afd99947d730f2df2403cea04843f7b017e9a1e1e17",
+  "specification_lock_sha256": "41f136825eb50a17074935c1776b860e8fa2fb3dd8aa040b31e959e5e96f6d0e",
+  "status": "PASS",
+  "theorem_obligations": {
+    "R1": true,
+    "R10": true,
+    "R2": true,
+    "R3": true,
+    "R4": true,
+    "R5": true,
+    "R6": true,
+    "R7": true,
+    "R8": true,
+    "R9": true
+  }
+}
