@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP4-LIFT-NI-v3",
+  "supersedes": "WP4-LIFT-NI-v2 only as the current evidence-chain endpoint; v2 remains a valid, unchanged conditional transfer qualification.",
+  "specification_status": "LOCKABLE_BEFORE_V3_IMPLEMENTATION_OR_EVALUATION",
+  "purpose": "Qualify the unchanged WP4-LIFT-NI-v2 spatial/KS transfer theorem using the project-owned WP4-MR-REPL-v1 planar NVE and non-Abelian differential-Galois certificate instead of an unreplicated published premise.",
+  "goal": "Prove that the reproduced positive-mass planar obstruction is a differential subquotient obstruction for the translation-reduced spatial problem and that any complete shell-regular physically admissible meromorphic Liouville family on the qualified KS atlas would descend to the forbidden physical family.",
+  "evidence_boundary": "A PASS reruns and hash-identifies the exact v2 KS quotient, two-spinor product reduction, chart compatibility, fixed-energy Sundman conservation, shell-relative rank descent, collision-free restriction, reflection splitting, fixed-nonzero-angular-momentum planar reduction, normal differential subquotient, Galois quotient, and global-restriction arguments. It replaces the unreplicated planar premise with the independently qualified WP4-MR-REPL-v1 result. It does not establish ambient-only rank, gauge-dependent or chart-dependent integrals, explicit clock-dependent integrals, non-meromorphic or non-Liouville obstructions, nonzero-Xi magnetic dynamics, a general SO(3) quotient, zero angular momentum, triple-collision regularization, absence of individual additional integrals, or a classification of all trajectories.",
+  "prerequisites": {
+    "wp2_multi": {
+      "qualification_id": "WP2-MULTIQ-v1-72c81d86644a",
+      "lock_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_lock.json",
+      "lock_file_sha256": "6e24eef15b8d1b8e272f8abee7fe5a99d56c84ae28edf5fc04fad04506b06680",
+      "record_file": "validation-external/wp2-multi-validation/reports/wp2_multi_v1_qualification_record.json",
+      "record_file_sha256": "c77bbe2555dcec80aa016f6b696aa6b185b4df82fb3fd1f77bd9f1f186306085"
+    },
+    "wp4_mr_repl": {
+      "qualification_id": "WP4-MR-REPL-v1-2ea23024c64b",
+      "lock_file": "validation-external/wp4-mr-repl-v1/reports/wp4_mr_repl_v1_qualification_lock.json",
+      "lock_file_sha256": "cad8fd0b72491e7dc19bb7c2b6fda7b06d1a4cf45246670d98657158a28b162c",
+      "record_file": "validation-external/wp4-mr-repl-v1/reports/wp4_mr_repl_v1_qualification_record.json",
+      "record_file_sha256": "1835133b7b018a95c51565dc1a6ebcc7f605e0192d7ed88e0754d73411e86a3f"
+    },
+    "wp4_lift_v2": {
+      "qualification_id": "WP4-LIFT-NI-v2-8d553cb1fa7f",
+      "lock_file": "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_lock.json",
+      "lock_file_sha256": "aca1daef73326e7ef0e18dc0c032e4617b6e7df624c26c0e5fe45d0cbf3f2b24",
+      "record_file": "validation-external/wp4-lift-ni-v2/reports/wp4_lift_ni_v2_qualification_record.json",
+      "record_file_sha256": "1635d6e79e01b1ae5b68adcc9487fb7baf3cac7ed06fbf6b8de7ca8557c98f3d",
+      "production_file": "src/python/wp4_lift_ni_v2/model.py",
+      "production_file_sha256": "0b1ed0af1a0276ba104eb3e1ec3dab1c9595f7b9e42d0c92fcf87053f6223a21",
+      "reference_file": "validation-external/wp4-lift-ni-v2/reference/sympy_reference.py",
+      "reference_file_sha256": "4f3ab2fa5495afac9037134b2fcc192c168b730249d47c12bd016e8f6643e4b9",
+      "proof_file": "validation-external/wp4-lift-ni-v2/proof/WP4-LIFT-NI-v2-proof.md",
+      "proof_file_sha256": "837de3b07f28570ffcc7c78b397be2ed8809b84e255279c660bde71b9422c781"
+    },
+    "inherited_source_manifest": {
+      "path": "validation-external/wp4-lift-ni-v2/sources/manifest.json",
+      "sha256": "5bb0d6c0ca72a597e39e53c08b33be2e5401148e9021b9e2e325614a3277138e",
+      "policy": "The published planar papers are retained as source-comparison evidence only; T9 depends on the WP4-MR-REPL-v1 PASS record."
+    }
+  },
+  "model": {
+    "physical_phase_space": "The regular collision-free part U of the 12-dimensional total-linear-momentum-zero translation quotient of the spatial Newtonian three-body phase space, complexified on the declared algebraic distance cover.",
+    "physical_hamiltonian": "H on U with three finite strictly positive masses and positive gravitational constant.",
+    "extended_physical_space": "U_ext=U x T*R with coordinates (z,t,p_t), canonical form omega_U+d p_t wedge d t, dimension 14.",
+    "upstairs_chart": "Each WP2-MULTIQ-v1 chart is T*(R4 x R4 x R), dimension 18, with two commuting cotangent S1 actions and momentum map J=(Xi1,Xi2).",
+    "regular_domain": "J^-1(0), both selected spinors nonzero, and the third pair distance nonzero; the free T2 quotient is U_ext.",
+    "regularized_hamiltonian": "K=g*(H+p_t) after quotient, with g=r12*r23*r31 nonzero on the regular domain.",
+    "physical_shell": "S is J=0 and K=0; there K=0 is equivalent to p_t=-H.",
+    "variational_reduction_chain": "Along the nonzero-angular-momentum planar Lagrange phase curve: spatial translation-reduced VE dimension 12; reflection-fixed planar VE dimension 8; tangent-to-L_z=k quotient by rotation dimension 6; normal quotient by phase-flow and energy directions dimension 4; the independently reproduced WP4-MR-REPL-v1 NVE is the final differential subquotient."
+  },
+  "admissible_integrability": {
+    "name": "shell-regular physically admissible meromorphic Liouville family",
+    "definition": "On a connected T2-invariant regular open neighborhood N in an 18-dimensional lifted chart containing the physical lifted parabolic Lagrange phase curve, a family (K,p_t,Xi1,Xi2,F1,...,F5) of nine meromorphic first integrals is admissible when all nine pairwise Poisson commute; their covectors have rank nine on a relative dense-open subset of S intersect N; every Fi commutes with p_t, Xi1, and Xi2; and every Fi restriction to J=0 agrees under each frozen WP2 chart transition.",
+    "required_consequences": [
+      "Clock independence from commutation with p_t.",
+      "T2 projectability from commutation with Xi1 and Xi2.",
+      "Single-valued physical functions from chart compatibility.",
+      "No rank supplied only by Xi or H+p_t away from the physical shell."
+    ]
+  },
+  "theorem_obligations": {
+    "T1_single_ks_reduction": "Re-run the exact Hopf/KS radius, vertical-kernel, Xi momentum-map, projected-rank, and zero-level canonical Poisson identities.",
+    "T2_product_and_extended_reduction": "Re-run the 18 -> 16 -> 14 two-spinor product quotient and exact zero-level regularized-Hamiltonian factor identity.",
+    "T3_chart_gluing": "Re-verify the frozen WP2 projection-transition identity and chart-independent descent contract.",
+    "T4_sundman_transfer": "Re-prove {F,K}=g*{F,H}+(H+p_t)*{F,g} and shell conservation equivalence.",
+    "T5_involution_transfer": "Re-prove that upstairs pairwise involution descends, including allowed p_t dependence.",
+    "T6_shell_rank_transfer": "Re-prove that shell-relative rank nine implies physical rank six and reject off-shell-only rank.",
+    "T7_collision_domain": "Re-prove that extension across binary collision cannot evade an obstruction on the regular collision-free open set.",
+    "T8_spatial_variational_subquotient": "Re-run the exact reflection block, fixed-nonzero-L_z quotient, and 12 -> 8 -> 6 -> 4 normal differential-subquotient checks.",
+    "T9_galois_quotient": "Verify the WP4-MR-REPL-v1 generic derivation PASS, empty complete-integrability exceptional set, and non-Abelian identity component; then re-prove that virtual Abelianity of the full spatial variational group would force virtual Abelianity of this differential subquotient.",
+    "T10_global_implication": "Re-prove only that a global admissible family on a domain containing the regular neighborhood would restrict to the locally forbidden family."
+  },
+  "implementation_identity": {
+    "production": "The v3 package delegates to the exact hash-pinned WP4-LIFT-NI-v2 pure-rational certificate without modifying it.",
+    "reference": "The hash-pinned v2 SymPy reference is rerun directly and remains source-disjoint from both v2 and v3 production packages.",
+    "proof": "The hash-pinned complete v2 proof supplies T1-T10 transfer details; a v3 addendum proves the premise substitution and updated claim boundary.",
+    "required_exact_agreement": true
+  },
+  "negative_controls": [
+    "Wrong KS momentum factor.",
+    "Nonzero-Xi magnetic residual.",
+    "Clock-dependent probe.",
+    "Gauge-variant probe.",
+    "Off-shell-only rank.",
+    "Genuine shell-horizontal rank loss.",
+    "A synthetic or status-only MR record lacking the reproduced generic derivation must fail T9.",
+    "Any changed v2 production, reference, or proof hash must fail implementation identity."
+  ],
+  "gates": {
+    "specification_lock_verified": true,
+    "all_prerequisite_locks_and_records_verified": true,
+    "inherited_source_manifest_verified": true,
+    "all_source_download_hashes_verified": true,
+    "source_text_contracts_verified": true,
+    "v2_transfer_implementation_identity_verified": true,
+    "mr_reproduced_premise_verified": true,
+    "all_T1_exact_identities_pass": true,
+    "all_T2_dimension_and_rank_checks_pass": true,
+    "all_T3_chart_contract_checks_pass": true,
+    "all_T4_sundman_identities_pass": true,
+    "all_T5_involution_checks_pass": true,
+    "all_T6_shell_rank_checks_pass": true,
+    "all_T7_domain_checks_pass": true,
+    "all_T8_spatial_subquotient_checks_pass": true,
+    "all_T9_galois_logic_checks_pass": true,
+    "all_T10_global_logic_checks_pass": true,
+    "production_reference_exact_agreement": true,
+    "all_negative_controls_rejected": true,
+    "proof_document_covers_every_obligation": true,
+    "claim_boundary_present": true
+  },
+  "decision_policy": {
+    "PASS": "Every prerequisite, inherited source, exact implementation-identity, reproduced-premise, T1-T10, independent-reference, negative-control, proof, and claim-boundary gate passes under the frozen v3 implementation.",
+    "FAIL": "Any hash mismatch, synthetic premise, missing generic reproduction field, transfer regression, exact-identity disagreement, control escape, proof gap, or claim overreach fails v3 and requires a successor.",
+    "AUTHORIZED_CLAIM": "The project-owned WP4-MR-REPL-v1 planar obstruction transfers to the translation-reduced spatial positive-mass Newtonian three-body Hamiltonian: it is not completely integrable by meromorphic first integrals near the embedded fixed-nonzero-angular-momentum parabolic Lagrange phase curve. Consequently, the qualified WP2-MULTIQ-v1 atlas admits no complete shell-regular physically admissible meromorphic Liouville family on any domain containing that regular neighborhood.",
+    "PROHIBITED_SHORT_CLAIM": "The three-body problem has no integrals.",
+    "PROHIBITED_RAW_UPSTAIRS_CLAIM": "The unreduced KS Hamiltonian admits no complete family without the shell-regularity, gauge, chart, and clock conditions.",
+    "PROHIBITED_GLOBAL_CLAIM": "The local phase-curve obstruction proves nonintegrability in every regularity class or classifies every trajectory."
+  },
+  "invalidation": "Any changed premise, transfer model, admissibility definition, source or prerequisite hash, implementation identity, theorem obligation, control, decision rule, or frozen v3 implementation invalidates v3. A failed frozen execution remains FAIL."
+}
