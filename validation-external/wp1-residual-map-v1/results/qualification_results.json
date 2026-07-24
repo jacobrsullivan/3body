@@ -1,0 +1,142 @@
+{
+  "authorized_claim": "The project has a deterministic, evidence-ranked and publication-gated work map for all 169 qualified WP1 catalogue members, partitioned into bounded local-normal-form and asymptotic-manifold tracks with exact higher-variational overlays.",
+  "campaign": "WP1-RESIDUAL-MAP-v1",
+  "candidate_count": 169,
+  "catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+  "claim_boundary": "A PASS verifies one-to-one ingestion of all 169 frozen catalogue candidates, exact preservation of masses and qualified planar S/U labels, deterministic evidence-quality ordering, bounded track assignment, and explicit publication gates. It does not discover an invariant, establish KAM stability, construct a normal form or invariant manifold, qualify spatial stability, infer non-meromorphic integrability, or widen the WP1 catalogue claim.",
+  "counts": {
+    "asymptotic_manifold": 51,
+    "domain_restricted_or_nonmeromorphic_overlay": 169,
+    "higher_variational_exception_overlay": 1,
+    "local_stable_normal_form": 118
+  },
+  "gates": [
+    {
+      "comparator": "==",
+      "name": "specification_lock_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_prerequisite_hashes_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_169_candidates_mapped_once",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "expected_track_counts_exact",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "exact_exception_overlay_count",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "deterministic_ordering_verified",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "production_reference_exact_agreement",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "all_adversarial_controls_rejected",
+      "observed": 9,
+      "passed": true,
+      "threshold": 9
+    },
+    {
+      "comparator": "==",
+      "name": "publication_gate_present_on_every_row",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "no_invariant_interpretation_present",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    },
+    {
+      "comparator": "==",
+      "name": "claim_boundary_present",
+      "observed": 1,
+      "passed": true,
+      "threshold": 1
+    }
+  ],
+  "generated_utc": "2026-07-24T04:56:50.798951+00:00",
+  "lock_sha256": "da58537b9e904fa702580f244f6d928e72e5be07a6d10ba63965a6ff019c321e",
+  "map_path": "validation-external/wp1-residual-map-v1/data/residual_structure_map.json",
+  "map_sha256": "9703ebdfd146f6a3c83af5321a6db05f72d4350fc28d10297bc4ae4efc52b10c",
+  "negative_controls": {
+    "changed_label_detected_by_frozen_input": true,
+    "changed_mass_detected_by_frozen_input": true,
+    "duplicate_candidate_rejected": true,
+    "exact_exception_membership_enforced": true,
+    "input_row_permutation_invariant": true,
+    "missing_candidate_detected": true,
+    "missing_publication_gate_rejected": true,
+    "overinterpretation_rejected": true,
+    "unknown_label_rejected": true
+  },
+  "prerequisites": {
+    "wp1_catalogue": {
+      "lock_sha256": "fde5e484ada224c64083b5695750bf1ec780a99b5ccd61e7324fc89b0ee0f191",
+      "qualification_id": "WP1-CAT-N3BP-v1-605c6dbd59d1",
+      "status": "PASS",
+      "verified": true
+    },
+    "wp4_mr_v2_boundary": {
+      "qualification_id": "WP4-MR-NI-v2-4eb909c77a41",
+      "status": "PASS",
+      "verified": true
+    }
+  },
+  "production_reference_exact_agreement": true,
+  "prohibited_claim": "WP1 catalogue residuals reveal a new invariant or establish any form of integrability.",
+  "publication_contract_complete": true,
+  "qualification_id": "WP1-RESIDUAL-MAP-v1-9526e09d01ba",
+  "reference_source_disjoint": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "spec_sha256": "4757d455f69eccd71900bace20deaf1138462eeb1c4fc71bbe998bc879ef1d59",
+  "specification_lock_sha256": "ece69d3228dc85673e3940f51d05696ca00c27f94b1bc050d53eb10800112239",
+  "status": "PASS"
+}

@@ -1,0 +1,3908 @@
+{
+  "campaign": "WP1-RESIDUAL-MAP-v1",
+  "candidate_count": 169,
+  "candidates": [
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.970",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.00e2800000000p-35",
+        "reciprocal_pair_error": "0x1.968c9a0000001p-30",
+        "symplectic_defect": "0x1.65a0e86c6b4efp-21"
+      },
+      "sigma": "19477197942386698398349244136371/58437678550041190706983555690188",
+      "track_rank": 43
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.975",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3490800000000p-35",
+        "reciprocal_pair_error": "0x1.ba40b80000001p-30",
+        "symplectic_defect": "0x1.01a148469d3a2p-20"
+      },
+      "sigma": "234525502247024257293853113505022/703639382210844092171562847752841",
+      "track_rank": 86
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.980",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0cef800000000p-35",
+        "reciprocal_pair_error": "0x1.e8bf900000000p-30",
+        "symplectic_defect": "0x1.7dfe9c9856090p-22"
+      },
+      "sigma": "58831157296352033451878824343398/176507669575778656550153394019369",
+      "track_rank": 54
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.985",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.fd0e440000000p-34",
+        "reciprocal_pair_error": "0x1.ffaa0e0000000p-30",
+        "symplectic_defect": "0x1.c1319f4b92cffp-23"
+      },
+      "sigma": "78707918707930670107059160414054/236142010292435296856984951085387",
+      "track_rank": 110
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.990",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.260d000000000p-35",
+        "reciprocal_pair_error": "0x1.da87b00000000p-30",
+        "symplectic_defect": "0x1.6516896b94c7cp-21"
+      },
+      "sigma": "59230720765543971708709916277683/177706359983354471320646669822224",
+      "track_rank": 73
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-0.995",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2308000000000p-35",
+        "reciprocal_pair_error": "0x1.0782110000000p-29",
+        "symplectic_defect": "0x1.18b581648168fp-21"
+      },
+      "sigma": "237722010000559763348501848979302/713228905471450610335509054175681",
+      "track_rank": 69
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.000",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2f33000000000p-35",
+        "reciprocal_pair_error": "0x1.b80d080000000p-30",
+        "symplectic_defect": "0x1.00fd899cae08cp-21"
+      },
+      "sigma": "6625587137192878885060112023552/19878789652539001825825610497681",
+      "track_rank": 82
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.005",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.4ebb800000000p-35",
+        "reciprocal_pair_error": "0x1.ec710e0000000p-30",
+        "symplectic_defect": "0x1.c23dd4739830ep-22"
+      },
+      "sigma": "59830065969331874657910921219172/179512001498319549468097471200625",
+      "track_rank": 92
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.010",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.22e7800000000p-35",
+        "reciprocal_pair_error": "0x1.21a04f0000000p-29",
+        "symplectic_defect": "0x1.9ea776bd334e4p-23"
+      },
+      "sigma": "60029847703927848222372100146253/180115910244268291885504867990084",
+      "track_rank": 67
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.015",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1bb8800000000p-35",
+        "reciprocal_pair_error": "0x1.af796d0000000p-29",
+        "symplectic_defect": "0x1.f215192ea3babp-23"
+      },
+      "sigma": "825063416966079750504565466758/2475627850831468725113299976257",
+      "track_rank": 63
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.020",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5b05800000000p-35",
+        "reciprocal_pair_error": "0x1.6840520000000p-28",
+        "symplectic_defect": "0x1.2c35f5aa2a84dp-21"
+      },
+      "sigma": "60429411173119786479203192080538/181326770097606297679869790355089",
+      "track_rank": 96
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.025",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3da9800000000p-35",
+        "reciprocal_pair_error": "0x1.15f8e73bc96a7p-27",
+        "symplectic_defect": "0x1.4b316c564f108p-21"
+      },
+      "sigma": "6736576989746194574619233898638/20214857911666173440750591487025",
+      "track_rank": 34
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.970-m2-1.030",
+      "masses_exact": [
+        "4368491638549381/4503599627370496",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2ecd000000000p-35",
+        "reciprocal_pair_error": "0x1.081f401481e35p-28",
+        "symplectic_defect": "0x1.25df6d3477fd8p-21"
+      },
+      "sigma": "20276324880770574912011428004941/60847228810955011271841753858048",
+      "track_rank": 32
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.970",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.e729000000000p-36",
+        "reciprocal_pair_error": "0x1.5fe7aa0000000p-30",
+        "symplectic_defect": "0x1.7dc237afd40d4p-21"
+      },
+      "sigma": "234525502247024257293853113505022/703639382210844092171562847752841",
+      "track_rank": 13
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.975",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.b6ff0b0000000p-34",
+        "reciprocal_pair_error": "0x1.637da00000001p-30",
+        "symplectic_defect": "0x1.a997751ed9f94p-21"
+      },
+      "sigma": "235326657426368498978160571800617/706030678303114626200613576077476",
+      "track_rank": 107
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.980",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3824f60000000p-33",
+        "reciprocal_pair_error": "0x1.7edaee0000000p-30",
+        "symplectic_defect": "0x1.8b480d993b121p-21"
+      },
+      "sigma": "236127812605712740662468030096212/708426030877305890570954853256161",
+      "track_rank": 113
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.985",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2332000000000p-35",
+        "reciprocal_pair_error": "0x1.a3deda0000001p-30",
+        "symplectic_defect": "0x1.0fd2a770e5372p-21"
+      },
+      "sigma": "236928967785056982346775488391807/710825439933417885282586679288896",
+      "track_rank": 70
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.990",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2c97000000000p-35",
+        "reciprocal_pair_error": "0x1.8602d20000000p-30",
+        "symplectic_defect": "0x1.c7d8b6b44274fp-22"
+      },
+      "sigma": "237730122964401224031082946687402/713228905471450610335509054175681",
+      "track_rank": 76
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-0.995",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3571000000000p-35",
+        "reciprocal_pair_error": "0x1.a70f860000000p-30",
+        "symplectic_defect": "0x1.2d746bea5e866p-21"
+      },
+      "sigma": "238531278143745465715390404982997/715636427491404065729721977916516",
+      "track_rank": 87
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.000",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.18fc000000000p-35",
+        "reciprocal_pair_error": "0x1.46b1040000000p-30",
+        "symplectic_defect": "0x1.0b645acbb3283p-21"
+      },
+      "sigma": "239332433323089707399697863278592/718048005993278251465225450511401",
+      "track_rank": 61
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.005",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.113b800000000p-35",
+        "reciprocal_pair_error": "0x1.5d82e20000000p-30",
+        "symplectic_defect": "0x1.763b55a469021p-22"
+      },
+      "sigma": "240133588502433931294786793460728/720463640977073113859111913704025",
+      "track_rank": 57
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.010",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5a39800000000p-35",
+        "reciprocal_pair_error": "0x1.d158600000000p-30",
+        "symplectic_defect": "0x1.aafe9ffaeaa3fp-23"
+      },
+      "sigma": "240934743681778190768312779869782/722883332442788813960104042263321",
+      "track_rank": 95
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.015",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1157800000000p-35",
+        "reciprocal_pair_error": "0x1.1f98f10000000p-29",
+        "symplectic_defect": "0x1.d319c9a81cee8p-22"
+      },
+      "sigma": "241735898861122450241838766278836/725307080390425244582530704771489",
+      "track_rank": 58
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.020",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2ee7000000000p-35",
+        "reciprocal_pair_error": "0x1.4210f90000000p-29",
+        "symplectic_defect": "0x1.f1815d994272cp-22"
+      },
+      "sigma": "242537054040466674136927696460972/727734884819982297820144829431441",
+      "track_rank": 81
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.025",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3c11000000000p-35",
+        "reciprocal_pair_error": "0x1.67f5c50000000p-29",
+        "symplectic_defect": "0x1.a0c740d673dc4p-22"
+      },
+      "sigma": "243338209219810898032016626643108/730166745731460081218905517850625",
+      "track_rank": 89
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.975-m2-1.030",
+      "masses_exact": [
+        "8782019273372467/9007199254740992",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.bcb6580000000p-34",
+        "reciprocal_pair_error": "0x1.5ee0408000000p-28",
+        "symplectic_defect": "0x1.54b8c9f42dc14p-23"
+      },
+      "sigma": "18779951107627319808118662542474/56354051009604515618872908616597",
+      "track_rank": 108
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.970",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.7b3fce0000000p-33",
+        "reciprocal_pair_error": "0x1.2ee82e0000000p-30",
+        "symplectic_defect": "0x1.aa44ab2eabfc6p-21"
+      },
+      "sigma": "58831157296352033451878824343398/176507669575778656550153394019369",
+      "track_rank": 51
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.975",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.e3ecf00000000p-35",
+        "reciprocal_pair_error": "0x1.763b400000001p-30",
+        "symplectic_defect": "0x1.5a01434a1f666p-21"
+      },
+      "sigma": "236127812605712740662468030096212/708426030877305890570954853256161",
+      "track_rank": 42
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.980",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5ce47c0000000p-33",
+        "reciprocal_pair_error": "0x1.2fae700000001p-30",
+        "symplectic_defect": "0x1.410e619a94438p-21"
+      },
+      "sigma": "14808187251626084219838797676177/44426589995838617830161667455556",
+      "track_rank": 116
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.985",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.29323f0000000p-33",
+        "reciprocal_pair_error": "0x1.3293680000001p-30",
+        "symplectic_defect": "0x1.5208149557630p-21"
+      },
+      "sigma": "237734179446321954372373495541452/713228905471450610335509054175681",
+      "track_rank": 112
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.990",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1a14800000000p-35",
+        "reciprocal_pair_error": "0x1.625a920000000p-30",
+        "symplectic_defect": "0x1.3863d309021c9p-21"
+      },
+      "sigma": "59634340716656640306831557066018/178909106872851016432430494479129",
+      "track_rank": 62
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-0.995",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.fbe1000000000p-36",
+        "reciprocal_pair_error": "0x1.7c1a380000001p-30",
+        "symplectic_defect": "0x1.4d99a3fac81c0p-22"
+      },
+      "sigma": "239340546286931168082278960986692/718048005993278251465225450511401",
+      "track_rank": 38
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.000",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2de3000000000p-35",
+        "reciprocal_pair_error": "0x1.457f860000000p-30",
+        "symplectic_defect": "0x1.49ba1bb200267p-21"
+      },
+      "sigma": "15008983106702235933576980856832/45028977561067072971376216997521",
+      "track_rank": 78
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.005",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.d2f52f0000000p-33",
+        "reciprocal_pair_error": "0x1.4ac6f80000000p-30",
+        "symplectic_defect": "0x1.0f6c97c6da7d8p-21"
+      },
+      "sigma": "15059182070471272747370618877798/45180208277674297511695280716225",
+      "track_rank": 118
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.010",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.22ef800000000p-35",
+        "reciprocal_pair_error": "0x1.5019380000000p-30",
+        "symplectic_defect": "0x1.95e0712d99201p-22"
+      },
+      "sigma": "60437524136961247161784289788638/181326770097606297679869790355089",
+      "track_rank": 68
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.015",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.6643b80000000p-35",
+        "reciprocal_pair_error": "0x1.6601dc0000000p-30",
+        "symplectic_defect": "0x1.3703d59061cb6p-21"
+      },
+      "sigma": "15159579998009350833521526016521/45483430301248896985829272833124",
+      "track_rank": 98
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.020",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.316f800000000p-35",
+        "reciprocal_pair_error": "0x1.ee2e940000000p-30",
+        "symplectic_defect": "0x1.4678c5ea20872p-23"
+      },
+      "sigma": "15209778961778387647315164037487/45635421608216258453881315393536",
+      "track_rank": 85
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.025",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2ddf000000000p-35",
+        "reciprocal_pair_error": "0x1.34ab9e0000000p-29",
+        "symplectic_defect": "0x1.5e0101a9fe163p-23"
+      },
+      "sigma": "15259977925547424461108802058453/45787666445303665557005018188900",
+      "track_rank": 77
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.980-m2-1.030",
+      "masses_exact": [
+        "2206763817411543/2251799813685248",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.f2bc000000000p-36",
+        "reciprocal_pair_error": "0x1.a7e7960000000p-29",
+        "symplectic_defect": "0x1.cbc07f0f9d9d1p-23"
+      },
+      "sigma": "61240707557265854016737022511258/183760659250044500292471281647249",
+      "track_rank": 35
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.970",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8b66600000000p-36",
+        "reciprocal_pair_error": "0x1.29edb60000001p-30",
+        "symplectic_defect": "0x1.0fcc884b01b55p-20"
+      },
+      "sigma": "78707918707930670107059160414054/236142010292435296856984951085387",
+      "track_rank": 5
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.975",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.6c65100000000p-34",
+        "reciprocal_pair_error": "0x1.2051380000000p-30",
+        "symplectic_defect": "0x1.8d3552b93b3b4p-21"
+      },
+      "sigma": "236928967785056982346775488391807/710825439933417885282586679288896",
+      "track_rank": 45
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.980",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.a0af000000000p-36",
+        "reciprocal_pair_error": "0x1.1acedc0000001p-30",
+        "symplectic_defect": "0x1.80986607327cdp-21"
+      },
+      "sigma": "237734179446321954372373495541452/713228905471450610335509054175681",
+      "track_rank": 8
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.985",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.758ec70000000p-33",
+        "reciprocal_pair_error": "0x1.2c783e0000000p-30",
+        "symplectic_defect": "0x1.5348915ab263bp-21"
+      },
+      "sigma": "26504376789731880710885722521233/79515158610156007303302441990724",
+      "track_rank": 117
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.990",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0bfa800000000p-35",
+        "reciprocal_pair_error": "0x1.0ff2100000002p-30",
+        "symplectic_defect": "0x1.6763137764d31p-21"
+      },
+      "sigma": "239344602768851898423569509840742/718048005993278251465225450511401",
+      "track_rank": 53
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-0.995",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0a70000000000p-35",
+        "reciprocal_pair_error": "0x1.1c8f820000001p-30",
+        "symplectic_defect": "0x1.5407bf8aef426p-21"
+      },
+      "sigma": "34307116347159552921309645284341/102923377282439023934574210280048",
+      "track_rank": 51
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.000",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.e5a2f80000000p-35",
+        "reciprocal_pair_error": "0x1.0156440000000p-30",
+        "symplectic_defect": "0x1.29f02f5c1824ep-21"
+      },
+      "sigma": "80318342030460614158255174713344/240961110814262937986701347421107",
+      "track_rank": 104
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.005",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5495a80000000p-35",
+        "reciprocal_pair_error": "0x1.e4dbf40000002p-31",
+        "symplectic_defect": "0x1.1d93a35ef8969p-21"
+      },
+      "sigma": "241760237752646796621073010628808/725307080390425136856427618069225",
+      "track_rank": 94
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.010",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2ec9000000000p-35",
+        "reciprocal_pair_error": "0x1.3954300000000p-30",
+        "symplectic_defect": "0x1.3f8228a44fc06p-22"
+      },
+      "sigma": "242565449413911786525961538439322/727734884819982297820144829431441",
+      "track_rank": 80
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.015",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.29b6000000000p-35",
+        "reciprocal_pair_error": "0x1.45f1b60000000p-30",
+        "symplectic_defect": "0x1.22465c5c7a4b7p-21"
+      },
+      "sigma": "2508975887372956458050000682988/7527492224035672054693779121057",
+      "track_rank": 75
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.020",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.13f1800000000p-35",
+        "reciprocal_pair_error": "0x1.7bad200000000p-30",
+        "symplectic_defect": "0x1.1f416ea9eba0dp-23"
+      },
+      "sigma": "244175872736441730577157552738612/732602663124858703045347812015761",
+      "track_rank": 59
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.025",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.67f6800000000p-35",
+        "reciprocal_pair_error": "0x1.8936980000000p-30",
+        "symplectic_defect": "0x1.1a1ba30d9ab0dp-21"
+      },
+      "sigma": "81660361465902228241155013075796/245014212333392648982181871016075",
+      "track_rank": 99
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.985-m2-1.030",
+      "masses_exact": [
+        "8872091265919877/9007199254740992",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.def8000000000p-34",
+        "reciprocal_pair_error": "0x1.a820a20000000p-30",
+        "symplectic_defect": "0x1.170a699e1255bp-21"
+      },
+      "sigma": "3901369778713836105211961381554/11706137577101873486281158571687",
+      "track_rank": 109
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.970",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3546460000000p-35",
+        "reciprocal_pair_error": "0x1.25115c0000000p-30",
+        "symplectic_defect": "0x1.52143610978c6p-21"
+      },
+      "sigma": "59230720765543971708709916277683/177706359983354471320646669822224",
+      "track_rank": 33
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.975",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ff92d50000000p-36",
+        "reciprocal_pair_error": "0x1.0fb6d40000000p-30",
+        "symplectic_defect": "0x1.bbd05de822c1ap-21"
+      },
+      "sigma": "237730122964401224031082946687402/713228905471450610335509054175681",
+      "track_rank": 18
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.980",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.b4d34c0000000p-36",
+        "reciprocal_pair_error": "0x1.f48fa00000000p-31",
+        "symplectic_defect": "0x1.adea7f279b117p-21"
+      },
+      "sigma": "59634340716656640306831557066018/178909106872851016432430494479129",
+      "track_rank": 10
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.985",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.b1e3ec0000000p-35",
+        "reciprocal_pair_error": "0x1.efbb6c0000001p-31",
+        "symplectic_defect": "0x1.c5fdead7449f6p-22"
+      },
+      "sigma": "239344602768851898423569509840742/718048005993278251465225450511401",
+      "track_rank": 41
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.990",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.9fa3fe0000000p-34",
+        "reciprocal_pair_error": "0x1.076e8c0000001p-30",
+        "symplectic_defect": "0x1.59d1fcb5b52f6p-21"
+      },
+      "sigma": "60037960667769308904953197854353/180115910244268291885504867990084",
+      "track_rank": 47
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-0.995",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0d13800000000p-35",
+        "reciprocal_pair_error": "0x1.c03c2c0000002p-31",
+        "symplectic_defect": "0x1.f4e03d805f206p-22"
+      },
+      "sigma": "240959082573302572816056072994082/722883332442788813960104042263321",
+      "track_rank": 55
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.000",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.079b800000000p-35",
+        "reciprocal_pair_error": "0x1.fdaae00000000p-31",
+        "symplectic_defect": "0x1.606e69636253cp-21"
+      },
+      "sigma": "60441580618881977503074838642688/181326770097606297679869790355089",
+      "track_rank": 48
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.005",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0dd8800000000p-35",
+        "reciprocal_pair_error": "0x1.f59f9c0000001p-31",
+        "symplectic_defect": "0x1.722872f786fa6p-21"
+      },
+      "sigma": "60643390594438307321054029803212/181933721204995560966755323383225",
+      "track_rank": 56
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.010",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.314f800000000p-35",
+        "reciprocal_pair_error": "0x1.0da3900000000p-30",
+        "symplectic_defect": "0x1.1d759399aab2ap-21"
+      },
+      "sigma": "60845200569994646101196479431023/182541686432865033815525261574144",
+      "track_rank": 83
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.015",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.254c000000000p-35",
+        "reciprocal_pair_error": "0x1.b9fa980000000p-31",
+        "symplectic_defect": "0x1.e54252036d8b3p-22"
+      },
+      "sigma": "61047010545550984881338929058834/183150665781214689294653833252281",
+      "track_rank": 71
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.020",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3160000000000p-35",
+        "reciprocal_pair_error": "0x1.8ccd960000001p-30",
+        "symplectic_defect": "0x1.32b101d3d9ec7p-21"
+      },
+      "sigma": "61248820521107314699318120219358/183760659250044500292471281647249",
+      "track_rank": 84
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.025",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.533d800000000p-35",
+        "reciprocal_pair_error": "0x1.5665160000000p-30",
+        "symplectic_defect": "0x1.31292b01d489cp-21"
+      },
+      "sigma": "61450630496663644517297311379882/184371666839354493830575370982025",
+      "track_rank": 93
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.990-m2-1.030",
+      "masses_exact": [
+        "4458563631096791/4503599627370496",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1e61800000000p-35",
+        "reciprocal_pair_error": "0x1.8dd7640000000p-30",
+        "symplectic_defect": "0x1.cf706750b3b30p-22"
+      },
+      "sigma": "61652440472219983297439761007693/184983688549144697110707850574404",
+      "track_rank": 64
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.970",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.19821e0000000p-35",
+        "reciprocal_pair_error": "0x1.f051140000002p-31",
+        "symplectic_defect": "0x1.a183605d81adep-21"
+      },
+      "sigma": "237722010000559763348501848979302/713228905471450610335509054175681",
+      "track_rank": 29
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.975",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.b4a7000000000p-36",
+        "reciprocal_pair_error": "0x1.af57040000004p-31",
+        "symplectic_defect": "0x1.bcc6877fed6bbp-21"
+      },
+      "sigma": "238531278143745465715390404982997/715636427491404065729721977916516",
+      "track_rank": 9
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.980",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.d8d78c0000000p-36",
+        "reciprocal_pair_error": "0x1.a7ab0c0000004p-31",
+        "symplectic_defect": "0x1.7f4499a40be06p-21"
+      },
+      "sigma": "239340546286931168082278960986692/718048005993278251465225450511401",
+      "track_rank": 12
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.985",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8e721a0000000p-36",
+        "reciprocal_pair_error": "0x1.bd1d1c0000000p-31",
+        "symplectic_defect": "0x1.697d49d391206p-21"
+      },
+      "sigma": "34307116347159552921309645284341/102923377282439023934574210280048",
+      "track_rank": 6
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.990",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.7dea040000000p-35",
+        "reciprocal_pair_error": "0x1.a434ac0000002p-31",
+        "symplectic_defect": "0x1.6d3cfa69d4c22p-21"
+      },
+      "sigma": "240959082573302572816056072994082/722883332442788813960104042263321",
+      "track_rank": 39
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-0.995-m2-0.995",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ff03740000000p-34",
+        "reciprocal_pair_error": "0x1.da40480000001p-31",
+        "symplectic_defect": "0x1.09630c3d69f60p-21"
+      },
+      "sigma": "241768350716488275182944628997777/725307080390425190719479161420356",
+      "track_rank": 49
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.000",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.cd9cd00000000p-35",
+        "reciprocal_pair_error": "0x1.0a5d400000002p-30",
+        "symplectic_defect": "0x1.2d082d1920838p-21"
+      },
+      "sigma": "242577618859673977549833185001472/727734884819982297820144829431441",
+      "track_rank": 103
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.005",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2018000000000p-35",
+        "reciprocal_pair_error": "0x1.eb9d46ff6e5c0p-30",
+        "symplectic_defect": "0x1.80ce653d2b164p-23"
+      },
+      "sigma": "243386887002859661947359227796888/730166745731460081218905517850625",
+      "track_rank": 65
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.010",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5828310000000p-33",
+        "reciprocal_pair_error": "0x1.fd4f280000001p-31",
+        "symplectic_defect": "0x1.3b825f099abb2p-21"
+      },
+      "sigma": "244196155146045382283610297008862/732602663124858703045347812015761",
+      "track_rank": 115
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.015",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.7df93a0000000p-35",
+        "reciprocal_pair_error": "0x1.52695a0000000p-30",
+        "symplectic_defect": "0x1.58ac595dae702p-21"
+      },
+      "sigma": "245005423289231102619861366220836/735042637000178055393224640129769",
+      "track_rank": 100
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.020",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0a69800000000p-35",
+        "reciprocal_pair_error": "0x1.54cb060000001p-30",
+        "symplectic_defect": "0x1.3268cedee751ep-21"
+      },
+      "sigma": "35116384490345255288198201288036/105355238193916861376530427145183",
+      "track_rank": 50
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.025",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.6217800000000p-35",
+        "reciprocal_pair_error": "0x1.2286440000000p-30",
+        "symplectic_defect": "0x1.4c4a73e792577p-21"
+      },
+      "sigma": "246623959575602471414913451811668/739934754196578734039347903662025",
+      "track_rank": 97
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-0.995-m2-1.030",
+      "masses_exact": [
+        "8962163258467287/9007199254740992",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0359000000000p-35",
+        "reciprocal_pair_error": "0x1.95fab00000001p-30",
+        "symplectic_defect": "0x1.859378efa819ep-21"
+      },
+      "sigma": "247433227718788191751164521023642/742386897517660277591240363433001",
+      "track_rank": 46
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.970",
+      "masses_exact": [
+        "1",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.471a220000000p-35",
+        "reciprocal_pair_error": "0x1.a0c3200000001p-31",
+        "symplectic_defect": "0x1.aa8f220b51214p-21"
+      },
+      "sigma": "6625587137192878885060112023552/19878789652539001825825610497681",
+      "track_rank": 91
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.975",
+      "masses_exact": [
+        "1",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.db10750000000p-36",
+        "reciprocal_pair_error": "0x1.6e613c0000003p-31",
+        "symplectic_defect": "0x1.5e28b4d25aa55p-21"
+      },
+      "sigma": "239332433323089707399697863278592/718048005993278251465225450511401",
+      "track_rank": 31
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.980",
+      "masses_exact": [
+        "1",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.a2a8800000000p-36",
+        "reciprocal_pair_error": "0x1.0c37800000000p-30",
+        "symplectic_defect": "0x1.80352657f5307p-21"
+      },
+      "sigma": "15008983106702235933576980856832/45028977561067072971376216997521",
+      "track_rank": 10
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.985",
+      "masses_exact": [
+        "1",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.00528b0000000p-35",
+        "reciprocal_pair_error": "0x1.f816440000004p-31",
+        "symplectic_defect": "0x1.e365aa0df8075p-21"
+      },
+      "sigma": "80318342030460614158255174713344/240961110814262937986701347421107",
+      "track_rank": 42
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.990",
+      "masses_exact": [
+        "1",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ad75000000000p-36",
+        "reciprocal_pair_error": "0x1.ce0a640000003p-31",
+        "symplectic_defect": "0x1.8ef10a97e8d98p-21"
+      },
+      "sigma": "60441580618881977503074838642688/181326770097606297679869790355089",
+      "track_rank": 13
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-0.995",
+      "masses_exact": [
+        "1",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.bc3c000000000p-36",
+        "reciprocal_pair_error": "0x1.920ef80000000p-31",
+        "symplectic_defect": "0x1.40d2b1165a0c0p-21"
+      },
+      "sigma": "242577618859673977549833185001472/727734884819982297820144829431441",
+      "track_rank": 17
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.000",
+      "masses_exact": [
+        "1",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC",
+        "HIGHER_VARIATIONAL_EXCEPTION"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0448800000000p-35",
+        "reciprocal_pair_error": "0x1.0031380000000p-30",
+        "symplectic_defect": "0x1.3d72cf8f1c191p-21"
+      },
+      "sigma": "1/3",
+      "track_rank": 47
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.005",
+      "masses_exact": [
+        "1",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1600ae8000000p-34",
+        "reciprocal_pair_error": "0x1.1536480000001p-30",
+        "symplectic_defect": "0x1.64074b2aaa3a5p-22"
+      },
+      "sigma": "3815628306686970228289099005952/11446916611325916389251254547225",
+      "track_rank": 43
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.010",
+      "masses_exact": [
+        "1",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.f736000000000p-36",
+        "reciprocal_pair_error": "0x1.f772040000002p-31",
+        "symplectic_defect": "0x1.53bd9ee69ed57p-21"
+      },
+      "sigma": "61252877003028045040608669073408/183760659250044500292471281647249",
+      "track_rank": 16
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.015",
+      "masses_exact": [
+        "1",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.9626680000000p-35",
+        "reciprocal_pair_error": "0x1.1705da0000001p-30",
+        "symplectic_defect": "0x1.de2218f74e7ecp-24"
+      },
+      "sigma": "15363925274766141607147938512896/46092916709838630246820281006529",
+      "track_rank": 102
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.020",
+      "masses_exact": [
+        "1",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0a29000000000p-35",
+        "reciprocal_pair_error": "0x1.f1ce9c0000000p-31",
+        "symplectic_defect": "0x1.275cfc59b89b2p-23"
+      },
+      "sigma": "15414631298775269702343896072192/46245922137286174277676962643601",
+      "track_rank": 49
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.025",
+      "masses_exact": [
+        "1",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.17d9800000000p-35",
+        "reciprocal_pair_error": "0x1.52d1f00000000p-30",
+        "symplectic_defect": "0x1.3aa791a872212p-23"
+      },
+      "sigma": "5155112440928132599179951210496/15466393698284587981201768171875",
+      "track_rank": 60
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.000-m2-1.030",
+      "masses_exact": [
+        "1",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.26a8800000000p-35",
+        "reciprocal_pair_error": "0x1.80bec00000005p-31",
+        "symplectic_defect": "0x1.54a21210cf580p-21"
+      },
+      "sigma": "20688057795724704192714166501376/62070258110055208090078322785203",
+      "track_rank": 74
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.970",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.92d4e00000000p-36",
+        "reciprocal_pair_error": "0x1.9ae9940000000p-31",
+        "symplectic_defect": "0x1.34443b21c84a4p-21"
+      },
+      "sigma": "59830065969331874657910921219172/179512001498319549468097471200625",
+      "track_rank": 6
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.975",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3e5c308000000p-35",
+        "reciprocal_pair_error": "0x1.9b6b280000001p-31",
+        "symplectic_defect": "0x1.da70c1966d502p-21"
+      },
+      "sigma": "240133588502433931294786793460728/720463640977073113859111913704025",
+      "track_rank": 90
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.980",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.efcfe00000000p-36",
+        "reciprocal_pair_error": "0x1.a0e3c00000001p-31",
+        "symplectic_defect": "0x1.44cc37b4fa598p-22"
+      },
+      "sigma": "15059182070471272747370618877798/45180208277674297511695280716225",
+      "track_rank": 33
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.985",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0240280000000p-35",
+        "reciprocal_pair_error": "0x1.c745f00000000p-31",
+        "symplectic_defect": "0x1.e62bf7e44c88cp-22"
+      },
+      "sigma": "241760237752646796621073010628808/725307080390425136856427618069225",
+      "track_rank": 45
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.990",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.bbe7000000000p-36",
+        "reciprocal_pair_error": "0x1.49e4f40000006p-31",
+        "symplectic_defect": "0x1.68e50034e9714p-21"
+      },
+      "sigma": "60643390594438307321054029803212/181933721204995560966755323383225",
+      "track_rank": 16
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-0.995",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.d325000000000p-36",
+        "reciprocal_pair_error": "0x1.6871b80000001p-31",
+        "symplectic_defect": "0x1.591c5a7b0b4cep-21"
+      },
+      "sigma": "243386887002859661947359227796888/730166745731460081218905517850625",
+      "track_rank": 28
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.000",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.05a8300000000p-33",
+        "reciprocal_pair_error": "0x1.92a4700000004p-31",
+        "symplectic_defect": "0x1.4739dee572fd5p-21"
+      },
+      "sigma": "3815628306686970228289099005952/11446916611325916389251254547225",
+      "track_rank": 111
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.005",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.a19e000000000p-36",
+        "reciprocal_pair_error": "0x1.cf88880000000p-31",
+        "symplectic_defect": "0x1.3ac281c476d3ap-21"
+      },
+      "sigma": "3828336503954257956472045925145/11485041203127779573800095304804",
+      "track_rank": 9
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.010",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.faf1000000000p-36",
+        "reciprocal_pair_error": "0x1.d2a7e40000002p-31",
+        "symplectic_defect": "0x1.47fdf4a30b689p-23"
+      },
+      "sigma": "61456715219544739984197138387252/184371666839354493830575370982025",
+      "track_rank": 17
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.015",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.e8af000000000p-36",
+        "reciprocal_pair_error": "0x1.d914440000001p-31",
+        "symplectic_defect": "0x1.ea2b0ea10e820p-23"
+      },
+      "sigma": "15415011593955338166210385493046/46245922137286174277676962643601",
+      "track_rank": 14
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.020",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.4637800000000p-35",
+        "reciprocal_pair_error": "0x1.2cbc680000000p-30",
+        "symplectic_defect": "0x1.a3131a544138ep-23"
+      },
+      "sigma": "15465844383024489078942173169818/46399181094853763943605304515625",
+      "track_rank": 35
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.025",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.05c5800000000p-35",
+        "reciprocal_pair_error": "0x1.e020700000002p-31",
+        "symplectic_defect": "0x1.7e5bb7f9801ffp-23"
+      },
+      "sigma": "15516677172093639991673960846590/46552693582541399244605306622601",
+      "track_rank": 21
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.005-m2-1.030",
+      "masses_exact": [
+        "1131529406376837/1125899906842624",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.4f63000000000p-35",
+        "reciprocal_pair_error": "0x1.93eca00000000p-31",
+        "symplectic_defect": "0x1.3be1fa33c3882p-21"
+      },
+      "sigma": "62270039844651172647340246971292/186825838401396348059557613997025",
+      "track_rank": 36
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.970",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.def5e50000000p-36",
+        "reciprocal_pair_error": "0x1.31c2dc0000000p-31",
+        "symplectic_defect": "0x1.47441e57416bap-21"
+      },
+      "sigma": "60029847703927848222372100146253/180115910244268291885504867990084",
+      "track_rank": 32
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.975",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.d125580000000p-36",
+        "reciprocal_pair_error": "0x1.6846980000000p-31",
+        "symplectic_defect": "0x1.3b5423e320728p-21"
+      },
+      "sigma": "240934743681778190768312779869782/722883332442788813960104042263321",
+      "track_rank": 27
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.980",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ff4e040000000p-36",
+        "reciprocal_pair_error": "0x1.968c000000002p-31",
+        "symplectic_defect": "0x1.cdaff30b40adcp-22"
+      },
+      "sigma": "60437524136961247161784289788638/181326770097606297679869790355089",
+      "track_rank": 41
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.985",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.9368800000000p-35",
+        "reciprocal_pair_error": "0x1.5d65e80000001p-31",
+        "symplectic_defect": "0x1.619e95a8c8242p-21"
+      },
+      "sigma": "242565449413911786525961538439322/727734884819982297820144829431441",
+      "track_rank": 101
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.990",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.9abc780000000p-36",
+        "reciprocal_pair_error": "0x1.796e4c0000000p-31",
+        "symplectic_defect": "0x1.77290d7dc472dp-21"
+      },
+      "sigma": "60845200569994646101196479431023/182541686432865033815525261574144",
+      "track_rank": 8
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-0.995",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.2ec5360000000p-35",
+        "reciprocal_pair_error": "0x1.4086680000002p-31",
+        "symplectic_defect": "0x1.39214b0d26579p-21"
+      },
+      "sigma": "244196155146045382283610297008862/732602663124858703045347812015761",
+      "track_rank": 79
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.000",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.00f4780000000p-35",
+        "reciprocal_pair_error": "0x1.881d280000001p-31",
+        "symplectic_defect": "0x1.1b663dbc240ebp-21"
+      },
+      "sigma": "61252877003028045040608669073408/183760659250044500292471281647249",
+      "track_rank": 44
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.005",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.efff000000000p-36",
+        "reciprocal_pair_error": "0x1.8d7d3c0000001p-31",
+        "symplectic_defect": "0x1.084379d086e69p-21"
+      },
+      "sigma": "61456715219544739984197138387252/184371666839354493830575370982025",
+      "track_rank": 34
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.010",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.f535000000000p-36",
+        "reciprocal_pair_error": "0x1.dbf0f00000003p-31",
+        "symplectic_defect": "0x1.51a6a499ff2a4p-21"
+      },
+      "sigma": "61660553436061443980020858715793/184983688549144697110707850574404",
+      "track_rank": 36
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.015",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.55d0000000000p-36",
+        "reciprocal_pair_error": "0x1.bf2f640000001p-31",
+        "symplectic_defect": "0x1.7b195df476aebp-23"
+      },
+      "sigma": "61864391652578147975844579044334/185596724379415083021198963654001",
+      "track_rank": 1
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.020",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.05df800000000p-35",
+        "reciprocal_pair_error": "0x1.c82b700000003p-31",
+        "symplectic_defect": "0x1.a40f6d9dace92p-24"
+      },
+      "sigma": "62068229869094842919433048358178/186210774330165624270234968355609",
+      "track_rank": 22
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.025",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.86a1c40000000p-35",
+        "reciprocal_pair_error": "0x1.ae6d800000004p-31",
+        "symplectic_defect": "0x1.5c921019c4b22p-23"
+      },
+      "sigma": "62272068085611537863021517672022/186825838401396348059557613997025",
+      "track_rank": 40
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.010-m2-1.030",
+      "masses_exact": [
+        "4548635623644201/4503599627370496",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.f848ad0000000p-34",
+        "reciprocal_pair_error": "0x1.c819f80000003p-31",
+        "symplectic_defect": "0x1.ddeba09dcf378p-22"
+      },
+      "sigma": "62475906302128241858845238000563/187441916593107281771052634990864",
+      "track_rank": 48
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.970",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0c12e60000000p-35",
+        "reciprocal_pair_error": "0x1.5051b40000000p-31",
+        "symplectic_defect": "0x1.9198ef71471c9p-21"
+      },
+      "sigma": "825063416966079750504565466758/2475627850831468725113299976257",
+      "track_rank": 26
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.975",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.7b0ff00000000p-35",
+        "reciprocal_pair_error": "0x1.52cfc80000000p-31",
+        "symplectic_defect": "0x1.e4e792c11299bp-21"
+      },
+      "sigma": "241735898861122450241838766278836/725307080390425244582530704771489",
+      "track_rank": 38
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.980",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.25aa260000000p-35",
+        "reciprocal_pair_error": "0x1.bb51c00000000p-31",
+        "symplectic_defect": "0x1.f2a20e080d187p-22"
+      },
+      "sigma": "15159579998009350833521526016521/45483430301248896985829272833124",
+      "track_rank": 72
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.985",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.a462bc4000000p-36",
+        "reciprocal_pair_error": "0x1.9926140000001p-31",
+        "symplectic_defect": "0x1.8ea3cf690b5fap-21"
+      },
+      "sigma": "2508975887372956458050000682988/7527492224035672054693779121057",
+      "track_rank": 11
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.990",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.af1db00000000p-36",
+        "reciprocal_pair_error": "0x1.66f8440000001p-31",
+        "symplectic_defect": "0x1.8450e3c61fbc7p-21"
+      },
+      "sigma": "61047010545550984881338929058834/183150665781214689294653833252281",
+      "track_rank": 14
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-0.995",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ce45340000000p-36",
+        "reciprocal_pair_error": "0x1.8833380000005p-31",
+        "symplectic_defect": "0x1.9c670cd863436p-22"
+      },
+      "sigma": "245005423289231102619861366220836/735042637000178055393224640129769",
+      "track_rank": 25
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.000",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.657e000000000p-36",
+        "reciprocal_pair_error": "0x1.99a95c0000004p-31",
+        "symplectic_defect": "0x1.8efd64aa4dfaep-22"
+      },
+      "sigma": "15363925274766141607147938512896/46092916709838630246820281006529",
+      "track_rank": 2
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.005",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c41f000000000p-36",
+        "reciprocal_pair_error": "0x1.97e8700000002p-31",
+        "symplectic_defect": "0x1.19c715692acf8p-21"
+      },
+      "sigma": "15415011593955338166210385493046/46245922137286174277676962643601",
+      "track_rank": 21
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.010",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.bcc7000000000p-36",
+        "reciprocal_pair_error": "0x1.d291a80000003p-31",
+        "symplectic_defect": "0x1.4f4f98334de32p-23"
+      },
+      "sigma": "61864391652578147975844579044334/185596724379415083021198963654001",
+      "track_rank": 19
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.015",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.dad5000000000p-36",
+        "reciprocal_pair_error": "0x1.b2c1140000000p-31",
+        "symplectic_defect": "0x1.0b0f80bedb8cfp-22"
+      },
+      "sigma": "15517184232333735821711904029121/46552693582541412890512177555204",
+      "track_rank": 30
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.020",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.04fa800000000p-35",
+        "reciprocal_pair_error": "0x1.58f5240000004p-31",
+        "symplectic_defect": "0x1.235b7878d8bcap-21"
+      },
+      "sigma": "15568270551522932380774351009271/46706459600349093849101838033984",
+      "track_rank": 20
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.025",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8293a00000000p-34",
+        "reciprocal_pair_error": "0x1.2c911c0000003p-31",
+        "symplectic_defect": "0x1.2f14a1a92f2a3p-23"
+      },
+      "sigma": "15619356870712128939836797989421/46860479148276820442763158747716",
+      "track_rank": 46
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.015-m2-1.030",
+      "masses_exact": [
+        "2285576810890527/2251799813685248",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0b4e800000000p-35",
+        "reciprocal_pair_error": "0x1.57b9900000001p-31",
+        "symplectic_defect": "0x1.070a7a721fd6cp-21"
+      },
+      "sigma": "4821674827661947005411556079218/14466077608099876777915868420917",
+      "track_rank": 25
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.970",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.9af1a80000000p-36",
+        "reciprocal_pair_error": "0x1.c08a080000000p-32",
+        "symplectic_defect": "0x1.cdfe61508e1acp-21"
+      },
+      "sigma": "60429411173119786479203192080538/181326770097606297679869790355089",
+      "track_rank": 7
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.975",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.eb43880000000p-36",
+        "reciprocal_pair_error": "0x1.1798a00000000p-31",
+        "symplectic_defect": "0x1.d1b4ade46de04p-21"
+      },
+      "sigma": "242537054040466674136927696460972/727734884819982297820144829431441",
+      "track_rank": 15
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.980",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.5417b60000000p-35",
+        "reciprocal_pair_error": "0x1.13a8140000000p-31",
+        "symplectic_defect": "0x1.6fc1da2adc697p-21"
+      },
+      "sigma": "15209778961778387647315164037487/45635421608216258453881315393536",
+      "track_rank": 37
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.985",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.bc79170000000p-36",
+        "reciprocal_pair_error": "0x1.180af80000003p-31",
+        "symplectic_defect": "0x1.4c413a8d99f24p-21"
+      },
+      "sigma": "244175872736441730577157552738612/732602663124858703045347812015761",
+      "track_rank": 18
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.990",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c5c5f80000000p-36",
+        "reciprocal_pair_error": "0x1.50d7e00000003p-31",
+        "symplectic_defect": "0x1.f6b98bbff9e52p-23"
+      },
+      "sigma": "61248820521107314699318120219358/183760659250044500292471281647249",
+      "track_rank": 22
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-0.995",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.98ce400000000p-36",
+        "reciprocal_pair_error": "0x1.3fbe200000002p-31",
+        "symplectic_defect": "0x1.b4a6711867750p-21"
+      },
+      "sigma": "35116384490345255288198201288036/105355238193916861376530427145183",
+      "track_rank": 7
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.000",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.fd5b2c0000000p-36",
+        "reciprocal_pair_error": "0x1.746f100000000p-31",
+        "symplectic_defect": "0x1.6345406f14cecp-21"
+      },
+      "sigma": "15414631298775269702343896072192/46245922137286174277676962643601",
+      "track_rank": 40
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.005",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8e64d80000000p-36",
+        "reciprocal_pair_error": "0x1.4d94200000003p-31",
+        "symplectic_defect": "0x1.145dd516469bbp-21"
+      },
+      "sigma": "15465844383024489078942173169818/46399181094853763943605304515625",
+      "track_rank": 5
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.010",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c13a000000000p-36",
+        "reciprocal_pair_error": "0x1.78f1180000000p-31",
+        "symplectic_defect": "0x1.019b4fd11d9c3p-21"
+      },
+      "sigma": "62068229869094842919433048358178/186210774330165624270234968355609",
+      "track_rank": 20
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.015",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.474aaa0000000p-33",
+        "reciprocal_pair_error": "0x1.d2ebd5ec45d26p-31",
+        "symplectic_defect": "0x1.0a5310bc83f2dp-23"
+      },
+      "sigma": "15568270551522932380774351009271/46706459600349093849101838033984",
+      "track_rank": 114
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.020",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0b93000000000p-35",
+        "reciprocal_pair_error": "0x1.9697800000001p-31",
+        "symplectic_defect": "0x1.c3377b141282ep-23"
+      },
+      "sigma": "15619483635772151757372628106897/46860479148276820442763158747716",
+      "track_rank": 52
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.025",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c757000000000p-36",
+        "reciprocal_pair_error": "0x1.46224c0000006p-31",
+        "symplectic_defect": "0x1.f43cbcc3569fep-23"
+      },
+      "sigma": "15670696720021371133970905204523/47014752226324592671496139696400",
+      "track_rank": 11
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.020-m2-1.030",
+      "masses_exact": [
+        "2296835809958953/2251799813685248",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1578900000000p-35",
+        "reciprocal_pair_error": "0x1.65ac540000000p-31",
+        "symplectic_defect": "0x1.0d70bacfb2309p-23"
+      },
+      "sigma": "8983948459583195877078282356714/26953873619709952801880121497167",
+      "track_rank": 27
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.970",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.204d760000000p-33",
+        "reciprocal_pair_error": "0x1.0ebf5c0000000p-31",
+        "symplectic_defect": "0x1.67be65b4ac958p-21"
+      },
+      "sigma": "6736576989746194574619233898638/20214857911666173440750591487025",
+      "track_rank": 50
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.975",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.20b6320000000p-35",
+        "reciprocal_pair_error": "0x1.2462080000000p-31",
+        "symplectic_defect": "0x1.9842dfc7e0dd3p-21"
+      },
+      "sigma": "243338209219810898032016626643108/730166745731460081218905517850625",
+      "track_rank": 31
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.980",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.3e1c130000000p-34",
+        "reciprocal_pair_error": "0x1.0636900000000p-31",
+        "symplectic_defect": "0x1.9e2d6b7b7ffaep-21"
+      },
+      "sigma": "15259977925547424461108802058453/45787666445303665557005018188900",
+      "track_rank": 44
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.985",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.188fb60000000p-35",
+        "reciprocal_pair_error": "0x1.d2f9100000000p-32",
+        "symplectic_defect": "0x1.5541f702ef705p-21"
+      },
+      "sigma": "81660361465902228241155013075796/245014212333392648982181871016075",
+      "track_rank": 28
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.990",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.20e4b80000000p-35",
+        "reciprocal_pair_error": "0x1.23c7800000000p-31",
+        "symplectic_defect": "0x1.62ff058bcdf4dp-21"
+      },
+      "sigma": "61450630496663644517297311379882/184371666839354493830575370982025",
+      "track_rank": 66
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-0.995",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8756700000000p-36",
+        "reciprocal_pair_error": "0x1.5ccb680000003p-31",
+        "symplectic_defect": "0x1.29c59a9389ee0p-22"
+      },
+      "sigma": "246623959575602471414913451811668/739934754196578734039347903662025",
+      "track_rank": 3
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.000",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.fc96e00000000p-36",
+        "reciprocal_pair_error": "0x1.3f2e480000000p-31",
+        "symplectic_defect": "0x1.3102828a1a5e6p-21"
+      },
+      "sigma": "5155112440928132599179951210496/15466393698284587981201768171875",
+      "track_rank": 39
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.005",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8cad460000000p-36",
+        "reciprocal_pair_error": "0x1.2f59e80000002p-31",
+        "symplectic_defect": "0x1.07733c61e5d1dp-21"
+      },
+      "sigma": "15516677172093639991673960846590/46552693582541399244605306622601",
+      "track_rank": 4
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.010",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.d49e880000000p-36",
+        "reciprocal_pair_error": "0x1.7a3ba40000001p-31",
+        "symplectic_defect": "0x1.d4d513e06b6dcp-23"
+      },
+      "sigma": "62272068085611537863021517672022/186825838401396348059557613997025",
+      "track_rank": 29
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.015",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c988000000000p-36",
+        "reciprocal_pair_error": "0x1.5640300000000p-31",
+        "symplectic_defect": "0x1.279aa5a271d6bp-21"
+      },
+      "sigma": "15619356870712128939836797989421/46860479148276820442763158747716",
+      "track_rank": 24
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.020",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.507fd00000000p-36",
+        "reciprocal_pair_error": "0x1.94af5c0000003p-31",
+        "symplectic_defect": "0x1.1efcdc22acd94p-22"
+      },
+      "sigma": "15670696720021371133970905204523/47014752226324592671496139696400",
+      "track_rank": 1
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.025",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.045fa40000000p-34",
+        "reciprocal_pair_error": "0x1.f223d80000008p-32",
+        "symplectic_defect": "0x1.c48f79a64f34cp-23"
+      },
+      "sigma": "5240678856443537776035004139875/15723092944830803511766926960012",
+      "track_rank": 105
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.025-m2-1.030",
+      "masses_exact": [
+        "2308094809027379/2251799813685248",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.8894000000000p-36",
+        "reciprocal_pair_error": "0x1.624fb00000000p-32",
+        "symplectic_defect": "0x1.f18a92cc86f48p-22"
+      },
+      "sigma": "344773255052237329009539475214/1034405660607219254938262581575",
+      "track_rank": 4
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.970",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "4368491638549381/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.78a38c0000000p-36",
+        "reciprocal_pair_error": "0x1.7070100000000p-32",
+        "symplectic_defect": "0x1.66485c7c56d87p-21"
+      },
+      "sigma": "20276324880770574912011428004941/60847228810955011271841753858048",
+      "track_rank": 3
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.975",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "8782019273372467/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0743580000000p-35",
+        "reciprocal_pair_error": "0x1.de84480000000p-32",
+        "symplectic_defect": "0x1.3061649655235p-21"
+      },
+      "sigma": "18779951107627319808118662542474/56354051009604515618872908616597",
+      "track_rank": 23
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.980",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "2206763817411543/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.78a2080000000p-36",
+        "reciprocal_pair_error": "0x1.cf97980000000p-32",
+        "symplectic_defect": "0x1.04b939ce9f8f1p-21"
+      },
+      "sigma": "61240707557265854016737022511258/183760659250044500292471281647249",
+      "track_rank": 2
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.985",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "8872091265919877/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0821500000000p-35",
+        "reciprocal_pair_error": "0x1.023b4c0000000p-31",
+        "symplectic_defect": "0x1.7cf74c3bfb9a9p-21"
+      },
+      "sigma": "3901369778713836105211961381554/11706137577101873486281158571687",
+      "track_rank": 24
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.990",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "4458563631096791/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.0335938000000p-35",
+        "reciprocal_pair_error": "0x1.332b680000000p-31",
+        "symplectic_defect": "0x1.f7dc16d318014p-21"
+      },
+      "sigma": "61652440472219983297439761007693/184983688549144697110707850574404",
+      "track_rank": 19
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific stable/unstable manifold and homoclinic/scattering qualification with sealed interpretation.",
+      "candidate_id": "n3bp-m1-1.030-m2-0.995",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "8962163258467287/9007199254740992",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "ASYMPTOTIC_MANIFOLD",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "U",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.1a65c00000000p-35",
+        "reciprocal_pair_error": "0x1.aa3ec80000000p-32",
+        "symplectic_defect": "0x1.86049c3ec462ep-21"
+      },
+      "sigma": "247433227718788191751164521023642/742386897517660277591240363433001",
+      "track_rank": 30
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.000",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "1",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.a61d940000000p-36",
+        "reciprocal_pair_error": "0x1.2fac9c0000005p-31",
+        "symplectic_defect": "0x1.9e5db0e7c13d1p-22"
+      },
+      "sigma": "20688057795724704192714166501376/62070258110055208090078322785203",
+      "track_rank": 12
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.005",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "1131529406376837/1125899906842624",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.06cebb0000000p-34",
+        "reciprocal_pair_error": "0x1.2eab140000001p-31",
+        "symplectic_defect": "0x1.2ce31bf45b7d3p-21"
+      },
+      "sigma": "62270039844651172647340246971292/186825838401396348059557613997025",
+      "track_rank": 106
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.010",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "4548635623644201/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.ceb5e80000000p-36",
+        "reciprocal_pair_error": "0x1.48391c0000000p-31",
+        "symplectic_defect": "0x1.88c39f13306f9p-22"
+      },
+      "sigma": "62475906302128241858845238000563/187441916593107281771052634990864",
+      "track_rank": 26
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.015",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "2285576810890527/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.b9988c0000000p-36",
+        "reciprocal_pair_error": "0x1.6314d40000000p-31",
+        "symplectic_defect": "0x1.2a7763132d43cp-21"
+      },
+      "sigma": "4821674827661947005411556079218/14466077608099876777915868420917",
+      "track_rank": 15
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.020",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "2296835809958953/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.c861000000000p-36",
+        "reciprocal_pair_error": "0x1.55bba00000003p-31",
+        "symplectic_defect": "0x1.088fa8f662b24p-22"
+      },
+      "sigma": "8983948459583195877078282356714/26953873619709952801880121497167",
+      "track_rank": 23
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.025",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "2308094809027379/2251799813685248",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.f60f000000000p-36",
+        "reciprocal_pair_error": "0x1.e60f900000000p-32",
+        "symplectic_defect": "0x1.2a66f2933e6cep-21"
+      },
+      "sigma": "344773255052237329009539475214/1034405660607219254938262581575",
+      "track_rank": 37
+    },
+    {
+      "authorized_next_test": "Lock a candidate-specific local normal-form and KAM nondegeneracy qualification with exact or interval validation.",
+      "candidate_id": "n3bp-m1-1.030-m2-1.030",
+      "masses_exact": [
+        "4638707616191611/4503599627370496",
+        "4638707616191611/4503599627370496",
+        "1"
+      ],
+      "overlays": [
+        "DOMAIN_RESTRICTED_OR_NONMEROMORPHIC"
+      ],
+      "primary_track": "LOCAL_STABLE_NORMAL_FORM",
+      "prohibited_interpretation": "This row does not discover, infer, or establish an invariant, KAM stability, a manifold, or any form of integrability.",
+      "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+      "qualified_planar_label": "S",
+      "quality_metrics": {
+        "correction_residual_linf": "0x1.391a800000000p-35",
+        "reciprocal_pair_error": "0x1.12bf4c0000002p-31",
+        "symplectic_defect": "0x1.af2e855aeb2ccp-22"
+      },
+      "sigma": "7033263570226277824472301665937/21101818951639198644062179424836",
+      "track_rank": 88
+    }
+  ],
+  "catalogue_sha256": "ec2e473641a0606d6dc23d4cfd0f5290dbd75bd1ef83e4339c0945dd04295234",
+  "counts": {
+    "asymptotic_manifold": 51,
+    "domain_restricted_or_nonmeromorphic_overlay": 169,
+    "higher_variational_exception_overlay": 1,
+    "local_stable_normal_form": 118
+  },
+  "no_invariant_interpretation": true,
+  "publication_gate": "NO_INTERPRETATION: require a separately named and locked candidate-specific qualification before interpreting any invariant.",
+  "qualification_id": "WP1-RESIDUAL-MAP-v1-9526e09d01ba",
+  "qualification_lock_sha256": "da58537b9e904fa702580f244f6d928e72e5be07a6d10ba63965a6ff019c321e",
+  "schema_version": "1.0",
+  "source_campaign": "WP1-CAT-N3BP-v1",
+  "spec_sha256": "4757d455f69eccd71900bace20deaf1138462eeb1c4fc71bbe998bc879ef1d59"
+}
