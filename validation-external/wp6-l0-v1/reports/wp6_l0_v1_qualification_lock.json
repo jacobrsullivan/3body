@@ -1,0 +1,44 @@
+{
+  "base_git_commit": "9d9b84c4922cdbe76716e01f555cd074bacbba2a",
+  "code_snapshot_sha256": "27f160d029ca87b17f2fb79a7b0361f9890461f6a3ef23b259b7a647dcf1e73d",
+  "file_hashes": {
+    "src/python/wp6_l0_v1/QUALIFICATION_BOUNDARY.md": "f215c33c379eb4f44b605ba30079977c0d2be9b6e5982bacf4b9f60cc7fe4f92",
+    "src/python/wp6_l0_v1/__init__.py": "997155a6fd75f49c21ac9c09ef5adade5e81ac33cfe76d22756cbbacfcbd6796",
+    "src/python/wp6_l0_v1/model.py": "367ad0f6b7a84eeda7cb022117e232f4f8df5f05b8ed0d64cd2dec183bd682ab",
+    "tests/wp6_l0_v1/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "tests/wp6_l0_v1/test_campaign_contract.py": "10cd5f52f2e20e097608cbd59f532fcbeeeb9ff0e25f7939445bf110403a3ce9",
+    "tests/wp6_l0_v1/test_model.py": "64f040d532e4c9e4db52a79610198c2bf7e3f60c36cc7bcc653f2b642326c07d",
+    "validation-external/qualification_tools.py": "64cb7d731658eb5f5249b7dfdc50545fbe7ad140681e0ea14c057ba0e897aaee",
+    "validation-external/successor_qualification.py": "8e5f96e7fc87cc127470fa13e79b162dec76ee94214a116b184e6066d8ab4d75",
+    "validation-external/wp6-l0-v1/README.md": "d80ec5f8e71bf0755207d295f0604fa70221f20ae07898c2bdd30a1718837084",
+    "validation-external/wp6-l0-v1/proof/WP6-L0-v1-proof.md": "f2842ee937eb85889c95d8d731fbe8355ad59fa8997b6ac667f4bca74d2c31be",
+    "validation-external/wp6-l0-v1/qualification_spec.json": "7348b350d6196e88c0d49bc0aa85f95ba078bb5cb501e3882f78fb7fe5aef89c",
+    "validation-external/wp6-l0-v1/reference/equal_mass_euler.py": "f3d23aa4ab4f771d7d053474150e031df1f7042105f879c72447cbea876238d5",
+    "validation-external/wp6-l0-v1/reports/wp6_l0_v1_specification_lock.json": "758d0663c5ad6ae3ca9f878ecfc7d52923ded0255cd07df7befc5838eca80e58",
+    "validation-external/wp6-l0-v1/run_qualification.sh": "65e565d8a49872cbc8f8e7f0c55fe71d55eb019a930754a308dc9acce7ffc1ad",
+    "validation-external/wp6-l0-v1/sources/manifest.json": "5e312b3124637ccf2ab3d6124913e0b363f37d219e2f037f97279c60f28526fa"
+  },
+  "frozen_utc": "2026-07-24T09:36:23.476469+00:00",
+  "lock_sha256": "dc240c374d3a594e7798ec81ce919a17d1855e228c929b41f996d74f027ecab7",
+  "proof_sha256": "f2842ee937eb85889c95d8d731fbe8355ad59fa8997b6ac667f4bca74d2c31be",
+  "qualification_id": "WP6-L0-v1-27f160d029ca",
+  "qualification_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.3.5",
+      "pytest": "8.4.1",
+      "rebound": "4.5.1",
+      "scipy": "1.16.3"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "python": "3.13.2",
+    "python_executable": "/Users/jacobsullivan/miniconda3/bin/python3.13",
+    "python_implementation": "CPython"
+  },
+  "schema_version": "1.0",
+  "source_manifest_sha256": "5e312b3124637ccf2ab3d6124913e0b363f37d219e2f037f97279c60f28526fa",
+  "spec_sha256": "7348b350d6196e88c0d49bc0aa85f95ba078bb5cb501e3882f78fb7fe5aef89c",
+  "specification_lock_sha256": "d331540b30452ccaafc7a7d2a947e5f16a651f10e9f70bbb3f29a1b2c9bc3bb6",
+  "worktree_clean_at_freeze": true
+}
