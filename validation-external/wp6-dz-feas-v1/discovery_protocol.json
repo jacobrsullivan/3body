@@ -1,0 +1,110 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "protocol_status": "LOCKABLE_BEFORE_DISCOVERY",
+  "primary_source_only": true,
+  "search_surfaces": [
+    "arXiv",
+    "publisher or DOI landing pages",
+    "author or institutional publication repositories",
+    "reference lists of inspected primary papers"
+  ],
+  "result_window_per_query": 10,
+  "queries": [
+    {
+      "query_id": "Q01",
+      "text": "\"zero energy\" \"zero angular momentum\" \"three-body problem\" exact solution",
+      "candidate_classes": ["parabolic escape and scattering solutions", "published algebraic or meromorphic particular solutions"]
+    },
+    {
+      "query_id": "Q02",
+      "text": "\"H=C=0\" three body Morales Ramis",
+      "candidate_classes": ["published zero-level Morales-Ramis or Ziglin analyses"]
+    },
+    {
+      "query_id": "Q03",
+      "text": "\"H = C = 0\" \"three-body\" particular orbit",
+      "candidate_classes": ["published algebraic or meromorphic particular solutions"]
+    },
+    {
+      "query_id": "Q04",
+      "text": "\"new particular orbit\" \"H = C = 0\" n-body",
+      "candidate_classes": ["published zero-level Morales-Ramis or Ziglin analyses"]
+    },
+    {
+      "query_id": "Q05",
+      "text": "rectilinear three body zero energy exact solution",
+      "candidate_classes": ["collinear or rectilinear nonhomothetic solutions"]
+    },
+    {
+      "query_id": "Q06",
+      "text": "parabolic escape zero angular momentum three body algebraic solution",
+      "candidate_classes": ["parabolic escape and scattering solutions"]
+    },
+    {
+      "query_id": "Q07",
+      "text": "triple collision regularization zero energy three body variational equations",
+      "candidate_classes": ["triple-collision, McGehee, and regularized collision solutions"]
+    },
+    {
+      "query_id": "Q08",
+      "text": "McGehee zero energy three-body homoclinic explicit orbit",
+      "candidate_classes": ["triple-collision, McGehee, and regularized collision solutions"]
+    },
+    {
+      "query_id": "Q09",
+      "text": "Euler Moulton zero energy homothetic variational equations all orders",
+      "candidate_classes": ["central-configuration homothetic and homographic solutions"]
+    },
+    {
+      "query_id": "Q10",
+      "text": "figure eight choreography zero energy scaling three body",
+      "candidate_classes": ["choreographic and periodic solution families"]
+    },
+    {
+      "query_id": "Q11",
+      "text": "algebraic particular solutions planar three body problem zero angular momentum",
+      "candidate_classes": ["special-mass and symmetry-invariant manifolds", "published algebraic or meromorphic particular solutions"]
+    },
+    {
+      "query_id": "Q12",
+      "text": "nonintegrability common level zero energy zero angular momentum n body",
+      "candidate_classes": ["published zero-level Morales-Ramis or Ziglin analyses"]
+    }
+  ],
+  "mandatory_seed_sources": [
+    {
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb",
+      "reason": "Defines the unresolved common level and the current theorem boundary."
+    },
+    {
+      "source_id": "combot-2011",
+      "sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "reason": "States the all-orders homothetic limitation and need for a new explicit orbit."
+    },
+    {
+      "source_id": "morales-ruiz-simon-2009",
+      "sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f",
+      "reason": "Pins the broader homothetic first-integral obstruction without authorizing fixed-level transfer."
+    },
+    {
+      "source_id": "tsygvintsev-2006",
+      "sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d",
+      "reason": "Pins an independent particular-orbit nonintegrability analysis and its model boundary."
+    }
+  ],
+  "citation_expansion": {
+    "directions": ["backward references", "forward citations discoverable from primary or publisher pages"],
+    "maximum_additional_primary_sources": 12,
+    "include_only_if": "The title, abstract, or cited passage asserts an exact full-three-body orbit, an H=C=0 result, or a variational analysis on the double-zero level."
+  },
+  "candidate_deduplication": "Merge papers that analyze the same phase curve and mass branch into one candidate-family record while retaining every source.",
+  "plausibility_rule": "Create a candidate record whenever a primary source claims an exact full-three-body solution that could satisfy H=C=0, or explicitly analyzes the double-zero common level. Exclude clearly different physical models at source screening but retain the exclusion receipt.",
+  "completion_rule": "All Q01-Q12 queries, all eight mandatory candidate classes, all seed sources, every plausible result inside the locked windows, and eligible citation expansion must have receipts before a null decision.",
+  "caps": {
+    "primary_sources_inspected": 32,
+    "candidate_families": 16,
+    "citation_expansion_sources": 12
+  }
+}

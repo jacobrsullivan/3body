@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "status": "PRE_DISCOVERY_SEEDS_ONLY",
+  "sources": [
+    {
+      "source_id": "maciejewski-przybylska-combot-2025",
+      "title": "Non-integrability of the n-body problem",
+      "arxiv": "2502.01426",
+      "download_url": "https://arxiv.org/pdf/2502.01426",
+      "sha256": "54aa7075cbfcdaf3cd8b559ccdfc1067e1ce87e9839c8d089ba3757df57debeb"
+    },
+    {
+      "source_id": "combot-2011",
+      "title": "Non integrability of the n body problem with non zero angular momentum",
+      "arxiv": "1112.1889",
+      "download_url": "https://arxiv.org/pdf/1112.1889",
+      "sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118"
+    },
+    {
+      "source_id": "morales-ruiz-simon-2009",
+      "title": "On the meromorphic non-integrability of some N-body problems",
+      "download_url": "https://www.maia.ub.es/dsg/2008/0801simon.pdf",
+      "sha256": "7eff8341a1b6c2c0efe16821102c8302d35160ba08ce9ba10fcabb3f9b9fb04f"
+    },
+    {
+      "source_id": "tsygvintsev-2006",
+      "title": "On some exceptional cases in the integrability of the three-body problem",
+      "arxiv": "math/0610951",
+      "download_url": "https://arxiv.org/pdf/math/0610951",
+      "sha256": "cb17b74716e1a6ad91805285477e80667fc9fd4d6afc2ed967b60f944c572f0d"
+    }
+  ],
+  "repository_negative_control": {
+    "path": "src/python/validation/periodic_orbits.py",
+    "sha256": "74391677df342a9082ec609d68b5c83fff588238725a0e7338359db3cec9771e",
+    "locked_observation": "The legacy equal-mass Euler fixture states H=0 but its positions and velocities give exact H=-1; it is not witness evidence."
+  },
+  "copyright_boundary": "The repository records metadata and hashes only and does not redistribute source papers."
+}
