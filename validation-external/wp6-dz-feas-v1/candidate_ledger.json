@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "status": "DISCOVERY_COMPLETE",
+  "requirement_ids": ["W1", "W2", "W3", "W4", "W5", "W6", "W7", "W8", "W9", "W10", "W11", "W12"],
+  "candidate_family_count": 12,
+  "candidate_family_cap": 16,
+  "proposed_outcome": "COMPLETE_BOUNDED_NULL_RESULT",
+  "nearest_miss_candidate_id": "C03",
+  "mandatory_class_coverage": [
+    {
+      "candidate_class": "central-configuration homothetic and homographic solutions",
+      "status": "COMPLETE",
+      "candidate_ids": ["C01", "C11", "C12"]
+    },
+    {
+      "candidate_class": "collinear or rectilinear nonhomothetic solutions",
+      "status": "COMPLETE",
+      "candidate_ids": ["C02", "C04", "C05"]
+    },
+    {
+      "candidate_class": "parabolic escape and scattering solutions",
+      "status": "COMPLETE",
+      "candidate_ids": ["C01", "C03", "C05", "C12"]
+    },
+    {
+      "candidate_class": "triple-collision, McGehee, and regularized collision solutions",
+      "status": "COMPLETE",
+      "candidate_ids": ["C02", "C04", "C06", "C07", "C09"]
+    },
+    {
+      "candidate_class": "choreographic and periodic solution families",
+      "status": "COMPLETE",
+      "candidate_ids": ["C08", "C09", "C10"]
+    },
+    {
+      "candidate_class": "special-mass and symmetry-invariant manifolds",
+      "status": "COMPLETE",
+      "candidate_ids": ["C04", "C05", "C07", "C08", "C09", "C10", "C11"]
+    },
+    {
+      "candidate_class": "published algebraic or meromorphic particular solutions",
+      "status": "COMPLETE",
+      "candidate_ids": ["C01", "C07", "C12"]
+    },
+    {
+      "candidate_class": "published zero-level Morales-Ramis or Ziglin analyses",
+      "status": "COMPLETE",
+      "candidate_ids": ["C12"]
+    }
+  ],
+  "candidates": [
+    {
+      "candidate_id": "C01",
+      "family": "Parabolic Euler-Moulton and Lagrange central-configuration curves",
+      "sources": ["combot-2011", "morales-ruiz-simon-2009", "chenciner-1997", "diacu-fujiwara-perezchavela-santoprete-2008"],
+      "summary": "Exact algebraic H=C=0 curves exist for arbitrary positive masses, but they are precisely the known homothetic family whose tangent common-level variational equations provide no obstruction.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "The central-configuration ansatz solves the full Newtonian equations exactly on s!=0."},
+        "W2": {"status": "PASS", "reason": "Lagrange equilateral and Euler-Moulton branches cover arbitrary finite positive mass triples."},
+        "W3": {"status": "FAIL", "reason": "Every zero-angular-momentum member is the expressly excluded homothetic central-configuration curve."},
+        "W4": {"status": "PASS", "reason": "The parabolic branch has exact H=0 and radial motion gives C=0 identically."},
+        "W5": {"status": "PASS", "reason": "For the equal-mass control the phase curve is algebraic over C(s,kappa), kappa^2=5/2; the general central-configuration construction is algebraic after adjoining its roots."},
+        "W6": {"status": "PASS", "reason": "All mutual distances are nonzero on the dense open scale parameter s!=0."},
+        "W7": {"status": "PASS", "reason": "At the exact control point dH has a nonzero p_x component and dC has an independent p_y component."},
+        "W8": {"status": "NOT_REACHED", "reason": "The campaign stops this candidate at W3 and does not requalify the already-studied homothetic VE."},
+        "W9": {"status": "FAIL", "reason": "The pinned Combot source states that this double-zero homothetic VE is integrable at every variational order."},
+        "W10": {"status": "PASS", "reason": "The analyzed algebraic open curve excludes the total-collision endpoint s=0."},
+        "W11": {"status": "NOT_REACHED", "reason": "The source-disjoint control reproduces the orbit and invariants, but candidate promotion stopped before an NVE reproduction was required."},
+        "W12": {"status": "PASS", "reason": "All source payloads and exact-control inputs are hash-pinned and the reference imports no production module."}
+      }
+    },
+    {
+      "candidate_id": "C02",
+      "family": "Full rectilinear zero-level collision-manifold flow",
+      "sources": ["chenciner-1997", "moeckel-montgomery-2012", "moeckel-2019"],
+      "summary": "The H=0 scaling quotient and collinear collision manifold contain nonhomothetic trajectories, but the inspected sources give a reduced flow and qualitative invariant manifolds, not an identified algebraic physical phase curve.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "No explicit candidate trajectory with full physical coordinates is specified; only the reduced flow and its orbit families are given."},
+        "W2": {"status": "PASS", "reason": "The full collinear reduction itself is available for arbitrary positive masses."},
+        "W3": {"status": "PASS", "reason": "Non-equilibrium nonhomothetic collision-manifold trajectories exist away from its rest points."},
+        "W4": {"status": "PASS", "reason": "The relevant collision manifold is exactly the scaling quotient of H=C=0."},
+        "W5": {"status": "FAIL", "reason": "No inspected source supplies an algebraic parametrization of a nonhomothetic trajectory."},
+        "W6": {"status": "NOT_REACHED", "reason": "There is no candidate algebraic phase curve on which to audit distance denominators."},
+        "W7": {"status": "NOT_REACHED", "reason": "There is no explicit generic phase point for an exact common-level rank audit."},
+        "W8": {"status": "NOT_REACHED", "reason": "No candidate-specific tangent VE can be derived without an explicit orbit."},
+        "W9": {"status": "NOT_REACHED", "reason": "No candidate-specific NVE coefficient field exists."},
+        "W10": {"status": "FAIL", "reason": "The collision-manifold construction is a blow-up; it does not supply a generic meromorphic continuation through physical triple collision."},
+        "W11": {"status": "NOT_REACHED", "reason": "No candidate reaches the independent NVE reproduction stage."},
+        "W12": {"status": "PASS", "reason": "The three inspected primary payloads are hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C03",
+      "family": "Weak-KAM and free-time-minimizer completely parabolic orbits",
+      "sources": ["percino-figueroa-2017", "moeckel-montgomery-sanchez-2018"],
+      "summary": "Existence theorems give many nonhomothetic, completely parabolic H=C=0 solutions and can start from arbitrary configurations, but they do not identify one algebraic phase curve.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "Calibrating curves and free-time minimizers are exact solutions of the full Newtonian equations away from collision."},
+        "W2": {"status": "PASS", "reason": "The weak-KAM construction is stated for arbitrary positive masses and uses a minimal Lagrange central configuration."},
+        "W3": {"status": "PASS", "reason": "Choosing an initial configuration off the homothetic ray forces a nonhomothetic nonstationary solution."},
+        "W4": {"status": "PASS", "reason": "The curves are completely parabolic at the critical energy and the rotation-invariant construction gives zero angular momentum."},
+        "W5": {"status": "FAIL", "reason": "The proofs are variational/existence constructions; no orbit is given as an algebraic phase curve over a declared differential field."},
+        "W6": {"status": "NOT_REACHED", "reason": "No explicit algebraic curve is available for a dense-open denominator audit."},
+        "W7": {"status": "NOT_REACHED", "reason": "No identified generic point is available for an exact dH,dC rank calculation."},
+        "W8": {"status": "NOT_REACHED", "reason": "The tangent VE cannot be written candidate-specifically without an explicit orbit."},
+        "W9": {"status": "NOT_REACHED", "reason": "No rational or algebraic NVE coefficient field is produced."},
+        "W10": {"status": "PASS", "reason": "The forward completely parabolic branch can be chosen collision-free on its physical open interval."},
+        "W11": {"status": "NOT_REACHED", "reason": "An existence theorem cannot be reproduced as candidate-specific exact orbit and NVE data."},
+        "W12": {"status": "PASS", "reason": "Both primary payloads are hash-pinned and source roles are explicit."}
+      }
+    },
+    {
+      "candidate_id": "C04",
+      "family": "Zero-energy isosceles minimal geodesics and collision-manifold separatrices",
+      "sources": ["moeckel-2019"],
+      "summary": "The isosceles problem exhibits nonhomothetic H=0 geodesics through collision-manifold dynamics, but it is a symmetry-restricted mass family and the nonhomothetic curves are qualitative or numerical rather than algebraic.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "The geodesics correspond to exact full Newtonian solutions inside the invariant isosceles submanifold."},
+        "W2": {"status": "FAIL", "reason": "The analysis assumes an isosceles symmetry with two equal masses and does not provide an exhaustive arbitrary-mass branch cover."},
+        "W3": {"status": "PASS", "reason": "The collision-manifold flow includes changing-shape nonhomothetic geodesics."},
+        "W4": {"status": "PASS", "reason": "The analyzed flow is explicitly the h=0 isosceles problem and its planar isosceles motions have C=0."},
+        "W5": {"status": "FAIL", "reason": "Only homothetic geodesics are called simple and explicit; the nonhomothetic curves are described via invariant manifolds and numerical figures."},
+        "W6": {"status": "NOT_REACHED", "reason": "No nonhomothetic algebraic phase curve is provided."},
+        "W7": {"status": "NOT_REACHED", "reason": "No explicit generic state is frozen."},
+        "W8": {"status": "NOT_REACHED", "reason": "No candidate-specific tangent VE is derived."},
+        "W9": {"status": "NOT_REACHED", "reason": "No candidate-specific algebraic NVE is produced."},
+        "W10": {"status": "FAIL", "reason": "Some branches end at double or triple collision and no physical meromorphic pullback adequate for W10 is proved."},
+        "W11": {"status": "NOT_REACHED", "reason": "No candidate reaches exact independent NVE reproduction."},
+        "W12": {"status": "PASS", "reason": "The primary payload is hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C05",
+      "family": "Parabolic restricted collinear three-body solutions",
+      "sources": ["delgado-vidal-2019"],
+      "summary": "The parabolic restricted collinear problem has analytic global dynamics, but one body is massless and the primaries follow a prescribed two-body parabolic motion.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "This is a restricted, time-dependent model rather than the full three-positive-mass Newtonian problem."},
+        "W2": {"status": "FAIL", "reason": "The third mass is zero, violating finite strictly positive mass scope."},
+        "W3": {"status": "PASS", "reason": "Its parabolic and hyperbolic branches are nonstationary and can be nonhomothetic."},
+        "W4": {"status": "FAIL", "reason": "The primaries have zero two-body energy, not an exact full-three-body H=C=0 autonomous common level."},
+        "W5": {"status": "FAIL", "reason": "The source proves global dynamics and existence, not a qualifying full-model algebraic phase curve."},
+        "W6": {"status": "NOT_REACHED", "reason": "The target model already fails."},
+        "W7": {"status": "NOT_REACHED", "reason": "The target common-level gradients are not defined for this restricted model."},
+        "W8": {"status": "NOT_REACHED", "reason": "A restricted-model VE cannot satisfy the full-model tangent VE requirement."},
+        "W9": {"status": "NOT_REACHED", "reason": "No target-model NVE is present."},
+        "W10": {"status": "PASS", "reason": "Binary collisions are regularized within the restricted model, but this cannot repair W1 or W2."},
+        "W11": {"status": "NOT_REACHED", "reason": "No full-model candidate reaches independent reproduction."},
+        "W12": {"status": "PASS", "reason": "The DOI metadata payload is hash-pinned and identifies the restricted model in its title."}
+      }
+    },
+    {
+      "candidate_id": "C06",
+      "family": "Triple-collision blow-up and shape-space total-collision strata",
+      "sources": ["moeckel-montgomery-2012", "mercati-reichert-2021", "chenciner-1997"],
+      "summary": "Global blow-up coordinates expose nonhomothetic zero-level collision strata, but no exact algebraic orbit is selected and generic total collision remains an essential, nonregularizable singularity.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "The sources provide transformed vector fields and strata, not one explicit physical particular solution."},
+        "W2": {"status": "PASS", "reason": "The coordinate construction covers arbitrary positive masses."},
+        "W3": {"status": "PASS", "reason": "Nonhomothetic total-collision strata exist in addition to the homothetic rest-point curve."},
+        "W4": {"status": "PASS", "reason": "The relevant collision manifold is analyzed at zero energy and zero angular momentum."},
+        "W5": {"status": "FAIL", "reason": "Asymptotic strata and integration constants do not provide an algebraic phase-curve parametrization."},
+        "W6": {"status": "NOT_REACHED", "reason": "No candidate algebraic curve is selected."},
+        "W7": {"status": "NOT_REACHED", "reason": "No candidate generic point is selected."},
+        "W8": {"status": "NOT_REACHED", "reason": "No candidate-specific tangent VE is available."},
+        "W9": {"status": "NOT_REACHED", "reason": "No candidate-specific NVE coefficient field is available."},
+        "W10": {"status": "FAIL", "reason": "The inspected shape-space analysis finds an essential singularity generically and exceptional regularization only for special masses."},
+        "W11": {"status": "NOT_REACHED", "reason": "No candidate reaches independent NVE reproduction."},
+        "W12": {"status": "PASS", "reason": "All three primary payloads are hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C07",
+      "family": "Published Sundman-like explicit triple-collision formula",
+      "sources": ["hey-werkhausen-2024"],
+      "summary": "The recent formula is presented as a formal regularization for an equal-mass triple collision. Its displayed finite configuration is released from rest and its size variables share one time factor, making it negative-energy and homothetic.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "The source characterizes the triple-collision treatment as formal rather than a rigorous exact full-equation qualification."},
+        "W2": {"status": "FAIL", "reason": "The explicit displayed branch uses three equal masses and supplies no exhaustive mass cover."},
+        "W3": {"status": "FAIL", "reason": "The two displayed size variables are proportional to the same cos^2 factor, so shape is constant and the curve is homothetic."},
+        "W4": {"status": "FAIL", "reason": "A finite distinct Newtonian configuration released from rest has H=-U<0, not H=0; C=0 alone is insufficient."},
+        "W5": {"status": "FAIL", "reason": "No algebraic physical phase curve over a declared differential base field is proved."},
+        "W6": {"status": "NOT_REACHED", "reason": "The target energy and homothety tests already fail."},
+        "W7": {"status": "NOT_REACHED", "reason": "No qualifying generic physical common-level point exists."},
+        "W8": {"status": "NOT_REACHED", "reason": "No tangent H=C=0 VE is derived."},
+        "W9": {"status": "NOT_REACHED", "reason": "No target common-level NVE is derived."},
+        "W10": {"status": "FAIL", "reason": "A formal Sundman-like time change is not a proved meromorphic regularization and physical pullback."},
+        "W11": {"status": "NOT_REACHED", "reason": "Independent controls reproduce the energy sign and constant shape, not a qualifying orbit or NVE."},
+        "W12": {"status": "FAIL", "reason": "Institutional metadata is pinned, but the full equation payload was not openly retrievable for immutable campaign custody."}
+      }
+    },
+    {
+      "candidate_id": "C08",
+      "family": "Figure-eight and broader collision-free periodic choreographies",
+      "sources": ["chenciner-montgomery-2000", "li-jing-liao-2017"],
+      "summary": "Rigorous and numerical zero-angular-momentum periodic orbits exist, but every collision-free Newtonian periodic orbit has H<0 by the averaged Lagrange-Jacobi identity.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "The figure-eight existence theorem supplies an exact full Newtonian solution, and broader catalogues supply numerical solutions."},
+        "W2": {"status": "FAIL", "reason": "The rigorous figure-eight is equal-mass and the numerical mass families are not an exhaustive algebraic branch cover."},
+        "W3": {"status": "PASS", "reason": "These periodic solutions are nonstationary and nonhomothetic."},
+        "W4": {"status": "FAIL", "reason": "For any collision-free periodic Newtonian orbit, <I''>=0 gives H=-<U>/2<0; positive scaling preserves that sign."},
+        "W5": {"status": "FAIL", "reason": "Existence proofs or numerical initial conditions do not give an algebraic phase curve."},
+        "W6": {"status": "NOT_REACHED", "reason": "The exact energy requirement fails."},
+        "W7": {"status": "NOT_REACHED", "reason": "No H=C=0 generic point exists on a periodic candidate."},
+        "W8": {"status": "NOT_REACHED", "reason": "No tangent double-zero VE exists for this family."},
+        "W9": {"status": "NOT_REACHED", "reason": "No double-zero NVE exists for this family."},
+        "W10": {"status": "PASS", "reason": "The selected figure-eight and catalogue families are collision-free."},
+        "W11": {"status": "NOT_REACHED", "reason": "The exact H=0 gate fails before independent orbit/NVE reproduction."},
+        "W12": {"status": "PASS", "reason": "Both primary payloads and the exact virial derivation are hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C09",
+      "family": "Zero-angular-momentum globally regularized numerical examples",
+      "sources": ["rose-dullin-2013", "moeckel-montgomery-2012"],
+      "summary": "The exact polynomial splitting regularizes the reduced equations, but the paper's orbit examples are numerical; its displayed periodic collision orbit and figure-eight normalization use h=-1.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "The integrator is exact as a numerical splitting method, but it does not identify an exact particular phase curve."},
+        "W2": {"status": "FAIL", "reason": "Displayed examples use selected mass triples, including equal masses, without an exhaustive cover."},
+        "W3": {"status": "PASS", "reason": "The numerical examples are nonstationary and nonhomothetic."},
+        "W4": {"status": "FAIL", "reason": "The displayed periodic collision and figure-eight examples are normalized at h=-1, not H=0."},
+        "W5": {"status": "FAIL", "reason": "Numerical trajectories and an integrator splitting are not algebraic phase curves."},
+        "W6": {"status": "NOT_REACHED", "reason": "No algebraic orbit exists to audit."},
+        "W7": {"status": "NOT_REACHED", "reason": "No target-level exact state exists."},
+        "W8": {"status": "NOT_REACHED", "reason": "No candidate-specific exact tangent VE is derived."},
+        "W9": {"status": "NOT_REACHED", "reason": "No candidate-specific algebraic NVE is derived."},
+        "W10": {"status": "PASS", "reason": "The method regularizes binary collisions, but that does not repair the energy or algebraicity failures."},
+        "W11": {"status": "NOT_REACHED", "reason": "No candidate reaches independent exact reproduction."},
+        "W12": {"status": "PASS", "reason": "Both primary payloads are hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C10",
+      "family": "Free-fall and periodic brake-orbit searches",
+      "sources": ["li-jing-liao-2017", "chenciner-montgomery-2000"],
+      "summary": "Free-fall searches start from finite configurations at rest and periodic brake orbits are periodic; both exact sign arguments force H<0.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "The orbit families concern the full Newtonian equations, with rigorous existence for representative periodic families and numerical searches for others."},
+        "W2": {"status": "FAIL", "reason": "Published searches use selected equal or unequal mass slices rather than an exhaustive algebraic mass cover."},
+        "W3": {"status": "PASS", "reason": "Noncollision free-fall and brake trajectories are nonstationary and generally nonhomothetic."},
+        "W4": {"status": "FAIL", "reason": "At finite release from rest H=-U<0; if periodic, the averaged Lagrange-Jacobi identity independently gives H<0."},
+        "W5": {"status": "FAIL", "reason": "Search outputs are numerical initial conditions, not algebraic phase curves."},
+        "W6": {"status": "NOT_REACHED", "reason": "The exact energy gate fails."},
+        "W7": {"status": "NOT_REACHED", "reason": "No state lies on the target common level."},
+        "W8": {"status": "NOT_REACHED", "reason": "No tangent double-zero VE can be formed."},
+        "W9": {"status": "NOT_REACHED", "reason": "No double-zero NVE can be formed."},
+        "W10": {"status": "FAIL", "reason": "Some free-fall families include collisions without a candidate-specific meromorphic pullback."},
+        "W11": {"status": "NOT_REACHED", "reason": "No candidate reaches independent exact reproduction."},
+        "W12": {"status": "PASS", "reason": "Primary periodic sources and exact energy controls are hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C11",
+      "family": "Constant-configurational-measure and homographic candidate classifications",
+      "sources": ["diacu-fujiwara-perezchavela-santoprete-2008"],
+      "summary": "Saari-type results constrain constant-measure candidates to homographic motion in relevant zero-level cases; with C=0 a homographic orbit is homothetic, so this route does not produce a new witness.",
+      "requirements": {
+        "W1": {"status": "FAIL", "reason": "The source is a classification theorem and does not supply a new explicit candidate orbit."},
+        "W2": {"status": "FAIL", "reason": "The strongest nonnegative-energy theorem in the inspected source is equal-mass, not arbitrary-mass."},
+        "W3": {"status": "FAIL", "reason": "At C=0 the homographic candidate collapses to the excluded homothetic family."},
+        "W4": {"status": "PASS", "reason": "The source explicitly treats nonnegative energy with zero angular momentum, including H=0."},
+        "W5": {"status": "FAIL", "reason": "No new algebraic phase curve is constructed."},
+        "W6": {"status": "NOT_REACHED", "reason": "No new curve exists to audit."},
+        "W7": {"status": "NOT_REACHED", "reason": "No new generic state exists to audit."},
+        "W8": {"status": "NOT_REACHED", "reason": "No new tangent VE is derived."},
+        "W9": {"status": "FAIL", "reason": "The only surviving explicit curve is the known obstruction-free homothetic branch."},
+        "W10": {"status": "NOT_REACHED", "reason": "No new candidate is selected."},
+        "W11": {"status": "NOT_REACHED", "reason": "No new candidate reaches independent reproduction."},
+        "W12": {"status": "PASS", "reason": "The primary payload is hash-pinned."}
+      }
+    },
+    {
+      "candidate_id": "C12",
+      "family": "Published Morales-Ramis and Ziglin analyses along parabolic Lagrange motion",
+      "sources": ["maciejewski-przybylska-combot-2025", "combot-2011", "morales-ruiz-simon-2009", "tsygvintsev-2006"],
+      "summary": "Published zero-energy nonintegrability analyses use the parabolic Lagrange homothetic orbit and prove ambient or non-double-zero statements; the tangent (H,C)=(0,0) homothetic VE is explicitly obstruction-free.",
+      "requirements": {
+        "W1": {"status": "PASS", "reason": "The parabolic Lagrange curve solves the full equations exactly."},
+        "W2": {"status": "FAIL", "reason": "Individual published obstruction theorems have mass exceptions or equal-mass scope and do not supply a new exhaustive witness branch."},
+        "W3": {"status": "FAIL", "reason": "The particular orbit is the known homothetic central-configuration curve."},
+        "W4": {"status": "PASS", "reason": "The parabolic nonrotating branch has H=C=0."},
+        "W5": {"status": "PASS", "reason": "The parabolic central-configuration phase curve is algebraic after the standard time parametrization."},
+        "W6": {"status": "PASS", "reason": "Its noncollision dense open subset has valid algebraic distances."},
+        "W7": {"status": "PASS", "reason": "Generic points on the open branch have independent dH and dC."},
+        "W8": {"status": "NOT_REACHED", "reason": "The feasibility gate rejects the known homothetic curve at W3 rather than importing an ambient VE as a fixed-level tangent VE."},
+        "W9": {"status": "FAIL", "reason": "Combot explicitly states that the double-zero homothetic VE is integrable at all orders."},
+        "W10": {"status": "PASS", "reason": "The analyzed open branch can exclude its collision endpoint."},
+        "W11": {"status": "NOT_REACHED", "reason": "No new candidate-specific tangent NVE needs reproduction after W3 and W9 fail."},
+        "W12": {"status": "PASS", "reason": "All four primary payloads are hash-pinned and predecessor scope is explicit."}
+      }
+    }
+  ]
+}

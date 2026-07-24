@@ -1,0 +1,434 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v1",
+  "status": "COMPLETE",
+  "executed_utc": "2026-07-24T12:42:21Z",
+  "search_cutoff_utc": "2026-07-24T23:59:59Z",
+  "search_surfaces_used": [
+    "arXiv",
+    "publisher and DOI landing pages",
+    "author and institutional publication repositories",
+    "reference lists and forward-citation results from inspected primary papers"
+  ],
+  "window_limit_per_query": 10,
+  "query_count": 12,
+  "all_plausible_results_audited": true,
+  "query_frontier_exhausted": true,
+  "eligible_citation_expansion_exhausted": true,
+  "citation_expansion_cap_reached": true,
+  "primary_sources_inspected": 16,
+  "source_cap": 32,
+  "citation_expansion_sources": 12,
+  "citation_expansion_cap": 12,
+  "candidate_families_created": 12,
+  "candidate_family_cap": 16,
+  "result_pages": {
+    "R01": {
+      "title": "Non-integrability of the n-body problem",
+      "url": "https://arxiv.org/abs/2502.01426",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Current common-level theorem explicitly leaves (H,C)=(0,0) open.",
+      "candidate_ids": ["C12"]
+    },
+    "R02": {
+      "title": "Non integrability of the n body problem with non zero angular momentum",
+      "url": "https://arxiv.org/abs/1112.1889",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Remark 7 says the double-zero homothetic VE is integrable at all orders and requests a new explicit orbit.",
+      "candidate_ids": ["C01", "C12"]
+    },
+    "R03": {
+      "title": "On the meromorphic non-integrability of some N-body problems",
+      "url": "https://www.maia.ub.es/dsg/2008/0801simon.pdf",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Ambient homothetic evidence; no fixed double-zero tangent obstruction.",
+      "candidate_ids": ["C01", "C12"]
+    },
+    "R04": {
+      "title": "On some exceptional cases in the integrability of the three-body problem",
+      "url": "https://arxiv.org/abs/math/0610951",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Ziglin analysis uses the parabolic Lagrange homothetic orbit and does not close the fixed double-zero gap.",
+      "candidate_ids": ["C12"]
+    },
+    "R05": {
+      "title": "Three-body problem",
+      "url": "https://en.wikipedia.org/wiki/Three-body_problem",
+      "inspection": "SECONDARY_SCREEN",
+      "decision": "FOLLOWED_TO_PRIMARY_SOURCES",
+      "reason": "Led to periodic, free-fall, Sundman, and classical particular-solution primary sources.",
+      "candidate_ids": ["C08", "C10"]
+    },
+    "R06": {
+      "title": "Three body problem",
+      "url": "https://www.scholarpedia.org/article/Three_body_problem",
+      "inspection": "SECONDARY_AUTHORITATIVE_SCREEN",
+      "decision": "FOLLOWED_TO_PRIMARY_SOURCES",
+      "reason": "Scaling and collision-manifold overview; primary sources were inspected separately.",
+      "candidate_ids": ["C01", "C02", "C06"]
+    },
+    "R07": {
+      "title": "Saari's Homographic Conjecture of the Three-Body Problem",
+      "url": "https://arxiv.org/abs/0909.4991",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Classifies constant-measure zero-level candidates but constructs no new orbit.",
+      "candidate_ids": ["C01", "C11"]
+    },
+    "R08": {
+      "title": "Dynamics of the Parabolic Restricted Collinear Three-Body Problem",
+      "url": "https://doi.org/10.1137/17M1138947",
+      "inspection": "PRIMARY_METADATA_HASHED",
+      "decision": "REJECTED_WRONG_MODEL",
+      "reason": "The third body is massless and the primaries are prescribed.",
+      "candidate_ids": ["C05"]
+    },
+    "R09": {
+      "title": "Periodic three-body orbits with vanishing angular momentum in the Jacobi-Poincare strong potential",
+      "url": "https://www.researchgate.net/publication/319661745_Periodic_three-body_orbits_with_vanishing_angular_momentum_in_the_Jacobi-Poincare_strong%27%27_potential",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_WRONG_POTENTIAL",
+      "reason": "Uses the inverse-square strong potential, not Newtonian inverse distance.",
+      "candidate_ids": []
+    },
+    "R10": {
+      "title": "Classical Coulomb Three-Body Problem",
+      "url": "https://www.researchgate.net/publication/230271584_Classical_Coulomb_Three-Body_Problem",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_WRONG_POTENTIAL",
+      "reason": "Charged Coulomb signs and model differ from three positive Newtonian gravitating masses.",
+      "candidate_ids": []
+    },
+    "R11": {
+      "title": "Introduction to the N-body problem",
+      "url": "https://perso.imcce.fr/alain-chenciner/1997Ravello.pdf",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Defines the H=C=0 collision manifold and records the explicit homographic boundary.",
+      "candidate_ids": ["C01", "C02", "C06"]
+    },
+    "R12": {
+      "title": "A remarkable periodic solution of the three-body problem in the case of equal masses",
+      "url": "https://arxiv.org/abs/math/0011268",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Rigorous zero-angular-momentum periodic family; exact virial identity forces H<0.",
+      "candidate_ids": ["C08"]
+    },
+    "R13": {
+      "title": "Symmetric Regularization, Reduction and Blow-Up of the Planar Three-Body Problem",
+      "url": "https://arxiv.org/abs/1202.0972",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Global reduction and blow-up method, but no explicit new double-zero phase curve.",
+      "candidate_ids": ["C02", "C06", "C09"]
+    },
+    "R14": {
+      "title": "Null Angular Momentum and Weak KAM Solutions of the Newtonian N-Body Problem",
+      "url": "https://sigma-journal.com/2017/068/",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "NEAREST_MISS_SOURCE",
+      "reason": "Guarantees many exact nonhomothetic completely parabolic C=0 solutions without algebraic formulas.",
+      "candidate_ids": ["C03"]
+    },
+    "R15": {
+      "title": "Free Time Minimizers for the Three-Body Problem",
+      "url": "https://www-users.cse.umn.edu/~rmoeckel/research/FTM_11.pdf",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "NEAREST_MISS_SOURCE",
+      "reason": "Provides nonhomothetic parabolic existence and asymptotic results, not an explicit algebraic orbit.",
+      "candidate_ids": ["C03"]
+    },
+    "R16": {
+      "title": "Minimal Geodesics of the Isosceles Three Body Problem",
+      "url": "https://par.nsf.gov/servlets/purl/10142537",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Zero-energy nonhomothetic geodesics are qualitative or numerical and symmetry restricted.",
+      "candidate_ids": ["C02", "C04"]
+    },
+    "R17": {
+      "title": "Total Collisions in the N-Body Shape Space",
+      "url": "https://arxiv.org/abs/2109.14959",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Generic total collision is an essential singularity; exceptional mass regularization is insufficient.",
+      "candidate_ids": ["C06"]
+    },
+    "R18": {
+      "title": "Sundman theorem revisited",
+      "url": "https://doi.org/10.1016/j.physd.2024.134385",
+      "inspection": "PRIMARY_INSTITUTIONAL_METADATA_HASHED_AND_PUBLISHER_PAGE_INSPECTED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "The formal equal-mass triple-collision formula is fixed-shape and released from rest, so H<0.",
+      "candidate_ids": ["C07"]
+    },
+    "R19": {
+      "title": "A symplectic integrator for the symmetry reduced and regularised planar 3-body problem with vanishing angular momentum",
+      "url": "https://arxiv.org/abs/1302.0912",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Exact splitting method, but orbit examples are numerical and the displayed periodic cases use h=-1.",
+      "candidate_ids": ["C09"]
+    },
+    "R20": {
+      "title": "The 1223 new periodic orbits of planar three-body problem with unequal mass and zero angular momentum",
+      "url": "https://arxiv.org/abs/1709.04775",
+      "inspection": "PRIMARY_PAYLOAD_HASHED",
+      "decision": "CANDIDATE_SOURCE",
+      "reason": "Numerical periodic catalogue; all collision-free periodic Newtonian candidates have H<0.",
+      "candidate_ids": ["C08", "C10"]
+    },
+    "R21": {
+      "title": "Minlos-Faddeev regularization of zero-range interactions in the three-body problem",
+      "url": "https://arxiv.org/abs/2204.11997",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_QUANTUM_MODEL",
+      "reason": "Quantum zero-range Hamiltonian, not classical Newtonian dynamics.",
+      "candidate_ids": []
+    },
+    "R22": {
+      "title": "Exact solution of the three-boson problem at vanishing energy",
+      "url": "https://arxiv.org/abs/1007.4818",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_QUANTUM_MODEL",
+      "reason": "Quantum three-boson zero-range scattering problem.",
+      "candidate_ids": []
+    },
+    "R23": {
+      "title": "Homoclinic orbits and oscillation for the planar three-body problem",
+      "url": "https://www.sciencedirect.com/science/article/pii/0022039684901682",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_RESTRICTED_MODEL",
+      "reason": "Circular restricted three-body problem.",
+      "candidate_ids": []
+    },
+    "R24": {
+      "title": "Regularization of simultaneous binary collisions in the n-body problem",
+      "url": "https://www.sciencedirect.com/science/article/pii/0022039692900922",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "SUPPORTING_EXCLUSION",
+      "reason": "States collisions of three or more bodies are not generally regularizable outside simple subclasses.",
+      "candidate_ids": ["C06"]
+    },
+    "R25": {
+      "title": "On the meromorphic non-integrability of some N-body problems",
+      "url": "https://diposit.ub.edu/dspace/bitstream/2445/42088/1/SSM_THESIS.pdf",
+      "inspection": "PRIMARY_DERIVATIVE_SCREEN",
+      "decision": "DUPLICATE_THEOREM_CHAIN",
+      "reason": "Summarizes the same parabolic Lagrange ambient analyses already pinned from primary papers.",
+      "candidate_ids": ["C12"]
+    },
+    "R26": {
+      "title": "Kinematic geometry of triangles and the study of the three-body problem",
+      "url": "https://citeseerx.ist.psu.edu/document?doi=6831a028c7c511eb216a6aae25b89de76c28d357",
+      "inspection": "TITLE_AND_INDEXED_PASSAGE_SCREEN",
+      "decision": "NO_EXPLICIT_ALGEBRAIC_WITNESS",
+      "reason": "Studies equal-mass zero-energy triple-collision trajectories through series and geometry, not one qualifying algebraic curve.",
+      "candidate_ids": ["C04", "C06"]
+    },
+    "R27": {
+      "title": "An extensive search for stable periodic orbits of the equal-mass zero angular momentum three-body problem",
+      "url": "https://www.sciencedirect.com/science/article/pii/S1384107626000114",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_BY_EXACT_PERIODIC_ENERGY",
+      "reason": "Numerical equal-mass periodic search; H<0 follows independently of catalogue details.",
+      "candidate_ids": ["C08"]
+    },
+    "R28": {
+      "title": "Periodic orbits for Newtonian planar three-body problem with unequal mass",
+      "url": "https://numericaltank.sjtu.edu.cn/three-body/three-body-unequal-mass.htm",
+      "inspection": "NUMERICAL_DATA_SITE_SCREEN",
+      "decision": "REJECTED_NUMERICAL_AND_PERIODIC",
+      "reason": "Numerical initial conditions and animations, not algebraic curves; periodic H<0.",
+      "candidate_ids": ["C08"]
+    },
+    "R29": {
+      "title": "The three-body problem - The Geometry of Celestial Mechanics",
+      "url": "https://www.cambridge.org/core/services/aop-cambridge-core/content/view/E60E712B4E06DBC6837FB7D72C1C80AE/9781316410486c7_p77-100_CBO.pdf/threebody_problem.pdf",
+      "inspection": "PRIMARY_BOOK_CHAPTER_SCREEN",
+      "decision": "NO_NEW_CANDIDATE",
+      "reason": "Reviews homographic and restricted models without a new double-zero algebraic orbit.",
+      "candidate_ids": ["C01"]
+    },
+    "R30": {
+      "title": "N-body problem",
+      "url": "https://en.wikipedia.org/wiki/N-body_problem",
+      "inspection": "SECONDARY_SCREEN",
+      "decision": "FOLLOWED_TO_PRIMARY_SOURCES",
+      "reason": "Virial and scaling leads were replaced by exact project derivations and primary sources.",
+      "candidate_ids": ["C08", "C10"]
+    },
+    "R31": {
+      "title": "Three Body Problem - an overview",
+      "url": "https://www.sciencedirect.com/topics/physics-and-astronomy/three-body-problem",
+      "inspection": "SECONDARY_PUBLISHER_OVERVIEW_SCREEN",
+      "decision": "FOLLOWED_TO_PRIMARY_SOURCES",
+      "reason": "Collision-manifold overview led to McGehee-style primary sources.",
+      "candidate_ids": ["C02", "C06"]
+    },
+    "R32": {
+      "title": "Detection of close encounters and resonances in three-body problems through Levi-Civita regularization",
+      "url": "https://academic.oup.com/mnras/article/418/1/107/956596",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_RESTRICTED_NUMERICAL_MODEL",
+      "reason": "Restricted-three-body numerical regularization, not a full exact witness.",
+      "candidate_ids": []
+    },
+    "R33": {
+      "title": "Nonintegrability of the Armbruster-Guckenheimer-Kim Quartic Hamiltonian Through Morales-Ramis Theory",
+      "url": "https://doi.org/10.1137/16M1080689",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_UNRELATED_HAMILTONIAN",
+      "reason": "Quartic model unrelated to Newtonian three-body dynamics.",
+      "candidate_ids": []
+    },
+    "R34": {
+      "title": "Saari's homographic conjecture for general masses in planar three-body problem under Newton potential and a strong force potential",
+      "url": "https://arxiv.org/abs/1503.00407",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "NO_EXPLICIT_ORBIT",
+      "reason": "Classification result, not construction of a nonhomothetic algebraic phase curve.",
+      "candidate_ids": ["C11"]
+    },
+    "R35": {
+      "title": "Total Collisions in the N-Body Shape Space",
+      "url": "https://www.mdpi.com/2073-8994/13/9/1712",
+      "inspection": "PUBLISHER_DUPLICATE_OF_HASHED_ARXIV",
+      "decision": "DUPLICATE_PRIMARY",
+      "reason": "Publisher version of R17.",
+      "candidate_ids": ["C06"]
+    },
+    "R36": {
+      "title": "Saari's homographic conjecture for planar equal-mass three-body problem in Newton gravity",
+      "url": "https://arxiv.org/abs/1202.0893",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "NO_EXPLICIT_ORBIT",
+      "reason": "Equal-mass classification result, not a new witness.",
+      "candidate_ids": ["C11"]
+    },
+    "R37": {
+      "title": "Dynamics of the parabolic restricted three-body problem",
+      "url": "https://web.mat.upc.edu/merce.olle/articles/2015Parabolic_revised.pdf",
+      "inspection": "PRIMARY_SCREEN",
+      "decision": "REJECTED_RESTRICTED_MODEL",
+      "reason": "Massless third body and prescribed two-body parabolic primaries.",
+      "candidate_ids": ["C05"]
+    },
+    "R38": {
+      "title": "A Variational proof of the existence of Von Schubart's orbit",
+      "url": "https://www.researchgate.net/publication/264957325_A_Variational_proof_of_the_existence_of_Von_Schubart%27s_orbit",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "REJECTED_PERIODIC_SPECIAL_MASS",
+      "reason": "Two equal masses, collinear collisions, and periodic motion; exact periodic energy is negative.",
+      "candidate_ids": ["C08", "C10"]
+    },
+    "R39": {
+      "title": "Symmetric and regularized coordinates on the plane triple collision manifold",
+      "url": "https://link.springer.com/article/10.1007/BF01230661",
+      "inspection": "TITLE_ABSTRACT_SCREEN",
+      "decision": "NO_EXPLICIT_ALGEBRAIC_WITNESS",
+      "reason": "Polynomial collision-manifold coordinates do not select a qualifying physical orbit.",
+      "candidate_ids": ["C06"]
+    },
+    "R40": {
+      "title": "An Introduction to the Classical Three-Body Problem: From Periodic Solutions to Instabilities and Chaos",
+      "url": "https://www.researchgate.net/publication/330553361_An_Introduction_to_the_Classical_Three-Body_Problem_From_Periodic_Solutions_to_Instabilities_and_Chaos",
+      "inspection": "REVIEW_SCREEN",
+      "decision": "NO_NEW_PRIMARY_CANDIDATE",
+      "reason": "Review material led only to already-audited periodic and homographic families.",
+      "candidate_ids": ["C01", "C08"]
+    }
+  },
+  "queries": [
+    {
+      "query_id": "Q01",
+      "text": "\"zero energy\" \"zero angular momentum\" \"three-body problem\" exact solution",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R05", "R07", "R02", "R08", "R06", "R09", "R10", "R14", "R15", "R40"]
+    },
+    {
+      "query_id": "Q02",
+      "text": "\"H=C=0\" three body Morales Ramis",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R01", "R02", "R03", "R04", "R25", "R33", "R06", "R11", "R29", "R40"]
+    },
+    {
+      "query_id": "Q03",
+      "text": "\"H = C = 0\" \"three-body\" particular orbit",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R02", "R11", "R14", "R15", "R18", "R07", "R26", "R06", "R29", "R40"]
+    },
+    {
+      "query_id": "Q04",
+      "text": "\"new particular orbit\" \"H = C = 0\" n-body",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R02", "R01", "R03", "R04", "R11", "R14", "R15", "R25", "R29", "R40"]
+    },
+    {
+      "query_id": "Q05",
+      "text": "rectilinear three body zero energy exact solution",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R31", "R11", "R16", "R08", "R26", "R38", "R39", "R37", "R06", "R29"]
+    },
+    {
+      "query_id": "Q06",
+      "text": "parabolic escape zero angular momentum three body algebraic solution",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R08", "R14", "R15", "R11", "R37", "R23", "R06", "R29", "R05", "R40"]
+    },
+    {
+      "query_id": "Q07",
+      "text": "triple collision regularization zero energy three body variational equations",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R13", "R17", "R18", "R19", "R24", "R35", "R39", "R21", "R22", "R32"]
+    },
+    {
+      "query_id": "Q08",
+      "text": "McGehee zero energy three-body homoclinic explicit orbit",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R13", "R15", "R16", "R17", "R23", "R31", "R35", "R39", "R11", "R26"]
+    },
+    {
+      "query_id": "Q09",
+      "text": "Euler Moulton zero energy homothetic variational equations all orders",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R02", "R03", "R04", "R07", "R11", "R29", "R34", "R36", "R01", "R06"]
+    },
+    {
+      "query_id": "Q10",
+      "text": "figure eight choreography zero energy scaling three body",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R12", "R19", "R20", "R27", "R28", "R05", "R06", "R30", "R38", "R40"]
+    },
+    {
+      "query_id": "Q11",
+      "text": "algebraic particular solutions planar three body problem zero angular momentum",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R12", "R14", "R16", "R18", "R19", "R20", "R07", "R34", "R36", "R29"]
+    },
+    {
+      "query_id": "Q12",
+      "text": "nonintegrability common level zero energy zero angular momentum n body",
+      "result_window_count": 10,
+      "window_complete": true,
+      "result_ids": ["R01", "R02", "R03", "R04", "R25", "R11", "R06", "R29", "R33", "R40"]
+    }
+  ],
+  "completion_statement": "All locked Q01-Q12 windows, all eight mandatory candidate classes, all four seed sources, and twelve eligible citation-expansion sources were screened before the bounded-null decision."
+}
