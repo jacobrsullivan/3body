@@ -179,6 +179,14 @@ multi-chart records are under
   unreplicated planar premise with `WP4-MR-REPL-v1`. The resulting theorem is
   local, meromorphic, fixed-nonzero-angular-momentum, and claim-bounded; it is
   not a statement that no additional integral exists.
+- An isolated clean `bobs-mini` checkout exactly reproduces the complete
+  source-disjoint generic derivation, verifies the three new frozen snapshots,
+  passes 93/93 focused tests and both QD CTest checks, and reproduces the full
+  1,270-test partition: 1,134 fast passes plus two skips, 45 slow passes plus
+  two skips, and 79 strict historical `XFAIL` plus eight skips. The parity
+  record and final obligation audit are in
+  `notes/wp4-mr-repl-v1-bobs-parity.md` and
+  `notes/wp4-mr-repl-v1-completion-audit.md`.
 - A clean bobs-mac-mini checkout verifies the WP1-CAT, WP3-v3, and WP4-v3
   records and passes 42/42 applicable tests. Its explicitly non-decision full
   WP3 replay has byte-identical input matrices, zero candidates, and a guarded
