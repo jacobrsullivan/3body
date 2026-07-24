@@ -26,15 +26,15 @@ This project systematically tests this hypothesis through:
 | **WP1** | High-Precision Infrastructure | Qualified (scoped) | WP1-CAT-N3BP-v1 qualifies native production of one 169-member planar N3BP family in full 18D states; other families and a general catalogue remain open |
 | **WP2** | Geometric Foundations & Lifts | Qualified (scoped) | WP2-MULTIQ-v1 qualifies a three-chart fixed-energy KS atlas with continuation through every isolated binary-collision channel; triple collision and broader reductions remain open |
 | **WP3** | Invariant Discovery (ML + Symbolic) | Qualified bounded null | WP3-MULTI-CAND-v2-KQ-v1 finds no eligible direction after quotienting known `L^2` in its frozen 285-function physical library; this is not a general no-integral theorem |
-| **WP4** | Rigorous Validation ("The Gauntlet") | Qualified (conditional, scoped) | WP4-MR-NI-v2 qualifies the pinned planar obstruction; WP4-LIFT-NI-v2 transfers it to the spatial model and rules out shell-regular physically admissible meromorphic Liouville families on the qualified KS atlas |
+| **WP4** | Rigorous Validation ("The Gauntlet") | Qualified (project-owned, scoped) | WP4-MR-REPL-v1 exactly reproduces the local planar Morales-Ramis obstruction; WP4-LIFT-NI-v3 transfers it to the spatial model and rules out shell-regular physically admissible meromorphic Liouville families on the qualified KS atlas |
 | **WP5** | Consolidation & Publication | Evidence chain ready | Manuscript synthesis, external peer review, and archival release remain pending |
 
 **Overall**: the codebase is an active research prototype with several bounded,
 locked qualification records. The records are model-specific and do not combine
 into a claim of integrability or a complete/general periodic-orbit catalogue.
 See `notes/wp2-multi-wp1-cat-n3bp-result.md`, `notes/wp1-wp2-model-boundary.md`,
-`notes/wp3-v2-wp4-mr-parallel-plan.md`, and
-`notes/wp4-lift-ni-v2-result.md` for the exact boundaries.
+`notes/wp4-mr-repl-v1-result.md`, and `notes/wp4-lift-ni-v3-result.md` for the
+exact boundaries.
 
 ### Current WP1 Evidence
 
@@ -73,6 +73,12 @@ Li-Li-Liao/SJTU conformance, and REBOUND cross-integration. This is native
 correction and continuation from one disclosed published equal-mass root, not
 independent root discovery, completeness, spatial-family production, or a
 general N3BP catalogue.
+
+`WP1-RESIDUAL-MAP-v1-9526e09d01ba` maps all 169 qualified members into
+publication-gated follow-on tracks: 118 local stable normal-form cases, 51
+asymptotic-manifold cases, and one exact higher-variational overlay. The map is
+deterministic and independently reproduced. It does not identify an invariant,
+establish KAM stability, construct a manifold, or widen the catalogue claim.
 
 The formal decision is in `validation-external/wp1-validation/reports/wp1_qualification_report.md` and `wp1_qualification_record.json`; downstream artifact evidence is in `wp1_qualified_artifact_audit.json`. The earlier Earth-Moon report remains at `wp1_external_validation_report.md`.
 
@@ -152,13 +158,27 @@ multi-chart records are under
 - `WP4-MR-NI-v2-4eb909c77a41` conditionally applies two pinned published
   analyses to the positive-mass planar problem near the nonzero-angular-
   momentum parabolic Lagrange solution. It consumes rather than independently
-  rederives the published 4x4 NVE and Galois/monodromy computation.
+  rederives the published 4x4 NVE and Galois/monodromy computation and is
+  retained as predecessor evidence.
 - `WP4-LIFT-NI-v2-8d553cb1fa7f` passes 19/19 gates, 10/10 theorem
   obligations, and 6/6 negative controls. It proves the spatial variational
   subquotient and the KS quotient, Sundman, chart, involution, and shell-rank
   transfers. Conditional on the pinned planar result, it rules out complete
   shell-regular physically admissible meromorphic Liouville families on any
   qualified atlas domain containing the obstructed regular neighborhood.
+- `WP4-MR-REPL-v1-2ea23024c64b` replaces the external mathematical premise.
+  Two source-disjoint exact implementations derive the parabolic Lagrange
+  phase curve, planar variational equation, Whittaker reduction, 4x4 Fuchsian
+  NVE, and residue spectra from the declared reduced Hamiltonian. All 10
+  theorem obligations, 13 source contracts, 7 published-equivalence checks,
+  four exact specializations, and nine adversarial controls pass. The
+  positive-mass complete-integrability exceptional set is empty.
+- `WP4-LIFT-NI-v3-9ba955931b23` passes all 21 gates, 10 transfer obligations,
+  and eight adversarial controls. It reruns the hash-identical v2
+  KS/quotient/Sundman/rank/spatial-subquotient certificate and replaces the
+  unreplicated planar premise with `WP4-MR-REPL-v1`. The resulting theorem is
+  local, meromorphic, fixed-nonzero-angular-momentum, and claim-bounded; it is
+  not a statement that no additional integral exists.
 - A clean bobs-mac-mini checkout verifies the WP1-CAT, WP3-v3, and WP4-v3
   records and passes 42/42 applicable tests. Its explicitly non-decision full
   WP3 replay has byte-identical input matrices, zero candidates, and a guarded
@@ -285,14 +305,14 @@ Three-stage validation pipeline for candidate integrals:
 The v3 readiness campaign verifies the historical one-channel candidate
 control harness. No WP3 candidate survived the qualified multi-chart searches,
 so candidate-specific qualification remains untriggered. A separately locked
-Morales-Ramis and transfer track has qualified a conditional nonintegrability
-result for the physical model and for shell-regular physically admissible
-families on the KS atlas.
+Morales-Ramis and transfer track has now reproduced and qualified a scoped
+nonintegrability result for the physical model and for shell-regular physically
+admissible families on the KS atlas.
 
 1. **Analytical Vetting (WP4.1)**: Poisson brackets {I, H} = 0, involution tests, functional independence
 2. **Morales-Ramis Test (WP4.2)**: Differential Galois theory obstruction
-   - Downstairs: `WP4-MR-NI-v2` conditionally qualifies the published planar obstruction
-   - Transfer: `WP4-LIFT-NI-v2` proves the spatial subquotient and shell-regular KS descent obstruction
+   - Downstairs: `WP4-MR-REPL-v1` independently reproduces the exact local planar obstruction
+   - Transfer: `WP4-LIFT-NI-v3` proves the spatial subquotient and shell-regular KS descent obstruction
    - An Abelian variational Galois identity component is necessary for meromorphic Liouville integrability, not sufficient evidence of integrability
 3. **Numerical Robustness (WP4.3)**: Monte Carlo (10^5 samples), stress tests, long-time validation
 
