@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v2",
+  "protocol_status": "LOCK_BEFORE_SEARCH",
+  "coordinate_model": {
+    "ordered_chamber": "q1<q2<q3",
+    "gaps": {
+      "a": "q2-q1",
+      "b": "q3-q2",
+      "r": "a+b",
+      "x": "a/r"
+    },
+    "normalized_velocities": {
+      "v": "r^(1/2) dr/dt",
+      "u": "r^(3/2) dx/dt",
+      "time": "d/dtau = r^(3/2) d/dt"
+    },
+    "velocity_gaps": {
+      "za": "r^(1/2) da/dt = x*v+u",
+      "zb": "r^(1/2) db/dt = (1-x)*v-u"
+    },
+    "mass_metric": {
+      "M": "m1+m2+m3",
+      "g11": "m1*(m2+m3)/M",
+      "g12": "m1*m3/M",
+      "g22": "m3*(m1+m2)/M"
+    },
+    "positive_potential_shape": "V(x)=m1*m2/x + m2*m3/(1-x) + m1*m3",
+    "normalized_energy": "E=(g11*za^2+2*g12*za*zb+g22*zb^2)/2-V(x), with H=E/r",
+    "vector_field": {
+      "r_prime": "r*v",
+      "x_prime": "u",
+      "v_prime": "v^2/2 + A(x)",
+      "u_prime": "B(x)-v*u/2",
+      "A": "-m2/x^2-m2/(1-x)^2-(m1+m3)",
+      "fa": "-(m1+m2)/x^2+m3/(1-x)^2-m3",
+      "B": "fa-x*A"
+    },
+    "polynomial_energy_numerator": "x*(1-x)*(g11*za^2+2*g12*za*zb+g22*zb^2)-2*(m1*m2*(1-x)+m2*m3*x+m1*m3*x*(1-x))"
+  },
+  "shape_covers": [
+    {"cover_id": "PHI-AFFINE", "x_of_z": "z"},
+    {"cover_id": "PHI-LEFT-SQ", "x_of_z": "z^2"},
+    {"cover_id": "PHI-RIGHT-SQ", "x_of_z": "1-z^2"},
+    {"cover_id": "PHI-BOTH-SQ", "x_of_z": "z^2/(1+z^2)"}
+  ],
+  "support_library": {
+    "exponents": [-2, -1, 0, 1, 2],
+    "support_rule": "Every nonempty subset of the exponent set having cardinality at most two.",
+    "support_count": 15,
+    "v_graph": "v(z)=sum(alpha_j*z^j for j in S_v)",
+    "u_graph": "u(z)=sum(beta_j*z^j for j in S_u)",
+    "exact_support_saturation": "Introduce eta and impose eta*product(alpha_j)*product(beta_j)-1=0.",
+    "coefficient_field": "Q for every sentinel search; complex algebraic roots of the exact coefficient ideal are retained."
+  },
+  "mass_order_cases": [
+    {"case_id": "M01", "masses": [1, 1, 1]},
+    {"case_id": "M02", "masses": [1, 2, 3]},
+    {"case_id": "M03", "masses": [1, 3, 2]},
+    {"case_id": "M04", "masses": [2, 1, 3]},
+    {"case_id": "M05", "masses": [2, 3, 1]},
+    {"case_id": "M06", "masses": [3, 1, 2]},
+    {"case_id": "M07", "masses": [3, 2, 1]},
+    {"case_id": "M08", "masses": [2, 3, 5]},
+    {"case_id": "M09", "masses": [2, 5, 3]},
+    {"case_id": "M10", "masses": [3, 2, 5]},
+    {"case_id": "M11", "masses": [3, 5, 2]},
+    {"case_id": "M12", "masses": [5, 2, 3]},
+    {"case_id": "M13", "masses": [5, 3, 2]}
+  ],
+  "invariance_identities": {
+    "RV": "dv/dz*u-dx/dz*(v^2/2+A(x))=0",
+    "RU": "du/dz*u-dx/dz*(B(x)-v*u/2)=0",
+    "RE": "E(x,v,u)=0",
+    "clearing_rule": "Use exact rational cancellation and set every coefficient of each canonical numerator to zero.",
+    "ideal_rule": "Compute an exact Groebner basis over Q for the coefficient equations plus the exact-support saturation equation.",
+    "unit_ideal": "A basis containing 1 is an exact no-graph decision for that template.",
+    "non_unit_ideal": "Retain the basis, dimension classification, and all exact branches obtainable within the locked limits for candidate audit.",
+    "unresolved_rule": "A timeout, exception, resource abort, or non-unit ideal lacking a complete branch representation makes the campaign INCOMPLETE."
+  },
+  "enumeration": {
+    "ordering": "mass_order_case, shape_cover, lexicographic v support, lexicographic u support",
+    "systems_per_mass_case": 900,
+    "total_systems": 11700,
+    "candidate_family_cap": 64
+  },
+  "candidate_promotion": {
+    "sentinel_status": "A graph found at one or more sentinels is only a discovery candidate.",
+    "mass_extension": "Solve or reconstruct a symbolic m1,m2,m3 branch and prove its denominators cover every finite positive mass triple, or prove a finite exhaustive branch partition.",
+    "full_lift": "Recover r from r'=r*v, recover a=r*x and b=r*(1-x), reconstruct barycentric q_i and physical velocities, and verify the full Newton equations and H=C=0.",
+    "witness_gate": "Audit W1-W12 from qualification_spec.json.",
+    "mr_gate": "Only a signed QUALIFIED_WITNESS may create WP6-DZ-MR-v1."
+  },
+  "compute_policy": {
+    "per_ideal_timeout_seconds": 5,
+    "aggregate_compute_cap_seconds": 1800,
+    "memory_cap_megabytes": 4096,
+    "determinism": "Single declared SymPy version, exact rational arithmetic, fixed variable order, no randomized algorithms.",
+    "checkpointing": "Append-only deterministic shards may be merged only when their system IDs and input hashes match the lock.",
+    "scope_change": "Any changed cap, cover, support, mass case, solver field, or identity requires WP6-DZ-FEAS-v3."
+  }
+}
+

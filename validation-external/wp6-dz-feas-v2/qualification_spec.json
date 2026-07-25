@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v2",
+  "specification_status": "LOCK_BEFORE_CONSTRUCTIVE_SEARCH",
+  "purpose": "Construct or boundedly fail to construct an explicit nonhomothetic algebraic phase curve on the planar Newtonian three-body common level (H,C)=(0,0), using a finite exact rational/Puiseux graph search in the arbitrary-mass rectilinear reduction.",
+  "claim_boundary": "A QUALIFIED_WITNESS certifies only one W1-W12 algebraic phase curve and does not itself prove a differential-Galois obstruction. A COMPLETE_BOUNDED_NULL_RESULT certifies only exhaustion of the 11,700 locked graph ideals and does not prove that no suitable orbit exists.",
+  "target_model": {
+    "system": "Full planar Newtonian three-body problem after center-of-mass reduction, restricted only for discovery to an ordered collision-free collinear chamber.",
+    "mass_domain": "m1,m2,m3 are finite and strictly positive; common scaling is immaterial but no mass is set to zero.",
+    "common_level": "H=0 and C=0",
+    "discovery_chart": "q1<q2<q3, a=q2-q1, b=q3-q2, r=a+b, x=a/r",
+    "physical_dense_open": "r!=0, x!=0, x!=1, every declared cover denominator is nonzero, and u is not identically zero.",
+    "promotion_scope": "A sentinel or special-mass graph is not sufficient. Promotion requires exact arbitrary-positive-mass continuation or a finite exhaustive branch proof."
+  },
+  "preexisting_qualified_facts": {
+    "v1_endpoint": "WP6-DZ-FEAS-v1 is a signed COMPLETE_BOUNDED_NULL_RESULT and prohibits opening WP6-DZ-MR-v1 from its evidence.",
+    "known_failure": "The parabolic Euler-Moulton and Lagrange curves are algebraic H=C=0 solutions but are homothetic and obstruction-free at all variational orders used by the pinned analysis.",
+    "constructive_gap": "The arbitrary-mass rectilinear zero-level flow contains nonhomothetic trajectories but v1 found no identified algebraic physical phase curve.",
+    "nonzero_level_boundary": "WP6-COMMON-v1 already qualifies the restricted rational nonintegrability claim on every finite real common level except (0,0)."
+  },
+  "prerequisites": {
+    "wp6_dz_feas_v1": {
+      "qualification_id": "WP6-DZ-FEAS-v1-8609fd37a8d6",
+      "required_status": "COMPLETE_BOUNDED_NULL_RESULT",
+      "lock_file": "validation-external/wp6-dz-feas-v1/reports/wp6_dz_feas_v1_qualification_lock.json",
+      "lock_file_sha256": "34ca306719a70fd8f8fd9bbe983c4bb4caf28d1347037b755181a8cb507e55bb",
+      "record_file": "validation-external/wp6-dz-feas-v1/reports/wp6_dz_feas_v1_qualification_record.json",
+      "record_file_sha256": "113a6397b486d10dd483f1303e9899b235304511640f6bbc5adf81a391880ef4",
+      "results_file": "validation-external/wp6-dz-feas-v1/results/qualification_results.json",
+      "results_file_sha256": "5e2594bd8753e16070cd4e8daf162691e8acdf453e6581f4b6d970d83205e925"
+    },
+    "wp6_common_v1": {
+      "qualification_id": "WP6-COMMON-v1-502728e5b811",
+      "required_status": "PASS",
+      "lock_file": "validation-external/wp6-common-level-v1/reports/wp6_common_level_v1_qualification_lock.json",
+      "lock_file_sha256": "f981c1db013606e6e27a2300d52190d99e6351b1925e76ad3aefc4e292cc5803",
+      "record_file": "validation-external/wp6-common-level-v1/reports/wp6_common_level_v1_qualification_record.json",
+      "record_file_sha256": "5eb1b935308e4e5989fcf5817d89bf6fefca2fbb5f475a48f3c7d8a03615ddd6"
+    }
+  },
+  "witness_requirements": {
+    "W1": "The candidate solves the full planar Newtonian three-body equations exactly on a nonempty open part of its phase curve.",
+    "W2": "The candidate is valid for arbitrary finite positive masses or belongs to a finite set of branches proved exhaustive over that mass domain.",
+    "W3": "The candidate is nonstationary and is not merely a known homothetic central-configuration solution.",
+    "W4": "The candidate satisfies H=0 and C=0 identically by exact symbolic calculation.",
+    "W5": "The orbit is an algebraic phase curve over an explicitly declared differential base field.",
+    "W6": "The algebraic-distance variables and every denominator are valid on a nonempty dense open subset of the phase curve.",
+    "W7": "The gradients of H and C are independent at a generic point of the candidate.",
+    "W8": "An exact tangent common-level VE can be derived and the flow, classical-integral, symmetry, and gauge directions can be separated.",
+    "W9": "At least one nontrivial NVE block has rational or algebraic coefficients over the declared base field and is not the known obstruction-free homothetic equation.",
+    "W10": "The analyzed open curve avoids collision singularities, or an exact meromorphic regularization and physical pullback are proved.",
+    "W11": "A source-disjoint exact implementation reproduces the orbit equations, H=C=0, generic regularity, and NVE coefficient data.",
+    "W12": "Every derivation input and generated artifact has immutable provenance, and the independent reference imports no production implementation."
+  },
+  "required_outputs": [
+    "pre-discovery specification lock",
+    "exact production rectilinear model",
+    "source-disjoint barycentric reference derivation",
+    "11,700-system immutable search ledger",
+    "candidate and branch audit",
+    "qualification lock, result, signed record, and human-readable report"
+  ],
+  "adversarial_controls": [
+    "Reject u identically zero and every constant-shape Euler-Moulton branch from the graph search.",
+    "Reject m_i=0 restricted or two-body degenerations.",
+    "Reject graphs that satisfy the vector field but not the exact zero-energy polynomial.",
+    "Reject graphs supported only at x=0, x=1, r=0, or a cover pole.",
+    "Reject a sentinel-only or special-mass graph as satisfying W2.",
+    "Reject numerical residuals, floating coefficients, interpolation-only identities, and approximate Groebner decisions.",
+    "Treat every timeout, resource abort, malformed ideal, or positive-dimensional unresolved branch as INCOMPLETE unless it is explicitly represented and audited.",
+    "Reject opening WP6-DZ-MR-v1 from COMPLETE_BOUNDED_NULL_RESULT or INCOMPLETE."
+  ],
+  "decision_policy": {
+    "QUALIFIED_WITNESS": "At least one frozen candidate passes W1-W12, all 11,700 search systems through its discovery index are decided, and all integrity and adversarial controls pass.",
+    "COMPLETE_BOUNDED_NULL_RESULT": "All 11,700 locked coefficient ideals are exactly decided, every non-unit ideal is represented and audited, no candidate passes W1-W12, and all derivation, provenance, and adversarial controls pass.",
+    "INCOMPLETE": "Any frozen input changes, any system is not exactly decided, any non-unit ideal is unaudited, or any required control, prerequisite, reproduction, or provenance check fails.",
+    "MR_PROMOTION_RULE": "Create WP6-DZ-MR-v1 only when the signed v2 record status is QUALIFIED_WITNESS and names exactly one frozen full-system witness payload. Every other status prohibits promotion.",
+    "AUTHORIZED_NULL_CLAIM": "Within the four locked shape covers, exact one- and two-term Laurent supports with exponents -2 through 2, and thirteen exact mass/order sentinels, WP6-DZ-FEAS-v2 found no graph that extends to a W1-W12 arbitrary-positive-mass witness.",
+    "PROHIBITED_NONEXISTENCE_CLAIM": "No explicit nonhomothetic algebraic H=C=0 orbit exists.",
+    "PROHIBITED_NONINTEGRABILITY_CLAIM": "The planar Newtonian three-body problem is nonintegrable on (H,C)=(0,0).",
+    "PROHIBITED_MR_CLAIM": "A Morales-Ramis or Ziglin obstruction has been proved on the double-zero level.",
+    "PROHIBITED_SPECIAL_MASS_PROMOTION": "A graph at one sentinel or special mass proves the arbitrary-positive-mass claim."
+  },
+  "stop_rule": {
+    "shape_cover_count": 4,
+    "support_exponents": [-2, -1, 0, 1, 2],
+    "maximum_support_cardinality": 2,
+    "support_count_per_variable": 15,
+    "mass_order_case_count": 13,
+    "coefficient_ideal_count": 11700,
+    "candidate_family_cap": 64,
+    "per_ideal_timeout_seconds": 5,
+    "aggregate_compute_cap_seconds": 1800,
+    "memory_cap_megabytes": 4096,
+    "success_stop": "Stop only after one candidate is extended and frozen as an arbitrary-positive-mass W1-W12 witness.",
+    "null_stop": "Return COMPLETE_BOUNDED_NULL_RESULT only after all 11,700 ideals and every non-unit branch are exactly decided and audited.",
+    "no_scope_extension": "Do not add covers, exponents, support terms, mass sentinels, coefficient fields, or compute budget after seeing results. Any extension requires WP6-DZ-FEAS-v3."
+  },
+  "invalidation": [
+    "Discovery or search implementation existed before the specification lock.",
+    "Any v1 or WP6-COMMON frozen prerequisite changed.",
+    "A floating or probabilistic decision was treated as exact.",
+    "A system was omitted, retried with a changed ansatz, or silently timed out.",
+    "A candidate was promoted without arbitrary-positive-mass W1-W12 qualification.",
+    "WP6-DZ-MR-v1 was created without the required signed success record."
+  ]
+}
+

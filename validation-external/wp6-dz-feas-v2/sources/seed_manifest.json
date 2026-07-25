@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v2",
+  "manifest_status": "PRE_DISCOVERY",
+  "artifacts": [
+    {
+      "artifact_id": "wp6-dz-feas-v1-record",
+      "path": "validation-external/wp6-dz-feas-v1/reports/wp6_dz_feas_v1_qualification_record.json",
+      "sha256": "113a6397b486d10dd483f1303e9899b235304511640f6bbc5adf81a391880ef4",
+      "role": "Pins the bounded-null endpoint, nearest miss, and prohibition on opening WP6-DZ-MR-v1."
+    },
+    {
+      "artifact_id": "wp6-dz-feas-v1-audit",
+      "path": "validation-external/wp6-dz-feas-v1/proof/WP6-DZ-FEAS-v1-audit.md",
+      "sha256": "030e80e94bb6066bf539a90415ef47f19e7c129a78ed8a39700d231c7c4b8947",
+      "role": "Pins C02 as the unresolved arbitrary-mass rectilinear constructive target."
+    },
+    {
+      "artifact_id": "wp6-dz-feas-v1-source-manifest",
+      "path": "validation-external/wp6-dz-feas-v1/sources/discovery_manifest.json",
+      "sha256": "0d0cf5363430cfedd4463794dac8edb66ef04b88f5bf7c03fed1c28701e95f95",
+      "role": "Pins inherited primary-source payload metadata without repeating discovery."
+    }
+  ],
+  "inherited_primary_sources": [
+    {
+      "source_id": "chenciner-1997",
+      "title": "Introduction to the N-body problem",
+      "payload_sha256": "8b3ab6061dd55c643ce29dbbd2cfdd2c0594e0eb3e98dc6f973867233cc8cd9f",
+      "role": "Zero-energy scaling quotient and collision-manifold context."
+    },
+    {
+      "source_id": "moeckel-montgomery-2012",
+      "title": "Symmetric Regularization, Reduction and Blow-Up of the Planar Three-Body Problem",
+      "payload_sha256": "8f64c8eaf78d947e5647451dac4b6fc5a9b934f83170f305bed46fb9993714ce",
+      "role": "Exact reduction and blow-up context; not treated as an explicit witness."
+    },
+    {
+      "source_id": "moeckel-2019",
+      "title": "Minimal Geodesics of the Isosceles Three Body Problem",
+      "payload_sha256": "df6c04e41dc41c394359d92e61e70580ca0f5a1530b0e08f000d6b1869835e32",
+      "role": "Zero-energy changing-shape trajectories and explicitness boundary."
+    },
+    {
+      "source_id": "combot-2011",
+      "title": "Non integrability of the n body problem with non zero angular momentum",
+      "payload_sha256": "91cb6762a275856667dc6cef411d45b5ceb0712295c5a2051d7778fd64b60118",
+      "role": "Pins the obstruction-free double-zero homothetic variational equations."
+    }
+  ],
+  "new_literature_discovery_permitted": false,
+  "copyright_boundary": "The repository records metadata and hashes only and does not redistribute inherited source payloads."
+}
