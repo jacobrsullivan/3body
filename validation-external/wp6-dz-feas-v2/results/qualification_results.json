@@ -1,0 +1,68 @@
+{
+  "authorized_claim": "WP6-DZ-FEAS-v2 executed 11,689 of 11,700 locked exact coefficient ideals. Of those, 11,549 were proved unit ideals, 140 timed out, and no resolved ideal was non-unit. Eleven systems were not executed before the aggregate cap. The campaign is INCOMPLETE.",
+  "campaign": "WP6-DZ-FEAS-v2",
+  "candidate_count": 0,
+  "candidate_ledger_sha256": "056fa7eb4e613f85df14157542ef2f999e2c701c782573d37b14b1685f178d0b",
+  "claim_boundary": "This record is an operationally complete account of an incomplete finite search. It does not authorize a bounded null result, witness promotion, nonexistence, nonintegrability, or Morales-Ramis claims.",
+  "gates": [
+    {
+      "name": "specification_lock_valid",
+      "passed": true
+    },
+    {
+      "name": "qualification_lock_valid",
+      "passed": true
+    },
+    {
+      "name": "production_reference_exact_agreement",
+      "passed": true
+    },
+    {
+      "name": "all_11700_systems_executed",
+      "passed": false
+    },
+    {
+      "name": "all_executed_systems_exactly_decided",
+      "passed": false
+    },
+    {
+      "name": "all_non_unit_ideals_audited",
+      "passed": true
+    },
+    {
+      "name": "wp6_dz_mr_v1_absent",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-27T15:14:10.088669+00:00",
+  "mr_promotion_authorized": false,
+  "mr_promotion_rule": "Only a signed QUALIFIED_WITNESS record naming one frozen full-system witness may create WP6-DZ-MR-v1.",
+  "outcome": "INCOMPLETE",
+  "prohibited_claims": {
+    "BOUNDED_NULL": "The 11,700-system search found no graph.",
+    "MR": "A Morales-Ramis or Ziglin obstruction has been proved.",
+    "NONEXISTENCE": "No suitable double-zero algebraic orbit exists.",
+    "NONINTEGRABILITY": "The planar Newtonian three-body problem is nonintegrable on (H,C)=(0,0)."
+  },
+  "qualification_gate_status": "FAIL_CLOSED",
+  "qualification_id": "WP6-DZ-FEAS-v2-f6e66c0368d3",
+  "qualification_lock_sha256": "6154400c9e49a76168b368ac55b1ebc35ff431a24fec3b23ef5a09b7c1e5ab07",
+  "qualifying_candidate_ids": [],
+  "results_payload_sha256": "fafb19655ecb86a60e606bc8318d0aed6c2806838718c219878b88d855cc0dfb",
+  "schema_version": "1.0",
+  "search_ledger_sha256": "ebec58e4571e352f8d264be958025aa983621c4badcb4e4caae61a83cd7abac1",
+  "search_summary": {
+    "abort_reason": "aggregate_compute_cap_exceeded",
+    "executed_system_count": 11689,
+    "expected_system_count": 11700,
+    "search_status": "INCOMPLETE",
+    "status_counts": {
+      "ERROR": 0,
+      "NON_UNIT_IDEAL": 0,
+      "TIMEOUT": 140,
+      "UNIT_IDEAL": 11549
+    },
+    "unresolved_system_count": 151
+  },
+  "unresolved_system_count": 151
+}
