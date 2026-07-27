@@ -10,6 +10,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 CAMPAIGN = ROOT / "validation-external/wp6-dz-feas-v3"
 LOCK_PATH = CAMPAIGN / "reports/wp6_dz_feas_v3_specification_lock.json"
+QUALIFICATION_LOCK_PATH = (
+    CAMPAIGN / "reports/wp6_dz_feas_v3_qualification_lock.json"
+)
 
 
 def _json(path: Path) -> dict:
@@ -134,3 +137,71 @@ def test_search_ledger_is_signed_and_complete_when_present() -> None:
     assert len(ledger["v2_unresolved_decisions"]) == 151
     assert all(ledger["runtime_checks"].values())
     assert all(ledger["reference_checks"].values())
+
+
+def test_candidate_audit_is_signed_and_empty_when_present() -> None:
+    candidate_path = CAMPAIGN / "candidates/candidate_ledger.json"
+    if not candidate_path.exists():
+        pytest.skip("v3 candidate audit has not executed")
+    candidate = _json(candidate_path)
+    unsigned = dict(candidate)
+    signature = unsigned.pop("candidate_payload_sha256")
+    assert hashlib.sha256(_canonical(unsigned)).hexdigest() == signature
+    assert candidate["status"] == "SEARCH_AND_BRANCH_AUDIT_COMPLETE"
+    assert candidate["candidate_count"] == 0
+    assert candidate["non_unit_system_ids"] == []
+    assert candidate["qualifying_candidate_ids"] == []
+    assert candidate["branch_audit_status"] == (
+        "VACUOUS_NO_NON_UNIT_IDEALS"
+    )
+    assert candidate["stage_counts"] == {
+        "ENERGY": 11687,
+        "ENERGY_AND_V": 13,
+        "FULL": 0,
+    }
+    assert candidate["v2_unresolved_count"] == 151
+    assert candidate["proposed_outcome"] == "COMPLETE_BOUNDED_NULL_RESULT"
+    assert candidate["mr_promotion_authorized"] is False
+
+
+def test_qualification_record_is_signed_and_bounded_when_present() -> None:
+    record_path = (
+        CAMPAIGN / "reports/wp6_dz_feas_v3_qualification_record.json"
+    )
+    if not record_path.exists():
+        pytest.skip("v3 qualification has not been sealed")
+    lock = _json(QUALIFICATION_LOCK_PATH)
+    unsigned_lock = dict(lock)
+    lock_signature = unsigned_lock.pop("lock_sha256")
+    assert hashlib.sha256(_canonical(unsigned_lock)).hexdigest() == lock_signature
+
+    results_path = CAMPAIGN / "results/qualification_results.json"
+    results = _json(results_path)
+    unsigned_results = dict(results)
+    results_signature = unsigned_results.pop("results_payload_sha256")
+    assert (
+        hashlib.sha256(_canonical(unsigned_results)).hexdigest()
+        == results_signature
+    )
+    record = _json(record_path)
+    unsigned_record = dict(record)
+    record_signature = unsigned_record.pop("record_payload_sha256")
+    assert (
+        hashlib.sha256(_canonical(unsigned_record)).hexdigest()
+        == record_signature
+    )
+    assert record["status"] == results["outcome"] == (
+        "COMPLETE_BOUNDED_NULL_RESULT"
+    )
+    assert record["qualification_gate_status"] == "PASS"
+    assert record["candidate_count"] == 0
+    assert record["mr_promotion_authorized"] is False
+    assert results["mr_promotion_authorized"] is False
+    assert all(gate["passed"] for gate in results["gates"])
+    assert record["search_ledger_sha256"] == _sha256(
+        CAMPAIGN / "search/search_ledger.json"
+    )
+    assert record["candidate_ledger_sha256"] == _sha256(
+        CAMPAIGN / "candidates/candidate_ledger.json"
+    )
+    assert record["results_sha256"] == _sha256(results_path)

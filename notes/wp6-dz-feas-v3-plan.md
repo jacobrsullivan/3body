@@ -67,3 +67,21 @@ nonintegrability on `(H,C)=(0,0)`, and does not authorize
 
 Only a signed `QUALIFIED_WITNESS` record naming one frozen full-system
 witness may open the Morales-Ramis track.
+
+## Observed search result
+
+The locked implementation at commit `5eef69a` ran on Bobs-mini with CPython
+3.11.15 and SymPy 1.14.0. The immutable ledger records:
+
+- 11,700/11,700 systems executed;
+- 11,700 exact dual-algorithm unit ideals;
+- 0 non-unit ideals;
+- 0 timeouts, errors, or algorithm disagreements;
+- 11,687 decisions at `ENERGY`;
+- 13 decisions at `ENERGY_AND_V`; and
+- all 151 unresolved v2 systems closed as unit ideals.
+
+The signed search payload is
+`9555fbcdeb532db2986c9b7f9ed2e3927fab109d9abb17d418917f548b4b3034`.
+Final interpretation remains subject to the separately frozen post-search
+qualification.
