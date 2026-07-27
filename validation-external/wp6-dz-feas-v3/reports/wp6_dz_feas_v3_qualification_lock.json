@@ -1,0 +1,76 @@
+{
+  "audit_report_sha256": "77e2b4b4780b67cf7a7fd9c564ad5aa07c7f702d7653761d6c0b3716d0820f13",
+  "base_git_commit": "38bad4083a9095a11899ee3d4af39503900169c6",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "candidate_ledger_sha256": "51bba9c9b2d0374cb239fd44780738b1b90bc4c5f5b413655c9e9dc8c47fd9b1",
+  "candidate_payload_sha256": "1d6dc1c11197290dc41de4fccdaaec7ba0ba844135c508ab020877162c623a81",
+  "code_snapshot_sha256": "d1b87638e36931ea325ef591166d3ae884ec6404c455bd61988f376dfaa51f9e",
+  "file_hashes": {
+    "notes/wp6-dz-feas-v3-plan.md": "0ff41ec6c411a40f769881fe9a9641a0311ac2a8f8fe881c47744dde06a08643",
+    "src/python/wp6_dz_feas_v3/QUALIFICATION_BOUNDARY.md": "52ea8b225fcce4837b85b914d1d51f10e2d0fc1532a7dcd435b9640562e7045d",
+    "src/python/wp6_dz_feas_v3/__init__.py": "687c2d55756aaecd1f5f72c883897d1cfa2ab3f3ea7f302db42b554a8b1dd65f",
+    "src/python/wp6_dz_feas_v3/search.py": "22c4229e1e4ffcb1ac7a81de3b4738fe98dcb76fae70d5861dfa052434862b67",
+    "tests/wp6_dz_feas_v3/__init__.py": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "tests/wp6_dz_feas_v3/test_campaign_contract.py": "46e23c7e856d10cf1797c32d0cb6ecff93774e0028919213ad17ff1bc0c83f10",
+    "tests/wp6_dz_feas_v3/test_reference.py": "a58697757d5efbe017bcc7eaa9ab41e4ad5dfcb3e76c918117bbc9491b64508f",
+    "tests/wp6_dz_feas_v3/test_search.py": "8f310577bafa62343c5172065c137d1b230ea0910a34ea684c8bb99baa8e8a94",
+    "validation-external/qualification_tools.py": "64cb7d731658eb5f5249b7dfdc50545fbe7ad140681e0ea14c057ba0e897aaee",
+    "validation-external/wp6-dz-feas-v3/candidates/candidate_ledger.json": "51bba9c9b2d0374cb239fd44780738b1b90bc4c5f5b413655c9e9dc8c47fd9b1",
+    "validation-external/wp6-dz-feas-v3/constructive_protocol.json": "037cb32ca67edb1649ed247a29d72b0a50fad77daaf9fe559b015d2cc32d1d4e",
+    "validation-external/wp6-dz-feas-v3/lock_specification.py": "81e26ecaabba993657e593f038dbdd6d2628299ee7f8f055d5fe4537eecff233",
+    "validation-external/wp6-dz-feas-v3/proof/WP6-DZ-FEAS-v3-audit.md": "77e2b4b4780b67cf7a7fd9c564ad5aa07c7f702d7653761d6c0b3716d0820f13",
+    "validation-external/wp6-dz-feas-v3/qualification.py": "86347b5398d127cc0bc437cf93bfe902c9d8f45c5dfd39295b4e0b71f8c26e31",
+    "validation-external/wp6-dz-feas-v3/qualification_spec.json": "94f97d327d6f2cc98e5e460180b518416b0972865ec707c926146273bf957e2c",
+    "validation-external/wp6-dz-feas-v3/reports/wp6_dz_feas_v3_specification_lock.json": "e48d9e57693ed43133c2f559f46ca1d9cb74264d708af504fabd5c8fca021045",
+    "validation-external/wp6-dz-feas-v3/run_constructive_search.py": "5a19f1cad1938d55eebc57e5c5e8157b8e0ea1d3c1b29cf4985d306a587a01ae",
+    "validation-external/wp6-dz-feas-v3/search/search_ledger.json": "145a2e91cb2f22628f698327effab63ac26527f4f32e96a33c833a594979f8a5",
+    "validation-external/wp6-dz-feas-v3/sources/seed_manifest.json": "2e06377bfac7f95084460fcdaf6eadc939bcf385c352bbc4c18360dd0f4ec8d1"
+  },
+  "frozen_utc": "2026-07-27T15:33:17.143022+00:00",
+  "lock_sha256": "5472585da070ee7e66a861d3f95fa8bb82be2314733859254f14cebf260d81fa",
+  "lock_type": "post_search_bounded_null_qualification",
+  "protocol_sha256": "037cb32ca67edb1649ed247a29d72b0a50fad77daaf9fe559b015d2cc32d1d4e",
+  "qualification_id": "WP6-DZ-FEAS-v3-d1b87638e369",
+  "qualification_outputs_absent_at_freeze": true,
+  "runtime": {
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.2.6",
+      "pytest": "8.4.1",
+      "rebound": "4.4.10",
+      "scipy": "1.16.1"
+    },
+    "platform": "macOS-26.5.2-arm64-arm-64bit",
+    "python": "3.11.15",
+    "python_executable": "/Users/bob/micromamba/envs/3body-legacy-v1/bin/python3.11",
+    "python_implementation": "CPython",
+    "sympy": "1.14.0"
+  },
+  "schema_version": "1.0",
+  "search_ledger_sha256": "145a2e91cb2f22628f698327effab63ac26527f4f32e96a33c833a594979f8a5",
+  "search_payload_sha256": "9555fbcdeb532db2986c9b7f9ed2e3927fab109d9abb17d418917f548b4b3034",
+  "search_summary": {
+    "candidate_count": 0,
+    "executed_system_count": 11700,
+    "expected_system_count": 11700,
+    "search_status": "COMPLETE",
+    "stage_counts": {
+      "ENERGY": 11687,
+      "ENERGY_AND_V": 13,
+      "FULL": 0
+    },
+    "status_counts": {
+      "DISAGREEMENT": 0,
+      "ERROR": 0,
+      "NON_UNIT_IDEAL": 0,
+      "TIMEOUT": 0,
+      "UNIT_IDEAL": 11700
+    },
+    "v2_unresolved_count": 151
+  },
+  "seed_manifest_sha256": "2e06377bfac7f95084460fcdaf6eadc939bcf385c352bbc4c18360dd0f4ec8d1",
+  "spec_sha256": "94f97d327d6f2cc98e5e460180b518416b0972865ec707c926146273bf957e2c",
+  "specification_lock_sha256": "960fc53758af0c361f4cab58a49d2f3715f2c1ce81230cc34cba32ca2e45c1c0",
+  "worktree_clean_at_freeze": true,
+  "wp6_dz_mr_campaign_absent_at_freeze": true
+}
