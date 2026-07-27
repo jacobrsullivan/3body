@@ -10,9 +10,9 @@ placeholder previously stored in this file.
 
 - [x] Preserve the sealed WP6 v3 evidence commit with an annotated milestone
   tag.
-- [ ] Fast-forward the canonical `main` branch through the documentation
+- [x] Fast-forward the canonical `main` branch through the documentation
   consolidation commit.
-- [ ] Confirm the remote `main` branch and milestone tag resolve to the intended
+- [x] Confirm the remote `main` branch and milestone tag resolve to the intended
   commits.
 - [ ] Keep Bob's older dirty worktree separate; do not reset, clean, or absorb
   its uncommitted legacy-baseline work into the canonical history.

@@ -30,10 +30,9 @@ echo "Project: $PROJECT_ROOT"
 echo "Environment: $CONDA_PREFIX"
 python --version
 
-python verify_setup.py
-
 PYTHON_BIN=python ./scripts/build_qd_python.sh
 ./scripts/build_cpp.sh
+python verify_setup.py
 
 if [[ "$MODE" == "--all" ]]; then
   python -m pytest -q -p no:cacheprovider
