@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "protocol_status": "LOCK_BEFORE_IMPLEMENTATION_AND_SEARCH",
+  "scope_inheritance": {
+    "model_source": "src/python/wp6_dz_feas_v2/model.py",
+    "model_source_sha256": "afc07b04b32139980dd7ec57e1996444d2eb814eb85628f2d4f9d649c79010fa",
+    "reference_source": "validation-external/wp6-dz-feas-v2/reference/barycentric_reference.py",
+    "reference_source_sha256": "61d06d40ec2efed260cb53f2c76c7daff75ee0b117a8d59d53bde8abf0daa275",
+    "v2_protocol": "validation-external/wp6-dz-feas-v2/constructive_protocol.json",
+    "v2_protocol_sha256": "557ab31fcd48ad786212ceb7979de2fa988f7bd6f7ee5999fabf0c81c7e93348",
+    "rule": "V3 must import or exactly reproduce the frozen v2 model constants and graph identities. Only exact equation construction, localized canonicalization, term order, dual-algorithm verification, and resource limits change."
+  },
+  "enumeration": {
+    "ordering": "mass_order_case, shape_cover, lexicographic v support, lexicographic u support",
+    "shape_cover_ids": ["PHI-AFFINE", "PHI-LEFT-SQ", "PHI-RIGHT-SQ", "PHI-BOTH-SQ"],
+    "support_exponents": [-2, -1, 0, 1, 2],
+    "maximum_support_cardinality": 2,
+    "support_count_per_variable": 15,
+    "mass_order_cases": [
+      {"case_id": "M01", "masses": [1, 1, 1]},
+      {"case_id": "M02", "masses": [1, 2, 3]},
+      {"case_id": "M03", "masses": [1, 3, 2]},
+      {"case_id": "M04", "masses": [2, 1, 3]},
+      {"case_id": "M05", "masses": [2, 3, 1]},
+      {"case_id": "M06", "masses": [3, 1, 2]},
+      {"case_id": "M07", "masses": [3, 2, 1]},
+      {"case_id": "M08", "masses": [2, 3, 5]},
+      {"case_id": "M09", "masses": [2, 5, 3]},
+      {"case_id": "M10", "masses": [3, 2, 5]},
+      {"case_id": "M11", "masses": [3, 5, 2]},
+      {"case_id": "M12", "masses": [5, 2, 3]},
+      {"case_id": "M13", "masses": [5, 3, 2]}
+    ],
+    "systems_per_mass_case": 900,
+    "total_systems": 11700
+  },
+  "equation_pipeline": [
+    {
+      "step": "GRAPH",
+      "rule": "Construct x=phi(z), v=sum(alpha_j*z^j), and u=sum(beta_j*z^j) from the frozen v2 cover and support definitions."
+    },
+    {
+      "step": "ENERGY",
+      "rule": "Substitute directly into the frozen polynomial P_E=2*x*(1-x)*E. Form exact coefficient equations from its primitive rational numerator. Do not construct RV or RU yet."
+    },
+    {
+      "step": "LOCALIZE",
+      "rule": "For each equation divide its greatest monomial factor in alpha and beta. This is exact modulo eta*product(alpha,beta)-1. Primitive-normalize and deduplicate over QQ."
+    },
+    {
+      "step": "ENERGY_DECISION",
+      "rule": "Add eta*product(alpha,beta)-1. Compute exact grevlex bases with F5B and Buchberger. Both must return [1] for UNIT_IDEAL."
+    },
+    {
+      "step": "V_RESIDUAL",
+      "rule": "Only after a dual non-unit ENERGY result, construct RV=dv/dz*u-dx/dz*(v^2/2+A(x)), localize identically, and dual-decide ENERGY_AND_V."
+    },
+    {
+      "step": "U_RESIDUAL",
+      "rule": "Only after a dual non-unit ENERGY_AND_V result, construct RU=du/dz*u-dx/dz*(B(x)-v*u/2), localize identically, and dual-decide FULL."
+    },
+    {
+      "step": "BRANCH",
+      "rule": "For a dual non-unit FULL ideal, compute an exact lexicographic F5B basis, retain all basis data, and perform complete branch and W1-W12 audit."
+    }
+  ],
+  "exactness_controls": {
+    "coefficient_field": "QQ",
+    "support_saturation": "eta*product(alpha_j)*product(beta_j)-1",
+    "dense_open_units": ["z", "declared cover denominators", "x", "1-x", "all exact-support coefficients"],
+    "primary_algorithm": "sympy.groebner(order='grevlex', domain=QQ, method='f5b')",
+    "verification_algorithm": "sympy.groebner(order='grevlex', domain=QQ, method='buchberger')",
+    "unit_agreement": "Both complete bases consist exactly of 1.",
+    "non_unit_agreement": "Both complete bases omit 1.",
+    "equation_hash": "SHA-256 of canonical srepr equations after localization, including saturation.",
+    "transformation_audit": "Record stripped monomial exponents, raw equation count, localized equation count, stage, both basis outcomes, and elapsed time for every system."
+  },
+  "v2_acceptance": {
+    "required_unresolved_count": 151,
+    "required_timeout_count": 140,
+    "required_unexecuted_count": 11,
+    "rule": "Every v2 timeout and unexecuted system must receive an exact v3 decision, but v3 must also rerun and dual-decide the entire 11,700-system enumeration."
+  },
+  "compute_policy": {
+    "python": "CPython 3.11.x",
+    "sympy": "1.14.0",
+    "per_system_timeout_seconds": 30,
+    "aggregate_compute_cap_seconds": 3600,
+    "memory_cap_megabytes": 4096,
+    "execution": "single process",
+    "determinism": "Fixed enumeration, variable order, equation canonicalization, term order, exact field, and algorithms; no randomness or floating arithmetic.",
+    "checkpointing": "The final ledger is written once. Progress output is non-evidentiary.",
+    "failure": "Any timeout, algorithm disagreement, exception, cap abort, or unaudited branch forces INCOMPLETE."
+  },
+  "promotion": {
+    "sentinel_status": "A non-unit sentinel ideal is a discovery candidate only.",
+    "mass_extension": "Promotion requires an exact arbitrary-positive-mass branch or a finite exhaustive branch partition.",
+    "full_lift": "Recover r, gaps, barycentric positions and velocities, then verify the full Newton equations and H=C=0.",
+    "witness_gate": "Audit W1-W12 from qualification_spec.json.",
+    "mr_gate": "Only a signed QUALIFIED_WITNESS may create WP6-DZ-MR-v1."
+  }
+}

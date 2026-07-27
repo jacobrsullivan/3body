@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "manifest_status": "PREIMPLEMENTATION_SEED",
+  "new_external_sources": [],
+  "source_policy": "V3 is an exact solver remediation of the frozen v2 finite search. It introduces no new literature evidence and inherits only hash-pinned v2 derivation inputs.",
+  "artifacts": [
+    {
+      "path": "validation-external/wp6-dz-feas-v2/reports/wp6_dz_feas_v2_qualification_lock.json",
+      "sha256": "d2a280c199d358b5e868ed9d2561cf5f2713bdb09cb6f5e26807dfd5e52c0d02",
+      "role": "PREDECESSOR_QUALIFICATION_LOCK"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/reports/wp6_dz_feas_v2_qualification_record.json",
+      "sha256": "c56339276034c0797dcaa162e97025eaefc66b38da7421f329583c293f4db8b3",
+      "role": "PREDECESSOR_SIGNED_RECORD"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/results/qualification_results.json",
+      "sha256": "e81a6756c140e1a7cf9ed0e9e83272e431deaa628f7b706d740aafce27c785da",
+      "role": "PREDECESSOR_RESULT"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/candidates/candidate_ledger.json",
+      "sha256": "056fa7eb4e613f85df14157542ef2f999e2c701c782573d37b14b1685f178d0b",
+      "role": "PREDECESSOR_UNRESOLVED_LEDGER"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/search/search_ledger.json",
+      "sha256": "ebec58e4571e352f8d264be958025aa983621c4badcb4e4caae61a83cd7abac1",
+      "role": "PREDECESSOR_SEARCH_LEDGER"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/constructive_protocol.json",
+      "sha256": "557ab31fcd48ad786212ceb7979de2fa988f7bd6f7ee5999fabf0c81c7e93348",
+      "role": "FROZEN_MATHEMATICAL_SCOPE"
+    },
+    {
+      "path": "src/python/wp6_dz_feas_v2/model.py",
+      "sha256": "afc07b04b32139980dd7ec57e1996444d2eb814eb85628f2d4f9d649c79010fa",
+      "role": "FROZEN_PRODUCTION_MODEL"
+    },
+    {
+      "path": "validation-external/wp6-dz-feas-v2/reference/barycentric_reference.py",
+      "sha256": "61d06d40ec2efed260cb53f2c76c7daff75ee0b117a8d59d53bde8abf0daa275",
+      "role": "SOURCE_DISJOINT_REFERENCE"
+    }
+  ]
+}

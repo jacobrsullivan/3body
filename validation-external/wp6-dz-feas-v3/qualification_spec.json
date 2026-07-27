@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "specification_status": "LOCK_BEFORE_IMPLEMENTATION_AND_SEARCH",
+  "purpose": "Resolve the exact-computation gap in WP6-DZ-FEAS-v2 by deciding the same 11,700 saturated coefficient ideals with localization-equivalent preprocessing, lazy residual construction, and dual exact Groebner algorithms.",
+  "claim_boundary": "A QUALIFIED_WITNESS certifies only one W1-W12 algebraic phase curve and is not a differential-Galois obstruction. A COMPLETE_BOUNDED_NULL_RESULT exhausts only the frozen 11,700 graph ideals and does not prove that no suitable orbit exists.",
+  "predecessor": {
+    "campaign": "WP6-DZ-FEAS-v2",
+    "qualification_id": "WP6-DZ-FEAS-v2-f6e66c0368d3",
+    "required_status": "INCOMPLETE",
+    "qualification_lock_file": "validation-external/wp6-dz-feas-v2/reports/wp6_dz_feas_v2_qualification_lock.json",
+    "qualification_lock_file_sha256": "d2a280c199d358b5e868ed9d2561cf5f2713bdb09cb6f5e26807dfd5e52c0d02",
+    "record_file": "validation-external/wp6-dz-feas-v2/reports/wp6_dz_feas_v2_qualification_record.json",
+    "record_file_sha256": "c56339276034c0797dcaa162e97025eaefc66b38da7421f329583c293f4db8b3",
+    "results_file": "validation-external/wp6-dz-feas-v2/results/qualification_results.json",
+    "results_file_sha256": "e81a6756c140e1a7cf9ed0e9e83272e431deaa628f7b706d740aafce27c785da",
+    "search_ledger_file": "validation-external/wp6-dz-feas-v2/search/search_ledger.json",
+    "search_ledger_file_sha256": "ebec58e4571e352f8d264be958025aa983621c4badcb4e4caae61a83cd7abac1",
+    "observed": {
+      "expected_system_count": 11700,
+      "executed_system_count": 11689,
+      "unit_ideal_count": 11549,
+      "non_unit_ideal_count": 0,
+      "timeout_count": 140,
+      "error_count": 0,
+      "unexecuted_count": 11,
+      "unresolved_system_count": 151,
+      "timeout_cover": "PHI-BOTH-SQ",
+      "abort_reason": "aggregate_compute_cap_exceeded"
+    }
+  },
+  "target_model": {
+    "system": "The v2 arbitrary-positive-mass Newtonian rectilinear flow in one ordered collision-free chamber after translation reduction.",
+    "common_level": "H=0 and C=0",
+    "physical_dense_open": "r!=0, x!=0, x!=1, every declared cover denominator is nonzero, z is in the declared Laurent chart, and every exact-support coefficient is nonzero.",
+    "scope_identity": "The v3 model, covers, supports, mass sentinels, residual identities, saturation, coefficient field, and enumeration must be byte-derived from or exactly equal to the frozen v2 definitions."
+  },
+  "witness_requirements": {
+    "W1": "The candidate solves the full planar Newtonian three-body equations exactly on a nonempty open part of its phase curve.",
+    "W2": "The candidate is valid for arbitrary finite positive masses or belongs to a finite set of branches proved exhaustive over that mass domain.",
+    "W3": "The candidate is nonstationary and is not merely a known homothetic central-configuration solution.",
+    "W4": "The candidate satisfies H=0 and C=0 identically by exact symbolic calculation.",
+    "W5": "The orbit is an algebraic phase curve over an explicitly declared differential base field.",
+    "W6": "The algebraic-distance variables and every denominator are valid on a nonempty dense open subset of the phase curve.",
+    "W7": "The gradients of H and C are independent at a generic point of the candidate.",
+    "W8": "An exact tangent common-level VE can be derived and the flow, classical-integral, symmetry, and gauge directions can be separated.",
+    "W9": "At least one nontrivial NVE block has rational or algebraic coefficients over the declared base field and is not the known obstruction-free homothetic equation.",
+    "W10": "The analyzed open curve avoids collision singularities, or an exact meromorphic regularization and physical pullback are proved.",
+    "W11": "A source-disjoint exact implementation reproduces the orbit equations, H=C=0, generic regularity, and NVE coefficient data.",
+    "W12": "Every derivation input and generated artifact has immutable provenance, and the independent reference imports no production implementation."
+  },
+  "exact_equivalence_rules": {
+    "energy_polynomial": "Use P_E=2*x*(1-x)*E, the frozen v2 polynomial normalized-energy numerator. On x*(1-x)!=0, P_E=0 if and only if E=0.",
+    "denominator_clearing": "After exact substitution, use the primitive numerator over QQ. Removed powers of z and declared cover denominators are units on the frozen Laurent dense open.",
+    "support_localization": "Impose eta*product(all support coefficients)-1=0. Divide any coefficient equation by its greatest monomial factor in support coefficients before basis computation; the localized zero set is unchanged.",
+    "canonicalization": "Expand over QQ, take primitive sign-normalized polynomials, remove zero equations, and deduplicate by exact structural representation.",
+    "stage_order": "ENERGY, then ENERGY_AND_V only if needed, then FULL only if needed.",
+    "unit_decision": "Both exact grevlex F5B and exact grevlex Buchberger bases must equal [1].",
+    "non_unit_decision": "Both exact algorithms must return non-unit for FULL, followed by an exact lex basis and complete branch audit.",
+    "disagreement": "Any algorithm disagreement, timeout, exception, or missing branch representation is unresolved and forces INCOMPLETE."
+  },
+  "required_outputs": [
+    "pre-implementation specification lock",
+    "exact-equivalence tests against the frozen v2 model",
+    "source-disjoint barycentric reference checks",
+    "11,700-system immutable dual-algorithm search ledger",
+    "candidate and branch audit",
+    "qualification lock, result, signed record, and human-readable report"
+  ],
+  "adversarial_controls": [
+    "Reject any changed cover, support, mass sentinel, coefficient field, residual identity, or enumeration order.",
+    "Reject stripping a factor not proved to be a unit on the frozen dense open.",
+    "Reject a unit decision not independently returned by both locked exact algorithms.",
+    "Reject u identically zero, constant-shape homothetic branches, massless degenerations, collision-only support, and numerical residuals.",
+    "Reject sentinel-only or special-mass candidates as satisfying W2.",
+    "Treat every timeout, resource abort, malformed ideal, algorithm disagreement, or unaudited non-unit branch as INCOMPLETE.",
+    "Reject opening WP6-DZ-MR-v1 from COMPLETE_BOUNDED_NULL_RESULT or INCOMPLETE."
+  ],
+  "decision_policy": {
+    "QUALIFIED_WITNESS": "At least one frozen candidate passes W1-W12, every system through its discovery index is exactly dual-decided, and all integrity and adversarial controls pass.",
+    "COMPLETE_BOUNDED_NULL_RESULT": "All 11,700 locked ideals are exactly dual-decided, every non-unit ideal is completely represented and audited, no candidate passes W1-W12, and all controls pass.",
+    "INCOMPLETE": "Any frozen input changes, any system is omitted or unresolved, either exact algorithm fails or disagrees, any non-unit ideal is unaudited, or any required control fails.",
+    "AUTHORIZED_NULL_CLAIM": "Within the four frozen v2 shape covers, exact one- and two-term Laurent supports with exponents -2 through 2, and thirteen exact mass/order sentinels, the dual-exact v3 campaign found no graph that extends to a W1-W12 arbitrary-positive-mass witness.",
+    "MR_PROMOTION_RULE": "Create WP6-DZ-MR-v1 only when the signed v3 record status is QUALIFIED_WITNESS and names exactly one frozen full-system witness. Every other status prohibits promotion.",
+    "PROHIBITED_NONEXISTENCE_CLAIM": "No explicit nonhomothetic algebraic H=C=0 orbit exists.",
+    "PROHIBITED_NONINTEGRABILITY_CLAIM": "The planar Newtonian three-body problem is nonintegrable on (H,C)=(0,0).",
+    "PROHIBITED_MR_CLAIM": "A Morales-Ramis or Ziglin obstruction has been proved on the double-zero level.",
+    "PROHIBITED_SCOPE_CLAIM": "The search covers implicit algebraic curves, larger Laurent supports, other covers, or transcendental trajectories."
+  },
+  "stop_rule": {
+    "shape_cover_count": 4,
+    "support_exponents": [-2, -1, 0, 1, 2],
+    "maximum_support_cardinality": 2,
+    "support_count_per_variable": 15,
+    "mass_order_case_count": 13,
+    "coefficient_ideal_count": 11700,
+    "v2_unresolved_acceptance_count": 151,
+    "candidate_family_cap": 64,
+    "per_system_timeout_seconds": 30,
+    "aggregate_compute_cap_seconds": 3600,
+    "memory_cap_megabytes": 4096,
+    "execution_order": "single-process frozen enumeration order",
+    "required_algorithms": ["sympy-f5b-grevlex", "sympy-buchberger-grevlex"],
+    "null_stop": "Return COMPLETE_BOUNDED_NULL_RESULT only after all 11,700 systems and every non-unit branch are exactly decided and audited.",
+    "no_scope_extension": "Do not alter mathematical scope, solver algorithms, or resource caps after implementation starts. Any change requires WP6-DZ-FEAS-v4."
+  },
+  "invalidation": [
+    "V3 implementation or search output existed before the specification lock.",
+    "Any frozen v2 predecessor artifact changed.",
+    "A denominator or monomial factor was removed outside its declared localization.",
+    "A floating, probabilistic, single-algorithm, or interpolated result was treated as exact.",
+    "A timed-out system was omitted, selectively retried, or silently reclassified.",
+    "WP6-DZ-MR-v1 was created without the required signed success record."
+  ]
+}
