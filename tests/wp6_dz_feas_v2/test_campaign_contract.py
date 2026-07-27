@@ -10,6 +10,9 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 CAMPAIGN = ROOT / "validation-external/wp6-dz-feas-v2"
 LOCK_PATH = CAMPAIGN / "reports/wp6_dz_feas_v2_specification_lock.json"
+QUALIFICATION_LOCK_PATH = (
+    CAMPAIGN / "reports/wp6_dz_feas_v2_qualification_lock.json"
+)
 
 
 def _json(path: Path) -> dict:
@@ -72,7 +75,7 @@ def test_null_claim_and_mr_gate_remain_bounded() -> None:
     assert not (ROOT / "tests/wp6_dz_mr_v1").exists()
 
 
-def test_final_search_ledger_is_complete_when_present() -> None:
+def test_final_search_ledger_is_integrity_checked_when_present() -> None:
     ledger_path = CAMPAIGN / "search/search_ledger.json"
     if not ledger_path.exists():
         pytest.skip("constructive search has not executed")
@@ -80,9 +83,90 @@ def test_final_search_ledger_is_complete_when_present() -> None:
     unsigned = dict(ledger)
     signature = unsigned.pop("search_payload_sha256")
     assert hashlib.sha256(_canonical(unsigned)).hexdigest() == signature
-    assert ledger["search_status"] == "COMPLETE"
     assert ledger["expected_system_count"] == 11700
-    assert ledger["executed_system_count"] == 11700
-    assert ledger["status_counts"]["TIMEOUT"] == 0
-    assert ledger["status_counts"]["ERROR"] == 0
+    records = ledger["records"]
+    assert ledger["executed_system_count"] == len(records)
+    assert [record["system_id"] for record in records] == [
+        f"S{index:05d}" for index in range(1, len(records) + 1)
+    ]
+    statuses = ("UNIT_IDEAL", "NON_UNIT_IDEAL", "TIMEOUT", "ERROR")
+    recomputed = {
+        status: sum(record["status"] == status for record in records)
+        for status in statuses
+    }
+    assert ledger["status_counts"] == recomputed
     assert all(ledger["reference_checks"].values())
+    complete = (
+        len(records) == 11700
+        and ledger["abort_reason"] is None
+        and recomputed["TIMEOUT"] == 0
+        and recomputed["ERROR"] == 0
+    )
+    assert ledger["search_status"] == ("COMPLETE" if complete else "INCOMPLETE")
+
+
+def test_observed_v2_result_is_pinned_and_fail_closed() -> None:
+    ledger_path = CAMPAIGN / "search/search_ledger.json"
+    if not ledger_path.exists():
+        pytest.skip("constructive search has not executed")
+    ledger = _json(ledger_path)
+    assert _sha256(ledger_path) == (
+        "ebec58e4571e352f8d264be958025aa983621c4badcb4e4caae61a83cd7abac1"
+    )
+    assert ledger["search_status"] == "INCOMPLETE"
+    assert ledger["executed_system_count"] == 11689
+    assert ledger["status_counts"] == {
+        "UNIT_IDEAL": 11549,
+        "NON_UNIT_IDEAL": 0,
+        "TIMEOUT": 140,
+        "ERROR": 0,
+    }
+    assert ledger["abort_reason"] == "aggregate_compute_cap_exceeded"
+    assert not (ROOT / "validation-external/wp6-dz-mr-v1").exists()
+
+
+def test_qualification_record_is_signed_and_fail_closed_when_present() -> None:
+    record_path = (
+        CAMPAIGN / "reports/wp6_dz_feas_v2_qualification_record.json"
+    )
+    if not record_path.exists():
+        pytest.skip("v2 qualification has not been sealed")
+    lock = _json(QUALIFICATION_LOCK_PATH)
+    unsigned_lock = dict(lock)
+    lock_signature = unsigned_lock.pop("lock_sha256")
+    assert hashlib.sha256(_canonical(unsigned_lock)).hexdigest() == lock_signature
+
+    candidate_path = CAMPAIGN / "candidates/candidate_ledger.json"
+    results_path = CAMPAIGN / "results/qualification_results.json"
+    candidate = _json(candidate_path)
+    unsigned_candidate = dict(candidate)
+    candidate_signature = unsigned_candidate.pop("candidate_payload_sha256")
+    assert (
+        hashlib.sha256(_canonical(unsigned_candidate)).hexdigest()
+        == candidate_signature
+    )
+    results = _json(results_path)
+    unsigned_results = dict(results)
+    results_signature = unsigned_results.pop("results_payload_sha256")
+    assert (
+        hashlib.sha256(_canonical(unsigned_results)).hexdigest()
+        == results_signature
+    )
+    record = _json(record_path)
+    unsigned_record = dict(record)
+    record_signature = unsigned_record.pop("record_payload_sha256")
+    assert (
+        hashlib.sha256(_canonical(unsigned_record)).hexdigest()
+        == record_signature
+    )
+    assert record["status"] == results["outcome"] == "INCOMPLETE"
+    assert record["qualification_gate_status"] == "FAIL_CLOSED"
+    assert candidate["unresolved_system_count"] == 151
+    assert candidate["candidate_count"] == 0
+    assert record["mr_promotion_authorized"] is False
+    assert results["mr_promotion_authorized"] is False
+    assert record["search_ledger_sha256"] == _sha256(
+        CAMPAIGN / "search/search_ledger.json"
+    )
+    assert record["candidate_ledger_sha256"] == _sha256(candidate_path)
+    assert record["results_sha256"] == _sha256(results_path)

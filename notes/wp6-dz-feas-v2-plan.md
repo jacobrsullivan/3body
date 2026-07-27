@@ -77,3 +77,21 @@ unresolved branch gives `INCOMPLETE`.
 that names exactly one frozen full-system witness. Every other result
 prohibits promotion.
 
+## Observed outcome
+
+The locked campaign ran on Bobs-mini with SymPy 1.14.0. It executed 11,689
+of 11,700 systems before the 1,800-second aggregate cap:
+
+- 11,549 exact unit ideals;
+- 0 non-unit ideals;
+- 140 timed-out ideals;
+- 0 search errors; and
+- 11 systems not executed.
+
+Every timeout occurred in `PHI-BOTH-SQ`, the rational cover
+`x=z^2/(1+z^2)`. The immutable ledger therefore forces `INCOMPLETE`.
+It does not authorize the bounded null claim or `WP6-DZ-MR-v1`.
+
+The next campaign must be separately locked. It may improve exact ideal
+decision and resource handling, but it must rerun all 11,700 systems and
+must not treat the v2 resolved prefix as a complete search.
