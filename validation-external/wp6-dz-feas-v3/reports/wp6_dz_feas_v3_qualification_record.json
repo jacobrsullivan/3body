@@ -1,0 +1,40 @@
+{
+  "audit_report_sha256": "77e2b4b4780b67cf7a7fd9c564ad5aa07c7f702d7653761d6c0b3716d0820f13",
+  "authorized_claim": "Within the four frozen v2 shape covers, exact one- and two-term Laurent supports with exponents -2 through 2, and thirteen exact mass/order sentinels, all 11,700 saturated coefficient ideals are dual-exact unit ideals. This finite library contains no graph that can extend to a W1-W12 arbitrary-positive-mass witness.",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "candidate_count": 0,
+  "candidate_ledger_sha256": "51bba9c9b2d0374cb239fd44780738b1b90bc4c5f5b413655c9e9dc8c47fd9b1",
+  "evidence_git_commit": "38bad4083a9095a11899ee3d4af39503900169c6",
+  "generated_utc": "2026-07-27T15:33:43.510316+00:00",
+  "mr_promotion_authorized": false,
+  "qualification_gate_status": "PASS",
+  "qualification_id": "WP6-DZ-FEAS-v3-d1b87638e369",
+  "qualification_lock_git_commit": "c49e9ec873339c01bef3af35e2672b72633cc9e9",
+  "qualification_lock_sha256": "5472585da070ee7e66a861d3f95fa8bb82be2314733859254f14cebf260d81fa",
+  "qualifying_candidate_ids": [],
+  "record_payload_sha256": "e4eb6b864a90fbc54c307c7756e77594c728aa29df791407fba07f77ce5bd6d4",
+  "results_sha256": "601a54c70e26bdca8a8d16ddf28ea2248fe9cc5d78887ef676ee6db408c550d9",
+  "schema_version": "1.0",
+  "search_ledger_sha256": "145a2e91cb2f22628f698327effab63ac26527f4f32e96a33c833a594979f8a5",
+  "search_summary": {
+    "candidate_count": 0,
+    "executed_system_count": 11700,
+    "expected_system_count": 11700,
+    "search_status": "COMPLETE",
+    "stage_counts": {
+      "ENERGY": 11687,
+      "ENERGY_AND_V": 13,
+      "FULL": 0
+    },
+    "status_counts": {
+      "DISAGREEMENT": 0,
+      "ERROR": 0,
+      "NON_UNIT_IDEAL": 0,
+      "TIMEOUT": 0,
+      "UNIT_IDEAL": 11700
+    },
+    "v2_unresolved_count": 151
+  },
+  "specification_lock_sha256": "960fc53758af0c361f4cab58a49d2f3715f2c1ce81230cc34cba32ca2e45c1c0",
+  "status": "COMPLETE_BOUNDED_NULL_RESULT"
+}

@@ -1,0 +1,97 @@
+{
+  "audit_report_sha256": "77e2b4b4780b67cf7a7fd9c564ad5aa07c7f702d7653761d6c0b3716d0820f13",
+  "authorized_claim": "Within the four frozen v2 shape covers, exact one- and two-term Laurent supports with exponents -2 through 2, and thirteen exact mass/order sentinels, all 11,700 saturated coefficient ideals are dual-exact unit ideals. This finite library contains no graph that can extend to a W1-W12 arbitrary-positive-mass witness.",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "candidate_count": 0,
+  "candidate_ledger_sha256": "51bba9c9b2d0374cb239fd44780738b1b90bc4c5f5b413655c9e9dc8c47fd9b1",
+  "claim_boundary": "The result exhausts only the frozen 11,700 graph ideals. It is not a nonexistence theorem for algebraic double-zero orbits, a nonintegrability theorem, or a Morales-Ramis obstruction.",
+  "energy_and_v_system_ids": [
+    "S00836",
+    "S01736",
+    "S02636",
+    "S03536",
+    "S04436",
+    "S05336",
+    "S06236",
+    "S07136",
+    "S08036",
+    "S08936",
+    "S09836",
+    "S10736",
+    "S11636"
+  ],
+  "gates": [
+    {
+      "name": "specification_lock_valid",
+      "passed": true
+    },
+    {
+      "name": "qualification_lock_valid",
+      "passed": true
+    },
+    {
+      "name": "source_disjoint_reference_checks_pass",
+      "passed": true
+    },
+    {
+      "name": "all_11700_systems_executed",
+      "passed": true
+    },
+    {
+      "name": "all_11700_systems_dual_exact_unit",
+      "passed": true
+    },
+    {
+      "name": "all_151_v2_gaps_closed",
+      "passed": true
+    },
+    {
+      "name": "all_non_unit_branches_audited",
+      "passed": true
+    },
+    {
+      "name": "candidate_count_zero",
+      "passed": true
+    },
+    {
+      "name": "wp6_dz_mr_v1_absent",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-27T15:33:43.510316+00:00",
+  "mr_promotion_authorized": false,
+  "mr_promotion_rule": "Only a signed QUALIFIED_WITNESS record naming one frozen full-system witness may create WP6-DZ-MR-v1.",
+  "outcome": "COMPLETE_BOUNDED_NULL_RESULT",
+  "prohibited_claims": {
+    "MR": "A Morales-Ramis or Ziglin obstruction has been proved.",
+    "NONEXISTENCE": "No explicit nonhomothetic algebraic H=C=0 orbit exists.",
+    "NONINTEGRABILITY": "The planar Newtonian three-body problem is nonintegrable on (H,C)=(0,0).",
+    "SCOPE": "The search covers implicit curves, larger supports, other covers, or transcendental trajectories."
+  },
+  "qualification_gate_status": "PASS",
+  "qualification_id": "WP6-DZ-FEAS-v3-d1b87638e369",
+  "qualification_lock_sha256": "5472585da070ee7e66a861d3f95fa8bb82be2314733859254f14cebf260d81fa",
+  "qualifying_candidate_ids": [],
+  "results_payload_sha256": "188ee38f7ea6967c7614d0691b546a84655acef8ccadba585defcba44e3048c8",
+  "schema_version": "1.0",
+  "search_ledger_sha256": "145a2e91cb2f22628f698327effab63ac26527f4f32e96a33c833a594979f8a5",
+  "search_summary": {
+    "candidate_count": 0,
+    "executed_system_count": 11700,
+    "expected_system_count": 11700,
+    "search_status": "COMPLETE",
+    "stage_counts": {
+      "ENERGY": 11687,
+      "ENERGY_AND_V": 13,
+      "FULL": 0
+    },
+    "status_counts": {
+      "DISAGREEMENT": 0,
+      "ERROR": 0,
+      "NON_UNIT_IDEAL": 0,
+      "TIMEOUT": 0,
+      "UNIT_IDEAL": 11700
+    },
+    "v2_unresolved_count": 151
+  }
+}
