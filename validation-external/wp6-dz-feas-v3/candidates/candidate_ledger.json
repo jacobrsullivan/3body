@@ -1,0 +1,45 @@
+{
+  "branch_audit_status": "VACUOUS_NO_NON_UNIT_IDEALS",
+  "campaign": "WP6-DZ-FEAS-v3",
+  "candidate_count": 0,
+  "candidate_payload_sha256": "1d6dc1c11197290dc41de4fccdaaec7ba0ba844135c508ab020877162c623a81",
+  "energy_and_v_system_ids": [
+    "S00836",
+    "S01736",
+    "S02636",
+    "S03536",
+    "S04436",
+    "S05336",
+    "S06236",
+    "S07136",
+    "S08036",
+    "S08936",
+    "S09836",
+    "S10736",
+    "S11636"
+  ],
+  "expected_system_count": 11700,
+  "generated_utc": "2026-07-27T15:32:51.280378+00:00",
+  "mr_promotion_authorized": false,
+  "non_unit_system_ids": [],
+  "proposed_outcome": "COMPLETE_BOUNDED_NULL_RESULT",
+  "qualifying_candidate_ids": [],
+  "schema_version": "1.0",
+  "search_ledger_sha256": "145a2e91cb2f22628f698327effab63ac26527f4f32e96a33c833a594979f8a5",
+  "search_payload_sha256": "9555fbcdeb532db2986c9b7f9ed2e3927fab109d9abb17d418917f548b4b3034",
+  "stage_counts": {
+    "ENERGY": 11687,
+    "ENERGY_AND_V": 13,
+    "FULL": 0
+  },
+  "status": "SEARCH_AND_BRANCH_AUDIT_COMPLETE",
+  "status_counts": {
+    "DISAGREEMENT": 0,
+    "ERROR": 0,
+    "NON_UNIT_IDEAL": 0,
+    "TIMEOUT": 0,
+    "UNIT_IDEAL": 11700
+  },
+  "v2_unresolved_count": 151,
+  "v2_unresolved_status": "ALL_UNIT_IDEAL"
+}
