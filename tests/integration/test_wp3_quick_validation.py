@@ -84,7 +84,7 @@ def test_basic_imports():
     else:
         print("\n✗ TEST 0 FAILED - WP3.3 module not available\n")
 
-    return success
+    assert success
 
 
 def test_basis_construction():
@@ -125,11 +125,11 @@ def test_basis_construction():
         else:
             print("\n✗ TEST 1 FAILED - Unexpected output\n")
 
-        return success
+        assert success
 
     except Exception as e:
         print(f"\n✗ TEST 1 FAILED - Error: {e}\n")
-        return False
+        assert False
 
 
 def test_symbolic_regression_basic():
@@ -147,7 +147,7 @@ def test_symbolic_regression_basic():
 
         if not PYSINDY_AVAILABLE:
             print("  ⚠ PySINDy not available - skipping test\n")
-            return True  # Not a failure, just skipped
+            return  # Not a failure, just skipped
 
         # Define known integral: I = z0^2 + z1^2
         def known_integral(z):
@@ -189,13 +189,13 @@ def test_symbolic_regression_basic():
         else:
             print(f"\n✗ TEST 2 FAILED - Residual too high: {result.residual:.2e}\n")
 
-        return success
+        assert success
 
     except Exception as e:
         print(f"\n✗ TEST 2 FAILED - Error: {e}\n")
         import traceback
         traceback.print_exc()
-        return False
+        assert False
 
 
 def test_simplification():
@@ -239,11 +239,11 @@ def test_simplification():
         else:
             print("\n✗ TEST 3 FAILED - Simplification increased complexity\n")
 
-        return success
+        assert success
 
     except Exception as e:
         print(f"\n✗ TEST 3 FAILED - Error: {e}\n")
-        return False
+        assert False
 
 
 def test_validation():
@@ -290,11 +290,11 @@ def test_validation():
         else:
             print(f"\n✗ TEST 4 FAILED - Validation failed\n")
 
-        return success
+        assert success
 
     except Exception as e:
         print(f"\n✗ TEST 4 FAILED - Error: {e}\n")
-        return False
+        assert False
 
 
 def test_candidate_ranking():
@@ -400,13 +400,13 @@ def test_candidate_ranking():
         else:
             print("\n✗ TEST 5 FAILED - Ranking quality issues\n")
 
-        return success
+        assert success
 
     except Exception as e:
         print(f"\n✗ TEST 5 FAILED - Error: {e}\n")
         import traceback
         traceback.print_exc()
-        return False
+        assert False
 
 
 def main():
@@ -415,33 +415,19 @@ def main():
     print("WP3 INTEGRATION - QUICK VALIDATION TESTS")
     print("="*80 + "\n")
 
-    results = {
-        'Test 0': test_basic_imports(),
-        'Test 1': test_basis_construction(),
-        'Test 2': test_symbolic_regression_basic(),
-        'Test 3': test_simplification(),
-        'Test 4': test_validation(),
-        'Test 5': test_candidate_ranking(),
-    }
+    test_basic_imports()
+    test_basis_construction()
+    test_symbolic_regression_basic()
+    test_simplification()
+    test_validation()
+    test_candidate_ranking()
 
     # Summary
     print("=" * 80)
     print("TEST SUMMARY")
     print("=" * 80)
-
-    passed = sum(1 for result in results.values() if result)
-    total = len(results)
-
-    for test_name, result in results.items():
-        status = "✓ PASS" if result else "✗ FAIL"
-        print(f"  {test_name}: {status}")
-
-    print()
-    print(f"Total: {passed}/{total} tests passed ({passed/total*100:.1f}%)")
+    print("All tests passed")
     print("=" * 80)
-
-    # Exit code
-    sys.exit(0 if passed == total else 1)
 
 
 if __name__ == "__main__":
