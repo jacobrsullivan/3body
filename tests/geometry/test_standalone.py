@@ -24,10 +24,9 @@ def test_imports():
             compute_scalar_curvature,
         )
         print("✓ All geometry modules import successfully")
-        return True
     except ImportError as e:
         print(f"✗ Import failed: {e}")
-        return False
+        assert False
 
 
 def test_module_structure():
@@ -51,10 +50,9 @@ def test_module_structure():
         assert hasattr(riemann_curvature, 'CurvatureTensors')
 
         print("✓ All expected classes and functions present")
-        return True
     except (ImportError, AssertionError) as e:
         print(f"✗ Structure test failed: {e}")
-        return False
+        assert False
 
 
 def test_dataclass_creation():
@@ -71,10 +69,9 @@ def test_dataclass_creation():
         from src.python.geometry.riemann_curvature import CurvatureTensors
 
         print("✓ All dataclasses can be imported (numpy required for instantiation)")
-        return True
     except ImportError as e:
         print(f"✗ Dataclass import failed: {e}")
-        return False
+        assert False
 
 
 def main():
@@ -83,33 +80,15 @@ def main():
     print("Geometry Module Standalone Tests")
     print("="*60)
 
-    results = []
-
-    results.append(("Imports", test_imports()))
-    results.append(("Module Structure", test_module_structure()))
-    results.append(("Dataclass Creation", test_dataclass_creation()))
+    test_imports()
+    test_module_structure()
+    test_dataclass_creation()
 
     print("\n" + "="*60)
     print("Test Summary")
     print("="*60)
-
-    passed = sum(1 for _, result in results if result)
-    total = len(results)
-
-    for name, result in results:
-        status = "PASS" if result else "FAIL"
-        print(f"{name}: {status}")
-
-    print(f"\nTotal: {passed}/{total} tests passed")
-
-    if passed == total:
-        print("\n✓ All standalone tests passed!")
-        return 0
-    else:
-        print(f"\n✗ {total - passed} test(s) failed")
-        print("\nNote: Full tests require numpy and pytest to be installed.")
-        print("Run: pip install numpy pytest")
-        return 1
+    print("All tests passed")
+    print("="*60)
 
 
 if __name__ == "__main__":
