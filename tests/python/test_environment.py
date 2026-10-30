@@ -149,7 +149,6 @@ class TestProjectStructure:
             "examples",
             "scripts",
             "Project-Design-Docs",
-            "Science-Research-Docs",
             "User-Guides",
             "External-Validation-Planning-Docs",
             "validation-external",
@@ -174,7 +173,7 @@ class TestProjectStructure:
 
     def test_documentation_exists(self):
         """Verify documentation files exist."""
-        doc_files = ["README.md", "CLAUDE.md"]
+        doc_files = ["README.md", "LICENSE", "CLAUDE.md"]
 
         for file in doc_files:
             assert os.path.exists(file), f"Documentation file {file} not found"
